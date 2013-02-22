@@ -1,4 +1,4 @@
-oop-syd-xavier
+Asteroids
 ==============
 
-Met een voorlopige naam, ons project voor OOP.
+The project of Tom Kerckhove and Xavier Goas Aguililla for prof. Steegmans' course in object-oriented programming.
