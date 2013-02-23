@@ -38,7 +38,7 @@ public abstract class Vector {
    }
 
    protected double getEuclideanNorm() {
-		return Math.sqrt(Math.pow(this.getXComponent(), 2) + Math.pow(this.getYComponent(), 2));
+	   return Math.sqrt(Math.pow(this.getXComponent(), 2) + Math.pow(this.getYComponent(), 2));
    }
 
    protected Vector(double x, double y) {
