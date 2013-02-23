@@ -17,6 +17,8 @@ public class VelocityTest
 		testVelocity = new Velocity(10, 10);
 	}
 
+	private static Velocity testVelocity;
+	
 	@Test
 	public void canHaveAsXComponentTest()
 	{
@@ -69,5 +71,13 @@ public class VelocityTest
 		assertTrue(Util.fuzzyEquals(v.getYComponent(), 0));
 	}
 
-	private static Velocity testVelocity;
+	@Test
+	public void getVelocityTest(){
+		assertTrue(Util.fuzzyLessThanOrEqualTo(testVelocity.getVelocity(), Velocity.getSpeedOfLight()));
+	}
+	
+	@Test
+	public void getSpeedOfLightTest(){
+		assertTrue(Util.fuzzyEquals(Velocity.getSpeedOfLight(), 300000));
+	}
 }
