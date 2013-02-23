@@ -1,4 +1,4 @@
-package asteroids;
+ package asteroids;
 
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
@@ -24,18 +24,18 @@ public class CircleShape
 	 * 
 	 * @param 	radius
 	 * 			The radius to check.
-	 * @return	True if and only if the given radius is at least 0 and larger than 10.
-	 * 			| result = ((radius) >= 0 && (radius > 10))
+	 * @return	True if and only if the given radius is at least 0.
+	 * 			| result = (radius > 0)
 	 */
 	@Basic
 	@Raw
 	public boolean canHaveAsRadius(double radius)
 	{
-		return ((radius) >= 0 && (radius > 10));
+		return (radius >= 0);
 	}
 
 	/**
-	 * A variable registering the radius of this circle shape.
+	 * A variable registering the radius of this circle shape in km/s.
 	 */
 	private final double radius;
 
