@@ -5,7 +5,8 @@ import be.kuleuven.cs.som.annotate.Immutable;
 import be.kuleuven.cs.som.annotate.Raw;
 
 /**
- * A superclass for vectorial properties, such as position and velocity. 
+ * A superclass for vectorial properties, such as position, velocity,
+ * acceleration, direction... 
  * 
  * 
  * @author Syd & Xavier
@@ -32,13 +33,33 @@ public abstract class Vector {
 
    protected double y;
 
+   protected void rescale(double scalar) {
+       this = this.scalarProduct(scalar);
+   }
 
    protected boolean canHaveAsComponent(double x) {
        return (true);
    }
 
-   protected double getEuclideanNorm() {
-	   return Math.sqrt(Math.pow(this.getXComponent(), 2) + Math.pow(this.getYComponent(), 2));
+   protected double getMagnitude() {
+       return Math.sqrt(this.innerProduct(this));
+   }
+
+   protected Vector getDirection() {
+       return this.scalarProduct(1.0 / this.magnitude());
+   }
+
+   protected Angle getAngle() {
+       Vector v = this.getDirection();
+       return Math.acos(v.getXComponent);
+   }
+
+   protected Vector scalarProduct(double scalar) {
+       return new Vector(x * scalar, y * scalar);
+   }
+
+   protected double innerProduct(Vector v) {
+       return (x * v.getXComponent()) + (y * v.getYComponent());
    }
 
    protected Vector(double x, double y) {
