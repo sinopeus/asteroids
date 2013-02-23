@@ -14,17 +14,32 @@ import be.kuleuven.cs.som.annotate.Raw;
 
 public abstract class Vector {
 
-   protected double getXComponent();
-   protected boolean canHaveAsXComponent(double x);
+   protected double getXComponent() {
+       return this.x;
+   }
+   
+
    protected void setXComponent(double x);
 
    protected double x;
 
-   protected double getYComponent();
-   protected boolean canHaveAsYComponent(double y);
+
+   protected double getYComponent() {
+       return this.y;
+   }
+
    protected void setYComponent(double y);
 
    protected double y;
+
+
+   protected boolean canHaveAsComponent(double x) {
+       return (true);
+   }
+
+   protected double getEuclideanNorm() {
+		return Math.sqrt(Math.pow(this.getXComponent(), 2) + Math.pow(this.getYComponent(), 2));
+   }
 
    protected Vector(double x, double y) {
        setXComponent(x);
