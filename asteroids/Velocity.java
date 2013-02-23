@@ -145,7 +145,7 @@ public class Velocity
 	}
 
 	/**
-	 * Return the total velocity of this velocity.
+	 * Return the total velocity of this velocity in km/s.
 	 * 
 	 * @return	The total velocity. The total velocity can never exceed the speed of light.
 	 * 			| Util.fuzzyLessThanOrEqualTo(result,Velocity.getSpeedOfLight())
@@ -165,7 +165,7 @@ public class Velocity
 	}
 
 	/**
-	 * Return the speed of light.
+	 * Return the speed of light in km/s.
 	 */
 	@Basic
 	@Raw
