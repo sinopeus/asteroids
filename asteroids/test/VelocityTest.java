@@ -12,49 +12,49 @@ public class VelocityTest
 {
 
 	@Before
-	private void setUpImmutableTestFixture_Velocity()
+	public void setUpImmutableTestFixture_Velocity()
 	{
 		testVelocity = new Velocity(10, 10);
 	}
 
 	@Test
-	private void canHaveAsXComponentTest()
+	public void canHaveAsXComponentTest()
 	{
 		assertTrue(testVelocity.canHaveAsXComponent(50));
 	}
 
 	@Test
-	private void setXComponentTest_LegalCase()
+	public void setXComponentTest_LegalCase()
 	{
 		testVelocity.setXComponent(5);
 		assertTrue(Util.fuzzyEquals(testVelocity.getXComponent(), 5));
 	}
 
 	@Test
-	private void setXComponentTest_IllegalCase()
+	public void setXComponentTest_IllegalCase()
 	{
 	}
 
 	@Test
-	private void canHaveAsYComponentTest()
+	public void canHaveAsYComponentTest()
 	{
 		assertTrue(testVelocity.canHaveAsYComponent(50));
 	}
 
 	@Test
-	private void setYComponentTest_LegalCase()
+	public void setYComponentTest_LegalCase()
 	{
 		testVelocity.setYComponent(5);
 		assertTrue(Util.fuzzyEquals(testVelocity.getYComponent(), 5));
 	}
 
 	@Test
-	private void setYComponentTest_IllegalCase()
+	public void setYComponentTest_IllegalCase()
 	{
 	}
 
 	@Test
-	private void extendedConstructorTest_ComponentsMatchGivenComponents()
+	public void extendedConstructorTest_ComponentsMatchGivenComponents()
 	{
 		Velocity v = new Velocity(5, 6);
 		assertTrue(Util.fuzzyEquals(v.getXComponent(), 5));
@@ -62,7 +62,7 @@ public class VelocityTest
 	}
 
 	@Test
-	private void simpleConstructorTest_ComponentsMatchZero()
+	public void simpleConstructorTest_ComponentsMatchZero()
 	{
 		Velocity v = new Velocity();
 		assertTrue(Util.fuzzyEquals(v.getXComponent(), 0));
