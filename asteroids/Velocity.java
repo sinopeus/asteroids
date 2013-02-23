@@ -1,6 +1,7 @@
 package asteroids;
 
 import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Immutable;
 import be.kuleuven.cs.som.annotate.Raw;
 
 /**
@@ -59,7 +60,7 @@ public class Velocity
 	}
 
 	/**
-	 * A variable registering the x-component of this Velocity.
+	 * A variable registering the x-component of this velocity in km/s.
 	 */
 	private double vx;
 
@@ -109,7 +110,7 @@ public class Velocity
 	}
 
 	/**
-	 * A variable registering the y-component of this Velocity.
+	 * A variable registering the y-component of this velocity in km/s.
 	 */
 	private double vy;
 
@@ -143,4 +144,36 @@ public class Velocity
 		this(0, 0);
 	}
 
+	/**
+	 * Return the total velocity of this velocity.
+	 * 
+	 * @return	The total velocity. The total velocity can never exceed the speed of light.
+	 * 			| Util.fuzzyLessThanOrEqualTo(result,Velocity.getSpeedOfLight())
+	 */
+	@Basic
+	@Raw
+	public double getVelocity()
+	{
+		double totalVelocity = (Math.sqrt(Math.pow(this.getXComponent(), 2) + Math.pow(this.getYComponent(), 2)));
+		if (Util.fuzzyLessThanOrEqualTo(totalVelocity, Velocity.getSpeedOfLight()))
+		{
+			return totalVelocity;
+		} else
+		{
+			return Velocity.getSpeedOfLight();
+		}
+	}
+
+	/**
+	 * Return the speed of light.
+	 */
+	@Basic
+	@Raw
+	@Immutable
+	public static double getSpeedOfLight()
+	{
+		return Velocity.SPEED_OF_LIGHT;
+	}
+
+	private static double SPEED_OF_LIGHT = 300000;
 }
