@@ -23,7 +23,6 @@ public class CircleShapeTest
 	public void canHaveAsRadiusTest()
 	{
 		assertTrue(testCircleShape.canHaveAsRadius(15));
-		assertFalse(testCircleShape.canHaveAsRadius(5));
 		assertFalse(testCircleShape.canHaveAsRadius(-5));
 	}
 
@@ -40,7 +39,7 @@ public class CircleShapeTest
 	{
 		try
 		{
-			CircleShape cs = new CircleShape(-10);
+			new CircleShape(-10);
 		} catch (IllegalArgumentException e)
 		{
 			return;
