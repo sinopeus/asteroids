@@ -21,6 +21,8 @@ public class Vector {
      *
      * @return The x component of the vector as a double precision floating point number.
      */
+    @Basic
+    @Raw
     protected double getXComponent() {
        return this.x;
    }
@@ -31,6 +33,8 @@ public class Vector {
      *
      * @param x The chosen double precision floating point value for the x component of the vector.
      */
+   @Basic
+   @Raw
     protected void setXComponent(double x) {
         this.x = x;
     }
@@ -46,6 +50,8 @@ public class Vector {
      *
      * @return The y component of the vector as a double precision floating point number.
      */
+    @Basic
+    @Raw
     protected double getYComponent() {
        return this.y;
    }
@@ -55,6 +61,8 @@ public class Vector {
      *
      * @param y The chosen double precision floating point value for the y component of the vector.
      */
+   @Basic
+   @Raw
     protected void setYComponent(double y) {
         this.y = y;
     }
@@ -138,7 +146,7 @@ public class Vector {
      * @param v A Vector object whose magnitude we want to compute.
      * @return A double precision floating point value representing the magnitude of the Vector object.
      */
-    protected double magnitude(Vector v) {
+    protected double magnitude() {
         //TODO
     }
    
