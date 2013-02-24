@@ -96,8 +96,8 @@ public class Vector {
      * implicit and explicit parameter.
      */
     public Vector sum(Vector v) {
-       xComponent = getXComponent() + v.getXComponent();
-       yComponent = getYComponent() + v.getYComponent();
+       double xComponent = getXComponent() + v.getXComponent();
+       double yComponent = getYComponent() + v.getYComponent();
        return new Vector(xComponent, yComponent);
    }
 
@@ -110,8 +110,8 @@ public class Vector {
      * in the implicit and explicit parameter.
      */
    public Vector difference(Vector v) {
-       xComponent = getXComponent() + v.getXComponent();
-       yComponent = getYComponent() + v.getYComponent();
+       double xComponent = getXComponent() + v.getXComponent();
+       double yComponent = getYComponent() + v.getYComponent();
        return new Vector(xComponent, yComponent);
    }
 
@@ -128,8 +128,8 @@ public class Vector {
      * factor provided in the explicit parameter.
      */
     public Vector scale(double scalar) {
-       xComponent = getXComponent() * scalar;
-       yComponent = getYComponent() * scalar;
+       double xComponent = getXComponent() * scalar;
+       double yComponent = getYComponent() * scalar;
        return new Vector(xComponent, yComponent);
    }
     /*
@@ -143,8 +143,8 @@ public class Vector {
      * @return A double precision floating point value representing the inner product of the Vector objects in the implicit and explicit parameters.
      */
     public double dot(Vector v) {
-       otherX = v.getXComponent();
-       otherY = v.getYComponent();
+       double otherX = v.getXComponent();
+       double otherY = v.getYComponent();
        return (getXComponent() * otherX) + (getYComponent() * otherY);
    }
 
@@ -159,7 +159,41 @@ public class Vector {
         return Math.sqrt(this.dot(this));
     }
 
-    public double distanceTo() {
+    /**
+     * Returns a unit vector denoting the direction of the vector.
+     *
+     * @return A unit vector.
+     */
+    public Vector direction() {
+        return this.scale(1.0 / magnitude());
+    }
+
+    /**
+     * Calculates the angle in radians from the x axis.
+     *
+     * @return The angle in radians from the x axis in radians.
+     */
+    public Angle angle() {
+        //TODO
+    }
+
+    /**
+     * Calculates the agle between this vector and the argument vector.
+     *
+     * @param v A vector.
+     * @return The angle between the two vectors in radians.
+     */
+    public Angle angle(Vector v) {
+        //TODO
+    }
+
+    /**
+     * Computes the Euclidean distance between two vectors.
+     *
+     * @param v The vector to which we want to measure the Euclidean distance.
+     * @return The distance between the two vectors in double precision floating point representation.
+     */
+    public double distanceTo(Vector v) {
         return this.difference(v).magnitude();
     }
    
