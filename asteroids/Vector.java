@@ -5,7 +5,8 @@ import be.kuleuven.cs.som.annotate.Immutable;
 import be.kuleuven.cs.som.annotate.Raw;
 
 /**
- * A superclass for vectorial properties, such as position and velocity. 
+ * A superclass for vectorial properties, such as position, velocity,
+ * acceleration, direction... 
  * 
  * 
  * @author Syd & Xavier
@@ -37,9 +38,59 @@ public abstract class Vector {
        return (true);
    }
 
-   protected double getEuclideanNorm() {
-	   return Math.sqrt(Math.pow(this.getXComponent(), 2) + Math.pow(this.getYComponent(), 2));
+   /**
+    * A method for transparently resizing the vector's magntitude by a real
+    * factor.
+    */
+
+   protected void rescale(double scalar) {
+       this = this.scalarProduct(scalar);
    }
+
+   /** 
+    * Return basic properties of the vector.  
+    **/
+
+   protected double getMagnitude() {
+       return Math.sqrt(this.innerProduct(this));
+   }
+
+   protected Vector getDirection() {
+       return this.scalarProduct(1.0 / this.getMagnitude());
+   }
+
+   /**
+    * Calculate the angle of the directional vector with the x axis.
+    */
+
+   protected Angle getAngle() {
+       Vector v = this.getDirection();
+       return Math.acos(v.getXComponent);
+   }
+
+   /**
+    * Scalar operators.  
+    **/
+
+   protected Vector scalarProduct(double scalar) {
+       return new Vector(x * scalar, y * scalar);
+   }
+
+   /**
+    * Vectorial operators.
+    */
+
+   protected double getDistanceTo(Vector v) {
+       return this.vectorAddition(v).getMagnitude();
+   }
+
+   protected double innerProduct(Vector v) {
+       return (x * v.getXComponent()) + (y * v.getYComponent());
+   }
+
+   /**
+    * Generic constructors.
+    */
 
    protected Vector(double x, double y) {
        setXComponent(x);

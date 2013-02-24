@@ -5,7 +5,8 @@ import be.kuleuven.cs.som.annotate.Immutable;
 import be.kuleuven.cs.som.annotate.Raw;
 
 /**
- * A class implementing simple positional information in two dimensions for objects in the game.
+ * A class implementing simple positional information in two dimensions for
+ * objects in the game.
  * 
  * 
  * @author Syd & Xavier
