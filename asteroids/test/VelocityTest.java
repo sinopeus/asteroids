@@ -18,12 +18,6 @@ public class VelocityTest
 	}
 
 	private static Velocity testVelocity;
-	
-	@Test
-	public void canHaveAsXComponentTest()
-	{
-		assertTrue(testVelocity.canHaveAsXComponent(50));
-	}
 
 	@Test
 	public void setXComponentTest_LegalCase()
@@ -38,9 +32,9 @@ public class VelocityTest
 	}
 
 	@Test
-	public void canHaveAsYComponentTest()
+	public void canHaveAsComponentTest()
 	{
-		assertTrue(testVelocity.canHaveAsYComponent(50));
+		assertTrue(testVelocity.canHaveAsComponent(50));
 	}
 
 	@Test
