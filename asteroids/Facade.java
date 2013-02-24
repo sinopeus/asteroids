@@ -1,5 +1,6 @@
 package asteroids;
 
+
 public class Facade implements IFacade
 {
 

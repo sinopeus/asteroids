@@ -1,5 +1,6 @@
 package asteroids;
 
+
 public class Util {
   public static final double EPSILON = 0.0001;
 
