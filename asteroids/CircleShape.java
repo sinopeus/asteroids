@@ -10,7 +10,7 @@ import be.kuleuven.cs.som.annotate.Raw;
 public class CircleShape
 {
 	/**
-	 * Return the radius of this circle shape.
+	 * Returns the radius of this circle shape.
 	 */
 	@Basic
 	@Raw
@@ -20,7 +20,7 @@ public class CircleShape
 	}
 
 	/**
-	 * Check whether this circle shape can have the given radius as its radius.
+	 * Checks whether this circle shape can have the given radius as its radius.
 	 * 
 	 * @param 	radius
 	 * 			The radius to check.
@@ -40,7 +40,7 @@ public class CircleShape
 	private final double radius;
 
 	/*
-	 * Initialize this new circle shape with a given radius
+	 * Initializes this new circle shape with a given radius
 	 * 
 	 * @param	radius
 	 * 			The radius for this new circle shape.

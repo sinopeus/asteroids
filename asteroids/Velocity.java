@@ -15,7 +15,7 @@ public class Velocity
 {
 
 	/**
-	 * Return the x-component of this velocity.
+	 * Returns the x-component of this velocity.
 	 */
 	@Basic
 	@Raw
@@ -25,7 +25,7 @@ public class Velocity
 	}
 
 	/**
-	 * Check whether this velocity can have the given x-component as its
+	 * Checks whether this velocity can have the given x-component as its
 	 * x-component.
 	 * 
 	 * @param	vx
@@ -65,7 +65,7 @@ public class Velocity
 	private double vx;
 
 	/**
-	 * Return the y-component of this velocity.
+	 * Returns the y-component of this velocity.
 	 */
 	@Basic
 	@Raw
@@ -75,7 +75,7 @@ public class Velocity
 	}
 
 	/**
-	 * Check whether this velocity can have the given y-component as its
+	 * Checks whether this velocity can have the given y-component as its
 	 * y-component.
 	 * 
 	 * @param 	vy
@@ -115,7 +115,7 @@ public class Velocity
 	private double vy;
 
 	/**
-	 * Initialize this new velocity with a given x-component and y-component.
+	 * Initializes this new velocity with a given x-component and y-component.
 	 * 
 	 * @param	vx
 	 * 			The x-component for this new velocity
@@ -133,7 +133,7 @@ public class Velocity
 	}
 
 	/**
-	 * Initialize this new velocity.
+	 * Initializes this new velocity.
 	 * 
 	 * @effect Sets the x-component of this new velocity to 0.0.
 	 * 
@@ -145,7 +145,7 @@ public class Velocity
 	}
 
 	/**
-	 * Return the total velocity of this velocity in km/s.
+	 * Returns the total velocity of this velocity in km/s.
 	 * 
 	 * @return	The total velocity. The total velocity can never exceed the speed of light.
 	 * 			| Util.fuzzyLessThanOrEqualTo(result,Velocity.getSpeedOfLight())
@@ -165,7 +165,7 @@ public class Velocity
 	}
 
 	/**
-	 * Return the speed of light in km/s.
+	 * Returns the speed of light in km/s.
 	 */
 	@Basic
 	@Raw
