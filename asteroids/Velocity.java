@@ -11,34 +11,8 @@ import be.kuleuven.cs.som.annotate.Raw;
  * @author Syd & Xavier
  * @version 0.0
  */
-public class Velocity
+public class Velocity extends Vector
 {
-
-	/**
-	 * Returns the x-component of this velocity.
-	 */
-	@Basic
-	@Raw
-	public double getXComponent()
-	{
-		return this.vx;
-	}
-
-	/**
-	 * Checks whether this velocity can have the given x-component as its
-	 * x-component.
-	 * 
-	 * @param	vx
-	 *          The x-component to check.
-	 * @return 	True
-	 */
-	@Basic
-	@Raw
-	public boolean canHaveAsXComponent(double vx)
-	{
-		return (true);
-	}
-
 	/**
 	 * Sets the x-component of this velocity to the given x-component.
 	 * 
@@ -51,9 +25,10 @@ public class Velocity
 	 */
 	@Basic
 	@Raw
+	@Override
 	public void setXComponent(double vx)
 	{
-		if (canHaveAsXComponent(vx))
+		if (super.canHaveAsComponent(vx))
 		{
 			this.vx = vx;
 		}
@@ -63,31 +38,6 @@ public class Velocity
 	 * A variable registering the x-component of this velocity in km/s.
 	 */
 	private double vx;
-
-	/**
-	 * Returns the y-component of this velocity.
-	 */
-	@Basic
-	@Raw
-	public double getYComponent()
-	{
-		return this.vy;
-	}
-
-	/**
-	 * Checks whether this velocity can have the given y-component as its
-	 * y-component.
-	 * 
-	 * @param 	vy
-	 *          The y-component to check.
-	 * @return 	True
-	 */
-	@Basic
-	@Raw
-	public boolean canHaveAsYComponent(double vy)
-	{
-		return (true);
-	}
 
 	/**
 	 * Sets the y-component of this velocity to the given y-component.
@@ -101,9 +51,10 @@ public class Velocity
 	 */
 	@Basic
 	@Raw
+	@Override
 	public void setYComponent(double vy)
 	{
-		if (canHaveAsXComponent(vy))
+		if (canHaveAsComponent(vy))
 		{
 			this.vy = vy;
 		}
@@ -128,8 +79,7 @@ public class Velocity
 	 */
 	public Velocity(double vx, double vy)
 	{
-		setXComponent(vx);
-		setYComponent(vy);
+		super(vx, vy);
 	}
 
 	/**
@@ -141,7 +91,7 @@ public class Velocity
 	 */
 	public Velocity()
 	{
-		this(0, 0);
+		super();
 	}
 
 	/**
@@ -154,7 +104,7 @@ public class Velocity
 	@Raw
 	public double getVelocity()
 	{
-		double totalVelocity = (Math.sqrt(Math.pow(this.getXComponent(), 2) + Math.pow(this.getYComponent(), 2)));
+		double totalVelocity = (Math.sqrt(Math.pow(super.getXComponent(), 2) + Math.pow(super.getYComponent(), 2)));
 		if (Util.fuzzyLessThanOrEqualTo(totalVelocity, Velocity.getSpeedOfLight()))
 		{
 			return totalVelocity;
