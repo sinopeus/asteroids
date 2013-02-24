@@ -33,34 +33,64 @@ public abstract class Vector {
 
    protected double y;
 
-   protected void rescale(double scalar) {
-       this = this.scalarProduct(scalar);
-   }
 
    protected boolean canHaveAsComponent(double x) {
        return (true);
    }
+
+   /**
+    * A method for transparently resizing the vector's magntitude by a real
+    * factor.
+    */
+
+   protected void rescale(double scalar) {
+       this = this.scalarProduct(scalar);
+   }
+
+   /** 
+    * Return basic properties of the vector.  
+    **/
 
    protected double getMagnitude() {
        return Math.sqrt(this.innerProduct(this));
    }
 
    protected Vector getDirection() {
-       return this.scalarProduct(1.0 / this.magnitude());
+       return this.scalarProduct(1.0 / this.getMagnitude());
    }
+
+   /**
+    * Calculate the angle of the directional vector with the x axis.
+    */
 
    protected Angle getAngle() {
        Vector v = this.getDirection();
        return Math.acos(v.getXComponent);
    }
 
+   /**
+    * Scalar operators.  
+    **/
+
    protected Vector scalarProduct(double scalar) {
        return new Vector(x * scalar, y * scalar);
+   }
+
+   /**
+    * Vectorial operators.
+    */
+
+   protected double getDistanceTo(Vector v) {
+       return this.vectorAddition(v).getMagnitude();
    }
 
    protected double innerProduct(Vector v) {
        return (x * v.getXComponent()) + (y * v.getYComponent());
    }
+
+   /**
+    * Generic constructors.
+    */
 
    protected Vector(double x, double y) {
        setXComponent(x);
