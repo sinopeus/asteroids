@@ -77,13 +77,13 @@ public class Vector {
      * Checks if the input can be a vector component.
      *
      * @param x A double precision floating point number. The method will throw an exception if it isn't a double.
-     * @return A boolean indicating whether the formal argument is a possible value for a vector component.
+     * @return Will return true if the formal argument is a possible value for a vector component.
      */
     public boolean canHaveAsComponent(double x) {
        return (true);
    }
 
-   /**
+   /*
     * Basic operations on elements of commutative groups.
     */
 
@@ -111,7 +111,7 @@ public class Vector {
        //TODO
    }
 
-    /**
+    /*
      * Operations on elements of commutative groups equipped with scalar
      * multiplication.
      */
@@ -126,7 +126,7 @@ public class Vector {
     public Vector scale(double scalar) {
        //TODO
    }
-    /**
+    /*
      * Basic operations on elements of inner product spaces.
      */
 
@@ -156,7 +156,7 @@ public class Vector {
     }
    
     /**
-     * Constructors for the vector class.
+     * A constructor for the vector class.
      * @param x The x component of the vector we want to construct.
      * @param y The y component of the vector we want to construct.
      **/
