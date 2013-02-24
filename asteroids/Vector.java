@@ -76,7 +76,7 @@ public class Vector {
     /**
      * Checks if the input can be a vector component.
      *
-     * @param x A double precision floating point number. The method will throw an exception if it isn't a double.
+     * @param x A double precision floating point number.
      * @return Will return true if the formal argument is a possible value for a vector component.
      */
     public boolean canHaveAsComponent(double x) {
@@ -96,7 +96,9 @@ public class Vector {
      * implicit and explicit parameter.
      */
     public Vector sum(Vector v) {
-       //TODO
+       xComponent = getXComponent() + v.getXComponent();
+       yComponent = getYComponent() + v.getYComponent();
+       return new Vector(xComponent, yComponent);
    }
 
     /**
@@ -107,8 +109,10 @@ public class Vector {
      * differences of the respective components of the two Vector objects given
      * in the implicit and explicit parameter.
      */
-    public Vector difference(Vector v) {
-       //TODO
+   public Vector difference(Vector v) {
+       xComponent = getXComponent() + v.getXComponent();
+       yComponent = getYComponent() + v.getYComponent();
+       return new Vector(xComponent, yComponent);
    }
 
     /*
@@ -124,7 +128,9 @@ public class Vector {
      * factor provided in the explicit parameter.
      */
     public Vector scale(double scalar) {
-       //TODO
+       xComponent = getXComponent() * scalar;
+       yComponent = getYComponent() * scalar;
+       return new Vector(xComponent, yComponent);
    }
     /*
      * Basic operations on elements of inner product spaces.
@@ -137,7 +143,9 @@ public class Vector {
      * @return A double precision floating point value representing the inner product of the Vector objects in the implicit and explicit parameters.
      */
     public double dot(Vector v) {
-       //TODO
+       otherX = v.getXComponent();
+       otherY = v.getYComponent();
+       return (getXComponent() * otherX) + (getYComponent() * otherY);
    }
 
     /**
@@ -148,11 +156,11 @@ public class Vector {
      * magnitude of the Vector object.
      */
     public double magnitude() {
-        //TODO
+        return Math.sqrt(this.dot(this));
     }
 
     public double distanceTo() {
-        //TODO
+        return this.difference(v).magnitude();
     }
    
     /**
