@@ -12,49 +12,49 @@ import asteroids.Vector;
 public class VectorTest
 {
 
-	@Before
-	public void setUpImmutableTestFixture_Vector() {
-		testVector1 = new Vector(10, 10);
-		testVector2 = new Vector(5, -5);
-	}
+    @Before
+    public void setUpImmutableTestFixture_Vector() {
+        testVector1 = new Vector(10, 10);
+        testVector2 = new Vector(5, -5);
+    }
 
-	private static Vector testVector1;
-	private static Vector testVector2;
+    private static Vector testVector1;
+    private static Vector testVector2;
 
-	@Test
-	public void setXComponentTest_LegalCase() {
-		testVector1.setXComponent(5);
-		assertTrue(Util.fuzzyEquals(testVector1.getXComponent(), 5));
-	}
+    @Test
+    public void setXComponentTest_LegalCase() {
+        testVector1.setXComponent(5);
+        assertTrue(Util.fuzzyEquals(testVector1.getXComponent(), 5));
+    }
 
-	@Test
-	public void setXComponentTest_IllegalCase() {
+    @Test
+    public void setXComponentTest_IllegalCase() {
         try { 
             testVector1.setXComponent("fifty");
         } catch (IllegalArgumentException e) {
             return;
         }
-	}
+    }
 
-	@Test
-	public void setYComponentTest_LegalCase() {
-		testVector1.setYComponent(5);
-		assertTrue(Util.fuzzyEquals(testVector1.getYComponent(), 5));
-	}
+    @Test
+    public void setYComponentTest_LegalCase() {
+        testVector1.setYComponent(5);
+        assertTrue(Util.fuzzyEquals(testVector1.getYComponent(), 5));
+    }
 
-	@Test
-	public void setYComponentTest_IllegalCase() {
+    @Test
+    public void setYComponentTest_IllegalCase() {
         try { 
             testVector1.setYComponent("fifty");
         } catch (IllegalArgumentException e) {
             return;
         }
-	}
+    }
 
-	@Test
-	public void canHaveAsComponentTest() {
-		assertTrue(testVector1.canHaveAsXComponent(50));
-	}
+    @Test
+    public void canHaveAsComponentTest() {
+        assertTrue(testVector1.canHaveAsXComponent(50));
+    }
 
     @Test
     public void sumTest() {
@@ -96,18 +96,18 @@ public class VectorTest
         assert (vectorMagnitude == Math.sqrt(200.0));
     }
 
-	@Test
-	public void extendedConstructorTest_ComponentsMatchGivenComponents() {
-		Vector v = new Vector(5, 6);
-		assertTrue(Util.fuzzyEquals(v.getXComponent(), 5));
-		assertTrue(Util.fuzzyEquals(v.getYComponent(), 6));
-	}
+    @Test
+    public void extendedConstructorTest_ComponentsMatchGivenComponents() {
+        Vector v = new Vector(5, 6);
+        assertTrue(Util.fuzzyEquals(v.getXComponent(), 5));
+        assertTrue(Util.fuzzyEquals(v.getYComponent(), 6));
+    }
 
-	@Test
-	public void simpleConstructorTest_ComponentsMatchZero() {
-		Vector v = new Vector();
-		assertTrue(Util.fuzzyEquals(v.getXComponent(), 0));
-		assertTrue(Util.fuzzyEquals(v.getYComponent(), 0));
-	}
+    @Test
+    public void simpleConstructorTest_ComponentsMatchZero() {
+        Vector v = new Vector();
+        assertTrue(Util.fuzzyEquals(v.getXComponent(), 0));
+        assertTrue(Util.fuzzyEquals(v.getYComponent(), 0));
+    }
 
 }
