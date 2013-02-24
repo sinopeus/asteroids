@@ -13,92 +13,102 @@ import be.kuleuven.cs.som.annotate.Raw;
  * @version 0.0
  */
 
-public abstract class Vector {
+public abstract class Vector
+{
 
-   protected double getXComponent() {
-       return this.x;
-   }
-   
+	protected double getXComponent()
+	{
+		return this.x;
+	}
 
-   protected void setXComponent(double x);
+	protected void setXComponent(double x);
 
-   protected double x;
+	protected double x;
 
+	protected double getYComponent()
+	{
+		return this.y;
+	}
 
-   protected double getYComponent() {
-       return this.y;
-   }
+	protected void setYComponent(double y);
 
-   protected void setYComponent(double y);
+	protected double y;
 
-   protected double y;
+	protected boolean canHaveAsComponent(double x)
+	{
+		return (true);
+	}
 
+	/**
+	 * A method for transparently resizing the vector's magntitude by a real
+	 * factor.
+	 */
 
-   protected boolean canHaveAsComponent(double x) {
-       return (true);
-   }
+	protected void rescale(double scalar)
+	{
+		this = this.scalarProduct(scalar);
+	}
 
-   /**
-    * A method for transparently resizing the vector's magntitude by a real
-    * factor.
-    */
+	/** 
+	 * Return basic properties of the vector.  
+	 **/
 
-   protected void rescale(double scalar) {
-       this = this.scalarProduct(scalar);
-   }
+	protected double getMagnitude()
+	{
+		return Math.sqrt(this.innerProduct(this));
+	}
 
-   /** 
-    * Return basic properties of the vector.  
-    **/
+	protected Vector getDirection()
+	{
+		return this.scalarProduct(1.0 / this.getMagnitude());
+	}
 
-   protected double getMagnitude() {
-       return Math.sqrt(this.innerProduct(this));
-   }
+	/**
+	 * Calculate the angle of the directional vector with the x axis.
+	 */
 
-   protected Vector getDirection() {
-       return this.scalarProduct(1.0 / this.getMagnitude());
-   }
+	protected Angle getAngle()
+	{
+		Vector v = this.getDirection();
+		return Math.acos(v.getXComponent);
+	}
 
-   /**
-    * Calculate the angle of the directional vector with the x axis.
-    */
+	/**
+	 * Scalar operators.  
+	 **/
 
-   protected Angle getAngle() {
-       Vector v = this.getDirection();
-       return Math.acos(v.getXComponent);
-   }
+	protected Vector scalarProduct(double scalar)
+	{
+		return new Vector(x * scalar, y * scalar);
+	}
 
-   /**
-    * Scalar operators.  
-    **/
+	/**
+	 * Vectorial operators.
+	 */
 
-   protected Vector scalarProduct(double scalar) {
-       return new Vector(x * scalar, y * scalar);
-   }
+	protected double getDistanceTo(Vector v)
+	{
+		return this.vectorAddition(v).getMagnitude();
+	}
 
-   /**
-    * Vectorial operators.
-    */
+	protected double innerProduct(Vector v)
+	{
+		return (x * v.getXComponent()) + (y * v.getYComponent());
+	}
 
-   protected double getDistanceTo(Vector v) {
-       return this.vectorAddition(v).getMagnitude();
-   }
+	/**
+	 * Generic constructors.
+	 */
 
-   protected double innerProduct(Vector v) {
-       return (x * v.getXComponent()) + (y * v.getYComponent());
-   }
+	protected Vector(double x, double y)
+	{
+		setXComponent(x);
+		setYComponent(y);
+	}
 
-   /**
-    * Generic constructors.
-    */
-
-   protected Vector(double x, double y) {
-       setXComponent(x);
-       setYComponent(y);
-   }
-
-   protected Vector() {
-       this(0, 0);
-   }
+	protected Vector()
+	{
+		this(0, 0);
+	}
 
 }
