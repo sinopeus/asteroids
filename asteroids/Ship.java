@@ -1,10 +1,6 @@
-/**
- * 
- */
 package asteroids;
-
 /**
- * @author syd
+ * @author Syd & Xavier
  * 
  */
 public class Ship implements IShip {

@@ -1,5 +1,6 @@
 package asteroids;
 
+
 @SuppressWarnings("serial")
 /**
  * <code>Facade</code> is not allowed to throw exceptions except for <code>ModelException</code>.
