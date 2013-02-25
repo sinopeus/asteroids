@@ -10,10 +10,25 @@ package asteroids;
 public class Direction extends Vector
 {
 
-	public Direction(Angle angle)
-	{
-		setXComponent(angle.cos());
-		setYComponent(angle.sin());
-	}
+    /**
+     * Initializes this new direction with a given angle.
+     *
+     * @param   angle
+     *          The given angle.
+     */
+    public Direction(Angle angle)
+    {
+        setXComponent(angle.cos());
+        setYComponent(angle.sin());
+    }
+    
+    /**
+     * {@inheritDoc}
+     * @see Vector#Direction()
+     */
+    public Direction()
+    {
+        this(new Angle());
+    }
 
 }
