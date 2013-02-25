@@ -98,7 +98,8 @@ public class Vector
 	/**
 	 * Adds two vectors.
 	 *
-	 * @param v An instance of the class Vector which we want to add to the instance on which it is called.
+     * @param v An instance of the class Vector which we want to add to the
+     * instance on which it is called.
 	 * @return A new instance of the class Vector whose components are the sums
 	 * of the respective components of the two Vector objects given in the
 	 * implicit and explicit parameter.
