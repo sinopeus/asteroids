@@ -2,11 +2,12 @@ package asteroids;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class DirectionTest
 {
-	@Test
+	@Before
 	public void setUpTestAngle()
 	{
 		testAngle = new Angle(Math.PI / 2.0);
