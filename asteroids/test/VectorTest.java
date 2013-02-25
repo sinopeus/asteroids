@@ -45,19 +45,14 @@ public class VectorTest
 	@Test
 	public void setYComponentTest_IllegalCase()
 	{
-		try
-		{
-			testVector1.setYComponent("fifty");
-		} catch (IllegalArgumentException e)
-		{
-			return;
-		}
+		testVector1.setYComponent(Double.NaN);
+		assertFalse(Util.fuzzyEquals(testVector1.getYComponent(), Double.NaN));
 	}
 
 	@Test
 	public void canHaveAsComponentTest()
 	{
-		assertTrue(testVector1.canHaveAsXComponent(50));
+		assertTrue(testVector1.canHaveAsComponent(50));
 	}
 
 	@Test
