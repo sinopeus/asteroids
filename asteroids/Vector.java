@@ -104,7 +104,7 @@ public class Vector
 	 * of the respective components of the two Vector objects given in the
 	 * implicit and explicit parameter.
 	 */
-	public Vector sum(Vector v)
+	public Vector getSum(Vector v)
 	{
 		double xComponent = getXComponent() + v.getXComponent();
 		double yComponent = getYComponent() + v.getYComponent();
@@ -119,7 +119,7 @@ public class Vector
 	 * differences of the respective components of the two Vector objects given
 	 * in the implicit and explicit parameter.
 	 */
-	public Vector difference(Vector v)
+	public Vector getDifference(Vector v)
 	{
 		double xComponent = getXComponent() + v.getXComponent();
 		double yComponent = getYComponent() + v.getYComponent();
@@ -138,7 +138,7 @@ public class Vector
 	 * @return A new Vector object with each of the components scaled by the
 	 * factor provided in the explicit parameter.
 	 */
-	public Vector scale(double scalar)
+	public Vector scaleBy(double scalar)
 	{
 		double xComponent = getXComponent() * scalar;
 		double yComponent = getYComponent() * scalar;
@@ -155,7 +155,7 @@ public class Vector
 	 * @param v A Vector object of which we want to compute the inner product with the Vector object upon which the method is called.
 	 * @return A double precision floating point value representing the inner product of the Vector objects in the implicit and explicit parameters.
 	 */
-	public double dot(Vector v)
+	public double dotProduct(Vector v)
 	{
 		double otherX = v.getXComponent();
 		double otherY = v.getYComponent();
@@ -171,7 +171,7 @@ public class Vector
 	 */
 	public double getMagnitude()
 	{
-		return Math.sqrt(this.dot(this));
+		return Math.sqrt(this.dotProduct(this));
 	}
 
 	/**
@@ -179,9 +179,9 @@ public class Vector
 	 *
 	 * @return A unit vector.
 	 */
-	public Vector direction()
+	public Vector GetUnitVectorInSameDirection()
 	{
-		return this.scale(1.0 / magnitude());
+		return this.scaleBy(1.0 / getMagnitude());
 	}
 
 	/**
@@ -191,11 +191,11 @@ public class Vector
 	 */
 	public Angle angleToXAxis()
 	{
-		//TODO
+		return new Angle(Math.asin(getYComponent()));
 	}
 
 	/**
-	 * Calculates the agle between this vector and the argument vector.
+	 * Calculates the angle between this vector and the argument vector.
 	 *
 	 * @param v A vector.
 	 * @return The angle between the two vectors in radians.
@@ -213,7 +213,7 @@ public class Vector
 	 */
 	public double distanceTo(Vector v)
 	{
-		return this.difference(v).magnitude();
+		return this.getDifference(v).getMagnitude();
 	}
 
 	/**

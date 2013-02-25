@@ -56,48 +56,42 @@ public class VectorTest
 	}
 
 	@Test
-	public void sumTest()
+	public void getSumTest()
 	{
 		Vector v = new Vector(15, 5);
-		Vector sumVector = testVector1.sum(testVector2);
+		Vector sumVector = testVector1.getSum(testVector2);
 		assert (sumVector.getXComponent() == v.getXComponent());
 		assert (sumVector.getYComponent() == v.getXComponent());
 	}
 
 	@Test
-	public void differenceTest()
+	public void getDifferenceTest()
 	{
 		Vector v = new Vector(5, 15);
-		Vector sumVector = testVector1.sum(testVector2);
+		Vector sumVector = testVector1.getSum(testVector2);
 		assert (sumVector.getXComponent() == v.getXComponent());
 		assert (sumVector.getYComponent() == v.getXComponent());
 	}
 
 	@Test
-	public void scaleTest()
+	public void scaleByTest()
 	{
-		Vector scaleVector = testVector1.scale(2.0);
-		assert (sumVector.getXComponent() == 20.0);
-		assert (sumVector.getYComponent() == 20.0);
+		Vector scaleVector = testVector1.scaleBy(2.0);
+		assert (scaleVector.getXComponent() == 20.0);
+		assert (scaleVector.getYComponent() == 20.0);
 	}
 
 	@Test
 	public void dotTest_LegalCase()
 	{
-		double vectorProduct = testVector1.dot(testVector2);
+		double vectorProduct = testVector1.dotProduct(testVector2);
 		assert (vectorProduct == 20.0);
-	}
-
-	@Test
-	public void dotTest_IllegalCase()
-	{
-		double vectorProduct = testVector1.dot(100.0);
 	}
 
 	@Test
 	public void magnitudeTest()
 	{
-		double vectorMagnitude = testVector1.magnitude();
+		double vectorMagnitude = testVector1.getMagnitude();
 		assert (vectorMagnitude == Math.sqrt(200.0));
 	}
 

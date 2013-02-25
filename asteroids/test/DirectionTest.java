@@ -1,6 +1,12 @@
 package asteroids.test;
 
+import org.junit.Test;
+
 public class DirectionTest
 {
-	//TODO Write test class.
+	@Test
+	public void first()
+	{
+		return;
+	}
 }
