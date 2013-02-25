@@ -56,4 +56,16 @@ public class Position extends Vector {
 			this.y = y;
 		}
 	}
+	
+	/**
+	 * Initializes this new Position with a given x-coordinate and y-coordinate.
+	 * 
+	 * @param	x
+	 * 			The given x coordinate
+	 * @param	y
+	 * 			The given y coordinate
+	 */
+	public Position(double x,double y){
+		super(x,y);
+	}
 }

@@ -1,12 +1,13 @@
 package asteroids;
 
-import org.junit.Test;
+import org.junit.Before;
 
 public class PositionTest
 {
-	@Test
-	public void first()
-	{
-		return;
+	@Before
+	public void setUpImmutableTestFixture_Position(){
+		testPosition
 	}
+	
+	private static Position testPosition;
 }
