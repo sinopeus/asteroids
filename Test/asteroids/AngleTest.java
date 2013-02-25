@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import asteroids.Angle;
-import asteroids.CircleShape;
 import asteroids.Util;
 
 public class AngleTest
