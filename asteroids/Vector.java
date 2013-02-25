@@ -169,7 +169,7 @@ public class Vector
 	 * @return A double precision floating point value representing the
 	 * magnitude of the Vector object.
 	 */
-	public double magnitude()
+	public double getMagnitude()
 	{
 		return Math.sqrt(this.dot(this));
 	}
@@ -189,7 +189,7 @@ public class Vector
 	 *
 	 * @return The angle in radians from the x axis in radians.
 	 */
-	public Angle angle()
+	public Angle angleToXAxis()
 	{
 		//TODO
 	}
@@ -200,9 +200,9 @@ public class Vector
 	 * @param v A vector.
 	 * @return The angle between the two vectors in radians.
 	 */
-	public Angle angle(Vector v)
+	public Angle angleTo(Vector v)
 	{
-		//TODO
+		return new Angle(Math.acos((((getXComponent() * v.getXComponent()) + (getYComponent() * v.getYComponent())) / (getMagnitude() * v.getMagnitude()))));
 	}
 
 	/**
