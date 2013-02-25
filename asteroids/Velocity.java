@@ -30,14 +30,9 @@ public class Velocity extends Vector
 	{
 		if (super.canHaveAsComponent(vx))
 		{
-			this.vx = vx;
+			super.setXComponent(vx);
 		}
 	}
-
-	/**
-	 * A variable registering the x-component of this velocity in km/s.
-	 */
-	private double vx;
 
 	/**
 	 * Sets the y-component of this velocity to the given y-component.
@@ -54,16 +49,11 @@ public class Velocity extends Vector
 	@Override
 	public void setYComponent(double vy)
 	{
-		if (canHaveAsComponent(vy))
+		if (super.canHaveAsComponent(vy))
 		{
-			this.vy = vy;
+			super.setYComponent(vy);
 		}
 	}
-
-	/**
-	 * A variable registering the y-component of this velocity in km/s.
-	 */
-	private double vy;
 
 	/**
 	 * Initializes this new velocity with a given x-component and y-component.
