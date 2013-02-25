@@ -61,16 +61,16 @@ public class VectorTest
 		Vector v = new Vector(15, 5);
 		Vector sumVector = testVector1.getSum(testVector2);
 		assertTrue(Util.fuzzyEquals(sumVector.getXComponent(), v.getXComponent()));
-		assertTrue(Util.fuzzyEquals(sumVector.getYComponent(), v.getYComponent()));
+		assertTrue(Util.fuzzyEquals(sumVector.getYComponent(), v.getXComponent()));
 	}
 
 	@Test
 	public void getDifferenceTest()
 	{
 		Vector v = new Vector(5, 15);
-		Vector differenceVector = testVector1.getDifference(testVector2);
-		assertTrue(Util.fuzzyEquals(differenceVector.getXComponent(), v.getXComponent()));
-		assertTrue(Util.fuzzyEquals(differenceVector.getYComponent(), v.getYComponent()));
+		Vector sumVector = testVector1.getSum(testVector2);
+		assertTrue(Util.fuzzyEquals(sumVector.getXComponent(), v.getXComponent()));
+		assertTrue(Util.fuzzyEquals(sumVector.getYComponent(), v.getXComponent()));
 	}
 
 	@Test
@@ -82,9 +82,10 @@ public class VectorTest
 	}
 
 	@Test
-	public void dotTest()
+	public void dotTest_LegalCase()
 	{
-		assertTrue(Util.fuzzyEquals(testVector1.dotProduct(testVector2), 0));
+		double vectorProduct = testVector1.dotProduct(testVector2);
+		assertTrue(Util.fuzzyEquals(vectorProduct, 20.0));
 	}
 
 	@Test
