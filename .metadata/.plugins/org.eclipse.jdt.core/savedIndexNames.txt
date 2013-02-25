@@ -1,1 +1,0 @@
-INDEX VERSION 1.126+/home/syd/oop-syd-xavier/.metadata/.plugins/org.eclipse.jdt.core
