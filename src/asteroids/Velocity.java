@@ -14,48 +14,6 @@ import be.kuleuven.cs.som.annotate.Raw;
 public class Velocity extends Vector
 {
 	/**
-	 * Sets the x-component of this velocity to the given x-component.
-	 * 
-	 * @param 	vx
-	 *          The new x-component for this velocity.
-	 * @post 	If this velocity can have the given x-component as its x-component,
-	 *       	then the x-component of this velocity is now equal to the given
-	 *       	x-component. | if canHaveAsXComponent(vx) | then
-	 *       	new.getXComponent() == vx
-	 */
-	@Basic
-	@Raw
-	@Override
-	public void setXComponent(double vx)
-	{
-		if (super.canHaveAsComponent(vx))
-		{
-			super.setXComponent(vx);
-		}
-	}
-
-	/**
-	 * Sets the y-component of this velocity to the given y-component.
-	 * 
-	 * @param	vy
-	 *          The new y-component for this velocity.
-	 * @post 	If this velocity can have the given y-component as its y-component,
-	 *       	then the y-component of this velocity is now equal to the given
-	 *       	y-component. | if canHaveAsYComponent(vy) | then
-	 *       	new.getYComponent() == vy
-	 */
-	@Basic
-	@Raw
-	@Override
-	public void setYComponent(double vy)
-	{
-		if (super.canHaveAsComponent(vy))
-		{
-			super.setYComponent(vy);
-		}
-	}
-
-	/**
 	 * Initializes this new velocity with a given x-component and y-component.
 	 * 
 	 * @param	vx

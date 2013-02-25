@@ -68,4 +68,11 @@ public class Position extends Vector {
 	public Position(double x,double y){
 		super(x,y);
 	}
+	
+	/**
+	 * Initializes this new Position at (0,0)
+	 */
+	public Position(){
+		super();
+	}
 }

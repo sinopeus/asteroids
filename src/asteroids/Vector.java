@@ -105,9 +105,7 @@ public class Vector
 	 */
 	public Vector getSum(Vector v)
 	{
-		double xComponent = getXComponent() + v.getXComponent();
-		double yComponent = getYComponent() + v.getYComponent();
-		return new Vector(xComponent, yComponent);
+		return new Vector(getXComponent() + v.getXComponent(), getYComponent() + v.getYComponent());
 	}
 
 	/**
@@ -120,9 +118,7 @@ public class Vector
 	 */
 	public Vector getDifference(Vector v)
 	{
-		double xComponent = getXComponent() + v.getXComponent();
-		double yComponent = getYComponent() + v.getYComponent();
-		return new Vector(xComponent, yComponent);
+		return new Vector((getXComponent() - v.getXComponent()), (getYComponent() - v.getYComponent()));
 	}
 
 	/*
@@ -139,9 +135,7 @@ public class Vector
 	 */
 	public Vector scaleBy(double scalar)
 	{
-		double xComponent = getXComponent() * scalar;
-		double yComponent = getYComponent() * scalar;
-		return new Vector(xComponent, yComponent);
+		return new Vector(getXComponent() * scalar, getYComponent() * scalar);
 	}
 
 	/*
@@ -156,9 +150,7 @@ public class Vector
 	 */
 	public double dotProduct(Vector v)
 	{
-		double otherX = v.getXComponent();
-		double otherY = v.getYComponent();
-		return (getXComponent() * otherX) + (getYComponent() * otherY);
+		return (getXComponent() * v.getXComponent()) + (getYComponent() * v.getYComponent());
 	}
 
 	/**
