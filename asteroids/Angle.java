@@ -22,7 +22,7 @@ public class Angle
 	{
 		return this.angle;
 	}
-	
+
 	/**
 	 * Checks whether this angle can have the given angle as its angle.
 	 * 
@@ -37,7 +37,7 @@ public class Angle
 	{
 		return (!Double.isNaN(angle));
 	}
-	
+
 	/**
 	 * Sets the angle of this angle to the given angle.
 	 *
@@ -57,12 +57,11 @@ public class Angle
 			this.angle = angle;
 		}
 	}
-	
+
 	/**
 	 * A variable registering the value of this angle.
 	 */
 	private double angle;
-	
 
 	/**
 	 * Returns the sine of this angle.
@@ -83,7 +82,6 @@ public class Angle
 	 */
 	public double cos()
 	{
-		System.out.println(Math.cos(getAngle()));
 		return Math.cos(getAngle());
 	}
 
