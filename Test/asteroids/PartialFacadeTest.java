@@ -2,6 +2,7 @@ package asteroids;
 
 import static org.junit.Assert.*;
 
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,7 +10,7 @@ import asteroids.IFacade;
 import asteroids.IShip;
 import asteroids.ModelException;
 import asteroids.Util;
-import asteroids.Facade;
+import asteroids.model.Facade;
 
 public class PartialFacadeTest
 {

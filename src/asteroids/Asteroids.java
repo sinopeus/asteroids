@@ -1,6 +1,5 @@
 package asteroids;
 
-
 import java.awt.Dimension;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
@@ -139,7 +138,7 @@ public class Asteroids extends JFrame
 		} else
 		{
 			// <begin>
-			IFacade facade = new asteroids.Facade();
+			IFacade facade = new asteroids.model.Facade();
 			// <end>
 			GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			GraphicsDevice device = env.getDefaultScreenDevice();
