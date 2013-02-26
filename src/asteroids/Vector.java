@@ -9,7 +9,6 @@ import be.kuleuven.cs.som.annotate.Raw;
  *
  *
  * @author Syd & Xavier
- * @author
  * @version 0.0
  */
 
@@ -18,8 +17,6 @@ public class Vector
 
 	/**
 	 * Gets the x component of the vector.
-	 *
-	 * @return The x component of the vector as a double precision floating point number.
 	 */
 	@Basic
 	@Raw
@@ -29,9 +26,10 @@ public class Vector
 	}
 
 	/**
-	 * Sets the x component of the vector.
+	 * Sets the x-component of the vector to a given x-component.
 	 *
-	 * @param x The chosen double precision floating point value for the x component of the vector.
+	 * @param	x
+	 * 			The given x-component.
 	 */
 	@Basic
 	@Raw
@@ -50,8 +48,6 @@ public class Vector
 
 	/**
 	 * Gets the y component of the vector.
-	 *
-	 * @return The y component of the vector as a double precision floating point number.
 	 */
 	@Basic
 	@Raw
@@ -61,9 +57,10 @@ public class Vector
 	}
 
 	/**
-	 * Sets the y component of the vector.
+	 * Sets the y-component of this vector to the given y-component.
 	 *
-	 * @param y The chosen double precision floating point value for the y component of the vector.
+	 * @param	y
+	 * 			The given y-component.
 	 */
 	@Basic
 	@Raw
@@ -81,10 +78,12 @@ public class Vector
 	protected double y;
 
 	/**
-	 * Checks if the input can be a vector component.
+	 * Checks whether the given component can be a component of this vector.
 	 *
-	 * @param x A double precision floating point number.
-	 * @return Will return true if the formal argument is a possible value for a vector component.
+	 * @param	x
+	 * 			The given component.
+	 * @return	True
+	 * 			| result = true
 	 */
 	public boolean canHaveAsComponent(double x)
 	{
@@ -96,13 +95,12 @@ public class Vector
 	 */
 
 	/**
-	 * Adds two vectors.
+	 * Adds a given vector to this vector and returns the result as a new vector.
 	 *
-     * @param v An instance of the class Vector which we want to add to the
-     * instance on which it is called.
-	 * @return A new instance of the class Vector whose components are the sums
-	 * of the respective components of the two Vector objects given in the
-	 * implicit and explicit parameter.
+     * @param	v
+     * 			The given vector.
+     * @return	A vector whose components are the sums of the respective components of this vector and the given vector.
+	 * 			| result = new Vector(getXComponent() + v.getXComponent(), getYComponent() + v.getYComponent())
 	 */
 	public Vector getSum(Vector v)
 	{
@@ -110,12 +108,12 @@ public class Vector
 	}
 
 	/**
-	 * Subtracts one vector from another.
+	 * Subtracts a given vector from this vector and returns the result as a new vector.
 	 *
-	 * @param v An instance of the class Vector which we want to subtract from the instance on which it is called.
-	 * @return A new instance of the class Vector whose components are the
-	 * differences of the respective components of the two Vector objects given
-	 * in the implicit and explicit parameter.
+	 * @param	v
+	 * 			The given vector.
+	 * @return	A vector whose components are the differences of the respective components of this vector and the given vector.
+	 * 			| result = new Vector((getXComponent() - v.getXComponent()), (getYComponent() - v.getYComponent()))
 	 */
 	public Vector getDifference(Vector v)
 	{
@@ -128,11 +126,12 @@ public class Vector
 	 */
 
 	/**
-	 * Scales a vector by a given factor.
+	 * Scales this vector by a given factor.
 	 *
-	 * @param scalar
-	 * @return A new Vector object with each of the components scaled by the
-	 * factor provided in the explicit parameter.
+	 * @param	scalar
+	 * 			The given factor
+	 * @return	A vector with each of the components scaled by the factor provided in the explicit parameter.
+	 * 			| result = new Vector(getXComponent() * scalar, getYComponent() * scalar)
 	 */
 	public Vector scaleBy(double scalar)
 	{
@@ -144,10 +143,12 @@ public class Vector
 	 */
 
 	/**
-	 * Computes the inner product of two vectors.
+	 * Returns the inner product of this vector and a given vector.
 	 *
-	 * @param v A Vector object of which we want to compute the inner product with the Vector object upon which the method is called.
-	 * @return A double precision floating point value representing the inner product of the Vector objects in the implicit and explicit parameters.
+	 * @param	v
+	 * 			The given vector
+	 * @return	The inner product of this vector and the given vector.
+	 * 			| result = (getXComponent() * v.getXComponent()) + (getYComponent() * v.getYComponent())
 	 */
 	public double dotProduct(Vector v)
 	{
@@ -155,11 +156,10 @@ public class Vector
 	}
 
 	/**
-	 * Computes the magnitude of a vector.
+	 * Returns the magnitude of this vector.
 	 *
-	 * @param v A Vector object whose magnitude we want to compute.
-	 * @return A double precision floating point value representing the
-	 * magnitude of the Vector object.
+	 * @return	The magnitude of this vector.
+	 * 			| result = Math.sqrt(this.dotProduct(this))
 	 */
 	public double getMagnitude()
 	{
@@ -169,7 +169,8 @@ public class Vector
 	/**
 	 * Returns a unit vector denoting the direction of the vector.
 	 *
-	 * @return A unit vector.
+	 * @return	A unit vector in the same direction as this vector.
+	 * 			| result = this.scaleBy(1.0 / getMagnitude())
 	 */
 	public Vector GetUnitVectorInSameDirection()
 	{
@@ -177,9 +178,10 @@ public class Vector
 	}
 
 	/**
-	 * Calculates the angle in radians from the x axis.
+	 * Calculates the angle of this vector in radians from the x axis.
 	 *
-	 * @return The angle in radians from the x axis in radians.
+	 * @return	The angle of this vector in radians from the x axis.
+	 * 			| result = new Angle(Math.asin(getYComponent()))
 	 */
 	public Angle angleToXAxis()
 	{
@@ -187,10 +189,12 @@ public class Vector
 	}
 
 	/**
-	 * Calculates the angle between this vector and the argument vector.
+	 * Calculates the angle between this vector and a given vector.
 	 *
-	 * @param v A vector.
-	 * @return The angle between the two vectors in radians.
+	 * @param	v
+	 * 			The given vector.
+	 * @return	the angle between this vector and the given vector in radians.
+	 * 			| result = new Angle(Math.acos((((getXComponent() * v.getXComponent()) + (getYComponent() * v.getYComponent())) / (getMagnitude() * v.getMagnitude()))))
 	 */
 	public Angle angleTo(Vector v)
 	{
@@ -198,10 +202,12 @@ public class Vector
 	}
 
 	/**
-	 * Computes the Euclidean distance between two vectors.
+	 * Computes the Euclidean distance between this vector and a given vector.
 	 *
-	 * @param v The vector to which we want to measure the Euclidean distance.
-	 * @return The distance between the two vectors in double precision floating point representation.
+	 * @param	v
+	 * 			The given vector.
+	 * @return	The distance between this vector and the given vector.
+	 * 			| result = this.getDifference(v).getMagnitude()
 	 */
 	public double distanceTo(Vector v)
 	{
@@ -209,9 +215,15 @@ public class Vector
 	}
 
 	/**
-	 * A constructor for the vector class.
-	 * @param x The x component of the vector we want to construct.
-	 * @param y The y component of the vector we want to construct.
+	 * Initializes this new vector with a given x-component and y-component.
+	 * @param	x
+	 * 			The given x-component.
+	 * @param	y
+	 * 			The given y-component.
+	 * @Effect	Sets the x-vector of this new vector to the given x-vector.
+	 * 			| setXComponent(x)
+	 * @Effect	Sets the y-vector of this new vector to the given x-vector.
+	 * 			| setYComponent(y)
 	 **/
 
 	public Vector(double x, double y)
@@ -221,10 +233,10 @@ public class Vector
 	}
 
 	/**
-	 * A constructor for the zero vector.
+	 * Initializes a zero vector.
 	 *
 	 * {@inheritDoc}
-	 * @see Object#Vector()
+	 * @see Vector(double x, double y)
 	 */
 	public Vector()
 	{

@@ -33,9 +33,10 @@ public class Velocity extends Vector
 	/**
 	 * Initializes this new velocity.
 	 * 
-	 * @effect Sets the x-component of this new velocity to 0.0.
-	 * 
-	 * @effect Sets the y-component of this new velocity to 0.0.
+	 * @effect	Sets the x-component of this new velocity to 0.0.
+	 * 			| setXComponent(0)
+	 * @effect	Sets the y-component of this new velocity to 0.0.
+	 * 			| setXComponent(0)
 	 */
 	public Velocity()
 	{
