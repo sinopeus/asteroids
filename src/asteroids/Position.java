@@ -21,7 +21,7 @@ public class Position extends Vector {
 	 * @post 	If this velocity can have the given x-component as its x-component,
 	 *       	then the x-component of this velocity is now equal to the given
 	 *       	x-component. | if canHaveAsXComponent(vx) | then
-	 *       	new.getXComponent() == vx
+	 *       	| new.getXComponent() == vx
 	 */
 	@Basic
 	@Raw
@@ -43,7 +43,7 @@ public class Position extends Vector {
 	 * @post 	If this velocity can have the given y-component as its y-component,
 	 *       	then the y-component of this velocity is now equal to the given
 	 *       	y-component. | if canHaveAsYComponent(vy) | then
-	 *       	new.getYComponent() == vy
+	 *       	| new.getYComponent() == vy
 	 */
 	@Basic
 	@Raw

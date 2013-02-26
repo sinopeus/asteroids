@@ -27,7 +27,7 @@ public class Direction extends Vector
     
     /**
      * {@inheritDoc}
-     * @see Vector#Direction()
+     * @see Direction(Angle angle)
      */
     public Direction()
     {
