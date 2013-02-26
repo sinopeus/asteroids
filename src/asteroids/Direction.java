@@ -15,6 +15,7 @@ public class Direction extends Vector
      *
      * @param   angle
      *          The given angle.
+     * @pre     The argument supplied must be an Angle object.
      * @post    A unit vector reflecting the direction will be correctly
      *          computed based on the angle provided.
      */
@@ -23,7 +24,7 @@ public class Direction extends Vector
         setXComponent(angle.cos());
         setYComponent(angle.sin());
     }
-
+    
     /**
      * {@inheritDoc}
      * @see Vector#Direction()
