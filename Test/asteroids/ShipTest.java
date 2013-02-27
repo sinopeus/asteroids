@@ -88,8 +88,10 @@ public class ShipTest
 	{
 		testShip.setSpeedLimit(-5);
 		assertFalse(Util.fuzzyEquals(testShip.getSpeedLimit(), -5));
+		assertTrue(Util.fuzzyEquals(testShip.getSpeedLimit(), Velocity.getSpeedOfLight()));
 		testShip.setSpeedLimit(Velocity.getSpeedOfLight() + 1);
 		assertFalse(Util.fuzzyEquals(testShip.getSpeedLimit(), Velocity.getSpeedOfLight() + 1));
+		assertTrue(Util.fuzzyEquals(testShip.getSpeedLimit(), Velocity.getSpeedOfLight()));
 	}
 
 	@Test
@@ -143,7 +145,7 @@ public class ShipTest
 	}
 
 	@Test
-	public void extenderConstructorTest_FieldsMatchPerfectParameters()
+	public void extendedConstructorTest_FieldsMatchPerfectParameters()
 	{
 		Angle a = new Angle(Math.PI / 2);
 		Direction d = new Direction(a);
@@ -157,6 +159,44 @@ public class ShipTest
 		assertEquals(ship.getShape(), s);
 		assertTrue(Util.fuzzyEquals(ship.getSpeedLimit(), speedLimit));
 		assertEquals(ship.getVelocity(), v);
+	}
+
+	@Test
+	public void extendedConstructorTest_RubbishDirection()
+	{
+		return; //TODO write this when there exists a non valid direction.
+	}
+
+	@Test
+	public void extendedConstructorTest_RubbishPosition()
+	{
+		return; //TODO write this when there exists a non valid position.
+	}
+
+	@Test
+	public void extendedConstructorTest_RubbishCircleShape()
+	{
+		CircleShape cs = new CircleShape(Ship.getMinimumRadius()-1);
+		Ship ship = new Ship(new Direction(), new Position(), cs, Velocity.getSpeedOfLight(), new Velocity());
+		assertNotSame(ship.getShape(),cs);
+		assertEquals(ship.getShape(), new CircleShape(Ship.getMinimumRadius()));
+	}
+
+	@Test
+	public void extendedConstructorTest_RubbishSpeedLimit()
+	{
+		double sl = Velocity.getSpeedOfLight()+1;
+		Ship ship = new Ship(new Direction(), new Position(), new CircleShape(Ship.getMinimumRadius()), sl, new Velocity());
+		assertFalse(Util.fuzzyEquals(ship.getSpeedLimit(), sl));
+		assertTrue(Util.fuzzyEquals(ship.getSpeedLimit(), Velocity.getSpeedOfLight()));
+	}
+
+	@Test
+	public void extendedConstructorTest_RubbishVelocity()
+	{
+		Velocity v = new Velocity(Velocity.getSpeedOfLight(),Velocity.getSpeedOfLight());
+		Ship ship = new Ship(new Direction(), new Position(), new CircleShape(Ship.getMinimumRadius()), Velocity.getSpeedOfLight(), v);
+		assertEquals(ship.getVelocity(), new Velocity(0.0,0.0));
 	}
 
 	@Test

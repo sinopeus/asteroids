@@ -52,4 +52,11 @@ public class CircleShapeTest
 		CircleShape cs = new CircleShape();
 		assertTrue(Util.fuzzyEquals(cs.getRadius(), 0));
 	}
+	
+	@Test
+	public void equalsTest(){
+		assertEquals(new CircleShape(),new CircleShape());
+		assertNotSame(new CircleShape(),new CircleShape(5));
+		assertNotSame(new CircleShape(),new Ship());
+	}
 }

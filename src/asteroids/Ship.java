@@ -158,6 +158,8 @@ public class Ship implements IShip
 		if (canHaveAsSpeedLimit(speedLimit))
 		{
 			this.speedLimit = speedLimit;
+		}else{
+			this.speedLimit = Velocity.getSpeedOfLight();
 		}
 	}
 
@@ -309,13 +311,18 @@ public class Ship implements IShip
 	 * 			|setSpeedLimit(speedLimit)
 	 * @Effect	The velocity of this ship is set to the given velocity.
 	 * 			|setVelocity(velocity)
-	 * @throws	IllegalArgumentException
 	 */
 	public Ship(Direction direction, Position position, CircleShape shape, double speedLimit, Velocity velocity)
 	{
 		setDirection(direction);
 		setPosition(position);
-		setShape(shape);
+		try
+		{
+			setShape(shape);
+		} catch (IllegalArgumentException e)
+		{
+			setShape(new CircleShape(Ship.getMinimumRadius()));
+		}
 		setSpeedLimit(speedLimit);
 		setVelocity(velocity);
 	}

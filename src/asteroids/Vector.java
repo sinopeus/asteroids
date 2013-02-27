@@ -82,12 +82,14 @@ public class Vector
 	 *
 	 * @param	x
 	 * 			The given component.
-	 * @return	True
-	 * 			| result = true
+	 * @return	True if and only if the given component is a number.
+	 * 			| result = (!Double.isNaN(x))
 	 */
+	@Raw
+	@Basic
 	public boolean canHaveAsComponent(double x)
 	{
-		return (true);
+		return (!Double.isNaN(x));
 	}
 
 	/*

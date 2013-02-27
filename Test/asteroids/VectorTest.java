@@ -111,4 +111,10 @@ public class VectorTest
 		assertTrue(Util.fuzzyEquals(v.getYComponent(), 0));
 	}
 
+	@Test
+	public void equalsTest(){
+		assertEquals(new Vector(),new Vector());
+		assertNotSame(new Vector(),new Vector(5,5));
+		assertNotSame(new Vector(),new Ship());
+	}
 }

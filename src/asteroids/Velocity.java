@@ -14,6 +14,62 @@ import be.kuleuven.cs.som.annotate.Raw;
 public class Velocity extends Vector
 {
 	/**
+	 * Sets the x-component of the velocity to a given x-component.
+	 *
+	 * @param	x
+	 * 			The given x-component.
+	 */
+	@Basic
+	@Raw
+	@Override
+	public void setXComponent(double x)
+	{
+		if (canHaveAsComponent(x))
+		{
+			this.x = x;
+		} else
+		{
+			this.x = 0;
+		}
+	}
+
+	/**
+	 * Sets the y-component of the velocity to a given y-component.
+	 *
+	 * @param	y
+	 * 			The given y-component.
+	 */
+	@Basic
+	@Raw
+	@Override
+	public void setYComponent(double y)
+	{
+		if (canHaveAsComponent(y))
+		{
+			this.y = y;
+		} else
+		{
+			this.y = 0;
+		}
+	}
+
+	/**
+	 * Checks whether the given component can be a component of this velocity.
+	 *
+	 * @param	x
+	 * 			The given component.
+	 * @return	True if and only if the given component is at most the speed of light
+	 * 			| result = (Util.fuzzyLessThanOrEqualTo(x, getSpeedOfLight()) && super.canHaveAsComponent(x))
+	 */
+	@Basic
+	@Raw
+	@Override
+	public boolean canHaveAsComponent(double x)
+	{
+		return (Util.fuzzyLessThanOrEqualTo(x, getSpeedOfLight()) && super.canHaveAsComponent(x));
+	}
+
+	/**
 	 * Initializes this new velocity with a given x-component and y-component.
 	 * 
 	 * @param	vx
@@ -28,6 +84,11 @@ public class Velocity extends Vector
 	public Velocity(double vx, double vy)
 	{
 		super(vx, vy);
+		if ((Math.sqrt(Math.pow(super.getXComponent(), 2) + Math.pow(super.getYComponent(), 2))) >= Velocity.getSpeedOfLight())
+		{
+			setXComponent(0);
+			setYComponent(0);
+		}
 	}
 
 	/**
