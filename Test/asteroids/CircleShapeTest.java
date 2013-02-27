@@ -45,4 +45,11 @@ public class CircleShapeTest
 			return;
 		}
 	}
+
+	@Test
+	public void simpleConstructorTest()
+	{
+		CircleShape cs = new CircleShape();
+		assertTrue(Util.fuzzyEquals(cs.getRadius(), 0));
+	}
 }

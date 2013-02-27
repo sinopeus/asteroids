@@ -1,4 +1,4 @@
- package asteroids;
+package asteroids;
 
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
@@ -59,5 +59,16 @@ public class CircleShape
 		{
 			this.radius = radius;
 		}
+	}
+
+	/**
+	 * Initializes this new circle shape with a default radius.
+	 * 
+	 * @Effect	Uses the extended constructor to initialize this new circle shape.
+	 * 			| this(0)
+	 */
+	public CircleShape()
+	{
+		this(0);
 	}
 }
