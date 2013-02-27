@@ -271,7 +271,7 @@ public class Ship implements IShip
 	 */
 	@Basic
 	@Raw
-	private static double getMinimumRadius()
+	public static double getMinimumRadius()
 	{
 		return Ship.minimumRadius;
 	}

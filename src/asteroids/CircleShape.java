@@ -65,10 +65,32 @@ public class CircleShape
 	 * Initializes this new circle shape with a default radius.
 	 * 
 	 * @Effect	Uses the extended constructor to initialize this new circle shape.
-	 * 			| this(0)
+	 * 			| this(0.0)
 	 */
 	public CircleShape()
 	{
-		this(0);
+		this(0.0);
+	}
+
+	/**
+	 * Checks whether the given object's is a circle shape and it's radius is equal to the radius of this circle shape
+	 * 
+	 * @param	o
+	 * 			The given object.
+	 * @return	True if and only if the given object is a circle shape and its radius is equal to the radius of this circle shape.
+	 * 			| result =(o instanceof Vector && Util.fuzzyEquals(getXComponent(), ((Vector) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Vector) o).getYComponent()))
+	 */
+	@Override
+	public boolean equals(Object o)
+	{
+		if (o instanceof CircleShape)
+		{
+			if (Util.fuzzyEquals(getRadius(), ((CircleShape) o).getRadius()))
+			{
+				return true;
+			}
+			return false;
+		}
+		return false;
 	}
 }

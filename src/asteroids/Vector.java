@@ -97,9 +97,9 @@ public class Vector
 	/**
 	 * Adds a given vector to this vector and returns the result as a new vector.
 	 *
-     * @param	v
-     * 			The given vector.
-     * @return	A vector whose components are the sums of the respective components of this vector and the given vector.
+	 * @param	v
+	 * 			The given vector.
+	 * @return	A vector whose components are the sums of the respective components of this vector and the given vector.
 	 * 			| result = new Vector(getXComponent() + v.getXComponent(), getYComponent() + v.getYComponent())
 	 */
 	public Vector getSum(Vector v)
@@ -243,4 +243,25 @@ public class Vector
 		this(0, 0);
 	}
 
+	/**
+	 * Checks whether the given object is a vector and its respective components are equal to this vector's components
+	 * 
+	 * @param	o
+	 * 			The given object.
+	 * @return	True if and only if the given object is a vector and the respective components of the given object and this vector are equal.
+	 * 			| result =(o instanceof Vector && Util.fuzzyEquals(getXComponent(), ((Vector) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Vector) o).getYComponent()))
+	 */
+	@Override
+	public boolean equals(Object o)
+	{
+		if (o instanceof Vector)
+		{
+			if (Util.fuzzyEquals(getXComponent(), ((Vector) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Vector) o).getYComponent()))
+			{
+				return true;
+			}
+			return false;
+		}
+		return false;
+	}
 }

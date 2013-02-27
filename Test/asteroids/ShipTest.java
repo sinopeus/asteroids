@@ -165,7 +165,7 @@ public class ShipTest
 		Ship ship = new Ship();
 		Direction d = new Direction();
 		Position p = new Position();
-		CircleShape s = new CircleShape();
+		CircleShape s = new CircleShape(Ship.getMinimumRadius());
 		double speedLimit = Velocity.getSpeedOfLight();
 		Velocity v = new Velocity();
 		assertEquals(ship.getDirection(), d);

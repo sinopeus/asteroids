@@ -99,10 +99,10 @@ public class Angle
 	}
 
 	/**
-	 * Initializes this new angle by setting it's value to 0.
+	 * Initializes this new angle with default values.
 	 */
 	public Angle()
 	{
-		setAngle(0.0);
+		this(0.0);
 	}
 }
