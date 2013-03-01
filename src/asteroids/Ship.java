@@ -315,7 +315,7 @@ public class Ship implements IShip
 	{
 		this(new Direction(), new Position(), new CircleShape(Ship.getMinimumRadius()), Velocity.getSpeedOfLight(), new Velocity());
 	}
-	
+
 	/**
 	 * changes the position of this ship based on the current position, velocity and a given duration of the movement.
 	 * 
@@ -324,12 +324,16 @@ public class Ship implements IShip
 	 * @throws	IllegalArgumentExeption
 	 * 			The given duration is strictly negative
 	 * 			| duration < 0
+	 * @effect	Sets the position of this ship the position after moving.
+	 * 			| setPosition(getPosition().getSum((getVelocity().scaleBy(duration))))
 	 */
-	public void move(double duration) throws IllegalArgumentException{
-		if(duration < 0){
+	public void move(double duration) throws IllegalArgumentException
+	{
+		if (duration < 0)
+		{
 			throw new IllegalArgumentException("Invalid duration provided");
 		}
-		setPosition(getPosition().getSum(getVelocity()));
+		setPosition(getPosition().getSum((getVelocity().scaleBy(duration))));
 	}
 
 }

@@ -156,10 +156,12 @@ public class ShipTest
 	public void extendedConstructorTest_RubbishCircleShape()
 	{
 		CircleShape cs = new CircleShape(Ship.getMinimumRadius() - 1);
-		try{
-		Ship ship = new Ship(new Direction(), new Position(), cs, Velocity.getSpeedOfLight(), new Velocity());
-		fail();
-		}catch(IllegalArgumentException e){
+		try
+		{
+			Ship ship = new Ship(new Direction(), new Position(), cs, Velocity.getSpeedOfLight(), new Velocity());
+			fail();
+		} catch (IllegalArgumentException e)
+		{
 			return;
 		}
 	}
@@ -197,23 +199,27 @@ public class ShipTest
 		assertEquals(ship.getVelocity(), v);
 
 	}
-	
+
 	@Test
-	public void moveTest_LegalDuration(){
+	public void moveTest_LegalDuration()
+	{
 		Ship originalState = new Ship(testShip.getDirection(), testShip.getPosition(), testShip.getShape(), testShip.getSpeedLimit(), testShip.getVelocity());
-		testShip.move(1.0);
+		testShip.move(2.0);
 		assertEquals(testShip.getVelocity(), originalState.getVelocity());
 		assertEquals(testShip.getDirection(), originalState.getDirection());
-		assertTrue(Util.fuzzyEquals(testShip.getPosition().getXComponent(),10));
-		assertTrue(Util.fuzzyEquals(testShip.getPosition().getYComponent(), 10));
+		assertTrue(Util.fuzzyEquals(testShip.getPosition().getXComponent(), 15));
+		assertTrue(Util.fuzzyEquals(testShip.getPosition().getYComponent(), 15));
 	}
-	
+
 	@Test
-	public void moveTest_IllegalDuration(){
-		try{
+	public void moveTest_IllegalDuration()
+	{
+		try
+		{
 			testShip.move(-1);
 			fail();
-		}catch(IllegalArgumentException e){
+		} catch (IllegalArgumentException e)
+		{
 			return;
 		}
 	}
