@@ -92,6 +92,17 @@ public class Velocity extends Vector
 	}
 
 	/**
+	 * Initialize this new position with a given vector
+	 * 
+	 * @param	v
+	 * 			The given vector.
+	 */
+	public Velocity(Vector v)
+	{
+		super(v.getXComponent(), v.getYComponent());
+	}
+
+	/**
 	 * Initializes this new velocity.
 	 * 
 	 * @effect	Sets the x-component of this new velocity to 0.0.
@@ -123,6 +134,44 @@ public class Velocity extends Vector
 		{
 			return Velocity.getSpeedOfLight();
 		}
+	}
+
+	/**
+	 * Gets the sum of this velocity and the given vector.
+	 * 
+	 * @param	v
+	 * 			The given vector.
+	 * @return	The sum of this velocity and the given vector.
+	 * 			| result = new Velocity(super.getSum(v))
+	 */
+	@Override
+	public Velocity getSum(Vector v)
+	{
+		return new Velocity(super.getSum(v));
+	}
+
+	/**
+	 * accelerates this velocity using a given acceleration during a given duration.
+	 * 
+	 * @param	a
+	 * 			The given acceleration.
+	 * @param	duration
+	 * 			The given duration.
+	 * @throws	IllegalArgumentException
+	 * 			The given duration is strictly negative.
+	 * 			| duration < 0
+	 * @post	Moves this position to the calculated destination.
+	 * 			| new.equals(getSum(v.scaleBy(duration)))
+	 */
+	public void accelerateBy(Acceleration a, double duration)
+	{
+		if (duration < 0)
+		{
+			throw new IllegalArgumentException("Invalid duration provided");
+		}
+		Velocity v = getSum(a.scaleBy(duration));
+		setXComponent(v.getXComponent());
+		setYComponent(v.getYComponent());
 	}
 
 	/**

@@ -91,6 +91,14 @@ public class Position extends Vector {
         super();
     }
     
+    /**
+     * Gets the sum of this Position and the given vector.
+     * 
+     * @param	v
+     * 			The given vector.
+     * @return	The sum of this position and the given vector.
+     * 			| result = new Position(super.getSum(v))
+     */
     @Override
     public Position getSum(Vector v)
     {

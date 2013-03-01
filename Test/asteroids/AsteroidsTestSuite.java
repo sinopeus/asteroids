@@ -6,7 +6,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses(
-{ AngleTest.class, CircleShapeTest.class, DirectionTest.class, PositionTest.class, VectorTest.class, VelocityTest.class, ShipTest.class })
+{ AccelerationTest.class, AngleTest.class, CircleShapeTest.class, DirectionTest.class, PositionTest.class, VectorTest.class, VelocityTest.class, ShipTest.class })
 public class AsteroidsTestSuite
 {
 

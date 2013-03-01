@@ -328,18 +328,27 @@ public class Ship implements IShip
 	{
 		getPosition().moveBy(getVelocity(), duration);
 	}
-	
+
 	/**
 	 * Changes the direction of this ship based on the current angle and a given angle.
 	 * 
 	 * @param	angle
 	 * 			The given angle
 	 */
-	public void turn(Angle angle){
+	public void turn(Angle angle)
+	{
 		getDirection().rotate(angle);
 	}
 
-	public void thrust(double duration, Acceleration acceleration){
-		
+	/**
+	 * Changes the velocity of this ship based on the current velocity, and a given acceleration.
+	 * 
+	 * @param 	acceleration
+	 * 			The given acceleration
+	 */
+	public void thrust(double acceleration)
+	{
+		Acceleration a = new Acceleration(getDirection().scaleBy(acceleration));
+		getVelocity().accelerateBy(a,1);
 	}
 }

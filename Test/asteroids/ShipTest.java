@@ -231,9 +231,14 @@ public class ShipTest
 		testShip.turn(new Angle(Math.PI));
 		assertEquals(testShip.getDirection(), new Direction(new Angle(3 * Math.PI / 2)));
 	}
-	
+
 	@Test
 	public void thrustTest(){
-		//TODO
+		Ship originalState = new Ship(testShip.getDirection(), testShip.getPosition(), testShip.getShape(), testShip.getSpeedLimit(), testShip.getVelocity());
+		testShip.thrust(2);
+		assertEquals(testShip.getDirection(), originalState.getDirection());
+		assertEquals(testShip.getPosition(), originalState.getPosition());
+		assertTrue(Util.fuzzyEquals(testShip.getVelocity().getXComponent(), 5));
+		assertTrue(Util.fuzzyEquals(testShip.getVelocity().getYComponent(), 7));
 	}
 }

@@ -77,7 +77,16 @@ public class VelocityTest
 	public void extendedConstructorTest_RubbishComponents()
 	{
 		Velocity v = new Velocity(Velocity.getSpeedOfLight(), Velocity.getSpeedOfLight());
-		assertEquals(v,new Velocity(0.0, 0.0));
+		assertEquals(v, new Velocity(0.0, 0.0));
+	}
+
+	@Test
+	public void byVectorConstructorTest_ComponentsMatchVectorComponents()
+	{
+		Vector v = new Vector(5, 6);
+		Velocity ve = new Velocity(v);
+		assertTrue(Util.fuzzyEquals(ve.getXComponent(), v.getXComponent()));
+		assertTrue(Util.fuzzyEquals(ve.getYComponent(), v.getYComponent()));
 	}
 
 	@Test
@@ -92,6 +101,38 @@ public class VelocityTest
 	public void getVelocityTest()
 	{
 		assertTrue(Util.fuzzyLessThanOrEqualTo(testVelocity.getVelocity(), Velocity.getSpeedOfLight()));
+	}
+
+	@Test
+	public void getSumTest()
+	{
+		Vector v = new Vector(15, 5);
+		Velocity sumVector = testVelocity.getSum(v);
+		assertTrue(Util.fuzzyEquals(sumVector.getXComponent(), 25));
+		assertTrue(Util.fuzzyEquals(sumVector.getYComponent(), 15));
+	}
+
+	@Test
+	public void accelerateTest_LegalDuration()
+	{
+		Acceleration a = new Acceleration(5, 6);
+		testVelocity.accelerateBy(a, 2.5);
+		assertTrue(Util.fuzzyEquals(testVelocity.getXComponent(), 22.5));
+		assertTrue(Util.fuzzyEquals(testVelocity.getYComponent(), 25.0));
+	}
+
+	@Test
+	public void accelerateByTest_IllegalDuration()
+	{
+		Acceleration a = new Acceleration(5, 5);
+		try
+		{
+			testVelocity.accelerateBy(a, -1);
+			fail();
+		} catch (IllegalArgumentException e)
+		{
+			return;
+		}
 	}
 
 	@Test
