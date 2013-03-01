@@ -11,10 +11,24 @@ public class DirectionTest
 	public void setUpTestAngle()
 	{
 		testAngle = new Angle(Math.PI / 2.0);
+		testDirection = new Direction(testAngle);
 	}
 
 	private static Angle testAngle;
+	private static Direction testDirection;
 
+	@Test
+	public void setXComponentTest(){
+		testDirection.setXComponent(5);
+		assertTrue(Util.fuzzyEquals(testDirection.getXComponent(), 5));
+	}
+	
+	@Test
+	public void setYComponentTest(){
+		testDirection.setYComponent(5);
+		assertTrue(Util.fuzzyEquals(testDirection.getYComponent(), 5));
+	}
+	
 	@Test
 	public void extendedConstructorTest_ComponentsMatchGivenComponents()
 	{

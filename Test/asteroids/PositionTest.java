@@ -38,19 +38,38 @@ public class PositionTest
 	{
 
 	}
-	
+
 	@Test
-	public void extendedConstructorTest_ComponentsMatchGivenComponents(){
-		Position p = new Position(5,6);
+	public void extendedConstructorTest_ComponentsMatchGivenComponents()
+	{
+		Position p = new Position(5, 6);
 		assertTrue(Util.fuzzyEquals(p.getXComponent(), 5));
 		assertTrue(Util.fuzzyEquals(p.getYComponent(), 6));
 	}
-	
+
 	@Test
-	public void simpleConstructorTest_ComponentsMatchZero(){
+	public void byVectorConstructorTest_ComponentsMatchVectorComponents()
+	{
+		Vector v = new Vector(5, 6);
+		Position p = new Position(v);
+		assertTrue(Util.fuzzyEquals(p.getXComponent(), v.getXComponent()));
+		assertTrue(Util.fuzzyEquals(p.getYComponent(), v.getYComponent()));
+	}
+
+	@Test
+	public void simpleConstructorTest_ComponentsMatchZero()
+	{
 		Position p = new Position();
 		assertTrue(Util.fuzzyEquals(p.getXComponent(), 0));
 		assertTrue(Util.fuzzyEquals(p.getYComponent(), 0));
+	}
+
+	@Test
+	public void getSumTest(){
+		Vector v = new Vector(15, 5);
+		Position sumVector = testPosition.getSum(v);
+		assertTrue(Util.fuzzyEquals(sumVector.getXComponent(), 20));
+		assertTrue(Util.fuzzyEquals(sumVector.getYComponent(), 10));
 	}
 
 	private static Position testPosition;

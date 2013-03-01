@@ -158,7 +158,8 @@ public class Ship implements IShip
 		if (canHaveAsSpeedLimit(speedLimit))
 		{
 			this.speedLimit = speedLimit;
-		}else{
+		} else
+		{
 			this.speedLimit = Velocity.getSpeedOfLight();
 		}
 	}
@@ -243,30 +244,9 @@ public class Ship implements IShip
 	}
 
 	/**
-	 * Sets the shape of this ship to the given shape.
-	 *
-	 * @param	shape
-	 *			The new shape for this ship.
-	 * @post	If this ship can have the given shape as its shape,
-	 * 			then the shape of this ship is now equal to the given shape.
-	 * 			| if canHaveAsShape(shape)
-	 * 			|	then new.getShape() == shape
-	 * @Throws	IllegalArgumentException
-	 * 			The this ship can't have the given shape as its shape,.
-	 * 			| !canHaveAsShape()
+	 * A variable referencing the shape of this ship.
 	 */
-	@Basic
-	@Raw
-	public void setShape(CircleShape shape) throws IllegalArgumentException
-	{
-		if (!canHaveAsShape(shape))
-		{
-			throw new IllegalArgumentException("Invalid circle shape provided");
-		} else
-		{
-			this.shape = shape;
-		}
-	}
+	private final CircleShape shape;
 
 	/**
 	 * Returns the minimum radius of ships.
@@ -284,11 +264,6 @@ public class Ship implements IShip
 	private static double minimumRadius = 10;
 
 	/**
-	 * A variable referencing the shape of this ship.
-	 */
-	private CircleShape shape;
-
-	/**
 	 * Initializes this new ship with a given direction, position, shape, speedLimit and velocity.
 	 * 
 	 * @param	direction
@@ -302,26 +277,29 @@ public class Ship implements IShip
 	 * @param	velocity
 	 * 			The given velocity
 	 * @Effect	The direction of this ship is set to the given direction.
-	 * 			|setDirection(direction)
+	 * 			| setDirection(direction)
 	 * @Effect	The position of this ship is set to the given position.
-	 * 			|setPosition(position)
+	 * 			| setPosition(position)
 	 * @Effect	The shape of this ship is set to the given shape.
-	 * 			|setShape(shape)
+	 * 			| setShape(shape)
 	 * @Effect	The speed limit of this ship is set to the given speed limit.
-	 * 			|setSpeedLimit(speedLimit)
+	 * 			| setSpeedLimit(speedLimit)
 	 * @Effect	The velocity of this ship is set to the given velocity.
-	 * 			|setVelocity(velocity)
+	 * 			| setVelocity(velocity)
+	 * @throws	IllegalArgumentException
+	 * 			| The given shape is nog a legal shape.
 	 */
-	public Ship(Direction direction, Position position, CircleShape shape, double speedLimit, Velocity velocity)
+	@Raw
+	public Ship(Direction direction, Position position, CircleShape shape, double speedLimit, Velocity velocity) throws IllegalArgumentException
 	{
 		setDirection(direction);
 		setPosition(position);
-		try
+		if (!canHaveAsShape(shape))
 		{
-			setShape(shape);
-		} catch (IllegalArgumentException e)
+			throw new IllegalArgumentException("Invalid circle shape provided");
+		} else
 		{
-			setShape(new CircleShape(Ship.getMinimumRadius()));
+			this.shape = shape;
 		}
 		setSpeedLimit(speedLimit);
 		setVelocity(velocity);
@@ -336,6 +314,22 @@ public class Ship implements IShip
 	public Ship()
 	{
 		this(new Direction(), new Position(), new CircleShape(Ship.getMinimumRadius()), Velocity.getSpeedOfLight(), new Velocity());
+	}
+	
+	/**
+	 * changes the position of this ship based on the current position, velocity and a given duration of the movement.
+	 * 
+	 * @param	duration
+	 * 			The given duration of the movement.
+	 * @throws	IllegalArgumentExeption
+	 * 			The given duration is strictly negative
+	 * 			| duration < 0
+	 */
+	public void move(double duration) throws IllegalArgumentException{
+		if(duration < 0){
+			throw new IllegalArgumentException("Invalid duration provided");
+		}
+		setPosition(getPosition().getSum(getVelocity()));
 	}
 
 }

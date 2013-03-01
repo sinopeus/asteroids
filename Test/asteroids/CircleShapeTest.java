@@ -24,6 +24,7 @@ public class CircleShapeTest
 	{
 		assertTrue(testCircleShape.canHaveAsRadius(15));
 		assertFalse(testCircleShape.canHaveAsRadius(-5));
+		assertFalse(testCircleShape.canHaveAsRadius(Double.NaN));
 	}
 
 	@Test
@@ -40,6 +41,7 @@ public class CircleShapeTest
 		try
 		{
 			new CircleShape(-10);
+			fail();
 		} catch (IllegalArgumentException e)
 		{
 			return;

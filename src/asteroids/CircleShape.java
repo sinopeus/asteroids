@@ -24,14 +24,14 @@ public class CircleShape
 	 * 
 	 * @param 	radius
 	 * 			The radius to check.
-	 * @return	True if and only if the given radius is at least 0.
-	 * 			| result = (radius > 0)
+	 * @return	True if and only if the given radius is at least 0 and a number.
+	 * 			| result = ((radius >= 0) && !Double.isNaN(radius))
 	 */
 	@Basic
 	@Raw
 	public boolean canHaveAsRadius(double radius)
 	{
-		return (radius >= 0);
+		return ((radius >= 0) && !Double.isNaN(radius));
 	}
 
 	/**

@@ -73,11 +73,27 @@ public class Position extends Vector {
     }
     
     /**
+     * Initialize this new position with a given vector
+     * 
+     * @param	v
+     * 			The given vector.
+     */
+    public Position(Vector v){
+    	super(v.getXComponent(),v.getYComponent());
+    }
+    
+    /**
      * {@inheritDoc}
      * @see Vector#Position()
      */
     public Position()
     {
         super();
+    }
+    
+    @Override
+    public Position getSum(Vector v)
+    {
+    	return new Position(super.getSum(v));
     }
 }
