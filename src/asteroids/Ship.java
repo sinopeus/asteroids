@@ -339,4 +339,7 @@ public class Ship implements IShip
 		getDirection().rotate(angle);
 	}
 
+	public void thrust(double duration, Acceleration acceleration){
+		
+	}
 }

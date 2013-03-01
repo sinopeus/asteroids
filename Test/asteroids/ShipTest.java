@@ -159,6 +159,7 @@ public class ShipTest
 		try
 		{
 			Ship ship = new Ship(new Direction(), new Position(), cs, Velocity.getSpeedOfLight(), new Velocity());
+			ship.getDirection(); // just to get rid of the warning.
 			fail();
 		} catch (IllegalArgumentException e)
 		{
@@ -223,10 +224,16 @@ public class ShipTest
 			return;
 		}
 	}
+
+	@Test
+	public void turnTest()
+	{
+		testShip.turn(new Angle(Math.PI));
+		assertEquals(testShip.getDirection(), new Direction(new Angle(3 * Math.PI / 2)));
+	}
 	
 	@Test
-	public void turnTest(){
-		testShip.turn(new Angle(Math.PI));
-		assertEquals(testShip.getDirection(), new Direction(new Angle(3*Math.PI/2)));
+	public void thrustTest(){
+		//TODO
 	}
 }
