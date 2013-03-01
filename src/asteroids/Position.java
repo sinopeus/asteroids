@@ -96,4 +96,30 @@ public class Position extends Vector {
     {
     	return new Position(super.getSum(v));
     }
+    
+    /**
+     * Moves this position using a given velocity during a given duration.
+     * 
+     * @param	v
+     * 			The given velocity.
+     * @param	duration
+     * 			The given duration.
+     * @throws	IllegalArgumentException
+     * 			The given duration is strictly negative.
+     * 			| duration < 0
+     * @throws	IllegalArgumentException
+     * 			Any of the resulting components is not a valid component.
+     * @see		#canHaveAsComponent(double)
+     * @post	Moves this position to the calculated destination.
+     * 			| new.equals(getSum(v.scaleBy(duration)))
+     */
+    public void moveBy(Velocity v, double duration) throws IllegalArgumentException{
+		if (duration < 0)
+		{
+			throw new IllegalArgumentException("Invalid duration provided");
+		}
+    	Position p = getSum(v.scaleBy(duration));
+    	setXComponent(p.getXComponent());
+    	setYComponent(p.getYComponent());
+    }
 }

@@ -223,5 +223,10 @@ public class ShipTest
 			return;
 		}
 	}
-
+	
+	@Test
+	public void turnTest(){
+		testShip.turn(new Angle(Math.PI));
+		assertEquals(testShip.getDirection(), new Direction(new Angle(3*Math.PI/2)));
+	}
 }

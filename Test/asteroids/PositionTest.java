@@ -13,6 +13,8 @@ public class PositionTest
 		testPosition = new Position(5, 5);
 	}
 
+	private static Position testPosition;
+
 	@Test
 	public void setXComponentTest_LegalCase()
 	{
@@ -65,12 +67,34 @@ public class PositionTest
 	}
 
 	@Test
-	public void getSumTest(){
+	public void getSumTest()
+	{
 		Vector v = new Vector(15, 5);
 		Position sumVector = testPosition.getSum(v);
 		assertTrue(Util.fuzzyEquals(sumVector.getXComponent(), 20));
 		assertTrue(Util.fuzzyEquals(sumVector.getYComponent(), 10));
 	}
 
-	private static Position testPosition;
+	@Test
+	public void moveByTest_LegalDuration()
+	{
+		Velocity v = new Velocity(5, 6);
+		testPosition.moveBy(v,2.5);
+		assertTrue(Util.fuzzyEquals(testPosition.getXComponent(), 17.5));
+		assertTrue(Util.fuzzyEquals(testPosition.getYComponent(), 20.0));
+	}
+
+	@Test
+	public void moveByTest_IllegalDuration()
+	{
+		Velocity v = new Velocity(5, 5);
+		try
+		{
+			testPosition.moveBy(v, -1);
+			fail();
+		} catch (IllegalArgumentException e)
+		{
+			return;
+		}
+	}
 }

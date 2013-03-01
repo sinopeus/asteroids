@@ -317,23 +317,26 @@ public class Ship implements IShip
 	}
 
 	/**
-	 * changes the position of this ship based on the current position, velocity and a given duration of the movement.
+	 * Changes the position of this ship based on the current position, velocity and a given duration of the movement.
 	 * 
 	 * @param	duration
 	 * 			The given duration of the movement.
-	 * @throws	IllegalArgumentExeption
-	 * 			The given duration is strictly negative
-	 * 			| duration < 0
 	 * @effect	Sets the position of this ship the position after moving.
-	 * 			| setPosition(getPosition().getSum((getVelocity().scaleBy(duration))))
+	 * 			| getPosittion().moveBy(getVelocity(), duration)
 	 */
-	public void move(double duration) throws IllegalArgumentException
+	public void move(double duration)
 	{
-		if (duration < 0)
-		{
-			throw new IllegalArgumentException("Invalid duration provided");
-		}
-		setPosition(getPosition().getSum((getVelocity().scaleBy(duration))));
+		getPosition().moveBy(getVelocity(), duration);
+	}
+	
+	/**
+	 * Changes the direction of this ship based on the current angle and a given angle.
+	 * 
+	 * @param	angle
+	 * 			The given angle
+	 */
+	public void turn(Angle angle){
+		getDirection().rotate(angle);
 	}
 
 }

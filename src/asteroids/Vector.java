@@ -185,7 +185,7 @@ public class Vector
 	 * @return	The angle of this vector in radians from the x axis.
 	 * 			| result = new Angle(Math.asin(getYComponent()))
 	 */
-	public Angle angleToXAxis()
+	public Angle angleToXAxis()//FIXME
 	{
 		return new Angle(Math.asin(getYComponent()));
 	}
@@ -198,7 +198,7 @@ public class Vector
 	 * @return	the angle between this vector and the given vector in radians.
 	 * 			| result = new Angle(Math.acos((((getXComponent() * v.getXComponent()) + (getYComponent() * v.getYComponent())) / (getMagnitude() * v.getMagnitude()))))
 	 */
-	public Angle angleTo(Vector v)
+	public Angle angleTo(Vector v)//FIXME
 	{
 		return new Angle(Math.acos((((getXComponent() * v.getXComponent()) + (getYComponent() * v.getYComponent())) / (getMagnitude() * v.getMagnitude()))));
 	}
@@ -258,11 +258,7 @@ public class Vector
 	{
 		if (o instanceof Vector)
 		{
-			if (Util.fuzzyEquals(getXComponent(), ((Vector) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Vector) o).getYComponent()))
-			{
-				return true;
-			}
-			return false;
+			return (Util.fuzzyEquals(getXComponent(), ((Vector) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Vector) o).getYComponent()));
 		}
 		return false;
 	}

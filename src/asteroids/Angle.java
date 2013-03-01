@@ -38,14 +38,16 @@ public class Angle
 	}
 
 	/**
-	 * Sets the angle of this angle to the given angle.
+	 * Sets the angle of this angle to the corresponding positive angle of the given angle.
 	 *
 	 * @param	angle
 	 *			The new angle for this angle.
 	 * @post	If this angle can have the given angle as its angle,
-	 * 			then the angle of this angle is now equal to the given angle.
+	 * 			then the angle of this angle is now equal to the given angle modulo 2Pi.
 	 * 			| if canHaveAsAngle(angle)
-	 * 			|	then new.getAngle() == angle
+	 * 			|	then new.getAngle() == angle % (2*Math.PI)
+	 * 			| else
+	 * 			| 	new.getAngle() == angle % (2*Math.PI) + (2*Math.PI)
 	 */
 	@Basic
 	@Raw
@@ -53,7 +55,13 @@ public class Angle
 	{
 		if (canHaveAsAngle(angle))
 		{
-			this.angle = angle;
+			if (angle >= 0)
+			{
+				this.angle = angle % (2 * Math.PI);
+			} else
+			{
+				this.angle = (angle % (2 * Math.PI)) + (2 * Math.PI);
+			}
 		}
 	}
 
@@ -95,7 +103,7 @@ public class Angle
 	 */
 	public Angle(double angle)
 	{
-		setAngle(angle % (2 * Math.PI));
+		setAngle(angle);
 	}
 
 	/**
@@ -104,5 +112,34 @@ public class Angle
 	public Angle()
 	{
 		this(0.0);
+	}
+
+	/**
+	 * Checks whether the given object is an angle and it is equal to this angle.
+	 * 
+	 * @param	o
+	 * 			The given object.
+	 * @return	True if and only if the given object is an angle and it is equal to this angle.
+	 * 			| result = Util.fuzzyEquals(((Angle) o).getAngle(),getAngle())
+	 */
+	@Override
+	public boolean equals(Object o)
+	{
+		if (o instanceof Angle)
+		{
+			return (Util.fuzzyEquals(((Angle) o).getAngle(), getAngle()));
+		}
+		return false;
+	}
+
+	/**
+	 * Adds a given angle to this angle.
+	 * 
+	 * @param	a
+	 * 			The given angle.
+	 */
+	public void sum(Angle a)
+	{
+		setAngle(getAngle() + a.getAngle());
 	}
 }
