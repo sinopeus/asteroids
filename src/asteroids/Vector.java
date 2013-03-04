@@ -179,29 +179,29 @@ public class Vector
 		return this.scaleBy(1.0 / getMagnitude());
 	}
 
-	/**
-	 * Calculates the angle of this vector in radians from the x axis.
-	 *
-	 * @return	The angle of this vector in radians from the x axis.
-	 * 			| result = new Angle(Math.asin(getYComponent()))
-	 */
-	public Angle angleToXAxis()//FIXME
-	{
-		return new Angle(Math.asin(getYComponent()));
-	}
-
-	/**
-	 * Calculates the angle between this vector and a given vector.
-	 *
-	 * @param	v
-	 * 			The given vector.
-	 * @return	the angle between this vector and the given vector in radians.
-	 * 			| result = new Angle(Math.acos((((getXComponent() * v.getXComponent()) + (getYComponent() * v.getYComponent())) / (getMagnitude() * v.getMagnitude()))))
-	 */
-	public Angle angleTo(Vector v)//FIXME
-	{
-		return new Angle(Math.acos((((getXComponent() * v.getXComponent()) + (getYComponent() * v.getYComponent())) / (getMagnitude() * v.getMagnitude()))));
-	}
+	//	/**
+	//	 * Calculates the angle of this vector in radians from the x axis.
+	//	 *
+	//	 * @return	The angle of this vector in radians from the x axis.
+	//	 * 			| result = new Angle(Math.asin(getYComponent()))
+	//	 */
+	//	public Angle angleToXAxis()//FIXME
+	//	{
+	//		return new Angle(Math.asin(getYComponent()));
+	//	}
+	//
+	//	/**
+	//	 * Calculates the angle between this vector and a given vector.
+	//	 *
+	//	 * @param	v
+	//	 * 			The given vector.
+	//	 * @return	the angle between this vector and the given vector in radians.
+	//	 * 			| result = new Angle(Math.acos((((getXComponent() * v.getXComponent()) + (getYComponent() * v.getYComponent())) / (getMagnitude() * v.getMagnitude()))))
+	//	 */
+	//	public Angle angleTo(Vector v)//FIXME
+	//	{
+	//		return new Angle(Math.acos((((getXComponent() * v.getXComponent()) + (getYComponent() * v.getYComponent())) / (getMagnitude() * v.getMagnitude()))));
+	//	}
 
 	/**
 	 * Computes the Euclidean distance between this vector and a given vector.

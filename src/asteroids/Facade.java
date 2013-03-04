@@ -1,6 +1,5 @@
 package asteroids;
 
-
 public class Facade implements IFacade
 {
 
@@ -14,85 +13,83 @@ public class Facade implements IFacade
 	@Override
 	public IShip createShip(double x, double y, double xVelocity, double yVelocity, double radius, double angle)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		Angle a = new Angle(angle);
+		Direction direction = new Direction(a);
+		Position position = new Position(x, y);
+		CircleShape shape = new CircleShape(radius);
+		Velocity velocity = new Velocity(xVelocity, yVelocity);
+		double speedLimit = Velocity.getSpeedOfLight();
+
+		return new Ship(direction, position, shape, speedLimit, velocity);
 	}
 
 	@Override
 	public double getX(IShip ship)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return ((Ship) ship).getPosition().getXComponent();
 	}
 
 	@Override
 	public double getY(IShip ship)
 	{
 		// TODO Auto-generated method stub
-		return 0;
+		return ((Ship) ship).getPosition().getYComponent();
 	}
 
 	@Override
 	public double getXVelocity(IShip ship)
 	{
 		// TODO Auto-generated method stub
-		return 0;
+		return ((Ship) ship).getVelocity().getXComponent();
 	}
 
 	@Override
 	public double getYVelocity(IShip ship)
 	{
 		// TODO Auto-generated method stub
-		return 0;
+		return ((Ship) ship).getPosition().getYComponent();
 	}
 
 	@Override
 	public double getRadius(IShip ship)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return ((Ship) ship).getShape().getRadius();
 	}
 
 	@Override
 	public double getDirection(IShip ship)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return ((Ship) ship).getDirection().getAngle().getAngle();
 	}
 
 	@Override
 	public void move(IShip ship, double dt)
 	{
-		// TODO Auto-generated method stub
-
+		((Ship) ship).move(dt);
 	}
 
 	@Override
 	public void thrust(IShip ship, double amount)
 	{
-		// TODO Auto-generated method stub
-
+		((Ship) ship).thrust(amount);
 	}
 
 	@Override
 	public void turn(IShip ship, double angle)
 	{
-		// TODO Auto-generated method stub
-
+		((Ship) ship).turn(new Angle(angle));
 	}
 
 	@Override
 	public double getDistanceBetween(IShip ship1, IShip ship2)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return ((Ship) ship1).getPosition().distanceTo(((Ship) ship2).getPosition());
 	}
 
 	@Override
 	public boolean overlap(IShip ship1, IShip ship2)
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return getDistanceBetween(ship1, ship2) - getRadius(ship1) - getRadius(ship2) <= 0;
 	}
 
 	@Override

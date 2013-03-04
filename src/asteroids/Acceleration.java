@@ -10,24 +10,27 @@ public class Acceleration extends Vector
 	 * @param 	y
 	 * 			The given y component.
 	 */
-	public Acceleration(double x, double y){
-		super(x,y);
+	public Acceleration(double x, double y)
+	{
+		super(x, y);
 	}
-	
+
 	/**
 	 * Initializes this new acceleration with a given vector.
 	 * 
 	 * @param	v
 	 * 			The given vector.
 	 */
-	public Acceleration(Vector v){
-		super(v.getXComponent(),v.getYComponent());
+	public Acceleration(Vector v)
+	{
+		super(v.getXComponent(), v.getYComponent());
 	}
-	
+
 	/**
 	 * Initializes this new acceleration with default values.
 	 */
-	public Acceleration(){
+	public Acceleration()
+	{
 		super();
 	}
 }
