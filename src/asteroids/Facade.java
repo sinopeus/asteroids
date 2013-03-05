@@ -12,12 +12,24 @@ public class Facade implements IFacade
 	@Override
 	public IShip createShip(double x, double y, double xVelocity, double yVelocity, double radius, double angle)
 	{
-		Angle a = new Angle(angle);
-		Direction direction = new Direction(a);
-		Position position = new Position(x, y);
-		CircleShape shape = new CircleShape(radius);
-		Velocity velocity = new Velocity(xVelocity, yVelocity);
-		double speedLimit = Velocity.getSpeedOfLight();
+		Angle a;
+		Direction direction;
+		Position position;
+		CircleShape shape;
+		Velocity velocity;
+		double speedLimit;
+		try
+		{
+			a = new Angle(angle);
+			direction = new Direction(a);
+			position = new Position(x, y);
+			shape = new CircleShape(radius);
+			velocity = new Velocity(xVelocity, yVelocity);
+			speedLimit = Velocity.getSpeedOfLight();
+		} catch (IllegalArgumentException e)
+		{
+			return null;
+		}
 
 		return new Ship(direction, position, shape, speedLimit, velocity);
 	}
@@ -46,7 +58,7 @@ public class Facade implements IFacade
 	public double getYVelocity(IShip ship)
 	{
 		// TODO Auto-generated method stub
-		return ((Ship) ship).getPosition().getYComponent();
+		return ((Ship) ship).getVelocity().getYComponent();
 	}
 
 	@Override
@@ -120,7 +132,7 @@ public class Facade implements IFacade
 		Position newPosShip2 = ((Ship) ship2).getPosition().getSum(((Ship) ship2).getVelocity().scaleBy(deltaT));
 		double sigma = ((Ship) ship1).getShape().getRadius() + ((Ship) ship2).getShape().getRadius();
 		double ship1Radius = ((Ship) ship1).getShape().getRadius();
-		Vector colisionPos = newPosShip1.getSum(newPosShip2.getDifference(newPosShip1).scaleBy(ship1Radius/sigma)); // FIXME
+		Vector colisionPos = newPosShip1.getSum(newPosShip2.getDifference(newPosShip1).scaleBy(ship1Radius / sigma)); // FIXME
 		double[] result =
 		{ colisionPos.getXComponent(), colisionPos.getYComponent() };
 		return result;
