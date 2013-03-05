@@ -61,7 +61,7 @@ public class Ship implements IShip
 	{
 		this(new Direction(), new Position(), new CircleShape(Ship.getMinimumRadius()), Velocity.getSpeedOfLight(), new Velocity());
 	}
-	
+
 	/**
 	 * Returns the position of this ship.
 	 */
@@ -106,7 +106,7 @@ public class Ship implements IShip
 	{
 		if (!canHaveAsPosition(position))
 		{
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid position provided.");
 		} else
 		{
 			this.position = position;
