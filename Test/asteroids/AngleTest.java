@@ -1,12 +1,12 @@
 package asteroids;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import asteroids.Angle;
-import asteroids.Util;
 
 public class AngleTest
 {
@@ -30,7 +30,7 @@ public class AngleTest
 		testAngle.setAngle(0);
 		assertTrue(Util.fuzzyEquals(testAngle.getAngle(), 0));
 		testAngle.setAngle(-Math.PI / 2);
-		assertTrue(Util.fuzzyEquals(testAngle.getAngle(), 3*Math.PI/2));
+		assertTrue(Util.fuzzyEquals(testAngle.getAngle(), 3 * Math.PI / 2));
 	}
 
 	@Test
@@ -67,12 +67,13 @@ public class AngleTest
 	}
 
 	@Test
-	public void equalsTest(){
+	public void equalsTest()
+	{
 		assertEquals(testAngle, new Angle());
 		assertNotSame(testAngle, new Angle(5));
 		assertNotSame(testAngle, new Ship());
 	}
-	
+
 	@Test
 	public void sumTest()
 	{

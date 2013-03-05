@@ -118,7 +118,9 @@ public class Facade implements IFacade
 		}
 		Position newPosShip1 = ((Ship) ship1).getPosition().getSum(((Ship) ship1).getVelocity().scaleBy(deltaT));
 		Position newPosShip2 = ((Ship) ship2).getPosition().getSum(((Ship) ship2).getVelocity().scaleBy(deltaT));
-		Vector colisionPos = newPosShip1.getSum(newPosShip2).getDifference(newPosShip1).scaleBy(((Ship) ship1).getShape().getRadius()); // FIXME
+		double sigma = ((Ship) ship1).getShape().getRadius() + ((Ship) ship2).getShape().getRadius();
+		double ship1Radius = ((Ship) ship1).getShape().getRadius();
+		Vector colisionPos = newPosShip1.getSum(newPosShip2.getDifference(newPosShip1).scaleBy(ship1Radius/sigma)); // FIXME
 		double[] result =
 		{ colisionPos.getXComponent(), colisionPos.getYComponent() };
 		return result;

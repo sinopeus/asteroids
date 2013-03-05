@@ -82,14 +82,14 @@ public class Vector
 	 *
 	 * @param	x
 	 * 			The given component.
-	 * @return	True if and only if the given component is a number.
-	 * 			| result = (!Double.isNaN(x))
+	 * @return	True if and only if the given component is a finite number.
+	 * 			| result = ((!Double.isNaN(x)) && (!Double.isInfinite(x)))
 	 */
 	@Raw
 	@Basic
 	public boolean canHaveAsComponent(double x)
 	{
-		return (!Double.isNaN(x));
+		return ((!Double.isNaN(x)) && (!Double.isInfinite(x)));
 	}
 
 	/*

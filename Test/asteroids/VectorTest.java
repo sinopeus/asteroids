@@ -53,6 +53,9 @@ public class VectorTest
 	public void canHaveAsComponentTest()
 	{
 		assertTrue(testVector1.canHaveAsComponent(50));
+		assertFalse(testVector1.canHaveAsComponent(Double.NaN));
+		assertFalse(testVector1.canHaveAsComponent(Double.POSITIVE_INFINITY));
+		assertFalse(testVector1.canHaveAsComponent(Double.NEGATIVE_INFINITY));
 	}
 
 	@Test

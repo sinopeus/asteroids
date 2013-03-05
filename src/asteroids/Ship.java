@@ -9,7 +9,59 @@ import be.kuleuven.cs.som.annotate.Raw;
  */
 public class Ship implements IShip
 {
+	/**
+	 * Initializes this new ship with a given direction, position, shape, speedLimit and velocity.
+	 * 
+	 * @param	direction
+	 * 			The given direction.
+	 * @param	position
+	 * 			The given position.
+	 * @param	shape
+	 * 			The given shape.
+	 * @param	speedLimit
+	 * 			The given speed limit.
+	 * @param	velocity
+	 * 			The given velocity
+	 * @Effect	The direction of this ship is set to the given direction.
+	 * 			| setDirection(direction)
+	 * @Effect	The position of this ship is set to the given position.
+	 * 			| setPosition(position)
+	 * @Effect	The shape of this ship is set to the given shape.
+	 * 			| setShape(shape)
+	 * @Effect	The speed limit of this ship is set to the given speed limit.
+	 * 			| setSpeedLimit(speedLimit)
+	 * @Effect	The velocity of this ship is set to the given velocity.
+	 * 			| setVelocity(velocity)
+	 * @throws	IllegalArgumentException
+	 * 			| The given shape is not a legal shape.
+	 */
+	@Raw
+	public Ship(Direction direction, Position position, CircleShape shape, double speedLimit, Velocity velocity) throws IllegalArgumentException
+	{
+		setDirection(direction);
+		setPosition(position);
+		if (!canHaveAsShape(shape))
+		{
+			throw new IllegalArgumentException("Invalid circle shape provided");
+		} else
+		{
+			this.shape = shape;
+		}
+		setSpeedLimit(speedLimit);
+		setVelocity(velocity);
+	}
 
+	/**
+	 * Initializes this new ship.
+	 * 
+	 * @Effect	Uses the extended constructor to initialize this new ship with default values.
+	 * 			| this(new Direction(),new Position(),new CircleShape(Ship.getMinimumRadius()),Velocity.getSpeedOfLight(),new Velocity())
+	 */
+	public Ship()
+	{
+		this(new Direction(), new Position(), new CircleShape(Ship.getMinimumRadius()), Velocity.getSpeedOfLight(), new Velocity());
+	}
+	
 	/**
 	 * Returns the position of this ship.
 	 */
@@ -262,59 +314,6 @@ public class Ship implements IShip
 	 * A variable registering the minimum radius of this ship.
 	 */
 	private static double minimumRadius = 10;
-
-	/**
-	 * Initializes this new ship with a given direction, position, shape, speedLimit and velocity.
-	 * 
-	 * @param	direction
-	 * 			The given direction.
-	 * @param	position
-	 * 			The given position.
-	 * @param	shape
-	 * 			The given shape.
-	 * @param	speedLimit
-	 * 			The given speed limit.
-	 * @param	velocity
-	 * 			The given velocity
-	 * @Effect	The direction of this ship is set to the given direction.
-	 * 			| setDirection(direction)
-	 * @Effect	The position of this ship is set to the given position.
-	 * 			| setPosition(position)
-	 * @Effect	The shape of this ship is set to the given shape.
-	 * 			| setShape(shape)
-	 * @Effect	The speed limit of this ship is set to the given speed limit.
-	 * 			| setSpeedLimit(speedLimit)
-	 * @Effect	The velocity of this ship is set to the given velocity.
-	 * 			| setVelocity(velocity)
-	 * @throws	IllegalArgumentException
-	 * 			| The given shape is not a legal shape.
-	 */
-	@Raw
-	public Ship(Direction direction, Position position, CircleShape shape, double speedLimit, Velocity velocity) throws IllegalArgumentException
-	{
-		setDirection(direction);
-		setPosition(position);
-		if (!canHaveAsShape(shape))
-		{
-			throw new IllegalArgumentException("Invalid circle shape provided");
-		} else
-		{
-			this.shape = shape;
-		}
-		setSpeedLimit(speedLimit);
-		setVelocity(velocity);
-	}
-
-	/**
-	 * Initializes this new ship.
-	 * 
-	 * @Effect	Uses the extended constructor to initialize this new ship with default values.
-	 * 			| this(new Direction(),new Position(),new CircleShape(Ship.getMinimumRadius()),Velocity.getSpeedOfLight(),new Velocity())
-	 */
-	public Ship()
-	{
-		this(new Direction(), new Position(), new CircleShape(Ship.getMinimumRadius()), Velocity.getSpeedOfLight(), new Velocity());
-	}
 
 	/**
 	 * Changes the position of this ship based on the current position, velocity and a given duration of the movement.
