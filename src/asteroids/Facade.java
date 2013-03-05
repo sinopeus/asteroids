@@ -95,15 +95,32 @@ public class Facade implements IFacade
 	@Override
 	public double getTimeToCollision(IShip ship1, IShip ship2)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		//Zie opgave voor uitleg.
+		double sigma = ((Ship) ship1).getShape().getRadius() - ((Ship) ship2).getShape().getRadius();
+		Vector deltaR = ((Ship) ship1).getPosition().getDifference(((Ship) ship2).getPosition());
+		Vector deltaV = ((Ship) ship1).getVelocity().getDifference(((Ship) ship2).getVelocity());
+		double d = (Math.pow(deltaV.dotProduct(deltaR), 2)) - (deltaV.dotProduct(deltaV)) * (deltaR.dotProduct(deltaR) - Math.pow(sigma, 2));
+		if (deltaV.dotProduct(deltaR) >= 0 || d <= 0)
+		{
+			return Double.POSITIVE_INFINITY;
+		} else
+		{
+			return -(deltaV.dotProduct(deltaR) + Math.sqrt(d)) / (deltaV.dotProduct(deltaV));
+		}
 	}
 
 	@Override
 	public double[] getCollisionPosition(IShip ship1, IShip ship2)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		double deltaT = getTimeToCollision(ship1, ship2);
+		if(Double.isInfinite(deltaT)){
+			return null;
+		}
+		Position newPosShip1 = ((Ship) ship1).getPosition().getSum(((Ship) ship1).getVelocity().scaleBy(deltaT));
+		Position newPosShip2 = ((Ship) ship2).getPosition().getSum(((Ship) ship2).getVelocity().scaleBy(deltaT));
+		Vector colisionPos = newPosShip1.getSum(newPosShip2).scaleBy(1/2);
+		double[] result = {colisionPos.getXComponent(),colisionPos.getYComponent()};
+		return result;
 	}
 
 }

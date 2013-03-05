@@ -287,7 +287,7 @@ public class Ship implements IShip
 	 * @Effect	The velocity of this ship is set to the given velocity.
 	 * 			| setVelocity(velocity)
 	 * @throws	IllegalArgumentException
-	 * 			| The given shape is nog a legal shape.
+	 * 			| The given shape is not a legal shape.
 	 */
 	@Raw
 	public Ship(Direction direction, Position position, CircleShape shape, double speedLimit, Velocity velocity) throws IllegalArgumentException
@@ -349,6 +349,6 @@ public class Ship implements IShip
 	public void thrust(double acceleration)
 	{
 		Acceleration a = new Acceleration(getDirection().scaleBy(acceleration));
-		getVelocity().accelerateBy(a,1);
+		getVelocity().accelerateBy(a, 1);
 	}
 }
