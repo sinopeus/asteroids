@@ -6,8 +6,7 @@ public class Facade implements IFacade
 	@Override
 	public IShip createShip()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return new Ship();
 	}
 
 	@Override
