@@ -294,17 +294,22 @@ public class Facade implements IFacade
         }
         
         double deltaT = getTimeToCollision(ship1, ship2);
+        
         if (Double.isInfinite(deltaT))
         {
             return null;
         }
+        
         Position newPosShip1 = ((Ship) ship1).getPosition().getSum(((Ship) ship1).getVelocity().scaleBy(deltaT));
         Position newPosShip2 = ((Ship) ship2).getPosition().getSum(((Ship) ship2).getVelocity().scaleBy(deltaT));
+        
         double sigma = ((Ship) ship1).getShape().getRadius() + ((Ship) ship2).getShape().getRadius();
         double ship1Radius = ((Ship) ship1).getShape().getRadius();
+        
         Vector collisionPos = newPosShip1.getSum(newPosShip2.getDifference(newPosShip1).scaleBy(ship1Radius / sigma));
         double[] result =
         { collisionPos.getXComponent(), collisionPos.getYComponent() };
+        
         return result;
     }
 }
