@@ -351,9 +351,7 @@ public class Ship implements IShip
 		getVelocity().accelerateBy(a, 1);
 		if (getVelocity().getMagnitude() > this.getSpeedLimit())
 		{
-			System.out.println("x");
 			Vector v = getVelocity().scaleBy(this.getSpeedLimit() / getVelocity().getMagnitude());
-			System.out.println(v.getMagnitude());
 			getVelocity().setXComponent(v.getXComponent());
 			getVelocity().setYComponent(v.getYComponent());
 		}
