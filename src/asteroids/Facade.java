@@ -152,11 +152,11 @@ public class Facade implements IFacade
     {
         if (ship == null)
         {
-            throw new ModelException("Invalid parameter ship");
+            throw new ModelException("Invalid ship.");
         }
         if (dt < 0)
         {
-            throw new ModelException("Invalid parameter dt");
+            throw new ModelException("Invalid time.");
         }
         ((Ship) ship).move(dt);
     }
@@ -176,7 +176,7 @@ public class Facade implements IFacade
     {
         if (ship == null)
         {
-            throw new ModelException("Invalid parameter ship");
+            throw new ModelException("Invalid ship.");
         }
         if (amount < 0)
         {
@@ -199,7 +199,7 @@ public class Facade implements IFacade
     public void turn(IShip ship, double angle) throws ModelException
     {
         if (ship == null){
-            throw new ModelException("Invalid parameter ship");
+            throw new ModelException("Invalid ship.");
         }
         ((Ship) ship).turn(new Angle(angle));
     }
@@ -219,7 +219,7 @@ public class Facade implements IFacade
     public double getDistanceBetween(IShip ship1, IShip ship2) throws ModelException
     {
         if ((ship1 == null) || (ship2 == null)){
-            throw new ModelException("Invalid parameter ship");
+            throw new ModelException("Invalid ship.");
         }
         return ((Ship) ship1).getPosition().distanceTo(((Ship) ship2).getPosition());
     }
@@ -239,7 +239,7 @@ public class Facade implements IFacade
     public boolean overlap(IShip ship1, IShip ship2) throws ModelException
     {
         if ((ship1 == null) || (ship2 == null)){
-            throw new ModelException("Invalid parameter ship");
+            throw new ModelException("Invalid ship.");
         }
         return getDistanceBetween(ship1, ship2) - getRadius(ship1) - getRadius(ship2) <= 0;
     }
@@ -259,7 +259,7 @@ public class Facade implements IFacade
     public double getTimeToCollision(IShip ship1, IShip ship2) throws ModelException
     {
         if ((ship1 == null) || (ship2 == null)){
-            throw new ModelException("Invalid parameter ship");
+            throw new ModelException("Invalid ship.");
         }
 
         double sigma = ((Ship) ship1).getShape().getRadius() + ((Ship) ship2).getShape().getRadius();
@@ -290,7 +290,7 @@ public class Facade implements IFacade
     public double[] getCollisionPosition(IShip ship1, IShip ship2) throws ModelException
     {
         if ((ship1 == null) || (ship2 == null)){
-            throw new ModelException("Invalid parameter ship");
+            throw new ModelException("Invalid ship.");
         }
         
         double deltaT = getTimeToCollision(ship1, ship2);
