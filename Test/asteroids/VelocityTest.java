@@ -121,18 +121,19 @@ public class VelocityTest
 		assertTrue(Util.fuzzyEquals(testVelocity.getYComponent(), 25.0));
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void accelerateByTest_IllegalDuration()
 	{
 		Acceleration a = new Acceleration(5, 5);
-		try
-		{
-			testVelocity.accelerateBy(a, -1);
-			fail();
-		} catch (IllegalArgumentException e)
-		{
-			return;
-		}
+		testVelocity.accelerateBy(a, -1);
+	}
+	
+	@Test
+	public void accelerateByTest_SpeedLimitTest(){
+		Velocity v = new Velocity(Velocity.getSpeedOfLight(),0);
+		Acceleration a = new Acceleration(5, 5);
+		v.accelerateBy(a, 5);
+		Util.fuzzyEquals(v.getVelocity(), Velocity.getSpeedOfLight());
 	}
 
 	@Test

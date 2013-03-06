@@ -1,15 +1,12 @@
 package asteroids;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import asteroids.Angle;
-import asteroids.CircleShape;
-import asteroids.Direction;
-import asteroids.Ship;
-import asteroids.Velocity;
 
 public class ShipTest
 {
@@ -233,12 +230,21 @@ public class ShipTest
 	}
 
 	@Test
-	public void thrustTest(){
+	public void thrustTest_PerfectParameters()
+	{
 		Ship originalState = new Ship(testShip.getDirection(), testShip.getPosition(), testShip.getShape(), testShip.getSpeedLimit(), testShip.getVelocity());
 		testShip.thrust(2);
 		assertEquals(testShip.getDirection(), originalState.getDirection());
 		assertEquals(testShip.getPosition(), originalState.getPosition());
 		assertTrue(Util.fuzzyEquals(testShip.getVelocity().getXComponent(), 5));
 		assertTrue(Util.fuzzyEquals(testShip.getVelocity().getYComponent(), 7));
+	}
+
+	@Test
+	public void thrustTest_SpeedLimitTest()
+	{
+		testShip.setSpeedLimit(50);
+		testShip.thrust(45);
+		assertTrue(Util.fuzzyEquals(testShip.getVelocity().getVelocity(), testShip.getSpeedLimit()));
 	}
 }

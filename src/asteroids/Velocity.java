@@ -84,7 +84,7 @@ public class Velocity extends Vector
 	public Velocity(double vx, double vy)
 	{
 		super(vx, vy);
-		if ((Math.sqrt(Math.pow(super.getXComponent(), 2) + Math.pow(super.getYComponent(), 2))) >= Velocity.getSpeedOfLight())
+		if (this.getMagnitude() > Velocity.getSpeedOfLight())
 		{
 			setXComponent(0);
 			setYComponent(0);
@@ -119,21 +119,12 @@ public class Velocity extends Vector
 	 * Returns the total velocity of this velocity in km/s.
 	 * 
 	 * @return	The total velocity. 
-	 * @post	The total velocity can never exceed the speed of light.
-	 * 			| Util.fuzzyLessThanOrEqualTo(result,Velocity.getSpeedOfLight())
 	 */
 	@Basic
 	@Raw
 	public double getVelocity()
 	{
-		double totalVelocity = (Math.sqrt(Math.pow(super.getXComponent(), 2) + Math.pow(super.getYComponent(), 2)));
-		if (Util.fuzzyLessThanOrEqualTo(totalVelocity, Velocity.getSpeedOfLight()))
-		{
-			return totalVelocity;
-		} else
-		{
-			return Velocity.getSpeedOfLight();
-		}
+		return getMagnitude();
 	}
 
 	/**
@@ -169,7 +160,11 @@ public class Velocity extends Vector
 		{
 			throw new IllegalArgumentException("Invalid duration provided");
 		}
-		Velocity v = getSum(a.scaleBy(duration));
+		Vector v = new Vector(this.getXComponent(),this.getYComponent());
+		v = v.getSum(a.scaleBy(duration));
+		if (v.getMagnitude() >= Velocity.getSpeedOfLight()){
+			v = v.scaleBy(Velocity.getSpeedOfLight()/v.getMagnitude());
+		}
 		setXComponent(v.getXComponent());
 		setYComponent(v.getYComponent());
 	}
