@@ -6,7 +6,7 @@ public class Facade implements IFacade
 	/**
 	 * Returns a new ship with default values.
 	 *
-	 * @return A new ship with default values.
+	 * @return  A new ship with default values.
 	 */
 	@Override
 	public IShip createShip()
@@ -17,12 +17,18 @@ public class Facade implements IFacade
 	/**
 	 * Creates a ship using the given properties.
 	 *
-	 * @param x The x component of the ship's position vector.
-	 * @param y The y component of the ship's position vector.
-	 * @param xVelocity The x component of the ship's velocity vector.
-	 * @param yVelocity The y component of the ship's velocity vector.
-	 * @param radius    The ship's radius.
-	 * @param angle The ship's angle.
+	 * @param   x 
+     *          The x component of the ship's position vector.
+	 * @param   y
+     *          The y component of the ship's position vector.
+	 * @param   xVelocity
+     *          The x component of the ship's velocity vector.
+	 * @param   yVelocity
+     *          The y component of the ship's velocity vector.
+	 * @param   radius
+     *          The ship's radius.
+	 * @param   angle
+     *          The ship's angle.
 	 * @return  A new ship with the given values.
 	 */
 	@Override
@@ -53,8 +59,9 @@ public class Facade implements IFacade
 	/**
 	 * Gets the x component of the ship's position vector.
 	 *
-	 * @param ship  The ship of which we want to get the x component of the position vector.
-	 * @return      The x component of the ship's position vector.
+	 * @param   ship
+     *          The ship of which we want to get the x component of the position vector.
+	 * @return  The x component of the ship's position vector.
 	 */
 	@Override
 	public double getX(IShip ship)
@@ -65,47 +72,48 @@ public class Facade implements IFacade
 	/**
 	 * Gets the y component of the ship's position vector.
 	 *
-	 * @param ship  The ship of which we want to get the y component of the position vector.
-	 * @return      The y component of the ship's position vector.
+	 * @param   ship
+     *          The ship of which we want to get the y component of the position vector.
+	 * @return  The y component of the ship's position vector.
 	 */
 	@Override
 	public double getY(IShip ship)
 	{
-		// TODO Auto-generated method stub
 		return ((Ship) ship).getPosition().getYComponent();
 	}
 
 	/**
 	 * Gets the x component of the ship's velocity vector.
 	 *
-	 * @param ship  The ship of which we want to get the x component of the velocity vector.
-	 * @return      The x component of the ship's velocity vector.
+	 * @param   ship
+     *          The ship of which we want to get the x component of the velocity vector.
+	 * @return  The x component of the ship's velocity vector.
 	 */
 	@Override
 	public double getXVelocity(IShip ship)
 	{
-		// TODO Auto-generated method stub
 		return ((Ship) ship).getVelocity().getXComponent();
 	}
 
 	/**
 	 * Gets the y component of the ship's velocity vector.
 	 *
-	 * @param ship  The ship of which we want to get the y component of the velocity vector.
-	 * @return      The y component of the ship's velocity vector.
+	 * @param   ship
+     *          The ship of which we want to get the y component of the velocity vector.
+	 * @return  The y component of the ship's velocity vector.
 	 */
 	@Override
 	public double getYVelocity(IShip ship)
 	{
-		// TODO Auto-generated method stub
 		return ((Ship) ship).getVelocity().getYComponent();
 	}
 
 	/**
 	 * Gets the ship's radius.
 	 *
-	 * @param ship  The ship whose radius we want to know.
-	 * @return      The ship's radius.
+	 * @param   ship
+     *          The ship whose radius we want to know.
+	 * @return  The ship's radius.
 	 */
 	@Override
 	public double getRadius(IShip ship)
@@ -116,8 +124,9 @@ public class Facade implements IFacade
 	/**
 	 * Gets the ship's direction expressed in radians.
 	 *
-	 * @param ship  The ship whose direction we want to know. 
-	 * @return      The ship's direction in radians.
+	 * @param   ship
+     *          The ship whose direction we want to know. 
+	 * @return  The ship's direction in radians.
 	 */
 	@Override
 	public double getDirection(IShip ship)
@@ -128,8 +137,10 @@ public class Facade implements IFacade
 	/**
 	 * Moves the ship with the current velocity and acceleration for a given time.
 	 *
-	 * @param ship
-	 * @param dt
+	 * @param   ship  
+     *          The ship we want to move. 
+	 * @param   dt    
+     *          The length of time during which we want to move the ship.
 	 */
 	@Override
 	public void move(IShip ship, double dt)
@@ -148,8 +159,10 @@ public class Facade implements IFacade
 	/**
 	 * Applies thrust in order to accelerate the ship.
 	 *
-	 * @param ship
-	 * @param amount
+	 * @param   ship      
+     *          The ship to which we apply thrust.
+	 * @param   amount
+     *          The amount of thrust we want to apply.
 	 */
 	@Override
 	public void thrust(IShip ship, double amount)
@@ -168,8 +181,10 @@ public class Facade implements IFacade
 	/**
 	 * Turns the ship by the given angle.
 	 *
-	 * @param ship
-	 * @param angle
+	 * @param   ship
+     *          The ship we want to turn.
+	 * @param   angle
+     *          The angle by which we want to turn the ship.
 	 */
 	@Override
 	public void turn(IShip ship, double angle)
@@ -183,9 +198,11 @@ public class Facade implements IFacade
 	/**
 	 * Gets the distance between two ships.
 	 *
-	 * @param ship1
-	 * @param ship2
-	 * @return
+	 * @param   ship1
+     *          The first ship.
+	 * @param   ship2
+     *          The second ship.
+	 * @return The distance in kilometers between the two ships.
 	 */
 	@Override
 	public double getDistanceBetween(IShip ship1, IShip ship2)
@@ -199,9 +216,11 @@ public class Facade implements IFacade
 	/**
 	 * Checks if two ships overlap.
 	 *
-	 * @param ship1
-	 * @param ship2
-	 * @return
+	 * @param   ship1
+     *          The first ship.
+	 * @param   ship2
+     *          The second ship.
+	 * @return  Whether the ships overlap or not.
 	 */
 	@Override
 	public boolean overlap(IShip ship1, IShip ship2)
@@ -215,9 +234,11 @@ public class Facade implements IFacade
 	/**
 	 * Gets the time to collision between two ships.
 	 *
-	 * @param ship1
-	 * @param ship2
-	 * @return
+	 * @param   ship1
+     *          The first ship.
+	 * @param   ship2
+     *          The second ship.
+	 * @return  The time to collision between the two ships.
 	 */
 	@Override
 	public double getTimeToCollision(IShip ship1, IShip ship2)
@@ -242,9 +263,11 @@ public class Facade implements IFacade
 	/**
 	 * Gets the position at which two ships will collide.
 	 *
-	 * @param ship1
-	 * @param ship2
-	 * @return
+	 * @param   ship1
+     *          The first ship.
+	 * @param   ship2
+     *          The second ship.
+	 * @return  The position of the place of collision.
 	 */
 	@Override
 	public double[] getCollisionPosition(IShip ship1, IShip ship2)
@@ -262,7 +285,7 @@ public class Facade implements IFacade
 		Position newPosShip2 = ((Ship) ship2).getPosition().getSum(((Ship) ship2).getVelocity().scaleBy(deltaT));
 		double sigma = ((Ship) ship1).getShape().getRadius() + ((Ship) ship2).getShape().getRadius();
 		double ship1Radius = ((Ship) ship1).getShape().getRadius();
-		Vector collisionPos = newPosShip1.getSum(newPosShip2.getDifference(newPosShip1).scaleBy(ship1Radius / sigma)); // FIXME
+		Vector collisionPos = newPosShip1.getSum(newPosShip2.getDifference(newPosShip1).scaleBy(ship1Radius / sigma));
 		double[] result =
 		{ collisionPos.getXComponent(), collisionPos.getYComponent() };
 		return result;
