@@ -42,6 +42,7 @@ public class Angle
 		this(0.0);
 	}
 
+
 	/**
 	 * Returns the wrapped angle of this angle.
 	 */
