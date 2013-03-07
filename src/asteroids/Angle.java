@@ -6,14 +6,44 @@ import be.kuleuven.cs.som.annotate.Raw;
 /**
  * A wrapper class for angles.
  * 
- * 
  * @author Syd & Xavier
  * @version 0.0
+ * 
+ * @Invar	The angle value of this angle is a valid angle.
+ * 			| canHaveAsAngle(getAngle())
  */
 public class Angle
 {
 	/**
-	 * Returns the angle of this angle.
+	 * Initializes this new angle with a given angle.
+	 * 
+	 * @param	angle
+	 * 			The given angle.
+	 * 
+	 * @effect	The angle of this angle is set to the given angle.
+	 * 			| setAngle(angle)
+	 * 
+	 * @post	The given angle is a valid angle.
+	 * 			| new.canHaveAsAngle(angle)
+	 */
+	public Angle(double angle)
+	{
+		setAngle(angle);
+	}
+
+	/**
+	 * Initializes this new angle with default values.
+	 * 
+	 * @effect	Calls the extended constructor with default values.
+	 * 			| this(0.0)
+	 */
+	public Angle()
+	{
+		this(0.0);
+	}
+
+	/**
+	 * Returns the wrapped angle of this angle.
 	 */
 	@Basic
 	@Raw
@@ -27,14 +57,14 @@ public class Angle
 	 * 
 	 * @param 	angle
 	 * 			The angle to check.
-	 * @return	True if and only if the given angle is a number.
-	 * 			| result = (!Double.isNaN(angle))
+	 * @return	True if and only if the given angle is a finite number.
+	 * 			| result = ((!Double.isNaN(angle)) && (!Double.isInfinite(angle)))
 	 */
 	@Basic
 	@Raw
 	public boolean canHaveAsAngle(double angle)
 	{
-		return (!Double.isNaN(angle));
+		return ((!Double.isNaN(angle)) && (!Double.isInfinite(angle)));
 	}
 
 	/**
@@ -45,13 +75,10 @@ public class Angle
 	 * @post	If this angle can have the given angle as its angle,
 	 * 			then the angle of this angle is now equal to the given angle modulo 2Pi.
 	 * 			| if canHaveAsAngle(angle)
-	 * 			|	then new.getAngle() == angle % (2*Math.PI)
-	 * 			| else
-	 * 			| 	new.getAngle() == angle % (2*Math.PI) + (2*Math.PI)
+	 * 				then ((getAngle() >= 0) && (getAngle() <= 2*Math.PI))
 	 */
 	@Basic
-	@Raw
-	public void setAngle(double angle)
+	public void setAngle(@Raw double angle)
 	{
 		if (canHaveAsAngle(angle))
 		{
@@ -76,7 +103,7 @@ public class Angle
 	 * @return	The sine of this angle
 	 * 			| result = Math.sin(getAngle())
 	 */
-	public double sin()
+	public double getSin()
 	{
 		return Math.sin(getAngle());
 	}
@@ -87,31 +114,9 @@ public class Angle
 	 * @return	The cosine of this angle
 	 * 			| result = Math.cos(getAngle())
 	 */
-	public double cos()
+	public double getCos()
 	{
 		return Math.cos(getAngle());
-	}
-
-	/**
-	 * Initializes this new angle with a given angle.
-	 * 
-	 * @param	angle
-	 * 			The given angle.
-	 * 
-	 * @post	The given angle is a valid angle.
-	 * 			| new.canHaveAsAngle(angle)
-	 */
-	public Angle(double angle)
-	{
-		setAngle(angle);
-	}
-
-	/**
-	 * Initializes this new angle with default values.
-	 */
-	public Angle()
-	{
-		this(0.0);
 	}
 
 	/**
@@ -123,7 +128,8 @@ public class Angle
 	 * 			| result = Util.fuzzyEquals(((Angle) o).getAngle(),getAngle())
 	 */
 	@Override
-	public boolean equals(Object o)
+	@Raw
+	public boolean equals(@Raw Object o)
 	{
 		if (o instanceof Angle)
 		{
@@ -137,8 +143,10 @@ public class Angle
 	 * 
 	 * @param	a
 	 * 			The given angle.
+	 * @effect	Adds the value of the given angle to this angle.
+	 * 			| setAngle(getAngle() + a.getAngle())
 	 */
-	public void sum(Angle a)
+	public void add(@Raw Angle a)
 	{
 		setAngle(getAngle() + a.getAngle());
 	}

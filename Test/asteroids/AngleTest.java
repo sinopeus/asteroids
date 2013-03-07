@@ -11,7 +11,7 @@ import org.junit.Test;
 public class AngleTest
 {
 	@Before
-	public void setUpsetUpImmutableTestFixture_CircleShape()
+	public void setUpsetUpImmutableTestFixture_Angle()
 	{
 		testAngle = new Angle();
 	}
@@ -19,9 +19,36 @@ public class AngleTest
 	private static Angle testAngle;
 
 	@Test
+	public void constructorTest_AngleMatchesGivenAngle_PerfectParameters()
+	{
+		Angle a = new Angle(Math.PI);
+		assertTrue(Util.fuzzyEquals(a.getAngle(), Math.PI));
+	}
+
+	@Test
+	public void constructorTest_AngleMatchesGivenAngle_RubbishAngle()
+	{
+		Angle a1 = new Angle(Double.NaN);
+		assertFalse(Util.fuzzyEquals(a1.getAngle(), Double.NaN));
+		assertTrue(Util.fuzzyEquals(a1.getAngle(), 0));
+		Angle a2 = new Angle(Double.POSITIVE_INFINITY);
+		assertFalse(Util.fuzzyEquals(a2.getAngle(), Double.POSITIVE_INFINITY));
+		assertTrue(Util.fuzzyEquals(a2.getAngle(), 0));
+	}
+
+	@Test
+	public void constructorTest_AngleMatchesZero()
+	{
+		Angle a = new Angle();
+		assertTrue(Util.fuzzyEquals(a.getAngle(), 0));
+	}
+
+	@Test
 	public void canHaveAsAngleTest()
 	{
 		assertTrue(testAngle.canHaveAsAngle(Math.PI));
+		assertFalse(testAngle.canHaveAsAngle(Double.NaN));
+		assertFalse(testAngle.canHaveAsAngle(Double.POSITIVE_INFINITY));
 	}
 
 	@Test
@@ -38,36 +65,26 @@ public class AngleTest
 	{
 		testAngle.setAngle(Double.NaN);
 		assertFalse(Util.fuzzyEquals(testAngle.getAngle(), Double.NaN));
+		assertTrue(Util.fuzzyEquals(testAngle.getAngle(), 0));
+		testAngle.setAngle(Double.POSITIVE_INFINITY);
+		assertFalse(Util.fuzzyEquals(testAngle.getAngle(), Double.POSITIVE_INFINITY));
+		assertTrue(Util.fuzzyEquals(testAngle.getAngle(), 0));
 	}
 
 	@Test
-	public void sinTest()
+	public void getSinTest()
 	{
-		assertTrue(Util.fuzzyEquals(testAngle.sin(), 0));
+		assertTrue(Util.fuzzyEquals(testAngle.getSin(), 0));
 	}
 
 	@Test
-	public void cosTest()
+	public void getCosTest()
 	{
-		assertTrue(Util.fuzzyEquals(testAngle.cos(), 1));
+		assertTrue(Util.fuzzyEquals(testAngle.getCos(), 1));
 	}
 
 	@Test
-	public void constructorTest_AngleMatchesGivenAngle()
-	{
-		Angle a = new Angle(Math.PI);
-		assertTrue(Util.fuzzyEquals(a.getAngle(), Math.PI));
-	}
-
-	@Test
-	public void constructorTest_AngleMatchesZero()
-	{
-		Angle a = new Angle();
-		assertTrue(Util.fuzzyEquals(a.getAngle(), 0));
-	}
-
-	@Test
-	public void equalsTest()
+	public void equalsTest_PerfectParameter()
 	{
 		assertEquals(testAngle, new Angle());
 		assertNotSame(testAngle, new Angle(5));
@@ -75,12 +92,12 @@ public class AngleTest
 	}
 
 	@Test
-	public void sumTest()
+	public void addTest()
 	{
 		Angle testAngle2 = new Angle(Math.PI);
-		testAngle.sum(testAngle2);
+		testAngle.add(testAngle2);
 		assertTrue(Util.fuzzyEquals(testAngle.getAngle(), Math.PI));
-		testAngle2.sum(testAngle2);
+		testAngle2.add(testAngle2);
 		assertTrue(Util.fuzzyEquals(testAngle2.getAngle(), 0));
 	}
 }

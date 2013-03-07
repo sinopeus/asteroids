@@ -70,7 +70,7 @@ public class Direction extends Vector
 	@Raw
 	public double getXComponent()
 	{
-		return getAngle().cos();
+		return getAngle().getCos();
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class Direction extends Vector
 	@Raw
 	public double getYComponent()
 	{
-		return getAngle().sin();
+		return getAngle().getSin();
 	}
 
 	//	
@@ -140,7 +140,7 @@ public class Direction extends Vector
 	{
 		this(new Angle());
 	}
-	
+
 	/**
 	 * Checks whether the given object is a direction and it is equal to this direction.
 	 * 
@@ -167,6 +167,6 @@ public class Direction extends Vector
 	 */
 	public void rotate(Angle angle)
 	{
-		getAngle().sum(angle);
+		getAngle().add(angle);
 	}
 }

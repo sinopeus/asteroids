@@ -140,7 +140,7 @@ public class Vector
 		return new Vector(getXComponent() * scalar, getYComponent() * scalar);
 	}
 
-	/*
+	/*True
 	 * Basic operations on elements of inner product spaces.
 	 */
 
@@ -172,7 +172,7 @@ public class Vector
 	 * Returns a unit vector denoting the direction of the vector.
 	 *
 	 * @return	A unit vector in the same direction as this vector.
-	 * 			| result = this.scaleBy(1.0 / getMagnitude())
+	 * 			| result = this.scaleBy(1.0 / getMagnitudeTrue())
 	 */
 	public Vector GetUnitVectorInSameDirection()
 	{
@@ -232,6 +232,16 @@ public class Vector
 	{
 		setXComponent(x);
 		setYComponent(y);
+	}
+	
+	/**
+	 * Initializes this new vector with a given vector to duplicate from.
+	 * 
+	 * @param	v
+	 * 			The given vector
+	 */
+	public Vector(Vector v){
+		this(v.getXComponent(),v.getYComponent());
 	}
 
 	/**

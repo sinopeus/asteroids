@@ -5,7 +5,9 @@ import be.kuleuven.cs.som.annotate.Raw;
 
 /**
  * A class of circle shapes involving a finite radius
+ * 
  * @author Syd & Xavier
+ * @version 0.0
  */
 public class CircleShape
 {
