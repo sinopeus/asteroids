@@ -16,7 +16,7 @@ public class AccelerationTest
 	}
 
 	@Test
-	public void extendedConstructorTest_ComponentsMatchGivenComponents_RubbishXComponent()
+	public void extendedConstructorTest_ComponentsMatchGivenComponents_IllegalXComponent()
 	{
 		Acceleration a = new Acceleration(Double.NaN, 6);
 		assertFalse(Util.fuzzyEquals(a.getXComponent(), 5));
@@ -25,7 +25,7 @@ public class AccelerationTest
 	}
 
 	@Test
-	public void extendedConstructorTest_ComponentsMatchGivenComponents_RubbishYComponent()
+	public void extendedConstructorTest_ComponentsMatchGivenComponents_IllegalYComponent()
 	{
 		Acceleration a = new Acceleration(5, Double.NaN);
 		assertTrue(Util.fuzzyEquals(a.getXComponent(), 5));
@@ -34,7 +34,7 @@ public class AccelerationTest
 	}
 
 	@Test
-	public void byVectorAccelerationTest_ComponentsMatchGivenVectorComponents_PerfextParameters()
+	public void byVectorAccelerationTest_ComponentsMatchGivenVectorComponents_PerfectParameters()
 	{
 		Acceleration a = new Acceleration(new Vector(2, 3));
 		assertTrue(Util.fuzzyEquals(a.getXComponent(), 2));

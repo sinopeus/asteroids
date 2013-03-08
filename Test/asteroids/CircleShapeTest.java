@@ -1,12 +1,13 @@
 package asteroids;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import asteroids.CircleShape;
-import asteroids.Util;
 
 public class CircleShapeTest
 {
@@ -28,7 +29,7 @@ public class CircleShapeTest
 	}
 
 	@Test
-	public void constructorTest_LegalInput()
+	public void constructorTest_PerfectParameters()
 	{
 		CircleShape cs = new CircleShape(25);
 		assertTrue(cs.canHaveAsRadius(cs.getRadius()));
@@ -54,11 +55,12 @@ public class CircleShapeTest
 		CircleShape cs = new CircleShape();
 		assertTrue(Util.fuzzyEquals(cs.getRadius(), 0));
 	}
-	
+
 	@Test
-	public void equalsTest(){
-		assertEquals(new CircleShape(),new CircleShape());
-		assertNotSame(new CircleShape(),new CircleShape(5));
-		assertNotSame(new CircleShape(),new Ship());
+	public void equalsTest()
+	{
+		assertEquals(new CircleShape(), new CircleShape());
+		assertNotSame(new CircleShape(), new CircleShape(5));
+		assertNotSame(new CircleShape(), new Ship());
 	}
 }

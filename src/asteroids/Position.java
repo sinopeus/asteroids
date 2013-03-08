@@ -79,7 +79,7 @@ public class Position extends Vector {
      * 			The given vector.
      */
     public Position(Vector v){
-    	super(v.getXComponent(),v.getYComponent());
+    	super(v);
     }
     
     /**

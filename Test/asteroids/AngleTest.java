@@ -26,7 +26,7 @@ public class AngleTest
 	}
 
 	@Test
-	public void constructorTest_AngleMatchesGivenAngle_RubbishAngle()
+	public void constructorTest_AngleMatchesGivenAngle_IllegalAngle()
 	{
 		Angle a1 = new Angle(Double.NaN);
 		assertFalse(Util.fuzzyEquals(a1.getAngle(), Double.NaN));

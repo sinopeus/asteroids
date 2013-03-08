@@ -3,7 +3,6 @@ package asteroids;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -23,6 +22,77 @@ public class ShipTest
 	}
 
 	private static Ship testShip;
+
+	@Test
+	public void extendedConstructorTest_FieldsMatchPerfectParameters()
+	{
+		Angle a = new Angle(Math.PI / 2);
+		Direction d = new Direction(a);
+		Position p = new Position(5, 5);
+		CircleShape s = new CircleShape(15);
+		double speedLimit = Velocity.getSpeedOfLight();
+		Velocity v = new Velocity(5, 5);
+		Ship ship = new Ship(d, p, s, speedLimit, v);
+		assertEquals(ship.getDirection(), d);
+		assertEquals(ship.getPosition(), p);
+		assertEquals(ship.getShape(), s);
+		assertTrue(Util.fuzzyEquals(ship.getSpeedLimit(), speedLimit));
+		assertEquals(ship.getVelocity(), v);
+	}
+
+	@Test
+	public void extendedConstructorTest_IllegalDirection()
+	{
+		return; //TODO write this when there exists a non valid direction.
+	}
+
+	@Test
+	public void extendedConstructorTest_IllegalPosition()
+	{
+		return; //TODO write this when there exists a non valid position.
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void extendedConstructorTest_IllegalCircleShape()
+	{
+		CircleShape cs = new CircleShape(Ship.getMinimumRadius() - 1);
+		Ship ship = new Ship(new Direction(), new Position(), cs, Velocity.getSpeedOfLight(), new Velocity());
+		ship.getDirection(); // just to get rid of the warning.
+	}
+
+	@Test
+	public void extendedConstructorTest_IllegalSpeedLimit()
+	{
+		double sl = Velocity.getSpeedOfLight() + 1;
+		Ship ship = new Ship(new Direction(), new Position(), new CircleShape(Ship.getMinimumRadius()), sl, new Velocity());
+		assertFalse(Util.fuzzyEquals(ship.getSpeedLimit(), sl));
+		assertTrue(Util.fuzzyEquals(ship.getSpeedLimit(), Velocity.getSpeedOfLight()));
+	}
+
+	@Test
+	public void extendedConstructorTest_IllegalVelocity()
+	{
+		Velocity v = new Velocity(Velocity.getSpeedOfLight(), Velocity.getSpeedOfLight());
+		Ship ship = new Ship(new Direction(), new Position(), new CircleShape(Ship.getMinimumRadius()), Velocity.getSpeedOfLight(), v);
+		assertEquals(ship.getVelocity(), new Velocity(212132.03435596428, 212132.03435596428));
+	}
+
+	@Test
+	public void simpleConstructorTest()
+	{
+		Ship ship = new Ship();
+		Direction d = new Direction();
+		Position p = new Position();
+		CircleShape s = new CircleShape(Ship.getMinimumRadius());
+		double speedLimit = Velocity.getSpeedOfLight();
+		Velocity v = new Velocity();
+		assertEquals(ship.getDirection(), d);
+		assertEquals(ship.getPosition(), p);
+		assertEquals(ship.getShape(), s);
+		assertTrue(Util.fuzzyEquals(ship.getSpeedLimit(), speedLimit));
+		assertEquals(ship.getVelocity(), v);
+
+	}
 
 	@Test
 	public void canHaveAsPositionTest()
@@ -121,84 +191,6 @@ public class ShipTest
 	}
 
 	@Test
-	public void extendedConstructorTest_FieldsMatchPerfectParameters()
-	{
-		Angle a = new Angle(Math.PI / 2);
-		Direction d = new Direction(a);
-		Position p = new Position(5, 5);
-		CircleShape s = new CircleShape(15);
-		double speedLimit = Velocity.getSpeedOfLight();
-		Velocity v = new Velocity(5, 5);
-		Ship ship = new Ship(d, p, s, speedLimit, v);
-		assertEquals(ship.getDirection(), d);
-		assertEquals(ship.getPosition(), p);
-		assertEquals(ship.getShape(), s);
-		assertTrue(Util.fuzzyEquals(ship.getSpeedLimit(), speedLimit));
-		assertEquals(ship.getVelocity(), v);
-	}
-
-	@Test
-	public void extendedConstructorTest_RubbishDirection()
-	{
-		return; //TODO write this when there exists a non valid direction.
-	}
-
-	@Test
-	public void extendedConstructorTest_RubbishPosition()
-	{
-		return; //TODO write this when there exists a non valid position.
-	}
-
-	@Test
-	public void extendedConstructorTest_RubbishCircleShape()
-	{
-		CircleShape cs = new CircleShape(Ship.getMinimumRadius() - 1);
-		try
-		{
-			Ship ship = new Ship(new Direction(), new Position(), cs, Velocity.getSpeedOfLight(), new Velocity());
-			ship.getDirection(); // just to get rid of the warning.
-			fail();
-		} catch (IllegalArgumentException e)
-		{
-			return;
-		}
-	}
-
-	@Test
-	public void extendedConstructorTest_RubbishSpeedLimit()
-	{
-		double sl = Velocity.getSpeedOfLight() + 1;
-		Ship ship = new Ship(new Direction(), new Position(), new CircleShape(Ship.getMinimumRadius()), sl, new Velocity());
-		assertFalse(Util.fuzzyEquals(ship.getSpeedLimit(), sl));
-		assertTrue(Util.fuzzyEquals(ship.getSpeedLimit(), Velocity.getSpeedOfLight()));
-	}
-
-	@Test
-	public void extendedConstructorTest_RubbishVelocity()
-	{
-		Velocity v = new Velocity(Velocity.getSpeedOfLight(), Velocity.getSpeedOfLight());
-		Ship ship = new Ship(new Direction(), new Position(), new CircleShape(Ship.getMinimumRadius()), Velocity.getSpeedOfLight(), v);
-		assertEquals(ship.getVelocity(), new Velocity(0.0, 0.0));
-	}
-
-	@Test
-	public void simpleConstructorTest()
-	{
-		Ship ship = new Ship();
-		Direction d = new Direction();
-		Position p = new Position();
-		CircleShape s = new CircleShape(Ship.getMinimumRadius());
-		double speedLimit = Velocity.getSpeedOfLight();
-		Velocity v = new Velocity();
-		assertEquals(ship.getDirection(), d);
-		assertEquals(ship.getPosition(), p);
-		assertEquals(ship.getShape(), s);
-		assertTrue(Util.fuzzyEquals(ship.getSpeedLimit(), speedLimit));
-		assertEquals(ship.getVelocity(), v);
-
-	}
-
-	@Test
 	public void moveTest_LegalDuration()
 	{
 		Ship originalState = new Ship(testShip.getDirection(), testShip.getPosition(), testShip.getShape(), testShip.getSpeedLimit(), testShip.getVelocity());
@@ -209,17 +201,10 @@ public class ShipTest
 		assertTrue(Util.fuzzyEquals(testShip.getPosition().getYComponent(), 15));
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void moveTest_IllegalDuration()
 	{
-		try
-		{
-			testShip.move(-1);
-			fail();
-		} catch (IllegalArgumentException e)
-		{
-			return;
-		}
+		testShip.move(-1);
 	}
 
 	@Test
@@ -239,7 +224,17 @@ public class ShipTest
 		assertTrue(Util.fuzzyEquals(testShip.getVelocity().getXComponent(), 5));
 		assertTrue(Util.fuzzyEquals(testShip.getVelocity().getYComponent(), 7));
 	}
-
+	
+	@Test
+	public void thrustTest_IllegalAcceleration(){
+		Ship originalState = new Ship(testShip.getDirection(), testShip.getPosition(), testShip.getShape(), testShip.getSpeedLimit(), testShip.getVelocity());
+		testShip.thrust(-1);
+		assertEquals(testShip.getDirection(), originalState.getDirection());
+		assertEquals(testShip.getPosition(), originalState.getPosition());
+		assertTrue(Util.fuzzyEquals(testShip.getVelocity().getXComponent(), 5));
+		assertTrue(Util.fuzzyEquals(testShip.getVelocity().getYComponent(), 5));
+	}
+	
 	@Test
 	public void thrustTest_SpeedLimitTest()
 	{

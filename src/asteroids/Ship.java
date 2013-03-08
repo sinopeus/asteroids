@@ -5,7 +5,7 @@ import be.kuleuven.cs.som.annotate.Raw;
 
 /**
  * @author Syd & Xavier
- * 
+ * @version 0.0
  */
 public class Ship implements IShip
 {
@@ -323,7 +323,7 @@ public class Ship implements IShip
 	 * @effect	Sets the position of this ship the position after moving.
 	 * 			| getPosittion().moveBy(getVelocity(), duration)
 	 */
-	public void move(double duration)
+	public void move(double duration) throws IllegalArgumentException
 	{
 		getPosition().moveBy(getVelocity(), duration);
 	}
@@ -347,6 +347,10 @@ public class Ship implements IShip
 	 */
 	public void thrust(double acceleration)
 	{
+		if (acceleration < 0)
+		{
+			acceleration = 0;
+		}
 		Acceleration a = new Acceleration(getDirection().scaleBy(acceleration));
 		getVelocity().accelerateBy(a, 1);
 		if (getVelocity().getMagnitude() > this.getSpeedLimit())

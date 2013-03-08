@@ -32,7 +32,7 @@ public class Acceleration extends Vector
 	 */
 	public Acceleration(Vector v)
 	{
-		super(v.getXComponent(), v.getYComponent());
+		super(v);
 	}
 
 	/**
