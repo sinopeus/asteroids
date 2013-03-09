@@ -14,6 +14,9 @@ import java.util.Set;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
+import model.IFacade;
+
+
 @SuppressWarnings("serial")
 public class Asteroids extends JFrame
 {
@@ -138,7 +141,7 @@ public class Asteroids extends JFrame
 		} else
 		{
 			// <begin>
-			IFacade facade = new asteroids.Facade();
+			IFacade facade = new model.Facade();
 			// <end>
 			GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			GraphicsDevice device = env.getDefaultScreenDevice();

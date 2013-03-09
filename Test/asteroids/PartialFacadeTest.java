@@ -3,6 +3,11 @@ package asteroids;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+
+import model.Facade;
+import model.IFacade;
+import model.ModelException;
+
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,12 +1,11 @@
 package asteroids;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import asteroids.Util;
-import asteroids.Velocity;
 
 public class VelocityTest
 {
@@ -58,7 +57,7 @@ public class VelocityTest
 	}
 
 	@Test
-	public void extendedConstructorTest_RubbishXComponent()
+	public void extendedConstructorTest_IllegalXComponent()
 	{
 		Velocity v = new Velocity(Velocity.getSpeedOfLight() + 1, 0);
 		assertFalse(Util.fuzzyEquals(v.getXComponent(), Velocity.getSpeedOfLight() + 1));
@@ -66,7 +65,7 @@ public class VelocityTest
 	}
 
 	@Test
-	public void extendedConstructorTest_RubbishYComponent()
+	public void extendedConstructorTest_IllegalYComponent()
 	{
 		Velocity v = new Velocity(0, Velocity.getSpeedOfLight() + 1);
 		assertFalse(Util.fuzzyEquals(v.getYComponent(), Velocity.getSpeedOfLight() + 1));
@@ -74,10 +73,10 @@ public class VelocityTest
 	}
 
 	@Test
-	public void extendedConstructorTest_RubbishComponents()
+	public void extendedConstructorTest_IllegalComponents()
 	{
 		Velocity v = new Velocity(Velocity.getSpeedOfLight(), Velocity.getSpeedOfLight());
-		assertEquals(v, new Velocity(0.0, 0.0));
+		assertEquals(v, new Velocity(212132.03435596428, 212132.03435596428));
 	}
 
 	@Test
@@ -127,10 +126,11 @@ public class VelocityTest
 		Acceleration a = new Acceleration(5, 5);
 		testVelocity.accelerateBy(a, -1);
 	}
-	
+
 	@Test
-	public void accelerateByTest_SpeedLimitTest(){
-		Velocity v = new Velocity(Velocity.getSpeedOfLight(),0);
+	public void accelerateByTest_SpeedLimitTest()
+	{
+		Velocity v = new Velocity(Velocity.getSpeedOfLight(), 0);
 		Acceleration a = new Acceleration(5, 5);
 		v.accelerateBy(a, 5);
 		Util.fuzzyEquals(v.getVelocity(), Velocity.getSpeedOfLight());

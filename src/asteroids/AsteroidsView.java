@@ -14,6 +14,9 @@ import java.util.Set;
 
 import javax.swing.JPanel;
 
+import model.IFacade;
+
+
 @SuppressWarnings("serial")
 public class AsteroidsView extends JPanel
 {

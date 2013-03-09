@@ -1,6 +1,8 @@
 package asteroids;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -8,7 +10,7 @@ import org.junit.Test;
 public class DirectionTest
 {
 	@Before
-	public void setUpTestAngle()
+	public void setUpImmutableTestFixture_Direction()
 	{
 		testAngle = new Angle(Math.PI / 2.0);
 		testDirection = new Direction(testAngle);
@@ -18,27 +20,31 @@ public class DirectionTest
 	private static Direction testDirection;
 
 	@Test
-	public void canHaveAsAngleTest(){
+	public void canHaveAsAngleTest()
+	{
 		return;
 	}
-	
+
 	@Test
-	public void setAngleTest_LegalCase(){
+	public void setAngleTest_LegalCase()
+	{
 		testDirection.setAngle(new Angle(Math.PI));
 		assertEquals(testDirection.getAngle(), new Angle(Math.PI));
 	}
-	
+
 	@Test
-	public void setAngleTest_IllegalCase(){
+	public void setAngleTest_IllegalCase()
+	{
 		return; //Implement this when there exists an illegal case.
 	}
-	
+
 	@Test
-	public void getXComponentTest(){
+	public void getXComponentTest()
+	{
 		assertTrue(Util.fuzzyEquals(testDirection.getXComponent(), 0));
 		assertTrue(Util.fuzzyEquals(testDirection.getYComponent(), 1));
 	}
-	
+
 	@Test
 	public void extendedConstructorTest_ComponentsMatchGivenComponents()
 	{
@@ -54,16 +60,18 @@ public class DirectionTest
 		assertTrue(Util.fuzzyEquals(d.getXComponent(), 1.0));
 		assertTrue(Util.fuzzyEquals(d.getYComponent(), 0.0));
 	}
-	
+
 	@Test
-	public void equalsTest(){
+	public void equalsTest()
+	{
 		assertEquals(testDirection, new Direction(testAngle));
 		assertNotSame(testDirection, new Direction());
 		assertNotSame(testDirection, new Ship());
 	}
 
 	@Test
-	public void rotateTest(){
+	public void rotateTest()
+	{
 		testDirection.rotate(testAngle);
 		assertEquals(testDirection.getAngle(), new Angle(Math.PI));
 	}

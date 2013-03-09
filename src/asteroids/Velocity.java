@@ -86,8 +86,9 @@ public class Velocity extends Vector
 		super(vx, vy);
 		if (this.getMagnitude() > Velocity.getSpeedOfLight())
 		{
-			setXComponent(0);
-			setYComponent(0);
+			Vector downScaled = this.scaleBy(Velocity.getSpeedOfLight() / this.getMagnitude());
+			setXComponent(downScaled.getXComponent());
+			setYComponent(downScaled.getYComponent());
 		}
 	}
 
@@ -99,7 +100,7 @@ public class Velocity extends Vector
 	 */
 	public Velocity(Vector v)
 	{
-		super(v.getXComponent(), v.getYComponent());
+		super(v);
 	}
 
 	/**
@@ -136,7 +137,7 @@ public class Velocity extends Vector
 	 * 			| result = new Velocity(super.getSum(v))
 	 */
 	@Override
-	public Velocity getSum(Vector v)
+	public Velocity getSum(Vector v) throws ArithmeticException
 	{
 		return new Velocity(super.getSum(v));
 	}
@@ -154,16 +155,17 @@ public class Velocity extends Vector
 	 * @post	Moves this position to the calculated destination.
 	 * 			| new.equals(getSum(v.scaleBy(duration)))
 	 */
-	public void accelerateBy(Acceleration a, double duration)
+	public void accelerateBy(Acceleration a, double duration) throws ArithmeticException
 	{
 		if (duration < 0)
 		{
 			throw new IllegalArgumentException("Invalid duration provided");
 		}
-		Vector v = new Vector(this.getXComponent(),this.getYComponent());
+		Vector v = new Vector(this.getXComponent(), this.getYComponent());
 		v = v.getSum(a.scaleBy(duration));
-		if (v.getMagnitude() >= Velocity.getSpeedOfLight()){
-			v = v.scaleBy(Velocity.getSpeedOfLight()/v.getMagnitude());
+		if (v.getMagnitude() >= Velocity.getSpeedOfLight())
+		{
+			v = v.scaleBy(Velocity.getSpeedOfLight() / v.getMagnitude());
 		}
 		setXComponent(v.getXComponent());
 		setYComponent(v.getYComponent());
