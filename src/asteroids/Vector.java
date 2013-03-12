@@ -197,7 +197,7 @@ public class Vector
 		return new Vector(xComp, yComp);
 	}
 
-	/*True
+	/*
 	 * Basic operations on elements of inner product spaces.
 	 */
 

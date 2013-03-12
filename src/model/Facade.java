@@ -156,6 +156,7 @@ public class Facade implements IFacade
      *          The length of time during which we want to move the ship.
      * @throws  ModelException
      *          When an invalid ship or time is provided.
+     * @Effect  | ship.move(dt)
      */
     @Override
     public void move(IShip ship, double dt) throws ModelException
@@ -180,6 +181,7 @@ public class Facade implements IFacade
      *          The amount of thrust we want to apply.
      * @throws  ModelException
      *          When an invalid ship is provided.
+     * @Effect  | ship.thrust(amount)
      */
     @Override
     public void thrust(IShip ship, double amount) throws ModelException
@@ -204,6 +206,7 @@ public class Facade implements IFacade
      *          The angle by which we want to turn the ship.
      * @throws  ModelException
      *          When an invalid ship is provided.
+     * @Effect  | ship.turn(new Angle(angle))
      */
     @Override
     public void turn(IShip ship, double angle) throws ModelException
@@ -224,6 +227,7 @@ public class Facade implements IFacade
      * @throws  ModelException
      *          When an invalid ship is provided.
      * @return The distance in kilometers between the two ships.
+     * @Effect  | ship.turn(new Angle(angle))
      */
     @Override
     public double getDistanceBetween(IShip ship1, IShip ship2) throws ModelException
