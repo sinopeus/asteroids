@@ -98,8 +98,7 @@ public class Direction extends Vector
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * @see Direction(Angle angle)
+	 * Initializes this new direction with default values.
 	 */
 	public Direction()
 	{

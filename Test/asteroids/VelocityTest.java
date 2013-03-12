@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+@SuppressWarnings("javadoc")
 public class VelocityTest
 {
 
@@ -140,5 +141,11 @@ public class VelocityTest
 	public void getSpeedOfLightTest()
 	{
 		assertTrue(Util.fuzzyEquals(Velocity.getSpeedOfLight(), 300000));
+	}
+	
+	@Test
+	public void breakThings()
+	{
+		assertTrue(false);
 	}
 }

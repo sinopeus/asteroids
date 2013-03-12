@@ -146,7 +146,7 @@ public class Angle
 	 * @effect	Adds the value of the given angle to this angle.
 	 * 			| setAngle(getAngle() + a.getAngle())
 	 */
-	public void add(@Raw Angle a)
+	public void add(Angle a)
 	{
 		setAngle(getAngle() + a.getAngle());
 	}

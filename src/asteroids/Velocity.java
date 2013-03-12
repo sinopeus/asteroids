@@ -155,7 +155,7 @@ public class Velocity extends Vector
 	 * @post	Moves this position to the calculated destination.
 	 * 			| new.equals(getSum(v.scaleBy(duration)))
 	 */
-	public void accelerateBy(Acceleration a, double duration) throws ArithmeticException
+	public void accelerateBy(Acceleration a, double duration) throws ArithmeticException //TODO add throws
 	{
 		if (duration < 0)
 		{

@@ -41,7 +41,7 @@ public class CircleShape
 	 */
 	private final double radius;
 
-	/*
+	/**
 	 * Initializes this new circle shape with a given radius
 	 * 
 	 * @param	radius

@@ -96,7 +96,7 @@ public class Ship implements IShip
 	 * 			then the position of this ship is now equal to the given position.
 	 * 			| if canHaveAsPosition(position)
 	 * 			|	then new.getPosition() == position
-	 * @Throws	IllegalArgumentException
+	 * @throws	IllegalArgumentException
 	 * 			The this ship can't have the given position as its position,.
 	 * 			| !canHaveAsPosition(position)
 	 */
@@ -140,7 +140,7 @@ public class Ship implements IShip
 	@Raw
 	public boolean canHaveAsVelocity(Velocity velocity)
 	{
-		return (velocity.getVelocity() <= getSpeedLimit());//FIXME
+		return (velocity != null && velocity.getVelocity() <= getSpeedLimit());
 	}
 
 	/**
@@ -325,7 +325,7 @@ public class Ship implements IShip
 	 */
 	public void move(double duration) throws IllegalArgumentException
 	{
-		getPosition().moveBy(getVelocity(), duration);
+		getPosition().moveBy(getVelocity(), duration); //TODO FIX THROWS
 	}
 
 	/**

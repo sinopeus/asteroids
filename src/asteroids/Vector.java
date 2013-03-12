@@ -44,10 +44,7 @@ public class Vector
 	}
 
 	/**
-	 * Initializes a zero vector.
-	 *
-	 * {@inheritDoc}
-	 * @see Vector(double x, double y)
+	 * Initializes this vector as the origin.
 	 */
 	public Vector()
 	{
@@ -143,7 +140,7 @@ public class Vector
 	 * @return	A vector whose components are the sums of the respective components of this vector and the given vector.
 	 * 			| result = new Vector(getXComponent() + v.getXComponent(), getYComponent() + v.getYComponent())
 	 */
-	public Vector getSum(Vector v) throws ArithmeticException
+	public Vector getSum(Vector v) throws ArithmeticException //TODO add throws
 	{
 		double xComp = getXComponent() + v.getXComponent();
 		double yComp = getYComponent() + v.getYComponent();
@@ -162,7 +159,7 @@ public class Vector
 	 * @return	A vector whose components are the differences of the respective components of this vector and the given vector.
 	 * 			| result = new Vector((getXComponent() - v.getXComponent()), (getYComponent() - v.getYComponent()))
 	 */
-	public Vector getDifference(Vector v) throws ArithmeticException
+	public Vector getDifference(Vector v) throws ArithmeticException //TODO add throws
 	{
 		double xComp = getXComponent() - v.getXComponent();
 		double yComp = getYComponent() - v.getYComponent();
@@ -186,7 +183,7 @@ public class Vector
 	 * @return	A vector with each of the components scaled by the factor provided in the explicit parameter.
 	 * 			| result = new Vector(getXComponent() * scalar, getYComponent() * scalar)
 	 */
-	public Vector scaleBy(double scalar) throws ArithmeticException
+	public Vector scaleBy(double scalar) throws ArithmeticException //TODO add throws
 	{
 		double xComp = getXComponent() * scalar;
 		double yComp = getYComponent() * scalar;
@@ -209,7 +206,7 @@ public class Vector
 	 * @return	The inner product of this vector and the given vector.
 	 * 			| result = (getXComponent() * v.getXComponent()) + (getYComponent() * v.getYComponent())
 	 */
-	public double dotProduct(Vector v) throws ArithmeticException
+	public double dotProduct(Vector v) throws ArithmeticException //TODO add throws
 	{
 		double result = (getXComponent() * v.getXComponent()) + (getYComponent() * v.getYComponent());
 		if (Double.isNaN(result))
@@ -236,7 +233,7 @@ public class Vector
 	 * @return	A unit vector in the same direction as this vector.
 	 * 			| result = this.scaleBy(1.0 / getMagnitudeTrue())
 	 */
-	public Vector GetUnitVectorInSameDirection() throws ArithmeticException
+	public Vector GetUnitVectorInSameDirection() throws ArithmeticException //TODO add throws
 	{
 		if (Util.fuzzyEquals(getMagnitude(), 0))
 		{
@@ -253,7 +250,7 @@ public class Vector
 	 * @return	The distance between this vector and the given vector.
 	 * 			| result = this.getDifference(v).getMagnitude()
 	 */
-	public double distanceTo(Vector v) throws ArithmeticException
+	public double distanceTo(Vector v) throws ArithmeticException //TODO add throws
 	{
 		return this.getDifference(v).getMagnitude();
 	}

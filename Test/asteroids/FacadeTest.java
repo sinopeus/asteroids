@@ -9,6 +9,7 @@ import model.ModelException;
 import org.junit.Before;
 import org.junit.Test;
 
+@SuppressWarnings("javadoc")
 public class FacadeTest
 {
 	@Before
@@ -260,5 +261,12 @@ public class FacadeTest
 	public void getCollisionPositionTest_IllegalSecondShip()
 	{
 		testFacade.getCollisionPosition(testShip1, null);
+	}
+	
+	// TODO: zet op een andere plaats
+	@Test(expected = ModelException.class)
+	public void thisShouldNotThrow()
+	{
+		testFacade.move(new Ship(), Double.NaN);
 	}
 }
