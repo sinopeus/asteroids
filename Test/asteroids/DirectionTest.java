@@ -1,7 +1,7 @@
 package asteroids;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -23,7 +23,8 @@ public class DirectionTest
 	@Test
 	public void canHaveAsAngleTest()
 	{
-		return;
+		assertTrue(testDirection.canHaveAsAngle(testAngle));
+		assertFalse(testDirection.canHaveAsAngle(null));
 	}
 
 	@Test
@@ -31,12 +32,6 @@ public class DirectionTest
 	{
 		testDirection.setAngle(new Angle(Math.PI));
 		assertEquals(testDirection.getAngle(), new Angle(Math.PI));
-	}
-
-	@Test
-	public void setAngleTest_IllegalCase()
-	{
-		return; //Implement this when there exists an illegal case.
 	}
 
 	@Test
@@ -65,9 +60,10 @@ public class DirectionTest
 	@Test
 	public void equalsTest()
 	{
-		assertEquals(testDirection, new Direction(testAngle));
-		assertNotSame(testDirection, new Direction());
-		assertNotSame(testDirection, new Ship());
+		assertTrue(testDirection.equals(new Direction(testAngle)));
+		assertFalse(testDirection.equals(new Direction()));
+		assertFalse(testDirection.equals(new Ship()));
+		assertFalse(testDirection.equals(null));
 	}
 
 	@Test

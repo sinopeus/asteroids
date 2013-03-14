@@ -31,14 +31,14 @@ public class Direction extends Vector
 	 * 
 	 * @param 	angle
 	 * 			The angle to check.
-	 * @return	True
-	 * 			| result = true
+	 * @return	True if and only if the given angle is not null
+	 * 			| result == (angle != null)
 	 */
 	@Basic
 	@Raw
 	public boolean canHaveAsAngle(Angle angle)
 	{
-		return true;
+		return (angle != null);
 	}
 
 	/**
@@ -46,7 +46,7 @@ public class Direction extends Vector
 	 *
 	 * @param	angle
 	 *			The new angle for this direction.
-	 * @pre		The given angle is not null.
+	 * @Pre		The given angle is not null.
 	 * 			| angle != null
 	 * @post	If this direction can have the given angle as its angle,
 	 * 			then the angle of this direction is now equal to the given angle.
@@ -93,7 +93,7 @@ public class Direction extends Vector
 	 *
 	 * @param   angle
 	 *          The given angle.
-	 * @pre		The given angle is not null.
+	 * @Pre		The given angle is not null.
 	 * 			| angle != null
 	 * @post    A unit vector reflecting the direction will be
 	 *          computed based on the angle provided.
@@ -127,11 +127,11 @@ public class Direction extends Vector
 		{
 			return false;
 		}
-		if (o instanceof Direction)
+		if (!(o instanceof Direction))
 		{
-			return getAngle().equals(((Direction) o).getAngle());
+			return false;
 		}
-		return false;
+		return getAngle().equals(((Direction) o).getAngle());
 	}
 
 	/**

@@ -72,6 +72,8 @@ public class Angle
 	 *
 	 * @param	angle
 	 *			The new angle for this angle.
+	 * @Pre		The given angle value is a valid angle value.
+	 * 			| canHaveAsAngle(angle)
 	 * @post	If this angle can have the given angle as its angle,
 	 * 			then the angle of this angle is now equal to the given angle modulo 2Pi.
 	 * 			| (getAngle() >= 0) && (getAngle() <= 2*Math.PI))
@@ -99,7 +101,7 @@ public class Angle
 	 * Returns the sine of this angle.
 	 * 
 	 * @return	The sine of this angle
-	 * 			| result = Math.sin(getAngle())
+	 * 			| result == Math.sin(getAngle())
 	 */
 	public double getSin()
 	{

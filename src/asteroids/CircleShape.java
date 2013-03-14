@@ -36,7 +36,7 @@ public class CircleShape
 	@Raw
 	public boolean canHaveAsRadius(double radius)
 	{
-		return ((radius >= 0) && !Double.isNaN(radius));
+		return (!Double.isNaN(radius) && (radius >= 0));
 	}
 
 	/**
@@ -91,15 +91,10 @@ public class CircleShape
 		if (o == null){
 			return false;
 		}
-		
-		if (o instanceof CircleShape)
-		{
-			if (Util.fuzzyEquals(getRadius(), ((CircleShape) o).getRadius()))
-			{
-				return true;
-			}
+		if(!(o instanceof CircleShape)){
 			return false;
 		}
-		return false;
+		CircleShape other = (CircleShape) o;
+		return (Util.fuzzyEquals(getRadius(), ((CircleShape) o).getRadius()));
 	}
 }

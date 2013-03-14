@@ -262,11 +262,4 @@ public class FacadeTest
 	{
 		testFacade.getCollisionPosition(testShip1, null);
 	}
-
-	// TODO: zet op een andere plaats
-	@Test(expected = ModelException.class)
-	public void thisShouldNotThrow()
-	{
-		testFacade.move(new Ship(), Double.NaN);
-	}
 }

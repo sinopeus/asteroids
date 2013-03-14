@@ -52,8 +52,9 @@ public class CircleShapeTest
 	@Test
 	public void equalsTest()
 	{
-		assertEquals(new CircleShape(), new CircleShape());
-		assertNotSame(new CircleShape(), new CircleShape(5));
-		assertNotSame(new CircleShape(), new Ship());
+		assertTrue(testCircleShape.equals( new CircleShape(15)));
+		assertFalse(testCircleShape.equals( new CircleShape(5)));
+		assertFalse(testCircleShape.equals(new Ship()));
+		assertFalse(testCircleShape.equals(null));
 	}
 }
