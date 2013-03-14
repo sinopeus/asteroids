@@ -142,10 +142,4 @@ public class VelocityTest
 	{
 		assertTrue(Util.fuzzyEquals(Velocity.getSpeedOfLight(), 300000));
 	}
-	
-	@Test
-	public void breakThings()
-	{
-		assertTrue(false);
-	}
 }

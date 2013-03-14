@@ -4,10 +4,13 @@ import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 
 /**
- * A class of circle shapes involving a finite radius
+ * A class of circle shapes involving a finite positive radius
  * 
  * @author Syd & Xavier
  * @version 0.0
+ * 
+ * @Invar	The radius of this circle shape is a valid radius
+ * 			| canHaveAsRadius(getRadius)
  */
 public class CircleShape
 {
@@ -79,12 +82,16 @@ public class CircleShape
 	 * 
 	 * @param	o
 	 * 			The given object.
-	 * @return	True if and only if the given object is a circle shape and its radius is equal to the radius of this circle shape.
-	 * 			| result =(o instanceof Vector && Util.fuzzyEquals(getXComponent(), ((Vector) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Vector) o).getYComponent()))
+	 * @return	True if and only if the given object is a non null circle shape and its radius is equal to the radius of this circle shape.
+	 * 			| result =(o != null && o instanceof Vector && Util.fuzzyEquals(getXComponent(), ((Vector) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Vector) o).getYComponent()))
 	 */
 	@Override
 	public boolean equals(Object o)
 	{
+		if (o == null){
+			return false;
+		}
+		
 		if (o instanceof CircleShape)
 		{
 			if (Util.fuzzyEquals(getRadius(), ((CircleShape) o).getRadius()))

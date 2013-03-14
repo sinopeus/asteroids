@@ -6,6 +6,17 @@ import be.kuleuven.cs.som.annotate.Raw;
 /**
  * @author Syd & Xavier
  * @version 0.0
+ * 
+ * @Invar	The direction of this ship is a valid direction.
+ * 			| canHaveAsDirection(getDirection())
+ * @Invar	The position of this ship is a valid position.
+ * 			| canHaveAsPosition(getPosition())
+ * @Invar	The shape of this ship is a valid shape.
+ * 			| canHaveAsShape(getShape())
+ * @Invar	The speedLimit of this ship is a valid speed limit.
+ * 			| canHaveAsSpeedLimit(getSpeedLimit())
+ * @Invar	The velocity of this ship is a valid velocity.
+ * 			| canHaveAsVelocity(getVelocity())
  */
 public class Ship implements IShip
 {
@@ -34,9 +45,11 @@ public class Ship implements IShip
 	 * 			| setVelocity(velocity)
 	 * @throws	IllegalArgumentException
 	 * 			| The given shape is not a legal shape.
+	 * @throws	NullPointerException
+	 * 			| Any of the parameters is null.
 	 */
 	@Raw
-	public Ship(Direction direction, Position position, CircleShape shape, double speedLimit, Velocity velocity) throws IllegalArgumentException
+	public Ship(Direction direction, Position position, CircleShape shape, double speedLimit, Velocity velocity) throws IllegalArgumentException, NullPointerException
 	{
 		setDirection(direction);
 		setPosition(position);
@@ -77,14 +90,14 @@ public class Ship implements IShip
 	 * 
 	 * @param 	position
 	 * 			The position to check.
-	 * @return	True
-	 * 			| result = true
+	 * @return	True if and only if the given position is not null.
+	 * 			| result == (position != null)
 	 */
 	@Basic
 	@Raw
 	public boolean canHaveAsPosition(Position position)
 	{
-		return (true);
+		return (position != null);
 	}
 
 	/**
@@ -92,10 +105,8 @@ public class Ship implements IShip
 	 *
 	 * @param	position
 	 *			The new position for this ship.
-	 * @post	If this ship can have the given position as its position,
-	 * 			then the position of this ship is now equal to the given position.
-	 * 			| if canHaveAsPosition(position)
-	 * 			|	then new.getPosition() == position
+	 * @post	The position of this ship is now equal to the given position.
+	 * 			| new.getPosition() == position
 	 * @throws	IllegalArgumentException
 	 * 			The this ship can't have the given position as its position,.
 	 * 			| !canHaveAsPosition(position)
@@ -133,14 +144,14 @@ public class Ship implements IShip
 	 * 
 	 * @param 	velocity
 	 * 			The velocity to check.
-	 * @return	True if and only if the given velocity is at most the speed limit.
-	 * 			| result = (velocity.getVelocity() <= getSpeedLimit())
+	 * @return	True if and only if the given velocity is not null and its magnitude is at most the speed limit.
+	 * 			| result = ((velocity != null) && (velocity.getVelocity() <= getSpeedLimit()))
 	 */
 	@Basic
 	@Raw
 	public boolean canHaveAsVelocity(Velocity velocity)
 	{
-		return (velocity != null && velocity.getVelocity() <= getSpeedLimit());
+		return ((velocity != null) && (velocity.getVelocity() <= getSpeedLimit()));
 	}
 
 	/**
@@ -236,14 +247,14 @@ public class Ship implements IShip
 	 * 
 	 * @param 	direction
 	 * 			The direction to check.
-	 * @return	True
-	 * 			| result = true
+	 * @return	True if and only if the direction is not null.
+	 * 			| result == (direction != null)
 	 */
 	@Basic
 	@Raw
 	public boolean canHaveAsDirection(Direction direction)
 	{
-		return true;
+		return (direction != null);
 	}
 
 	/**
@@ -251,7 +262,7 @@ public class Ship implements IShip
 	 *
 	 * @param	direction
 	 *			The new direction for this ship.
-	 * @pre		The given direction must be effective
+	 * @pre		The given direction must be a valid direction.
 	 * 			| canHaveAsDirection(direction)
 	 * @post	The direction of this ship is now equal to the given direction.
 	 * 			| new.getDirection() == direction
@@ -285,14 +296,14 @@ public class Ship implements IShip
 	 * 
 	 * @param 	shape
 	 * 			The shape to check.
-	 * @return	True if and only if the given shape has a range of at least the minimum radius for ships.
-	 * 			| result = (shape.getRadius() >= Ship.getMinimumRadius())
+	 * @return	True if and only if the given shapeis not null and has a range of at least the minimum radius for ships.
+	 * 			| result = ((shape != null) && (shape.getRadius() >= Ship.getMinimumRadius()))
 	 */
 	@Basic
 	@Raw
 	public boolean canHaveAsShape(CircleShape shape)
 	{
-		return (shape.getRadius() >= Ship.getMinimumRadius());
+		return ((shape != null) && (shape.getRadius() >= Ship.getMinimumRadius()));
 	}
 
 	/**
@@ -322,10 +333,20 @@ public class Ship implements IShip
 	 * 			The given duration of the movement.
 	 * @effect	Sets the position of this ship the position after moving.
 	 * 			| getPosittion().moveBy(getVelocity(), duration)
+	 * @throws	ArithmeticException
+	 * 			Any of the resulting vector components is not a number.
+	 * 			| ((Double.isNaN(getPosition.getXComponent()) || Double.isNaN(getPosition.getYComponent()))
+	 * @throws	IllegalArgumentException
+	 * 			The given duration is strictly negative.
+	 * 			| duration <= 0
+	 * 			
 	 */
-	public void move(double duration) throws IllegalArgumentException
+	public void move(double duration) throws ArithmeticException, IllegalArgumentException
 	{
-		getPosition().moveBy(getVelocity(), duration); //TODO FIX THROWS
+		if (duration < 0){
+			throw new IllegalArgumentException("The given duration is invalid.");
+		}
+		getPosition().moveBy(getVelocity(), duration);
 	}
 
 	/**
@@ -333,9 +354,12 @@ public class Ship implements IShip
 	 * 
 	 * @param	angle
 	 * 			The given angle
+	 * @Pre		The given angle is not null.
+	 * 			| angle != null
 	 */
 	public void turn(Angle angle)
 	{
+		assert(angle != null);
 		getDirection().rotate(angle);
 	}
 

@@ -74,22 +74,20 @@ public class Angle
 	 *			The new angle for this angle.
 	 * @post	If this angle can have the given angle as its angle,
 	 * 			then the angle of this angle is now equal to the given angle modulo 2Pi.
-	 * 			| if canHaveAsAngle(angle)
-	 * 				then ((getAngle() >= 0) && (getAngle() <= 2*Math.PI))
+	 * 			| (getAngle() >= 0) && (getAngle() <= 2*Math.PI))
 	 */
 	@Basic
-	public void setAngle(@Raw double angle)
+	public void setAngle(double angle)
 	{
-		if (canHaveAsAngle(angle))
+		assert (canHaveAsAngle(angle));
+		if (angle >= 0)
 		{
-			if (angle >= 0)
-			{
-				this.angle = angle % (2 * Math.PI);
-			} else
-			{
-				this.angle = (angle % (2 * Math.PI)) + (2 * Math.PI);
-			}
+			this.angle = angle % (2 * Math.PI);
+		} else
+		{
+			this.angle = (angle % (2 * Math.PI)) + (2 * Math.PI);
 		}
+		assert ((getAngle() >= 0) && (getAngle() <= 2 * Math.PI));
 	}
 
 	/**
@@ -125,12 +123,16 @@ public class Angle
 	 * @param	o
 	 * 			The given object.
 	 * @return	True if and only if the given object is an angle and it is equal to this angle.
-	 * 			| result = Util.fuzzyEquals(((Angle) o).getAngle(),getAngle())
+	 * 			| result = ((o != null) && (Util.fuzzyEquals(((Angle) o).getAngle(),getAngle())))
 	 */
 	@Override
 	@Raw
-	public boolean equals(@Raw Object o)
+	public boolean equals(Object o)
 	{
+		if (o == null)
+		{
+			return false;
+		}
 		if (o instanceof Angle)
 		{
 			return (Util.fuzzyEquals(((Angle) o).getAngle(), getAngle()));
@@ -146,7 +148,8 @@ public class Angle
 	 * @effect	Adds the value of the given angle to this angle.
 	 * 			| setAngle(getAngle() + a.getAngle())
 	 */
-	public void add(Angle a)
+	@Raw
+	public void add(@Raw Angle a)
 	{
 		setAngle(getAngle() + a.getAngle());
 	}

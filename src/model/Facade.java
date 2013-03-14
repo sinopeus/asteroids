@@ -66,7 +66,10 @@ public class Facade implements IFacade
 			speedLimit = Velocity.getSpeedOfLight();
 		} catch (IllegalArgumentException e)
 		{
-			throw new ModelException("Invalid arguments for facade.createShip(.a..)");
+			throw new ModelException("Invalid arguments for facade.createShip(...)");
+		} catch (AssertionError e)
+		{
+			throw new ModelException("Invalid arguments for facade.createShip(...)");
 		}
 
 		return new Ship(direction, position, shape, speedLimit, velocity);

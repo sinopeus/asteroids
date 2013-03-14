@@ -26,15 +26,12 @@ public class AngleTest
 		assertTrue(Util.fuzzyEquals(a.getAngle(), Math.PI));
 	}
 
-	@Test
+	@SuppressWarnings("unused")
+	@Test(expected = AssertionError.class)
 	public void constructorTest_AngleMatchesGivenAngle_IllegalAngle()
 	{
 		Angle a1 = new Angle(Double.NaN);
-		assertFalse(Util.fuzzyEquals(a1.getAngle(), Double.NaN));
-		assertTrue(Util.fuzzyEquals(a1.getAngle(), 0));
 		Angle a2 = new Angle(Double.POSITIVE_INFINITY);
-		assertFalse(Util.fuzzyEquals(a2.getAngle(), Double.POSITIVE_INFINITY));
-		assertTrue(Util.fuzzyEquals(a2.getAngle(), 0));
 	}
 
 	@Test
@@ -61,15 +58,11 @@ public class AngleTest
 		assertTrue(Util.fuzzyEquals(testAngle.getAngle(), 3 * Math.PI / 2));
 	}
 
-	@Test
+	@Test(expected = AssertionError.class)
 	public void setAngleTest_IllegalCase()
 	{
 		testAngle.setAngle(Double.NaN);
-		assertFalse(Util.fuzzyEquals(testAngle.getAngle(), Double.NaN));
-		assertTrue(Util.fuzzyEquals(testAngle.getAngle(), 0));
 		testAngle.setAngle(Double.POSITIVE_INFINITY);
-		assertFalse(Util.fuzzyEquals(testAngle.getAngle(), Double.POSITIVE_INFINITY));
-		assertTrue(Util.fuzzyEquals(testAngle.getAngle(), 0));
 	}
 
 	@Test

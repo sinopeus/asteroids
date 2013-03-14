@@ -10,6 +10,9 @@ import be.kuleuven.cs.som.annotate.Raw;
  * 
  * @author Syd & Xavier
  * @version 0.0
+ * 
+ * @Invar 	The magnitude of the velocity is always at most the speed of light.
+ * 			| this.getVelocity <= Velocity.getSpeedOfLight()
  */
 public class Velocity extends Vector
 {
@@ -154,8 +157,11 @@ public class Velocity extends Vector
 	 * 			| duration < 0
 	 * @post	Moves this position to the calculated destination.
 	 * 			| new.equals(getSum(v.scaleBy(duration)))
+	 * @throws	ArithmeticException
+	 * 			Any of the resulting components is not a valid component.
+	 * 			| (!canHaveAsComponent(getXComponent()) || ! canHaveAsComponent(getYComponent()))
 	 */
-	public void accelerateBy(Acceleration a, double duration) throws ArithmeticException //TODO add throws
+	public void accelerateBy(Acceleration a, double duration) throws ArithmeticException
 	{
 		if (duration < 0)
 		{

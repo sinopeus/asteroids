@@ -7,7 +7,6 @@ import be.kuleuven.cs.som.annotate.Raw;
  * A class implementing simple positional information in two dimensions for
  * objects in the game.
  * 
- * 
  * @author Syd & Xavier
  * @version 0.0
  */
@@ -23,6 +22,9 @@ public class Position extends Vector
 	 *          then the x-component of this velocity is now equal to the given
 	 *          x-component. | if canHaveAsXComponent(vx) | then
 	 *          | new.getXComponent() == vx
+	 * @throws	IllegalArgumentException
+	 * 			The given x-component is not a valid component.
+	 * 			| !canHaveAsComponent(x)
 	 */
 	@Basic
 	@Raw
@@ -46,6 +48,9 @@ public class Position extends Vector
 	 *          then the y-component of this velocity is now equal to the given
 	 *          y-component. | if canHaveAsYComponent(vy) | then
 	 *          | new.getYComponent() == vy
+	 * @throws	IllegalArgumentException
+	 * 			The given y-component is not a valid component.
+	 * 			| !canHaveAsComponent(y)
 	 */
 	@Basic
 	@Raw
@@ -67,6 +72,8 @@ public class Position extends Vector
 	 *          The given x coordinate
 	 * @param   y
 	 *          The given y coordinate
+	 * @effect	Initializes this new position with the extended constructor of vector.
+	 * 			| super(x, y)
 	 */
 	public Position(double x, double y)
 	{
@@ -78,8 +85,13 @@ public class Position extends Vector
 	 * 
 	 * @param	v
 	 * 			The given vector.
+	 * @effect	Initializes this new position with the by-vector constructor of vector.
+	 * 			| super(v)
+	 * @throws	NullPointerException
+	 * 			The given vector is null
+	 * 			| v == null
 	 */
-	public Position(Vector v)
+	public Position(Vector v) throws NullPointerException
 	{
 		super(v);
 	}
@@ -99,10 +111,20 @@ public class Position extends Vector
 	 * 			The given vector.
 	 * @return	The sum of this position and the given vector.
 	 * 			| result = new Position(super.getSum(v))
+	 * @throws	IllegalArgumentException
+	 * 			The given vector is null
+	 * 			| v == null
+	 * @throws	ArithmeticException
+	 * 			Any of the resulting components is not a number
+	 * 			| ((Double.isNaN(getXComponent()) || (Double.isNaN(getYComponent())) 
 	 */
 	@Override
-	public Position getSum(Vector v)
+	public Position getSum(Vector v) throws ArithmeticException, IllegalArgumentException
 	{
+		if (v == null)
+		{
+			throw new IllegalArgumentException("Invalid vector provided.");
+		}
 		return new Position(super.getSum(v));
 	}
 
@@ -114,19 +136,20 @@ public class Position extends Vector
 	 * @param	duration
 	 * 			The given duration.
 	 * @throws	IllegalArgumentException
-	 * 			The given duration is strictly negative.
-	 * 			| duration < 0
-	 * @throws	IllegalArgumentException
+	 * 			The given vector is null or duration is strictly negative.
+	 * 			| ((v == null) || (duration < 0))
+	 * @throws	ArithmeticException
 	 * 			Any of the resulting components is not a valid component.
+	 * 			| ((Double.isNaN(getXComponent()) || (Double.isNaN(getYComponent()))
 	 * @see		#canHaveAsComponent(double)
 	 * @post	Moves this position to the calculated destination.
 	 * 			| new.equals(getSum(v.scaleBy(duration)))
 	 */
-	public void moveBy(Velocity v, double duration) throws IllegalArgumentException
+	public void moveBy(Velocity v, double duration) throws ArithmeticException, IllegalArgumentException
 	{
-		if (duration < 0)
+		if ((v == null) || (duration < 0))
 		{
-			throw new IllegalArgumentException("Invalid duration provided");
+			throw new IllegalArgumentException("Invalid parameter provided.");
 		}
 		Position p = getSum(v.scaleBy(duration));
 		setXComponent(p.getXComponent());

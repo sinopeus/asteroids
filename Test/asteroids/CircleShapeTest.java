@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -37,17 +36,10 @@ public class CircleShapeTest
 		assertTrue(Util.fuzzyEquals(cs.getRadius(), 25));
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void constructorTest_IllegalInput()
 	{
-		try
-		{
-			new CircleShape(-10);
-			fail();
-		} catch (IllegalArgumentException e)
-		{
-			return;
-		}
+		new CircleShape(-10);
 	}
 
 	@Test

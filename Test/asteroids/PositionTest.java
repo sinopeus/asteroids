@@ -1,6 +1,7 @@
 package asteroids;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -80,7 +81,7 @@ public class PositionTest
 	public void moveByTest_LegalDuration()
 	{
 		Velocity v = new Velocity(5, 6);
-		testPosition.moveBy(v,2.5);
+		testPosition.moveBy(v, 2.5);
 		assertTrue(Util.fuzzyEquals(testPosition.getXComponent(), 17.5));
 		assertTrue(Util.fuzzyEquals(testPosition.getYComponent(), 20.0));
 	}
