@@ -62,6 +62,7 @@ public class Ship implements IShip
 		}
 		setSpeedLimit(speedLimit);
 		setVelocity(velocity);
+		isTerminated = false;
 	}
 
 	/**
@@ -327,6 +328,29 @@ public class Ship implements IShip
 	private static double minimumRadius = 10;
 
 	/**
+	 * Checks whether this ship is terminated.
+	 */
+	@Basic
+	@Raw
+	public boolean isTerminated()
+	{
+		return this.isTerminated;
+	}
+
+	/**
+	 * Terminates this ship.
+	 */
+	public void terminate()
+	{
+		isTerminated = true;
+	}
+
+	/**
+	 * A variable registering whether this ship is terminated.
+	 */
+	private boolean isTerminated;
+
+	/**
 	 * Changes the position of this ship based on the current position, velocity and a given duration of the movement.
 	 * 
 	 * @param	duration
@@ -343,7 +367,8 @@ public class Ship implements IShip
 	 */
 	public void move(double duration) throws ArithmeticException, IllegalArgumentException
 	{
-		if (duration < 0){
+		if (duration < 0)
+		{
 			throw new IllegalArgumentException("The given duration is invalid.");
 		}
 		getPosition().moveBy(getVelocity(), duration);
@@ -359,7 +384,7 @@ public class Ship implements IShip
 	 */
 	public void turn(Angle angle)
 	{
-		assert(angle != null);
+		assert (angle != null);
 		getDirection().rotate(angle);
 	}
 
