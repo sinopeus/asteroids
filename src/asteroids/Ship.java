@@ -9,15 +9,15 @@ import be.kuleuven.cs.som.annotate.Raw;
  * @author Tom Sydney Kerckhove & Xavier Goás Aguililla
  * @version 1.0
  *
- * @Invar	The direction of this ship is a valid direction.
+ * @invar	The direction of this ship is a valid direction.
  * 			| canHaveAsDirection(getDirection())
- * @Invar	The position of this ship is a valid position.
+ * @invar	The position of this ship is a valid position.
  * 			| canHaveAsPosition(getPosition())
- * @Invar	The shape of this ship is a valid shape.
+ * @invar	The shape of this ship is a valid shape.
  * 			| canHaveAsShape(getShape())
- * @Invar	The speedLimit of this ship is a valid speed limit.
+ * @invar	The speedLimit of this ship is a valid speed limit.
  * 			| canHaveAsSpeedLimit(getSpeedLimit())
- * @Invar	The velocity of this ship is a valid velocity.
+ * @invar	The velocity of this ship is a valid velocity.
  * 			| canHaveAsVelocity(getVelocity())
  */
 public class Ship implements IShip
@@ -35,15 +35,15 @@ public class Ship implements IShip
 	 * 			The given speed limit.
 	 * @param	velocity
 	 * 			The given velocity
-	 * @Effect	The direction of this ship is set to the given direction.
+	 * @effect	The direction of this ship is set to the given direction.
 	 * 			| setDirection(direction)
-	 * @Effect	The position of this ship is set to the given position.
+	 * @effect	The position of this ship is set to the given position.
 	 * 			| setPosition(position)
-	 * @Effect	The shape of this ship is set to the given shape.
+	 * @effect	The shape of this ship is set to the given shape.
 	 * 			| setShape(shape)
-	 * @Effect	The speed limit of this ship is set to the given speed limit.
+	 * @effect	The speed limit of this ship is set to the given speed limit.
 	 * 			| setSpeedLimit(speedLimit)
-	 * @Effect	The velocity of this ship is set to the given velocity.
+	 * @effect	The velocity of this ship is set to the given velocity.
 	 * 			| setVelocity(velocity)
 	 * @throws	IllegalArgumentException
 	 * 			| The given shape is not a legal shape.
@@ -69,7 +69,7 @@ public class Ship implements IShip
 	/**
 	 * Initializes this new ship with default values.
 	 * 
-	 * @Effect	Initializes this new ship with the extended ship constructor and default values.
+	 * @effect	Initializes this new ship with the extended ship constructor and default values.
 	 * 			| this(new Direction(),new Position(),new CircleShape(Ship.getMinimumRadius()),Velocity.getSpeedOfLight(),new Velocity())
 	 */
 	public Ship()
@@ -286,7 +286,7 @@ public class Ship implements IShip
 	 *
 	 * @param	direction
 	 *			The new direction for this ship.
-	 * @Pre		The given direction must be a valid direction.
+	 * @pre		The given direction must be a valid direction.
 	 * 			| canHaveAsDirection(direction)
 	 * @post	The direction of this ship is now equal to the given direction.
 	 * 			| new.getDirection() == direction
@@ -416,10 +416,10 @@ public class Ship implements IShip
 	 * 
 	 * @param	angle
 	 * 			The given angle
+	 * @pre		The given angle is not null.
+	 * 			| angle != null
 	 * @throws	IllegalStateException
 	 * 			| isTerminated()
-	 * @Pre		The given angle is not null.
-	 * 			| angle != null
 	 */
 	public void turn(Angle angle) throws IllegalStateException
 	{

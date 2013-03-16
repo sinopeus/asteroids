@@ -132,14 +132,14 @@ public class Position extends Vector
 	 * 			The given velocity.
 	 * @param	duration
 	 * 			The given duration.
+	 * @post	Moves this position to the calculated destination.
+	 * 			| new.equals(getSum(v.scaleBy(duration)))
 	 * @throws	IllegalArgumentException
 	 * 			The given vector is null or duration is strictly negative.
 	 * 			| ((v == null) || (duration < 0))
 	 * @throws	ArithmeticException
 	 * 			One of the resulting components is not a valid component.
 	 * 			| ((Double.isNaN(getXComponent()) || (Double.isNaN(getYComponent()))
-	 * @post	Moves this position to the calculated destination.
-	 * 			| new.equals(getSum(v.scaleBy(duration)))
 	 */
 	public void moveBy(Velocity v, double duration) throws ArithmeticException, IllegalArgumentException
 	{

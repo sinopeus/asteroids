@@ -10,7 +10,7 @@ import be.kuleuven.cs.som.annotate.Raw;
  * @author Tom Sydney Kerckhove & Xavier Goás Aguililla
  * @version 1.0
  * 
- * @Invar 	The magnitude of the velocity is always at most the speed of light.
+ * @invar 	The magnitude of the velocity is always at most the speed of light.
  * 			| this.getVelocity <= Velocity.getSpeedOfLight()
  */
 public class Velocity extends Vector
@@ -136,11 +136,11 @@ public class Velocity extends Vector
 	 *
 	 * @param	v
 	 * 			The given vector.
-	 * @throws	ArithmeticException
-	 * 			One of the components of the resulting velocity is not a number.
-	 * 			| Double.isNaN(result.getXComponent) || Double.isNaN(result.getYComponent)
 	 * @return	A velocity whose components are the sums of the respective components of this velocity and the given vector.
 	 * 			| result == new Velocity(getXComponent() + v.getXComponent(), getYComponent() + v.getYComponent())
+	 * @throws	ArithmeticException
+	 * 			One of the components of the resulting velocity is not a number.
+	 * 			| Double.isNaN(result.getXComponent) || Double.isNaN(result.getYComponent)	 
 	 */
 	@Override
 	public Velocity getSum(Vector v) throws ArithmeticException

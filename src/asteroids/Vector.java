@@ -9,7 +9,7 @@ import be.kuleuven.cs.som.annotate.Raw;
  * @author Tom Sydney Kerckhove & Xavier Goás Aguililla
  * @version 1.0
  * 
- * @Invar	Each of the components of this vector is a valid component
+ * @invar	Each of the components of this vector is a valid component
  * 			| canHaveAsComponent(getXComponent()) && canHaveAsComponent(getXComponent())
  */
 
@@ -150,11 +150,11 @@ public class Vector
 	 *
 	 * @param	v
 	 * 			The given vector.
+	 * @return	A vector whose components are the sums of the respective components of this vector and the given vector.
+	 * 			| result == new Vector(getXComponent() + v.getXComponent(), getYComponent() + v.getYComponent())
 	 * @throws	ArithmeticException
 	 * 			One of the components of the resulting vector is not a number.
 	 * 			| Double.isNaN(result.getXComponent) || Double.isNaN(result.getYComponent)
-	 * @return	A vector whose components are the sums of the respective components of this vector and the given vector.
-	 * 			| result == new Vector(getXComponent() + v.getXComponent(), getYComponent() + v.getYComponent())
 	 */
 	public Vector getSum(Vector v) throws ArithmeticException
 	{
@@ -172,11 +172,11 @@ public class Vector
 	 *
 	 * @param	v
 	 * 			The given vector.
+	 * @return	A vector whose components are the differences of the respective components of this vector and the given vector.
+	 * 			| result == new Vector((getXComponent() - v.getXComponent()), (getYComponent() - v.getYComponent()))
 	 * @throws	ArithmeticException
 	 * 			One of the components of the resulting vectors is not a number.
 	 * 			| Double.isNaN(result.getYComponent) || Double.isNaN(result.getXComponent)
-	 * @return	A vector whose components are the differences of the respective components of this vector and the given vector.
-	 * 			| result == new Vector((getXComponent() - v.getXComponent()), (getYComponent() - v.getYComponent()))
 	 */
 	public Vector getDifference(Vector v) throws ArithmeticException
 	{
@@ -199,11 +199,11 @@ public class Vector
 	 *
 	 * @param	factor
 	 * 			The given factor
+	 * @return	A vector with each of the components scaled by the factor provided in the explicit parameter.
+	 * 			| result == new Vector(getXComponent() * scalar, getYComponent() * scalar)
 	 * @throws	ArithmeticException
 	 * 			One of the components of the resulting vector is not a number.
 	 * 			| Double.isNaN(result.getXComponent) || Double.isNaN(result.getYComponent)
-	 * @return	A vector with each of the components scaled by the factor provided in the explicit parameter.
-	 * 			| result == new Vector(getXComponent() * scalar, getYComponent() * scalar)
 	 */
 	public Vector getScaledBy(double factor) throws ArithmeticException
 	{
@@ -225,11 +225,11 @@ public class Vector
 	 *
 	 * @param	v
 	 * 			The given vector
+	 * @return	The inner product of this vector and the given vector.
+	 * 			| result == (getXComponent() * v.getXComponent()) + (getYComponent() * v.getYComponent())
 	 * @throws	ArithmeticException
 	 * 			The result is not a number.
 	 * 			| Double.isNaN(result)
-	 * @return	The inner product of this vector and the given vector.
-	 * 			| result == (getXComponent() * v.getXComponent()) + (getYComponent() * v.getYComponent())
 	 */
 	public double dotProduct(Vector v) throws ArithmeticException
 	{
@@ -255,11 +255,11 @@ public class Vector
 	/**
 	 * Gets a unit vector denoting the direction of the vector.
 	 *
+	 * @return	A unit vector in the same direction as this vector.
+	 * 			| result == this.scaleBy(1.0 / getMagnitudeTrue())
 	 * @throws	ArithmeticException
 	 * 			This vector is a nil vector.
 	 * 			| Util.fuzzyEquals(getMagnitude(), 0)
-	 * @return	A unit vector in the same direction as this vector.
-	 * 			| result == this.scaleBy(1.0 / getMagnitudeTrue())
 	 */
 	public Vector GetUnitVectorInSameDirection() throws ArithmeticException
 	{
@@ -275,11 +275,11 @@ public class Vector
 	 *
 	 * @param	v
 	 * 			The given vector.
-	 * @throws	ArithmeticException
-	 * 			The distance can't be calculated.
-	 * 			| Double.isNaN(result)
 	 * @return	The distance between this vector and the given vector.
 	 * 			| result == this.getDifference(v).getMagnitude()
+	 * @throws	ArithmeticException
+	 * 			The distance can't be calculated.
+	 * 			| Double.isNaN(result)	 
 	 */
 	public double getDistanceTo(Vector v) throws ArithmeticException
 	{

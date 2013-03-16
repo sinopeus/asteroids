@@ -42,9 +42,10 @@ public class Facade implements IFacade
 	 *          The ship's radius.
 	 * @param   angle
 	 *          The ship's angle.
-	 * @throws  ModelException
-	 *          When invalid properties are provided for the ship.
 	 * @return  A new ship with the given values.
+	 * 			| result == new Ship(...)
+	 * @throws  ModelException
+	 *          When invalid properties are provided for the ship.	 
 	 */
 	@Override
 	public IShip createShip(double x, double y, double xVelocity, double yVelocity, double radius, double angle) throws ModelException
@@ -163,9 +164,10 @@ public class Facade implements IFacade
 	 *          The ship we want to move. 
 	 * @param   dt    
 	 *          The length of time during which we want to move the ship.
+	 * @effect  Moves the given ship for the given duration
+	 * 			| ship.move(dt)
 	 * @throws  ModelException
-	 *          When an invalid ship or time is provided.
-	 * @Effect  | ship.move(dt)
+	 *          When an invalid ship or time is provided.	 
 	 */
 	@Override
 	public void move(IShip ship, double dt) throws ModelException
@@ -188,9 +190,10 @@ public class Facade implements IFacade
 	 *          The ship to which we apply thrust.
 	 * @param   amount
 	 *          The amount of thrust we want to apply.
+	 * @effect  Thrusts the given ship for a given acceleration.
+	 * 			| ship.thrust(amount)
 	 * @throws  ModelException
 	 *          When an invalid ship is provided.
-	 * @Effect  | ship.thrust(amount)
 	 */
 	@Override
 	public void thrust(IShip ship, double amount) throws ModelException
@@ -213,9 +216,10 @@ public class Facade implements IFacade
 	 *          The ship we want to turn.
 	 * @param   angle
 	 *          The angle by which we want to turn the ship.
+	 * @effect  Turns the given ship by a given angle.
+	 * 			| ship.turn(new Angle(angle))
 	 * @throws  ModelException
 	 *          When an invalid ship is provided.
-	 * @Effect  | ship.turn(new Angle(angle))
 	 */
 	@Override
 	public void turn(IShip ship, double angle) throws ModelException
@@ -234,10 +238,10 @@ public class Facade implements IFacade
 	 *          The first ship.
 	 * @param   ship2
 	 *          The second ship.
+	 * @return	The distance between the two ships.
+	 * 			| result == ((Ship) ship1).getPosition().getDistanceTo(((Ship) ship2).getPosition())
 	 * @throws  ModelException
 	 *          When an invalid ship is provided.
-	 * @return The distance in kilometers between the two ships.
-	 * @Effect  | ship.turn(new Angle(angle))
 	 */
 	@Override
 	public double getDistanceBetween(IShip ship1, IShip ship2) throws ModelException
@@ -256,9 +260,11 @@ public class Facade implements IFacade
 	 *          The first ship.
 	 * @param   ship2
 	 *          The second ship.
-	 * @throws  ModelException
-	 *          When an invalid ship is provided.
 	 * @return  Whether the ships overlap or not.
+	 * 			| result == getDistanceBetween(ship1, ship2) - getRadius(ship1) - getRadius(ship2) <= 0
+	 * @throws  ModelException
+	 *          One of the given ships is null
+	 *          | ((ship1 == null) || (ship2 == null))
 	 */
 	@Override
 	public boolean overlap(IShip ship1, IShip ship2) throws ModelException
@@ -277,9 +283,11 @@ public class Facade implements IFacade
 	 *          The first ship.
 	 * @param   ship2
 	 *          The second ship.
-	 * @throws  ModelException
-	 *          When an invalid ship is provided.
 	 * @return  The time to collision between the two ships.
+	 *
+	 * @throws  ModelException
+	 *          One of the given ships is null.
+	 *          | ((ship1 == null) || (ship2 == null))
 	 */
 	@Override
 	public double getTimeToCollision(IShip ship1, IShip ship2) throws ModelException
@@ -309,9 +317,11 @@ public class Facade implements IFacade
 	 *          The first ship.
 	 * @param   ship2
 	 *          The second ship.
-	 * @throws  ModelException
-	 *          When an invalid ship is provided.
 	 * @return  The position of the place of collision.
+	 * 
+	 * @throws  ModelException
+	 *          One of the given ships is null.
+	 *          | ((ship1 == null) || (ship2 == null))
 	 */
 	@Override
 	public double[] getCollisionPosition(IShip ship1, IShip ship2) throws ModelException

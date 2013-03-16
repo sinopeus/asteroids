@@ -9,7 +9,7 @@ import be.kuleuven.cs.som.annotate.Raw;
  * @author Tom Sydney Kerckhove & Xavier Goás Aguililla
  * @version 1.0
  * 
- * @Invar	The radius of this circle shape is a valid radius
+ * @invar	The radius of this circle shape is a valid radius
  * 			| canHaveAsRadius(getRadius)
  */
 public class CircleShape
@@ -70,7 +70,7 @@ public class CircleShape
 	/**
 	 * Initializes this new circle shape with a default radius.
 	 * 
-	 * @Effect	Initializes this new circle shape with the extended constructor and default values.
+	 * @effect	Initializes this new circle shape with the extended constructor and default values.
 	 * 			| CircleShape(0.0)
 	 */
 	public CircleShape()

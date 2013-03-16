@@ -9,9 +9,9 @@ import be.kuleuven.cs.som.annotate.Raw;
  * @author Tom Sydney Kerckhove & Xavier Goás Aguililla
  * @version 1.0
  * 
- * @Invar	The angle value of this angle is a valid angle.
+ * @invar	The angle value of this angle is a valid angle.
  * 			| canHaveAsAngle(getAngle())
- * @Invar	The angle value of this angle is between 0 and 2Pi
+ * @invar	The angle value of this angle is between 0 and 2Pi
  * 			| ((getAngle() >= 0) && (getAngle() <= 2 * Math.PI))
  */
 public class Angle
@@ -23,7 +23,7 @@ public class Angle
 	 * 			The given angle.
 	 * @effect	The angle of this angle is set to the given angle.
 	 * 			| setAngle(angle)
-	 * @Pre		The given angle value is a valid angle.
+	 * @pre		The given angle value is a valid angle.
 	 * 			| canHaveAsAngle(angle)
 	 * @post	The angle value of this new Angle is a valid angle value.
 	 * 			| new.canHaveAsAngle(getAngle)
@@ -80,10 +80,9 @@ public class Angle
 	 *
 	 * @param	angle
 	 *			The new angle for this angle.
-	 * @Pre		The given angle value is a valid angle value.
+	 * @pre		The given angle value is a valid angle value.
 	 * 			| canHaveAsAngle(angle)
-	 * @post	If this angle can have the given angle as its angle,
-	 * 			then the angle of this angle is now equal to the given angle modulo 2Pi.
+	 * @post	The angle value of this angle is now equal to the given angle value modulo 2Pi.
 	 * 			| (getAngle() >= 0) && (getAngle() <= 2*Math.PI))
 	 */
 	@Basic

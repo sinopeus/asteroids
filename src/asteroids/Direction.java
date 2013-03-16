@@ -9,9 +9,9 @@ import be.kuleuven.cs.som.annotate.Raw;
  * @author Tom Sydney Kerckhove & Xavier Goás Aguililla
  * @version 1.0
  * 
- * @Invar	The magnitude of this direction is equal to 1. (It is a unit vector)
+ * @invar	The magnitude of this direction is equal to 1. (It is a unit vector)
  * 			| Util.fuzzyEquals(getMagnitude(), 1.0)
- * @Invar	The angle of this direction is a valid angle.
+ * @invar	The angle of this direction is a valid angle.
  * 			| canHaveAngle(getAngle())
  */
 public class Direction extends Vector
@@ -21,7 +21,7 @@ public class Direction extends Vector
 	 *
 	 * @param   angle
 	 *          The given angle.
-	 * @Pre		The given angle is not null.
+	 * @pre		The given angle is not null.
 	 * 			| angle != null
 	 * @post    The magnitude of this new direction is equal to one.
 	 * 			| Util.fuzzyEquals(getMagnitude(), 1.0)
@@ -82,7 +82,7 @@ public class Direction extends Vector
 	 *
 	 * @param	angle
 	 *			The new angle for this direction.
-	 * @Pre		The given angle is not null.
+	 * @pre		The given angle is not null.
 	 * 			| angle != null
 	 * @post	If this direction can have the given angle as its angle,
 	 * 			then the angle of this direction is now equal to the given angle.
@@ -156,7 +156,7 @@ public class Direction extends Vector
 	/**
 	 * Rotates this direction by the given angle.
 	 * 
-	 * @Pre		The given angle is not null.
+	 * @pre		The given angle is not null.
 	 * 			| angle != null
 	 * @param	angle
 	 * 			The given angle.
