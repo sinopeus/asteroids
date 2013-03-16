@@ -1,4 +1,4 @@
-package asteroids;
+package model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -8,6 +8,13 @@ import model.ModelException;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import asteroids.Angle;
+import asteroids.IShip;
+import asteroids.Position;
+import asteroids.Ship;
+import asteroids.Util;
+import asteroids.Velocity;
 
 @SuppressWarnings("javadoc")
 public class FacadeTest

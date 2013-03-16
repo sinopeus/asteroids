@@ -1,4 +1,4 @@
-package asteroids;
+package model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -10,6 +10,9 @@ import model.ModelException;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import asteroids.IShip;
+import asteroids.Util;
 
 @SuppressWarnings("javadoc")
 public class PartialFacadeTest

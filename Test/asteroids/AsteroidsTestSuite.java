@@ -1,5 +1,8 @@
 package asteroids;
 
+import model.FacadeTest;
+import model.PartialFacadeTest;
+
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
