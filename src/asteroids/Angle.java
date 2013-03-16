@@ -17,7 +17,7 @@ import be.kuleuven.cs.som.annotate.Raw;
 public class Angle
 {
 	/**
-	 * Initializes this new angle with a given angle.
+	 * Initializes this new angle with a given angle value.
 	 * 
 	 * @param	angle
 	 * 			The given angle.
@@ -36,7 +36,7 @@ public class Angle
 	}
 
 	/**
-	 * Initializes this new angle with default values.
+	 * Initializes this new angle with a default angle value.
 	 * 
 	 * @effect	Calls the extended constructor with default values.
 	 * 			| this(0.0)

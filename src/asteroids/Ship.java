@@ -4,7 +4,7 @@ import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 
 /**
- * A class representing a ship and its characteristics.
+ * A class of ships involving its position, velocity, acceleration, direction, speed limit and shape.
  *
  * @author Tom Sydney Kerckhove & Xavier Goás Aguililla
  * @version 1.0

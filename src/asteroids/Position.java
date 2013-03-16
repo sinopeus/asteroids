@@ -4,7 +4,7 @@ import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 
 /**
- * A class of Positions extending vector.
+ * A class of positions vectors.
  * 
  * @author Tom Sydney Kerckhove & Xavier Goás Aguililla
  * @version 1.0
@@ -27,7 +27,7 @@ public class Position extends Vector
 	}
 
 	/**
-	 * Initialize this new position with a given vector
+	 * Initialize this new position with the components of the given vector.
 	 * 
 	 * @param	v
 	 * 			The given vector.
@@ -43,7 +43,7 @@ public class Position extends Vector
 	}
 
 	/**
-	 * Initializes this new position with default values.
+	 * Initializes this new position with default components.
 	 * 
 	 * @effect	Initializes this new position with the simple constructor of vector.
 	 * 			| Vector()

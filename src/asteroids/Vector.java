@@ -33,7 +33,7 @@ public class Vector
 	}
 
 	/**
-	 * Initializes this new vector with a given vector to duplicate from.
+	 * Initializes this new vector with the components of the given vector.
 	 * 
 	 * @param	v
 	 * 			The given vector.

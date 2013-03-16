@@ -4,7 +4,7 @@ import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 
 /**
- * A class of Directions extending vector, involving an angle. A direction is a unit vector.
+ * A class of directions extending vector, involving an angle. A direction is a unit vector.
  * 
  * @author Tom Sydney Kerckhove & Xavier Goás Aguililla
  * @version 1.0
@@ -37,7 +37,8 @@ public class Direction extends Vector
 	}
 
 	/**
-	 * Initializes this new direction with default values.	
+	 * Initializes this new direction with a default angle.	
+	 * 
 	 * @post    The magnitude of this new direction is equal to one.
 	 * 			| Util.fuzzyEquals(getMagnitude(), 1.0)
 	 * @post	The angle of this direction is a valid angle.

@@ -1,7 +1,7 @@
 package asteroids;
 
 /**
- * A class of acceleration vectors extending vectors.
+ * A class of acceleration vectors.
  * 
  * @author Tom Sydney Kerckhove & Xavier Goás Aguililla
  * @version 1.0

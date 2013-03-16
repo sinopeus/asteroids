@@ -5,7 +5,7 @@ import be.kuleuven.cs.som.annotate.Immutable;
 import be.kuleuven.cs.som.annotate.Raw;
 
 /**
- * A class of velocities involving an x-component, and an y-component.
+ * A class of velocity vectors.
  * 
  * @author Tom Sydney Kerckhove & Xavier Goás Aguililla
  * @version 1.0
