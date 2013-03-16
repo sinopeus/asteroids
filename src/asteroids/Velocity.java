@@ -7,8 +7,8 @@ import be.kuleuven.cs.som.annotate.Raw;
 /**
  * A class of velocities involving an x-component, and an y-component.
  * 
- * @author Syd & Xavier
- * @version 0.0
+ * @author Tom Sydney Kerckhove & Xavier Goás Aguililla
+ * @version 1.0
  * 
  * @Invar 	The magnitude of the velocity is always at most the speed of light.
  * 			| this.getVelocity <= Velocity.getSpeedOfLight()

@@ -3,8 +3,8 @@ package asteroids;
 /**
  * A class of acceleration vectors extending vectors.
  * 
- * @author Syd & Xavier
- * @version 0.0
+ * @author Tom Sydney Kerckhove & Xavier Goás Aguililla
+ * @version 1.0
  */
 public class Acceleration extends Vector
 {

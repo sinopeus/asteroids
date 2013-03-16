@@ -4,9 +4,11 @@ import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 
 /**
- * @author Syd & Xavier
- * @version 0.0
- * 
+ * A class representing a ship and its characteristics.
+ *
+ * @author Tom Sydney Kerckhove & Xavier Goás Aguililla
+ * @version 1.0
+ *
  * @Invar	The direction of this ship is a valid direction.
  * 			| canHaveAsDirection(getDirection())
  * @Invar	The position of this ship is a valid position.

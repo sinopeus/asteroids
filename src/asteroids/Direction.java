@@ -6,8 +6,8 @@ import be.kuleuven.cs.som.annotate.Raw;
 /**
  * A class of Directions extending vector, involving an angle. A direction is a unit vector.
  * 
- * @author Syd & Xavier
- * @version 0.0
+ * @author Tom Sydney Kerckhove & Xavier Goás Aguililla
+ * @version 1.0
  * 
  * @Invar	The magnitude of this direction is equal to 1. (It is a unit vector)
  * 			| Util.fuzzyEquals(getMagnitude(), 1.0)

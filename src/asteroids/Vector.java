@@ -6,8 +6,8 @@ import be.kuleuven.cs.som.annotate.Raw;
 /**
  * A class of vectors involving a x-, and a y-component.
  *
- * @author Syd & Xavier
- * @version 0.0
+ * @author Tom Sydney Kerckhove & Xavier Goás Aguililla
+ * @version 1.0
  * 
  * @Invar	Each of the components of this vector is a valid component
  * 			| canHaveAsComponent(getXComponent()) && canHaveAsComponent(getXComponent())

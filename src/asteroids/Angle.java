@@ -6,8 +6,8 @@ import be.kuleuven.cs.som.annotate.Raw;
 /**
  * A wrapper class for angles.
  * 
- * @author Syd & Xavier
- * @version 0.0
+ * @author Tom Sydney Kerckhove & Xavier Goás Aguililla
+ * @version 1.0
  * 
  * @Invar	The angle value of this angle is a valid angle.
  * 			| canHaveAsAngle(getAngle())

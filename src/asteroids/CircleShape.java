@@ -6,8 +6,8 @@ import be.kuleuven.cs.som.annotate.Raw;
 /**
  * A class of circle shapes involving a finite positive radius
  * 
- * @author Syd & Xavier
- * @version 0.0
+ * @author Tom Sydney Kerckhove & Xavier Goás Aguililla
+ * @version 1.0
  * 
  * @Invar	The radius of this circle shape is a valid radius
  * 			| canHaveAsRadius(getRadius)

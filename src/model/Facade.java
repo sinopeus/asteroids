@@ -10,8 +10,8 @@ import asteroids.Vector;
 import asteroids.Velocity;
 
 /**
- * @author Syd & Xavier
- * @Version 0.0
+ * @author Tom Sydney Kerckhove & Xavier Goás Aguililla
+ * @version 1.0
  */
 public class Facade implements IFacade
 {
