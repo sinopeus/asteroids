@@ -48,7 +48,6 @@ public class Ship implements IShip
 	 * @throws	NullPointerException
 	 * 			| Any of the parameters is null.
 	 */
-	@Raw
 	public Ship(Direction direction, Position position, CircleShape shape, double speedLimit, Velocity velocity) throws IllegalArgumentException, NullPointerException
 	{
 		setDirection(direction);
@@ -66,9 +65,9 @@ public class Ship implements IShip
 	}
 
 	/**
-	 * Initializes this new ship.
+	 * Initializes this new ship with default values.
 	 * 
-	 * @Effect	Uses the extended constructor to initialize this new ship with default values.
+	 * @Effect	Initializes this new ship with the extended ship constructor and default values.
 	 * 			| this(new Direction(),new Position(),new CircleShape(Ship.getMinimumRadius()),Velocity.getSpeedOfLight(),new Velocity())
 	 */
 	public Ship()
@@ -77,13 +76,14 @@ public class Ship implements IShip
 	}
 
 	/**
-	 * Returns the position of this ship.
+	 * Gets a position equal to the position of this ship.
 	 */
+	@SuppressWarnings("javadoc")
 	@Basic
 	@Raw
 	public Position getPosition()
 	{
-		return this.position;
+		return new Position(this.position);
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class Ship implements IShip
 	 */
 	@Basic
 	@Raw
-	public boolean canHaveAsPosition(Position position)
+	protected boolean canHaveAsPosition(Position position)
 	{
 		return (position != null);
 	}
@@ -111,11 +111,17 @@ public class Ship implements IShip
 	 * @throws	IllegalArgumentException
 	 * 			The this ship can't have the given position as its position,.
 	 * 			| !canHaveAsPosition(position)
+	 * @throws	IllegalStateException
+	 * 			| isTerminated()
 	 */
 	@Basic
 	@Raw
-	public void setPosition(Position position) throws IllegalArgumentException
+	public void setPosition(Position position) throws IllegalArgumentException, IllegalStateException
 	{
+		if (this.isTerminated())
+		{
+			throw new IllegalStateException("This ship is terminated.");
+		}
 		if (!canHaveAsPosition(position))
 		{
 			throw new IllegalArgumentException("Invalid position provided.");
@@ -131,13 +137,14 @@ public class Ship implements IShip
 	private Position position;
 
 	/**
-	 * Returns the velocity of this ship.
+	 * Gets a velocity equal to the velocity of this ship.
 	 */
+	@SuppressWarnings("javadoc")
 	@Basic
 	@Raw
 	public Velocity getVelocity()
 	{
-		return this.velocity;
+		return new Velocity(this.velocity);
 	}
 
 	/**
@@ -150,7 +157,7 @@ public class Ship implements IShip
 	 */
 	@Basic
 	@Raw
-	public boolean canHaveAsVelocity(Velocity velocity)
+	protected boolean canHaveAsVelocity(Velocity velocity)
 	{
 		return ((velocity != null) && (velocity.getVelocity() <= getSpeedLimit()));
 	}
@@ -164,11 +171,17 @@ public class Ship implements IShip
 	 * 			then the velocity of this ship is now equal to the given velocity.
 	 * 			| if canHaveAsVelocity(velocity)
 	 * 			|	then new.getVelocity() == velocity
+	 * @throws	IllegalStateException
+	 * 			| isTerminated()
 	 */
 	@Basic
 	@Raw
-	public void setVelocity(Velocity velocity)
+	public void setVelocity(Velocity velocity) throws IllegalStateException
 	{
+		if (this.isTerminated())
+		{
+			throw new IllegalStateException("This ship is terminated.");
+		}
 		if (canHaveAsVelocity(velocity))
 		{
 			this.velocity = velocity;
@@ -183,6 +196,7 @@ public class Ship implements IShip
 	/**
 	 * Returns the speed limit of this ship.
 	 */
+	@SuppressWarnings("javadoc")
 	@Basic
 	@Raw
 	public double getSpeedLimit()
@@ -200,7 +214,7 @@ public class Ship implements IShip
 	 */
 	@Basic
 	@Raw
-	public boolean canHaveAsSpeedLimit(double speedLimit)
+	protected boolean canHaveAsSpeedLimit(double speedLimit)
 	{
 		return ((speedLimit >= 0) && (speedLimit <= Velocity.getSpeedOfLight()));
 	}
@@ -214,11 +228,17 @@ public class Ship implements IShip
 	 * 			then the speed limit of this ship is now equal to the given speed limit.
 	 * 			| if canHaveAsSpeedLimit(speedLimit)
 	 * 			|	then new.getSpeedLimit() == speedLimit
+	 * @throws	IllegalStateException
+	 * 			| isTerminated()
 	 */
 	@Basic
 	@Raw
-	public void setSpeedLimit(double speedLimit)
+	public void setSpeedLimit(double speedLimit) throws IllegalStateException
 	{
+		if (this.isTerminated())
+		{
+			throw new IllegalStateException("This ship is terminated.");
+		}
 		if (canHaveAsSpeedLimit(speedLimit))
 		{
 			this.speedLimit = speedLimit;
@@ -234,13 +254,14 @@ public class Ship implements IShip
 	private double speedLimit;
 
 	/**
-	 * Returns the direction of this ship.
+	 * Gets a direction equal to the direction of this ship.
 	 */
+	@SuppressWarnings("javadoc")
 	@Basic
 	@Raw
 	public Direction getDirection()
 	{
-		return this.direction;
+		return new Direction(this.direction.getAngle());
 	}
 
 	/**
@@ -253,7 +274,7 @@ public class Ship implements IShip
 	 */
 	@Basic
 	@Raw
-	public boolean canHaveAsDirection(Direction direction)
+	protected boolean canHaveAsDirection(Direction direction)
 	{
 		return (direction != null);
 	}
@@ -263,15 +284,21 @@ public class Ship implements IShip
 	 *
 	 * @param	direction
 	 *			The new direction for this ship.
-	 * @pre		The given direction must be a valid direction.
+	 * @Pre		The given direction must be a valid direction.
 	 * 			| canHaveAsDirection(direction)
 	 * @post	The direction of this ship is now equal to the given direction.
 	 * 			| new.getDirection() == direction
+	 * @throws	IllegalStateException
+	 * 			| isTerminated()
 	 */
 	@Basic
 	@Raw
-	public void setDirection(Direction direction)
+	public void setDirection(Direction direction) throws IllegalStateException
 	{
+		if (this.isTerminated())
+		{
+			throw new IllegalStateException("This ship is terminated.");
+		}
 		assert (canHaveAsDirection(direction));
 		this.direction = direction;
 		assert (getDirection().equals(direction));
@@ -283,13 +310,14 @@ public class Ship implements IShip
 	private Direction direction;
 
 	/**
-	 * Returns the shape of this ship.
+	 * Gets a shape equal to the shape of this ship.
 	 */
+	@SuppressWarnings("javadoc")
 	@Basic
 	@Raw
 	public CircleShape getShape()
 	{
-		return this.shape;
+		return new CircleShape(shape.getRadius());
 	}
 
 	/**
@@ -297,12 +325,12 @@ public class Ship implements IShip
 	 * 
 	 * @param 	shape
 	 * 			The shape to check.
-	 * @return	True if and only if the given shapeis not null and has a range of at least the minimum radius for ships.
+	 * @return	True if and only if the given shape is not null and has a range of at least the minimum radius for ships.
 	 * 			| result = ((shape != null) && (shape.getRadius() >= Ship.getMinimumRadius()))
 	 */
 	@Basic
 	@Raw
-	public boolean canHaveAsShape(CircleShape shape)
+	protected boolean canHaveAsShape(@Raw CircleShape shape)
 	{
 		return ((shape != null) && (shape.getRadius() >= Ship.getMinimumRadius()));
 	}
@@ -315,6 +343,7 @@ public class Ship implements IShip
 	/**
 	 * Returns the minimum radius of ships.
 	 */
+	@SuppressWarnings("javadoc")
 	@Basic
 	@Raw
 	public static double getMinimumRadius()
@@ -330,6 +359,7 @@ public class Ship implements IShip
 	/**
 	 * Checks whether this ship is terminated.
 	 */
+	@SuppressWarnings("javadoc")
 	@Basic
 	@Raw
 	public boolean isTerminated()
@@ -363,15 +393,20 @@ public class Ship implements IShip
 	 * @throws	IllegalArgumentException
 	 * 			The given duration is strictly negative.
 	 * 			| duration <= 0
-	 * 			
+	 * @throws	IllegalStateException
+	 * 			| isTerminated()	
 	 */
-	public void move(double duration) throws ArithmeticException, IllegalArgumentException
+	public void move(double duration) throws ArithmeticException, IllegalArgumentException, IllegalStateException
 	{
+		if (this.isTerminated())
+		{
+			throw new IllegalStateException("This ship is terminated.");
+		}
 		if (duration < 0)
 		{
 			throw new IllegalArgumentException("The given duration is invalid.");
 		}
-		getPosition().moveBy(getVelocity(), duration);
+		this.position.moveBy(getVelocity(), duration);
 	}
 
 	/**
@@ -379,13 +414,19 @@ public class Ship implements IShip
 	 * 
 	 * @param	angle
 	 * 			The given angle
+	 * @throws	IllegalStateException
+	 * 			| isTerminated()
 	 * @Pre		The given angle is not null.
 	 * 			| angle != null
 	 */
-	public void turn(Angle angle)
+	public void turn(Angle angle) throws IllegalStateException
 	{
+		if (this.isTerminated())
+		{
+			throw new IllegalStateException("This ship is terminated.");
+		}
 		assert (angle != null);
-		getDirection().rotate(angle);
+		this.direction.rotate(angle);
 	}
 
 	/**
@@ -393,20 +434,27 @@ public class Ship implements IShip
 	 * 
 	 * @param 	acceleration
 	 * 			The given acceleration
+	 * @throws	IllegalStateException
+	 * 			This ship is terminated
+	 * 			| isTerminated()
 	 */
-	public void thrust(double acceleration)
+	public void thrust(double acceleration) throws IllegalStateException
 	{
+		if (this.isTerminated())
+		{
+			throw new IllegalStateException("This ship is terminated.");
+		}
 		if (acceleration < 0)
 		{
 			acceleration = 0;
 		}
-		Acceleration a = new Acceleration(getDirection().scaleBy(acceleration));
-		getVelocity().accelerateBy(a, 1);
+		Acceleration a = new Acceleration(getDirection().getScaledBy(acceleration));
+		this.velocity.accelerateBy(a, 1);
 		if (getVelocity().getMagnitude() > this.getSpeedLimit())
 		{
-			Vector v = getVelocity().scaleBy(this.getSpeedLimit() / getVelocity().getMagnitude());
-			getVelocity().setXComponent(v.getXComponent());
-			getVelocity().setYComponent(v.getYComponent());
+			Vector v = getVelocity().getScaledBy(this.getSpeedLimit() / getVelocity().getMagnitude());
+			this.velocity.setXComponent(v.getXComponent());
+			this.velocity.setYComponent(v.getYComponent());
 		}
 	}
 }

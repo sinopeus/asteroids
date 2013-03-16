@@ -1,8 +1,6 @@
 package asteroids;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -38,7 +36,6 @@ public class AngleTest
 	{
 		assertTrue(testAngle.canHaveAsAngle(Math.PI));
 		assertFalse(testAngle.canHaveAsAngle(Double.NaN));
-		assertFalse(testAngle.canHaveAsAngle(Double.POSITIVE_INFINITY));
 	}
 
 	@Test
@@ -63,14 +60,6 @@ public class AngleTest
 	}
 
 	@Test
-	public void equalsTest_PerfectParameter()
-	{
-		assertTrue(testAngle.equals(new Angle()));
-		assertFalse(testAngle.equals(new Angle(5)));
-		assertFalse(testAngle.equals(new Ship()));
-	}
-
-	@Test
 	public void addTest()
 	{
 		Angle testAngle2 = new Angle(Math.PI);
@@ -78,5 +67,14 @@ public class AngleTest
 		assertTrue(Util.fuzzyEquals(testAngle.getAngle(), Math.PI));
 		testAngle2.add(testAngle2);
 		assertTrue(Util.fuzzyEquals(testAngle2.getAngle(), 0));
+	}
+
+	@Test
+	public void equalsTest_PerfectParameter()
+	{
+		assertTrue(testAngle.equals(new Angle()));
+		assertFalse(testAngle.equals(new Angle(5)));
+		assertFalse(testAngle.equals(new Ship()));
+		assertFalse(testAngle.equals(null));
 	}
 }

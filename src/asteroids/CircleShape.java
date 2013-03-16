@@ -15,8 +15,9 @@ import be.kuleuven.cs.som.annotate.Raw;
 public class CircleShape
 {
 	/**
-	 * Returns the radius of this circle shape.
+	 * Gets the radius of this circle shape.
 	 */
+	@SuppressWarnings("javadoc")
 	@Basic
 	@Raw
 	public double getRadius()
@@ -30,11 +31,11 @@ public class CircleShape
 	 * @param 	radius
 	 * 			The radius to check.
 	 * @return	True if and only if the given radius is at least 0 and a number.
-	 * 			| result = ((radius >= 0) && !Double.isNaN(radius))
+	 * 			| result == ((radius >= 0) && !Double.isNaN(radius))
 	 */
 	@Basic
 	@Raw
-	public boolean canHaveAsRadius(double radius)
+	protected boolean canHaveAsRadius(double radius)
 	{
 		return (!Double.isNaN(radius) && (radius >= 0));
 	}
@@ -69,8 +70,8 @@ public class CircleShape
 	/**
 	 * Initializes this new circle shape with a default radius.
 	 * 
-	 * @Effect	Uses the extended constructor to initialize this new circle shape.
-	 * 			| this(0.0)
+	 * @Effect	Initializes this new circle shape with the extended constructor and default values.
+	 * 			| CircleShape(0.0)
 	 */
 	public CircleShape()
 	{
@@ -83,18 +84,19 @@ public class CircleShape
 	 * @param	o
 	 * 			The given object.
 	 * @return	True if and only if the given object is a non null circle shape and its radius is equal to the radius of this circle shape.
-	 * 			| result =(o != null && o instanceof Vector && Util.fuzzyEquals(getXComponent(), ((Vector) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Vector) o).getYComponent()))
+	 * 			| result == ((o != null) && (getClass() == o.getClass()) && (Util.fuzzyEquals(getXComponent(), ((Vector) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Vector) o).getYComponent())))
 	 */
 	@Override
+	@Raw
 	public boolean equals(Object o)
 	{
 		if (o == null){
 			return false;
 		}
-		if(!(o instanceof CircleShape)){
+		if(!(getClass() == o.getClass())){
 			return false;
 		}
 		CircleShape other = (CircleShape) o;
-		return (Util.fuzzyEquals(getRadius(), ((CircleShape) o).getRadius()));
+		return (Util.fuzzyEquals(getRadius(), other.getRadius()));
 	}
 }

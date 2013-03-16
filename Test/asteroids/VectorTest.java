@@ -1,14 +1,13 @@
 package asteroids;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
 
-@SuppressWarnings({ "unused", "javadoc" })
+@SuppressWarnings(
+{ "unused", "javadoc" })
 public class VectorTest
 {
 
@@ -19,14 +18,14 @@ public class VectorTest
 		testVector2 = new Vector(5, -5);
 		infiniteVector1 = new Vector(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY);
 		infiniteVector2 = new Vector(Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY);
-		nullVector = new Vector();
+		nilVector = new Vector();
 	}
 
 	private static Vector testVector1;
 	private static Vector testVector2;
 	private static Vector infiniteVector1;
 	private static Vector infiniteVector2;
-	private static Vector nullVector;
+	private static Vector nilVector;
 
 	@Test
 	public void extendedConstructorTest_ComponentsMatchGivenComponents_PerfectParameters()
@@ -55,11 +54,17 @@ public class VectorTest
 	}
 
 	@Test
-	public void byVectorConstructorTest_ComponentsMatchGivenVectorsComponents()
+	public void byVectorConstructorTest_ComponentsMatchGivenVectorsComponents_PerfectParameters()
 	{
 		Vector v = new Vector(testVector1);
 		assertTrue(Util.fuzzyEquals(v.getXComponent(), testVector1.getXComponent()));
 		assertTrue(Util.fuzzyEquals(v.getYComponent(), testVector1.getYComponent()));
+	}
+
+	@Test(expected = NullPointerException.class)
+	public void byVectorConstructorTest_ComponentsMatchGivenVectorsComponents_NullVector()
+	{
+		Vector v = new Vector(null);
 	}
 
 	@Test
@@ -115,9 +120,17 @@ public class VectorTest
 	}
 
 	@Test(expected = ArithmeticException.class)
-	public void getSumTest_IllegalVector()
+	public void getSumTest_NaNResultVectorXComponent()
 	{
 		Vector sumVector = infiniteVector1.getSum(infiniteVector2);
+	}
+
+	@Test(expected = ArithmeticException.class)
+	public void getSumTest_NaNResultVectorYComponent()
+	{
+		Vector v1 = new Vector(0, Double.POSITIVE_INFINITY);
+		Vector v2 = new Vector(0, Double.NEGATIVE_INFINITY);
+		v1.getSum(v2);
 	}
 
 	@Test
@@ -130,23 +143,38 @@ public class VectorTest
 	}
 
 	@Test(expected = ArithmeticException.class)
-	public void getDifferenceTest_IllegalVector()
+	public void getDifferenceTest_NaNResultVectorXComponent()
 	{
 		Vector differenceVector = infiniteVector1.getDifference(infiniteVector1);
+	}
+
+	@Test(expected = ArithmeticException.class)
+	public void getDifferenceTest_NaNResultVectorYComponent()
+	{
+		Vector v1 = new Vector(0, Double.POSITIVE_INFINITY);
+		Vector v2 = new Vector(0, Double.POSITIVE_INFINITY);
+		v1.getDifference(v2);
 	}
 
 	@Test
 	public void scaleByTest_PerfectParameters()
 	{
-		Vector scaleVector = testVector1.scaleBy(2.0);
+		Vector scaleVector = testVector1.getScaledBy(2.0);
 		assertTrue(Util.fuzzyEquals(scaleVector.getXComponent(), 20.0));
 		assertTrue(Util.fuzzyEquals(scaleVector.getYComponent(), 20.0));
 	}
 
 	@Test(expected = ArithmeticException.class)
-	public void scaleByTest_IllegalVector()
+	public void scaleByTest_NaNResultVectorXComponent()
 	{
-		Vector scaleVector = infiniteVector1.scaleBy(0.0);
+		Vector scaleVector = infiniteVector1.getScaledBy(0.0);
+	}
+
+	@Test(expected = ArithmeticException.class)
+	public void scaleByTest_NaNResultVectorYComponent()
+	{
+		Vector v1 = new Vector(0, Double.POSITIVE_INFINITY);
+		Vector scaleVector = v1.getScaledBy(0.0);
 	}
 
 	@Test
@@ -159,7 +187,7 @@ public class VectorTest
 	@Test(expected = ArithmeticException.class)
 	public void dotTest_IllegalVectoy()
 	{
-		infiniteVector1.dotProduct(nullVector);
+		infiniteVector1.dotProduct(nilVector);
 	}
 
 	@Test
@@ -181,27 +209,28 @@ public class VectorTest
 	@Test(expected = ArithmeticException.class)
 	public void GetUnitVectorInSameDirectionTest_NullVector()
 	{
-		nullVector.GetUnitVectorInSameDirection();
+		nilVector.GetUnitVectorInSameDirection();
 	}
 
 	@Test
 	public void distanceToTest_PerfectParameters()
 	{
-		double result = testVector1.distanceTo(testVector2);
+		double result = testVector1.getDistanceTo(testVector2);
 		assertTrue(Util.fuzzyEquals(result, 15.811388300841896));
 	}
 
 	@Test(expected = ArithmeticException.class)
 	public void distanceToTest_IllegalVector()
 	{
-		infiniteVector1.distanceTo(infiniteVector1);
+		infiniteVector1.getDistanceTo(infiniteVector1);
 	}
 
 	@Test
 	public void equalsTest()
 	{
-		assertEquals(new Vector(), new Vector());
-		assertNotSame(new Vector(), new Vector(5, 5));
-		assertNotSame(new Vector(), new Ship());
+		assertTrue(testVector1.equals(new Vector(10, 10)));
+		assertFalse(testVector1.equals(new Vector(5, 5)));
+		assertFalse(testVector1.equals(new Position()));
+		assertFalse(testVector1.equals(null));
 	}
 }

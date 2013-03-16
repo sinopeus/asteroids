@@ -4,24 +4,62 @@ import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 
 /**
- * A class implementing simple positional information in two dimensions for
- * objects in the game.
+ * A class of Positions extending vector.
  * 
  * @author Syd & Xavier
  * @version 0.0
  */
 public class Position extends Vector
 {
+	/**
+	 * Initializes this new Position with a given x-coordinate and y-coordinate.
+	 * 
+	 * @param   x
+	 *          The given x coordinate
+	 * @param   y
+	 *          The given y coordinate
+	 * @effect	Initializes this new position with the extended constructor of vector.
+	 * 			| Vector(x, y)
+	 */
+	public Position(double x, double y)
+	{
+		super(x, y);
+	}
+
+	/**
+	 * Initialize this new position with a given vector
+	 * 
+	 * @param	v
+	 * 			The given vector.
+	 * @effect	Initializes this new position with the by-vector constructor of vector.
+	 * 			| Vector(v)
+	 * @throws	NullPointerException
+	 * 			The given vector is null
+	 * 			| v == null
+	 */
+	public Position(Vector v) throws NullPointerException
+	{
+		super(v);
+	}
+
+	/**
+	 * Initializes this new position with default values.
+	 * 
+	 * @effect	Initializes this new position with the simple constructor of vector.
+	 * 			| Vector()
+	 */
+	public Position()
+	{
+		super();
+	}
 
 	/**
 	 * Sets the x component of this position to the given x component.
 	 * 
 	 * @param   x
 	 *          The new x-component for this velocity.
-	 * @post    If this velocity can have the given x-component as its x-component,
-	 *          then the x-component of this velocity is now equal to the given
-	 *          x-component. | if canHaveAsXComponent(vx) | then
-	 *          | new.getXComponent() == vx
+	 * @post    The x-component of this velocity is now equal to the given y component
+	 *          | new.getXComponent() == x
 	 * @throws	IllegalArgumentException
 	 * 			The given x-component is not a valid component.
 	 * 			| !canHaveAsComponent(x)
@@ -44,10 +82,8 @@ public class Position extends Vector
 	 * 
 	 * @param   y
 	 *          The new y-component for this velocity.
-	 * @post    If this velocity can have the given y-component as its y-component,
-	 *          then the y-component of this velocity is now equal to the given
-	 *          y-component. | if canHaveAsYComponent(vy) | then
-	 *          | new.getYComponent() == vy
+	 * @post    The y-component of this velocity is now equal to the given y component
+	 *          | new.getXComponent() == y
 	 * @throws	IllegalArgumentException
 	 * 			The given y-component is not a valid component.
 	 * 			| !canHaveAsComponent(y)
@@ -66,45 +102,6 @@ public class Position extends Vector
 	}
 
 	/**
-	 * Initializes this new Position with a given x-coordinate and y-coordinate.
-	 * 
-	 * @param   x
-	 *          The given x coordinate
-	 * @param   y
-	 *          The given y coordinate
-	 * @effect	Initializes this new position with the extended constructor of vector.
-	 * 			| super(x, y)
-	 */
-	public Position(double x, double y)
-	{
-		super(x, y);
-	}
-
-	/**
-	 * Initialize this new position with a given vector
-	 * 
-	 * @param	v
-	 * 			The given vector.
-	 * @effect	Initializes this new position with the by-vector constructor of vector.
-	 * 			| super(v)
-	 * @throws	NullPointerException
-	 * 			The given vector is null
-	 * 			| v == null
-	 */
-	public Position(Vector v) throws NullPointerException
-	{
-		super(v);
-	}
-
-	/**
-	 * Initializes this new position with default values.
-	 */
-	public Position()
-	{
-		super();
-	}
-
-	/**
 	 * Gets the sum of this Position and the given vector.
 	 * 
 	 * @param	v
@@ -115,7 +112,7 @@ public class Position extends Vector
 	 * 			The given vector is null
 	 * 			| v == null
 	 * @throws	ArithmeticException
-	 * 			Any of the resulting components is not a number
+	 * 			One of the resulting components is not a number
 	 * 			| ((Double.isNaN(getXComponent()) || (Double.isNaN(getYComponent())) 
 	 */
 	@Override
@@ -139,9 +136,8 @@ public class Position extends Vector
 	 * 			The given vector is null or duration is strictly negative.
 	 * 			| ((v == null) || (duration < 0))
 	 * @throws	ArithmeticException
-	 * 			Any of the resulting components is not a valid component.
+	 * 			One of the resulting components is not a valid component.
 	 * 			| ((Double.isNaN(getXComponent()) || (Double.isNaN(getYComponent()))
-	 * @see		#canHaveAsComponent(double)
 	 * @post	Moves this position to the calculated destination.
 	 * 			| new.equals(getSum(v.scaleBy(duration)))
 	 */
@@ -151,8 +147,32 @@ public class Position extends Vector
 		{
 			throw new IllegalArgumentException("Invalid parameter provided.");
 		}
-		Position p = getSum(v.scaleBy(duration));
+		Position p = getSum(v.getScaledBy(duration));
 		setXComponent(p.getXComponent());
 		setYComponent(p.getYComponent());
+	}
+
+	/**
+	 * Checks whether the given object is a position and its respective components are equal to this position's components
+	 * 
+	 * @param	o
+	 * 			The given object.
+	 * @return	True if and only if the given object is a Position and the respective components of the given object and this position are equal.
+	 * 			| result == (o != null) && (getClass() != o.getClass()) && Util.fuzzyEquals(getXComponent(), ((Position) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Position) o).getYComponent()))
+	 */
+	@Override
+	@Raw
+	public boolean equals(Object o)
+	{
+		if (o == null)
+		{
+			return false;
+		}
+		if (getClass() != o.getClass())
+		{
+			return false;
+		}
+		Position other = (Position) o;
+		return (Util.fuzzyEquals(getXComponent(), other.getXComponent()) && Util.fuzzyEquals(getYComponent(), other.getYComponent()));
 	}
 }

@@ -48,13 +48,13 @@ public class FacadeTest
 		testFacade.createShip(700, Double.NaN, 0, 0, 50, Math.PI);
 	}
 
-	@Test
+	@Test(expected = ModelException.class)
 	public void createShipExtendedTest_IllegalXVelocity()
 	{
 		testFacade.createShip(700, 400, Double.POSITIVE_INFINITY, 0, 50, Math.PI);
 	}
 
-	@Test
+	@Test(expected = ModelException.class)
 	public void createShipExtendedTest_IllegalYVelocity()
 	{
 		testFacade.createShip(700, 400, 0, Double.POSITIVE_INFINITY, 50, Math.PI);
@@ -228,6 +228,16 @@ public class FacadeTest
 		assertTrue(Util.fuzzyEquals(result, 0.5278640450004204));
 	}
 
+	@Test
+	public void getTimeToCollisionTest_NoCollision()
+	{
+		Ship s1 = (Ship) testFacade.createShip(0, 0, 0, 0, 10, 0);
+		Ship s2 = (Ship) testFacade.createShip(10, 20, 0, 0, 10, 0);
+
+		double result = testFacade.getTimeToCollision(s1, s2);
+		assertTrue(Util.fuzzyEquals(result, Double.POSITIVE_INFINITY));
+	}
+
 	@Test(expected = ModelException.class)
 	public void getTimeToCollisionTest_IllegalFirstShip()
 	{
@@ -249,6 +259,16 @@ public class FacadeTest
 		double[] result = testFacade.getCollisionPosition(s1, s2);
 		assertTrue(Util.fuzzyEquals(result[0], 5));
 		assertTrue(Util.fuzzyEquals(result[1], 10));
+	}
+
+	@Test
+	public void getCollisionPositionTest_NoCollision()
+	{
+		Ship s1 = (Ship) testFacade.createShip(0, 0, 0, 0, 10, 0);
+		Ship s2 = (Ship) testFacade.createShip(10, 20, 0, 0, 10, 0);
+
+		double[] result = testFacade.getCollisionPosition(s1, s2);
+		assertEquals(result, null);
 	}
 
 	@Test(expected = ModelException.class)

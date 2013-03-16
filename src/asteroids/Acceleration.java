@@ -29,8 +29,12 @@ public class Acceleration extends Vector
 	 * @param	v
 	 * 			The given vector.
 	 * @effect	Initializes this acceleration by calling the by vector vector constructor.
+	 * 			| Vector(v)
+	 * @throws	NullPointerException
+	 * 			The given vector is null.
+	 * 			| v == null
 	 */
-	public Acceleration(Vector v)
+	public Acceleration(Vector v) throws NullPointerException
 	{
 		super(v);
 	}
@@ -43,5 +47,28 @@ public class Acceleration extends Vector
 	public Acceleration()
 	{
 		super();
+	}
+
+	/**
+	 * Checks whether the given object is an acceleration and its respective components are equal to this acceleration's components
+	 * 
+	 * @param	o
+	 * 			The given object.
+	 * @return	True if and only if the given object is an acceleration and the respective components of the given object and this acceleration are equal.
+	 * 			| result =(o != null) && (getClass() != o.getClass()) && Util.fuzzyEquals(getXComponent(), ((Vector) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Vector) o).getYComponent()))
+	 */
+	@Override
+	public boolean equals(Object o)
+	{
+		if (o == null)
+		{
+			return false;
+		}
+		if (getClass() != o.getClass())
+		{
+			return false;
+		}
+		Vector other = (Vector) o;
+		return (Util.fuzzyEquals(getXComponent(), other.getXComponent()) && Util.fuzzyEquals(getYComponent(), other.getYComponent()));
 	}
 }

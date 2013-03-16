@@ -11,6 +11,8 @@ import be.kuleuven.cs.som.annotate.Raw;
  * 
  * @Invar	The angle value of this angle is a valid angle.
  * 			| canHaveAsAngle(getAngle())
+ * @Invar	The angle value of this angle is between 0 and 2Pi
+ * 			| ((getAngle() >= 0) && (getAngle() <= 2 * Math.PI))
  */
 public class Angle
 {
@@ -19,16 +21,18 @@ public class Angle
 	 * 
 	 * @param	angle
 	 * 			The given angle.
-	 * 
 	 * @effect	The angle of this angle is set to the given angle.
 	 * 			| setAngle(angle)
-	 * 
-	 * @post	The given angle is a valid angle.
-	 * 			| new.canHaveAsAngle(angle)
+	 * @Pre		The given angle value is a valid angle.
+	 * 			| canHaveAsAngle(angle)
+	 * @post	The angle value of this new Angle is a valid angle value.
+	 * 			| new.canHaveAsAngle(getAngle)
 	 */
 	public Angle(double angle)
 	{
+		assert (canHaveAsAngle(angle));
 		setAngle(angle);
+		assert (canHaveAsAngle(getAngle()));
 	}
 
 	/**
@@ -36,15 +40,19 @@ public class Angle
 	 * 
 	 * @effect	Calls the extended constructor with default values.
 	 * 			| this(0.0)
+	 * @post	The given angle is a valid angle.
+	 * 			| new.canHaveAsAngle(angle)
 	 */
 	public Angle()
 	{
 		this(0.0);
+		assert (canHaveAsAngle(getAngle()));
 	}
 
 	/**
-	 * Returns the wrapped angle of this angle.
+	 * Gets the angle value of this angle.
 	 */
+	@SuppressWarnings("javadoc")
 	@Basic
 	@Raw
 	public double getAngle()
@@ -57,18 +65,18 @@ public class Angle
 	 * 
 	 * @param 	angle
 	 * 			The angle to check.
-	 * @return	True if and only if the given angle is a finite number.
-	 * 			| result = ((!Double.isNaN(angle)) && (!Double.isInfinite(angle)))
+	 * @return	True if and only if the given angle is a number.
+	 * 			| result == (!Double.isNaN(angle))
 	 */
 	@Basic
 	@Raw
-	public boolean canHaveAsAngle(double angle)
+	protected boolean canHaveAsAngle(double angle)
 	{
-		return ((!Double.isNaN(angle)) && (!Double.isInfinite(angle)));
+		return (!Double.isNaN(angle));
 	}
 
 	/**
-	 * Sets the angle of this angle to the corresponding positive angle of the given angle.
+	 * Sets the angle value of this angle to the corresponding positive angle value of the given angle value.
 	 *
 	 * @param	angle
 	 *			The new angle for this angle.
@@ -79,6 +87,7 @@ public class Angle
 	 * 			| (getAngle() >= 0) && (getAngle() <= 2*Math.PI))
 	 */
 	@Basic
+	@Raw
 	public void setAngle(double angle)
 	{
 		assert (canHaveAsAngle(angle));
@@ -112,34 +121,11 @@ public class Angle
 	 * Returns the cosine of this angle.
 	 * 
 	 * @return	The cosine of this angle
-	 * 			| result = Math.cos(getAngle())
+	 * 			| result == Math.cos(getAngle())
 	 */
 	public double getCos()
 	{
 		return Math.cos(getAngle());
-	}
-
-	/**
-	 * Checks whether the given object is an angle and it is equal to this angle.
-	 * 
-	 * @param	o
-	 * 			The given object.
-	 * @return	True if and only if the given object is an angle and it is equal to this angle.
-	 * 			| result = ((o != null) && (Util.fuzzyEquals(((Angle) o).getAngle(),getAngle())))
-	 */
-	@Override
-	@Raw
-	public boolean equals(Object o)
-	{
-		if (o == null)
-		{
-			return false;
-		}
-		if (o instanceof Angle)
-		{
-			return (Util.fuzzyEquals(((Angle) o).getAngle(), getAngle()));
-		}
-		return false;
 	}
 
 	/**
@@ -150,9 +136,32 @@ public class Angle
 	 * @effect	Adds the value of the given angle to this angle.
 	 * 			| setAngle(getAngle() + a.getAngle())
 	 */
-	@Raw
-	public void add(@Raw Angle a)
+	public void add(Angle a)
 	{
 		setAngle(getAngle() + a.getAngle());
+	}
+	
+	/**
+	 * Checks whether the given object is an angle and it is equal to this angle.
+	 * 
+	 * @param	o
+	 * 			The given object.
+	 * @return	True if and only if the given object is an angle and it is equal to this angle.
+	 * 			| result == ((o != null) && (Util.fuzzyEquals(((Angle) o).getAngle(),getAngle())))
+	 */
+	@Override
+	@Raw
+	public boolean equals(Object o)
+	{
+		if (o == null)
+		{
+			return false;
+		}
+		if (!(o instanceof Angle))
+		{
+			return false;
+		}
+		Angle other = (Angle) o;
+		return (Util.fuzzyEquals(other.getAngle(), getAngle()));
 	}
 }

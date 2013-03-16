@@ -5,8 +5,7 @@ import be.kuleuven.cs.som.annotate.Immutable;
 import be.kuleuven.cs.som.annotate.Raw;
 
 /**
- * A class of velocities involving an x-component, and an y-component,
- * that is able to compute everything necessary to implement velocities.
+ * A class of velocities involving an x-component, and an y-component.
  * 
  * @author Syd & Xavier
  * @version 0.0
@@ -17,10 +16,69 @@ import be.kuleuven.cs.som.annotate.Raw;
 public class Velocity extends Vector
 {
 	/**
+	 * Initializes this new velocity with a given x-component and y-component.
+	 * 
+	 * @param	x
+	 * 			The x-component for this new velocity
+	 * @param	y
+	 * 			The y-component for this new velocity
+	 * @effect	Sets the x-component of this new velocity to the given x-component, scaled not to exceed the speed of light.
+	 * 			| setXComponent(x)
+	 * @effect	Sets the y-component of this new velocity to the given y-component, scaled not to exceed the speed of light.
+	 * 			| setYComponent(y)
+	 * @post	The magnitude of the velocity is always at most the speed of light.
+	 * 			| this.getVelocity <= Velocity.getSpeedOfLight()
+	 */
+	public Velocity(double x, double y)
+	{
+		super(x, y);
+		if (this.getMagnitude() > Velocity.getSpeedOfLight())
+		{
+			Vector downScaled = this.getScaledBy(Velocity.getSpeedOfLight() / this.getMagnitude());
+			setXComponent(downScaled.getXComponent());
+			setYComponent(downScaled.getYComponent());
+		}
+	}
+
+	/**
+	 * Initialize this new position with a given vector
+	 * 
+	 * @param	v
+	 * 			The given vector.
+	 * @effect	Initializes this new Velocity with the extended velocity constructor.
+	 * 			| this(v.getXComponent(),v.getYComponent());
+	 * @post	The magnitude of the velocity is always at most the speed of light.
+	 * 			| this.getVelocity <= Velocity.getSpeedOfLight()
+	 * @throws	NullPointerException
+	 * 			The given vector is null.
+	 * 			| v == null
+	 */
+	public Velocity(Vector v) throws NullPointerException
+	{
+		this(v.getXComponent(), v.getYComponent());
+	}
+
+	/**
+	 * Initializes this new velocity with default values.
+	 * 
+	 * @effect	Initializes this new velocity with the simple vector constructor.
+	 * 			| Vector()
+	 */
+	public Velocity()
+	{
+		super();
+	}
+
+	/**
 	 * Sets the x-component of the velocity to a given x-component.
 	 *
 	 * @param	x
 	 * 			The given x-component.
+	 * @post	If the given x-component is a valid component, then the x-component of this vector is now equal to the given x-component, otherwise it is equal to zero.
+	 * 			| if(canHaveAsComponent(x))
+	 * 			|  then Util.fuzzyEquals(new.getXComponent(),x)
+	 * 			| else
+	 * 			|  Util.fuzzyEquals(new.getXComponent,0)
 	 */
 	@Basic
 	@Raw
@@ -41,6 +99,11 @@ public class Velocity extends Vector
 	 *
 	 * @param	y
 	 * 			The given y-component.
+	 * @post	If the given y-component is a valid component, then the y-component of this vector is now equal to the given y-component, otherwise it is equal to zero.
+	 * 			| if(canHaveAsComponent(y))
+	 * 			|  then Util.fuzzyEquals(new.getXComponent(),y)
+	 * 			| else
+	 * 			|  Util.fuzzyEquals(new.getXComponent,0)
 	 */
 	@Basic
 	@Raw
@@ -57,70 +120,7 @@ public class Velocity extends Vector
 	}
 
 	/**
-	 * Checks whether the given component can be a component of this velocity.
-	 *
-	 * @param	x
-	 * 			The given component.
-	 * @return	True if and only if the given component is at most the speed of light
-	 * 			| result = (Util.fuzzyLessThanOrEqualTo(x, getSpeedOfLight()) && super.canHaveAsComponent(x))
-	 */
-	@Basic
-	@Raw
-	@Override
-	public boolean canHaveAsComponent(double x)
-	{
-		return (Util.fuzzyLessThanOrEqualTo(x, getSpeedOfLight()) && super.canHaveAsComponent(x));
-	}
-
-	/**
-	 * Initializes this new velocity with a given x-component and y-component.
-	 * 
-	 * @param	vx
-	 * 			The x-component for this new velocity
-	 * @param	vy
-	 * 			The y-component for this new velocity
-	 * @effect	Sets the x-component of this new velocity to the given x-component
-	 * 			| setXComponent(vx)
-	 * @effect	Sets the y-component of this new velocity to the given y-component
-	 * 			| setYComponent(vy)
-	 */
-	public Velocity(double vx, double vy)
-	{
-		super(vx, vy);
-		if (this.getMagnitude() > Velocity.getSpeedOfLight())
-		{
-			Vector downScaled = this.scaleBy(Velocity.getSpeedOfLight() / this.getMagnitude());
-			setXComponent(downScaled.getXComponent());
-			setYComponent(downScaled.getYComponent());
-		}
-	}
-
-	/**
-	 * Initialize this new position with a given vector
-	 * 
-	 * @param	v
-	 * 			The given vector.
-	 */
-	public Velocity(Vector v)
-	{
-		super(v);
-	}
-
-	/**
-	 * Initializes this new velocity.
-	 * 
-	 * @effect	Sets the x-component of this new velocity to 0.0.
-	 * 			| setXComponent(0)
-	 * @effect	Sets the y-component of this new velocity to 0.0.
-	 * 			| setXComponent(0)
-	 */
-	public Velocity()
-	{
-		super();
-	}
-
-	/**
-	 * Returns the total velocity of this velocity in km/s.
+	 * Gets the total velocity of this velocity in km/s.
 	 * 
 	 * @return	The total velocity. 
 	 */
@@ -132,12 +132,15 @@ public class Velocity extends Vector
 	}
 
 	/**
-	 * Gets the sum of this velocity and the given vector.
-	 * 
+	 * Gets the sum of this velocity and a given vector.
+	 *
 	 * @param	v
 	 * 			The given vector.
-	 * @return	The sum of this velocity and the given vector.
-	 * 			| result = new Velocity(super.getSum(v))
+	 * @throws	ArithmeticException
+	 * 			One of the components of the resulting velocity is not a number.
+	 * 			| Double.isNaN(result.getXComponent) || Double.isNaN(result.getYComponent)
+	 * @return	A velocity whose components are the sums of the respective components of this velocity and the given vector.
+	 * 			| result == new Velocity(getXComponent() + v.getXComponent(), getYComponent() + v.getYComponent())
 	 */
 	@Override
 	public Velocity getSum(Vector v) throws ArithmeticException
@@ -146,17 +149,17 @@ public class Velocity extends Vector
 	}
 
 	/**
-	 * accelerates this velocity using a given acceleration during a given duration.
+	 * Accelerates this velocity using a given acceleration during a given duration.
 	 * 
 	 * @param	a
 	 * 			The given acceleration.
 	 * @param	duration
 	 * 			The given duration.
+	 * @post	Accelerates this Velocity to the calculated velocity.
+	 * 			| new.equals(getSum(v.scaleBy(duration)))
 	 * @throws	IllegalArgumentException
 	 * 			The given duration is strictly negative.
 	 * 			| duration < 0
-	 * @post	Moves this position to the calculated destination.
-	 * 			| new.equals(getSum(v.scaleBy(duration)))
 	 * @throws	ArithmeticException
 	 * 			Any of the resulting components is not a valid component.
 	 * 			| (!canHaveAsComponent(getXComponent()) || ! canHaveAsComponent(getYComponent()))
@@ -168,18 +171,43 @@ public class Velocity extends Vector
 			throw new IllegalArgumentException("Invalid duration provided");
 		}
 		Vector v = new Vector(this.getXComponent(), this.getYComponent());
-		v = v.getSum(a.scaleBy(duration));
+		v = v.getSum(a.getScaledBy(duration));
 		if (v.getMagnitude() >= Velocity.getSpeedOfLight())
 		{
-			v = v.scaleBy(Velocity.getSpeedOfLight() / v.getMagnitude());
+			v = v.getScaledBy(Velocity.getSpeedOfLight() / v.getMagnitude());
 		}
 		setXComponent(v.getXComponent());
 		setYComponent(v.getYComponent());
 	}
 
 	/**
-	 * Returns the speed of light in km/s.
+	 * Checks whether the given object is a velocity and its respective components are equal to this velocity's components
+	 * 
+	 * @param	o
+	 * 			The given object.
+	 * @return	True if and only if the given object is a velocity and the respective components of the given object and this velocity are equal.
+	 * 			| result =(o != null) && (getClass() != o.getClass()) && Util.fuzzyEquals(getXComponent(), ((Velocity) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Velocity) o).getYComponent()))
 	 */
+	@Override
+	@Raw
+	public boolean equals(Object o)
+	{
+		if (o == null)
+		{
+			return false;
+		}
+		if (getClass() != o.getClass())
+		{
+			return false;
+		}
+		Velocity other = (Velocity) o;
+		return (Util.fuzzyEquals(getXComponent(), other.getXComponent()) && Util.fuzzyEquals(getYComponent(), other.getYComponent()));
+	}
+
+	/**
+	 * Gets the speed of light in km/s.
+	 */
+	@SuppressWarnings("javadoc")
 	@Basic
 	@Raw
 	@Immutable

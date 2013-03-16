@@ -2,6 +2,7 @@ package asteroids;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -20,9 +21,12 @@ public class ShipTest
 		double speedLimit = Velocity.getSpeedOfLight();
 		Velocity v = new Velocity(5, 5);
 		testShip = new Ship(d, p, s, speedLimit, v);
+		terminatedShip = new Ship();
+		terminatedShip.terminate();
 	}
 
 	private static Ship testShip;
+	private static Ship terminatedShip;
 
 	@Test
 	public void extendedConstructorTest_FieldsMatchPerfectParameters()
@@ -99,6 +103,7 @@ public class ShipTest
 	public void canHaveAsPositionTest()
 	{
 		assertTrue(testShip.canHaveAsPosition(new Position()));
+		assertFalse(testShip.canHaveAsPosition(null));
 	}
 
 	@Test
@@ -108,11 +113,16 @@ public class ShipTest
 		testShip.setPosition(p);
 		assertEquals(testShip.getPosition(), p);
 	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void setPositionTest_TerminatedShip(){
+		terminatedShip.setPosition(new Position());
+	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void setPositionTest_IllegalCase()
 	{
-		return; // There is no illegal case yet.
+		testShip.setPosition(null);
 	}
 
 	@Test
@@ -120,6 +130,9 @@ public class ShipTest
 	{
 		Velocity v = new Velocity(5, 5);
 		assertTrue(testShip.canHaveAsVelocity(v));
+		testShip.setSpeedLimit(50);
+		assertFalse(testShip.canHaveAsVelocity(new Velocity(100, 100)));
+		assertFalse(testShip.canHaveAsVelocity(null));
 	}
 
 	@Test
@@ -130,10 +143,16 @@ public class ShipTest
 		assertEquals(testShip.getVelocity(), v);
 	}
 
+	@Test(expected = IllegalStateException.class)
+	public void setVelocityTest_TerminatedShip(){
+		terminatedShip.setVelocity(new Velocity());
+	}
+	
 	@Test
 	public void setVelocityTest_IllegalCase()
 	{
-		return;//TODO write this when the speedlimit is no longer the speed of light.
+		testShip.setVelocity(null);
+		assertNotSame(testShip.getVelocity(), null);
 	}
 
 	@Test
@@ -141,7 +160,7 @@ public class ShipTest
 	{
 		assertTrue(testShip.canHaveAsSpeedLimit(5000));
 		assertFalse(testShip.canHaveAsSpeedLimit(-1));
-		assertFalse(testShip.canHaveAsSpeedLimit(Velocity.getSpeedOfLight() + 1));
+		assertFalse(testShip.canHaveAsSpeedLimit(Velocity.getSpeedOfLight()+ 1));
 	}
 
 	@Test
@@ -149,6 +168,11 @@ public class ShipTest
 	{
 		testShip.setSpeedLimit(5000);
 		assertTrue(Util.fuzzyEquals(testShip.getSpeedLimit(), 5000));
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void setSpeedLimitTest_TerminatedShip(){
+		terminatedShip.setSpeedLimit(50);
 	}
 
 	@Test
@@ -168,6 +192,7 @@ public class ShipTest
 		Angle a = new Angle(Math.PI);
 		Direction d = new Direction(a);
 		assertTrue(testShip.canHaveAsDirection(d));
+		assertFalse(testShip.canHaveAsDirection(null));
 	}
 
 	@Test
@@ -177,11 +202,10 @@ public class ShipTest
 		testShip.setDirection(d);
 		assertEquals(testShip.getDirection(), d);
 	}
-
-	@Test
-	public void setDirectionTest_IllegalCase()
-	{
-		return; //There is no illegal case yet.
+	
+	@Test(expected = IllegalStateException.class)
+	public void setDirectionTest_TerminatedShip(){
+		terminatedShip.setDirection(new Direction());
 	}
 
 	@Test
@@ -189,10 +213,12 @@ public class ShipTest
 	{
 		CircleShape c = new CircleShape(50);
 		assertTrue(testShip.canHaveAsShape(c));
+		assertFalse(testShip.canHaveAsShape(new CircleShape(5)));
+		assertFalse(testShip.canHaveAsShape(null));
 	}
 
 	@Test
-	public void moveTest_LegalDuration()
+	public void moveTest_PerfectParameters()
 	{
 		Ship originalState = new Ship(testShip.getDirection(), testShip.getPosition(), testShip.getShape(), testShip.getSpeedLimit(), testShip.getVelocity());
 		testShip.move(2.0);
@@ -200,6 +226,11 @@ public class ShipTest
 		assertEquals(testShip.getDirection(), originalState.getDirection());
 		assertTrue(Util.fuzzyEquals(testShip.getPosition().getXComponent(), 15));
 		assertTrue(Util.fuzzyEquals(testShip.getPosition().getYComponent(), 15));
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void moveTest_TerminatedShip(){
+		terminatedShip.move(2.0);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -209,25 +240,36 @@ public class ShipTest
 	}
 
 	@Test
-	public void turnTest()
+	public void turnTest_PerfectParameters()
 	{
 		testShip.turn(new Angle(Math.PI));
 		assertEquals(testShip.getDirection(), new Direction(new Angle(3 * Math.PI / 2)));
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void turnTest_TerminatedShip(){
+		terminatedShip.turn(new Angle());
 	}
 
 	@Test
 	public void thrustTest_PerfectParameters()
 	{
 		Ship originalState = new Ship(testShip.getDirection(), testShip.getPosition(), testShip.getShape(), testShip.getSpeedLimit(), testShip.getVelocity());
-		testShip.thrust(2);
+		testShip.thrust(2.0);
 		assertEquals(testShip.getDirection(), originalState.getDirection());
 		assertEquals(testShip.getPosition(), originalState.getPosition());
 		assertTrue(Util.fuzzyEquals(testShip.getVelocity().getXComponent(), 5));
 		assertTrue(Util.fuzzyEquals(testShip.getVelocity().getYComponent(), 7));
 	}
 	
+	@Test(expected = IllegalStateException.class)
+	public void thrustTest_TerminatedShip(){
+		terminatedShip.thrust(2.0);
+	}
+
 	@Test
-	public void thrustTest_IllegalAcceleration(){
+	public void thrustTest_IllegalAcceleration()
+	{
 		Ship originalState = new Ship(testShip.getDirection(), testShip.getPosition(), testShip.getShape(), testShip.getSpeedLimit(), testShip.getVelocity());
 		testShip.thrust(-1);
 		assertEquals(testShip.getDirection(), originalState.getDirection());
@@ -235,7 +277,7 @@ public class ShipTest
 		assertTrue(Util.fuzzyEquals(testShip.getVelocity().getXComponent(), 5));
 		assertTrue(Util.fuzzyEquals(testShip.getVelocity().getYComponent(), 5));
 	}
-	
+
 	@Test
 	public void thrustTest_SpeedLimitTest()
 	{

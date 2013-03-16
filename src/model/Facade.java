@@ -67,6 +67,9 @@ public class Facade implements IFacade
 		} catch (IllegalArgumentException e)
 		{
 			throw new ModelException("Invalid arguments for facade.createShip(...)");
+		} catch (ArithmeticException e)
+		{
+			throw new ModelException("Invalid arguments for facade.createShip(...)");
 		} catch (AssertionError e)
 		{
 			throw new ModelException("Invalid arguments for facade.createShip(...)");
@@ -243,7 +246,7 @@ public class Facade implements IFacade
 		{
 			throw new ModelException("Invalid ship.");
 		}
-		return ((Ship) ship1).getPosition().distanceTo(((Ship) ship2).getPosition());
+		return ((Ship) ship1).getPosition().getDistanceTo(((Ship) ship2).getPosition());
 	}
 
 	/**
@@ -325,13 +328,13 @@ public class Facade implements IFacade
 			return null;
 		}
 
-		Position newPosShip1 = ((Ship) ship1).getPosition().getSum(((Ship) ship1).getVelocity().scaleBy(deltaT));
-		Position newPosShip2 = ((Ship) ship2).getPosition().getSum(((Ship) ship2).getVelocity().scaleBy(deltaT));
+		Position newPosShip1 = ((Ship) ship1).getPosition().getSum(((Ship) ship1).getVelocity().getScaledBy(deltaT));
+		Position newPosShip2 = ((Ship) ship2).getPosition().getSum(((Ship) ship2).getVelocity().getScaledBy(deltaT));
 
 		double sigma = ((Ship) ship1).getShape().getRadius() + ((Ship) ship2).getShape().getRadius();
 		double ship1Radius = ((Ship) ship1).getShape().getRadius();
 
-		Vector collisionPos = newPosShip1.getSum(newPosShip2.getDifference(newPosShip1).scaleBy(ship1Radius / sigma));
+		Vector collisionPos = newPosShip1.getSum(newPosShip2.getDifference(newPosShip1).getScaledBy(ship1Radius / sigma));
 		double[] result =
 		{ collisionPos.getXComponent(), collisionPos.getYComponent() };
 

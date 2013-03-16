@@ -20,73 +20,46 @@ public class VelocityTest
 	private static Velocity testVelocity;
 
 	@Test
-	public void setXComponentTest_LegalCase()
-	{
-		testVelocity.setXComponent(5);
-		assertTrue(Util.fuzzyEquals(testVelocity.getXComponent(), 5));
-	}
-
-	@Test
-	public void setXComponentTest_IllegalCase()
-	{
-	}
-
-	@Test
-	public void canHaveAsComponentTest()
-	{
-		assertTrue(testVelocity.canHaveAsComponent(50));
-	}
-
-	@Test
-	public void setYComponentTest_LegalCase()
-	{
-		testVelocity.setYComponent(5);
-		assertTrue(Util.fuzzyEquals(testVelocity.getYComponent(), 5));
-	}
-
-	@Test
-	public void setYComponentTest_IllegalCase()
-	{
-	}
-
-	@Test
-	public void extendedConstructorTest_ComponentsMatchGivenPerfectComponents()
+	public void extendedConstructorTest_ComponentsMatchGivenComponents_PerfectParameters()
 	{
 		Velocity v = new Velocity(5, 6);
 		assertTrue(Util.fuzzyEquals(v.getXComponent(), 5));
 		assertTrue(Util.fuzzyEquals(v.getYComponent(), 6));
 	}
+	
+	@Test
+	public void extendedConstructorTest_ComponentsMatchGivenComponents_FasterThanTheSpeedOfLight(){
+		Velocity v = new Velocity(Velocity.getSpeedOfLight()*2,0);
+		assertEquals(v, new Velocity(Velocity.getSpeedOfLight(), 0));
+	}
 
 	@Test
 	public void extendedConstructorTest_IllegalXComponent()
 	{
-		Velocity v = new Velocity(Velocity.getSpeedOfLight() + 1, 0);
-		assertFalse(Util.fuzzyEquals(v.getXComponent(), Velocity.getSpeedOfLight() + 1));
+		Velocity v = new Velocity(Double.NaN, 0);
 		assertTrue(Util.fuzzyEquals(v.getXComponent(), 0));
 	}
 
 	@Test
 	public void extendedConstructorTest_IllegalYComponent()
 	{
-		Velocity v = new Velocity(0, Velocity.getSpeedOfLight() + 1);
-		assertFalse(Util.fuzzyEquals(v.getYComponent(), Velocity.getSpeedOfLight() + 1));
+		Velocity v = new Velocity(0, Double.NaN);
 		assertTrue(Util.fuzzyEquals(v.getYComponent(), 0));
 	}
 
 	@Test
-	public void extendedConstructorTest_IllegalComponents()
-	{
-		Velocity v = new Velocity(Velocity.getSpeedOfLight(), Velocity.getSpeedOfLight());
-		assertEquals(v, new Velocity(212132.03435596428, 212132.03435596428));
-	}
-
-	@Test
-	public void byVectorConstructorTest_ComponentsMatchVectorComponents()
+	public void byVectorConstructorTest_ComponentsMatchVectorComponents_PerfectParameters()
 	{
 		Vector v = new Vector(5, 6);
 		Velocity ve = new Velocity(v);
 		assertTrue(Util.fuzzyEquals(ve.getXComponent(), v.getXComponent()));
 		assertTrue(Util.fuzzyEquals(ve.getYComponent(), v.getYComponent()));
+	}
+
+	@Test(expected = NullPointerException.class)
+	public void byVectorConstructorTest_ComponentsMatchVectorComponents_NullVector()
+	{
+		new Vector(null);
 	}
 
 	@Test
@@ -95,6 +68,20 @@ public class VelocityTest
 		Velocity v = new Velocity();
 		assertTrue(Util.fuzzyEquals(v.getXComponent(), 0));
 		assertTrue(Util.fuzzyEquals(v.getYComponent(), 0));
+	}
+
+	@Test
+	public void setXComponentTest_LegalCase()
+	{
+		testVelocity.setXComponent(5);
+		assertTrue(Util.fuzzyEquals(testVelocity.getXComponent(), 5));
+	}
+
+	@Test
+	public void setYComponentTest_LegalCase()
+	{
+		testVelocity.setYComponent(5);
+		assertTrue(Util.fuzzyEquals(testVelocity.getYComponent(), 5));
 	}
 
 	@Test
@@ -141,5 +128,13 @@ public class VelocityTest
 	public void getSpeedOfLightTest()
 	{
 		assertTrue(Util.fuzzyEquals(Velocity.getSpeedOfLight(), 300000));
+	}
+	
+	@Test
+	public void equalsTest(){
+		assertTrue(testVelocity.equals(new Velocity(10, 10)));
+		assertFalse(testVelocity.equals(new Velocity()));
+		assertFalse(testVelocity.equals(new Vector(10, 10)));
+		assertFalse(testVelocity.equals(null));
 	}
 }

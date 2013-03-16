@@ -4,12 +4,13 @@ import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 
 /**
- * A superclass for vectorial properties, such as position, velocity,
- * acceleration, direction... Implemented for the sake of economy.
- *
+ * A class of vectors involving a x-, and a y-component.
  *
  * @author Syd & Xavier
  * @version 0.0
+ * 
+ * @Invar	Each of the components of this vector is a valid component
+ * 			| canHaveAsComponent(getXComponent()) && canHaveAsComponent(getXComponent())
  */
 
 public class Vector
@@ -20,12 +21,11 @@ public class Vector
 	 * 			The given x-component.
 	 * @param	y
 	 * 			The given y-component.
-	 * @Effect	Sets the x-vector of this new vector to the given x-vector.
+	 * @effect	Sets the x-vector of this new vector to the given x-vector.
 	 * 			| setXComponent(x)
-	 * @Effect	Sets the y-vector of this new vector to the given x-vector.
+	 * @effect	Sets the y-vector of this new vector to the given x-vector.
 	 * 			| setYComponent(y)
 	 **/
-
 	public Vector(double x, double y)
 	{
 		setXComponent(x);
@@ -36,9 +36,14 @@ public class Vector
 	 * Initializes this new vector with a given vector to duplicate from.
 	 * 
 	 * @param	v
-	 * 			The given vector
+	 * 			The given vector.
+	 * @effect	Initializes this new vector with the extended vector constructor
+	 * 			| this(v.getXComponent(), v.getYComponent())
+	 * @throws	NullPointerException
+	 * 			The given vector is null.
+	 * 			| v == null
 	 */
-	public Vector(Vector v)
+	public Vector(Vector v) throws NullPointerException
 	{
 		this(v.getXComponent(), v.getYComponent());
 	}
@@ -54,6 +59,7 @@ public class Vector
 	/**
 	 * Gets the x component of the vector.
 	 */
+	@SuppressWarnings("javadoc")
 	@Basic
 	@Raw
 	public double getXComponent()
@@ -66,6 +72,9 @@ public class Vector
 	 *
 	 * @param	x
 	 * 			The given x-component.
+	 * @post	If the given x-component is a valid component, then the x-component of this vector is now equal to the given x-component.
+	 * 			| if(canHaveAsComponent(x))
+	 * 			|  then Util.fuzzyEquals(new.getXComponent(),x)
 	 */
 	@Basic
 	@Raw
@@ -85,6 +94,7 @@ public class Vector
 	/**
 	 * Gets the y component of the vector.
 	 */
+	@SuppressWarnings("javadoc")
 	@Basic
 	@Raw
 	public double getYComponent()
@@ -97,6 +107,9 @@ public class Vector
 	 *
 	 * @param	y
 	 * 			The given y-component.
+	 * @post	If the given y-component is a valid component, then the y-component of this vector is now equal to the given y-component.
+	 * 			| if(canHaveAsComponent(y))
+	 * 			|  then Util.fuzzyEquals(new.getYComponent(),y)
 	 */
 	@Basic
 	@Raw
@@ -123,7 +136,7 @@ public class Vector
 	 */
 	@Raw
 	@Basic
-	public boolean canHaveAsComponent(double x)
+	protected boolean canHaveAsComponent(double x)
 	{
 		return (!Double.isNaN(x));
 	}
@@ -133,14 +146,17 @@ public class Vector
 	 */
 
 	/**
-	 * Adds a given vector to this vector and returns the result as a new vector.
+	 * Gets the sum of this vector and a given vector.
 	 *
 	 * @param	v
 	 * 			The given vector.
+	 * @throws	ArithmeticException
+	 * 			One of the components of the resulting vector is not a number.
+	 * 			| Double.isNaN(result.getXComponent) || Double.isNaN(result.getYComponent)
 	 * @return	A vector whose components are the sums of the respective components of this vector and the given vector.
-	 * 			| result = new Vector(getXComponent() + v.getXComponent(), getYComponent() + v.getYComponent())
+	 * 			| result == new Vector(getXComponent() + v.getXComponent(), getYComponent() + v.getYComponent())
 	 */
-	public Vector getSum(Vector v) throws ArithmeticException //TODO add throws
+	public Vector getSum(Vector v) throws ArithmeticException
 	{
 		double xComp = getXComponent() + v.getXComponent();
 		double yComp = getYComponent() + v.getYComponent();
@@ -152,14 +168,17 @@ public class Vector
 	}
 
 	/**
-	 * Subtracts a given vector from this vector and returns the result as a new vector.
+	 * Gets the difference between this vector and a given vector.
 	 *
 	 * @param	v
 	 * 			The given vector.
+	 * @throws	ArithmeticException
+	 * 			One of the components of the resulting vectors is not a number.
+	 * 			| Double.isNaN(result.getYComponent) || Double.isNaN(result.getXComponent)
 	 * @return	A vector whose components are the differences of the respective components of this vector and the given vector.
-	 * 			| result = new Vector((getXComponent() - v.getXComponent()), (getYComponent() - v.getYComponent()))
+	 * 			| result == new Vector((getXComponent() - v.getXComponent()), (getYComponent() - v.getYComponent()))
 	 */
-	public Vector getDifference(Vector v) throws ArithmeticException //TODO add throws
+	public Vector getDifference(Vector v) throws ArithmeticException
 	{
 		double xComp = getXComponent() - v.getXComponent();
 		double yComp = getYComponent() - v.getYComponent();
@@ -176,17 +195,20 @@ public class Vector
 	 */
 
 	/**
-	 * Scales this vector by a given factor.
+	 * Gets this vector, scaled by a given factor
 	 *
-	 * @param	scalar
+	 * @param	factor
 	 * 			The given factor
+	 * @throws	ArithmeticException
+	 * 			One of the components of the resulting vector is not a number.
+	 * 			| Double.isNaN(result.getXComponent) || Double.isNaN(result.getYComponent)
 	 * @return	A vector with each of the components scaled by the factor provided in the explicit parameter.
-	 * 			| result = new Vector(getXComponent() * scalar, getYComponent() * scalar)
+	 * 			| result == new Vector(getXComponent() * scalar, getYComponent() * scalar)
 	 */
-	public Vector scaleBy(double scalar) throws ArithmeticException //TODO add throws
+	public Vector getScaledBy(double factor) throws ArithmeticException
 	{
-		double xComp = getXComponent() * scalar;
-		double yComp = getYComponent() * scalar;
+		double xComp = getXComponent() * factor;
+		double yComp = getYComponent() * factor;
 		if (Double.isNaN(xComp) || Double.isNaN(yComp))
 		{
 			throw new ArithmeticException("A component of the resulting sum vector is not a number");
@@ -199,14 +221,17 @@ public class Vector
 	 */
 
 	/**
-	 * Returns the inner product of this vector and a given vector.
+	 * Gets the inner product of this vector and a given vector.
 	 *
 	 * @param	v
 	 * 			The given vector
+	 * @throws	ArithmeticException
+	 * 			The result is not a number.
+	 * 			| Double.isNaN(result)
 	 * @return	The inner product of this vector and the given vector.
-	 * 			| result = (getXComponent() * v.getXComponent()) + (getYComponent() * v.getYComponent())
+	 * 			| result == (getXComponent() * v.getXComponent()) + (getYComponent() * v.getYComponent())
 	 */
-	public double dotProduct(Vector v) throws ArithmeticException //TODO add throws
+	public double dotProduct(Vector v) throws ArithmeticException
 	{
 		double result = (getXComponent() * v.getXComponent()) + (getYComponent() * v.getYComponent());
 		if (Double.isNaN(result))
@@ -217,10 +242,10 @@ public class Vector
 	}
 
 	/**
-	 * Returns the magnitude of this vector.
+	 * Gets the magnitude of this vector.
 	 *
 	 * @return	The magnitude of this vector.
-	 * 			| result = Math.sqrt(this.dotProduct(this))
+	 * 			| result == Math.sqrt(this.dotProduct(this))
 	 */
 	public double getMagnitude()
 	{
@@ -228,29 +253,35 @@ public class Vector
 	}
 
 	/**
-	 * Returns a unit vector denoting the direction of the vector.
+	 * Gets a unit vector denoting the direction of the vector.
 	 *
+	 * @throws	ArithmeticException
+	 * 			This vector is a nil vector.
+	 * 			| Util.fuzzyEquals(getMagnitude(), 0)
 	 * @return	A unit vector in the same direction as this vector.
-	 * 			| result = this.scaleBy(1.0 / getMagnitudeTrue())
+	 * 			| result == this.scaleBy(1.0 / getMagnitudeTrue())
 	 */
-	public Vector GetUnitVectorInSameDirection() throws ArithmeticException //TODO add throws
+	public Vector GetUnitVectorInSameDirection() throws ArithmeticException
 	{
 		if (Util.fuzzyEquals(getMagnitude(), 0))
 		{
-			throw new ArithmeticException("This vector is a null vector.");
+			throw new ArithmeticException("This vector is a nil vector.");
 		}
-		return this.scaleBy(1.0 / getMagnitude());
+		return this.getScaledBy(1.0 / getMagnitude());
 	}
 
 	/**
-	 * Computes the Euclidean distance between this vector and a given vector.
+	 * Get the Euclidean distance between this vector and a given vector.
 	 *
 	 * @param	v
 	 * 			The given vector.
+	 * @throws	ArithmeticException
+	 * 			The distance can't be calculated.
+	 * 			| Double.isNaN(result)
 	 * @return	The distance between this vector and the given vector.
-	 * 			| result = this.getDifference(v).getMagnitude()
+	 * 			| result == this.getDifference(v).getMagnitude()
 	 */
-	public double distanceTo(Vector v) throws ArithmeticException //TODO add throws
+	public double getDistanceTo(Vector v) throws ArithmeticException
 	{
 		return this.getDifference(v).getMagnitude();
 	}
@@ -261,15 +292,21 @@ public class Vector
 	 * @param	o
 	 * 			The given object.
 	 * @return	True if and only if the given object is a vector and the respective components of the given object and this vector are equal.
-	 * 			| result =(o instanceof Vector && Util.fuzzyEquals(getXComponent(), ((Vector) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Vector) o).getYComponent()))
+	 * 			| result ==( o != null) && (getClass() != o.getClass()) && Util.fuzzyEquals(getXComponent(), ((Vector) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Vector) o).getYComponent()))
 	 */
 	@Override
+	@Raw
 	public boolean equals(Object o)
 	{
-		if (o instanceof Vector)
+		if (o == null)
 		{
-			return (Util.fuzzyEquals(getXComponent(), ((Vector) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Vector) o).getYComponent()));
+			return false;
 		}
-		return false;
+		if (getClass() != o.getClass())
+		{
+			return false;
+		}
+		Vector other = (Vector) o;
+		return (Util.fuzzyEquals(getXComponent(), other.getXComponent()) && Util.fuzzyEquals(getYComponent(), other.getYComponent()));
 	}
 }
