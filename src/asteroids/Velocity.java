@@ -7,7 +7,7 @@ import be.kuleuven.cs.som.annotate.Raw;
 /**
  * A class of velocity vectors.
  * 
- * @author Tom Sydney Kerckhove & Xavier Goás Aguililla
+ * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
  * @version 1.0
  * 
  * @invar 	The magnitude of the velocity is always at most the speed of light.

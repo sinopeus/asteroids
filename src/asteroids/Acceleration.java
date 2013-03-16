@@ -3,7 +3,7 @@ package asteroids;
 /**
  * A class of acceleration vectors.
  * 
- * @author Tom Sydney Kerckhove & Xavier Goás Aguililla
+ * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
  * @version 1.0
  */
 public class Acceleration extends Vector

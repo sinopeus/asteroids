@@ -6,7 +6,7 @@ import be.kuleuven.cs.som.annotate.Raw;
 /**
  * A wrapper class for angles.
  * 
- * @author Tom Sydney Kerckhove & Xavier Goás Aguililla
+ * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
  * @version 1.0
  * 
  * @invar	The angle value of this angle is a valid angle.

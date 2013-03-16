@@ -6,7 +6,7 @@ import be.kuleuven.cs.som.annotate.Raw;
 /**
  * A class of ships involving its position, velocity, acceleration, direction, speed limit and shape.
  *
- * @author Tom Sydney Kerckhove & Xavier Goás Aguililla
+ * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
  * @version 1.0
  *
  * @invar	The direction of this ship is a valid direction.

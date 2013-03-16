@@ -6,7 +6,7 @@ import be.kuleuven.cs.som.annotate.Raw;
 /**
  * A class of directions extending vector, involving an angle. A direction is a unit vector.
  * 
- * @author Tom Sydney Kerckhove & Xavier Goás Aguililla
+ * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
  * @version 1.0
  * 
  * @invar	The magnitude of this direction is equal to 1. (It is a unit vector)
