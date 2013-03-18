@@ -1,5 +1,6 @@
-package asteroids;
+package vector;
 
+import main.Util;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Immutable;
 import be.kuleuven.cs.som.annotate.Raw;
@@ -13,7 +14,7 @@ import be.kuleuven.cs.som.annotate.Raw;
  * @invar 	The magnitude of the velocity is always at most the speed of light.
  * 			| this.getVelocity <= Velocity.getSpeedOfLight()
  */
-public class Velocity extends Vector
+public class Velocity extends Vector //TODO make total
 {
 	/**
 	 * Initializes this new velocity with a given x-component and y-component.

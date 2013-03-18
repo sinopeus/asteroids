@@ -1,13 +1,13 @@
 package model;
 
-import asteroids.Angle;
-import asteroids.CircleShape;
-import asteroids.Direction;
-import asteroids.IShip;
-import asteroids.Position;
-import asteroids.Ship;
-import asteroids.Vector;
-import asteroids.Velocity;
+import main.Angle;
+import main.CircleShape;
+import main.IShip;
+import main.Ship;
+import vector.Direction;
+import vector.Position;
+import vector.Vector;
+import vector.Velocity;
 
 /**
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
@@ -284,13 +284,13 @@ public class Facade implements IFacade
 	 * @param   ship2
 	 *          The second ship.
 	 * @return  The time to collision between the two ships.
-	 *
+	 *			
 	 * @throws  ModelException
 	 *          One of the given ships is null.
 	 *          | ((ship1 == null) || (ship2 == null))
 	 */
 	@Override
-	public double getTimeToCollision(IShip ship1, IShip ship2) throws ModelException
+	public double getTimeToCollision(IShip ship1, IShip ship2) throws ModelException //TODO post
 	{
 		if ((ship1 == null) || (ship2 == null))
 		{
@@ -324,7 +324,7 @@ public class Facade implements IFacade
 	 *          | ((ship1 == null) || (ship2 == null))
 	 */
 	@Override
-	public double[] getCollisionPosition(IShip ship1, IShip ship2) throws ModelException
+	public double[] getCollisionPosition(IShip ship1, IShip ship2) throws ModelException //TODO post
 	{
 		if ((ship1 == null) || (ship2 == null))
 		{

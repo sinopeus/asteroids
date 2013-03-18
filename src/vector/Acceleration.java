@@ -1,4 +1,7 @@
-package asteroids;
+package vector;
+
+import main.Util;
+
 
 /**
  * A class of acceleration vectors.

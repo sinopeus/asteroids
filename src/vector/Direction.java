@@ -1,5 +1,7 @@
-package asteroids;
+package vector;
 
+import main.Angle;
+import main.Util;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 

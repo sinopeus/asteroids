@@ -1,11 +1,19 @@
-package asteroids;
+package vector;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import main.Angle;
+import main.Ship;
+import main.Util;
+
 import org.junit.Before;
 import org.junit.Test;
+
+
+import vector.Direction;
+
 
 @SuppressWarnings("javadoc")
 public class DirectionTest

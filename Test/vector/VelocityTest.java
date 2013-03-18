@@ -1,11 +1,19 @@
-package asteroids;
+package vector;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import main.Util;
+
 import org.junit.Before;
 import org.junit.Test;
+
+
+import vector.Acceleration;
+import vector.Vector;
+import vector.Velocity;
+
 
 @SuppressWarnings("javadoc")
 public class VelocityTest

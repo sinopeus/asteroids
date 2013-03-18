@@ -1,4 +1,4 @@
-package asteroids;
+package main;
 
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;

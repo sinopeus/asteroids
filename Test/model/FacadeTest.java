@@ -3,18 +3,20 @@ package model;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import main.Angle;
+import main.IShip;
+import main.Ship;
+import main.Util;
 import model.Facade;
 import model.ModelException;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import asteroids.Angle;
-import asteroids.IShip;
-import asteroids.Position;
-import asteroids.Ship;
-import asteroids.Util;
-import asteroids.Velocity;
+import vector.Position;
+import vector.Velocity;
+
+
 
 @SuppressWarnings("javadoc")
 public class FacadeTest

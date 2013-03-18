@@ -1,10 +1,15 @@
-package asteroids;
+package main;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import main.Angle;
+import main.Ship;
+import main.Util;
+
 import org.junit.Before;
 import org.junit.Test;
+
 
 @SuppressWarnings("javadoc")
 public class AngleTest

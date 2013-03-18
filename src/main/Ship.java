@@ -1,5 +1,10 @@
-package asteroids;
+package main;
 
+import vector.Acceleration;
+import vector.Direction;
+import vector.Position;
+import vector.Vector;
+import vector.Velocity;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 
@@ -387,7 +392,7 @@ public class Ship implements IShip
 	 * 
 	 * @param	duration
 	 * 			The given duration of the movement.
-	 * @effect	Sets the position of this ship the position after moving.
+	 * @effect	Sets the position of this ship to the position after moving.
 	 * 			| getPosittion().moveBy(getVelocity(), duration)
 	 * @throws	ArithmeticException
 	 * 			Any of the resulting vector components is not a number.
@@ -418,6 +423,8 @@ public class Ship implements IShip
 	 * 			The given angle
 	 * @pre		The given angle is not null.
 	 * 			| angle != null
+	 * @effect	The angle of this ship is modified by the given angle.
+	 * 			| this.direction.rotate(angle);
 	 * @throws	IllegalStateException
 	 * 			| isTerminated()
 	 */
@@ -436,6 +443,8 @@ public class Ship implements IShip
 	 * 
 	 * @param 	acceleration
 	 * 			The given acceleration
+	 * @effect	The velocity is modified by the given acceleration
+	 * 			| this.velocity.accelerateBy(a, 1)
 	 * @throws	IllegalStateException
 	 * 			This ship is terminated
 	 * 			| isTerminated()

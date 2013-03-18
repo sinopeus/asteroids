@@ -1,12 +1,17 @@
-package asteroids;
+package main;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
 
+import main.CircleShape;
+import main.Ship;
+import main.Util;
+
 import org.junit.Before;
 import org.junit.Test;
+
 
 @SuppressWarnings("javadoc")
 public class CircleShapeTest

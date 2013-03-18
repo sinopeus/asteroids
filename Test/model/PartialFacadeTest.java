@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 
+import main.IShip;
+import main.Util;
 import model.Facade;
 import model.IFacade;
 import model.ModelException;
@@ -11,8 +13,7 @@ import model.ModelException;
 import org.junit.Before;
 import org.junit.Test;
 
-import asteroids.IShip;
-import asteroids.Util;
+
 
 @SuppressWarnings("javadoc")
 public class PartialFacadeTest

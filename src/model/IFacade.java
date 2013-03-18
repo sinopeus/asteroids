@@ -1,6 +1,6 @@
 package model;
 
-import asteroids.IShip;
+import main.IShip;
 
 
 
