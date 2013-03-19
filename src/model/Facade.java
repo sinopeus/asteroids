@@ -2,7 +2,6 @@ package model;
 
 import main.Angle;
 import main.CircleShape;
-import main.IShip;
 import main.Ship;
 import vector.Direction;
 import vector.Position;

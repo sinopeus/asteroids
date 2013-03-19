@@ -15,6 +15,7 @@ import java.util.Set;
 import javax.swing.JPanel;
 
 import model.IFacade;
+import model.IShip;
 
 
 @SuppressWarnings("serial")

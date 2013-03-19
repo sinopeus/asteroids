@@ -1,7 +1,7 @@
 package vector;
 
 import main.Angle;
-import main.Util;
+import model.Util;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 

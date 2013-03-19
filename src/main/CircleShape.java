@@ -1,5 +1,6 @@
 package main;
 
+import model.Util;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 

@@ -4,8 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 
-import main.IShip;
-import main.Util;
 import model.Facade;
 import model.IFacade;
 import model.ModelException;

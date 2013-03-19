@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.Timer;
 
 import model.IFacade;
+import model.IShip;
 
 
 @SuppressWarnings("serial")

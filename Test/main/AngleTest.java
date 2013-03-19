@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import main.Angle;
 import main.Ship;
-import main.Util;
+import model.Util;
 
 import org.junit.Before;
 import org.junit.Test;

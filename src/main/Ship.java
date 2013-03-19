@@ -1,5 +1,6 @@
 package main;
 
+import model.IShip;
 import vector.Acceleration;
 import vector.Direction;
 import vector.Position;
