@@ -1,4 +1,4 @@
-package entity.vector;
+package vector;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -9,9 +9,10 @@ import model.Util;
 import org.junit.Before;
 import org.junit.Test;
 
+import vector.Direction;
+
 import entity.Angle;
 import entity.Ship;
-import entity.vector.Direction;
 
 
 

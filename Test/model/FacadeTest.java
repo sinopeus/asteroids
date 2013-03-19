@@ -9,10 +9,11 @@ import model.ModelException;
 import org.junit.Before;
 import org.junit.Test;
 
+import vector.Position;
+import vector.Velocity;
+
 import entity.Angle;
 import entity.Ship;
-import entity.vector.Position;
-import entity.vector.Velocity;
 
 
 

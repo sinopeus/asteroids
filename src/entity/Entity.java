@@ -1,8 +1,8 @@
 package entity;
 
-import entity.vector.Direction;
-import entity.vector.Position;
-import entity.vector.Velocity;
+import vector.Direction;
+import vector.Position;
+import vector.Velocity;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 
@@ -16,8 +16,6 @@ import be.kuleuven.cs.som.annotate.Raw;
  * 			| canHaveAsDirection(getDirection())
  * @invar	The position of this entity is a valid position.
  * 			| canHaveAsPosition(getPosition())
- * @invar	The shape of this entity is a valid shape.
- * 			| canHaveAsShape(getShape())
  * @invar	The speedLimit of this entity is a valid speed limit.
  * 			| canHaveAsSpeedLimit(getSpeedLimit())
  * @invar	The velocity of this entity is a valid velocity.
@@ -25,6 +23,50 @@ import be.kuleuven.cs.som.annotate.Raw;
  */
 public class Entity
 {
+	/**
+	 * Initializes this new entity with a given direction, position, shape, speedLimit and velocity.
+	 * 
+	 * @param	direction
+	 * 			The given direction.
+	 * @param	position
+	 * 			The given position.
+	 * @param	speedLimit
+	 * 			The given speed limit.
+	 * @param	velocity
+	 * 			The given velocity
+	 * @effect	The direction of this ship is set to the given direction.
+	 * 			| setDirection(direction)
+	 * @effect	The position of this ship is set to the given position.
+	 * 			| setPosition(position)
+	 * @effect	The speed limit of this ship is set to the given speed limit.
+	 * 			| setSpeedLimit(speedLimit)
+	 * @effect	The velocity of this ship is set to the given velocity.
+	 * 			| setVelocity(velocity)
+	 * @throws	NullPointerException
+	 * 			| Any of the parameters is null.
+	 */
+	public Entity(Direction direction, Position position, double speedLimit, Velocity velocity) throws NullPointerException
+	{
+		//TODO add throws from setters.
+		setDirection(direction);
+		setPosition(position);
+		setSpeedLimit(speedLimit);
+		setVelocity(velocity);
+		isTerminated = false;
+	}
+
+	/**
+	 * Initializes this new entity with default values.
+	 * 
+	 * @effect	Initializes this new entity with the extended entity constructor and default values.
+	 * 			| this(new Direction(), new Position(), Velocity.getSpeedOfLight(), new Velocity())
+	 */
+	public Entity()
+	{
+		//TODO add throws from setters.
+		this(new Direction(), new Position(), Velocity.getSpeedOfLight(), new Velocity());
+	}
+
 	/**
 	 * Gets a position equal to the position of this entity.
 	 */

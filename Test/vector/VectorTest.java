@@ -1,4 +1,4 @@
-package entity.vector;
+package vector;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -8,8 +8,9 @@ import model.Util;
 import org.junit.Before;
 import org.junit.Test;
 
-import entity.vector.Position;
-import entity.vector.Vector;
+import vector.Position;
+import vector.Vector;
+
 
 
 

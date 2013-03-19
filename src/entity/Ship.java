@@ -1,10 +1,10 @@
 package entity;
 
-import entity.vector.Acceleration;
-import entity.vector.Direction;
-import entity.vector.Position;
-import entity.vector.Vector;
-import entity.vector.Velocity;
+import vector.Acceleration;
+import vector.Direction;
+import vector.Position;
+import vector.Vector;
+import vector.Velocity;
 import model.IShip;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
@@ -36,7 +36,7 @@ public class Ship extends Entity implements IShip
 	 * @param	position
 	 * 			The given position.
 	 * @param	shape
-	 * 			The given shape.
+	 * 			The given shape.ship
 	 * @param	speedLimit
 	 * 			The given speed limit.
 	 * @param	velocity
@@ -58,8 +58,8 @@ public class Ship extends Entity implements IShip
 	 */
 	public Ship(Direction direction, Position position, CircleShape shape, double speedLimit, Velocity velocity) throws IllegalArgumentException, NullPointerException
 	{
-		setDirection(direction);
-		setPosition(position);
+		//TODO add throws from setters
+		super(direction, position, speedLimit, velocity);
 		if (!canHaveAsShape(shape))
 		{
 			throw new IllegalArgumentException("Invalid circle shape provided");
@@ -67,9 +67,6 @@ public class Ship extends Entity implements IShip
 		{
 			this.shape = shape;
 		}
-		setSpeedLimit(speedLimit);
-		setVelocity(velocity);
-		isTerminated = false;
 	}
 
 	/**
@@ -80,6 +77,7 @@ public class Ship extends Entity implements IShip
 	 */
 	public Ship()
 	{
+		//TODO add throws from setters
 		this(new Direction(), new Position(), new CircleShape(Ship.getMinimumRadius()), Velocity.getSpeedOfLight(), new Velocity());
 	}
 

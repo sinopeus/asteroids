@@ -1,4 +1,4 @@
-package entity.vector;
+package vector;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -9,9 +9,10 @@ import model.Util;
 import org.junit.Before;
 import org.junit.Test;
 
-import entity.vector.Acceleration;
-import entity.vector.Vector;
-import entity.vector.Velocity;
+import vector.Acceleration;
+import vector.Vector;
+import vector.Velocity;
+
 
 
 

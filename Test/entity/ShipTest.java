@@ -9,12 +9,13 @@ import model.Util;
 import org.junit.Before;
 import org.junit.Test;
 
+import vector.Direction;
+import vector.Position;
+import vector.Velocity;
+
 import entity.Angle;
 import entity.CircleShape;
 import entity.Ship;
-import entity.vector.Direction;
-import entity.vector.Position;
-import entity.vector.Velocity;
 
 @SuppressWarnings("javadoc")
 public class ShipTest

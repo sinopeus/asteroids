@@ -7,14 +7,15 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
+import vector.AccelerationTest;
+import vector.DirectionTest;
+import vector.PositionTest;
+import vector.VectorTest;
+import vector.VelocityTest;
+
 import entity.AngleTest;
 import entity.CircleShapeTest;
 import entity.ShipTest;
-import entity.vector.AccelerationTest;
-import entity.vector.DirectionTest;
-import entity.vector.PositionTest;
-import entity.vector.VectorTest;
-import entity.vector.VelocityTest;
 
 
 @SuppressWarnings("javadoc")
