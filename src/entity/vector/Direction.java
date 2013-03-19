@@ -1,4 +1,4 @@
-package vector;
+package entity.vector;
 
 import entity.Angle;
 import model.Util;

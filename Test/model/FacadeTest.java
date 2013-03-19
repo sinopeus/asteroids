@@ -11,9 +11,9 @@ import org.junit.Test;
 
 import entity.Angle;
 import entity.Ship;
+import entity.vector.Position;
+import entity.vector.Velocity;
 
-import vector.Position;
-import vector.Velocity;
 
 
 

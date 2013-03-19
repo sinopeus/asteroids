@@ -3,10 +3,10 @@ package model;
 import entity.Angle;
 import entity.CircleShape;
 import entity.Ship;
-import vector.Direction;
-import vector.Position;
-import vector.Vector;
-import vector.Velocity;
+import entity.vector.Direction;
+import entity.vector.Position;
+import entity.vector.Vector;
+import entity.vector.Velocity;
 
 /**
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla

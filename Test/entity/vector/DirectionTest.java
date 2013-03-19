@@ -1,4 +1,4 @@
-package vector;
+package entity.vector;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -11,9 +11,9 @@ import org.junit.Test;
 
 import entity.Angle;
 import entity.Ship;
+import entity.vector.Direction;
 
 
-import vector.Direction;
 
 
 @SuppressWarnings("javadoc")

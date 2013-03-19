@@ -1,4 +1,4 @@
-package vector;
+package entity.vector;
 
 import model.Util;
 

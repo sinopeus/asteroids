@@ -1,11 +1,11 @@
 package entity;
 
+import entity.vector.Acceleration;
+import entity.vector.Direction;
+import entity.vector.Position;
+import entity.vector.Vector;
+import entity.vector.Velocity;
 import model.IShip;
-import vector.Acceleration;
-import vector.Direction;
-import vector.Position;
-import vector.Vector;
-import vector.Velocity;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 

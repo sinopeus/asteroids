@@ -1,8 +1,8 @@
 package entity;
 
-import vector.Direction;
-import vector.Position;
-import vector.Velocity;
+import entity.vector.Direction;
+import entity.vector.Position;
+import entity.vector.Velocity;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 

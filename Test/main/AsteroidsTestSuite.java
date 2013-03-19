@@ -10,12 +10,12 @@ import org.junit.runners.Suite.SuiteClasses;
 import entity.AngleTest;
 import entity.CircleShapeTest;
 import entity.ShipTest;
+import entity.vector.AccelerationTest;
+import entity.vector.DirectionTest;
+import entity.vector.PositionTest;
+import entity.vector.VectorTest;
+import entity.vector.VelocityTest;
 
-import vector.AccelerationTest;
-import vector.DirectionTest;
-import vector.PositionTest;
-import vector.VectorTest;
-import vector.VelocityTest;
 
 @SuppressWarnings("javadoc")
 @RunWith(Suite.class)
