@@ -16,23 +16,6 @@ import org.junit.Test;
 @SuppressWarnings("javadoc")
 public class CircleShapeTest
 {
-
-	@Before
-	public void setUpsetUpImmutableTestFixture_CircleShape()
-	{
-		testCircleShape = new CircleShape(15);
-	}
-
-	private static CircleShape testCircleShape;
-
-	@Test
-	public void canHaveAsRadiusTest()
-	{
-		assertTrue(testCircleShape.canHaveAsRadius(15));
-		assertFalse(testCircleShape.canHaveAsRadius(-5));
-		assertFalse(testCircleShape.canHaveAsRadius(Double.NaN));
-	}
-
 	@Test
 	public void constructorTest_PerfectParameters()
 	{
@@ -52,6 +35,22 @@ public class CircleShapeTest
 	{
 		CircleShape cs = new CircleShape();
 		assertTrue(Util.fuzzyEquals(cs.getRadius(), 0));
+	}
+	
+	@Before
+	public void setUpsetUpImmutableTestFixture_CircleShape()
+	{
+		testCircleShape = new CircleShape(15);
+	}
+
+	private static CircleShape testCircleShape;
+
+	@Test
+	public void canHaveAsRadiusTest()
+	{
+		assertTrue(testCircleShape.canHaveAsRadius(15));
+		assertFalse(testCircleShape.canHaveAsRadius(-5));
+		assertFalse(testCircleShape.canHaveAsRadius(Double.NaN));
 	}
 
 	@Test

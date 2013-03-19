@@ -15,37 +15,6 @@ import be.kuleuven.cs.som.annotate.Raw;
 public class CircleShape
 {
 	/**
-	 * Gets the radius of this circle shape.
-	 */
-	@SuppressWarnings("javadoc")
-	@Basic
-	@Raw
-	public double getRadius()
-	{
-		return this.radius;
-	}
-
-	/**
-	 * Checks whether this circle shape can have the given radius as its radius.
-	 * 
-	 * @param 	radius
-	 * 			The radius to check.
-	 * @return	True if and only if the given radius is at least 0 and a number.
-	 * 			| result == ((radius >= 0) && !Double.isNaN(radius))
-	 */
-	@Basic
-	@Raw
-	protected boolean canHaveAsRadius(double radius)
-	{
-		return (!Double.isNaN(radius) && (radius >= 0));
-	}
-
-	/**
-	 * A variable registering the radius of this circle shape in km/s.
-	 */
-	private final double radius;
-
-	/**
 	 * Initializes this new circle shape with a given radius
 	 * 
 	 * @param	radius
@@ -77,6 +46,37 @@ public class CircleShape
 	{
 		this(0.0);
 	}
+	
+	/**
+	 * Gets the radius of this circle shape.
+	 */
+	@SuppressWarnings("javadoc")
+	@Basic
+	@Raw
+	public double getRadius()
+	{
+		return this.radius;
+	}
+
+	/**
+	 * Checks whether this circle shape can have the given radius as its radius.
+	 * 
+	 * @param 	radius
+	 * 			The radius to check.
+	 * @return	True if and only if the given radius is at least 0 and a number.
+	 * 			| result == ((radius >= 0) && !Double.isNaN(radius))
+	 */
+	@Basic
+	@Raw
+	protected boolean canHaveAsRadius(double radius)
+	{
+		return (!Double.isNaN(radius) && (radius >= 0));
+	}
+
+	/**
+	 * A variable registering the radius of this circle shape in km/s.
+	 */
+	private final double radius;
 
 	/**
 	 * Checks whether the given object's is a circle shape and it's radius is equal to the radius of this circle shape
