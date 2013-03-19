@@ -1,8 +1,8 @@
 package model;
 
-import main.Angle;
-import main.CircleShape;
-import main.Ship;
+import entity.Angle;
+import entity.CircleShape;
+import entity.Ship;
 import vector.Direction;
 import vector.Position;
 import vector.Vector;

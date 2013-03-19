@@ -1,4 +1,4 @@
-package main;
+package entity;
 
 import model.IShip;
 import vector.Acceleration;

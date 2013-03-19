@@ -7,6 +7,10 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
+import entity.AngleTest;
+import entity.CircleShapeTest;
+import entity.ShipTest;
+
 import vector.AccelerationTest;
 import vector.DirectionTest;
 import vector.PositionTest;

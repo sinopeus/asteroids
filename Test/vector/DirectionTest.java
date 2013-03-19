@@ -4,12 +4,13 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import main.Angle;
-import main.Ship;
 import model.Util;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import entity.Angle;
+import entity.Ship;
 
 
 import vector.Direction;

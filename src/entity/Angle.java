@@ -1,4 +1,4 @@
-package main;
+package entity;
 
 import model.Util;
 import be.kuleuven.cs.som.annotate.Basic;
