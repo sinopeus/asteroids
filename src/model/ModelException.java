@@ -6,15 +6,12 @@ package model;
  * 
  * Do not use ModelException outside of <code>Facade</code>.
  */
-public class ModelException extends RuntimeException
-{
-	public ModelException(String message)
-	{
-		super(message);
-	}
+public class ModelException extends RuntimeException {
+  public ModelException(String message) {
+    super(message);
+  }
 
-	public ModelException(Throwable nested)
-	{
-		super(nested);
-	}
+  public ModelException(Throwable nested) {
+    super(nested);
+  }
 }

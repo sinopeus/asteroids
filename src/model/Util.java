@@ -22,4 +22,13 @@ public class Util
 		}
 	}
 
+	public static double absoluteError(double expected, double actual)
+	{
+		return Math.abs(expected - actual);
+	}
+
+	public static double relativeError(double expected, double actual)
+	{
+		return absoluteError(expected, actual) / Math.abs(expected);
+	}
 }

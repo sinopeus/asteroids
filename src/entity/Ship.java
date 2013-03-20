@@ -36,7 +36,7 @@ public class Ship extends Entity implements IShip
 	 * @param	position
 	 * 			The given position.
 	 * @param	shape
-	 * 			The given shape.ship
+	 * 			The given shape.
 	 * @param	speedLimit
 	 * 			The given speed limit.
 	 * @param	velocity
