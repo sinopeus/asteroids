@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import entity.CircleShape;
-import entity.Ship;
+import entity.ship.Ship;
 
 
 @SuppressWarnings("javadoc")

@@ -11,7 +11,7 @@ import vector.VectorTest;
 import vector.VelocityTest;
 import entity.AngleTest;
 import entity.CircleShapeTest;
-import entity.ShipTest;
+import entity.ship.ShipTest;
 
 @SuppressWarnings("javadoc")
 @RunWith(Suite.class)

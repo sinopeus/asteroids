@@ -1,5 +1,7 @@
-package entity;
+package entity.ship;
 
+import entity.CircleShape;
+import entity.Entity;
 import vector.Acceleration;
 import vector.Direction;
 import vector.Position;

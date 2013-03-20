@@ -12,7 +12,7 @@ import org.junit.Test;
 import vector.Direction;
 
 import entity.Angle;
-import entity.Ship;
+import entity.ship.Ship;
 
 
 

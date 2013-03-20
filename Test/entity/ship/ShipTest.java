@@ -1,4 +1,4 @@
-package entity;
+package entity.ship;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -12,10 +12,8 @@ import org.junit.Test;
 import vector.Direction;
 import vector.Position;
 import vector.Velocity;
-
 import entity.Angle;
 import entity.CircleShape;
-import entity.Ship;
 
 @SuppressWarnings("javadoc")
 public class ShipTest
