@@ -57,18 +57,12 @@ public class Ship extends Entity implements IShip
 	 * 			| The given shape is not a legal shape.
 	 * @throws	NullPointerException
 	 * 			| Any of the parameters is null.
-	 */
-	public Ship(Direction direction, Position position, CircleShape shape, double speedLimit, Velocity velocity) throws IllegalArgumentException, NullPointerException
+	 */ //TODO document
+	public Ship(Direction direction, Position position, double speedLimit, Velocity velocity,CircleShape shape) throws IllegalArgumentException, NullPointerException
 	{
 		//TODO add throws from setters
-		super(direction, position, speedLimit, velocity);
-		if (!canHaveAsShape(shape))
-		{
-			throw new IllegalArgumentException("Invalid circle shape provided");
-		} else
-		{
-			this.shape = shape;
-		}
+		super(direction, position, speedLimit, velocity,shape);
+		
 	}
 
 	/**
@@ -80,39 +74,15 @@ public class Ship extends Entity implements IShip
 	public Ship()
 	{
 		//TODO add throws from setters
-		this(new Direction(), new Position(), new CircleShape(Ship.getMinimumRadius()), Velocity.getSpeedOfLight(), new Velocity());
+		this(new Direction(), new Position(), Velocity.getSpeedOfLight(), new Velocity(),new CircleShape(getMinimumRadius()));
 	}
-
-	/**
-	 * Gets a shape equal to the shape of this ship.
-	 */
-	@SuppressWarnings("javadoc")
-	@Basic
-	@Raw
-	public CircleShape getShape()
-	{
-		return new CircleShape(shape.getRadius());
-	}
-
-	/**
-	 * Checks whether this ship can have the given shape as its shape.
-	 * 
-	 * @param 	shape
-	 * 			The shape to check.
-	 * @return	True if and only if the given shape is not null and has a range of at least the minimum radius for ships.
-	 * 			| result = ((shape != null) && (shape.getRadius() >= Ship.getMinimumRadius()))
-	 */
-	@Basic
-	@Raw
+	
+	//TODO document
+	@Override
 	protected boolean canHaveAsShape(@Raw CircleShape shape)
 	{
-		return ((shape != null) && (shape.getRadius() >= Ship.getMinimumRadius()));
+		return (super.canHaveAsShape(shape) && (shape.getRadius() >= Ship.getMinimumRadius()));
 	}
-
-	/**
-	 * A variable referencing the shape of this ship.
-	 */
-	private final CircleShape shape;
 
 	/**
 	 * Returns the minimum radius of ships.

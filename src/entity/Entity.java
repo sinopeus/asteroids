@@ -5,6 +5,7 @@ import vector.Position;
 import vector.Velocity;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
+import entity.ship.Ship;
 
 /**
  * A class of entities involving a position, velocity, direction, speed limit.
@@ -45,13 +46,21 @@ public class Entity
 	 * @throws	NullPointerException
 	 * 			| Any of the parameters is null.
 	 */
-	public Entity(Direction direction, Position position, double speedLimit, Velocity velocity) throws NullPointerException
+	//TODO document
+	public Entity(Direction direction, Position position, double speedLimit, Velocity velocity, CircleShape shape) throws NullPointerException
 	{
 		//TODO add throws from setters.
 		setDirection(direction);
 		setPosition(position);
 		setSpeedLimit(speedLimit);
 		setVelocity(velocity);
+		if (!canHaveAsShape(shape))
+		{
+			throw new IllegalArgumentException("Invalid circle shape provided");
+		} else
+		{
+			this.shape = shape;
+		}
 		isTerminated = false;
 	}
 
@@ -61,10 +70,10 @@ public class Entity
 	 * @effect	Initializes this new entity with the extended entity constructor and default values.
 	 * 			| this(new Direction(), new Position(), Velocity.getSpeedOfLight(), new Velocity())
 	 */
-	public Entity()
+	public Entity()//TODO document
 	{
 		//TODO add throws from setters.
-		this(new Direction(), new Position(), Velocity.getSpeedOfLight(), new Velocity());
+		this(new Direction(), new Position(), Velocity.getSpeedOfLight(), new Velocity(), new CircleShape(50));
 	}
 
 	/**
@@ -240,6 +249,37 @@ public class Entity
 	 * A variable referencing the direction of this entity.
 	 */
 	protected Direction direction;
+
+	/**
+	 * Gets a shape equal to the shape of this ship.
+	 */
+	@SuppressWarnings("javadoc")
+	@Basic
+	@Raw
+	public CircleShape getShape()
+	{
+		return new CircleShape(shape.getRadius());
+	}
+
+	/**
+	 * Checks whether this ship can have the given shape as its shape.
+	 * 
+	 * @param 	shape
+	 * 			The shape to check.
+	 * @return	True if and only if the given shape is not null and has a range of at least the minimum radius for ships.
+	 * 			| result = ((shape != null) && (shape.getRadius() >= Ship.getMinimumRadius()))
+	 */
+	@Basic
+	@Raw
+	protected boolean canHaveAsShape(@Raw CircleShape shape)
+	{
+		return ((shape != null) && (shape.getRadius() >= Ship.getMinimumRadius()));
+	}
+
+	/**
+	 * A variable referencing the shape of this ship.
+	 */
+	private final CircleShape shape;
 
 	/**
 	 * Returns the speed limit of this entity.
