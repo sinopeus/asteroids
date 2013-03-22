@@ -7,5 +7,5 @@ package entity.ship;
  */
 public class Mass // TODO document
 {
-
+	
 }
