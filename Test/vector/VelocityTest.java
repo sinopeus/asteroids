@@ -3,19 +3,10 @@ package vector;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
 import model.Util;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import vector.Acceleration;
-import vector.Vector;
-import vector.Velocity;
-
-
-
-
 
 @SuppressWarnings("javadoc")
 public class VelocityTest
@@ -36,10 +27,11 @@ public class VelocityTest
 		assertTrue(Util.fuzzyEquals(v.getXComponent(), 5));
 		assertTrue(Util.fuzzyEquals(v.getYComponent(), 6));
 	}
-	
+
 	@Test
-	public void extendedConstructorTest_ComponentsMatchGivenComponents_FasterThanTheSpeedOfLight(){
-		Velocity v = new Velocity(Velocity.getSpeedOfLight()*2,0);
+	public void extendedConstructorTest_ComponentsMatchGivenComponents_FasterThanTheSpeedOfLight()
+	{
+		Velocity v = new Velocity(Velocity.getSpeedOfLight() * 2, 0);
 		assertEquals(v, new Velocity(Velocity.getSpeedOfLight(), 0));
 	}
 
@@ -97,7 +89,7 @@ public class VelocityTest
 	@Test
 	public void getVelocityTest()
 	{
-		assertTrue(Util.fuzzyLessThanOrEqualTo(testVelocity.getVelocity(), Velocity.getSpeedOfLight()));
+		assertTrue(Util.fuzzyLessThanOrEqualTo(testVelocity.get(), Velocity.getSpeedOfLight()));
 	}
 
 	@Test
@@ -131,7 +123,7 @@ public class VelocityTest
 		Velocity v = new Velocity(Velocity.getSpeedOfLight(), 0);
 		Acceleration a = new Acceleration(5, 5);
 		v.accelerateBy(a, 5);
-		Util.fuzzyEquals(v.getVelocity(), Velocity.getSpeedOfLight());
+		Util.fuzzyEquals(v.get(), Velocity.getSpeedOfLight());
 	}
 
 	@Test
@@ -139,9 +131,10 @@ public class VelocityTest
 	{
 		assertTrue(Util.fuzzyEquals(Velocity.getSpeedOfLight(), 300000));
 	}
-	
+
 	@Test
-	public void equalsTest(){
+	public void equalsTest()
+	{
 		assertTrue(testVelocity.equals(new Velocity(10, 10)));
 		assertFalse(testVelocity.equals(new Velocity()));
 		assertFalse(testVelocity.equals(new Vector(10, 10)));
