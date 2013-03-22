@@ -106,38 +106,6 @@ public class Ship extends Entity implements IShip
 	 */
 	private static double minimumRadius = 10;
 
-	//
-	//	/**
-	//	 * Changes the velocity of this ship based on the current velocity, and a given acceleration.
-	//	 * 
-	//	 * @param 	acceleration
-	//	 * 			The given acceleration
-	//	 * @effect	The velocity is modified by the given acceleration
-	//	 * 			| this.velocity.accelerateBy(a, 1)
-	//	 * @throws	IllegalStateException
-	//	 * 			This ship is terminated
-	//	 * 			| isTerminated()
-	//	 */
-	//	public void thrust(double acceleration) throws IllegalStateException
-	//	{
-	//		if (this.isTerminated())
-	//		{
-	//			throw new IllegalStateException("This ship is terminated.");
-	//		}
-	//		if (acceleration < 0)
-	//		{
-	//			acceleration = 0;
-	//		}
-	//		Acceleration a = new Acceleration(getDirection().getScaledBy(acceleration));
-	//		this.velocity.accelerateBy(a, 1);
-	//		if (getVelocity().getMagnitude() > this.getSpeedLimit())
-	//		{
-	//			Vector v = getVelocity().getScaledBy(this.getSpeedLimit() / getVelocity().getMagnitude());
-	//			this.velocity.setXComponent(v.getXComponent());
-	//			this.velocity.setYComponent(v.getYComponent());
-	//		}
-	//	}
-
 	/**
 	 * Gets the thruster of this ship.
 	 */
