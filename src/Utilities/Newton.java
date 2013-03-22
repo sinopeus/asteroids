@@ -10,22 +10,34 @@ import entity.ship.Mass;
  */
 public class Newton
 {
-	//TODO DOCUMENT
-	public static Acceleration firstLaw_CalculateAcceleration(Mass m1, Mass m2, Acceleration a1) throws IllegalArgumentException
-	{
-		return a2;
-	}
+  /**
+   * @param m1  
+   * @param m2
+   * @param a1
+   * @return
+   * @throws IllegalArgumentException
+   */
+  public static Acceleration firstLaw_CalculateAcceleration(Mass m1, Mass m2, Acceleration a1) throws IllegalArgumentException
+  {
+    return a2;
+  }
 
-  public
-	
-	//TODO DOCUMENT
-	public static Acceleration secondLaw_CalculateAcceleration(Force f, Mass m) throws IllegalArgumentException
-	{
-		return a;
-	}
-	
-	//TODO DOCUMENT
-	public static Force thirdLaw_CalculateForce(Force f1){
-		return f2;
-	}
+  /**
+   * @param f
+   * @param m
+   * @return
+   * @throws IllegalArgumentException
+   */
+    public static Acceleration secondLaw_CalculateAcceleration(Force f, Mass m) throws IllegalArgumentException
+    {
+      return a;
+    }
+
+  /**
+   * @param f1
+   * @return
+   */
+  public static Force thirdLaw_CalculateForce(Force f1){
+    return f2;
+  }
 }
