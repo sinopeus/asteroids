@@ -1,5 +1,7 @@
 package entity.ship;
 
+import be.kuleuven.cs.som.annotate.Value;
+
 /**
  * 
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
