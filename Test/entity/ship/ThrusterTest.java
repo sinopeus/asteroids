@@ -89,7 +89,6 @@ public class ThrusterTest
 	@Test
 	public void simpleThrustTest_PerfectParameters()
 	{
-		System.out.println("Simple");
 		testThruster.thrust(6);
 		assertEquals(testShip.getVelocity(),new Velocity(3, 5.8));
 	}
@@ -105,7 +104,6 @@ public class ThrusterTest
 	@Test
 	public void extendedThrustTest_PerfectParameters()
 	{
-		System.out.println("Extended");
 		testThruster.thrust(5, 6);
 		assertEquals(testShip.getVelocity(),new Velocity(3, 8.5));
 	}
@@ -116,8 +114,9 @@ public class ThrusterTest
 		Velocity initialVelocity = testShip.getVelocity();
 		testThruster.thrust(-1, 5);
 		assertEquals(initialVelocity, testShip.getVelocity());
-		//TODO ADD TEST FOR LARGE AMOUNT OF TRHUST
 	}
+	
+	//TODO ADD TEST FOR LARGE AMOUNT OF TRHUST
 
 	@Test
 	public void extendedThrustTest_IllegalDuration()
