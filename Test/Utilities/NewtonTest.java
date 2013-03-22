@@ -1,64 +1,51 @@
 package Utilities;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
-
-import model.Util;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import vector.Acceleration;
-import vector.Mass;
-import vector.Vector;
+import vector.Force;
+import entity.ship.Mass;
 
 public class NewtonTest
 {
 
-  Mass m1, m2;
-  Acceleration a1, a2;
-  Force f1, f2;
+	@Before
+	public void setUpImmutableTestFicture_Vectors()
+	{
+		testMass1 = new Mass(2);
+		testMass2 = new Mass(6);
+		testAcceleration1 = new Acceleration(3, 9);
+		testForce1 = new Force(2, 4);
+	}
 
-  @Test
-  public void firstLaw_CalculateAccelerationTest()
-  {
-    m1 = new Mass(2);
-    m2 = new Mass(6);
-    a1 = new Acceleration(3,9);
-    a2 = new Acceleration(1,3);
+	private static Mass testMass1, testMass2;
+	private static Acceleration testAcceleration1;
+	private static Force testForce1;
 
-    assertEquals(firstLaw_CalculateAcceleration(m1, m2, a1), a2);
-  }
+	@Test
+	public void firstLaw_CalculateAccelerationTest_PerfectParameters()
+	{
+		assertEquals(Newton.firstLaw_CalculateAcceleration(testMass1, testMass2, testAcceleration1), new Acceleration(1, 3));
+	}
 
-  @Test(expected = IllegalArgumentException.class)
-  public void firstLaw_CalculateAccelerationTest()
-  {
-    m2 = new Mass(6);
-    a1 = new Acceleration(3,9);
-    a2 = new Acceleration(1,3);
+	@Test(expected = IllegalArgumentException.class)
+	public void firstLaw_CalculateAccelerationTest_IllegalM1()
+	{
+		Newton.firstLaw_CalculateAcceleration(null, testMass2, testAcceleration1);
+	}
 
-    firstLaw_CalculateAcceleration(null, m2, a1);
+	@Test
+	public void secondLaw_CalculateAccelerationTest_PerfectParameters()
+	{
+		assertEquals(Newton.secondLaw_CalculateAcceleration(testForce1, testMass1), new Acceleration(1, 2));
+	}
 
-  }
-
-  @Test
-  public void secondLaw_CalculateAccelerationTest()
-  {
-    f1 = new Force(2,4);
-    m1 = new Mass(2);
-    a1 = new Acceleration(1,2);
-
-    assertEquals(secondLaw_CalculateAcceleration(f1, m1), a1);
-  }
-
-  @Test
-  public void thirdLaw_CalculateForceTest()
-  {
-    f1 = new Force(1,-2);
-    f2 = new Force(-1,2);
-
-    assertEquals(thirdLaw_CalculateForce(f1), 2);
-
-  }
+	@Test
+	public void thirdLaw_CalculateForceTest_PerfectParameters()
+	{
+		assertEquals(Newton.thirdLaw_CalculateForce(testForce1), new Force(-1, 2));
+	}
 }
