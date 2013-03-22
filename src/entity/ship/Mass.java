@@ -1,7 +1,7 @@
 package entity.ship;
-
-import be.kuleuven.cs.som.annotate.Value;
-
+import model.Util;
+import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Raw;
 /**
  * 
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
