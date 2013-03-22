@@ -1,9 +1,10 @@
 package vector;
 
 import static org.junit.Assert.assertTrue;
-import model.Util;
 
 import org.junit.Test;
+
+import Utilities.Util;
 
 public class ForceTest
 {

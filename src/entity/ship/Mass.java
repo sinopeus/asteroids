@@ -1,6 +1,6 @@
 package entity.ship;
 
-import model.Util;
+import Utilities.Util;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 import be.kuleuven.cs.som.annotate.Value;

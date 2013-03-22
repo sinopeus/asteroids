@@ -1,6 +1,6 @@
 package vector;
 
-import model.Util;
+import Utilities.Util;
 
 
 /**

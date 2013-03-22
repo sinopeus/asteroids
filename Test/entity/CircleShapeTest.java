@@ -2,10 +2,11 @@ package entity;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import model.Util;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import Utilities.Util;
 
 import entity.CircleShape;
 import entity.ship.Ship;
