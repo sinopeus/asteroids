@@ -1,8 +1,5 @@
 package vector;
 
-import model.Util;
-
-
 /**
  * A class of force vectors.
  * 
@@ -11,15 +8,18 @@ import model.Util;
  */
 public class Force extends Vector
 {
-  public Force (double x, double y) {
-    //TODO  
-  }  
-  
-  public Force (Vector v) {
-    //TODO  
-  }  
-  
-  public Force () {
-    //TODO  
-  }  
+	public Force(double x, double y)
+	{
+		//TODO  
+	}
+
+	public Force(Vector v) throws IllegalArgumentException
+	{
+		//TODO  
+	}
+
+	public Force()
+	{
+		//TODO  
+	}
 }
