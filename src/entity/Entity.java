@@ -36,6 +36,10 @@ public class Entity
 	 * 			The given speed limit.
 	 * @param	velocity
 	 * 			The given velocity
+	 * @param	shape
+	 * 			The given circle shape
+	 * @param	mass
+	 * 			The given mass
 	 * @effect	The direction of this ship is set to the given direction.
 	 * 			| setDirection(direction)
 	 * @effect	The position of this ship is set to the given position.
@@ -44,11 +48,15 @@ public class Entity
 	 * 			| setSpeedLimit(speedLimit)
 	 * @effect	The velocity of this ship is set to the given velocity.
 	 * 			| setVelocity(velocity)
+	 * @effect	The circle shape of this ship is set to the given circle shape.
+	 * 			| this.shape = shape
+	 * @effect	The mass of this ship is set to the given mass.
+	 * 			| setMass(mass)
 	 * @throws	NullPointerException
 	 * 			| Any of the parameters is null.
 	 */
 	//TODO document
-	public Entity(Direction direction, Position position, double speedLimit, Velocity velocity, CircleShape shape) throws NullPointerException
+	public Entity(Direction direction, Position position, double speedLimit, Velocity velocity, CircleShape shape, Mass mass) throws NullPointerException
 	{
 		//TODO add throws from setters.
 		setDirection(direction);
@@ -62,6 +70,7 @@ public class Entity
 		{
 			this.shape = shape;
 		}
+    setMass(mass);
 		isTerminated = false;
 	}
 
