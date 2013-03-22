@@ -53,16 +53,20 @@ public class Ship extends Entity implements IShip
 	 * 			| setSpeedLimit(speedLimit)
 	 * @effect	The velocity of this ship is set to the given velocity.
 	 * 			| setVelocity(velocity)
+	 * @effect	The circle shape of this ship is set to the given circle shape.
+	 * 			| this.shape = shape
+	 * @effect	The mass of this ship is set to the given mass.
+	 * 			| setMass(mass)
 	 * @throws	IllegalArgumentException
 	 * 			| The given shape is not a legal shape.
 	 * @throws	NullPointerException
 	 * 			| Any of the parameters is null.
 	 */
 	//TODO document
-	public Ship(Direction direction, Position position, double speedLimit, Velocity velocity, CircleShape shape) throws IllegalArgumentException, NullPointerException
+	public Ship(Direction direction, Position position, double speedLimit, Velocity velocity, CircleShape shape, Mass mass) throws IllegalArgumentException, NullPointerException
 	{
 		//TODO add throws from setters
-		super(direction, position, speedLimit, velocity, shape);
+		super(direction, position, speedLimit, velocity, shape, mass);
 		//TODO add thruster construction	
 	}
 
@@ -70,12 +74,12 @@ public class Ship extends Entity implements IShip
 	 * Initializes this new ship with default values.
 	 * 
 	 * @effect	Initializes this new ship with the extended ship constructor and default values.
-	 * 			| this(new Direction(),new Position(),new CircleShape(Ship.getMinimumRadius()),Velocity.getSpeedOfLight(),new Velocity())
+	 * 			| this(new Direction(),new Position(),Velocity.getSpeedOfLight(),new Velocity(), new CircleShape(40), new Mass(5E15))
 	 */
 	public Ship()
 	{
 		//TODO add throws from setters
-		this(new Direction(), new Position(), Velocity.getSpeedOfLight(), new Velocity(), new CircleShape(getMinimumRadius()));
+		this(new Direction(), new Position(), Velocity.getSpeedOfLight(), new Velocity(), new CircleShape(40), new Mass(5E15));
 	}
 
 	//TODO document
@@ -140,5 +144,5 @@ public class Ship extends Entity implements IShip
 	/**
 	 * A variable registering the thrust that a ships thruster can exert in one second.
 	 */
-	public static double thrustPerSecond = 1.1 * Math.pow(10, 18);
+	public static double thrustPerSecond = 1.1E18;
 }
