@@ -1,6 +1,7 @@
 package Utilities;
 
 import vector.Acceleration;
+import vector.Force;
 import entity.ship.Mass;
 
 /**

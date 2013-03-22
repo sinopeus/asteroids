@@ -2,6 +2,7 @@ package entity.ship;
 import model.Util;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
+import be.kuleuven.cs.som.annotate.Value;
 /**
  * 
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
