@@ -27,11 +27,11 @@ public class Force extends Vector
 	 * @param v  The vector we want to replicate as a force vector.
 	 * @effect	Initializes this acceleration by calling the by vector vector constructor.
 	 * 			| Vector(v)
-	 * @throws	NullPointerException
+	 * @throws	IllegalArgumentException
 	 * 			The given vector is null.
 	 * 			| v == null
 	 */
-	public Force(Vector v) throws NullPointerException
+	public Force(Vector v) throws IllegalArgumentException
 	{
 		//TODO  
 	}
