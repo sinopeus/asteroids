@@ -34,11 +34,11 @@ public class Position extends Vector
 	 * 			The given vector.
 	 * @effect	Initializes this new position with the by-vector constructor of vector.
 	 * 			| Vector(v)
-	 * @throws	NullPointerException
+	 * @throws	IllegalArgumentException
 	 * 			The given vector is null
 	 * 			| v == null
 	 */
-	public Position(Vector v) throws NullPointerException
+	public Position(Vector v) throws IllegalArgumentException
 	{
 		super(v);
 	}

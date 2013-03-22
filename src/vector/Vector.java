@@ -40,11 +40,11 @@ public class Vector
 	 * 			The given vector.
 	 * @effect	Initializes this new vector with the extended vector constructor
 	 * 			| this(v.getXComponent(), v.getYComponent())
-	 * @throws	NullPointerException
+	 * @throws	IllegalArgumentException
 	 * 			The given vector is null.
 	 * 			| v == null
 	 */
-	public Vector(Vector v) throws NullPointerException
+	public Vector(Vector v) throws IllegalArgumentException
 	{
 		this(v.getXComponent(), v.getYComponent());
 	}

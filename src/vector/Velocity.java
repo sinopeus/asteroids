@@ -50,11 +50,11 @@ public class Velocity extends Vector //TODO make total
 	 * 			| this(v.getXComponent(),v.getYComponent());
 	 * @post	The magnitude of the velocity is always at most the speed of light.
 	 * 			| this.getVelocity <= Velocity.getSpeedOfLight()
-	 * @throws	NullPointerException
+	 * @throws	IllegalArgumentException
 	 * 			The given vector is null.
 	 * 			| v == null
 	 */
-	public Velocity(Vector v) throws NullPointerException
+	public Velocity(Vector v) throws IllegalArgumentException
 	{
 		this(v.getXComponent(), v.getYComponent());
 	}

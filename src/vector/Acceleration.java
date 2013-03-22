@@ -33,11 +33,11 @@ public class Acceleration extends Vector
 	 * 			The given vector.
 	 * @effect	Initializes this acceleration by calling the by vector vector constructor.
 	 * 			| Vector(v)
-	 * @throws	NullPointerException
+	 * @throws	IllegalArgumentException
 	 * 			The given vector is null.
 	 * 			| v == null
 	 */
-	public Acceleration(Vector v) throws NullPointerException
+	public Acceleration(Vector v) throws IllegalArgumentException
 	{
 		super(v);
 	}
