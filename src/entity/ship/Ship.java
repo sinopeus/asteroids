@@ -31,7 +31,7 @@ import entity.Entity;
 public class Ship extends Entity implements IShip
 {
 	/**
-	 * Initializes this new ship with a given direction, position, shape, speedLimit and velocity.
+	 * Initializes this new ship with a given direction, position, shape, mass, speed limit and velocity.
 	 * 
 	 * @param	direction
 	 * 			The given direction.
@@ -43,6 +43,10 @@ public class Ship extends Entity implements IShip
 	 * 			The given speed limit.
 	 * @param	velocity
 	 * 			The given velocity
+	 * @param	shape
+	 * 			The given circle shape
+	 * @param	mass
+	 * 			The given mass
 	 * @effect	The direction of this ship is set to the given direction.
 	 * 			| setDirection(direction)
 	 * @effect	The position of this ship is set to the given position.

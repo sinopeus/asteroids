@@ -3,6 +3,7 @@ package entity;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 import entity.ship.Ship;
+import entity.ship.Mass;
 
 /**
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
@@ -10,15 +11,29 @@ import entity.ship.Ship;
  */
 public class Bullet extends Entity
 {
-	//TODO make constructor.
+	/**
+	 * Initializes a new bullet.
+   * 
+   * @param   ship
+   *          The ship which has fired this bullet.
+   * @effect  | this.super(ship.getDirection(), ship.getPosition(), ship.getSpeedLimit, initialVelocity, new CircleShape(radius), new Mass(shape.getRadius() * density));
+   *            setShooter(ship);
+	 */
+  public Bullet (Ship ship) throws NullPointerException {
+    this.super(ship.getDirection(), ship.getPosition(), ship.getSpeedLimit(), initialVelocity, new CircleShape(radius), new Mass(shape.getRadius() * density));
+    setShooter(ship);
+  }
 
 	/**
-	 * Gets the shooter of this bullet.
+	 * Returns the shooter of this bullet.
+   *
+   * @return shooter
 	 */
 	@Basic
 	@Raw
 	public Ship getShooter()
 	{
+    return shooter;
 	}
 
 	/**
@@ -31,9 +46,10 @@ public class Bullet extends Entity
 	 */
 	@Basic
 	@Raw
-	private boolean canHaveAsShooter(ship shooter)
+	private boolean canHaveAsShooter(Ship shooter)
 	{
-	}
+    return (shooter != null);
+  }
 
 	/**
 	 * Sets the shooter ship to the given shooter ship.
@@ -48,19 +64,36 @@ public class Bullet extends Entity
 	 */
 	private void setShooter(Ship shooter) throws IllegalArgumentException
 	{
+    if (canHaveAsShooter) this.shooter = shooter;
+    else throws new IllegalArgumentException("You cannot provide a null ship.");
 	}
 
+  /**
+   * A variable keeping a reference to the ship which shot this bullet.
+   */
 	private Ship shooter;
 
+  /**
+   * @see #Entity.terminate()
+   */
 	@Override
 	public void terminate()
 	{
-		// TODO Auto-generated method stub
 		super.terminate();
 	}
 
+  /**
+   * A variable registering the radius of a bullet.
+   */
 	private static double radius = 3;
+
+  /**
+   * A variable registering the initial velocity of a bullet.
+   */
 	private static double initialVelocity = 250;
 
-	private static double massDensity = 7.8E12;
+  /**
+   * A variable registering the density of a bullet.
+   */
+	private static double density = 7.8E12;
 }

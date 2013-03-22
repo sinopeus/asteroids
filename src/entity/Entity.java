@@ -26,7 +26,7 @@ import entity.ship.Ship;
 public class Entity
 {
 	/**
-	 * Initializes this new entity with a given direction, position, shape, speedLimit and velocity.
+	 * Initializes this new entity with a given direction, position, shape, mass, speed limit and velocity.
 	 * 
 	 * @param	direction
 	 * 			The given direction.
