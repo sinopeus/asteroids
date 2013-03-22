@@ -1,6 +1,3 @@
-/**
- * 
- */
 package Utilities;
 
 import vector.Acceleration;
@@ -17,6 +14,8 @@ public class Newton
 	{
 		return a2;
 	}
+
+  public
 	
 	public static 
 }
