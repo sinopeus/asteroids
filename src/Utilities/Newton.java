@@ -16,7 +16,7 @@ public class Newton
    * @param m2 The second mass.
    * @param a1 The first acceleration.
    * @return The second acceleration, as calculated from the arguments.
-   *         | return (a2.getScaledBy(m1.get() / m2.get()))
+   *         | return (a1.getScaledBy(m1.get() / m2.get()))
    * @throws IllegalArgumentException If the provided acceleration provided is equal to zero or any of the arguments are null objects.
    */
   public static Acceleration firstLaw_CalculateAcceleration(Mass m1, Mass m2, Acceleration a1) throws IllegalArgumentException
