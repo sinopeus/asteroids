@@ -8,5 +8,5 @@ public class Asteroid extends Entity
 {
 	//TODO make constructor.
 
-	private static double massDensity = 2.65 * Math.pow(10, 12);
+	private static double massDensity = 2.65E12;
 }

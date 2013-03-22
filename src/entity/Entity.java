@@ -70,7 +70,7 @@ public class Entity
 		{
 			this.shape = shape;
 		}
-    setMass(mass);
+		setMass(mass);
 		isTerminated = false;
 	}
 
