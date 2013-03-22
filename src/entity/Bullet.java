@@ -62,5 +62,5 @@ public class Bullet extends Entity
 	private static double radius = 3;
 	private static double initialVelocity = 250;
 
-	private static double massDensity = 7.8 * Math.pow(10, 12);
+	private static double massDensity = 7.8E12;
 }

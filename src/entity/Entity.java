@@ -55,24 +55,24 @@ public class Entity
 	 * @throws	NullPointerException
 	 * 			| Any of the parameters is null.
 	 */
-  //TODO document
-  public Entity(Direction direction, Position position, double speedLimit, Velocity velocity, CircleShape shape, Mass mass) throws NullPointerException
-  {
-    //TODO add throws from setters.
-    setDirection(direction);
-    setPosition(position);
-    setSpeedLimit(speedLimit);
-    setVelocity(velocity);
-    if (!canHaveAsShape(shape))
-    {
-      throw new IllegalArgumentException("Invalid circle shape provided");
-    } else
-    {
-      this.shape = shape;
-    }
-    setMass(mass);
-    isTerminated = false;
-  }
+	//TODO document
+	public Entity(Direction direction, Position position, double speedLimit, Velocity velocity, CircleShape shape, Mass mass) throws NullPointerException
+	{
+		//TODO add throws from setters.
+		setDirection(direction);
+		setPosition(position);
+		setSpeedLimit(speedLimit);
+		setVelocity(velocity);
+		if (!canHaveAsShape(shape))
+		{
+			throw new IllegalArgumentException("Invalid circle shape provided");
+		} else
+		{
+			this.shape = shape;
+		}
+		setMass(mass);
+		isTerminated = false;
+	}
 
 	/**
 	 * Initializes this new entity with default values.
