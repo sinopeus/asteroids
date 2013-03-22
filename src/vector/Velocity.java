@@ -127,7 +127,7 @@ public class Velocity extends Vector //TODO make total
 	 */
 	@Basic
 	@Raw
-	public double getVelocity()
+	public double get()
 	{
 		return getMagnitude();
 	}
