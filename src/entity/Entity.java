@@ -40,39 +40,39 @@ public class Entity
 	 * 			The given circle shape
 	 * @param	mass
 	 * 			The given mass
-	 * @effect	The direction of this ship is set to the given direction.
+	 * @effect	The direction of this entity is set to the given direction.
 	 * 			| setDirection(direction)
-	 * @effect	The position of this ship is set to the given position.
+	 * @effect	The position of this entity is set to the given position.
 	 * 			| setPosition(position)
-	 * @effect	The speed limit of this ship is set to the given speed limit.
+	 * @effect	The speed limit of this entity is set to the given speed limit.
 	 * 			| setSpeedLimit(speedLimit)
-	 * @effect	The velocity of this ship is set to the given velocity.
+	 * @effect	The velocity of this entity is set to the given velocity.
 	 * 			| setVelocity(velocity)
-	 * @effect	The circle shape of this ship is set to the given circle shape.
+	 * @effect	The circle shape of this entity is set to the given circle shape.
 	 * 			| this.shape = shape
-	 * @effect	The mass of this ship is set to the given mass.
+	 * @effect	The mass of this entity is set to the given mass.
 	 * 			| setMass(mass)
 	 * @throws	NullPointerException
 	 * 			| Any of the parameters is null.
 	 */
-	//TODO document
-	public Entity(Direction direction, Position position, double speedLimit, Velocity velocity, CircleShape shape, Mass mass) throws NullPointerException
-	{
-		//TODO add throws from setters.
-		setDirection(direction);
-		setPosition(position);
-		setSpeedLimit(speedLimit);
-		setVelocity(velocity);
-		if (!canHaveAsShape(shape))
-		{
-			throw new IllegalArgumentException("Invalid circle shape provided");
-		} else
-		{
-			this.shape = shape;
-		}
+  //TODO document
+  public Entity(Direction direction, Position position, double speedLimit, Velocity velocity, CircleShape shape, Mass mass) throws NullPointerException
+  {
+    //TODO add throws from setters.
+    setDirection(direction);
+    setPosition(position);
+    setSpeedLimit(speedLimit);
+    setVelocity(velocity);
+    if (!canHaveAsShape(shape))
+    {
+      throw new IllegalArgumentException("Invalid circle shape provided");
+    } else
+    {
+      this.shape = shape;
+    }
     setMass(mass);
-		isTerminated = false;
-	}
+    isTerminated = false;
+  }
 
 	/**
 	 * Initializes this new entity with default values.
@@ -83,7 +83,7 @@ public class Entity
 	public Entity()//TODO document
 	{
 		//TODO add throws from setters.
-		this(new Direction(), new Position(), Velocity.getSpeedOfLight(), new Velocity(), new CircleShape(50));
+		this(new Direction(), new Position(), Velocity.getSpeedOfLight(), new Velocity(), new CircleShape(40), new Mass(5E15));
 	}
 
 	/**
