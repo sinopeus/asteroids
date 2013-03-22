@@ -1,5 +1,7 @@
 package model;
 
+import org.junit.Test;
+
 //
 //import static org.junit.Assert.assertEquals;
 //import static org.junit.Assert.assertFalse;
@@ -22,6 +24,12 @@ package model;
 @SuppressWarnings("javadoc")
 public class FacadeTest
 {
+	
+	@Test
+	public void test()
+	{
+
+	}
 	//	@Before
 	//	public void setUpMutableTestFixture_Ship()
 	//	{

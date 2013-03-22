@@ -1,5 +1,6 @@
 package entity.ship;
 
+import model.Util;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 import be.kuleuven.cs.som.annotate.Value;
@@ -28,7 +29,7 @@ public class Mass // TODO document
 	 */
 	public Mass(double mass) throws IllegalArgumentException
 	{
-		//TODO
+		set(mass);
 	}
 
 	/**
@@ -38,7 +39,7 @@ public class Mass // TODO document
 	@Raw
 	public double get()
 	{
-		//TODO
+		return mass;
 	}
 
 	/**
@@ -50,26 +51,31 @@ public class Mass // TODO document
 	@Raw
 	protected boolean canHaveAsMass(double mass)
 	{
-		//TODO
+		return mass > 0;
 	}
 
 	/**
-	 * Sets 	the mass value of this object.
+	 * Sets the mass value of this mass to the given mass.
 	 * 
 	 * @param 	mass
+	 * 			The given mass
 	 * @post 	| if (canHaveAsMass()) new.mass = mass
 	 */
 	@Basic
 	@Raw
-	private void set(double mass)
+	private void set(double mass) throws IllegalArgumentException
 	{
-		//TODO
+		if (!canHaveAsMass(mass))
+		{
+			throw new IllegalArgumentException("Illegal mass provided");
+		}
+		this.mass = mass;
 	}
 
 	/**
 	 * A variable registering the value of this mass in kg.
 	 */
-	private final double mass;
+	private double mass;
 
 	/**
 	 * Checks if the given mass is the same as this one.
@@ -80,7 +86,20 @@ public class Mass // TODO document
 	@Override
 	public boolean equals(Object o)
 	{
-		//TODO
+		if (this == o)
+		{
+			return true;
+		}
+		if (o == null)
+		{
+			return false;
+		}
+		if (getClass() != o.getClass())
+		{
+			return false;
+		}
+		Mass other = (Mass) o;
+		return Util.fuzzyEquals(other.get(), this.get());
 	}
 
 	/* (non-Javadoc)
@@ -89,7 +108,7 @@ public class Mass // TODO document
 	@Override
 	public String toString()
 	{
-		//TODO
+		return ((int)this.get() + "kg");
 	}
 
 	/* (non-Javadoc)
@@ -98,6 +117,6 @@ public class Mass // TODO document
 	@Override
 	public int hashCode()
 	{
-		//TODO
+		return ("" + get()).hashCode();
 	}
 }

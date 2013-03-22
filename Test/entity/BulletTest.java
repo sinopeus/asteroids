@@ -1,6 +1,7 @@
 package entity;
 
 import org.junit.Before;
+import org.junit.Test;
 
 import entity.ship.Ship;
 
@@ -14,6 +15,12 @@ public class BulletTest
 	}
 
 	//TODO CONTRUCTOR TESTS
+
+	@Test
+	public void test()
+	{
+
+	}
 
 	private static Ship testShip;
 	private static Bullet testBullet;

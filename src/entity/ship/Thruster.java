@@ -1,5 +1,6 @@
 package entity.ship;
 
+import vector.Acceleration;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 
@@ -28,7 +29,8 @@ public class Thruster
 	 */
 	public Thruster(double maximumThrust, Ship owner) throws IllegalArgumentException
 	{
-
+		setMaximumThrustPerSecond(maximumThrust);
+		setOwner(owner);
 	}
 
 	/**
@@ -36,9 +38,9 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
-	public double getMaximumThrust()
+	public double getMaximumThrustPerSecond()
 	{
-
+		return maximumThrustPerSecond;
 	}
 
 	/**
@@ -53,7 +55,7 @@ public class Thruster
 	@Raw
 	protected boolean canHaveAsMaximumThrust(double maximumThrust)
 	{
-
+		return (maximumThrust >= 0);
 	}
 
 	/**
@@ -69,9 +71,13 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
-	private void setMaximumThrust(double maximumThrust) throws IllegalArgumentException
+	private void setMaximumThrustPerSecond(double maximumThrust) throws IllegalArgumentException
 	{
-
+		if (!canHaveAsMaximumThrust(maximumThrust))
+		{
+			throw new IllegalArgumentException("Illegal maximum thrust provided.");
+		}
+		this.maximumThrustPerSecond = maximumThrust;
 	}
 
 	/**
@@ -86,6 +92,7 @@ public class Thruster
 	@Raw
 	public boolean isActivated()
 	{
+		return isActivated;
 	}
 
 	/**
@@ -98,7 +105,7 @@ public class Thruster
 	@Raw
 	public void activate()
 	{
-
+		this.isActivated = true;
 	}
 
 	/**
@@ -111,7 +118,7 @@ public class Thruster
 	@Raw
 	public void deactivate()
 	{
-
+		this.isActivated = false;
 	}
 
 	/**
@@ -124,7 +131,7 @@ public class Thruster
 	@Raw
 	public void toggleActivation()
 	{
-
+		this.isActivated = !this.isActivated;
 	}
 
 	/**
@@ -139,6 +146,7 @@ public class Thruster
 	@Raw
 	public Ship getOwner()
 	{
+		return this.ownerShip;
 	}
 
 	/**
@@ -153,7 +161,7 @@ public class Thruster
 	@Raw
 	protected boolean canHaveAsOwner(Ship owner)
 	{
-
+		return owner != null;
 	}
 
 	/**
@@ -171,12 +179,25 @@ public class Thruster
 	@Raw
 	public void setOwner(Ship owner) throws IllegalArgumentException
 	{
+		if (!canHaveAsOwner(owner))
+		{
+			throw new IllegalArgumentException("Illegal owner ship provided.");
+		}
+		this.ownerShip = owner;
 	}
 
 	/**
 	 * A variable referencing the ship that owns this thruster.
 	 */
 	private Ship ownerShip;
+
+	/**
+	 * Makes the refference to the owner ship null.
+	 */
+	public void terminate() //TODO make this into a state?
+	{
+		this.ownerShip = null;
+	}
 
 	/**
 	 * Thrusts the owner ship with the maximum amount of thrust of this thruster during a given amount of time.
@@ -187,22 +208,34 @@ public class Thruster
 	//TODO @EFFECT
 	public void thrust(double duration)
 	{
-		//TODO TOTAL, change duration to 0 if negative
+		thrust(getMaximumThrustPerSecond(), duration);
 	}
 
 	/**
 	 * Thrusts the owner ship of this thruster with the given amount of thrust.
 	 * 
-	 * @param	thrust
+	 * @param	thrustPerSecond
 	 * 			The given amount of thrust.
 	 * @param	duration
 	 * 			The given amount of time. 
 	 */
 	//TODO @EFFECT
-	public void thrust(double thrust, double duration)
+	public void thrust(double thrustPerSecond, double duration)
 	{
-		//TODO TOTAL, change duration to 0 if negative.
-		//TODO TOTAL, change thrust to maximum thrust if greater, to 0 if negative
+		if (duration < 0)
+		{
+			duration = 0;
+		}
+		if (thrustPerSecond < 0)
+		{
+			thrustPerSecond = 0;
+		}
+		if (thrustPerSecond > getOwner().getThrustPerSecond())
+		{
+			thrustPerSecond = getOwner().getThrustPerSecond();
+		}
+		Acceleration a = new Acceleration(getOwner().getDirection().getScaledBy(thrustPerSecond * duration / getOwner().getMass().get()));
+		getOwner().getVelocity().accelerateBy(a, duration);
 	}
 
 }

@@ -44,7 +44,7 @@ public class Vector
 	 * 			The given vector is null.
 	 * 			| v == null
 	 */
-	public Vector(Vector v) throws IllegalArgumentException
+	public Vector(Vector v) throws NullPointerException
 	{
 		this(v.getXComponent(), v.getYComponent());
 	}
@@ -287,6 +287,15 @@ public class Vector
 		return this.getDifference(v).getMagnitude();
 	}
 
+	/**
+	 * Returns a string representation of this vector
+	 */
+	@Override
+	public String toString()
+	{
+		return "(" + getXComponent() + " , " + getYComponent() + ")";
+	}
+	
 	/**
 	 * Checks whether the given object is a vector and its respective components are equal to this vector's components
 	 * 

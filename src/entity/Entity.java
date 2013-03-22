@@ -6,7 +6,6 @@ import vector.Velocity;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 import entity.ship.Mass;
-import entity.ship.Ship;
 
 /**
  * A class of entities involving a position, velocity, direction, speed limit.
@@ -87,14 +86,14 @@ public class Entity
 	}
 
 	/**
-	 * Gets a position equal to the position of this entity.
+	 * Gets the position of this entity.
 	 */
 	@SuppressWarnings("javadoc")
 	@Basic
 	@Raw
 	public Position getPosition()
 	{
-		return new Position(this.position);
+		return this.position;
 	}
 
 	/**
@@ -148,14 +147,14 @@ public class Entity
 	protected Position position;
 
 	/**
-	 * Gets a velocity equal to the velocity of this entity.
+	 * Gets the velocity of this entity.
 	 */
 	@SuppressWarnings("javadoc")
 	@Basic
 	@Raw
 	public Velocity getVelocity()
 	{
-		return new Velocity(this.velocity);
+		return this.velocity;
 	}
 
 	/**
@@ -205,14 +204,14 @@ public class Entity
 	protected Velocity velocity;
 
 	/**
-	 * Gets a direction equal to the direction of this entity.
+	 * Gets the direction of this entity.
 	 */
 	@SuppressWarnings("javadoc")
 	@Basic
 	@Raw
 	public Direction getDirection()
 	{
-		return new Direction(this.direction.getAngle());
+		return this.direction;
 	}
 
 	/**
@@ -277,13 +276,13 @@ public class Entity
 	 * @param 	shape
 	 * 			The shape to check.
 	 * @return	True if and only if the given shape is not null and has a range of at least the minimum radius for ships.
-	 * 			| result = ((shape != null) && (shape.getRadius() >= Ship.getMinimumRadius()))
+	 * 			| result = (shape != null)
 	 */
 	@Basic
 	@Raw
 	protected boolean canHaveAsShape(@Raw CircleShape shape)
 	{
-		return ((shape != null) && (shape.getRadius() >= Ship.getMinimumRadius()));
+		return (shape != null);
 	}
 
 	/**
@@ -356,10 +355,11 @@ public class Entity
 	 */
 	@Basic
 	@Raw
-	public Mass getMass(){
+	public Mass getMass()
+	{
 		return mass;
 	}
-	
+
 	/**
 	 * Checks whether this entity can have the given mass as its mass.
 	 * 
@@ -369,9 +369,11 @@ public class Entity
 	 */
 	@Basic
 	@Raw
-	private boolean canHaveAsMass(Mass mass){
+	private boolean canHaveAsMass(Mass mass)
+	{
 		return mass != null;
 	}
+
 	//TODO TESTERS
 	/**
 	 * Sets the mass of this entity to the given mass.
@@ -385,18 +387,20 @@ public class Entity
 	 */
 	@Basic
 	@Raw
-	private void setMass(Mass mass) throws IllegalArgumentException{
-		if (!canHaveAsMass(mass)){
+	private void setMass(Mass mass) throws IllegalArgumentException
+	{
+		if (!canHaveAsMass(mass))
+		{
 			throw new IllegalArgumentException("Invalid mass provided");
 		}
 		this.mass = mass;
 	}
-	
+
 	/**
 	 * A variable referencing the mass of this ship.
 	 */
 	private Mass mass;
-	
+
 	/**
 	 * Checks whether this entity is terminated.
 	 */

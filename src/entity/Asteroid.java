@@ -1,5 +1,10 @@
 package entity;
 
+import vector.Direction;
+import vector.Position;
+import vector.Velocity;
+import entity.ship.Mass;
+
 /**
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
  * TODO document
@@ -36,16 +41,15 @@ public class Asteroid extends Entity
 	 * @effect	The mass of this asteroid is set to the its radius times the fixed density for asteroids.
 	 * 			| setMass(shape.getRadius() * density)
 	 * @throws	IllegalArgumentException
-	 * 			| The given shape is not a legal shape.
-	 * @throws	NullPointerException
 	 * 			| Any of the parameters is null.
 	 */
-  public Asteroid (Direction direction, Position position, double speedLimit, Velocity velocity, CircleShape shape) throws NullPointerException {
-    this.super(direction, position, speedLimit, velocity, shape, new Mass(shape.getRadius() * density));
-  }
+	public Asteroid(Direction direction, Position position, double speedLimit, Velocity velocity, CircleShape shape) throws IllegalArgumentException
+	{
+		super(direction, position, speedLimit, velocity, shape, new Mass((4 * Math.PI * Math.pow(shape.getRadius(), 3) * density) / 3));
+	}
 
-  /**
-   * A variable registering the fixed density of all asteroids.
-   */
-  private static double density = 2.65E12;
+	/**
+	 * A variable registering the fixed density of all asteroids.
+	 */
+	private static double density = 2.65E12;
 }

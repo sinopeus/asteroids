@@ -19,8 +19,8 @@ public class ThrusterTest
 	@Before
 	public void setUpMutableTestCase_Thruster()
 	{
-		testShip = new Ship(new Direction(new Angle(Math.PI / 4.0)), new Position(), 5000.0, new Velocity(3, 4), new CircleShape(Ship.getMinimumRadius()));
-		testThruster = new Thruster(50, testShip);
+		testShip = new Ship(new Direction(new Angle(Math.PI/2.0)), new Position(), 5000.0, new Velocity(3, 4), new CircleShape(Ship.getMinimumRadius()), new Mass(40));
+		testThruster = new Thruster(2, testShip);
 	}
 
 	private static Ship testShip;
@@ -30,7 +30,7 @@ public class ThrusterTest
 	public void extendedConstructorTest_FieldsMatchParameters_PerfectParameters()
 	{
 		Thruster th = new Thruster(25, testShip);
-		assertTrue(Util.fuzzyEquals(25, th.getMaximumThrust()));
+		assertTrue(Util.fuzzyEquals(25, th.getMaximumThrustPerSecond()));
 		assertEquals(testShip, th.getOwner());
 	}
 
@@ -88,9 +88,9 @@ public class ThrusterTest
 	@Test
 	public void simpleThrustTest_PerfectParameters()
 	{
+		System.out.println("Simple");
 		testThruster.thrust(6);
-		assertEquals(testShip.getVelocity(), new Velocity(3 + 6 * Ship.thrustPerSecond * Math.sqrt(2) / testShip.getMass().get(), 4 + 6 * Ship.thrustPerSecond * Math.sqrt(2)
-				/ testShip.getMass().get()));
+		assertEquals(testShip.getVelocity(),new Velocity(3, 5.8));
 	}
 
 	@Test
@@ -104,8 +104,9 @@ public class ThrusterTest
 	@Test
 	public void extendedThrustTest_PerfectParameters()
 	{
+		System.out.println("Extended");
 		testThruster.thrust(5, 6);
-		assertEquals(testShip.getVelocity(), new Velocity(3 + 15 * Math.sqrt(2) / testShip.getMass().get(), 4 + 15 * Math.sqrt(2) / testShip.getMass().get()));
+		assertEquals(testShip.getVelocity(),new Velocity(3, 8.5));
 	}
 
 	@Test

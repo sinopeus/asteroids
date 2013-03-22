@@ -1,10 +1,8 @@
 package entity.ship;
 
 import model.IShip;
-import vector.Acceleration;
 import vector.Direction;
 import vector.Position;
-import vector.Vector;
 import vector.Velocity;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
@@ -66,12 +64,11 @@ public class Ship extends Entity implements IShip
 	 * @throws	NullPointerException
 	 * 			| Any of the parameters is null.
 	 */
-	//TODO document
 	public Ship(Direction direction, Position position, double speedLimit, Velocity velocity, CircleShape shape, Mass mass) throws IllegalArgumentException, NullPointerException
 	{
 		//TODO add throws from setters
 		super(direction, position, speedLimit, velocity, shape, mass);
-		//TODO add thruster construction	
+		setThruster(new Thruster(getThrustPerSecond(), this));
 	}
 
 	/**
@@ -109,44 +106,101 @@ public class Ship extends Entity implements IShip
 	 */
 	private static double minimumRadius = 10;
 
+	//
+	//	/**
+	//	 * Changes the velocity of this ship based on the current velocity, and a given acceleration.
+	//	 * 
+	//	 * @param 	acceleration
+	//	 * 			The given acceleration
+	//	 * @effect	The velocity is modified by the given acceleration
+	//	 * 			| this.velocity.accelerateBy(a, 1)
+	//	 * @throws	IllegalStateException
+	//	 * 			This ship is terminated
+	//	 * 			| isTerminated()
+	//	 */
+	//	public void thrust(double acceleration) throws IllegalStateException
+	//	{
+	//		if (this.isTerminated())
+	//		{
+	//			throw new IllegalStateException("This ship is terminated.");
+	//		}
+	//		if (acceleration < 0)
+	//		{
+	//			acceleration = 0;
+	//		}
+	//		Acceleration a = new Acceleration(getDirection().getScaledBy(acceleration));
+	//		this.velocity.accelerateBy(a, 1);
+	//		if (getVelocity().getMagnitude() > this.getSpeedLimit())
+	//		{
+	//			Vector v = getVelocity().getScaledBy(this.getSpeedLimit() / getVelocity().getMagnitude());
+	//			this.velocity.setXComponent(v.getXComponent());
+	//			this.velocity.setYComponent(v.getYComponent());
+	//		}
+	//	}
+
 	/**
-	 * Changes the velocity of this ship based on the current velocity, and a given acceleration.
-	 * 
-	 * @param 	acceleration
-	 * 			The given acceleration
-	 * @effect	The velocity is modified by the given acceleration
-	 * 			| this.velocity.accelerateBy(a, 1)
-	 * @throws	IllegalStateException
-	 * 			This ship is terminated
-	 * 			| isTerminated()
+	 * Gets the thruster of this ship.
 	 */
-	public void thrust(double acceleration) throws IllegalStateException
+	@Basic
+	@Raw
+	public Thruster getThruster()
 	{
-		if (this.isTerminated())
+		return thruster;
+	}
+
+	/**
+	 * Checks whether this ship can have the given thruster as its thruster.
+	 * 
+	 * @param	thruster
+	 * 			The given thruster
+	 * @return	True if and only if the given thruster is not null.
+	 * 			| result == (thruster != null)
+	 */
+	private boolean canHaveAsThruster(Thruster thruster)
+	{
+		return (thruster != null);
+	}
+
+	/**
+	 * Sets the thrust of this ship to the given thruster.
+	 * 
+	 * @param	thruster
+	 * 			The given thruster.
+	 * @throws	IllegalArgumentException
+	 * 			The given thruster is null.
+	 * 			| thruster == null
+	 */
+	private void setThruster(Thruster thruster) throws IllegalArgumentException
+	{
+		if (!canHaveAsThruster(thruster))
 		{
-			throw new IllegalStateException("This ship is terminated.");
+			throw new IllegalArgumentException("Invalid thruster provided.");
 		}
-		if (acceleration < 0)
-		{
-			acceleration = 0;
-		}
-		Acceleration a = new Acceleration(getDirection().getScaledBy(acceleration));
-		this.velocity.accelerateBy(a, 1);
-		if (getVelocity().getMagnitude() > this.getSpeedLimit())
-		{
-			Vector v = getVelocity().getScaledBy(this.getSpeedLimit() / getVelocity().getMagnitude());
-			this.velocity.setXComponent(v.getXComponent());
-			this.velocity.setYComponent(v.getYComponent());
-		}
+		this.thruster = thruster;
 	}
 
 	/**
 	 * A variable referencing the thruster of this ship.
 	 */
-	private final Thruster thruster;
+	private Thruster thruster;
+
+	/**
+	 * Terminates this ship.
+	 */
+	@Override
+	public void terminate()
+	{
+		getThruster().terminate();
+		super.terminate();
+	}
+	
+	public double getThrustPerSecond()
+	{
+		return Ship.thrustPerSecond;
+	}
 
 	/**
 	 * A variable registering the thrust that a ships thruster can exert in one second.
 	 */
-	public static double thrustPerSecond = 1.1E18;
+	private static double thrustPerSecond = 1.1E18;
 }

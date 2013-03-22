@@ -1,9 +1,11 @@
 package entity;
 
+import vector.Position;
+import vector.Velocity;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
-import entity.ship.Ship;
 import entity.ship.Mass;
+import entity.ship.Ship;
 
 /**
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
@@ -13,27 +15,46 @@ public class Bullet extends Entity
 {
 	/**
 	 * Initializes a new bullet.
-   * 
-   * @param   ship
-   *          The ship which has fired this bullet.
-   * @effect  | this.super(ship.getDirection(), ship.getPosition(), ship.getSpeedLimit, initialVelocity, new CircleShape(radius), new Mass(shape.getRadius() * density));
-   *            setShooter(ship);
+	* 
+	* @param   	ship
+	*          	The ship which has fired this bullet.
+	* @effect  	Initializes this new bullet using the properties of the given ship.
+	* 			| this.super(ship.getDirection(), ship.getPosition(), ship.getSpeedLimit, initialVelocity, new CircleShape(radius), new Mass(shape.getRadius() * density));
+	*           | setShooter(ship);
+	* @throws	IllegalArgumentException
+	* 			the given ship is null
 	 */
-  public Bullet (Ship ship) throws NullPointerException {
-    this.super(ship.getDirection(), ship.getPosition(), ship.getSpeedLimit(), initialVelocity, new CircleShape(radius), new Mass(shape.getRadius() * density));
-    setShooter(ship);
-  }
+	public Bullet(Ship ship) throws IllegalArgumentException
+	{
+		super(ship.getDirection(), ship.getPosition(), Velocity.getSpeedOfLight(),
+				new Velocity(ship.getVelocity().getScaledBy(bulletInitialVelocity)), new CircleShape(bulletRadius), new Mass((4 * Math.PI
+						* Math.pow(ship.getShape().getRadius(), 3) * density) / 3));
+		setShooter(ship);
+	}
+
+	/**
+	 * Calculates the initial position of a new bullet given the ship it is fired from.
+	 * 
+	 * @param	ship
+	 * 			The given ship
+	 * @return	The initial position of this new bullet. (it is placed right next to the ship.
+	 * 			| 
+	 */
+	private Position getInitialPosition(Ship ship)
+	{
+		return null; //TODO
+	}
 
 	/**
 	 * Returns the shooter of this bullet.
-   *
-   * @return shooter
+	*
+	* @return shooter
 	 */
 	@Basic
 	@Raw
 	public Ship getShooter()
 	{
-    return shooter;
+		return shooter;
 	}
 
 	/**
@@ -48,8 +69,8 @@ public class Bullet extends Entity
 	@Raw
 	private boolean canHaveAsShooter(Ship shooter)
 	{
-    return (shooter != null);
-  }
+		return (shooter != null);
+	}
 
 	/**
 	 * Sets the shooter ship to the given shooter ship.
@@ -64,36 +85,39 @@ public class Bullet extends Entity
 	 */
 	private void setShooter(Ship shooter) throws IllegalArgumentException
 	{
-    if (canHaveAsShooter) this.shooter = shooter;
-    else throws new IllegalArgumentException("You cannot provide a null ship.");
+		if (!canHaveAsShooter(shooter))
+		{
+			throw new IllegalArgumentException("You cannot provide a null ship.");
+		}
+		this.shooter = shooter;
 	}
 
-  /**
-   * A variable keeping a reference to the ship which shot this bullet.
-   */
+	/**
+	 * A variable keeping a reference to the ship which shot this bullet.
+	 */
 	private Ship shooter;
 
-  /**
-   * @see #Entity.terminate()
-   */
+	/**
+	 * @see #Entity.terminate()
+	 */
 	@Override
 	public void terminate()
 	{
 		super.terminate();
 	}
 
-  /**
-   * A variable registering the radius of a bullet.
-   */
-	private static double radius = 3;
+	/**
+	 * A variable registering the radius of a bullet.
+	 */
+	private static double bulletRadius = 3;
 
-  /**
-   * A variable registering the initial velocity of a bullet.
-   */
-	private static double initialVelocity = 250;
+	/**
+	 * A variable registering the initial velocity of a bullet.
+	 */
+	private static double bulletInitialVelocity = 250;
 
-  /**
-   * A variable registering the density of a bullet.
-   */
+	/**
+	 * A variable registering the density of a bullet.
+	 */
 	private static double density = 7.8E12;
 }

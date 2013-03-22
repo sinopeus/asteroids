@@ -12,6 +12,7 @@ import org.junit.Test;
 import vector.Direction;
 import vector.Position;
 import vector.Velocity;
+import entity.ship.Mass;
 import entity.ship.Ship;
 
 public class EntityTest //TODO test constructors
@@ -25,7 +26,8 @@ public class EntityTest //TODO test constructors
 		double speedLimit = Velocity.getSpeedOfLight();
 		Velocity v = new Velocity(5, 5);
 		CircleShape s = new CircleShape(50);
-		testEntity = new Entity(d, p, speedLimit, v, s);
+		Mass m = new Mass(40);
+		testEntity = new Entity(d, p, speedLimit, v, s, m);
 		terminatedEntity = new Ship();
 		terminatedEntity.terminate();
 	}
@@ -151,14 +153,15 @@ public class EntityTest //TODO test constructors
 	{
 		CircleShape c = new CircleShape(50);
 		assertTrue(testEntity.canHaveAsShape(c));
-		assertFalse(testEntity.canHaveAsShape(new CircleShape(5)));
+		assertTrue(testEntity.canHaveAsShape(new CircleShape(5)));
 		assertFalse(testEntity.canHaveAsShape(null));
 	}
 
 	@Test
 	public void moveTest_PerfectParameters()
 	{
-		Entity originalState = new Ship(testEntity.getDirection(), testEntity.getPosition(), testEntity.getSpeedLimit(), testEntity.getVelocity(), testEntity.getShape());
+		Entity originalState = new Ship(testEntity.getDirection(), testEntity.getPosition(), testEntity.getSpeedLimit(), testEntity.getVelocity(), new CircleShape(testEntity.getShape().getRadius()),
+				new Mass(testEntity.getMass().get()));
 		testEntity.move(2.0);
 		assertEquals(testEntity.getVelocity(), originalState.getVelocity());
 		assertEquals(testEntity.getDirection(), originalState.getDirection());

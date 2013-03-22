@@ -18,7 +18,7 @@ public class Force extends Vector
 	 */
 	public Force(double x, double y)
 	{
-		//TODO  
+		super(x,y); 
 	}
 
 	/**
@@ -31,9 +31,9 @@ public class Force extends Vector
 	 * 			The given vector is null.
 	 * 			| v == null
 	 */
-	public Force(Vector v) throws IllegalArgumentException
+	public Force(Vector v) throws NullPointerException
 	{
-		//TODO  
+		super(v);
 	}
 
 	/**
@@ -43,6 +43,6 @@ public class Force extends Vector
 	 */
 	public Force()
 	{
-		//TODO  
+		super(); 
 	}
 }

@@ -1,5 +1,7 @@
 package model;
 
+import org.junit.Test;
+
 //
 //import static org.junit.Assert.assertEquals;
 //import static org.junit.Assert.assertNotNull;
@@ -17,6 +19,12 @@ package model;
 @SuppressWarnings("javadoc")
 public class PartialFacadeTest
 {
+	
+	@Test
+	public void test()
+	{
+
+	}
 	//
 	//	IFacade facade;
 	//

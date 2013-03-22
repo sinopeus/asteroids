@@ -48,7 +48,7 @@ public class Newton
 		{
 			throw new IllegalArgumentException("Null parameter provided.");
 		}
-		return new Acceleration(f.getScaledBy(m.get()));
+		return new Acceleration(f.getScaledBy(1/m.get()));
 	}
 
 	/**
@@ -68,3 +68,4 @@ public class Newton
 		return new Force(f1.getScaledBy(-1.0));
 	}
 }
+;

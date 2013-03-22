@@ -16,7 +16,7 @@ public class MassTest
 	@Before
 	public void setUpImmutableTestFixtureMass()
 	{
-
+		testMass = new Mass(50);
 	}
 
 	private static Mass testMass;
@@ -47,7 +47,7 @@ public class MassTest
 	{
 		assertTrue(testMass.equals(testMass));
 		assertTrue(testMass.equals(new Mass(50)));
-		assertFalse(testMass.equals(new Mass(0)));
+		assertFalse(testMass.equals(new Mass(1)));
 		assertFalse(testMass.equals(null));
 		assertFalse(testMass.equals(new Vector()));
 	}
