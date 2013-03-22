@@ -62,7 +62,7 @@ public class Ship extends Entity implements IShip
 	{
 		//TODO add throws from setters
 		super(direction, position, speedLimit, velocity,shape);
-		
+	  //TODO add thruster construction	
 	}
 
 	/**
@@ -130,4 +130,6 @@ public class Ship extends Entity implements IShip
 			this.velocity.setYComponent(v.getYComponent());
 		}
 	}
+
+  private final Thruster thruster;
 }

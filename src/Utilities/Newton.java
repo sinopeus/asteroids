@@ -1,6 +1,3 @@
-/**
- * 
- */
 package Utilities;
 
 import vector.Acceleration;
@@ -18,6 +15,8 @@ public class Newton
 	{
 		return a2;
 	}
+
+  public
 	
 	//TODO DOCUMENT
 	public static Acceleration secondLaw_CalculateAcceleration(Force f, Mass m) throws IllegalArgumentException
