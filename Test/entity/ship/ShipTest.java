@@ -132,6 +132,6 @@ public class ShipTest
 	{
 		testShip.setSpeedLimit(50);
 		testShip.thrust(45);
-		assertTrue(Util.fuzzyEquals(testShip.getVelocity().getVelocity(), testShip.getSpeedLimit()));
+		assertTrue(Util.fuzzyEquals(testShip.getVelocity().get(), testShip.getSpeedLimit()));
 	}
 }

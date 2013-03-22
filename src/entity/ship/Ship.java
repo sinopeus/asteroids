@@ -1,15 +1,15 @@
 package entity.ship;
 
-import entity.CircleShape;
-import entity.Entity;
+import model.IShip;
 import vector.Acceleration;
 import vector.Direction;
 import vector.Position;
 import vector.Vector;
 import vector.Velocity;
-import model.IShip;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
+import entity.CircleShape;
+import entity.Entity;
 
 /**
  * A class of ships involving its position, velocity, direction, speed limit and shape.
@@ -57,12 +57,13 @@ public class Ship extends Entity implements IShip
 	 * 			| The given shape is not a legal shape.
 	 * @throws	NullPointerException
 	 * 			| Any of the parameters is null.
-	 */ //TODO document
-	public Ship(Direction direction, Position position, double speedLimit, Velocity velocity,CircleShape shape) throws IllegalArgumentException, NullPointerException
+	 */
+	//TODO document
+	public Ship(Direction direction, Position position, double speedLimit, Velocity velocity, CircleShape shape) throws IllegalArgumentException, NullPointerException
 	{
 		//TODO add throws from setters
-		super(direction, position, speedLimit, velocity,shape);
-	  //TODO add thruster construction	
+		super(direction, position, speedLimit, velocity, shape);
+		//TODO add thruster construction	
 	}
 
 	/**
@@ -74,9 +75,9 @@ public class Ship extends Entity implements IShip
 	public Ship()
 	{
 		//TODO add throws from setters
-		this(new Direction(), new Position(), Velocity.getSpeedOfLight(), new Velocity(),new CircleShape(getMinimumRadius()));
+		this(new Direction(), new Position(), Velocity.getSpeedOfLight(), new Velocity(), new CircleShape(getMinimumRadius()));
 	}
-	
+
 	//TODO document
 	@Override
 	protected boolean canHaveAsShape(@Raw CircleShape shape)
@@ -131,5 +132,13 @@ public class Ship extends Entity implements IShip
 		}
 	}
 
-  private final Thruster thruster;
+	/**
+	 * A variable referencing the thruster of this ship.
+	 */
+	private final Thruster thruster;
+
+	/**
+	 * A variable registering the thrust that a ships thruster can exert in one second.
+	 */
+	public static double thrustPerSecond = 1.1 * Math.pow(10, 18);
 }

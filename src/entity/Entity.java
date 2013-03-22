@@ -5,6 +5,7 @@ import vector.Position;
 import vector.Velocity;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
+import entity.ship.Mass;
 import entity.ship.Ship;
 
 /**
@@ -160,7 +161,7 @@ public class Entity
 	@Raw
 	protected boolean canHaveAsVelocity(Velocity velocity)
 	{
-		return ((velocity != null) && (velocity.getVelocity() <= getSpeedLimit()));
+		return ((velocity != null) && (velocity.get() <= getSpeedLimit()));
 	}
 
 	/**
@@ -341,6 +342,52 @@ public class Entity
 	 */
 	protected double speedLimit;
 
+	/**
+	 * Gets the mass of this ship.
+	 */
+	@Basic
+	@Raw
+	public Mass getMass(){
+		return mass;
+	}
+	
+	/**
+	 * Checks whether this entity can have the given mass as its mass.
+	 * 
+	 * @param	mass
+	 * 			The given mass
+	 * @return	True if and only if the given mass is not null
+	 */
+	@Basic
+	@Raw
+	private boolean canHaveAsMass(Mass mass){
+		return mass != null;
+	}
+	//TODO TESTERS
+	/**
+	 * Sets the mass of this entity to the given mass.
+	 * @param	mass
+	 * 			The given mass.
+	 * @post	The mass of this ship is now equal to the given mass.
+	 * 			| new.getMass() == mass
+	 * @throws	IllegalArgumentException
+	 * 			The given mass is not a valid mass
+	 * 			| !canHaveAsMass(mass)
+	 */
+	@Basic
+	@Raw
+	private void setMass(Mass mass) throws IllegalArgumentException{
+		if (!canHaveAsMass(mass)){
+			throw new IllegalArgumentException("Invalid mass provided");
+		}
+		this.mass = mass;
+	}
+	
+	/**
+	 * A variable referencing the mass of this ship.
+	 */
+	private Mass mass;
+	
 	/**
 	 * Checks whether this entity is terminated.
 	 */

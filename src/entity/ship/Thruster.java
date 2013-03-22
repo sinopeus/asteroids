@@ -21,6 +21,8 @@ public class Thruster
 	 * 			| setMaximumThrust(maximumThrust)
 	 * @effect	The owner ship of this thruster is set to the given owner ship.
 	 * 			| setOwner(owner)
+	 * @effect	This thruster is not active
+	 * 			| deactivate()
 	 * @throws	IllegalArgumentException
 	 * 			The owner ship is null.
 	 */
@@ -45,7 +47,7 @@ public class Thruster
 	 * @param	maximumThrust
 	 * 			The given maximum amount of thrust.
 	 * @return	True if and only if the given amount of maximum thrust is positive.
-	 * 			| result == (maximum > 0)
+	 * 			| result == (maximum >= 0)
 	 */
 	@Basic
 	@Raw
@@ -73,9 +75,9 @@ public class Thruster
 	}
 
 	/**
-	 * A final variable registering the maximum amount of thrust that can be exerted by this thruster in N/s.
+	 * A variable registering the maximum amount of thrust that can be exerted by this thruster in N/s.
 	 */
-	private final double maximumThrustPerSecond;
+	private double maximumThrustPerSecond;
 
 	/**
 	 * Checks whether this thruster is activated.
@@ -178,6 +180,7 @@ public class Thruster
 
 	/**
 	 * Thrusts the owner ship with the maximum amount of thrust of this thruster during a given amount of time.
+	 * 
 	 * @param	duration
 	 * 			The given amount of time.
 	 */
@@ -189,6 +192,7 @@ public class Thruster
 
 	/**
 	 * Thrusts the owner ship of this thruster with the given amount of thrust.
+	 * 
 	 * @param	thrust
 	 * 			The given amount of thrust.
 	 * @param	duration

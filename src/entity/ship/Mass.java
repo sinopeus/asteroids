@@ -19,12 +19,12 @@ public class Mass // TODO document
 	/**
 	 * Creates a new mass.
 	 *
-	 * @param mass
-	 *        | The mass value we want to assign.
+	 * @param	mass
+	 *       	| The mass value we want to assign.
 	 * @effect  This mass is set using the given mass value.
 	 *          | set(mass)
-	 * @throws IllegalArgumentException
-	 *         | !canHaveAsMass(mass)
+	 * @throws 	IllegalArgumentException
+	 *         	| !canHaveAsMass(mass)
 	 */
 	public Mass(double mass) throws IllegalArgumentException
 	{
@@ -43,7 +43,8 @@ public class Mass // TODO document
 
 	/**
 	 * Checks if the given value can be a mass value.
-	 * @return | (mass > 0)
+	 * 
+	 * @return	| (mass > 0)
 	 */
 	@Basic
 	@Raw
@@ -53,9 +54,10 @@ public class Mass // TODO document
 	}
 
 	/**
-	 * Sets the mass value of this object.
-	 * @param mass
-	 * @post | if (canHaveAsMass()) new.mass = mass
+	 * Sets 	the mass value of this object.
+	 * 
+	 * @param 	mass
+	 * @post 	| if (canHaveAsMass()) new.mass = mass
 	 */
 	@Basic
 	@Raw
@@ -71,6 +73,7 @@ public class Mass // TODO document
 
 	/**
 	 * Checks if the given mass is the same as this one.
+	 * 
 	 * @param   o
 	 * @return  | (o != null && o.getClass()==getClass() && Util.fuzzyEquals(o.get(),this.get()))
 	 */
