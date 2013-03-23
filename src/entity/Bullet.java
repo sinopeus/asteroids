@@ -21,10 +21,10 @@ public class Bullet extends Entity
 	* @effect  	Initializes this new bullet using the properties of the given ship.
 	* 			| this.super(ship.getDirection(), ship.getPosition(), ship.getSpeedLimit, initialVelocity, new CircleShape(radius), new Mass(shape.getRadius() * density));
 	*           | setShooter(ship);
-	* @throws	IllegalArgumentException
+	* @throws	NullPointerException
 	* 			the given ship is null
 	 */
-	public Bullet(Ship ship) throws IllegalArgumentException
+	public Bullet(Ship ship) throws NullPointerException
 	{
 		super(ship.getDirection(), ship.getPosition(), Velocity.getSpeedOfLight(),
 				new Velocity(ship.getVelocity().getSum(ship.getDirection().getScaledBy(bulletInitialVelocity))), new CircleShape(bulletRadius), new Mass((4 * Math.PI
@@ -103,7 +103,7 @@ public class Bullet extends Entity
 	@Override
 	public void terminate()
 	{
-    //TODO
+    	this.shooter = null;
 	}
 
 	/**

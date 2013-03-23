@@ -12,8 +12,9 @@ import entity.Entity;
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
  * TODO document
  */
-public class World
+public class World extends HashSet<Entity>
 {
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Initializes this new world with a given size on the x- and y axis.
@@ -33,7 +34,6 @@ public class World
 	{
 		setXSize(xSize);
 		setYSize(ySize);
-		setEntities(new HashSet<Entity>());
 	}
 
 	/**
@@ -134,51 +134,82 @@ public class World
 	 */
 	private double ySize;
 
+	//	/**
+	//	 * Gets the hash set of all entities.
+	//	 */
+	//	@SuppressWarnings("javadoc")
+	//	@Basic
+	//	@Raw
+	//	public HashSet<Entity> getEntities()
+	//	{
+	//		return entities;
+	//	}
+	//
+	//	/**
+	//	 * Checks whether this world can have the given hash set of entities as its hash set of entities.
+	//	 * 
+	//	 * @param 	entityQueue
+	//	 * 			The hash set of entities to check.
+	//	 * @return	True if and only if the given hash set of entities is not null.
+	//	 * 			| result == (entityQueue != null)
+	//	 */
+	//	@Basic
+	//	@Raw
+	//	private boolean canHaveAsEntitySet(HashSet<Entity> entityQueue)
+	//	{
+	//		return (entityQueue != null);
+	//	}
+	//
+	//	/**
+	//	 * Sets the hash set of entities to the given hash set of entities.
+	//	 * 
+	//	 * @param	entities
+	//	 * 			The given hash set of entities.
+	//	 * @post	The hash set of entities of this world is equal to the given hash set of entities.
+	//	 * 			| new.getEntities() == entities
+	//	 * @throws	The given hash set of entities is not a valid hash set of entities for this world.
+	//	 * 			| !canHaveAsEntitySet(entities)
+	//	 */
+	//	@Basic
+	//	@Raw
+	//	private void setEntities(HashSet<Entity> entities) throws IllegalArgumentException
+	//	{
+	//		if (!canHaveAsEntitySet(entities))
+	//		{
+	//			throw new IllegalArgumentException("Invalid hash set of entities provided");
+	//		}
+	//		this.entities = entities;
+	//	}
+
 	/**
-	 * Gets the hash set of all entities.
+	 * Checks whether the given entity is a valid entity for this world.
+	 *  
+	 * @param 	entity
+	 * 			The given entity
+	 * @return	True if and only if the given entity is not null.
+	 * 			| result == entity != null
 	 */
-	@SuppressWarnings("javadoc")
-	@Basic
-	@Raw
-	public HashSet<Entity> getEntities()
+	private boolean canHaveAsEntity(Entity entity)
 	{
-		return entities;
+		return (entity != null);
 	}
 
 	/**
-	 * Checks whether this world can have the given hash set of entities as its hash set of entities.
+	 * Adds the given entity to this world.
 	 * 
-	 * @param 	entityQueue
-	 * 			The hash set of entities to check.
-	 * @return	True if and only if the given hash set of entities is not null.
-	 * 			| result = (entityQueue != null)
+	 * @param 	entity
+	 * 			The given entity
+	 * @post	This world now contains the given entity.
+	 * 			| new.contains(e)
+	 * @throws	IllegalArgumentException
+	 * 			The given entity is not a valid entity.
 	 */
-	@Basic
-	@Raw
-	private boolean canHaveAsEntitySet(HashSet<Entity> entityQueue)
+	public void addEntity(Entity entity) throws IllegalArgumentException
 	{
-		return (entityQueue != null);
-	}
-
-	/**
-	 * Sets the hash set of entities to the given hash set of entities.
-	 * 
-	 * @param	entities
-	 * 			The given hash set of entities.
-	 * @post	The hash set of entities of this world is equal to the given hash set of entities.
-	 * 			| new.getEntities() == entities
-	 * @throws	The given hash set of entities is not a valid hash set of entities for this world.
-	 * 			| !canHaveAsEntitySet(entities)
-	 */
-	@Basic
-	@Raw
-	private void setEntities(HashSet<Entity> entities) throws IllegalArgumentException
-	{
-		if (!canHaveAsEntitySet(entities))
+		if (!canHaveAsEntity(entity))
 		{
-			throw new IllegalArgumentException("Invalid hash set of entities provided");
+			throw new IllegalArgumentException("Invalid entity added");
 		}
-		this.entities = entities;
 	}
 
 	/**

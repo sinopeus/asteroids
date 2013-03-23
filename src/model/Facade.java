@@ -6,8 +6,16 @@ import java.util.Random;
 import java.util.Set;
 
 import main.CollisionListener;
+import vector.Direction;
+import vector.Position;
+import vector.Velocity;
 import world.World;
+import entity.Angle;
+import entity.Asteroid;
+import entity.Bullet;
+import entity.CircleShape;
 import entity.Entity;
+import entity.ship.Mass;
 import entity.ship.Ship;
 
 /**
@@ -389,7 +397,7 @@ public class Facade implements IFacade
 		}
 		World w = (World) world;
 		HashSet<Ship> hs = new HashSet<Ship>();
-		for (Iterator<Entity> iterator = w.getEntities().iterator(); iterator.hasNext();)
+		for (Iterator<Entity> iterator = w.iterator(); iterator.hasNext();)
 		{
 			Entity e = iterator.next();
 			if (e instanceof Ship)
@@ -408,8 +416,16 @@ public class Facade implements IFacade
 			throw new IllegalArgumentException("The given object is not a world.");
 		}
 		World w = (World) world;
-		// TODO Auto-generated method stub
-		return null;
+		HashSet<Asteroid> hs = new HashSet<Asteroid>();
+		for (Iterator<Entity> iterator = w.iterator(); iterator.hasNext();)
+		{
+			Entity e = iterator.next();
+			if (e instanceof Asteroid)
+			{
+				hs.add((Asteroid) e);
+			}
+		}
+		return hs;
 	}
 
 	@Override
@@ -420,36 +436,80 @@ public class Facade implements IFacade
 			throw new IllegalArgumentException("The given object is not a world.");
 		}
 		World w = (World) world;
-		// TODO Auto-generated method stub
-		return null;
+		HashSet<Bullet> hs = new HashSet<Bullet>();
+		for (Iterator<Entity> iterator = w.iterator(); iterator.hasNext();)
+		{
+			Entity e = iterator.next();
+			if (e instanceof Bullet)
+			{
+				hs.add((Bullet) e);
+			}
+		}
+		return hs;
 	}
 
 	@Override
 	public void addShip(Object world, Object ship)
 	{
-		// TODO Auto-generated method stub
-
+		if (world.getClass() != World.class)
+		{
+			throw new IllegalArgumentException("The given object is not a world.");
+		}
+		World w = (World) world;
+		if (ship instanceof Ship)
+		{
+			throw new IllegalArgumentException("The given object is not a Ship.");
+		}
+		Ship s = (Ship) ship;
+		w.add(s);
 	}
 
 	@Override
 	public void addAsteroid(Object world, Object asteroid)
 	{
-		// TODO Auto-generated method stub
-
+		if (world.getClass() != World.class)
+		{
+			throw new IllegalArgumentException("The given object is not a world.");
+		}
+		World w = (World) world;
+		if (asteroid instanceof Asteroid)
+		{
+			throw new IllegalArgumentException("The given object is not an asteroid.");
+		}
+		Asteroid a = (Asteroid) asteroid;
+		w.add(a);
 	}
 
 	@Override
 	public void removeShip(Object world, Object ship)
 	{
-		// TODO Auto-generated method stub
-
+		if (world.getClass() != World.class)
+		{
+			throw new IllegalArgumentException("The given object is not a world.");
+		}
+		World w = (World) world;
+		if (ship instanceof Ship)
+		{
+			throw new IllegalArgumentException("The given object is not a Ship.");
+		}
+		Ship s = (Ship) ship;
+		w.remove(s);
 	}
 
 	@Override
 	public void removeAsteroid(Object world, Object asteroid)
 	{
-		// TODO Auto-generated method stub
-
+		if (world.getClass() != World.class)
+		{
+			throw new IllegalArgumentException("The given object is not a world.");
+		}
+		World w = (World) world;
+		if (asteroid instanceof Asteroid)
+		{
+			throw new IllegalArgumentException("The given object is not an asteroid.");
+		}
+		Asteroid a = (Asteroid) asteroid;
+		w.remove(asteroid);
 	}
 
 	@Override
@@ -462,8 +522,33 @@ public class Facade implements IFacade
 	@Override
 	public Object createShip(double x, double y, double xVelocity, double yVelocity, double radius, double direction, double mass)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		Angle a;
+		Direction d;
+		Position p;
+		CircleShape s;
+		Velocity v;
+		double speedLimit;
+		Mass m;
+		try
+		{
+			a = new Angle(direction);
+			d = new Direction(a);
+			p = new Position(x, y);
+			s = new CircleShape(radius);
+			v = new Velocity(xVelocity, yVelocity);
+			speedLimit = Velocity.getSpeedOfLight();
+			m = new Mass(mass);
+		} catch (IllegalArgumentException e)
+		{
+			throw new ModelException("Invalid arguments for facade.createShip(...)");
+		} catch (ArithmeticException e)
+		{
+			throw new ModelException("Invalid arguments for facade.createShip(...)");
+		} catch (AssertionError e)
+		{
+			throw new ModelException("Invalid arguments for facade.createShip(...)");
+		}
+		return new Ship(d, p, speedLimit, v, s, m);
 	}
 
 	@Override
