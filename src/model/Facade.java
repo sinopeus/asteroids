@@ -516,7 +516,6 @@ public class Facade implements IFacade
 	public void evolve(Object world, double dt, CollisionListener collisionListener)
 	{
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -681,8 +680,12 @@ public class Facade implements IFacade
 	@Override
 	public void fireBullet(Object ship)
 	{
-		// TODO Auto-generated method stub
-
+		if (ship instanceof Ship)
+		{
+			throw new ModelException("The given object is not a Ship.");
+		}
+		Ship s = (Ship) ship;
+		s.fire();
 	}
 
 	@Override
@@ -694,126 +697,183 @@ public class Facade implements IFacade
 	@Override
 	public Object createAsteroid(double x, double y, double xVelocity, double yVelocity, double radius, Random random)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return new Asteroid(new Direction(new Angle(random.nextDouble() * Math.PI * 2)), new Position(x, y), Velocity.getSpeedOfLight(), new Velocity(xVelocity, yVelocity), new CircleShape(radius));
 	}
 
 	@Override
 	public boolean isAsteroid(Object o)
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return o instanceof Asteroid;
 	}
 
 	@Override
 	public double getAsteroidX(Object asteroid)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		if (asteroid instanceof Asteroid)
+		{
+			throw new ModelException("The given object is not an asteroid.");
+		}
+		Asteroid a = (Asteroid) asteroid;
+		return a.getPosition().getXComponent();
 	}
 
 	@Override
 	public double getAsteroidY(Object asteroid)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		if (asteroid instanceof Asteroid)
+		{
+			throw new ModelException("The given object is not an asteroid.");
+		}
+		Asteroid a = (Asteroid) asteroid;
+		return a.getPosition().getYComponent();
 	}
 
 	@Override
 	public double getAsteroidXVelocity(Object asteroid)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		if (asteroid instanceof Asteroid)
+		{
+			throw new ModelException("The given object is not an asteroid.");
+		}
+		Asteroid a = (Asteroid) asteroid;
+		return a.getVelocity().getXComponent();
 	}
 
 	@Override
 	public double getAsteroidYVelocity(Object asteroid)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		if (asteroid instanceof Asteroid)
+		{
+			throw new ModelException("The given object is not an asteroid.");
+		}
+		Asteroid a = (Asteroid) asteroid;
+		return a.getVelocity().getYComponent();
 	}
 
 	@Override
 	public double getAsteroidRadius(Object asteroid)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		if (asteroid instanceof Asteroid)
+		{
+			throw new ModelException("The given object is not an asteroid.");
+		}
+		Asteroid a = (Asteroid) asteroid;
+		return a.getShape().getRadius();
 	}
 
 	@Override
 	public double getAsteroidMass(Object asteroid)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		if (asteroid instanceof Asteroid)
+		{
+			throw new ModelException("The given object is not an asteroid.");
+		}
+		Asteroid a = (Asteroid) asteroid;
+		return a.getMass().get();
 	}
 
 	@Override
 	public Object getAsteroidWorld(Object asteroid)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		if (asteroid instanceof Asteroid)
+		{
+			throw new ModelException("The given object is not an asteroid.");
+		}
+		Asteroid a = (Asteroid) asteroid;
+		return a.getWorld();
 	}
 
 	@Override
 	public boolean isBullets(Object o)
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return o instanceof Bullet;
 	}
 
 	@Override
 	public double getBulletX(Object bullet)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		if (bullet instanceof Bullet)
+		{
+			throw new ModelException("The given object is not a bullet.");
+		}
+		Bullet b = (Bullet) bullet;
+		return b.getPosition().getXComponent();
 	}
 
 	@Override
 	public double getBulletY(Object bullet)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		if (bullet instanceof Bullet)
+		{
+			throw new ModelException("The given object is not a bullet.");
+		}
+		Bullet b = (Bullet) bullet;
+		return b.getPosition().getYComponent();
 	}
 
 	@Override
 	public double getBulletXVelocity(Object bullet)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		if (bullet instanceof Bullet)
+		{
+			throw new ModelException("The given object is not a bullet.");
+		}
+		Bullet b = (Bullet) bullet;
+		return b.getVelocity().getXComponent();
 	}
 
 	@Override
 	public double getBulletYVelocity(Object bullet)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		if (bullet instanceof Bullet)
+		{
+			throw new ModelException("The given object is not a bullet.");
+		}
+		Bullet b = (Bullet) bullet;
+		return b.getVelocity().getYComponent();
 	}
 
 	@Override
 	public double getBulletRadius(Object bullet)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		if (bullet instanceof Bullet)
+		{
+			throw new ModelException("The given object is not a bullet.");
+		}
+		Bullet b = (Bullet) bullet;
+		return b.getShape().getRadius();
 	}
 
 	@Override
 	public double getBulletMass(Object bullet)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		if (bullet instanceof Bullet)
+		{
+			throw new ModelException("The given object is not a bullet.");
+		}
+		Bullet b = (Bullet) bullet;
+		return b.getMass().get();
 	}
 
 	@Override
 	public Object getBulletWorld(Object bullet)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		if (bullet instanceof Bullet)
+		{
+			throw new ModelException("The given object is not a bullet.");
+		}
+		Bullet b = (Bullet) bullet;
+		return b.getWorld();
 	}
 
 	@Override
 	public Object getBulletSource(Object bullet)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		if (bullet instanceof Bullet)
+		{
+			throw new ModelException("The given object is not a bullet.");
+		}
+		Bullet b = (Bullet) bullet;
+		return b.getShooter();
 	}
 }

@@ -162,6 +162,11 @@ public class Ship extends Entity implements IShip
 		super.terminate();
 	}
 	
+	public void fire()
+	{
+		// TODO document, test, implement
+	}
+	
 	public double getThrustPerSecond()
 	{
 		return Ship.thrustPerSecond;
