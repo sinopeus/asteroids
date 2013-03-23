@@ -12,7 +12,6 @@ public class CollisionResolver implements CollisionListener
 	@Override
 	public void objectCollision(Object entity1, Object entity2, double x, double y)
 	{
-		// TODO Auto-generated method stub
-
+		
 	}
 }
