@@ -1,9 +1,14 @@
 package model;
 
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.Set;
 
 import main.CollisionListener;
+import world.World;
+import entity.Entity;
+import entity.ship.Ship;
 
 /**
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
@@ -350,34 +355,59 @@ public class Facade implements IFacade
 	@Override
 	public Object createWorld(double width, double height)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return new World(width, height);
 	}
 
 	@Override
 	public double getWorldWidth(Object world)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		if (world.getClass() != World.class)
+		{
+			throw new IllegalArgumentException("The given object is not a world.");
+		}
+		World w = (World) world;
+		return w.getxSize();
 	}
 
 	@Override
 	public double getWorldHeight(Object world)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		if (world.getClass() != World.class)
+		{
+			throw new IllegalArgumentException("The given object is not a world.");
+		}
+		World w = (World) world;
+		return w.getySize();
 	}
 
 	@Override
 	public Set getShips(Object world)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		if (world.getClass() != World.class)
+		{
+			throw new IllegalArgumentException("The given object is not a world.");
+		}
+		World w = (World) world;
+		HashSet<Ship> hs = new HashSet<Ship>();
+		for (Iterator<Entity> iterator = w.getEntities().iterator(); iterator.hasNext();)
+		{
+			Entity e = iterator.next();
+			if (e instanceof Ship)
+			{
+				hs.add((Ship) e);
+			}
+		}
+		return hs;
 	}
 
 	@Override
 	public Set getAsteroids(Object world)
 	{
+		if (world.getClass() != World.class)
+		{
+			throw new IllegalArgumentException("The given object is not a world.");
+		}
+		World w = (World) world;
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -385,6 +415,11 @@ public class Facade implements IFacade
 	@Override
 	public Set getBullets(Object world)
 	{
+		if (world.getClass() != World.class)
+		{
+			throw new IllegalArgumentException("The given object is not a world.");
+		}
+		World w = (World) world;
 		// TODO Auto-generated method stub
 		return null;
 	}
