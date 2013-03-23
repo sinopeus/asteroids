@@ -286,7 +286,7 @@ public class Facade implements IFacade
 	//	 *          | ((ship1 == null) || (ship2 == null))
 	//	 */
 	//	@Override
-	//	public double getTimeToCollision(IShip ship1, IShip ship2) throws ModelException //TODO post
+	//	public double getTimeToCollision(IShip ship1, IShip ship2) throws ModelException
 	//	{
 	//		if ((ship1 == null) || (ship2 == null))
 	//		{
@@ -320,7 +320,7 @@ public class Facade implements IFacade
 	//	 *          | ((ship1 == null) || (ship2 == null))
 	//	 */
 	//	@Override
-	//	public double[] getCollisionPosition(IShip ship1, IShip ship2) throws ModelException //TODO post
+	//	public double[] getCollisionPosition(IShip ship1, IShip ship2) throws ModelException //
 	//	{
 	//		if ((ship1 == null) || (ship2 == null))
 	//		{

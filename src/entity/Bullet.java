@@ -27,7 +27,7 @@ public class Bullet extends Entity
 	public Bullet(Ship ship) throws IllegalArgumentException
 	{
 		super(ship.getDirection(), ship.getPosition(), Velocity.getSpeedOfLight(),
-				new Velocity(ship.getVelocity().getScaledBy(bulletInitialVelocity)), new CircleShape(bulletRadius), new Mass((4 * Math.PI
+				new Velocity(ship.getVelocity().getSum(ship.getDirection().getScaledBy(bulletInitialVelocity))), new CircleShape(bulletRadius), new Mass((4 * Math.PI
 						* Math.pow(ship.getShape().getRadius(), 3) * density) / 3));
 		setShooter(ship);
 	}
