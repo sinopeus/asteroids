@@ -2,6 +2,7 @@ package world;
 
 import java.util.HashSet;
 
+import vector.Vector;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 import entity.Entity;
@@ -221,4 +222,20 @@ public class World extends HashSet<Entity>
 	 */
 	private HashSet<Entity> entities;
 
+	/**
+	 *
+	 */
+	private static Vector getXBase()
+	{ //TODO DOCUMENT
+		return new Vector(0, 1);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	private static Vector getYBase()
+	{ //TODO DOCUMENT
+		return new Vector(1, 0);
+	}
 }
