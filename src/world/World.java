@@ -199,7 +199,6 @@ public class World extends HashSet<Entity>
 	 * 
 	 * @param 	entity
 	 * 			The given entity
-	 * @return 
 	 * @post	This world now contains the given entity.
 	 * 			| new.contains(e)
 	 * @throws	IllegalArgumentException

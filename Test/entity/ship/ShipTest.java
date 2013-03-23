@@ -7,11 +7,11 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import Utilities.Util;
-
 import vector.Direction;
 import vector.Position;
 import vector.Velocity;
+import world.World;
+import Utilities.Util;
 import entity.Angle;
 import entity.CircleShape;
 
@@ -21,6 +21,8 @@ public class ShipTest
 	@Before
 	public void setUpMutableTestFixture_Ship()
 	{
+		World w = new World();
+
 		Angle a = new Angle(Math.PI / 2);
 		Direction d = new Direction(a);
 		Position p = new Position(5, 5);
@@ -29,7 +31,10 @@ public class ShipTest
 		Velocity v = new Velocity(5, 5);
 		Mass m = new Mass(40);
 		testShip = new Ship(d, p, speedLimit, v, s, m);
+		w.add(testShip);
+
 		terminatedShip = new Ship();
+		w.add(terminatedShip);
 		terminatedShip.terminate();
 	}
 

@@ -8,11 +8,11 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import Utilities.Util;
-
 import vector.Direction;
 import vector.Position;
 import vector.Velocity;
+import world.World;
+import Utilities.Util;
 import entity.ship.Mass;
 import entity.ship.Ship;
 
@@ -21,6 +21,8 @@ public class EntityTest //TODO test constructors
 	@Before
 	public void setUpMutableTestFixtureEntity()
 	{
+		World w = new World();
+
 		Angle a = new Angle(Math.PI / 2);
 		Direction d = new Direction(a);
 		Position p = new Position(5, 5);
@@ -29,7 +31,10 @@ public class EntityTest //TODO test constructors
 		CircleShape s = new CircleShape(50);
 		Mass m = new Mass(40);
 		testEntity = new Entity(d, p, speedLimit, v, s, m);
+		w.add(testEntity);
+
 		terminatedEntity = new Ship();
+		w.add(terminatedEntity);
 		terminatedEntity.terminate();
 	}
 
