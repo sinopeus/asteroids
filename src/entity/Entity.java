@@ -447,7 +447,7 @@ public class Entity
 		this.world = world;
 	}
 
-	private World world;
+	protected World world;
 
 	/**
 	 * Checks whether this entity is terminated.

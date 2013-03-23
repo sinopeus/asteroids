@@ -2,6 +2,7 @@ package entity;
 
 import vector.Position;
 import vector.Velocity;
+import vector.Vector;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 import entity.ship.Mass;
@@ -37,12 +38,12 @@ public class Bullet extends Entity
 	 * 
 	 * @param	ship
 	 * 			The given ship
-	 * @return	The initial position of this new bullet. (it is placed right next to the ship.
+	 * @return	The initial position of this new bullet. (It is placed right next to the ship.)
 	 * 			| 
 	 */
 	private static Position getInitialPosition(Ship ship)
 	{
-		return null; //TODO
+		return new Position(new Vector(ship.getPosition()).getSum(ship.getDirection().getScaledBy(ship.getShape().getRadius() + bulletRadius)));
 	}
 
 	/**

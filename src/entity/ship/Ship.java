@@ -1,6 +1,7 @@
 package entity.ship;
 
 import model.IShip;
+
 import vector.Direction;
 import vector.Position;
 import vector.Velocity;
@@ -8,6 +9,7 @@ import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 import entity.CircleShape;
 import entity.Entity;
+import entity.Bullet;
 
 /**
  * A class of ships involving its position, velocity, direction, speed limit and shape.
@@ -162,9 +164,14 @@ public class Ship extends Entity implements IShip
 		super.terminate();
 	}
 	
+	/**
+	 * A method for firing a bullet from this ship.
+	 * 
+	 * @effect Creates a new Bullet object in the World to which this Ship belongs.
+	 */
 	public void fire()
 	{
-		// TODO document, test, implement
+		getWorld().add(new Bullet(this));
 	}
 	
 	public double getThrustPerSecond()
@@ -173,7 +180,7 @@ public class Ship extends Entity implements IShip
 	}
 
 	/**
-	 * A variable registering the thrust that a ships thruster can exert in one second.
+	 * A variable registering the thrust that a ship's thruster can exert in one second.
 	 */
 	private static double thrustPerSecond = 1.1E18;
 }
