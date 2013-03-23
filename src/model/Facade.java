@@ -456,7 +456,7 @@ public class Facade implements IFacade
 			throw new ModelException("The given object is not a world.");
 		}
 		World w = (World) world;
-		if (ship instanceof Ship)
+		if (!(ship instanceof Ship))
 		{
 			throw new ModelException("The given object is not a Ship.");
 		}
@@ -472,7 +472,7 @@ public class Facade implements IFacade
 			throw new ModelException("The given object is not a world.");
 		}
 		World w = (World) world;
-		if (asteroid instanceof Asteroid)
+		if (!(asteroid instanceof Asteroid))
 		{
 			throw new ModelException("The given object is not an asteroid.");
 		}
@@ -488,7 +488,7 @@ public class Facade implements IFacade
 			throw new ModelException("The given object is not a world.");
 		}
 		World w = (World) world;
-		if (ship instanceof Ship)
+		if (!(ship instanceof Ship))
 		{
 			throw new ModelException("The given object is not a Ship.");
 		}
@@ -504,7 +504,7 @@ public class Facade implements IFacade
 			throw new ModelException("The given object is not a world.");
 		}
 		World w = (World) world;
-		if (asteroid instanceof Asteroid)
+		if (!(asteroid instanceof Asteroid))
 		{
 			throw new ModelException("The given object is not an asteroid.");
 		}
@@ -559,7 +559,7 @@ public class Facade implements IFacade
 	@Override
 	public double getShipX(Object ship)
 	{
-		if (ship instanceof Ship)
+		if (!(ship instanceof Ship))
 		{
 			throw new ModelException("The given object is not a Ship.");
 		}
@@ -570,7 +570,7 @@ public class Facade implements IFacade
 	@Override
 	public double getShipY(Object ship)
 	{
-		if (ship instanceof Ship)
+		if (!(ship instanceof Ship))
 		{
 			throw new ModelException("The given object is not a Ship.");
 		}
@@ -581,7 +581,7 @@ public class Facade implements IFacade
 	@Override
 	public double getShipXVelocity(Object ship)
 	{
-		if (ship instanceof Ship)
+		if (!(ship instanceof Ship))
 		{
 			throw new ModelException("The given object is not a Ship.");
 		}
@@ -592,7 +592,7 @@ public class Facade implements IFacade
 	@Override
 	public double getShipYVelocity(Object ship)
 	{
-		if (ship instanceof Ship)
+		if (!(ship instanceof Ship))
 		{
 			throw new ModelException("The given object is not a Ship.");
 		}
@@ -603,7 +603,7 @@ public class Facade implements IFacade
 	@Override
 	public double getShipRadius(Object ship)
 	{
-		if (ship instanceof Ship)
+		if (!(ship instanceof Ship))
 		{
 			throw new ModelException("The given object is not a Ship.");
 		}
@@ -614,7 +614,7 @@ public class Facade implements IFacade
 	@Override
 	public double getShipDirection(Object ship)
 	{
-		if (ship instanceof Ship)
+		if (!(ship instanceof Ship))
 		{
 			throw new ModelException("The given object is not a Ship.");
 		}
@@ -625,7 +625,7 @@ public class Facade implements IFacade
 	@Override
 	public double getShipMass(Object ship)
 	{
-		if (ship instanceof Ship)
+		if (!(ship instanceof Ship))
 		{
 			throw new ModelException("The given object is not a Ship.");
 		}
@@ -636,7 +636,7 @@ public class Facade implements IFacade
 	@Override
 	public Object getShipWorld(Object ship)
 	{
-		if (ship instanceof Ship)
+		if (!(ship instanceof Ship))
 		{
 			throw new ModelException("The given object is not a Ship.");
 		}
@@ -647,7 +647,7 @@ public class Facade implements IFacade
 	@Override
 	public boolean isShipThrusterActive(Object ship)
 	{
-		if (ship instanceof Ship)
+		if (!(ship instanceof Ship))
 		{
 			throw new ModelException("The given object is not a Ship.");
 		}
@@ -658,7 +658,7 @@ public class Facade implements IFacade
 	@Override
 	public void setThrusterActive(Object ship, boolean active)
 	{
-		if (ship instanceof Ship)
+		if (!(ship instanceof Ship))
 		{
 			throw new ModelException("The given object is not a Ship.");
 		}
@@ -669,7 +669,7 @@ public class Facade implements IFacade
 	@Override
 	public void turn(Object ship, double angle)
 	{
-		if (ship instanceof Ship)
+		if (!(ship instanceof Ship))
 		{
 			throw new ModelException("The given object is not a Ship.");
 		}
@@ -680,7 +680,7 @@ public class Facade implements IFacade
 	@Override
 	public void fireBullet(Object ship)
 	{
-		if (ship instanceof Ship)
+		if (!(ship instanceof Ship))
 		{
 			throw new ModelException("The given object is not a Ship.");
 		}
@@ -709,7 +709,7 @@ public class Facade implements IFacade
 	@Override
 	public double getAsteroidX(Object asteroid)
 	{
-		if (asteroid instanceof Asteroid)
+		if (!(asteroid instanceof Asteroid))
 		{
 			throw new ModelException("The given object is not an asteroid.");
 		}
@@ -720,7 +720,7 @@ public class Facade implements IFacade
 	@Override
 	public double getAsteroidY(Object asteroid)
 	{
-		if (asteroid instanceof Asteroid)
+		if (!(asteroid instanceof Asteroid))
 		{
 			throw new ModelException("The given object is not an asteroid.");
 		}
@@ -731,7 +731,7 @@ public class Facade implements IFacade
 	@Override
 	public double getAsteroidXVelocity(Object asteroid)
 	{
-		if (asteroid instanceof Asteroid)
+		if (!(asteroid instanceof Asteroid))
 		{
 			throw new ModelException("The given object is not an asteroid.");
 		}
@@ -742,7 +742,7 @@ public class Facade implements IFacade
 	@Override
 	public double getAsteroidYVelocity(Object asteroid)
 	{
-		if (asteroid instanceof Asteroid)
+		if (!(asteroid instanceof Asteroid))
 		{
 			throw new ModelException("The given object is not an asteroid.");
 		}
@@ -753,7 +753,7 @@ public class Facade implements IFacade
 	@Override
 	public double getAsteroidRadius(Object asteroid)
 	{
-		if (asteroid instanceof Asteroid)
+		if (!(asteroid instanceof Asteroid))
 		{
 			throw new ModelException("The given object is not an asteroid.");
 		}
@@ -764,7 +764,7 @@ public class Facade implements IFacade
 	@Override
 	public double getAsteroidMass(Object asteroid)
 	{
-		if (asteroid instanceof Asteroid)
+		if (!(asteroid instanceof Asteroid))
 		{
 			throw new ModelException("The given object is not an asteroid.");
 		}
@@ -775,7 +775,7 @@ public class Facade implements IFacade
 	@Override
 	public Object getAsteroidWorld(Object asteroid)
 	{
-		if (asteroid instanceof Asteroid)
+		if (!(asteroid instanceof Asteroid))
 		{
 			throw new ModelException("The given object is not an asteroid.");
 		}
@@ -792,7 +792,7 @@ public class Facade implements IFacade
 	@Override
 	public double getBulletX(Object bullet)
 	{
-		if (bullet instanceof Bullet)
+		if (!(bullet instanceof Bullet))
 		{
 			throw new ModelException("The given object is not a bullet.");
 		}
@@ -803,7 +803,7 @@ public class Facade implements IFacade
 	@Override
 	public double getBulletY(Object bullet)
 	{
-		if (bullet instanceof Bullet)
+		if (!(bullet instanceof Bullet))
 		{
 			throw new ModelException("The given object is not a bullet.");
 		}
@@ -814,7 +814,7 @@ public class Facade implements IFacade
 	@Override
 	public double getBulletXVelocity(Object bullet)
 	{
-		if (bullet instanceof Bullet)
+		if (!(bullet instanceof Bullet))
 		{
 			throw new ModelException("The given object is not a bullet.");
 		}
@@ -825,7 +825,7 @@ public class Facade implements IFacade
 	@Override
 	public double getBulletYVelocity(Object bullet)
 	{
-		if (bullet instanceof Bullet)
+		if (!(bullet instanceof Bullet))
 		{
 			throw new ModelException("The given object is not a bullet.");
 		}
@@ -836,7 +836,7 @@ public class Facade implements IFacade
 	@Override
 	public double getBulletRadius(Object bullet)
 	{
-		if (bullet instanceof Bullet)
+		if (!(bullet instanceof Bullet))
 		{
 			throw new ModelException("The given object is not a bullet.");
 		}
@@ -847,7 +847,7 @@ public class Facade implements IFacade
 	@Override
 	public double getBulletMass(Object bullet)
 	{
-		if (bullet instanceof Bullet)
+		if (!(bullet instanceof Bullet))
 		{
 			throw new ModelException("The given object is not a bullet.");
 		}
@@ -858,7 +858,7 @@ public class Facade implements IFacade
 	@Override
 	public Object getBulletWorld(Object bullet)
 	{
-		if (bullet instanceof Bullet)
+		if (!(bullet instanceof Bullet))
 		{
 			throw new ModelException("The given object is not a bullet.");
 		}
@@ -869,7 +869,7 @@ public class Facade implements IFacade
 	@Override
 	public Object getBulletSource(Object bullet)
 	{
-		if (bullet instanceof Bullet)
+		if (!(bullet instanceof Bullet))
 		{
 			throw new ModelException("The given object is not a bullet.");
 		}
