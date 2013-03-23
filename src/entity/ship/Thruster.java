@@ -1,6 +1,8 @@
 package entity.ship;
 
 import vector.Acceleration;
+import vector.Force;
+import Utilities.Newton;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 
@@ -234,7 +236,7 @@ public class Thruster
 		{
 			thrustPerSecond = getOwner().getThrustPerSecond();
 		}
-		Acceleration a = new Acceleration(getOwner().getDirection().getScaledBy(thrustPerSecond * duration / getOwner().getMass().get()));
+		Acceleration a = Newton.secondLaw_CalculateAcceleration(new Force(getOwner().getDirection().getScaledBy(thrustPerSecond * duration)), getOwner().getMass());
 		getOwner().getVelocity().accelerateBy(a, duration);
 	}
 

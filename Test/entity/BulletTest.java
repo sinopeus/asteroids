@@ -1,6 +1,8 @@
 package entity;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -61,6 +63,14 @@ public class BulletTest
 	//testBullet.setShooter(newShip);
 	//testBullet.setShooter(null);
 	//}
+
+	@Test
+	public void canHaveAsBounceCounterTest()
+	{
+		assertTrue(testBullet.canHaveAsBounceCounter((byte) 5));
+		assertTrue(testBullet.canHaveAsBounceCounter((byte) 0));
+		assertFalse(testBullet.canHaveAsBounceCounter((byte) -1));
+	}
 
 	@Test
 	public void terminateTest()
