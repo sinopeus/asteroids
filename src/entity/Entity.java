@@ -465,6 +465,8 @@ public class Entity
 	 */
 	public void terminate()
 	{
+		getWorld().remove(this);
+		this.world = null;
 		isTerminated = true;
 	}
 
