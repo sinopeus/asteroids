@@ -30,7 +30,7 @@ public class AsteroidTest
 
   @Test
   public void massTest() {
-    assertTrue(Util.fuzzyEquals(testAsteroid.getMass().get(), 3.33009E16));
+    assertTrue(Util.fuzzyEquals(testAsteroid.getMass().get(), 3.330088213E16));
   }
 
 	private static Asteroid testAsteroid;
