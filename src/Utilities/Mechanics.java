@@ -9,7 +9,7 @@ import entity.ship.Mass;
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
  * @version 2.0
  */
-public class Newton
+public class Mechanics
 {
 	/**
 	 * @param 	m1
@@ -23,7 +23,7 @@ public class Newton
 	 * @throws 	IllegalArgumentException
 	 * 			One of the arguments are null
 	 */
-	public static Acceleration firstLaw_CalculateAcceleration(Mass m1, Mass m2, Acceleration a1) throws IllegalArgumentException
+	public static Acceleration Newtons_firstLaw_CalculateAcceleration(Mass m1, Mass m2, Acceleration a1) throws IllegalArgumentException
 	{
 		if (m1 == null || m2 == null || a1 == null)
 		{
@@ -42,13 +42,13 @@ public class Newton
 	 * @throws 	IllegalArgumentException
 	 * 			One of the arguments are null
 	 */
-	public static Acceleration secondLaw_CalculateAcceleration(Force f, Mass m) throws IllegalArgumentException
+	public static Acceleration Newtons_secondLaw_CalculateAcceleration(Force f, Mass m) throws IllegalArgumentException
 	{
 		if (f == null || m == null)
 		{
 			throw new IllegalArgumentException("Null parameter provided.");
 		}
-		return new Acceleration(f.getScaledBy(1/m.get()));
+		return new Acceleration(f.getScaledBy(1 / m.get()));
 	}
 
 	/**
@@ -59,7 +59,7 @@ public class Newton
 	 * @throws 	IllegalArgumentException
 	 * 			The given force is null
 	 */
-	public static Force thirdLaw_CalculateForce(Force f1) throws IllegalArgumentException
+	public static Force Newtons_thirdLaw_CalculateForce(Force f1) throws IllegalArgumentException
 	{
 		if (f1 == null)
 		{
@@ -67,5 +67,4 @@ public class Newton
 		}
 		return new Force(f1.getScaledBy(-1.0));
 	}
-}
-;
+};

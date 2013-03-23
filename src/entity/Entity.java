@@ -462,9 +462,18 @@ public class Entity
 
 	/**
 	 * Terminates this entity.
+	 * 
+	 * @effect	Removes this entity from the world.
+	 * 			| getWorld().remove(this);
+	 * @post	Makes the reference to the world null.
+	 * 			| new.getWorld() == null
+	 * @post	This entity is now terminated.
+	 * 			| isTerminated()
 	 */
 	public void terminate()
 	{
+		getWorld().remove(this);
+		this.world = null;
 		isTerminated = true;
 	}
 
