@@ -2,6 +2,7 @@ package entity;
 
 import vector.Position;
 import vector.Velocity;
+import vector.Vector;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 import entity.ship.Mass;
@@ -26,7 +27,7 @@ public class Bullet extends Entity
 	 */
 	public Bullet(Ship ship) throws NullPointerException
 	{
-		super(ship.getDirection(), ship.getPosition(), Velocity.getSpeedOfLight(), new Velocity(ship.getVelocity().getSum(ship.getDirection().getScaledBy(bulletInitialVelocity))), new CircleShape(
+		super(ship.getDirection(), getInitialPosition(ship), Velocity.getSpeedOfLight(), new Velocity(ship.getVelocity().getSum(ship.getDirection().getScaledBy(bulletInitialVelocity))), new CircleShape(
 				bulletRadius), new Mass((4 * Math.PI * Math.pow(ship.getShape().getRadius(), 3) * density) / 3));
 		setShooter(ship);
 	}
@@ -36,12 +37,12 @@ public class Bullet extends Entity
 	 * 
 	 * @param	ship
 	 * 			The given ship
-	 * @return	The initial position of this new bullet. (it is placed right next to the ship.
+	 * @return	The initial position of this new bullet. (It is placed right next to the ship.)
 	 * 			| 
 	 */
-	private Position getInitialPosition(Ship ship)
+	private static Position getInitialPosition(Ship ship)
 	{
-		return null; //TODO
+		return new Position(new Vector(ship.getPosition()).getSum(ship.getDirection().getScaledBy(ship.getShape().getRadius() + bulletRadius)));
 	}
 
 	/**
