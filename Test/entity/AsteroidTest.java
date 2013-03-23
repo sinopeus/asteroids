@@ -5,14 +5,10 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import Utilities.Util;
-
 import vector.Direction;
 import vector.Position;
 import vector.Velocity;
-import entity.ship.Mass;
-import entity.CircleShape;
-import entity.Asteroid;
+import Utilities.Util;
 
 public class AsteroidTest
 {
@@ -28,10 +24,11 @@ public class AsteroidTest
 		testAsteroid = new Asteroid(d, p, speedLimit, v, s);
 	}
 
-  @Test
-  public void massTest() {
-    assertTrue(Util.fuzzyEquals(testAsteroid.getMass().get(), 3.33009E16));
-  }
+	@Test
+	public void massTest()
+	{
+		assertTrue(Util.fuzzyEquals(testAsteroid.getMass().get(), 1.1100294042683934E16));
+	}
 
 	private static Asteroid testAsteroid;
 
