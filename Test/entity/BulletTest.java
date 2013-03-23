@@ -2,7 +2,21 @@ package entity;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertTrue;
+
+import vector.Direction;
+import vector.Position;
+import vector.Velocity;
+
+import entity.Bullet;
+import entity.Angle;
+import entity.CircleShape;
+import entity.ship.Mass;
 import entity.ship.Ship;
 
 public class BulletTest
