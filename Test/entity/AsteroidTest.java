@@ -5,10 +5,15 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import Utilities.Util;
+
 import vector.Direction;
 import vector.Position;
 import vector.Velocity;
 import Utilities.Util;
+import entity.ship.Mass;
+import entity.CircleShape;
+import entity.Asteroid;
 
 public class AsteroidTest
 {
