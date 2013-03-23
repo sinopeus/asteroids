@@ -27,8 +27,8 @@ import entity.ship.ThrusterTest;
 @SuppressWarnings("javadoc")
 @RunWith(Suite.class)
 @SuiteClasses(
-{ MassTest.class, ShipTest.class, ThrusterTest.class, AngleTest.class, AsteroidTest.class, BulletTest.class, CircleShapeTest.class, EntityTest.class, FacadeTest.class, PartialFacadeTest.class,
-		NewtonTest.class, AccelerationTest.class, DirectionTest.class, ForceTest.class, PositionTest.class, VectorTest.class, VelocityTest.class, WorldTest.class })
+{ MassTest.class, ShipTest.class, ThrusterTest.class, AngleTest.class, AsteroidTest.class, BulletTest.class, CircleShapeTest.class, EntityTest.class, CollisionResolverTest.class, FacadeTest.class,
+		PartialFacadeTest.class, NewtonTest.class, AccelerationTest.class, DirectionTest.class, ForceTest.class, PositionTest.class, VectorTest.class, VelocityTest.class, WorldTest.class })
 public class AsteroidsTestSuite
 {
 }
