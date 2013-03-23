@@ -103,7 +103,7 @@ public class Bullet extends Entity
 	@Override
 	public void terminate()
 	{
-		super.terminate();
+    //TODO
 	}
 
 	/**
