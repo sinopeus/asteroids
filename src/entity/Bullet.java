@@ -26,9 +26,8 @@ public class Bullet extends Entity
 	 */
 	public Bullet(Ship ship) throws NullPointerException
 	{
-		super(ship.getDirection(), ship.getPosition(), Velocity.getSpeedOfLight(),
-				new Velocity(ship.getVelocity().getSum(ship.getDirection().getScaledBy(bulletInitialVelocity))), new CircleShape(bulletRadius), new Mass((4 * Math.PI
-						* Math.pow(ship.getShape().getRadius(), 3) * density) / 3));
+		super(ship.getDirection(), ship.getPosition(), Velocity.getSpeedOfLight(), new Velocity(ship.getVelocity().getSum(ship.getDirection().getScaledBy(bulletInitialVelocity))), new CircleShape(
+				bulletRadius), new Mass((4 * Math.PI * Math.pow(ship.getShape().getRadius(), 3) * density) / 3));
 		setShooter(ship);
 	}
 
@@ -93,6 +92,56 @@ public class Bullet extends Entity
 	}
 
 	/**
+	 * Returns the the amount of times this bullet has bounced on a worlds edge of this bullet.
+	 */
+	@Basic
+	@Raw
+	public byte getBounceCounter()
+	{
+		return this.bounceCounter;
+	}
+
+	/**
+	 * Checks whether this bullet can have the given bounceCounter as its bounceCounter.
+	 * 
+	 * @param 	bounceCounter
+	 * 			The bounceCounter to check.
+	 * @return	True if and only if the given bounceCounter is positive.
+	 * 			| result = (bounceCounter > 0)
+	 */
+	@Basic
+	@Raw
+	public boolean canHaveAsBounceCounter(byte bounceCounter)
+	{
+		return (bounceCounter > 0);
+	}
+
+	/**
+	 * Sets the bounce counter of this bullet to the given bounce counter.
+	 *
+	 * @param	bounceCounter
+	 *			The new bounce counter for this bullet.
+	 * @post	If this bullet can have the given bounce counter as its bounce counter,
+	 * 			then the bounce counter of this bullet is now equal to the given bounce counter.
+	 * 			| if canHaveAsBounceCounter(bounceCounter)
+	 * 			|	then new.getBounceCounter() == bounceCounter
+	 */
+	@Basic
+	@Raw
+	public void setBounceCounter(byte bounceCounter)
+	{
+		if (canHaveAsBounceCounter(bounceCounter))
+		{
+			this.bounceCounter = bounceCounter;
+		}
+	}
+
+	/**
+	 * A variable registering the amount of times this bullet has bounced on a worlds edge of this bullet.
+	 */
+	private byte bounceCounter;
+
+	/**
 	 * A variable keeping a reference to the ship which shot this bullet.
 	 */
 	private Ship shooter;
@@ -103,7 +152,7 @@ public class Bullet extends Entity
 	@Override
 	public void terminate()
 	{
-    	this.shooter = null;
+		this.shooter = null;
 	}
 
 	/**
