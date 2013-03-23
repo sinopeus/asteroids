@@ -7,8 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Utilities.Util;
-
-import entity.Angle;
 import entity.ship.Ship;
 
 @SuppressWarnings("javadoc")
@@ -26,14 +24,14 @@ public class AngleTest
 	public void constructorTest_AngleMatchesGivenAngle_PerfectParameters()
 	{
 		Angle a = new Angle(Math.PI);
-		assertTrue(Util.fuzzyEquals(a.getAngle(), Math.PI));
+		assertTrue(Util.fuzzyEquals(a.get(), Math.PI));
 	}
 
 	@Test
 	public void constructorTest_AngleMatchesZero()
 	{
 		Angle a = new Angle();
-		assertTrue(Util.fuzzyEquals(a.getAngle(), 0));
+		assertTrue(Util.fuzzyEquals(a.get(), 0));
 	}
 
 	@Test
@@ -46,10 +44,10 @@ public class AngleTest
 	@Test
 	public void setAngleTest_LegalCase()
 	{
-		testAngle.setAngle(0);
-		assertTrue(Util.fuzzyEquals(testAngle.getAngle(), 0));
-		testAngle.setAngle(-Math.PI / 2);
-		assertTrue(Util.fuzzyEquals(testAngle.getAngle(), 3 * Math.PI / 2));
+		testAngle.set(0);
+		assertTrue(Util.fuzzyEquals(testAngle.get(), 0));
+		testAngle.set(-Math.PI / 2);
+		assertTrue(Util.fuzzyEquals(testAngle.get(), 3 * Math.PI / 2));
 	}
 
 	@Test
@@ -69,9 +67,9 @@ public class AngleTest
 	{
 		Angle testAngle2 = new Angle(Math.PI);
 		testAngle.add(testAngle2);
-		assertTrue(Util.fuzzyEquals(testAngle.getAngle(), Math.PI));
+		assertTrue(Util.fuzzyEquals(testAngle.get(), Math.PI));
 		testAngle2.add(testAngle2);
-		assertTrue(Util.fuzzyEquals(testAngle2.getAngle(), 0));
+		assertTrue(Util.fuzzyEquals(testAngle2.get(), 0));
 	}
 
 	@Test

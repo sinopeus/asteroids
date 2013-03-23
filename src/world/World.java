@@ -199,17 +199,22 @@ public class World extends HashSet<Entity>
 	 * 
 	 * @param 	entity
 	 * 			The given entity
+	 * @return 
 	 * @post	This world now contains the given entity.
 	 * 			| new.contains(e)
 	 * @throws	IllegalArgumentException
 	 * 			The given entity is not a valid entity.
 	 */
-	public void addEntity(Entity entity) throws IllegalArgumentException
+	@Override
+	public boolean add(Entity entity) throws IllegalArgumentException
 	{
 		if (!canHaveAsEntity(entity))
 		{
 			throw new IllegalArgumentException("Invalid entity added");
 		}
+		entity.setWorld(this);
+		super.add(entity);
+		return true;
 	}
 
 	/**

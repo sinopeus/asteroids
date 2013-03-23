@@ -74,7 +74,7 @@ public class Facade implements IFacade
 	//			shape = new CircleShape(radius);
 	//			velocity = new Velocity(xVelocity, yVelocity);
 	//			speedLimit = Velocity.getSpeedOfLight();
-	//		} catch (IllegalArgumentException e)
+	//		} catch (ModelException e)
 	//		{
 	//			throw new ModelException("Invalid arguments for facade.createShip(...)");
 	//		} catch (ArithmeticException e)
@@ -371,7 +371,7 @@ public class Facade implements IFacade
 	{
 		if (world.getClass() != World.class)
 		{
-			throw new IllegalArgumentException("The given object is not a world.");
+			throw new ModelException("The given object is not a world.");
 		}
 		World w = (World) world;
 		return w.getxSize();
@@ -382,7 +382,7 @@ public class Facade implements IFacade
 	{
 		if (world.getClass() != World.class)
 		{
-			throw new IllegalArgumentException("The given object is not a world.");
+			throw new ModelException("The given object is not a world.");
 		}
 		World w = (World) world;
 		return w.getySize();
@@ -393,7 +393,7 @@ public class Facade implements IFacade
 	{
 		if (world.getClass() != World.class)
 		{
-			throw new IllegalArgumentException("The given object is not a world.");
+			throw new ModelException("The given object is not a world.");
 		}
 		World w = (World) world;
 		HashSet<Ship> hs = new HashSet<Ship>();
@@ -413,7 +413,7 @@ public class Facade implements IFacade
 	{
 		if (world.getClass() != World.class)
 		{
-			throw new IllegalArgumentException("The given object is not a world.");
+			throw new ModelException("The given object is not a world.");
 		}
 		World w = (World) world;
 		HashSet<Asteroid> hs = new HashSet<Asteroid>();
@@ -433,7 +433,7 @@ public class Facade implements IFacade
 	{
 		if (world.getClass() != World.class)
 		{
-			throw new IllegalArgumentException("The given object is not a world.");
+			throw new ModelException("The given object is not a world.");
 		}
 		World w = (World) world;
 		HashSet<Bullet> hs = new HashSet<Bullet>();
@@ -453,12 +453,12 @@ public class Facade implements IFacade
 	{
 		if (world.getClass() != World.class)
 		{
-			throw new IllegalArgumentException("The given object is not a world.");
+			throw new ModelException("The given object is not a world.");
 		}
 		World w = (World) world;
 		if (ship instanceof Ship)
 		{
-			throw new IllegalArgumentException("The given object is not a Ship.");
+			throw new ModelException("The given object is not a Ship.");
 		}
 		Ship s = (Ship) ship;
 		w.add(s);
@@ -469,12 +469,12 @@ public class Facade implements IFacade
 	{
 		if (world.getClass() != World.class)
 		{
-			throw new IllegalArgumentException("The given object is not a world.");
+			throw new ModelException("The given object is not a world.");
 		}
 		World w = (World) world;
 		if (asteroid instanceof Asteroid)
 		{
-			throw new IllegalArgumentException("The given object is not an asteroid.");
+			throw new ModelException("The given object is not an asteroid.");
 		}
 		Asteroid a = (Asteroid) asteroid;
 		w.add(a);
@@ -485,12 +485,12 @@ public class Facade implements IFacade
 	{
 		if (world.getClass() != World.class)
 		{
-			throw new IllegalArgumentException("The given object is not a world.");
+			throw new ModelException("The given object is not a world.");
 		}
 		World w = (World) world;
 		if (ship instanceof Ship)
 		{
-			throw new IllegalArgumentException("The given object is not a Ship.");
+			throw new ModelException("The given object is not a Ship.");
 		}
 		Ship s = (Ship) ship;
 		w.remove(s);
@@ -501,12 +501,12 @@ public class Facade implements IFacade
 	{
 		if (world.getClass() != World.class)
 		{
-			throw new IllegalArgumentException("The given object is not a world.");
+			throw new ModelException("The given object is not a world.");
 		}
 		World w = (World) world;
 		if (asteroid instanceof Asteroid)
 		{
-			throw new IllegalArgumentException("The given object is not an asteroid.");
+			throw new ModelException("The given object is not an asteroid.");
 		}
 		Asteroid a = (Asteroid) asteroid;
 		w.remove(asteroid);
@@ -554,85 +554,128 @@ public class Facade implements IFacade
 	@Override
 	public boolean isShip(Object o)
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return o instanceof Ship;
 	}
 
 	@Override
 	public double getShipX(Object ship)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		if (ship instanceof Ship)
+		{
+			throw new ModelException("The given object is not a Ship.");
+		}
+		Ship s = (Ship) ship;
+		return s.getPosition().getXComponent();
 	}
 
 	@Override
 	public double getShipY(Object ship)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		if (ship instanceof Ship)
+		{
+			throw new ModelException("The given object is not a Ship.");
+		}
+		Ship s = (Ship) ship;
+		return s.getPosition().getYComponent();
 	}
 
 	@Override
 	public double getShipXVelocity(Object ship)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		if (ship instanceof Ship)
+		{
+			throw new ModelException("The given object is not a Ship.");
+		}
+		Ship s = (Ship) ship;
+		return s.getVelocity().getXComponent();
 	}
 
 	@Override
 	public double getShipYVelocity(Object ship)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		if (ship instanceof Ship)
+		{
+			throw new ModelException("The given object is not a Ship.");
+		}
+		Ship s = (Ship) ship;
+		return s.getVelocity().getYComponent();
 	}
 
 	@Override
 	public double getShipRadius(Object ship)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		if (ship instanceof Ship)
+		{
+			throw new ModelException("The given object is not a Ship.");
+		}
+		Ship s = (Ship) ship;
+		return s.getShape().getRadius();
 	}
 
 	@Override
 	public double getShipDirection(Object ship)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		if (ship instanceof Ship)
+		{
+			throw new ModelException("The given object is not a Ship.");
+		}
+		Ship s = (Ship) ship;
+		return s.getDirection().getAngle().get();
 	}
 
 	@Override
 	public double getShipMass(Object ship)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		if (ship instanceof Ship)
+		{
+			throw new ModelException("The given object is not a Ship.");
+		}
+		Ship s = (Ship) ship;
+		return s.getMass().get();
 	}
 
 	@Override
 	public Object getShipWorld(Object ship)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		if (ship instanceof Ship)
+		{
+			throw new ModelException("The given object is not a Ship.");
+		}
+		Ship s = (Ship) ship;
+		return s.getWorld();
 	}
 
 	@Override
 	public boolean isShipThrusterActive(Object ship)
 	{
-		// TODO Auto-generated method stub
-		return false;
+		if (ship instanceof Ship)
+		{
+			throw new ModelException("The given object is not a Ship.");
+		}
+		Ship s = (Ship) ship;
+		return s.getThruster().isActivated();
 	}
 
 	@Override
 	public void setThrusterActive(Object ship, boolean active)
 	{
-		// TODO Auto-generated method stub
-
+		if (ship instanceof Ship)
+		{
+			throw new ModelException("The given object is not a Ship.");
+		}
+		Ship s = (Ship) ship;
+		s.getThruster().activate();
 	}
 
 	@Override
 	public void turn(Object ship, double angle)
 	{
-		// TODO Auto-generated method stub
-
+		if (ship instanceof Ship)
+		{
+			throw new ModelException("The given object is not a Ship.");
+		}
+		Ship s = (Ship) ship;
+		s.turn(new Angle(angle));
 	}
 
 	@Override
@@ -645,8 +688,7 @@ public class Facade implements IFacade
 	@Override
 	public Object createAsteroid(double x, double y, double xVelocity, double yVelocity, double radius)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return new Asteroid(new Direction(), new Position(x, y), Velocity.getSpeedOfLight(), new Velocity(xVelocity, yVelocity), new CircleShape(radius));
 	}
 
 	@Override

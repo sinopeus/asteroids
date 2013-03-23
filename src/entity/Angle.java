@@ -32,8 +32,8 @@ public class Angle
 	public Angle(double angle)
 	{
 		assert (canHaveAsAngle(angle));
-		setAngle(angle);
-		assert (canHaveAsAngle(getAngle()));
+		set(angle);
+		assert (canHaveAsAngle(get()));
 	}
 
 	/**
@@ -47,7 +47,7 @@ public class Angle
 	public Angle()
 	{
 		this(0.0);
-		assert (canHaveAsAngle(getAngle()));
+		assert (canHaveAsAngle(get()));
 	}
 
 	/**
@@ -56,7 +56,7 @@ public class Angle
 	@SuppressWarnings("javadoc")
 	@Basic
 	@Raw
-	public double getAngle()
+	public double get()
 	{
 		return this.angle;
 	}
@@ -88,7 +88,7 @@ public class Angle
 	 */
 	@Basic
 	@Raw
-	public void setAngle(double angle)
+	public void set(double angle)
 	{
 		assert (canHaveAsAngle(angle));
 		if (angle >= 0)
@@ -98,7 +98,7 @@ public class Angle
 		{
 			this.angle = (angle % (2 * Math.PI)) + (2 * Math.PI);
 		}
-		assert ((getAngle() >= 0) && (getAngle() <= 2 * Math.PI));
+		assert ((get() >= 0) && (get() <= 2 * Math.PI));
 	}
 
 	/**
@@ -114,7 +114,7 @@ public class Angle
 	 */
 	public double getSin()
 	{
-		return Math.sin(getAngle());
+		return Math.sin(get());
 	}
 
 	/**
@@ -125,7 +125,7 @@ public class Angle
 	 */
 	public double getCos()
 	{
-		return Math.cos(getAngle());
+		return Math.cos(get());
 	}
 
 	/**
@@ -138,9 +138,9 @@ public class Angle
 	 */
 	public void add(Angle a)
 	{
-		setAngle(getAngle() + a.getAngle());
+		set(get() + a.get());
 	}
-	
+
 	/**
 	 * Checks whether the given object is an angle and it is equal to this angle.
 	 * 
@@ -162,6 +162,6 @@ public class Angle
 			return false;
 		}
 		Angle other = (Angle) o;
-		return (Util.fuzzyEquals(other.getAngle(), getAngle()));
+		return (Util.fuzzyEquals(other.get(), get()));
 	}
 }

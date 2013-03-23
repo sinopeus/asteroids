@@ -3,6 +3,7 @@ package entity;
 import vector.Direction;
 import vector.Position;
 import vector.Velocity;
+import world.World;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 import entity.ship.Mass;
@@ -400,6 +401,53 @@ public class Entity
 	 * A variable referencing the mass of this ship.
 	 */
 	private Mass mass;
+
+	/**
+	 * Returns the world of this entity.
+	 */
+	@Basic
+	@Raw
+	public World getWorld()
+	{
+		return this.world;
+	}
+
+	/**
+	 * Checks whether this entity can have the given world as its world.
+	 * 
+	 * @param 	world
+	 * 			The world to check.
+	 * @return	True if and only if the given world is not null.
+	 * 			| result = (world != null)
+	 */
+	@Basic
+	@Raw
+	private boolean canHaveAsWorld(World world)
+	{
+		return (world != null);
+	}
+
+	/**
+	 * Sets the world of this entity to the given world.
+	 *
+	 * @param 	world
+	 *        	The new world for this entity.
+	 * @throws	IllegalArgumentException
+	 * 			The given world is not a valid world
+	 * 			| !canHaveAsWorld(world)
+	 */
+	@Basic
+	@Raw
+	public void setWorld(World world) throws IllegalArgumentException
+	{
+		if (!canHaveAsWorld(world))
+		{
+			throw new IllegalArgumentException("Illegal world provided.");
+		}
+		this.world = world;
+	}
+
+	private World world;
 
 	/**
 	 * Checks whether this entity is terminated.
