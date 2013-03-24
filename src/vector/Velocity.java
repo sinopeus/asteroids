@@ -180,6 +180,12 @@ public class Velocity extends Vector //TODO make total
 		setXComponent(v.getXComponent());
 		setYComponent(v.getYComponent());
 	}
+	
+	@Override
+	public String toString()
+	{
+		return "V_" + hashCode() + " = " + super.toString();
+	}
 
 	/**
 	 * Checks whether the given object is a velocity and its respective components are equal to this velocity's components

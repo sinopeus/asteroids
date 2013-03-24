@@ -52,6 +52,12 @@ public class Acceleration extends Vector
 		super();
 	}
 	
+	@Override
+	public String toString()
+	{
+		return "A_" + hashCode() + " = " + super.toString();
+	}
+	
 	/**
 	 * Checks whether the given object is an acceleration and its respective components are equal to this acceleration's components
 	 * 
