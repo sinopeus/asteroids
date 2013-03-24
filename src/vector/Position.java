@@ -153,6 +153,12 @@ public class Position extends Vector
 		setYComponent(p.getYComponent());
 	}
 
+	@Override
+	public String toString()
+	{
+		return "P_" + hashCode() + " = " + super.toString();
+	}
+
 	/**
 	 * Checks whether the given object is a position and its respective components are equal to this position's components
 	 * 

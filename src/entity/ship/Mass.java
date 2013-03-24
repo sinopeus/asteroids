@@ -108,7 +108,7 @@ public class Mass // TODO document
 	@Override
 	public String toString()
 	{
-		return ((int)this.get() + "kg");
+		return ("m_" + hashCode() + " = " + this.get() + "kg");
 	}
 
 	/* (non-Javadoc)

@@ -180,6 +180,12 @@ public class Ship extends Entity implements IShip
 	{
 		getWorld().add(new Bullet(this));
 	}
+	
+	@Override
+	public String toString()
+	{
+		return "ship_" + hashCode() + " at " + getPosition();
+	}
 
 	public double getThrustPerSecond()
 	{

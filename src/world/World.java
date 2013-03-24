@@ -196,16 +196,12 @@ public class World extends HashSet<Entity>
 				}
 			}
 		}
-		if (first == null || second == null){
-			return;
-		}
-		Position collisionPosition = Mechanics.getCollisionPosition(first, second);
 		
-		double timeToFirstCollision = minimumTimeToCollition;
-		if (timeToFirstCollision <= dt){
-			advanceAll(timeToFirstCollision);
+		if (minimumTimeToCollition <= dt){
+			Position collisionPosition = Mechanics.getCollisionPosition(first, second);
+			advanceAll(minimumTimeToCollition);
 			collisionListener.objectCollision(first, second, collisionPosition.getXComponent(), collisionPosition.getYComponent());
-			evolve(dt-timeToFirstCollision, collisionListener);
+			evolve((dt-minimumTimeToCollition), collisionListener);
 		}else{
 			advanceAll(dt);
 		}

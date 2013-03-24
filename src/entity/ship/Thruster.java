@@ -239,5 +239,11 @@ public class Thruster
 		Acceleration a = Mechanics.Newtons_secondLaw_CalculateAcceleration(new Force(getOwner().getDirection().getScaledBy(thrustPerSecond * duration)), getOwner().getMass());
 		getOwner().getVelocity().accelerateBy(a, duration);
 	}
-
+	
+	
+	@Override
+	public String toString()
+	{
+		return "thruster_" + hashCode() + " of " + getOwner();
+	}
 }

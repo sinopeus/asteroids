@@ -164,4 +164,10 @@ public class Angle
 		Angle other = (Angle) o;
 		return (Util.fuzzyEquals(other.get(), get()));
 	}
+	
+	@Override
+	public String toString()
+	{
+		return "angle_" + hashCode() + " = " + get();
+	}
 }
