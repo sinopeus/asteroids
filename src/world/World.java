@@ -11,6 +11,7 @@ import entity.Entity;
  * 
  * 
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
+ * @version 2.0
  * TODO document
  */
 public class World extends HashSet<Entity>

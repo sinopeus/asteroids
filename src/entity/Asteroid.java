@@ -7,6 +7,7 @@ import entity.ship.Mass;
 
 /**
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
+ * @version 2.0
  * TODO document
  */
 public class Asteroid extends Entity

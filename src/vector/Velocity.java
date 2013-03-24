@@ -9,7 +9,7 @@ import be.kuleuven.cs.som.annotate.Raw;
  * A class of velocity vectors.
  * 
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
- * @version 1.0
+ * @version 2.0
  * 
  * @invar 	The magnitude of the velocity is always at most the speed of light.
  * 			| this.getVelocity <= Velocity.getSpeedOfLight()

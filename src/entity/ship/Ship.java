@@ -15,7 +15,7 @@ import entity.Bullet;
  * A class of ships involving its position, velocity, direction, speed limit and shape.
  *
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
- * @version 1.0
+ * @version 2.0
  *
  * @invar	The direction of this ship is a valid direction.
  * 			| canHaveAsDirection(getDirection())

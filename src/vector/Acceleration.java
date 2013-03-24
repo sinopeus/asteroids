@@ -7,7 +7,7 @@ import Utilities.Util;
  * A class of acceleration vectors.
  * 
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
- * @version 1.0
+ * @version 2.0
  */
 public class Acceleration extends Vector
 {

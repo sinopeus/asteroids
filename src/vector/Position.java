@@ -8,7 +8,7 @@ import be.kuleuven.cs.som.annotate.Raw;
  * A class of positions vectors.
  * 
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
- * @version 1.0
+ * @version 2.0
  */
 public class Position extends Vector
 {

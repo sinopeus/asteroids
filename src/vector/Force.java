@@ -4,7 +4,7 @@ package vector;
  * A class of force vectors.
  * 
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
- * @version 1.0
+ * @version 2.0
  */
 public class Force extends Vector
 {

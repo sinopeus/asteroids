@@ -20,7 +20,7 @@ import entity.ship.Ship;
 
 /**
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
- * @version 1.0
+ * @version 2.0
  */
 public class Facade implements IFacade
 {
