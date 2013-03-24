@@ -156,6 +156,7 @@ public class Bullet extends Entity
 	public void terminate()
 	{
 		this.shooter = null;
+		super.terminate()
 	}
 
 	/**
