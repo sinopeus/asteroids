@@ -161,15 +161,20 @@ public class Bullet extends Entity
 	/**
 	 * A variable registering the radius of a bullet.
 	 */
-	private static double bulletRadius = 3;
+	private static final double bulletRadius = 3;
 
 	/**
 	 * A variable registering the initial velocity of a bullet.
 	 */
-	private static double bulletInitialVelocity = 250;
+	private static final double bulletInitialVelocity = 250;
 
 	/**
 	 * A variable registering the density of a bullet.
 	 */
-	private static double density = 7.8E12;
+	private static final double density = 7.8E12;
+	
+	/**
+	 * A variable registering the maximum amount of time a bullet can bounce off the boundaries of the world.
+	 */
+	public static final byte maximumBorderBounces = 1;
 }
