@@ -1,15 +1,14 @@
 package entity.ship;
 
 import model.IShip;
-
 import vector.Direction;
 import vector.Position;
 import vector.Velocity;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
+import entity.Bullet;
 import entity.CircleShape;
 import entity.Entity;
-import entity.Bullet;
 
 /**
  * A class of ships involving its position, velocity, direction, speed limit and shape.
@@ -163,7 +162,15 @@ public class Ship extends Entity implements IShip
 		getThruster().terminate();
 		super.terminate();
 	}
-	
+
+	//TODO DOCUMENT & TEST
+	@Override
+	public void advance(double dt)
+	{
+		getThruster().thrust(dt);
+		super.advance(dt);
+	}
+
 	/**
 	 * A method for firing a bullet from this ship.
 	 * 
@@ -173,7 +180,7 @@ public class Ship extends Entity implements IShip
 	{
 		getWorld().add(new Bullet(this));
 	}
-	
+
 	public double getThrustPerSecond()
 	{
 		return Ship.thrustPerSecond;

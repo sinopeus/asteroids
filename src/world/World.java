@@ -2,7 +2,9 @@ package world;
 
 import java.util.HashSet;
 
-import vector.Vector;
+import main.CollisionListener;
+import vector.Position;
+import Utilities.Mechanics;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 import entity.Entity;
@@ -136,53 +138,6 @@ public class World extends HashSet<Entity>
 	 */
 	private double ySize;
 
-	//	/**
-	//	 * Gets the hash set of all entities.
-	//	 */
-	//	@SuppressWarnings("javadoc")
-	//	@Basic
-	//	@Raw
-	//	public HashSet<Entity> getEntities()
-	//	{
-	//		return entities;
-	//	}
-	//
-	//	/**
-	//	 * Checks whether this world can have the given hash set of entities as its hash set of entities.
-	//	 * 
-	//	 * @param 	entityQueue
-	//	 * 			The hash set of entities to check.
-	//	 * @return	True if and only if the given hash set of entities is not null.
-	//	 * 			| result == (entityQueue != null)
-	//	 */
-	//	@Basic
-	//	@Raw
-	//	private boolean canHaveAsEntitySet(HashSet<Entity> entityQueue)
-	//	{
-	//		return (entityQueue != null);
-	//	}
-	//
-	//	/**
-	//	 * Sets the hash set of entities to the given hash set of entities.
-	//	 * 
-	//	 * @param	entities
-	//	 * 			The given hash set of entities.
-	//	 * @post	The hash set of entities of this world is equal to the given hash set of entities.
-	//	 * 			| new.getEntities() == entities
-	//	 * @throws	The given hash set of entities is not a valid hash set of entities for this world.
-	//	 * 			| !canHaveAsEntitySet(entities)
-	//	 */
-	//	@Basic
-	//	@Raw
-	//	private void setEntities(HashSet<Entity> entities) throws IllegalArgumentException
-	//	{
-	//		if (!canHaveAsEntitySet(entities))
-	//		{
-	//			throw new IllegalArgumentException("Invalid hash set of entities provided");
-	//		}
-	//		this.entities = entities;
-	//	}
-
 	/**
 	 * Checks whether the given entity is a valid entity for this world.
 	 *  
@@ -223,20 +178,62 @@ public class World extends HashSet<Entity>
 	 */
 	private HashSet<Entity> entities;
 
-	/**
-	 *
-	 */
-	private static Vector getXBase()
-	{ //TODO DOCUMENT
-		return new Vector(0, 1);
+	//TODO DOCUMENT & TEST
+	public void evolve(double dt, CollisionListener collisionListener){
+		//get the time to and the entities of the first collision
+		double minimumTimeToCollition = Double.MAX_VALUE;
+		Entity first = null;
+		Entity second = null;
+		for (Entity e1 : this){
+			for( Entity e2 : this){
+				if (e1 != e2){
+					double timeToCollision = Mechanics.getTimeToCollision(e1, e2);
+					if(timeToCollision < minimumTimeToCollition){
+						minimumTimeToCollition = timeToCollision;
+						first = e1;
+						second = e2;
+					}
+				}
+			}
+		}
+		if (first == null || second == null){
+			return;
+		}
+		Position collisionPosition = Mechanics.getCollisionPosition(first, second);
+		
+		double timeToFirstCollision = minimumTimeToCollition;
+		if (timeToFirstCollision <= dt){
+			advanceAll(timeToFirstCollision);
+			collisionListener.objectCollision(first, second, collisionPosition.getXComponent(), collisionPosition.getYComponent());
+			evolve(dt-timeToFirstCollision, collisionListener);
+		}else{
+			advanceAll(dt);
+		}
 	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	private static Vector getYBase()
-	{ //TODO DOCUMENT
-		return new Vector(1, 0);
+	
+	//TODO DOCUMENT &TEST
+	private void advanceAll(double dt){
+		for( Entity e : this){
+			e.advance(dt);
+		}
 	}
+	
+	
+//TODO REMOVE
+//	/**
+//	 *
+//	 */
+//	private static Vector getXBase()
+//	{ //TODO DOCUMENT
+//		return new Vector(0, 1);
+//	}
+//
+//	/**
+//	 * 
+//	 * @return
+//	 */
+//	private static Vector getYBase()
+//	{ //TODO DOCUMENT
+//		return new Vector(1, 0);
+//	}
 }

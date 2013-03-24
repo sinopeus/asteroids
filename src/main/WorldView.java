@@ -33,10 +33,10 @@ public class WorldView<World, Ship, Asteroid, Bullet> extends JPanel implements 
 	private static final int RIGHT_P1 = KeyEvent.VK_RIGHT;
 	private static final int FIRE_P1 = KeyEvent.VK_SPACE;
 	private static final int THRUSTER_P1 = KeyEvent.VK_UP;
-	private static final int LEFT_P2 = KeyEvent.VK_A; // change to Q on Azerty
+	private static final int LEFT_P2 = KeyEvent.VK_Q; // change to Q on Azerty
 	private static final int RIGHT_P2 = KeyEvent.VK_D;
 	private static final int FIRE_P2 = KeyEvent.VK_CONTROL;
-	private static final int THRUSTER_P2 = KeyEvent.VK_W; // change to Z on Azerty
+	private static final int THRUSTER_P2 = KeyEvent.VK_Z; // change to Z on Azerty
 
 	private static final int TIMER_DELAY = 1000 / 30;
 
@@ -292,12 +292,13 @@ public class WorldView<World, Ship, Asteroid, Bullet> extends JPanel implements 
 	@Override
 	public void boundaryCollision(Object entity, double x, double y)
 	{
-
+		new CollisionResolver().boundaryCollision(entity, x, y);
 	}
 
 	@Override
 	public void objectCollision(Object entity1, Object entity2, double x, double y)
 	{
+		new CollisionResolver().objectCollision(entity1, entity2, x, y);
 		if ((facade.isBullets(entity1) && !facade.isBullets(entity2)) || (facade.isBullets(entity2) && !facade.isBullets(entity1)))
 		{
 			game.getSound().play("explosion");

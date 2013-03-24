@@ -442,7 +442,12 @@ public class Facade implements IFacade
 	@Override
 	public void evolve(Object world, double dt, CollisionListener collisionListener)
 	{
-		// TODO Auto-generated method stub
+		if (world.getClass() != World.class)
+		{
+			throw new ModelException("The given object is not a world.");
+		}
+		World w = (World) world;
+		w.evolve(dt, collisionListener);
 	}
 
 	@Override

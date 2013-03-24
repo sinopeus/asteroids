@@ -84,7 +84,7 @@ public class Mechanics
 	 *          One of the given entities is null.
 	 *          | ((entity1 == null) || (entity2 == null))
 	 */
-	public double getTimeToCollision(Entity entity1, Entity entity2) throws IllegalArgumentException
+	public static double getTimeToCollision(Entity entity1, Entity entity2) throws IllegalArgumentException
 	{
 		if ((entity1 == null) || (entity2 == null))
 		{
@@ -117,7 +117,7 @@ public class Mechanics
 	 *          One of the given entities is null.
 	 *          | ((entity1 == null) || (entity1 == null))
 	 */
-	public double[] getCollisionPosition(Entity entity1, Entity entity2) throws IllegalArgumentException //
+	public static Position getCollisionPosition(Entity entity1, Entity entity2) throws IllegalArgumentException //
 	{
 		if ((entity1 == null) || (entity2 == null))
 		{
@@ -137,10 +137,6 @@ public class Mechanics
 		double sigma = entity1.getShape().getRadius() + entity2.getShape().getRadius();
 		double ship1Radius = entity1.getShape().getRadius();
 
-		Vector collisionPos = newPosShip1.getSum(newPosShip2.getDifference(newPosShip1).getScaledBy(ship1Radius / sigma));
-		double[] result =
-		{ collisionPos.getXComponent(), collisionPos.getYComponent() };
-
-		return result;
+		return new Position(newPosShip1.getSum(newPosShip2.getDifference(newPosShip1).getScaledBy(ship1Radius / sigma)));
 	}
 };

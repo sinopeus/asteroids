@@ -482,6 +482,12 @@ public class Entity
 	 */
 	protected boolean isTerminated;
 
+	//TODO DOCUMENT & TEST
+	public void advance(double dt)
+	{
+		move(dt);
+	}
+
 	/**
 	 * Changes the position of this entity based on the current position, velocity and a given duration of the movement.
 	 * 
@@ -506,7 +512,7 @@ public class Entity
 		}
 		if (duration < 0)
 		{
-			throw new IllegalArgumentException("The given duration is invalid.");
+			duration = 0;
 		}
 		this.position.moveBy(getVelocity(), duration);
 	}

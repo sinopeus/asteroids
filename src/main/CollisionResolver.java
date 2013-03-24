@@ -93,7 +93,7 @@ public class CollisionResolver implements CollisionListener
 		}
 		Entity e1 = (Entity) entity1;
 		Entity e2 = (Entity) entity2;
-
+		
 		// TODO this part is written shitty, any ideas?
 		if ((e1 instanceof Ship) && (e2 instanceof Ship))
 		{
@@ -101,6 +101,18 @@ public class CollisionResolver implements CollisionListener
 		} else if ((e1 instanceof Asteroid) && (e2 instanceof Asteroid))
 		{
 			bounce(e1, e2);
+		} else if ((e1 instanceof Asteroid) && (e2 instanceof Bullet))
+		{
+			Asteroid a = (Asteroid) e1;
+			Bullet b = (Bullet) e2;
+			b.terminate();
+			a.terminate();
+		} else if ((e1 instanceof Bullet) && (e2 instanceof Asteroid))
+		{
+			Asteroid a = (Asteroid) e2;
+			Bullet b = (Bullet) e1;
+			b.terminate();
+			a.terminate();
 		} else if ((e1 instanceof Ship) && (e2 instanceof Bullet))
 		{
 			Ship s = (Ship) e1;
