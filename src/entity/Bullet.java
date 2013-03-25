@@ -5,7 +5,6 @@ import vector.Velocity;
 import vector.Vector;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
-import entity.ship.Mass;
 import entity.ship.Ship;
 
 /**
@@ -156,7 +155,7 @@ public class Bullet extends Entity
 	public void terminate()
 	{
 		this.shooter = null;
-		super.terminate()
+		super.terminate();
 	}
 
 	/**

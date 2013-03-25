@@ -5,7 +5,7 @@ import vector.Force;
 import vector.Position;
 import vector.Vector;
 import entity.Entity;
-import entity.ship.Mass;
+import entity.Mass;
 
 /**
  * 

@@ -11,7 +11,6 @@ import vector.Direction;
 import vector.Position;
 import vector.Velocity;
 import Utilities.Util;
-import entity.ship.Mass;
 import entity.CircleShape;
 import entity.Asteroid;
 

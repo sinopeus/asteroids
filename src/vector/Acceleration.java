@@ -52,6 +52,7 @@ public class Acceleration extends Vector
 		super();
 	}
 	
+	//TODO DOCUMENT
 	@Override
 	public String toString()
 	{

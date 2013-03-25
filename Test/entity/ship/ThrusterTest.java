@@ -14,6 +14,7 @@ import vector.Position;
 import vector.Velocity;
 import entity.Angle;
 import entity.CircleShape;
+import entity.Mass;
 
 public class ThrusterTest
 {

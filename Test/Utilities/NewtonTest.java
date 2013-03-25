@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import vector.Acceleration;
 import vector.Force;
-import entity.ship.Mass;
+import entity.Mass;
 
 public class NewtonTest
 {

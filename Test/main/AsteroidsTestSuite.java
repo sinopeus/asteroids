@@ -20,7 +20,7 @@ import entity.AsteroidTest;
 import entity.BulletTest;
 import entity.CircleShapeTest;
 import entity.EntityTest;
-import entity.ship.MassTest;
+import entity.MassTest;
 import entity.ship.ShipTest;
 import entity.ship.ThrusterTest;
 
