@@ -2,7 +2,7 @@ package collision;
 
 import entity.Entity;
 
-public class EntityCollision extends Collision
+public final class EntityCollision extends Collision
 {
 	//TODO EVERYTHING
 	public Entity getEntity1()
