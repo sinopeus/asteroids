@@ -94,7 +94,7 @@ public class CollisionResolver implements CollisionListener
 		Entity e1 = (Entity) entity1;
 		Entity e2 = (Entity) entity2;
 		
-		// TODO this part is written shitty, any ideas?
+		// TODO this part is written shittily, any ideas?
 		if ((e1 instanceof Ship) && (e2 instanceof Ship))
 		{
 			bounce(e1, e2);
