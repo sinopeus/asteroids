@@ -66,11 +66,11 @@ public class Ship extends Entity implements IShip
 	 * @throws	NullPointerException
 	 * 			| Any of the parameters is null.
 	 */
-	public Ship(Direction direction, Position position, double speedLimit, Velocity velocity, CircleShape shape, Mass mass) throws IllegalArgumentException, NullPointerException
+	public Ship (Direction direction, Position position, double speedLimit, Velocity velocity, CircleShape shape, Mass mass) throws IllegalArgumentException, NullPointerException
 	{
 		//TODO add throws from setters
-		super(direction, position, speedLimit, velocity, shape, mass);
-		setThruster(new Thruster(getThrustPerSecond(), this));
+		super (direction, position, speedLimit, velocity, shape, mass);
+		setThruster (new Thruster (getThrustPerSecond (), this));
 	}
 
 	/**
@@ -79,26 +79,26 @@ public class Ship extends Entity implements IShip
 	 * @effect	Initializes this new ship with the extended ship constructor and default values.
 	 * 			| this(new Direction(),new Position(),Velocity.getSpeedOfLight(),new Velocity(), new CircleShape(40), new Mass(5E15))
 	 */
-	public Ship()
+	public Ship ()
 	{
 		//TODO add throws from setters
-		this(new Direction(), new Position(), Velocity.getSpeedOfLight(), new Velocity(), new CircleShape(40), new Mass(5E15));
+		this (new Direction (), new Position (), Velocity.getSpeedOfLight (), new Velocity (), new CircleShape (40), new Mass (5E15));
 	}
 
 	//TODO document
 	@Override
-	protected boolean canHaveAsShape(@Raw CircleShape shape)
+	protected boolean canHaveAsShape (@Raw CircleShape shape)
 	{
-		return (super.canHaveAsShape(shape) && (shape.getRadius() >= Ship.getMinimumRadius()));
+		return (super.canHaveAsShape (shape) && (shape.getRadius () >= Ship.getMinimumRadius ()));
 	}
 
 	/**
 	 * Returns the minimum radius of ships.
 	 */
-	@SuppressWarnings("javadoc")
+	@SuppressWarnings ("javadoc")
 	@Basic
 	@Raw
-	public static double getMinimumRadius()
+	public static double getMinimumRadius ()
 	{
 		return Ship.minimumRadius;
 	}
@@ -106,14 +106,14 @@ public class Ship extends Entity implements IShip
 	/**
 	 * A variable registering the minimum radius of this ship.
 	 */
-	private static double minimumRadius = 10;
+	private static double	minimumRadius	= 10;
 
 	/**
 	 * Gets the thruster of this ship.
 	 */
 	@Basic
 	@Raw
-	public Thruster getThruster()
+	public Thruster getThruster ()
 	{
 		return thruster;
 	}
@@ -126,7 +126,7 @@ public class Ship extends Entity implements IShip
 	 * @return	True if and only if the given thruster is not null.
 	 * 			| result == (thruster != null)
 	 */
-	private boolean canHaveAsThruster(Thruster thruster)
+	private boolean canHaveAsThruster (Thruster thruster)
 	{
 		return (thruster != null);
 	}
@@ -140,36 +140,36 @@ public class Ship extends Entity implements IShip
 	 * 			The given thruster is null.
 	 * 			| thruster == null
 	 */
-	private void setThruster(Thruster thruster) throws IllegalArgumentException
+	private void setThruster (Thruster thruster) throws IllegalArgumentException
 	{
-		if (!canHaveAsThruster(thruster))
-		{
-			throw new IllegalArgumentException("Invalid thruster provided.");
-		}
+		if (!canHaveAsThruster (thruster)) { throw new IllegalArgumentException ("Invalid thruster provided."); }
 		this.thruster = thruster;
 	}
 
 	/**
 	 * A variable referencing the thruster of this ship.
 	 */
-	private Thruster thruster;
+	private Thruster	thruster;
 
 	/**
 	 * Terminates this ship.
 	 */
 	@Override
-	public void terminate()
+	public void terminate ()
 	{
-		getThruster().terminate();
-		super.terminate();
+		getThruster ().terminate ();
+		super.terminate ();
 	}
 
 	//TODO DOCUMENT & TEST
 	@Override
-	public void advance(double dt)
+	public void advance (double dt)
 	{
-		getThruster().thrust(dt);
-		super.advance(dt);
+		if (getThruster ().isActivated ())
+		{
+			getThruster ().thrust (dt);
+		}
+		super.advance (dt);
 	}
 
 	/**
@@ -177,18 +177,18 @@ public class Ship extends Entity implements IShip
 	 * 
 	 * @effect Creates a new Bullet object in the World to which this Ship belongs.
 	 */
-	public void fire()
+	public void fire ()
 	{
-		getWorld().add(new Bullet(this));
-	}
-	
-	@Override
-	public String toString()
-	{
-		return "ship_" + hashCode() + " at " + getPosition();
+		getWorld ().add (new Bullet (this));
 	}
 
-	public double getThrustPerSecond()
+	@Override
+	public String toString ()
+	{
+		return "ship_" + hashCode () + " at " + getPosition ();
+	}
+
+	public double getThrustPerSecond ()
 	{
 		return Ship.thrustPerSecond;
 	}
@@ -196,5 +196,5 @@ public class Ship extends Entity implements IShip
 	/**
 	 * A variable registering the thrust that a ship's thruster can exert in one second.
 	 */
-	private static double thrustPerSecond = 1.1E18;
+	private static double	thrustPerSecond	= 1.1E18;
 }
