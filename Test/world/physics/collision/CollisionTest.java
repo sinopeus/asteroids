@@ -1,4 +1,4 @@
-package collision;
+package world.physics.collision;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

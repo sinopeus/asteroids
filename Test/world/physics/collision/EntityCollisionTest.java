@@ -1,4 +1,4 @@
-package collision;
+package world.physics.collision;
 
 public class EntityCollisionTest
 {

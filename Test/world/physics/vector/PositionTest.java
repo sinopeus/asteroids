@@ -1,4 +1,4 @@
-package vector;
+package world.physics.vector;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

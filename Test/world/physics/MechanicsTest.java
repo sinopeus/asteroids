@@ -1,4 +1,4 @@
-package Utilities;
+package world.physics;
 
 import static org.junit.Assert.assertEquals;
 
@@ -11,7 +11,7 @@ import world.physics.vector.Acceleration;
 import world.physics.vector.Force;
 
 
-public class NewtonTest
+public class MechanicsTest
 {
 
 	@Before

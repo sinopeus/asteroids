@@ -1,4 +1,4 @@
-package entity;
+package world.physics.geometry;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
