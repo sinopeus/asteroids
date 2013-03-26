@@ -77,4 +77,11 @@ public final class BorderCollision extends Collision
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	protected void calculateCollisionTime ()
+	{
+		// TODO Auto-generated method stub
+		
+	}
 }

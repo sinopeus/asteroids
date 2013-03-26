@@ -99,4 +99,11 @@ public final class EntityCollision extends Collision
 		return 0;
 	}
 
+	@Override
+	protected void calculateCollisionTime ()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
 }
