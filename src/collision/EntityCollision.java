@@ -89,16 +89,6 @@ public final class EntityCollision extends Collision
 		// TODO Auto-generated method stub
 	}
 
-	/* (non-Javadoc)
-	 * @see collision.Collision#getTimeToCollision()
-	 */
-	@Override
-	public double getTimeToCollision ()
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 	@Override
 	protected void calculateCollisionTime ()
 	{
