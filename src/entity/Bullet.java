@@ -5,7 +5,7 @@ import vector.Velocity;
 import vector.Vector;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
-import entity.ship.Mass;
+import entity.Mass;
 import entity.ship.Ship;
 
 /**
