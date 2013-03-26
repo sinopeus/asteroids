@@ -1,12 +1,13 @@
-package entity;
+package world.entity;
 
-import vector.Position;
-import vector.Velocity;
-import vector.Vector;
+import world.entity.ship.Ship;
+import world.physics.Mass;
+import world.physics.geometry.CircleShape;
+import world.physics.vector.Position;
+import world.physics.vector.Vector;
+import world.physics.vector.Velocity;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
-import entity.Mass;
-import entity.ship.Ship;
 
 /**
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
@@ -25,10 +26,9 @@ public class Bullet extends Entity
 	* @throws	NullPointerException
 	* 			the given ship is null
 	 */
-	public Bullet(Ship ship) throws NullPointerException
+	public Bullet (Ship ship) throws NullPointerException
 	{
-		super(ship.getDirection(), getInitialPosition(ship), Velocity.getSpeedOfLight(), new Velocity(ship.getVelocity().getSum(ship.getDirection().getScaledBy(bulletInitialVelocity))),
-				new CircleShape(bulletRadius), new Mass((4 * Math.PI * Math.pow(ship.getShape().getRadius(), 3) * density) / 3));
+		super(ship.getDirection(), getInitialPosition(ship), Velocity.getSpeedOfLight(), new Velocity(ship.getVelocity().getSum(ship.getDirection().getScaledBy(bulletInitialVelocity))), new CircleShape(bulletRadius), new Mass( (4 * Math.PI * Math.pow(ship.getShape().getRadius(), 3) * density) / 3));
 		setShooter(ship);
 		setBounceCounter((byte) 0);
 	}
@@ -41,7 +41,7 @@ public class Bullet extends Entity
 	 * @return	The initial position of this new bullet. (It is placed right next to the ship.)
 	 * 			| 
 	 */
-	private static Position getInitialPosition(Ship ship)
+	private static Position getInitialPosition (Ship ship)
 	{
 		return new Position(new Vector(ship.getPosition()).getSum(ship.getDirection().getScaledBy(ship.getShape().getRadius() + bulletRadius)));
 	}
@@ -53,7 +53,7 @@ public class Bullet extends Entity
 	 */
 	@Basic
 	@Raw
-	public Ship getShooter()
+	public Ship getShooter ()
 	{
 		return shooter;
 	}
@@ -68,7 +68,7 @@ public class Bullet extends Entity
 	 */
 	@Basic
 	@Raw
-	private boolean canHaveAsShooter(Ship shooter)
+	private boolean canHaveAsShooter (Ship shooter)
 	{
 		return (shooter != null);
 	}
@@ -84,12 +84,9 @@ public class Bullet extends Entity
 	 * 			The given shooter is null
 	 * 			| shooter == null
 	 */
-	private void setShooter(Ship shooter) throws IllegalArgumentException
+	private void setShooter (Ship shooter) throws IllegalArgumentException
 	{
-		if (!canHaveAsShooter(shooter))
-		{
-			throw new IllegalArgumentException("You cannot provide a null ship.");
-		}
+		if (!canHaveAsShooter(shooter)) { throw new IllegalArgumentException("You cannot provide a null ship."); }
 		this.shooter = shooter;
 	}
 
@@ -98,7 +95,7 @@ public class Bullet extends Entity
 	 */
 	@Basic
 	@Raw
-	public byte getBounceCounter()
+	public byte getBounceCounter ()
 	{
 		return this.bounceCounter;
 	}
@@ -113,7 +110,7 @@ public class Bullet extends Entity
 	 */
 	@Basic
 	@Raw
-	protected boolean canHaveAsBounceCounter(byte bounceCounter)
+	protected boolean canHaveAsBounceCounter (byte bounceCounter)
 	{
 		return (bounceCounter >= 0);
 	}
@@ -130,40 +127,37 @@ public class Bullet extends Entity
 	 */
 	@Basic
 	@Raw
-	public void setBounceCounter(byte bounceCounter) throws IllegalArgumentException
+	public void setBounceCounter (byte bounceCounter) throws IllegalArgumentException
 	{
-		if (!canHaveAsBounceCounter(bounceCounter))
-		{
-			throw new IllegalArgumentException("Invalid bounce counter provided");
-		}
+		if (!canHaveAsBounceCounter(bounceCounter)) { throw new IllegalArgumentException("Invalid bounce counter provided"); }
 		this.bounceCounter = bounceCounter;
 	}
 
 	/**
 	 * A variable registering the amount of times this bullet has bounced on a worlds edge of this bullet.
 	 */
-	private byte bounceCounter;
+	private byte	bounceCounter;
 
 	/**
 	 * A variable keeping a reference to the ship which shot this bullet.
 	 */
-	private Ship shooter;
+	private Ship	shooter;
 
-	
 	/**
 	 * Unlinks this bullet from the ship which shot it.
 	 * 
 	 * @effect | shooter == null;
 	 */
-	public void unlinkFromShooter() {
+	public void unlinkFromShooter ()
+	{
 		this.shooter = null;
 	}
-	
+
 	/**
 	 * @see #Entity.terminate()
 	 */
 	@Override
-	public void terminate()
+	public void terminate ()
 	{
 		this.unlinkFromShooter();
 		super.terminate();
@@ -172,20 +166,20 @@ public class Bullet extends Entity
 	/**
 	 * A variable registering the radius of a bullet.
 	 */
-	private static final double bulletRadius = 3;
+	private static final double	bulletRadius			= 3;
 
 	/**
 	 * A variable registering the initial velocity of a bullet.
 	 */
-	private static final double bulletInitialVelocity = 250;
+	private static final double	bulletInitialVelocity	= 250;
 
 	/**
 	 * A variable registering the density of a bullet.
 	 */
-	private static final double density = 7.8E12;
-	
+	private static final double	density					= 7.8E12;
+
 	/**
 	 * A variable registering the maximum amount of time a bullet can bounce off the boundaries of the world.
 	 */
-	public static final byte maximumBorderBounces = 1;
+	public static final byte	maximumBorderBounces	= 1;
 }

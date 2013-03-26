@@ -7,6 +7,10 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import world.physics.vector.Acceleration;
+import world.physics.vector.Vector;
+import world.physics.vector.Velocity;
+
 import Utilities.Util;
 
 @SuppressWarnings("javadoc")

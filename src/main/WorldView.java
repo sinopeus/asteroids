@@ -23,10 +23,11 @@ import java.util.Set;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import world.entity.Entity;
+import world.physics.collision.BorderCollision;
+import world.physics.collision.EntityCollision;
+
 import model.IFacade;
-import collision.BorderCollision;
-import collision.EntityCollision;
-import entity.Entity;
 
 @SuppressWarnings("serial")
 public class WorldView<World, Ship, Asteroid, Bullet> extends JPanel implements KeyListener, ActionListener, CollisionListener

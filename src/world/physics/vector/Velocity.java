@@ -1,4 +1,4 @@
-package vector;
+package world.physics.vector;
 
 import Utilities.Util;
 import be.kuleuven.cs.som.annotate.Basic;

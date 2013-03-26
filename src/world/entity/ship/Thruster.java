@@ -1,8 +1,8 @@
-package entity.ship;
+package world.entity.ship;
 
-import vector.Acceleration;
-import vector.Force;
-import Utilities.Mechanics;
+import world.physics.Mechanics;
+import world.physics.vector.Acceleration;
+import world.physics.vector.Force;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 
@@ -31,9 +31,9 @@ public class Thruster
 	 */
 	public Thruster (double maximumThrust, Ship owner) throws IllegalArgumentException
 	{
-		setMaximumThrustPerSecond (maximumThrust);
-		setOwner (owner);
-		deactivate ();
+		setMaximumThrustPerSecond(maximumThrust);
+		setOwner(owner);
+		deactivate();
 	}
 
 	/**
@@ -76,7 +76,7 @@ public class Thruster
 	@Raw
 	private void setMaximumThrustPerSecond (double maximumThrust) throws IllegalArgumentException
 	{
-		if (!canHaveAsMaximumThrust (maximumThrust)) { throw new IllegalArgumentException ("Illegal maximum thrust provided."); }
+		if (!canHaveAsMaximumThrust(maximumThrust)) { throw new IllegalArgumentException("Illegal maximum thrust provided."); }
 		this.maximumThrustPerSecond = maximumThrust;
 	}
 
@@ -179,7 +179,7 @@ public class Thruster
 	@Raw
 	public void setOwner (Ship owner) throws IllegalArgumentException
 	{
-		if (!canHaveAsOwner (owner)) { throw new IllegalArgumentException ("Illegal owner ship provided."); }
+		if (!canHaveAsOwner(owner)) { throw new IllegalArgumentException("Illegal owner ship provided."); }
 		this.ownerShip = owner;
 	}
 
@@ -205,7 +205,7 @@ public class Thruster
 	//TODO @EFFECT
 	public void thrust (double duration)
 	{
-		thrust (getMaximumThrustPerSecond (), duration);
+		thrust(getMaximumThrustPerSecond(), duration);
 	}
 
 	/**
@@ -227,17 +227,17 @@ public class Thruster
 		{
 			thrustPerSecond = 0;
 		}
-		if (thrustPerSecond > getOwner ().getThrustPerSecond ())
+		if (thrustPerSecond > getOwner().getThrustPerSecond())
 		{
-			thrustPerSecond = getOwner ().getThrustPerSecond ();
+			thrustPerSecond = getOwner().getThrustPerSecond();
 		}
-		Acceleration a = Mechanics.Newtons_secondLaw_CalculateAcceleration (new Force (getOwner ().getDirection ().getScaledBy (thrustPerSecond * duration)), getOwner ().getMass ());
-		getOwner ().getVelocity ().accelerateBy (a, duration);
+		Acceleration a = Mechanics.Newtons_secondLaw_CalculateAcceleration(new Force(getOwner().getDirection().getScaledBy(thrustPerSecond * duration)), getOwner().getMass());
+		getOwner().getVelocity().accelerateBy(a, duration);
 	}
 
 	@Override
 	public String toString ()
 	{
-		return "thruster_" + hashCode () + " of " + getOwner ();
+		return "thruster_" + hashCode() + " of " + getOwner();
 	}
 }

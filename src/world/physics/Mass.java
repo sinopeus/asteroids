@@ -1,4 +1,4 @@
-package entity;
+package world.physics;
 
 import Utilities.Util;
 import be.kuleuven.cs.som.annotate.Basic;

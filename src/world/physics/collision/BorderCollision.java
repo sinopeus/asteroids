@@ -1,12 +1,13 @@
-package collision;
+package world.physics.collision;
 
 import java.util.ArrayList;
 
-import vector.Position;
-import vector.Quadrant;
+
 import world.World;
-import entity.Bullet;
-import entity.Entity;
+import world.entity.Bullet;
+import world.entity.Entity;
+import world.physics.vector.Position;
+import world.physics.vector.Quadrant;
 
 public final class BorderCollision extends Collision
 {

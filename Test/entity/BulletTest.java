@@ -7,7 +7,9 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import entity.ship.Ship;
+import world.entity.Bullet;
+import world.entity.ship.Ship;
+
 
 public class BulletTest
 {

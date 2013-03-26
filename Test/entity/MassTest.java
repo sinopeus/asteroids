@@ -8,11 +8,12 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import entity.Mass;
+import world.physics.Mass;
+import world.physics.vector.Vector;
+
 
 import Utilities.Util;
 
-import vector.Vector;
 
 public class MassTest
 {

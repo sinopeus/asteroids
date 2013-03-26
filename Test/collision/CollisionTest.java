@@ -6,14 +6,17 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import vector.Direction;
-import vector.Position;
-import vector.Velocity;
+
 import world.World;
+import world.entity.Asteroid;
+import world.physics.collision.BorderCollision;
+import world.physics.collision.Collision;
+import world.physics.geometry.Angle;
+import world.physics.geometry.CircleShape;
+import world.physics.vector.Direction;
+import world.physics.vector.Position;
+import world.physics.vector.Velocity;
 import Utilities.Util;
-import entity.Angle;
-import entity.Asteroid;
-import entity.CircleShape;
 
 @SuppressWarnings ("javadoc")
 public class CollisionTest

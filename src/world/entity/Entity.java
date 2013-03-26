@@ -1,9 +1,12 @@
-package entity;
+package world.entity;
 
-import vector.Direction;
-import vector.Position;
-import vector.Velocity;
 import world.World;
+import world.physics.Mass;
+import world.physics.geometry.Angle;
+import world.physics.geometry.CircleShape;
+import world.physics.vector.Direction;
+import world.physics.vector.Position;
+import world.physics.vector.Velocity;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 

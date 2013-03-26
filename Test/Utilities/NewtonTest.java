@@ -5,9 +5,11 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import vector.Acceleration;
-import vector.Force;
-import entity.Mass;
+import world.physics.Mass;
+import world.physics.Mechanics;
+import world.physics.vector.Acceleration;
+import world.physics.vector.Force;
+
 
 public class NewtonTest
 {

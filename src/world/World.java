@@ -2,13 +2,13 @@ package world;
 
 import java.util.HashSet;
 
+import world.entity.Entity;
+import world.physics.collision.Collision;
+import world.physics.vector.Position;
+
 import main.CollisionListener;
-import vector.Position;
-import Utilities.Util;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
-import collision.Collision;
-import entity.Entity;
 
 /**
  * 

@@ -1,6 +1,6 @@
-package vector;
+package world.physics.vector;
 
-import entity.Angle;
+import world.physics.geometry.Angle;
 import Utilities.Util;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;

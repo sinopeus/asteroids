@@ -6,8 +6,10 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import world.entity.ship.Ship;
+import world.physics.geometry.Angle;
+
 import Utilities.Util;
-import entity.ship.Ship;
 
 @SuppressWarnings("javadoc")
 public class AngleTest

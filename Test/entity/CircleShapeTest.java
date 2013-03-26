@@ -6,10 +6,11 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import world.entity.ship.Ship;
+import world.physics.geometry.CircleShape;
+
 import Utilities.Util;
 
-import entity.CircleShape;
-import entity.ship.Ship;
 
 
 @SuppressWarnings("javadoc")

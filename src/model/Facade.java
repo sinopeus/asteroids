@@ -5,18 +5,19 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.Set;
 
+
 import main.CollisionListener;
-import vector.Direction;
-import vector.Position;
-import vector.Velocity;
 import world.World;
-import entity.Angle;
-import entity.Asteroid;
-import entity.Bullet;
-import entity.CircleShape;
-import entity.Entity;
-import entity.Mass;
-import entity.ship.Ship;
+import world.entity.Asteroid;
+import world.entity.Bullet;
+import world.entity.Entity;
+import world.entity.ship.Ship;
+import world.physics.Mass;
+import world.physics.geometry.Angle;
+import world.physics.geometry.CircleShape;
+import world.physics.vector.Direction;
+import world.physics.vector.Position;
+import world.physics.vector.Velocity;
 
 /**
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla

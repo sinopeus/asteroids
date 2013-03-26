@@ -1,13 +1,13 @@
-package collision;
+package world.physics.collision;
 
-import vector.Position;
-import vector.Vector;
-import vector.Velocity;
 import world.World;
-import entity.Asteroid;
-import entity.Bullet;
-import entity.Entity;
-import entity.ship.Ship;
+import world.entity.Asteroid;
+import world.entity.Bullet;
+import world.entity.Entity;
+import world.entity.ship.Ship;
+import world.physics.vector.Position;
+import world.physics.vector.Vector;
+import world.physics.vector.Velocity;
 
 public final class EntityCollision extends Collision
 {

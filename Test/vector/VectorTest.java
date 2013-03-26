@@ -6,10 +6,11 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import world.physics.vector.Position;
+import world.physics.vector.Vector;
+
 import Utilities.Util;
 
-import vector.Position;
-import vector.Vector;
 
 
 

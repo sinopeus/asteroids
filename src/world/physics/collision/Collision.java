@@ -1,16 +1,12 @@
-package collision;
+package world.physics.collision;
 
-import java.util.Comparator;
-import java.util.PriorityQueue;
-
-import vector.Position;
 import world.World;
+import world.entity.Bullet;
+import world.entity.Entity;
+import world.entity.ship.Ship;
+import world.physics.vector.Position;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
-import entity.Asteroid;
-import entity.Bullet;
-import entity.Entity;
-import entity.ship.Ship;
 
 public abstract class Collision
 {
@@ -20,7 +16,7 @@ public abstract class Collision
 	 */
 	protected Collision (World world)
 	{
-		setWorld (world);
+		setWorld(world);
 	}
 
 	/**
@@ -42,7 +38,7 @@ public abstract class Collision
 	 */
 	public boolean canHaveAsPosition (Position position)
 	{
-		return (position != null && getWorld ().isInWorld (position));
+		return (position != null && getWorld().isInWorld(position));
 	}
 
 	protected abstract void calculateCollisionPosition ();
@@ -119,7 +115,7 @@ public abstract class Collision
 	 * @return	//TODO
 	 */
 	public static Collision getNextCollision (World world)
-	{		
+	{
 		double minimum = Double.POSITIVE_INFINITY;
 		Collision first = null;
 		for (Entity e1 : world)
@@ -130,7 +126,7 @@ public abstract class Collision
 				{
 					Ship s = (Ship) e1;
 					Bullet b = (Bullet) e2;
-					if (b.getShooter () == s)
+					if (b.getShooter() == s)
 					{
 						continue;
 					}
@@ -138,23 +134,25 @@ public abstract class Collision
 				{
 					Ship s = (Ship) e2;
 					Bullet b = (Bullet) e1;
-					if (b.getShooter () == s)
+					if (b.getShooter() == s)
 					{
 						continue;
 					}
-				}	 
-						 
+				}
+
 				if (e1 != e2)
 				{
 					Collision ec = new EntityCollision(world, e1, e2);
-					if (ec.getTimeToCollision() < minimum){
+					if (ec.getTimeToCollision() < minimum)
+					{
 						minimum = ec.getTimeToCollision();
 						first = ec;
 					}
 				}
 			}
-			Collision bc = (new BorderCollision (world, e1));
-			if (bc.getTimeToCollision() < minimum){
+			Collision bc = (new BorderCollision(world, e1));
+			if (bc.getTimeToCollision() < minimum)
+			{
 				minimum = bc.getTimeToCollision();
 				first = bc;
 			}

@@ -1,4 +1,4 @@
-package vector;
+package world.physics.vector;
 
 /**
  * A class of force vectors.

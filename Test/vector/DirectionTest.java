@@ -8,12 +8,13 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import world.entity.ship.Ship;
+import world.physics.geometry.Angle;
+import world.physics.vector.Direction;
+
 import Utilities.Util;
 
-import vector.Direction;
 
-import entity.Angle;
-import entity.ship.Ship;
 
 
 

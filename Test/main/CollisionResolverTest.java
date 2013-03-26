@@ -3,9 +3,10 @@ package main;
 import org.junit.Before;
 import org.junit.Test;
 
-import entity.Asteroid;
-import entity.Bullet;
-import entity.ship.Ship;
+import world.entity.Asteroid;
+import world.entity.Bullet;
+import world.entity.ship.Ship;
+
 
 public class CollisionResolverTest
 {

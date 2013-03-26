@@ -7,11 +7,12 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import world.physics.vector.Position;
+import world.physics.vector.Vector;
+import world.physics.vector.Velocity;
+
 import Utilities.Util;
 
-import vector.Position;
-import vector.Vector;
-import vector.Velocity;
 
 
 

@@ -1,6 +1,5 @@
-package entity;
+package world.physics.geometry;
 
-import vector.Quadrant;
 import Utilities.Util;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
