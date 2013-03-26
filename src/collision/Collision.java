@@ -104,8 +104,13 @@ public abstract class Collision
 	 * 
 	 * @return The time before this collision occurs.
 	 */
-	public abstract double getTimeToCollision ();
+	public abstract double getTimeToCollision () ;
 
+	protected abstract void calculateCollisionTime ();
+
+	private double timeToCollision;
+	
+	
 	/**
 	 * Gets the next collision to happen in the given world.
 	 * 
