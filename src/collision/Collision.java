@@ -116,29 +116,28 @@ public abstract class Collision
 	 * @return	//TODO
 	 */
 	public static Collision getNextCollision (World world)
-	{
-		Comparator <Collision> comparator = new Comparator <Collision> ()
-		{
-			@Override
-			public int compare (Collision o1, Collision o2)
-			{
-				return (int) (o1.getTimeToCollision () - o2.getTimeToCollision ());
-			}
-		};
-		int potentialCollisions = (world.size () * world.size ());
-		PriorityQueue <Collision> queue = new PriorityQueue <> (potentialCollisions, comparator);
+	{		
+		double minimum = Double.POSITIVE_INFINITY;
+		Collision first = null;
 		for (Entity e1 : world)
 		{
 			for (Entity e2 : world)
 			{
 				if (e1 != e2)
 				{
-					queue.add (new EntityCollision (world, e1, e2));
+					Collision ec = new EntityCollision(world, e1, e2);
+					if (ec.getTimeToCollision() < minimum){
+						minimum = ec.getTimeToCollision();
+						first = ec;
+					}
 				}
 			}
-			queue.add (new BorderCollision (world, e1));
+			Collision bc = (new BorderCollision (world, e1));
+			if (bc.getTimeToCollision() < minimum){
+				minimum = bc.getTimeToCollision();
+				first = bc;
+			}
 		}
-		queue.peek ().calculateCollisionPosition ();
-		return queue.peek ();
+		return first;
 	}
 }

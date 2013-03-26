@@ -4,9 +4,9 @@ import java.util.HashSet;
 
 import main.CollisionListener;
 import vector.Position;
-import Utilities.Mechanics;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
+import collision.Collision;
 import entity.Entity;
 
 /**
@@ -36,8 +36,8 @@ public class World extends HashSet <Entity>
 	 */
 	public World (double xSize, double ySize) throws IllegalArgumentException
 	{
-		setXSize (xSize);
-		setYSize (ySize);
+		setXSize(xSize);
+		setYSize(ySize);
 	}
 
 	/**
@@ -45,7 +45,7 @@ public class World extends HashSet <Entity>
 	 */
 	public World ()
 	{
-		this (Double.MAX_VALUE, Double.MAX_VALUE);
+		this(Double.MAX_VALUE, Double.MAX_VALUE);
 	}
 
 	/**
@@ -74,7 +74,7 @@ public class World extends HashSet <Entity>
 	@Raw
 	private void setXSize (double xSize) throws IllegalArgumentException
 	{
-		if (!canHaveAsSize (xSize)) { throw new IllegalArgumentException ("Invalid xSize provided"); }
+		if (!canHaveAsSize(xSize)) { throw new IllegalArgumentException("Invalid xSize provided"); }
 		this.xSize = xSize;
 	}
 
@@ -104,7 +104,7 @@ public class World extends HashSet <Entity>
 	@Raw
 	private void setYSize (double ySize) throws IllegalArgumentException
 	{
-		if (!canHaveAsSize (ySize)) { throw new IllegalArgumentException ("Invalid ySize provided"); }
+		if (!canHaveAsSize(ySize)) { throw new IllegalArgumentException("Invalid ySize provided"); }
 		this.ySize = ySize;
 	}
 
@@ -142,7 +142,7 @@ public class World extends HashSet <Entity>
 	 */
 	private boolean canHaveAsEntity (Entity entity)
 	{
-		return (entity != null);
+		return ( (entity != null) && (isInWorld(entity.getPosition())));
 	}
 
 	/**
@@ -159,45 +159,47 @@ public class World extends HashSet <Entity>
 	public boolean add (Entity entity) throws IllegalArgumentException
 	{
 		//TODO ADD CHECKER FOR DOUBLE ENTITIES AND ENTITIES OUTSIDE OF THE WORLD.
-		if (!canHaveAsEntity (entity)) { throw new IllegalArgumentException ("Invalid entity added"); }
-		entity.setWorld (this);
-		super.add (entity);
+		if (!canHaveAsEntity(entity)) { throw new IllegalArgumentException("Invalid entity added"); }
+		entity.setWorld(this);
+		super.add(entity);
 		return true;
 	}
 
 	//TODO DOCUMENT & TEST
 	public void evolve (double dt, CollisionListener collisionListener)
 	{
-		//get the time to and the entities of the first collision
-		double minimumTimeToCollision = Double.MAX_VALUE;
-		Entity first = null;
-		Entity second = null;
-		for (Entity e1 : this)
-		{
-			for (Entity e2 : this)
-			{
-				if (e1 != e2)
-				{
-					double timeToCollision = Mechanics.getTimeToCollision (e1, e2);
-					if (timeToCollision < minimumTimeToCollision)
-					{
-						minimumTimeToCollision = timeToCollision;
-						first = e1;
-						second = e2;
-					}
-				}
-			}
-		}
+		Collision c = Collision.getNextCollision(this);
+		//		//get the time to and the entities of the first collision
+		//		double minimumTimeToCollision = Double.MAX_VALUE;
+		//		Entity first = null;
+		//		Entity second = null;
+		//		for (Entity e1 : this)
+		//		{
+		//			for (Entity e2 : this)
+		//			{
+		//				if (e1 != e2)
+		//				{
+		//					double timeToCollision = Mechanics.getTimeToCollision (e1, e2);
+		//					if (timeToCollision < minimumTimeToCollision)
+		//					{
+		//						minimumTimeToCollision = timeToCollision;
+		//						first = e1;
+		//						second = e2;
+		//					}
+		//				}
+		//			}
+		//		}
 
-		if (minimumTimeToCollision <= dt)
+		if (c!= null && c.getTimeToCollision() <= dt)
 		{
-			Position collisionPosition = Mechanics.getCollisionPosition (first, second);
-			advanceAll (minimumTimeToCollision);
-			collisionListener.objectCollision (first, second, collisionPosition.getXComponent (), collisionPosition.getYComponent ());
-			evolve ( (dt - minimumTimeToCollision), collisionListener);
+			System.out.println(c.getTimeToCollision());
+			advanceAll(c.getTimeToCollision());
+			c.resolve();
+			//TODO
+			evolve( (dt - c.getTimeToCollision()), collisionListener);
 		} else
 		{
-			advanceAll (dt);
+			advanceAll(dt);
 		}
 	}
 
@@ -206,7 +208,7 @@ public class World extends HashSet <Entity>
 	{
 		for (Entity e : this)
 		{
-			e.advance (dt);
+			e.advance(dt);
 		}
 	}
 
@@ -218,25 +220,24 @@ public class World extends HashSet <Entity>
 	 */
 	public boolean isInWorld (Position position)
 	{
-		return (position.getXComponent () <= getxSize () && position.getXComponent () >= 0 && position.getYComponent () <= getySize () && position.getYComponent () >= 0);
+		return (position.getXComponent() <= getxSize() && position.getXComponent() >= 0 && position.getYComponent() <= getySize() && position.getYComponent() >= 0);
 	}
-	
-	
-//TODO REMOVE
-//	/**
-//	 *
-//	 */
-//	private static Vector getXBase()
-//	{ //TODO DOCUMENT
-//		return new Vector(0, 1);
-//	}
-//
-//	/**
-//	 * 
-//	 * @return
-//	 */
-//	private static Vector getYBase()
-//	{ //TODO DOCUMENT
-//		return new Vector(1, 0);
-//	}
+
+	//TODO REMOVE
+	//	/**
+	//	 *
+	//	 */
+	//	private static Vector getXBase()
+	//	{ //TODO DOCUMENT
+	//		return new Vector(0, 1);
+	//	}
+	//
+	//	/**
+	//	 * 
+	//	 * @return
+	//	 */
+	//	private static Vector getYBase()
+	//	{ //TODO DOCUMENT
+	//		return new Vector(1, 0);
+	//	}
 }

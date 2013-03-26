@@ -11,7 +11,7 @@ import entity.ship.Ship;
 
 public final class EntityCollision extends Collision
 {
-	protected EntityCollision (World world, Entity entity1, Entity entity2)
+	public EntityCollision (World world, Entity entity1, Entity entity2)
 	{
 		super (world);
 		setEntity1 (entity1);

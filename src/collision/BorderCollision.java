@@ -5,14 +5,13 @@ import java.util.ArrayList;
 import vector.Position;
 import vector.Quadrant;
 import world.World;
-import Utilities.Util;
 import entity.Bullet;
 import entity.Entity;
 
 public final class BorderCollision extends Collision
 {
 
-	protected BorderCollision (World world, Entity entity)
+	public BorderCollision (World world, Entity entity)
 	{
 		super(world);
 		setCollisionEntity(entity);
@@ -78,21 +77,16 @@ public final class BorderCollision extends Collision
 		World w = e.getWorld();
 
 		//One case for every boundary to hit
-		if (Util.fuzzyEquals(getCollisionPosition().getXComponent(), 0))
+		switch (getCollisionBorder())
 		{
-			e.getVelocity().setYComponent(-e.getVelocity().getYComponent());
-		}
-		if (Util.fuzzyEquals(getCollisionPosition().getYComponent(), 0))
-		{
-			e.getVelocity().setXComponent(-e.getVelocity().getXComponent());
-		}
-		if (Util.fuzzyEquals(getCollisionPosition().getXComponent(), w.getxSize()))
-		{
-			e.getVelocity().setYComponent(-e.getVelocity().getYComponent());
-		}
-		if (Util.fuzzyEquals(getCollisionPosition().getYComponent(), w.getySize()))
-		{
-			e.getVelocity().setXComponent(-e.getVelocity().getXComponent());
+			case BORDER_TOP:
+			case BORDER_BOTTOM:
+				e.getVelocity().setYComponent(-e.getVelocity().getYComponent());
+				break;
+			case BORDER_RIGHT:
+			case BORDER_LEFT:
+				e.getVelocity().setXComponent(-e.getVelocity().getXComponent());
+				break;
 		}
 
 		if (e instanceof Bullet)
@@ -126,7 +120,7 @@ public final class BorderCollision extends Collision
 		double vx = e.getVelocity().getXComponent();
 		double vy = e.getVelocity().getYComponent();
 
-		double n, x = 0, y = 0;
+		double n = 0, x = 0, y = 0;
 		switch (b)
 		{
 			case BORDER_TOP: // x = n * vx + px
@@ -140,19 +134,25 @@ public final class BorderCollision extends Collision
 				y = n * vy + py;
 				break;
 			case BORDER_LEFT:// x = n * vx + px
-				n = ( (r - py) / vy);
-				x = n * vx + px;
-				y = r;
-				break;
-			case BORDER_BOTTOM:// y = n * vy + py
 				n = ( (r - px) / vx);
 				x = r;
 				y = n * vy + py;
 				break;
+			case BORDER_BOTTOM:// y = n * vy + py
+				n = ( (r - py) / vy);
+				x = n * vx + px;
+				y = r;
+				break;
 		}
-		intersectionOfCenter = new Position(x, y);
-		double difference = intersectionOfCenter.getDistanceTo(e.getPosition());
-		return difference / e.getVelocity().get();//TODO
+		if (!Double.isInfinite(n))
+		{
+			intersectionOfCenter = new Position(x, y);
+			double difference = intersectionOfCenter.getDistanceTo(e.getPosition());
+			return difference / e.getVelocity().get();
+		} else
+		{
+			return Double.POSITIVE_INFINITY;
+		}//TODO
 	}
 
 	@Override
@@ -160,7 +160,7 @@ public final class BorderCollision extends Collision
 	{
 		//Step1: calculate which borders could be hit.
 		Quadrant q = getCollisionEntity().getVelocity().getQuadrant();
-		ArrayList<Border> borders= new ArrayList<Border>();
+		ArrayList <Border> borders = new ArrayList <Border>();
 		switch (q)
 		{
 			case QUADRANT_I:
@@ -183,8 +183,9 @@ public final class BorderCollision extends Collision
 		double minimum = Double.POSITIVE_INFINITY;
 		for (Border border : borders)
 		{
-			double timeToBorderCollision = getTimeToBorderCollision(border)
-			if(timeToBorderCollision < minimum){
+			double timeToBorderCollision = getTimeToBorderCollision(border);
+			if (timeToBorderCollision < minimum)
+			{
 				setCollisionBorder(border);
 				minimum = timeToBorderCollision;
 			}
