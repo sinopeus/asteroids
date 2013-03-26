@@ -21,25 +21,25 @@ public final class BorderCollision extends Collision
 	}
 
 	//TODO EVERYTHING
-	public BorderCollision.Border getCollisionBorder ()
+	public Border getCollisionBorder ()
 	{
 		return collisionBorder;
 	}
 
 	//TODO EVERYTHING
-	protected boolean canHaveAsCollisionBorder (BorderCollision.Border collisionBorder)
+	protected boolean canHaveAsCollisionBorder (Border collisionBorder)
 	{
 		return true;
 	}
 
 	//TODO EVERYTHING
-	public void setCollisionBorder (BorderCollision.Border collisionBorder) throws IllegalArgumentException
+	public void setCollisionBorder (Border collisionBorder) throws IllegalArgumentException
 	{
 		this.collisionBorder = collisionBorder;
 	}
 
 	//TODO EVERYTHING
-	private BorderCollision.Border	collisionBorder;
+	private Border	collisionBorder;
 
 	//TODO EVERYTHING
 	public Entity getCollisionEntity ()
