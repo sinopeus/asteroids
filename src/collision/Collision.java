@@ -2,6 +2,8 @@ package collision;
 
 import vector.Position;
 import world.World;
+import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Raw;
 
 public abstract class Collision
 {
@@ -41,7 +43,7 @@ public abstract class Collision
 	 * A variable registering the position of this collision. 
 	 */
 	private Position	collisionPosition;
-	
+
 	/**
 	 * A getter for the world in which the collision occurs.
 	 * 
@@ -50,6 +52,21 @@ public abstract class Collision
 	public World getWorld ()
 	{
 		return world;
+	}
+
+	/**
+	 * Checks whether this collision can have the given world as its world.
+	 * 
+	 * @param 	world
+	 * 			The world to check.
+	 * @return	True if and only if the given world is not null.
+	 * 			| result = (world!=null)
+	 */
+	@Basic
+	@Raw
+	public boolean canHaveAsWorld (World world)
+	{
+		return (world != null);
 	}
 
 	/**
@@ -78,4 +95,16 @@ public abstract class Collision
 	 * @return The time before this collision occurs.
 	 */
 	public abstract double getTimeToCollision ();
+
+	/**
+	 * Gets the next collision to happen in the given world.
+	 * 
+	 * @param 	world
+	 * 			The given world.
+	 * @return	//TODO
+	 */
+	public static Collision getNextCollision (World world)
+	{
+		return null;
+	}
 }
