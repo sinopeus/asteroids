@@ -1,5 +1,7 @@
 package collision;
 
+import java.util.ArrayList;
+
 import vector.Position;
 import vector.Quadrant;
 import world.World;
@@ -36,6 +38,11 @@ public final class BorderCollision extends Collision
 	protected boolean canHaveAsCollisionBorder (Border collisionBorder)
 	{
 		return true;
+	}
+
+	public void setCollisionBorder (Border collisionBorder)
+	{
+		this.collisionBorder = collisionBorder;
 	}
 
 	//TODO EVERYTHING
@@ -103,30 +110,7 @@ public final class BorderCollision extends Collision
 	@Override
 	public double getTimeToCollision ()
 	{
-		//Step1: calculate which borders could be hit.
-		Quadrant q = getCollisionEntity().getVelocity().getQuadrant();
-		Border b1 = null;
-		Border b2 = null;
-		switch (q)
-		{
-			case QUADRANT_I:
-				b1 = Border.BORDER_RIGHT;
-				b2 = Border.BORDER_TOP;
-				break;
-			case QUADRANT_II:
-				b1 = Border.BORDER_TOP;
-				b2 = Border.BORDER_LEFT;
-				break;
-			case QUADRANT_III:
-				b1 = Border.BORDER_LEFT;
-				b2 = Border.BORDER_BOTTOM;
-				break;
-			case QUADRANT_IV:
-				b1 = Border.BORDER_BOTTOM;
-				b2 = Border.BORDER_RIGHT;
-				break;
-		}
-		return Math.min(getTimeToBorderCollision(b1), getTimeToBorderCollision(b2));
+		return this.timeToCollision;
 	}
 
 	private double getTimeToBorderCollision (Border b)
@@ -174,19 +158,45 @@ public final class BorderCollision extends Collision
 	@Override
 	protected void calculateCollisionTime ()
 	{
-		// TODO Auto-generated method stub
-
+		//Step1: calculate which borders could be hit.
+		Quadrant q = getCollisionEntity().getVelocity().getQuadrant();
+		ArrayList<Border> borders= new ArrayList<Border>();
+		switch (q)
+		{
+			case QUADRANT_I:
+				borders.add(Border.BORDER_RIGHT);
+				borders.add(Border.BORDER_TOP);
+				break;
+			case QUADRANT_II:
+				borders.add(Border.BORDER_TOP);
+				borders.add(Border.BORDER_LEFT);
+				break;
+			case QUADRANT_III:
+				borders.add(Border.BORDER_LEFT);
+				borders.add(Border.BORDER_BOTTOM);
+				break;
+			case QUADRANT_IV:
+				borders.add(Border.BORDER_BOTTOM);
+				borders.add(Border.BORDER_RIGHT);
+				break;
+		}
+		double minimum = Double.POSITIVE_INFINITY;
+		for (Border border : borders)
+		{
+			double timeToBorderCollision = getTimeToBorderCollision(border)
+			if(timeToBorderCollision < minimum){
+				setCollisionBorder(border);
+				minimum = timeToBorderCollision;
+			}
+		}
+		this.timeToCollision = minimum;
 	}
 
 	@Override
+	//NOT EVEN NECESSARY?
 	protected void calculateCollisionPosition ()
 	{
 		// TODO Auto-generated method stub
-
-	}
-
-	protected void calculateCollisionBorder ()
-	{
 
 	}
 }
