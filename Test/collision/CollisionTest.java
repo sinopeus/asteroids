@@ -62,7 +62,7 @@ public class CollisionTest
 		assertTrue (Util.fuzzyEquals (c.getTimeToCollision (), 4));
 		assertTrue (c instanceof BorderCollision);
 		BorderCollision bc = (BorderCollision) c;
-		assertEquals (bc.getCollisionBorder (), BorderCollision.Border.BORDER_LEFT);
+		assertEquals (bc.getCollisionBorder (), BorderCollision.Border.BORDER_RIGHT);
 		assertEquals (bc.getCollisionEntity (), testAsteroid1);
 	}
 
@@ -75,7 +75,7 @@ public class CollisionTest
 		assertTrue (Util.fuzzyEquals (c.getTimeToCollision (), 4));
 		assertTrue (c instanceof BorderCollision);
 		BorderCollision bc = (BorderCollision) c;
-		assertEquals (bc.getCollisionBorder (), BorderCollision.Border.BORDER_LEFT);
+		assertEquals (bc.getCollisionBorder (), BorderCollision.Border.BORDER_TOP);
 		assertEquals (bc.getCollisionEntity (), testAsteroid1);
 	}
 
@@ -88,7 +88,7 @@ public class CollisionTest
 		assertTrue (Util.fuzzyEquals (c.getTimeToCollision (), 4));
 		assertTrue (c instanceof BorderCollision);
 		BorderCollision bc = (BorderCollision) c;
-		assertEquals (bc.getCollisionBorder (), BorderCollision.Border.BORDER_LEFT);
+		assertEquals (bc.getCollisionBorder (), BorderCollision.Border.BORDER_BOTTOM);
 		assertEquals (bc.getCollisionEntity (), testAsteroid1);
 	}
 

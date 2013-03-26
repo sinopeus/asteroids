@@ -1,9 +1,18 @@
 package collision;
 
+import vector.Position;
+import world.World;
 import entity.Entity;
 
 public final class BorderCollision extends Collision
 {
+	public BorderCollision (World world, Position position, Entity entity, Border border)
+	{
+		setWorld (world);
+		setCollisionPosition (position);
+		setCollisionEntity (entity);
+		setCollisionBorder (border);
+	}
 
 	//TODO EVERYTHING
 	public enum Border
@@ -18,13 +27,13 @@ public final class BorderCollision extends Collision
 	}
 
 	//TODO EVERYTHING
-	private boolean canHaveAsCollisionBorder (BorderCollision.Border collisionBorder)
+	protected boolean canHaveAsCollisionBorder (BorderCollision.Border collisionBorder)
 	{
 		return true;
 	}
 
 	//TODO EVERYTHING
-	public void setCollisionBorder (BorderCollision.Border collisionBorder)
+	public void setCollisionBorder (BorderCollision.Border collisionBorder) throws IllegalArgumentException
 	{
 		this.collisionBorder = collisionBorder;
 	}
