@@ -50,7 +50,7 @@ public class Asteroid extends Entity
 	@Override
 	public void terminate ()
 	{
-		if (getShape ().getRadius () >= 30)
+		if (getShape ().getRadius () >= 30) //TODO MAKE GETTER FOR THIS
 		{
 			Direction d1 = new Direction (new Angle (getDirection ().getAngle ().get ()));
 			Direction d2 = new Direction (new Angle (getDirection ().getAngle ().get () + Math.PI));
@@ -73,7 +73,7 @@ public class Asteroid extends Entity
 	@Override
 	public void advance (double dt)
 	{
-		this.turn (new Angle(Math.PI/7.0));//TODO
+		this.turn (new Angle(Math.PI/7.0));//TODO MAKE GETTER FOR THIS
 		super.advance (dt);
 	}
 

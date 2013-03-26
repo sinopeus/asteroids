@@ -29,11 +29,11 @@ public class Thruster
 	 * @throws	IllegalArgumentException
 	 * 			The owner ship is null.
 	 */
-	public Thruster(double maximumThrust, Ship owner) throws IllegalArgumentException
+	public Thruster (double maximumThrust, Ship owner) throws IllegalArgumentException
 	{
-		setMaximumThrustPerSecond(maximumThrust);
-		setOwner(owner);
-		deactivate();
+		setMaximumThrustPerSecond (maximumThrust);
+		setOwner (owner);
+		deactivate ();
 	}
 
 	/**
@@ -41,7 +41,7 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
-	public double getMaximumThrustPerSecond()
+	public double getMaximumThrustPerSecond ()
 	{
 		return maximumThrustPerSecond;
 	}
@@ -56,7 +56,7 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
-	protected boolean canHaveAsMaximumThrust(double maximumThrust)
+	protected boolean canHaveAsMaximumThrust (double maximumThrust)
 	{
 		return (maximumThrust >= 0);
 	}
@@ -74,26 +74,23 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
-	private void setMaximumThrustPerSecond(double maximumThrust) throws IllegalArgumentException
+	private void setMaximumThrustPerSecond (double maximumThrust) throws IllegalArgumentException
 	{
-		if (!canHaveAsMaximumThrust(maximumThrust))
-		{
-			throw new IllegalArgumentException("Illegal maximum thrust provided.");
-		}
+		if (!canHaveAsMaximumThrust (maximumThrust)) { throw new IllegalArgumentException ("Illegal maximum thrust provided."); }
 		this.maximumThrustPerSecond = maximumThrust;
 	}
 
 	/**
 	 * A variable registering the maximum amount of thrust that can be exerted by this thruster in N/s.
 	 */
-	private double maximumThrustPerSecond;
+	private double	maximumThrustPerSecond;
 
 	/**
 	 * Checks whether this thruster is activated.
 	 */
 	@Basic
 	@Raw
-	public boolean isActivated()
+	public boolean isActivated ()
 	{
 		return isActivated;
 	}
@@ -106,7 +103,7 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
-	public void activate()
+	public void activate ()
 	{
 		this.isActivated = true;
 	}
@@ -119,7 +116,7 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
-	public void deactivate()
+	public void deactivate ()
 	{
 		this.isActivated = false;
 	}
@@ -132,7 +129,7 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
-	public void toggleActivation()
+	public void toggleActivation ()
 	{
 		this.isActivated = !this.isActivated;
 	}
@@ -140,14 +137,14 @@ public class Thruster
 	/**
 	 * A variable registering the activation of thrust thruster.
 	 */
-	private boolean isActivated;
+	private boolean	isActivated;
 
 	/**
 	 * Gets the owner of this thruster
 	 */
 	@Basic
 	@Raw
-	public Ship getOwner()
+	public Ship getOwner ()
 	{
 		return this.ownerShip;
 	}
@@ -162,7 +159,7 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
-	protected boolean canHaveAsOwner(Ship owner)
+	protected boolean canHaveAsOwner (Ship owner)
 	{
 		return owner != null;
 	}
@@ -180,24 +177,21 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
-	public void setOwner(Ship owner) throws IllegalArgumentException
+	public void setOwner (Ship owner) throws IllegalArgumentException
 	{
-		if (!canHaveAsOwner(owner))
-		{
-			throw new IllegalArgumentException("Illegal owner ship provided.");
-		}
+		if (!canHaveAsOwner (owner)) { throw new IllegalArgumentException ("Illegal owner ship provided."); }
 		this.ownerShip = owner;
 	}
 
 	/**
 	 * A variable referencing the ship that owns this thruster.
 	 */
-	private Ship ownerShip;
+	private Ship	ownerShip;
 
 	/**
 	 * Makes the refference to the owner ship null.
 	 */
-	public void terminate() //TODO make this into a state?
+	public void terminate () //TODO make this into a state?
 	{
 		this.ownerShip = null;
 	}
@@ -209,9 +203,9 @@ public class Thruster
 	 * 			The given amount of time.
 	 */
 	//TODO @EFFECT
-	public void thrust(double duration)
+	public void thrust (double duration)
 	{
-		thrust(getMaximumThrustPerSecond(), duration);
+		thrust (getMaximumThrustPerSecond (), duration);
 	}
 
 	/**
@@ -223,30 +217,27 @@ public class Thruster
 	 * 			The given amount of time. 
 	 */
 	//TODO @EFFECT
-	public void thrust(double thrustPerSecond, double duration)
+	public void thrust (double thrustPerSecond, double duration)
 	{
-		if (isActivated)
+		if (duration < 0)
 		{
-			if (duration < 0)
-			{
-				duration = 0;
-			}
-			if (thrustPerSecond < 0)
-			{
-				thrustPerSecond = 0;
-			}
-			if (thrustPerSecond > getOwner().getThrustPerSecond())
-			{
-				thrustPerSecond = getOwner().getThrustPerSecond();
-			}
-			Acceleration a = Mechanics.Newtons_secondLaw_CalculateAcceleration(new Force(getOwner().getDirection().getScaledBy(thrustPerSecond * duration)), getOwner().getMass());
-			getOwner().getVelocity().accelerateBy(a, duration);
+			duration = 0;
 		}
+		if (thrustPerSecond < 0)
+		{
+			thrustPerSecond = 0;
+		}
+		if (thrustPerSecond > getOwner ().getThrustPerSecond ())
+		{
+			thrustPerSecond = getOwner ().getThrustPerSecond ();
+		}
+		Acceleration a = Mechanics.Newtons_secondLaw_CalculateAcceleration (new Force (getOwner ().getDirection ().getScaledBy (thrustPerSecond * duration)), getOwner ().getMass ());
+		getOwner ().getVelocity ().accelerateBy (a, duration);
 	}
 
 	@Override
-	public String toString()
+	public String toString ()
 	{
-		return "thruster_" + hashCode() + " of " + getOwner();
+		return "thruster_" + hashCode () + " of " + getOwner ();
 	}
 }
