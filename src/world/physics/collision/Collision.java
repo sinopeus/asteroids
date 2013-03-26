@@ -26,7 +26,10 @@ public abstract class Collision
 	 */
 	public Position getCollisionPosition ()
 	{
-		return collisionPosition;
+		if(this.collisionPosition == null){
+			calculateCollisionPosition();
+		}
+		return this.collisionPosition;
 	}
 
 	/**

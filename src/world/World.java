@@ -2,11 +2,12 @@ package world;
 
 import java.util.HashSet;
 
-import world.entity.Entity;
-import world.physics.collision.Collision;
-import world.physics.vector.Position;
-
 import main.CollisionListener;
+import world.entity.Entity;
+import world.physics.collision.BorderCollision;
+import world.physics.collision.Collision;
+import world.physics.collision.EntityCollision;
+import world.physics.vector.Position;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 
@@ -194,8 +195,17 @@ public class World extends HashSet <Entity>
 		if (c != null && c.getTimeToCollision() <= dt)
 		{
 			advanceAll(c.getTimeToCollision());
+			Position collisionPosition = c.getCollisionPosition();
 			c.resolve();
-			//TODO
+			if (c.getClass() == BorderCollision.class)
+			{
+				BorderCollision bc = (BorderCollision) c;
+				collisionListener.boundaryCollision(bc.getCollisionEntity(), collisionPosition.getXComponent(), collisionPosition.getYComponent());
+			} else if (c.getClass() == EntityCollision.class)
+			{
+				EntityCollision ec = (EntityCollision) c;
+				collisionListener.objectCollision(ec.getEntity1(), ec.getEntity2(), collisionPosition.getXComponent(), collisionPosition.getYComponent());
+			}
 			evolve( (dt - c.getTimeToCollision()), collisionListener);
 		} else
 		{

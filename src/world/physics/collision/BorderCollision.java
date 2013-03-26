@@ -2,12 +2,12 @@ package world.physics.collision;
 
 import java.util.ArrayList;
 
-
 import world.World;
 import world.entity.Bullet;
 import world.entity.Entity;
 import world.physics.vector.Position;
 import world.physics.vector.Quadrant;
+import world.physics.vector.Vector;
 
 public final class BorderCollision extends Collision
 {
@@ -198,7 +198,28 @@ public final class BorderCollision extends Collision
 	//NOT EVEN NECESSARY?
 	protected void calculateCollisionPosition ()
 	{
-		// TODO Auto-generated method stub
+		if (getCollisionEntity() == null) { throw new IllegalArgumentException("One of the given entities is null."); }
 
+		double deltaT = getTimeToCollision();
+
+		if (Double.isInfinite(deltaT)) { return; }
+
+		Position newPosition = getCollisionEntity().getPosition().getSum(getCollisionEntity().getVelocity().getScaledBy(deltaT));
+
+		switch (getCollisionBorder())
+		{
+			case BORDER_TOP:
+				this.collisionPosition = new Position(newPosition.getSum(new Vector(0, getCollisionEntity().getShape().getRadius())));
+				break;
+			case BORDER_LEFT:
+				this.collisionPosition = new Position(newPosition.getSum(new Vector(-getCollisionEntity().getShape().getRadius(), 0)));
+				break;
+			case BORDER_RIGHT:
+				this.collisionPosition = new Position(newPosition.getSum(new Vector(+getCollisionEntity().getShape().getRadius(), 0)));
+				break;
+			case BORDER_BOTTOM:
+				this.collisionPosition = new Position(newPosition.getSum(new Vector(0, -getCollisionEntity().getShape().getRadius())));
+				break;
+		}
 	}
 }

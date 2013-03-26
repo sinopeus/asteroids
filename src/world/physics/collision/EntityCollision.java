@@ -18,7 +18,7 @@ public final class EntityCollision extends Collision
 		setEntity2(entity2);
 
 		calculateCollisionTime();
-		//		calculateCollisionPosition ();
+		//calculateCollisionPosition ();
 	}
 
 	/**
