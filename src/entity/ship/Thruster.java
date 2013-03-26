@@ -138,7 +138,7 @@ public class Thruster
 	}
 
 	/**
-	 * A variable registering the activation of thist thruster.
+	 * A variable registering the activation of thrust thruster.
 	 */
 	private boolean isActivated;
 
@@ -225,23 +225,25 @@ public class Thruster
 	//TODO @EFFECT
 	public void thrust(double thrustPerSecond, double duration)
 	{
-		if (duration < 0)
+		if (isActivated)
 		{
-			duration = 0;
+			if (duration < 0)
+			{
+				duration = 0;
+			}
+			if (thrustPerSecond < 0)
+			{
+				thrustPerSecond = 0;
+			}
+			if (thrustPerSecond > getOwner().getThrustPerSecond())
+			{
+				thrustPerSecond = getOwner().getThrustPerSecond();
+			}
+			Acceleration a = Mechanics.Newtons_secondLaw_CalculateAcceleration(new Force(getOwner().getDirection().getScaledBy(thrustPerSecond * duration)), getOwner().getMass());
+			getOwner().getVelocity().accelerateBy(a, duration);
 		}
-		if (thrustPerSecond < 0)
-		{
-			thrustPerSecond = 0;
-		}
-		if (thrustPerSecond > getOwner().getThrustPerSecond())
-		{
-			thrustPerSecond = getOwner().getThrustPerSecond();
-		}
-		Acceleration a = Mechanics.Newtons_secondLaw_CalculateAcceleration(new Force(getOwner().getDirection().getScaledBy(thrustPerSecond * duration)), getOwner().getMass());
-		getOwner().getVelocity().accelerateBy(a, duration);
 	}
-	
-	
+
 	@Override
 	public String toString()
 	{

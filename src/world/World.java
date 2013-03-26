@@ -16,9 +16,9 @@ import entity.Entity;
  * @version 2.0
  * TODO document
  */
-public class World extends HashSet<Entity>
+public class World extends HashSet <Entity>
 {
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
 	/**
 	 * Initializes this new world with a given size on the x- and y axis.
@@ -34,27 +34,27 @@ public class World extends HashSet<Entity>
 	 * @post	The size of this world on the y axis is equal to the given size.
 	 * 			| new.getYSize() == ySize
 	 */
-	public World(double xSize, double ySize) throws IllegalArgumentException
+	public World (double xSize, double ySize) throws IllegalArgumentException
 	{
-		setXSize(xSize);
-		setYSize(ySize);
+		setXSize (xSize);
+		setYSize (ySize);
 	}
 
 	/**
 	 * Initializes this new world with default values.
 	 */
-	public World()
+	public World ()
 	{
-		this(Double.MAX_VALUE, Double.MAX_VALUE);
+		this (Double.MAX_VALUE, Double.MAX_VALUE);
 	}
 
 	/**
 	 * Gets the size on the x axis of this world.
 	 */
-	@SuppressWarnings("javadoc")
+	@SuppressWarnings ("javadoc")
 	@Basic
 	@Raw
-	public double getxSize()
+	public double getxSize ()
 	{
 		return xSize;
 	}
@@ -72,22 +72,19 @@ public class World extends HashSet<Entity>
 	 */
 	@Basic
 	@Raw
-	private void setXSize(double xSize) throws IllegalArgumentException
+	private void setXSize (double xSize) throws IllegalArgumentException
 	{
-		if (!canHaveAsSize(xSize))
-		{
-			throw new IllegalArgumentException("Invalid xSize provided");
-		}
+		if (!canHaveAsSize (xSize)) { throw new IllegalArgumentException ("Invalid xSize provided"); }
 		this.xSize = xSize;
 	}
 
 	/**
 	 * Gets the size on the y axis of this world.
 	 */
-	@SuppressWarnings("javadoc")
+	@SuppressWarnings ("javadoc")
 	@Basic
 	@Raw
-	public double getySize()
+	public double getySize ()
 	{
 		return ySize;
 	}
@@ -105,12 +102,9 @@ public class World extends HashSet<Entity>
 	 */
 	@Basic
 	@Raw
-	private void setYSize(double ySize) throws IllegalArgumentException
+	private void setYSize (double ySize) throws IllegalArgumentException
 	{
-		if (!canHaveAsSize(ySize))
-		{
-			throw new IllegalArgumentException("Invalid ySize provided");
-		}
+		if (!canHaveAsSize (ySize)) { throw new IllegalArgumentException ("Invalid ySize provided"); }
 		this.ySize = ySize;
 	}
 
@@ -123,20 +117,20 @@ public class World extends HashSet<Entity>
 	 */
 	@Basic
 	@Raw
-	private boolean canHaveAsSize(double size)
+	private boolean canHaveAsSize (double size)
 	{
-		return ((size > 0) && (size <= Double.MAX_VALUE));
+		return ( (size > 0) && (size <= Double.MAX_VALUE));
 	}
 
 	/**
 	 * A variable registering the size of this world on the x axis.
 	 */
-	private double xSize;
+	private double	xSize;
 
 	/**
 	 * A variable registering the size of this world on the y axis.
 	 */
-	private double ySize;
+	private double	ySize;
 
 	/**
 	 * Checks whether the given entity is a valid entity for this world.
@@ -146,7 +140,7 @@ public class World extends HashSet<Entity>
 	 * @return	True if and only if the given entity is not null.
 	 * 			| result == entity != null
 	 */
-	private boolean canHaveAsEntity(Entity entity)
+	private boolean canHaveAsEntity (Entity entity)
 	{
 		return (entity != null);
 	}
@@ -162,28 +156,31 @@ public class World extends HashSet<Entity>
 	 * 			The given entity is not a valid entity.
 	 */
 	@Override
-	public boolean add(Entity entity) throws IllegalArgumentException
+	public boolean add (Entity entity) throws IllegalArgumentException
 	{
-		if (!canHaveAsEntity(entity))
-		{
-			throw new IllegalArgumentException("Invalid entity added");
-		}
-		entity.setWorld(this);
-		super.add(entity);
+		//TODO ADD CHECKER FOR DOUBLE ENTITIES AND ENTITIES OUTSIDE OF THE WORLD.
+		if (!canHaveAsEntity (entity)) { throw new IllegalArgumentException ("Invalid entity added"); }
+		entity.setWorld (this);
+		super.add (entity);
 		return true;
 	}
 
 	//TODO DOCUMENT & TEST
-	public void evolve(double dt, CollisionListener collisionListener){
+	public void evolve (double dt, CollisionListener collisionListener)
+	{
 		//get the time to and the entities of the first collision
 		double minimumTimeToCollision = Double.MAX_VALUE;
 		Entity first = null;
 		Entity second = null;
-		for (Entity e1 : this){
-			for( Entity e2 : this){
-				if (e1 != e2){
-					double timeToCollision = Mechanics.getTimeToCollision(e1, e2);
-					if(timeToCollision < minimumTimeToCollision){
+		for (Entity e1 : this)
+		{
+			for (Entity e2 : this)
+			{
+				if (e1 != e2)
+				{
+					double timeToCollision = Mechanics.getTimeToCollision (e1, e2);
+					if (timeToCollision < minimumTimeToCollision)
+					{
 						minimumTimeToCollision = timeToCollision;
 						first = e1;
 						second = e2;
@@ -191,21 +188,25 @@ public class World extends HashSet<Entity>
 				}
 			}
 		}
-		
-		if (minimumTimeToCollision <= dt){
-			Position collisionPosition = Mechanics.getCollisionPosition(first, second);
-			advanceAll(minimumTimeToCollision);
-			collisionListener.objectCollision(first, second, collisionPosition.getXComponent(), collisionPosition.getYComponent());
-			evolve((dt-minimumTimeToCollision), collisionListener);
-		}else{
-			advanceAll(dt);
+
+		if (minimumTimeToCollision <= dt)
+		{
+			Position collisionPosition = Mechanics.getCollisionPosition (first, second);
+			advanceAll (minimumTimeToCollision);
+			collisionListener.objectCollision (first, second, collisionPosition.getXComponent (), collisionPosition.getYComponent ());
+			evolve ( (dt - minimumTimeToCollision), collisionListener);
+		} else
+		{
+			advanceAll (dt);
 		}
 	}
-	
+
 	//TODO DOCUMENT &TEST
-	private void advanceAll(double dt){
-		for( Entity e : this){
-			e.advance(dt);
+	private void advanceAll (double dt)
+	{
+		for (Entity e : this)
+		{
+			e.advance (dt);
 		}
 	}
 
