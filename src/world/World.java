@@ -171,26 +171,6 @@ public class World extends HashSet <Entity>
 	public void evolve (double dt, CollisionListener collisionListener)
 	{
 		Collision c = Collision.getNextCollision(this);
-		//		//get the time to and the entities of the first collision
-		//		double minimumTimeToCollision = Double.MAX_VALUE;
-		//		Entity first = null;
-		//		Entity second = null;
-		//		for (Entity e1 : this)
-		//		{
-		//			for (Entity e2 : this)
-		//			{
-		//				if (e1 != e2)
-		//				{
-		//					double timeToCollision = Mechanics.getTimeToCollision (e1, e2);
-		//					if (timeToCollision < minimumTimeToCollision)
-		//					{
-		//						minimumTimeToCollision = timeToCollision;
-		//						first = e1;
-		//						second = e2;
-		//					}
-		//				}
-		//			}
-		//		}
 
 		if (c != null && c.getTimeToCollision() <= dt)
 		{
@@ -232,22 +212,4 @@ public class World extends HashSet <Entity>
 	{
 		return (position.getXComponent() <= getxSize() && position.getXComponent() >= 0 && position.getYComponent() <= getySize() && position.getYComponent() >= 0);
 	}
-
-	//TODO REMOVE
-	//	/**
-	//	 *
-	//	 */
-	//	private static Vector getXBase()
-	//	{ //TODO DOCUMENT
-	//		return new Vector(0, 1);
-	//	}
-	//
-	//	/**
-	//	 * 
-	//	 * @return
-	//	 */
-	//	private static Vector getYBase()
-	//	{ //TODO DOCUMENT
-	//		return new Vector(1, 0);
-	//	}
 }

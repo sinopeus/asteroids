@@ -30,13 +30,15 @@ public class Direction extends Vector
 	 * @post	The angle of this direction is a valid angle.
 	 * 			| canHaveAsAngle(getAngle())
 	 */
-	public Direction(Angle angle)
+	public Direction (Angle angle)
 	{
 		assert (angle != null);
 		setAngle(angle);
 		assert (Util.fuzzyEquals(getMagnitude(), 1.0));
 		assert (canHaveAsAngle(getAngle()));
 	}
+
+	//TODO make a constructor with a double instead of an angle. should be easy. test it too!
 
 	/**
 	 * Initializes this new direction with a default angle.	
@@ -46,7 +48,7 @@ public class Direction extends Vector
 	 * @post	The angle of this direction is a valid angle.
 	 * 			| canHaveAsAngle(getAngle())
 	 */
-	public Direction()
+	public Direction ()
 	{
 		this(new Angle());
 		assert (Util.fuzzyEquals(getMagnitude(), 1.0));
@@ -56,10 +58,10 @@ public class Direction extends Vector
 	/**
 	 * Gets the angle of this direction.
 	 */
-	@SuppressWarnings("javadoc")
+	@SuppressWarnings ("javadoc")
 	@Basic
 	@Raw
-	public Angle getAngle()
+	public Angle getAngle ()
 	{
 		return this.angle;
 	}
@@ -74,7 +76,7 @@ public class Direction extends Vector
 	 */
 	@Basic
 	@Raw
-	protected boolean canHaveAsAngle(@Raw Angle angle)
+	protected boolean canHaveAsAngle (@Raw Angle angle)
 	{
 		return (angle != null);
 	}
@@ -96,7 +98,7 @@ public class Direction extends Vector
 	 */
 	@Basic
 	@Raw
-	public void setAngle(Angle angle)
+	public void setAngle (Angle angle)
 	{
 		assert (canHaveAsAngle(angle));
 		this.angle = angle;
@@ -108,7 +110,7 @@ public class Direction extends Vector
 	/**
 	 * A variable referencing the angle of this Direction.
 	 */
-	private Angle angle;
+	private Angle	angle;
 
 	/**
 	 * Gets the x component of this Direction.
@@ -116,7 +118,7 @@ public class Direction extends Vector
 	@Override
 	@Basic
 	@Raw
-	public double getXComponent()
+	public double getXComponent ()
 	{
 		return getAngle().getCos();
 	}
@@ -127,7 +129,7 @@ public class Direction extends Vector
 	@Override
 	@Basic
 	@Raw
-	public double getYComponent()
+	public double getYComponent ()
 	{
 		return getAngle().getSin();
 	}
@@ -142,17 +144,11 @@ public class Direction extends Vector
 	 */
 	@Override
 	@Raw
-	public boolean equals(Object o)
+	public boolean equals (Object o)
 	{
-		if (o == null)
-		{
-			return false;
-		}
-		if (!(o instanceof Direction))
-		{
-			return false;
-		}
-		return getAngle().equals(((Direction) o).getAngle());
+		if (o == null) { return false; }
+		if (! (o instanceof Direction)) { return false; }
+		return getAngle().equals( ((Direction) o).getAngle());
 	}
 
 	/**
@@ -167,7 +163,7 @@ public class Direction extends Vector
 	 * @post	The angle of this direction is a valid angle.
 	 * 			| canHaveAsAngle(getAngle())
 	 */
-	public void rotate(Angle angle)
+	public void rotate (Angle angle)
 	{
 		assert (angle != null);
 		getAngle().add(angle);

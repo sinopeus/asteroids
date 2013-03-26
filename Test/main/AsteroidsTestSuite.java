@@ -1,8 +1,5 @@
 package main;
 
-import model.FacadeTest;
-import model.PartialFacadeTest;
-
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
@@ -30,13 +27,7 @@ import world.physics.vector.VelocityTest;
 @SuppressWarnings ("javadoc")
 @RunWith (Suite.class)
 @SuiteClasses (
-{ BorderCollisionTest.class, CollisionTest.class, EntityCollisionTest.class,
-		MassTest.class, ShipTest.class, ThrusterTest.class, AngleTest.class,
-		AsteroidTest.class, BulletTest.class, CircleShapeTest.class,
-		EntityTest.class, CollisionResolverTest.class, FacadeTest.class,
-		PartialFacadeTest.class, MechanicsTest.class, AccelerationTest.class,
-		DirectionTest.class, ForceTest.class, PositionTest.class,
-		VectorTest.class, VelocityTest.class, WorldTest.class })
+{ BorderCollisionTest.class, CollisionTest.class, EntityCollisionTest.class, MassTest.class, ShipTest.class, ThrusterTest.class, AngleTest.class, AsteroidTest.class, BulletTest.class, CircleShapeTest.class, EntityTest.class, MechanicsTest.class, AccelerationTest.class, DirectionTest.class, ForceTest.class, PositionTest.class, VectorTest.class, VelocityTest.class, WorldTest.class })
 public class AsteroidsTestSuite
 {
 }

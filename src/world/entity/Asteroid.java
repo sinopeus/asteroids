@@ -53,7 +53,7 @@ public class Asteroid extends Entity
 	@Override
 	public void terminate ()
 	{
-		if (getShape ().getRadius () >= 30) //TODO MAKE GETTER FOR THIS
+		if (getShape ().getRadius () >= hardness) //TODO MAKE GETTER FOR THIS
 		{
 			Direction d1 = new Direction (new Angle (getDirection ().getAngle ().get ()));
 			Direction d2 = new Direction (new Angle (getDirection ().getAngle ().get () + Math.PI));
@@ -76,7 +76,7 @@ public class Asteroid extends Entity
 	@Override
 	public void advance (double dt)
 	{
-		this.turn (new Angle(Math.PI/7.0));//TODO MAKE GETTER FOR THIS
+		this.turn (new Angle(Math.PI/period));//TODO MAKE variable for this
 		super.advance (dt);
 	}
 
@@ -85,7 +85,17 @@ public class Asteroid extends Entity
 	{
 		return "asteroid_" + hashCode () + " at " + getPosition ();
 	}
-
+	
+	/**
+	 * A variable registering the fixed period of all asteroids
+	 */
+	private static double period = 7.0;
+	
+	/**
+	 * A variable registering the fixed hardness of all asteroids.
+	 */
+	private static double hardness = 30.0;
+	
 	/**
 	 * A variable registering the fixed density of all asteroids.
 	 */
