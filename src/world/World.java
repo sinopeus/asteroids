@@ -208,6 +208,17 @@ public class World extends HashSet<Entity>
 			e.advance(dt);
 		}
 	}
+
+	/**
+	 * Returns whether the given position is within the boundaries of the world.
+	 * 
+	 * @param position
+	 * @return	| position.x <= this.x && position.x >= 0 && position.y <= this.y && position.y <= this.y
+	 */
+	public boolean isInWorld (Position position)
+	{
+		return (position.getXComponent () <= getxSize () && position.getXComponent () >= 0 && position.getYComponent () <= getySize () && position.getYComponent () >= 0);
+	}
 	
 	
 //TODO REMOVE
