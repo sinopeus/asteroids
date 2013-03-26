@@ -7,7 +7,10 @@ import vector.Position;
 import world.World;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
+import entity.Asteroid;
+import entity.Bullet;
 import entity.Entity;
+import entity.ship.Ship;
 
 public abstract class Collision
 {
@@ -123,6 +126,24 @@ public abstract class Collision
 		{
 			for (Entity e2 : world)
 			{
+				if ( (e1 instanceof Ship) && (e2 instanceof Bullet))
+				{
+					Ship s = (Ship) e1;
+					Bullet b = (Bullet) e2;
+					if (b.getShooter () == s)
+					{
+						continue;
+					}
+				} else if ( (e1 instanceof Bullet) && (e2 instanceof Ship))
+				{
+					Ship s = (Ship) e2;
+					Bullet b = (Bullet) e1;
+					if (b.getShooter () == s)
+					{
+						continue;
+					}
+				}	 
+						 
 				if (e1 != e2)
 				{
 					Collision ec = new EntityCollision(world, e1, e2);

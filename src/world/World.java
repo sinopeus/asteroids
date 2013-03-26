@@ -4,6 +4,7 @@ import java.util.HashSet;
 
 import main.CollisionListener;
 import vector.Position;
+import Utilities.Util;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 import collision.Collision;
@@ -190,10 +191,10 @@ public class World extends HashSet <Entity>
 		//			}
 		//		}
 
-		if (c!= null && c.getTimeToCollision() <= dt)
+		if (c != null && c.getTimeToCollision() <= dt)
 		{
-			System.out.println(c.getTimeToCollision());
 			advanceAll(c.getTimeToCollision());
+			System.out.println(c.getTimeToCollision());
 			c.resolve();
 			//TODO
 			evolve( (dt - c.getTimeToCollision()), collisionListener);
