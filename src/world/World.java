@@ -173,23 +173,18 @@ public class World extends HashSet<Entity>
 		return true;
 	}
 
-	/**
-	 * A priority queue holding all the entities in this world.
-	 */
-	private HashSet<Entity> entities;
-
 	//TODO DOCUMENT & TEST
 	public void evolve(double dt, CollisionListener collisionListener){
 		//get the time to and the entities of the first collision
-		double minimumTimeToCollition = Double.MAX_VALUE;
+		double minimumTimeToCollision = Double.MAX_VALUE;
 		Entity first = null;
 		Entity second = null;
 		for (Entity e1 : this){
 			for( Entity e2 : this){
 				if (e1 != e2){
 					double timeToCollision = Mechanics.getTimeToCollision(e1, e2);
-					if(timeToCollision < minimumTimeToCollition){
-						minimumTimeToCollition = timeToCollision;
+					if(timeToCollision < minimumTimeToCollision){
+						minimumTimeToCollision = timeToCollision;
 						first = e1;
 						second = e2;
 					}
@@ -197,11 +192,11 @@ public class World extends HashSet<Entity>
 			}
 		}
 		
-		if (minimumTimeToCollition <= dt){
+		if (minimumTimeToCollision <= dt){
 			Position collisionPosition = Mechanics.getCollisionPosition(first, second);
-			advanceAll(minimumTimeToCollition);
+			advanceAll(minimumTimeToCollision);
 			collisionListener.objectCollision(first, second, collisionPosition.getXComponent(), collisionPosition.getYComponent());
-			evolve((dt-minimumTimeToCollition), collisionListener);
+			evolve((dt-minimumTimeToCollision), collisionListener);
 		}else{
 			advanceAll(dt);
 		}

@@ -262,7 +262,7 @@ public class Vector
 	 * 			This vector is a nil vector.
 	 * 			| Util.fuzzyEquals(getMagnitude(), 0)
 	 */
-	public Vector GetUnitVectorInSameDirection() throws ArithmeticException
+	public Vector getDirection() throws ArithmeticException
 	{
 		if (Util.fuzzyEquals(getMagnitude(), 0))
 		{
@@ -293,7 +293,7 @@ public class Vector
 	@Override
 	public String toString()
 	{
-		return "(" + getXComponent() + " , " + getYComponent() + ")";
+		return "(" + getXComponent() + ", " + getYComponent() + ")";
 	}
 	
 	/**
@@ -318,5 +318,24 @@ public class Vector
 		}
 		Vector other = (Vector) o;
 		return (Util.fuzzyEquals(getXComponent(), other.getXComponent()) && Util.fuzzyEquals(getYComponent(), other.getYComponent()));
+	}
+	
+	/**
+	 * Returns the hash code for this vector. Designed to be consistent with the equals method.
+	 * 
+	 * @return	A hash code for this vector.
+	 * 			| result == prime * ( prime + (int) (Double.toLongBits(x) ^ (Double.toLongBits(x) >>> 32))) + (int) (Double.toLongBits(y) ^ (Double.toLongBits(y) >>> 32))
+	 */
+	@Override
+	@Raw
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		long temp;
+		temp = Double.doubleToLongBits(x);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(y);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
 	}
 }

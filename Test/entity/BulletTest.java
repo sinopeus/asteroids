@@ -72,11 +72,19 @@ public class BulletTest
 		assertFalse(testBullet.canHaveAsBounceCounter((byte) -1));
 	}
 
+	
 	@Test
+	public void unlinkFromShooterTest()
+	{
+		testBullet.unlinkFromShooter();
+		assertEquals(testBullet.getShooter(), null);
+	}
+	
+	@Test(expected = NullPointerException.class)
 	public void terminateTest()
 	{
 		testBullet.terminate();
-		assertEquals(testBullet.getShooter(), null);
+		assertEquals(testBullet, null);
 	}
 
 	private static Ship testShip;

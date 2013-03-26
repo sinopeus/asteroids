@@ -149,14 +149,24 @@ public class Bullet extends Entity
 	 */
 	private Ship shooter;
 
+	
+	/**
+	 * Unlinks this bullet from the ship which shot it.
+	 * 
+	 * @effect | shooter == null;
+	 */
+	public void unlinkFromShooter() {
+		this.shooter = null;
+	}
+	
 	/**
 	 * @see #Entity.terminate()
 	 */
 	@Override
 	public void terminate()
 	{
-		this.shooter = null;
-		super.terminate()
+		this.unlinkFromShooter();
+		super.terminate();
 	}
 
 	/**

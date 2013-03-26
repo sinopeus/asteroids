@@ -512,7 +512,7 @@ public class Entity
 		}
 		if (duration < 0)
 		{
-			duration = 0;
+			throw new IllegalArgumentException("This is not a valid move duration.");
 		}
 		this.position.moveBy(getVelocity(), duration);
 	}

@@ -1,7 +1,6 @@
 package vector;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 
 import org.junit.Before;
@@ -211,7 +210,7 @@ public class VectorTest
 	public void GetUnitVectorInSameDirectionTest_LegalCase()
 	{
 		Vector v = new Vector(Math.sqrt(2) / 2, Math.sqrt(2) / 2);
-		Vector result = testVector1.GetUnitVectorInSameDirection();
+		Vector result = testVector1.getDirection();
 		assertTrue(Util.fuzzyEquals(v.getXComponent(), result.getXComponent()));
 		assertTrue(Util.fuzzyEquals(v.getYComponent(), result.getYComponent()));
 	}
@@ -219,7 +218,7 @@ public class VectorTest
 	@Test(expected = ArithmeticException.class)
 	public void GetUnitVectorInSameDirectionTest_NullVector()
 	{
-		nilVector.GetUnitVectorInSameDirection();
+		nilVector.getDirection();
 	}
 
 	@Test
@@ -243,4 +242,13 @@ public class VectorTest
 		assertFalse(testVector1.equals(new Position()));
 		assertFalse(testVector1.equals(null));
 	}
+	
+	@Test
+	public void hashCodeTest()
+	{
+		assertEquals(testVector1.hashCode(), (new Vector(10, 10)).hashCode());
+		assertFalse(testVector1.hashCode() == ((new Vector(5, 5)).hashCode()));
+		assertFalse(testVector1.hashCode() == ((new Position()).hashCode()));
+	}
+	
 }
