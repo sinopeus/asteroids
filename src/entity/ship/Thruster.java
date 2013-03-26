@@ -33,6 +33,7 @@ public class Thruster
 	{
 		setMaximumThrustPerSecond(maximumThrust);
 		setOwner(owner);
+		deactivate();
 	}
 
 	/**

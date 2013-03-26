@@ -6,7 +6,6 @@ import vector.Velocity;
 import world.World;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
-import entity.ship.Mass;
 
 /**
  * A class of entities involving a position, velocity, direction, speed limit.

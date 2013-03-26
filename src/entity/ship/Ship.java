@@ -9,6 +9,7 @@ import be.kuleuven.cs.som.annotate.Raw;
 import entity.Bullet;
 import entity.CircleShape;
 import entity.Entity;
+import entity.Mass;
 
 /**
  * A class of ships involving its position, velocity, direction, speed limit and shape.

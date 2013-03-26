@@ -15,7 +15,7 @@ import entity.Asteroid;
 import entity.Bullet;
 import entity.CircleShape;
 import entity.Entity;
-import entity.ship.Mass;
+import entity.Mass;
 import entity.ship.Ship;
 
 /**

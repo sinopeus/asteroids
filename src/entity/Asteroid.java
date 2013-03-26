@@ -3,7 +3,6 @@ package entity;
 import vector.Direction;
 import vector.Position;
 import vector.Velocity;
-import entity.ship.Mass;
 
 /**
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla

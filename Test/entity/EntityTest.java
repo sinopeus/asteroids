@@ -13,7 +13,6 @@ import vector.Position;
 import vector.Velocity;
 import world.World;
 import Utilities.Util;
-import entity.ship.Mass;
 import entity.ship.Ship;
 
 public class EntityTest //TODO test constructors
