@@ -6,6 +6,16 @@ import world.World;
 public abstract class Collision
 {
 	/**
+	 * @param collisionPosition
+	 * @param world
+	 */
+	protected Collision (Position collisionPosition, World world)
+	{
+		setCollisionPosition (collisionPosition);
+		setWorld (world);
+	}
+
+	/**
 	 * Returns the collision position.
 	 * 
 	 * @return The position at which two entities will collide.
