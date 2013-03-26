@@ -194,7 +194,6 @@ public class World extends HashSet <Entity>
 		if (c != null && c.getTimeToCollision() <= dt)
 		{
 			advanceAll(c.getTimeToCollision());
-			System.out.println(c.getTimeToCollision());
 			c.resolve();
 			//TODO
 			evolve( (dt - c.getTimeToCollision()), collisionListener);
