@@ -1,17 +1,23 @@
 package collision;
 
 import vector.Position;
+import vector.Quadrant;
 import world.World;
+import Utilities.Util;
+import entity.Bullet;
 import entity.Entity;
 
 public final class BorderCollision extends Collision
 {
 
-	protected BorderCollision (Position collisionPosition, World world, Entity entity, Border border)
+	protected BorderCollision (World world, Entity entity)
 	{
-		super (collisionPosition, world);
-		setCollisionEntity (entity);
-		setCollisionBorder (border);
+		super(world);
+		setCollisionEntity(entity);
+
+		calculateCollisionTime();
+		//		calculateCollisionPosition ();
+		//		calculateCollisionBorder();
 	}
 
 	//TODO EVERYTHING
@@ -30,12 +36,6 @@ public final class BorderCollision extends Collision
 	protected boolean canHaveAsCollisionBorder (Border collisionBorder)
 	{
 		return true;
-	}
-
-	//TODO EVERYTHING
-	public void setCollisionBorder (Border collisionBorder) throws IllegalArgumentException
-	{
-		this.collisionBorder = collisionBorder;
 	}
 
 	//TODO EVERYTHING
@@ -66,22 +66,127 @@ public final class BorderCollision extends Collision
 	@Override
 	public void resolve ()
 	{
-		// TODO Auto-generated method stub
+		Entity e = getCollisionEntity();
 
+		World w = e.getWorld();
+
+		//One case for every boundary to hit
+		if (Util.fuzzyEquals(getCollisionPosition().getXComponent(), 0))
+		{
+			e.getVelocity().setYComponent(-e.getVelocity().getYComponent());
+		}
+		if (Util.fuzzyEquals(getCollisionPosition().getYComponent(), 0))
+		{
+			e.getVelocity().setXComponent(-e.getVelocity().getXComponent());
+		}
+		if (Util.fuzzyEquals(getCollisionPosition().getXComponent(), w.getxSize()))
+		{
+			e.getVelocity().setYComponent(-e.getVelocity().getYComponent());
+		}
+		if (Util.fuzzyEquals(getCollisionPosition().getYComponent(), w.getySize()))
+		{
+			e.getVelocity().setXComponent(-e.getVelocity().getXComponent());
+		}
+
+		if (e instanceof Bullet)
+		{
+			Bullet b = (Bullet) e;
+			b.setBounceCounter((byte) (b.getBounceCounter() + 1));
+			if (b.getBounceCounter() > Bullet.maximumBorderBounces)
+			{
+				b.terminate();
+			}
+		}
 	}
 
 	//TODO EVERYTHING
 	@Override
 	public double getTimeToCollision ()
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		//Step1: calculate which borders could be hit.
+		Quadrant q = getCollisionEntity().getVelocity().getQuadrant();
+		Border b1 = null;
+		Border b2 = null;
+		switch (q)
+		{
+			case QUADRANT_I:
+				b1 = Border.BORDER_RIGHT;
+				b2 = Border.BORDER_TOP;
+				break;
+			case QUADRANT_II:
+				b1 = Border.BORDER_TOP;
+				b2 = Border.BORDER_LEFT;
+				break;
+			case QUADRANT_III:
+				b1 = Border.BORDER_LEFT;
+				b2 = Border.BORDER_BOTTOM;
+				break;
+			case QUADRANT_IV:
+				b1 = Border.BORDER_BOTTOM;
+				b2 = Border.BORDER_RIGHT;
+				break;
+		}
+		return Math.min(getTimeToBorderCollision(b1), getTimeToBorderCollision(b2));
+	}
+
+	private double getTimeToBorderCollision (Border b)
+	{
+		Position intersectionOfCenter = null;
+
+		Entity e = getCollisionEntity();
+		double wsx = getWorld().getxSize();
+		double wsy = getWorld().getySize();
+		double r = getCollisionEntity().getShape().getRadius();
+		double px = e.getPosition().getXComponent();
+		double py = e.getPosition().getYComponent();
+		double vx = e.getVelocity().getXComponent();
+		double vy = e.getVelocity().getYComponent();
+
+		double n, x = 0, y = 0;
+		switch (b)
+		{
+			case BORDER_TOP: // x = n * vx + px
+				n = ( (wsy - r - py) / vy);
+				x = n * vx + px;
+				y = wsy - r;
+				break;
+			case BORDER_RIGHT: // y = n * vy + py
+				n = ( (wsx - r - px) / vx);
+				x = wsx - r;
+				y = n * vy + py;
+				break;
+			case BORDER_LEFT:// x = n * vx + px
+				n = ( (r - py) / vy);
+				x = n * vx + px;
+				y = r;
+				break;
+			case BORDER_BOTTOM:// y = n * vy + py
+				n = ( (r - px) / vx);
+				x = r;
+				y = n * vy + py;
+				break;
+		}
+		intersectionOfCenter = new Position(x, y);
+		double difference = intersectionOfCenter.getDistanceTo(e.getPosition());
+		return difference / e.getVelocity().get();//TODO
 	}
 
 	@Override
 	protected void calculateCollisionTime ()
 	{
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	@Override
+	protected void calculateCollisionPosition ()
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+	protected void calculateCollisionBorder ()
+	{
+
 	}
 }

@@ -27,7 +27,7 @@ public class Vector
 	 * @effect	Sets the y-vector of this new vector to the given x-vector.
 	 * 			| setYComponent(y)
 	 **/
-	public Vector(double x, double y)
+	public Vector (double x, double y)
 	{
 		setXComponent(x);
 		setYComponent(y);
@@ -44,7 +44,7 @@ public class Vector
 	 * 			The given vector is null.
 	 * 			| v == null
 	 */
-	public Vector(Vector v) throws NullPointerException
+	public Vector (Vector v) throws NullPointerException
 	{
 		this(v.getXComponent(), v.getYComponent());
 	}
@@ -52,7 +52,7 @@ public class Vector
 	/**
 	 * Initializes this vector as the origin.
 	 */
-	public Vector()
+	public Vector ()
 	{
 		this(0, 0);
 	}
@@ -60,10 +60,10 @@ public class Vector
 	/**
 	 * Gets the x component of the vector.
 	 */
-	@SuppressWarnings("javadoc")
+	@SuppressWarnings ("javadoc")
 	@Basic
 	@Raw
-	public double getXComponent()
+	public double getXComponent ()
 	{
 		return this.x;
 	}
@@ -79,7 +79,7 @@ public class Vector
 	 */
 	@Basic
 	@Raw
-	public void setXComponent(double x)
+	public void setXComponent (double x)
 	{
 		if (canHaveAsComponent(x))
 		{
@@ -90,15 +90,15 @@ public class Vector
 	/**
 	 * The x component of the vector.
 	 */
-	protected double x;
+	protected double	x;
 
 	/**
 	 * Gets the y component of the vector.
 	 */
-	@SuppressWarnings("javadoc")
+	@SuppressWarnings ("javadoc")
 	@Basic
 	@Raw
-	public double getYComponent()
+	public double getYComponent ()
 	{
 		return this.y;
 	}
@@ -114,7 +114,7 @@ public class Vector
 	 */
 	@Basic
 	@Raw
-	public void setYComponent(double y)
+	public void setYComponent (double y)
 	{
 		if (canHaveAsComponent(y))
 		{
@@ -125,7 +125,7 @@ public class Vector
 	/**
 	 * The y component of the vector.
 	 */
-	protected double y;
+	protected double	y;
 
 	/**
 	 * Checks whether the given component can be a component of this vector.
@@ -137,7 +137,7 @@ public class Vector
 	 */
 	@Raw
 	@Basic
-	protected boolean canHaveAsComponent(double x)
+	protected boolean canHaveAsComponent (double x)
 	{
 		return (!Double.isNaN(x));
 	}
@@ -157,14 +157,11 @@ public class Vector
 	 * 			One of the components of the resulting vector is not a number.
 	 * 			| Double.isNaN(result.getXComponent) || Double.isNaN(result.getYComponent)
 	 */
-	public Vector getSum(Vector v) throws ArithmeticException
+	public Vector getSum (Vector v) throws ArithmeticException
 	{
 		double xComp = getXComponent() + v.getXComponent();
 		double yComp = getYComponent() + v.getYComponent();
-		if (Double.isNaN(xComp) || Double.isNaN(yComp))
-		{
-			throw new ArithmeticException("A component of the resulting sum vector is not a number");
-		}
+		if (Double.isNaN(xComp) || Double.isNaN(yComp)) { throw new ArithmeticException("A component of the resulting sum vector is not a number"); }
 		return new Vector(xComp, yComp);
 	}
 
@@ -179,14 +176,11 @@ public class Vector
 	 * 			One of the components of the resulting vectors is not a number.
 	 * 			| Double.isNaN(result.getYComponent) || Double.isNaN(result.getXComponent)
 	 */
-	public Vector getDifference(Vector v) throws ArithmeticException
+	public Vector getDifference (Vector v) throws ArithmeticException
 	{
 		double xComp = getXComponent() - v.getXComponent();
 		double yComp = getYComponent() - v.getYComponent();
-		if (Double.isNaN(xComp) || Double.isNaN(yComp))
-		{
-			throw new ArithmeticException("A component of the resulting sum vector is not a number");
-		}
+		if (Double.isNaN(xComp) || Double.isNaN(yComp)) { throw new ArithmeticException("A component of the resulting sum vector is not a number"); }
 		return new Vector(xComp, yComp);
 	}
 
@@ -206,14 +200,11 @@ public class Vector
 	 * 			One of the components of the resulting vector is not a number.
 	 * 			| Double.isNaN(result.getXComponent) || Double.isNaN(result.getYComponent)
 	 */
-	public Vector getScaledBy(double factor) throws ArithmeticException
+	public Vector getScaledBy (double factor) throws ArithmeticException
 	{
 		double xComp = getXComponent() * factor;
 		double yComp = getYComponent() * factor;
-		if (Double.isNaN(xComp) || Double.isNaN(yComp))
-		{
-			throw new ArithmeticException("A component of the resulting sum vector is not a number");
-		}
+		if (Double.isNaN(xComp) || Double.isNaN(yComp)) { throw new ArithmeticException("A component of the resulting sum vector is not a number"); }
 		return new Vector(xComp, yComp);
 	}
 
@@ -232,13 +223,10 @@ public class Vector
 	 * 			The result is not a number.
 	 * 			| Double.isNaN(result)
 	 */
-	public double dotProduct(Vector v) throws ArithmeticException
+	public double dotProduct (Vector v) throws ArithmeticException
 	{
 		double result = (getXComponent() * v.getXComponent()) + (getYComponent() * v.getYComponent());
-		if (Double.isNaN(result))
-		{
-			throw new ArithmeticException("The result is not a number");
-		}
+		if (Double.isNaN(result)) { throw new ArithmeticException("The result is not a number"); }
 		return result;
 	}
 
@@ -248,7 +236,7 @@ public class Vector
 	 * @return	The magnitude of this vector.
 	 * 			| result == Math.sqrt(this.dotProduct(this))
 	 */
-	public double getMagnitude()
+	public double getMagnitude ()
 	{
 		return Math.sqrt(this.dotProduct(this));
 	}
@@ -262,12 +250,9 @@ public class Vector
 	 * 			This vector is a nil vector.
 	 * 			| Util.fuzzyEquals(getMagnitude(), 0)
 	 */
-	public Vector getDirection() throws ArithmeticException
+	public Vector getUnitVectorInDirection () throws ArithmeticException
 	{
-		if (Util.fuzzyEquals(getMagnitude(), 0))
-		{
-			throw new ArithmeticException("This vector is a nil vector.");
-		}
+		if (Util.fuzzyEquals(getMagnitude(), 0)) { throw new ArithmeticException("This vector is a nil vector."); }
 		return this.getScaledBy(1.0 / getMagnitude());
 	}
 
@@ -282,20 +267,29 @@ public class Vector
 	 * 			The distance can't be calculated.
 	 * 			| Double.isNaN(result)	 
 	 */
-	public double getDistanceTo(Vector v) throws ArithmeticException
+	public double getDistanceTo (Vector v) throws ArithmeticException
 	{
 		return this.getDifference(v).getMagnitude();
+	}
+
+	public Quadrant getQuadrant ()
+	{
+		if (getXComponent() >= 0 && getYComponent() >= 0) { return Quadrant.QUADRANT_I; }
+		if (getXComponent() < 0 && getYComponent() >= 0) { return Quadrant.QUADRANT_II; }
+		if (getXComponent() < 0 && getYComponent() < 0) { return Quadrant.QUADRANT_III; }
+		if (getXComponent() >= 0 && getYComponent() < 0) { return Quadrant.QUADRANT_IV; }
+		throw new RuntimeException("Java should never reach this piece of code");
 	}
 
 	/**
 	 * Returns a string representation of this vector
 	 */
 	@Override
-	public String toString()
+	public String toString ()
 	{
 		return "(" + getXComponent() + ", " + getYComponent() + ")";
 	}
-	
+
 	/**
 	 * Checks whether the given object is a vector and its respective components are equal to this vector's components
 	 * 
@@ -306,20 +300,14 @@ public class Vector
 	 */
 	@Override
 	@Raw
-	public boolean equals(Object o)
+	public boolean equals (Object o)
 	{
-		if (o == null)
-		{
-			return false;
-		}
-		if (getClass() != o.getClass())
-		{
-			return false;
-		}
+		if (o == null) { return false; }
+		if (getClass() != o.getClass()) { return false; }
 		Vector other = (Vector) o;
 		return (Util.fuzzyEquals(getXComponent(), other.getXComponent()) && Util.fuzzyEquals(getYComponent(), other.getYComponent()));
 	}
-	
+
 	/**
 	 * Returns the hash code for this vector. Designed to be consistent with the equals method.
 	 * 
@@ -328,7 +316,8 @@ public class Vector
 	 */
 	@Override
 	@Raw
-	public int hashCode() {
+	public int hashCode ()
+	{
 		final int prime = 31;
 		int result = 1;
 		long temp;

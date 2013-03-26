@@ -1,9 +1,13 @@
 package collision;
 
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 import vector.Position;
 import world.World;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
+import entity.Entity;
 
 public abstract class Collision
 {
@@ -11,9 +15,8 @@ public abstract class Collision
 	 * @param collisionPosition
 	 * @param world
 	 */
-	protected Collision (Position collisionPosition, World world)
+	protected Collision (World world)
 	{
-		setCollisionPosition (collisionPosition);
 		setWorld (world);
 	}
 
@@ -39,20 +42,12 @@ public abstract class Collision
 		return (position != null && getWorld ().isInWorld (position));
 	}
 
-	/**
-	 * Sets the collision position.
-	 * 
-	 * @param collisionPosition
-	 */
-	public void setCollisionPosition (Position collisionPosition)
-	{
-		this.collisionPosition = collisionPosition;
-	}
+	protected abstract void calculateCollisionPosition ();
 
 	/**
 	 * A variable registering the position of this collision. 
 	 */
-	private Position	collisionPosition;
+	protected Position	collisionPosition;
 
 	/**
 	 * A getter for the world in which the collision occurs.
@@ -95,24 +90,24 @@ public abstract class Collision
 	protected World	world;
 
 	/**
-	 * Resolves this collision.
-	 */
-	public abstract void resolve ();
-
-	/**
 	 * Returns the time of collision.
 	 * 
 	 * @return The time before this collision occurs.
 	 */
-	public double getTimeToCollision () {
+	public double getTimeToCollision ()
+	{
 		return timeToCollision;
 	}
 
 	protected abstract void calculateCollisionTime ();
 
-	protected double timeToCollision;
-	
-	
+	protected double	timeToCollision;
+
+	/**
+	 * Resolves this collision.
+	 */
+	public abstract void resolve ();
+
 	/**
 	 * Gets the next collision to happen in the given world.
 	 * 
@@ -122,6 +117,28 @@ public abstract class Collision
 	 */
 	public static Collision getNextCollision (World world)
 	{
-		return null;
+		Comparator <Collision> comparator = new Comparator <Collision> ()
+		{
+			@Override
+			public int compare (Collision o1, Collision o2)
+			{
+				return (int) (o1.getTimeToCollision () - o2.getTimeToCollision ());
+			}
+		};
+		int potentialCollisions = (world.size () * world.size ());
+		PriorityQueue <Collision> queue = new PriorityQueue <> (potentialCollisions, comparator);
+		for (Entity e1 : world)
+		{
+			for (Entity e2 : world)
+			{
+				if (e1 != e2)
+				{
+					queue.add (new EntityCollision (world, e1, e2));
+				}
+			}
+			queue.add (new BorderCollision (world, e1));
+		}
+		queue.peek ().calculateCollisionPosition ();
+		return queue.peek ();
 	}
 }

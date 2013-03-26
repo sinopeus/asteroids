@@ -1,5 +1,6 @@
 package entity;
 
+import vector.Quadrant;
 import Utilities.Util;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
@@ -29,7 +30,7 @@ public class Angle
 	 * @post	The angle value of this new Angle is a valid angle value.
 	 * 			| new.canHaveAsAngle(getAngle)
 	 */
-	public Angle(double angle)
+	public Angle (double angle)
 	{
 		assert (canHaveAsAngle(angle));
 		set(angle);
@@ -44,7 +45,7 @@ public class Angle
 	 * @post	The given angle is a valid angle.
 	 * 			| new.canHaveAsAngle(angle)
 	 */
-	public Angle()
+	public Angle ()
 	{
 		this(0.0);
 		assert (canHaveAsAngle(get()));
@@ -53,10 +54,10 @@ public class Angle
 	/**
 	 * Gets the angle value of this angle.
 	 */
-	@SuppressWarnings("javadoc")
+	@SuppressWarnings ("javadoc")
 	@Basic
 	@Raw
-	public double get()
+	public double get ()
 	{
 		return this.angle;
 	}
@@ -71,7 +72,7 @@ public class Angle
 	 */
 	@Basic
 	@Raw
-	protected boolean canHaveAsAngle(double angle)
+	protected boolean canHaveAsAngle (double angle)
 	{
 		return (!Double.isNaN(angle));
 	}
@@ -88,7 +89,7 @@ public class Angle
 	 */
 	@Basic
 	@Raw
-	public void set(double angle)
+	public void set (double angle)
 	{
 		assert (canHaveAsAngle(angle));
 		if (angle >= 0)
@@ -98,13 +99,13 @@ public class Angle
 		{
 			this.angle = (angle % (2 * Math.PI)) + (2 * Math.PI);
 		}
-		assert ((get() >= 0) && (get() <= 2 * Math.PI));
+		assert ( (get() >= 0) && (get() <= 2 * Math.PI));
 	}
 
 	/**
 	 * A variable registering the value of this angle.
 	 */
-	private double angle;
+	private double	angle;
 
 	/**
 	 * Returns the sine of this angle.
@@ -112,7 +113,7 @@ public class Angle
 	 * @return	The sine of this angle
 	 * 			| result == Math.sin(getAngle())
 	 */
-	public double getSin()
+	public double getSin ()
 	{
 		return Math.sin(get());
 	}
@@ -123,7 +124,7 @@ public class Angle
 	 * @return	The cosine of this angle
 	 * 			| result == Math.cos(getAngle())
 	 */
-	public double getCos()
+	public double getCos ()
 	{
 		return Math.cos(get());
 	}
@@ -136,7 +137,7 @@ public class Angle
 	 * @effect	Adds the value of the given angle to this angle.
 	 * 			| setAngle(getAngle() + a.getAngle())
 	 */
-	public void add(Angle a)
+	public void add (Angle a)
 	{
 		set(get() + a.get());
 	}
@@ -151,22 +152,16 @@ public class Angle
 	 */
 	@Override
 	@Raw
-	public boolean equals(Object o)
+	public boolean equals (Object o)
 	{
-		if (o == null)
-		{
-			return false;
-		}
-		if (!(o instanceof Angle))
-		{
-			return false;
-		}
+		if (o == null) { return false; }
+		if (! (o instanceof Angle)) { return false; }
 		Angle other = (Angle) o;
 		return (Util.fuzzyEquals(other.get(), get()));
 	}
-	
+
 	@Override
-	public String toString()
+	public String toString ()
 	{
 		return "angle_" + hashCode() + " = " + get();
 	}
