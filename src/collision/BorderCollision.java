@@ -6,10 +6,10 @@ import entity.Entity;
 
 public final class BorderCollision extends Collision
 {
-	public BorderCollision (World world, Position position, Entity entity, Border border)
+
+	protected BorderCollision (Position collisionPosition, World world, Entity entity, Border border)
 	{
-		setWorld (world);
-		setCollisionPosition (position);
+		super (collisionPosition, world);
 		setCollisionEntity (entity);
 		setCollisionBorder (border);
 	}

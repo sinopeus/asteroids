@@ -1,15 +1,24 @@
 package collision;
 
+import vector.Position;
+import world.World;
 import entity.Entity;
 
 public final class EntityCollision extends Collision
 {
+	protected EntityCollision (Position collisionPosition, World world, Entity entity1, Entity entity2)
+	{
+		super (collisionPosition, world);
+		setEntity1 (entity1);
+		setEntity2 (entity2);
+	}
+
 	/**
 	 * Returns the first entity involved in the collision.
 	 * 
 	 * @return entity1	The first entity involved in the collision. 
 	 */
-	public Entity getEntity1()
+	public Entity getEntity1 ()
 	{
 		return entity1;
 	}
@@ -19,7 +28,7 @@ public final class EntityCollision extends Collision
 	 * 
 	 * @param entity1
 	 */
-	public void setEntity1(Entity entity1)
+	public void setEntity1 (Entity entity1)
 	{
 		this.entity1 = entity1;
 	}
@@ -29,7 +38,7 @@ public final class EntityCollision extends Collision
 	 * 
 	 * @return entity2	The second entity involved in the collision. 
 	 */
-	public Entity getEntity2()
+	public Entity getEntity2 ()
 	{
 		return entity2;
 	}
@@ -39,7 +48,7 @@ public final class EntityCollision extends Collision
 	 * 
 	 * @param entity2
 	 */
-	public void setEntity2(Entity entity2)
+	public void setEntity2 (Entity entity2)
 	{
 		this.entity2 = entity2;
 	}
@@ -58,18 +67,18 @@ public final class EntityCollision extends Collision
 	/**
 	 * The first entity involved in the collision.
 	 */
-	private Entity entity1;
-	
+	private Entity	entity1;
+
 	/**
 	 * The second entity involved in the collision.
 	 */
-	private Entity entity2;
+	private Entity	entity2;
 
 	/* (non-Javadoc)
 	 * @see collision.Collision#resolve()
 	 */
 	@Override
-	public void resolve()
+	public void resolve ()
 	{
 		// TODO Auto-generated method stub
 
@@ -79,13 +88,12 @@ public final class EntityCollision extends Collision
 	{
 		// TODO Auto-generated method stub
 	}
-	
-	
+
 	/* (non-Javadoc)
 	 * @see collision.Collision#getTimeToCollision()
 	 */
 	@Override
-	public double getTimeToCollision()
+	public double getTimeToCollision ()
 	{
 		// TODO Auto-generated method stub
 		return 0;
