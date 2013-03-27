@@ -176,7 +176,6 @@ public class World extends HashSet <Entity>
 		{
 			advanceAll(c.getTimeToCollision());
 			Position collisionPosition = c.getCollisionPosition();
-			c.resolve();
 			if (c.getClass() == BorderCollision.class)
 			{
 				BorderCollision bc = (BorderCollision) c;
@@ -186,6 +185,7 @@ public class World extends HashSet <Entity>
 				EntityCollision ec = (EntityCollision) c;
 				collisionListener.objectCollision(ec.getEntity1(), ec.getEntity2(), collisionPosition.getXComponent(), collisionPosition.getYComponent());
 			}
+			c.resolve();
 			evolve( (dt - c.getTimeToCollision()), collisionListener);
 		} else
 		{

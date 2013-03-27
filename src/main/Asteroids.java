@@ -10,24 +10,24 @@ import javax.swing.JFrame;
 import model.Facade;
 import model.IFacade;
 
-@SuppressWarnings("serial")
-public class Asteroids<World, Ship, Asteroid, Bullet> extends JFrame
+@SuppressWarnings ("serial")
+public class Asteroids <World, Ship, Asteroid, Bullet> extends JFrame
 {
 
-	private AsteroidsMenu<World, Ship, Asteroid, Bullet> menu;
-	private WorldView<World, Ship, Asteroid, Bullet> view;
-	private IFacade<World, Ship, Asteroid, Bullet> facade;
-	private int width;
-	private int height;
-	private Sound sound;
+	private AsteroidsMenu <World, Ship, Asteroid, Bullet>	menu;
+	private WorldView <World, Ship, Asteroid, Bullet>		view;
+	private IFacade <World, Ship, Asteroid, Bullet>			facade;
+	private int												width;
+	private int												height;
+	private Sound											sound;
 
-	public Asteroids(IFacade<World, Ship, Asteroid, Bullet> facade, int width, int height, boolean undecorated, Sound sound)
+	public Asteroids (IFacade <World, Ship, Asteroid, Bullet> facade, int width, int height, boolean undecorated, Sound sound)
 	{
 		super("Asteroids");
 		this.sound = sound;
 		this.width = width;
 		this.height = height;
-		menu = new AsteroidsMenu<World, Ship, Asteroid, Bullet>(this);
+		menu = new AsteroidsMenu <World, Ship, Asteroid, Bullet>(this);
 		this.facade = facade;
 		setUndecorated(undecorated);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -37,27 +37,27 @@ public class Asteroids<World, Ship, Asteroid, Bullet> extends JFrame
 		pack();
 	}
 
-	public int getWidth()
+	public int getWidth ()
 	{
 		return width;
 	}
 
-	public int getHeight()
+	public int getHeight ()
 	{
 		return height;
 	}
 
-	public Sound getSound()
+	public Sound getSound ()
 	{
 		return sound;
 	}
 
-	public IFacade<World, Ship, Asteroid, Bullet> getFacade()
+	public IFacade <World, Ship, Asteroid, Bullet> getFacade ()
 	{
 		return facade;
 	}
 
-	public void start()
+	public void start ()
 	{
 		menu.reset();
 		sound.start();
@@ -65,18 +65,17 @@ public class Asteroids<World, Ship, Asteroid, Bullet> extends JFrame
 		menu.requestFocusInWindow();
 	}
 
-	public void startSinglePlayerGame()
+	public void startSinglePlayerGame ()
 	{
 		World world = facade.createWorld(width, height);
 		Ship player = facade.createShip(width / 2., height / 2., 0, 0, 40, 0, 5E15);
 		facade.addShip(world, player);
 		Asteroid asteroid1 = facade.createAsteroid(100, 100, 25, 50, 60);
 		facade.addAsteroid(world, asteroid1);
-		Asteroid asteroid2 = facade.createAsteroid(600, 100, -30, -40, 80);
+		Asteroid asteroid2 = facade.createAsteroid(600, 200, -30, -40, 80);
 		facade.addAsteroid(world, asteroid2);
-		view = new WorldView<World, Ship, Asteroid, Bullet>(this, world, player, null);
-		if (!isUndecorated())
-			view.setPreferredSize(new Dimension(width, height));
+		view = new WorldView <World, Ship, Asteroid, Bullet>(this, world, player, null);
+		if (!isUndecorated()) view.setPreferredSize(new Dimension(width, height));
 		getContentPane().remove(menu);
 		getContentPane().add(view);
 		revalidate();
@@ -85,7 +84,7 @@ public class Asteroids<World, Ship, Asteroid, Bullet> extends JFrame
 		view.startGame();
 	}
 
-	public void startMultiPlayerGame()
+	public void startMultiPlayerGame ()
 	{
 		World world = facade.createWorld(width, height);
 		Ship player1 = facade.createShip(width / 5 * 4, height / 2., 0, 0, 40, Math.PI, 5E15);
@@ -100,9 +99,8 @@ public class Asteroids<World, Ship, Asteroid, Bullet> extends JFrame
 		facade.addAsteroid(world, asteroid3);
 		Asteroid asteroid4 = facade.createAsteroid(40, height - 100, 10, -8, 15);
 		facade.addAsteroid(world, asteroid4);
-		view = new WorldView<World, Ship, Asteroid, Bullet>(this, world, player1, player2);
-		if (!isUndecorated())
-			view.setPreferredSize(new Dimension(width, height));
+		view = new WorldView <World, Ship, Asteroid, Bullet>(this, world, player1, player2);
+		if (!isUndecorated()) view.setPreferredSize(new Dimension(width, height));
 		getContentPane().remove(menu);
 		getContentPane().add(view);
 		revalidate();
@@ -111,7 +109,7 @@ public class Asteroids<World, Ship, Asteroid, Bullet> extends JFrame
 		view.startGame();
 	}
 
-	public void showMenu()
+	public void showMenu ()
 	{
 		if (view != null)
 		{
@@ -127,7 +125,7 @@ public class Asteroids<World, Ship, Asteroid, Bullet> extends JFrame
 		menu.repaint();
 	}
 
-	public static void main(final String[] args)
+	public static void main (final String[] args)
 	{
 		boolean tryFullscreen = true;
 		boolean enableSound = true;
@@ -155,20 +153,20 @@ public class Asteroids<World, Ship, Asteroid, Bullet> extends JFrame
 			return;
 		}
 		// <begin>
-		IFacade<world.World, world.entity.ship.Ship, world.entity.Asteroid, world.entity.Bullet> facade = new Facade();
+		IFacade <world.World, world.entity.ship.Ship, world.entity.Asteroid, world.entity.Bullet> facade = new Facade();
 		// <end>
 		GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		GraphicsDevice screen = env.getDefaultScreenDevice();
-		Asteroids<world.World, world.entity.ship.Ship, world.entity.Asteroid, world.entity.Bullet> asteroids;
+		Asteroids <world.World, world.entity.ship.Ship, world.entity.Asteroid, world.entity.Bullet> asteroids;
 		Sound sound = enableSound ? new FileSoundManager("resources/sounds.txt") : new NullSound();
 		if (tryFullscreen && screen.isFullScreenSupported())
 		{
 			Rectangle dimensions = screen.getDefaultConfiguration().getBounds();
-			asteroids = new Asteroids<world.World, world.entity.ship.Ship, world.entity.Asteroid, world.entity.Bullet>(facade, dimensions.width, dimensions.height, true, sound);
+			asteroids = new Asteroids <world.World, world.entity.ship.Ship, world.entity.Asteroid, world.entity.Bullet>(facade, dimensions.width, dimensions.height, true, sound);
 			screen.setFullScreenWindow(asteroids);
 		} else
 		{
-			asteroids = new Asteroids<world.World, world.entity.ship.Ship, world.entity.Asteroid, world.entity.Bullet>(facade, 1024, 768, false, sound);
+			asteroids = new Asteroids <world.World, world.entity.ship.Ship, world.entity.Asteroid, world.entity.Bullet>(facade, 1024, 768, false, sound);
 		}
 		asteroids.start();
 	}

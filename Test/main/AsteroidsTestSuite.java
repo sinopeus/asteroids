@@ -30,4 +30,5 @@ import world.physics.vector.VelocityTest;
 { BorderCollisionTest.class, CollisionTest.class, EntityCollisionTest.class, MassTest.class, ShipTest.class, ThrusterTest.class, AngleTest.class, AsteroidTest.class, BulletTest.class, CircleShapeTest.class, EntityTest.class, MechanicsTest.class, AccelerationTest.class, DirectionTest.class, ForceTest.class, PositionTest.class, VectorTest.class, VelocityTest.class, WorldTest.class })
 public class AsteroidsTestSuite
 {
+	
 }
