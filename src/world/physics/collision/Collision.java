@@ -121,10 +121,13 @@ public abstract class Collision
 	{
 		double minimum = Double.POSITIVE_INFINITY;
 		Collision first = null;
-		for (Entity e1 : world)
+		
+		for (int indexOfFirst = 0; indexOfFirst < world.size(); indexOfFirst++)
 		{
-			for (Entity e2 : world)
+			Entity e1 = world.get(indexOfFirst);
+			for (int indexOfSecond = indexOfFirst; indexOfSecond < world.size(); indexOfSecond++)
 			{
+				Entity e2 = world.get(indexOfSecond);
 				if ( (e1 instanceof Ship) && (e2 instanceof Bullet))
 				{
 					Ship s = (Ship) e1;
@@ -162,4 +165,11 @@ public abstract class Collision
 		}
 		return first;
 	}
+	
+	//TODO DOCUMENT
+		@Override
+		public String toString()
+		{
+			return "Collision_" + hashCode() + " in " + getTimeToCollision() + " s";
+		}
 }

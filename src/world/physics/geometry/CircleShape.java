@@ -26,7 +26,7 @@ public class CircleShape
 	 * 			The given radius is not a valid radius for this circle shape.
 	 * 			| !canHaveAsRadius(radius)
 	 */
-	public CircleShape(double radius)
+	public CircleShape (double radius)
 	{
 		if (!canHaveAsRadius(radius))
 		{
@@ -43,18 +43,18 @@ public class CircleShape
 	 * @effect	Initializes this new circle shape with the extended constructor and default values.
 	 * 			| CircleShape(0.0)
 	 */
-	public CircleShape()
+	public CircleShape ()
 	{
 		this(0.0);
 	}
-	
+
 	/**
 	 * Gets the radius of this circle shape.
 	 */
-	@SuppressWarnings("javadoc")
+	@SuppressWarnings ("javadoc")
 	@Basic
 	@Raw
-	public double getRadius()
+	public double getRadius ()
 	{
 		return this.radius;
 	}
@@ -69,7 +69,7 @@ public class CircleShape
 	 */
 	@Basic
 	@Raw
-	protected boolean canHaveAsRadius(double radius)
+	protected boolean canHaveAsRadius (double radius)
 	{
 		return (!Double.isNaN(radius) && (radius >= 0));
 	}
@@ -77,7 +77,7 @@ public class CircleShape
 	/**
 	 * A variable registering the radius of this circle shape in km/s.
 	 */
-	private final double radius;
+	private final double	radius;
 
 	/**
 	 * Checks whether the given object's is a circle shape and it's radius is equal to the radius of this circle shape
@@ -89,15 +89,18 @@ public class CircleShape
 	 */
 	@Override
 	@Raw
-	public boolean equals(Object o)
+	public boolean equals (Object o)
 	{
-		if (o == null){
-			return false;
-		}
-		if(!(getClass() == o.getClass())){
-			return false;
-		}
+		if (o == null) { return false; }
+		if (! (getClass() == o.getClass())) { return false; }
 		CircleShape other = (CircleShape) o;
 		return (Util.fuzzyEquals(getRadius(), other.getRadius()));
+	}
+
+	//TODO DOCUMENT
+	@Override
+	public String toString ()
+	{
+		return "CircleShape_" + hashCode() + ": radius = " + getRadius();
 	}
 }

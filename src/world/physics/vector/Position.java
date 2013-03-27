@@ -156,7 +156,7 @@ public class Position extends Vector
 	@Override
 	public String toString()
 	{
-		return "P_" + hashCode() + " = " + super.toString();
+		return "P_" + hashCode() + " = " + super.toString() + " m";
 	}
 
 	/**

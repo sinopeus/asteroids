@@ -56,7 +56,7 @@ public class Acceleration extends Vector
 	@Override
 	public String toString()
 	{
-		return "A_" + hashCode() + " = " + super.toString();
+		return "A_" + hashCode() + " = " + super.toString() + " m/s²";
 	}
 	
 	/**

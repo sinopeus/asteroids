@@ -9,6 +9,7 @@ import org.junit.Test;
 
 
 import world.World;
+import world.entity.Entity;
 import world.entity.ship.Ship;
 import world.physics.Mass;
 import world.physics.geometry.Angle;
@@ -24,7 +25,7 @@ public class ShipTest
 	@Before
 	public void setUpMutableTestFixture_Ship()
 	{
-		World w = new World();
+		World w = new World(1000,1000);
 
 		Angle a = new Angle(Math.PI / 2);
 		Direction d = new Direction(a);
@@ -36,7 +37,7 @@ public class ShipTest
 		testShip = new Ship(d, p, speedLimit, v, s, m);
 		w.add(testShip);
 
-		terminatedShip = new Ship();
+		terminatedShip = new Ship(new Direction(), new Position(100, 100), 50, new Velocity(), new CircleShape(10), new Mass(2));
 		w.add(terminatedShip);
 		terminatedShip.terminate();
 	}

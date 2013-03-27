@@ -2,6 +2,7 @@ package world.physics;
 
 import world.physics.vector.Acceleration;
 import world.physics.vector.Force;
+import world.physics.vector.Velocity;
 
 /**
  * 
@@ -56,6 +57,12 @@ public class Mechanics
 	{
 		if (f1 == null) { throw new IllegalArgumentException("Null parameter provided."); }
 		return new Force(f1.getScaledBy(-1.0));
+	}
+
+	//TODO document and test
+	public static Velocity ConserVationOfMomentum_CalculateVelocity (Velocity v1, Mass m1, Mass m2) throws IllegalArgumentException
+	{
+		return new Velocity(v1.getScaledBy(m1.get() / m2.get()));
 	}
 
 	//	/**

@@ -96,7 +96,16 @@ public final class EntityCollision extends Collision
 		// TODO this part is written shittily, any ideas?
 		if (e1 instanceof Bullet && e2 instanceof Bullet)
 		{
-			bounce();
+			Bullet b1 = (Bullet) e1;
+			Bullet b2 = (Bullet) e2;
+			if (b1.getShooter() == b2.getShooter())
+			{
+				bounce();
+			} else
+			{
+				b1.terminate();
+				b2.terminate();
+			}
 		} else if ( (e1 instanceof Ship) && (e2 instanceof Ship))
 		{
 			bounce();
@@ -240,4 +249,10 @@ public final class EntityCollision extends Collision
 		this.collisionPosition = new Position(newPosShip1.getSum(newPosShip2.getDifference(newPosShip1).getScaledBy(ship1Radius / sigma)));
 	}
 
+	//TODO DOCUMENT
+	@Override
+	public String toString ()
+	{
+		return "Border" + super.toString() + " of " + getEntity1() + " and " + getEntity1();
+	}
 }

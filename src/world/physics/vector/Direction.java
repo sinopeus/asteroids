@@ -170,4 +170,10 @@ public class Direction extends Vector
 		assert (Util.fuzzyEquals(getMagnitude(), 1.0));
 		assert (canHaveAsAngle(getAngle()));
 	}
+	
+	@Override
+	public String toString ()
+	{
+		return "D_" + hashCode() + " = " + super.toString();
+	}
 }

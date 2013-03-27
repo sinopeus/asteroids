@@ -287,7 +287,7 @@ public class Vector
 	@Override
 	public String toString ()
 	{
-		return "(" + getXComponent() + ", " + getYComponent() + ")";
+		return "(" + (int)getXComponent() + ", " + (int)getYComponent() + ")";
 	}
 
 	/**

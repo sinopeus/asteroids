@@ -1,6 +1,6 @@
 package world;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 
 import main.CollisionListener;
 import world.entity.Entity;
@@ -8,17 +8,18 @@ import world.physics.collision.BorderCollision;
 import world.physics.collision.Collision;
 import world.physics.collision.EntityCollision;
 import world.physics.vector.Position;
+import world.physics.vector.Vector;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 
 /**
- * 
+ * A class of worlds describing the game world of a game of asteroids.
  * 
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
  * @version 2.0
  * TODO document
  */
-public class World extends HashSet <Entity>
+public class World extends ArrayList <Entity>
 {
 	private static final long	serialVersionUID	= 1L;
 
@@ -144,7 +145,7 @@ public class World extends HashSet <Entity>
 	 */
 	private boolean canHaveAsEntity (Entity entity)
 	{
-		return ( (entity != null) && (isInWorld(entity.getPosition())));
+		return (entity != null); //TODO check if space is occupied
 	}
 
 	/**
@@ -162,8 +163,11 @@ public class World extends HashSet <Entity>
 	{
 		//TODO ADD CHECKER FOR DOUBLE ENTITIES AND ENTITIES OUTSIDE OF THE WORLD.
 		if (!canHaveAsEntity(entity)) { throw new IllegalArgumentException("Invalid entity added"); }
-		entity.setWorld(this);
-		super.add(entity);
+		if (isInWorld(entity))
+		{
+			entity.setWorld(this);
+			super.add(entity);
+		}
 		return true;
 	}
 
@@ -211,5 +215,32 @@ public class World extends HashSet <Entity>
 	public boolean isInWorld (Position position)
 	{
 		return (position.getXComponent() <= getxSize() && position.getXComponent() >= 0 && position.getYComponent() <= getySize() && position.getYComponent() >= 0);
+	}
+
+	/**
+	 * TODO DOC
+	 * @param entity
+	 * @return
+	 */
+	public boolean isInWorld (Entity entity)
+	{
+		if (entity == null) { return false; }
+		double r = entity.getShape().getRadius();
+		boolean p1 = isInWorld(entity.getPosition().getSum(new Vector(r, 0)));
+		boolean p2 = isInWorld(entity.getPosition().getSum(new Vector(-r, 0)));
+		boolean p3 = isInWorld(entity.getPosition().getSum(new Vector(0, r)));
+		boolean p4 = isInWorld(entity.getPosition().getSum(new Vector(0, -r)));
+		return p1 && p2 && p3 && p4;
+	}
+
+	@Override
+	public String toString ()
+	{
+		String result = "World_" + hashCode() + " with size (" + getxSize() + "," + getySize() + ")\nEntities in this world: \n";
+		for (Entity e : this)
+		{
+			result = result + e.toString() + "\n";
+		}
+		return result;
 	}
 }

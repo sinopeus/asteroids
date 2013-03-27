@@ -162,6 +162,6 @@ public class Angle
 	@Override
 	public String toString ()
 	{
-		return "angle_" + hashCode() + " = " + get();
+		return "angle_" + hashCode() + " = " + get() + " rad";
 	}
 }

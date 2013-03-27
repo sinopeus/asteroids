@@ -222,4 +222,11 @@ public final class BorderCollision extends Collision
 				break;
 		}
 	}
+
+	//TODO DOCUMENT
+	@Override
+	public String toString ()
+	{
+		return "Border" + super.toString() + " of " + getCollisionEntity() + " and " + getCollisionBorder();
+	}
 }

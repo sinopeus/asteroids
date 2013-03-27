@@ -184,7 +184,7 @@ public class Velocity extends Vector //TODO make total
 	@Override
 	public String toString()
 	{
-		return "V_" + hashCode() + " = " + super.toString();
+		return "V_" + hashCode() + " = " + super.toString() + " m/s";
 	}
 
 	/**

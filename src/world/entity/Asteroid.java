@@ -83,7 +83,7 @@ public class Asteroid extends Entity
 	@Override
 	public String toString ()
 	{
-		return "asteroid_" + hashCode () + " at " + getPosition ();
+		return "Asteroid_" + hashCode () + super.toString();
 	}
 	
 	/**

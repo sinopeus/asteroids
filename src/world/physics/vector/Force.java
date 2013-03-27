@@ -45,4 +45,11 @@ public class Force extends Vector
 	{
 		super(); 
 	}
+	
+	//TODO DOCUMENT
+		@Override
+		public String toString()
+		{
+			return "F_" + hashCode() + " = " + super.toString() + " N";
+		}
 }

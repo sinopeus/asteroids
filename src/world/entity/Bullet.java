@@ -28,7 +28,7 @@ public class Bullet extends Entity
 	 */
 	public Bullet (Ship ship) throws NullPointerException
 	{
-		super(ship.getDirection(), getInitialPosition(ship), Velocity.getSpeedOfLight(), new Velocity(ship.getVelocity().getSum(ship.getDirection().getScaledBy(bulletInitialVelocity))), new CircleShape(bulletRadius), new Mass( (4 * Math.PI * Math.pow(ship.getShape().getRadius(), 3) * density) / 3));
+		super(ship.getDirection(), getInitialPosition(ship), Velocity.getSpeedOfLight(), new Velocity(ship.getVelocity().getSum(ship.getDirection().getScaledBy(bulletInitialVelocity))), new CircleShape(bulletRadius), new Mass( (4 * Math.PI * Math.pow(bulletRadius, 3) * density) / 3.0));
 		setShooter(ship);
 		setBounceCounter((byte) 0);
 	}
@@ -163,20 +163,26 @@ public class Bullet extends Entity
 		super.terminate();
 	}
 
+	@Override
+	public String toString ()
+	{
+		return "Bullet_" + hashCode() + super.toString();
+	}
+
 	/**
 	 * A variable registering the radius of a bullet.
 	 */
 	private static final double	bulletRadius			= 3;
 
 	/**
-	 * A variable registering the initial velocity of a bullet.
+	 * A variable registering the initial velocity of a bullet.System.out.println(getVelocity());
 	 */
 	private static final double	bulletInitialVelocity	= 250;
 
 	/**
 	 * A variable registering the density of a bullet.
 	 */
-	private static final double	density					= 7.8E12;
+	private static final double	density					= 7.8E10; //heb dit 100 keer kleiner gemaakt
 
 	/**
 	 * A variable registering the maximum amount of time a bullet can bounce off the boundaries of the world.
