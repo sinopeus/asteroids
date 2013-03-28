@@ -73,6 +73,11 @@ public class AngleTest
 		testAngle2.add(testAngle2);
 		assertTrue(Util.fuzzyEquals(testAngle2.get(), 0));
 	}
+	
+	@Test
+	public void toStringTest(){
+		testAngle.toString();
+	}
 
 	@Test
 	public void equalsTest_PerfectParameter()

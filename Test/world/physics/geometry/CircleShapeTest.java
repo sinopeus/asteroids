@@ -54,6 +54,11 @@ public class CircleShapeTest
 	}
 
 	@Test
+	public void toStringTest(){
+		testCircleShape.toString();
+	}
+	
+	@Test
 	public void equalsTest()
 	{
 		assertTrue(testCircleShape.equals( new CircleShape(15)));

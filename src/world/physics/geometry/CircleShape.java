@@ -79,6 +79,13 @@ public class CircleShape
 	 */
 	private final double	radius;
 
+	//TODO DOCUMENT
+	@Override
+	public String toString ()
+	{
+		return "CircleShape_" + hashCode() + ": radius = " + getRadius();
+	}
+	
 	/**
 	 * Checks whether the given object's is a circle shape and it's radius is equal to the radius of this circle shape
 	 * 
@@ -95,12 +102,5 @@ public class CircleShape
 		if (! (getClass() == o.getClass())) { return false; }
 		CircleShape other = (CircleShape) o;
 		return (Util.fuzzyEquals(getRadius(), other.getRadius()));
-	}
-
-	//TODO DOCUMENT
-	@Override
-	public String toString ()
-	{
-		return "CircleShape_" + hashCode() + ": radius = " + getRadius();
 	}
 }

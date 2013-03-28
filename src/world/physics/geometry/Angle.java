@@ -141,6 +141,12 @@ public class Angle
 		set(get() + a.get());
 	}
 
+	@Override
+	public String toString ()
+	{
+		return "angle_" + hashCode() + " = " + get() + " rad";
+	}
+	
 	/**
 	 * Checks whether the given object is an angle and it is equal to this angle.
 	 * 
@@ -159,9 +165,5 @@ public class Angle
 		return (Util.fuzzyEquals(other.get(), get()));
 	}
 
-	@Override
-	public String toString ()
-	{
-		return "angle_" + hashCode() + " = " + get() + " rad";
-	}
+
 }
