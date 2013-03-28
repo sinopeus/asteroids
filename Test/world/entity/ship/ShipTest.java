@@ -9,7 +9,6 @@ import org.junit.Test;
 
 
 import world.World;
-import world.entity.Entity;
 import world.entity.ship.Ship;
 import world.physics.Mass;
 import world.physics.geometry.Angle;
@@ -74,7 +73,7 @@ public class ShipTest
 	public void extendedConstructorTest_IllegalCircleShape()
 	{
 		CircleShape cs = new CircleShape(Ship.getMinimumRadius() - 1);
-		Ship ship = new Ship(new Direction(), new Position(), Velocity.getSpeedOfLight(), new Velocity(), cs, new Mass(40));
+		new Ship(new Direction(), new Position(), Velocity.getSpeedOfLight(), new Velocity(), cs, new Mass(40));
 	}
 
 	@Test

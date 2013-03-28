@@ -84,25 +84,25 @@ public class MechanicsTest
 	@Test
 	public void ConserVationOfMomentum_CalculateVelocityTest ()
 	{
-		assertEquals(Mechanics.ConserVationOfMomentum_CalculateVelocity(testVelocity1, testMass1, testMass2), new Velocity(1.0 / 3.0, 2.0 / 3.0));
+		assertEquals(Mechanics.conservationOfMomentum_CalculateVelocity(testVelocity1, testMass1, testMass2), new Velocity(1.0 / 3.0, 2.0 / 3.0));
 	}
 
 	@Test (expected = IllegalArgumentException.class)
 	public void ConserVationOfMomentum_CalculateVelocityTest_IllegalV1 ()
 	{
-		Mechanics.ConserVationOfMomentum_CalculateVelocity(null, testMass1, testMass2);
+		Mechanics.conservationOfMomentum_CalculateVelocity(null, testMass1, testMass2);
 	}
 
 	@Test (expected = IllegalArgumentException.class)
 	public void ConserVationOfMomentum_CalculateVelocityTest_IllegalM1 ()
 	{
-		Mechanics.ConserVationOfMomentum_CalculateVelocity(testVelocity1, null, testMass2);
+		Mechanics.conservationOfMomentum_CalculateVelocity(testVelocity1, null, testMass2);
 	}
 
 	@Test (expected = IllegalArgumentException.class)
 	public void ConserVationOfMomentum_CalculateVelocityTest_IllegalM2 ()
 	{
-		Mechanics.ConserVationOfMomentum_CalculateVelocity(testVelocity1, testMass1, null);
+		Mechanics.conservationOfMomentum_CalculateVelocity(testVelocity1, testMass1, null);
 	}
 	
 	@Test

@@ -61,18 +61,18 @@ public class Entity
 	public Entity (Direction direction, Position position, double speedLimit, Velocity velocity, CircleShape shape, Mass mass) throws NullPointerException
 	{
 		//TODO add throws from setters.
-		setDirection(direction);
-		setPosition(position);
-		setSpeedLimit(speedLimit);
-		setVelocity(velocity);
-		if (!canHaveAsShape(shape))
+		setDirection (direction);
+		setPosition (position);
+		setSpeedLimit (speedLimit);
+		setVelocity (velocity);
+		if (!canHaveAsShape (shape))
 		{
-			throw new IllegalArgumentException("Invalid circle shape provided");
+			throw new IllegalArgumentException ("Invalid circle shape provided");
 		} else
 		{
 			this.shape = shape;
 		}
-		setMass(mass);
+		setMass (mass);
 		isTerminated = false;
 	}
 
@@ -85,7 +85,7 @@ public class Entity
 	public Entity ()//TODO document
 	{
 		//TODO add throws from setters.
-		this(new Direction(), new Position(), Velocity.getSpeedOfLight(), new Velocity(), new CircleShape(40), new Mass(5E15));
+		this (new Direction (), new Position (), Velocity.getSpeedOfLight (), new Velocity (), new CircleShape (40), new Mass (5E15));
 	}
 
 	/**
@@ -131,10 +131,10 @@ public class Entity
 	@Raw
 	public void setPosition (Position position) throws IllegalArgumentException, IllegalStateException
 	{
-		if (this.isTerminated()) { throw new IllegalStateException("This entity is terminated."); }
-		if (!canHaveAsPosition(position))
+		if (this.isTerminated ()) { throw new IllegalStateException ("This entity is terminated."); }
+		if (!canHaveAsPosition (position))
 		{
-			throw new IllegalArgumentException("Invalid position provided.");
+			throw new IllegalArgumentException ("Invalid position provided.");
 		} else
 		{
 			this.position = position;
@@ -169,7 +169,7 @@ public class Entity
 	@Raw
 	protected boolean canHaveAsVelocity (Velocity velocity)
 	{
-		return ( (velocity != null) && (velocity.get() <= getSpeedLimit()));
+		return ( (velocity != null) && (velocity.get () <= getSpeedLimit ()));
 	}
 
 	/**
@@ -188,8 +188,8 @@ public class Entity
 	@Raw
 	public void setVelocity (Velocity velocity) throws IllegalStateException
 	{
-		if (this.isTerminated()) { throw new IllegalStateException("This entity is terminated."); }
-		if (canHaveAsVelocity(velocity))
+		if (this.isTerminated ()) { throw new IllegalStateException ("This entity is terminated."); }
+		if (canHaveAsVelocity (velocity))
 		{
 			this.velocity = velocity;
 		}
@@ -242,10 +242,10 @@ public class Entity
 	@Raw
 	public void setDirection (Direction direction) throws IllegalStateException
 	{
-		if (this.isTerminated()) { throw new IllegalStateException("This entity is terminated."); }
-		assert (canHaveAsDirection(direction));
+		if (this.isTerminated ()) { throw new IllegalStateException ("This entity is terminated."); }
+		assert (canHaveAsDirection (direction));
 		this.direction = direction;
-		assert (getDirection().equals(direction));
+		assert (getDirection ().equals (direction));
 	}
 
 	/**
@@ -261,7 +261,7 @@ public class Entity
 	@Raw
 	public CircleShape getShape ()
 	{
-		return new CircleShape(shape.getRadius());
+		return new CircleShape (shape.getRadius ());
 	}
 
 	/**
@@ -307,7 +307,7 @@ public class Entity
 	@Raw
 	protected boolean canHaveAsSpeedLimit (double speedLimit)
 	{
-		return ( (speedLimit >= 0) && (speedLimit <= Velocity.getSpeedOfLight()));
+		return ( (speedLimit >= 0) && (speedLimit <= Velocity.getSpeedOfLight ()));
 	}
 
 	/**
@@ -326,13 +326,13 @@ public class Entity
 	@Raw
 	public void setSpeedLimit (double speedLimit) throws IllegalStateException
 	{
-		if (this.isTerminated()) { throw new IllegalStateException("This entity is terminated."); }
-		if (canHaveAsSpeedLimit(speedLimit))
+		if (this.isTerminated ()) { throw new IllegalStateException ("This entity is terminated."); }
+		if (canHaveAsSpeedLimit (speedLimit))
 		{
 			this.speedLimit = speedLimit;
 		} else
 		{
-			this.speedLimit = Velocity.getSpeedOfLight();
+			this.speedLimit = Velocity.getSpeedOfLight ();
 		}
 	}
 
@@ -380,7 +380,7 @@ public class Entity
 	@Raw
 	private void setMass (Mass mass) throws IllegalArgumentException
 	{
-		if (!canHaveAsMass(mass)) { throw new IllegalArgumentException("Invalid mass provided"); }
+		if (!canHaveAsMass (mass)) { throw new IllegalArgumentException ("Invalid mass provided"); }
 		this.mass = mass;
 	}
 
@@ -427,7 +427,7 @@ public class Entity
 	@Raw
 	public void setWorld (World world) throws IllegalArgumentException
 	{
-		if (!canHaveAsWorld(world)) { throw new IllegalArgumentException("Illegal world provided."); }
+		if (!canHaveAsWorld (world)) { throw new IllegalArgumentException ("Illegal world provided."); }
 		this.world = world;
 	}
 
@@ -456,7 +456,7 @@ public class Entity
 	 */
 	public void terminate ()
 	{
-		getWorld().remove(this);
+		getWorld ().remove (this);
 		this.world = null;
 		isTerminated = true;
 	}
@@ -466,10 +466,16 @@ public class Entity
 	 */
 	protected boolean	isTerminated;
 
-	//TODO DOCUMENT & TEST
+	//TODO TEST
+	/**
+	 * Moves this entity over the given time interval. 
+	 * 
+	 * @param dt	The time interval for the ship's movement.
+	 * @effect		The entity's position vector is altered, taking into account its direction, velocity, and a given time interval.
+	 */
 	public void advance (double dt)
 	{
-		move(dt);
+		move (dt);
 	}
 
 	/**
@@ -490,12 +496,12 @@ public class Entity
 	 */
 	public void move (double duration) throws ArithmeticException, IllegalArgumentException, IllegalStateException
 	{
-		if (this.isTerminated()) { throw new IllegalStateException("This entity is terminated."); }
+		if (this.isTerminated ()) { throw new IllegalStateException ("This entity is terminated."); }
 		if (duration < 0)
 		{
 			duration = 0;
 		}
-		this.position.moveBy(getVelocity(), duration);
+		this.position.moveBy (getVelocity (), duration);
 	}
 
 	/**
@@ -512,13 +518,13 @@ public class Entity
 	 */
 	public void turn (Angle angle) throws IllegalStateException
 	{
-		if (this.isTerminated()) { throw new IllegalStateException("This entity is terminated."); }
+		if (this.isTerminated ()) { throw new IllegalStateException ("This entity is terminated."); }
 		assert (angle != null);
-		this.direction.rotate(angle);
+		this.direction.rotate (angle);
 	}
 
 	public String toString ()
 	{
-		return " at " + getPosition() + "   with velocity " + getVelocity() + "   and shape " + getShape() + "  ";
+		return " at " + getPosition () + "   with velocity " + getVelocity () + "   and shape " + getShape () + "  ";
 	};
 }

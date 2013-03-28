@@ -62,6 +62,7 @@ public class AccelerationTest
 		assertTrue(Util.fuzzyEquals(a.getYComponent(), 3));
 	}
 
+	@SuppressWarnings ("unused")
 	@Test(expected = NullPointerException.class)
 	public void byVectorAccelerationTest_ComponentsMatchGivenVectorComponents_nullVector()
 	{

@@ -11,6 +11,13 @@ import world.physics.vector.Velocity;
 
 public final class EntityCollision extends Collision
 {
+	/**
+	 * Creates a new collision between entities.
+	 * 
+	 * @param world		The world in which collision occurs.
+	 * @param entity1	The first entity involved in the collision.
+	 * @param entity2	The second entity involved in the collision.
+	 */
 	public EntityCollision (World world, Entity entity1, Entity entity2)
 	{
 		super(world);
@@ -46,7 +53,7 @@ public final class EntityCollision extends Collision
 	 * 
 	 * @return entity2	The second entity involved in the collision. 
 	 */
-	private Entity getEntity2 ()
+	public Entity getEntity2 ()
 	{
 		return entity2;
 	}
@@ -67,6 +74,7 @@ public final class EntityCollision extends Collision
 	 * @param entity
 	 * @return
 	 */
+	@SuppressWarnings ("unused")
 	private boolean canHaveAsEntity (Entity entity)
 	{
 		return (entity != null);
@@ -82,7 +90,7 @@ public final class EntityCollision extends Collision
 	 */
 	private Entity	entity2;
 
-	/* (non-Javadoc)
+	/**
 	 * @see collision.Collision#resolve()
 	 */
 	@Override
@@ -145,16 +153,17 @@ public final class EntityCollision extends Collision
 		} else if ( (e1 instanceof Ship) && (e2 instanceof Asteroid))
 		{
 			Ship s = (Ship) e1;
-			Asteroid a = (Asteroid) e2;
 			s.terminate();
 		} else if ( (e1 instanceof Asteroid) && (e2 instanceof Ship))
 		{
 			Ship s = (Ship) e2;
-			Asteroid a = (Asteroid) e1;
 			s.terminate();
 		}
 	}
 
+	/**
+	 * 
+	 */
 	private void bounce ()
 	{
 		Position p1 = entity1.getPosition();
@@ -211,10 +220,13 @@ public final class EntityCollision extends Collision
 	{
 		if ( (entity1 == null) || (entity2 == null)) { throw new IllegalArgumentException("One of the given entities is null."); }
 
-		double sigma = entity1.getShape().getRadius() + entity2.getShape().getRadius();
-		Vector deltaR = entity2.getPosition().getDifference(entity1.getPosition());
-		Vector deltaV = entity2.getVelocity().getDifference(entity1.getVelocity());
-		double d = (Math.pow(deltaV.dotProduct(deltaR), 2)) - ( (deltaV.dotProduct(deltaV)) * (deltaR.dotProduct(deltaR) - Math.pow(sigma, 2)));
+		double sigma = entity1.getShape().getRadius() + entity2.getShape().getRadius(); // size difference between entitities
+		
+		Vector deltaR = entity2.getPosition().getDifference(entity1.getPosition()); // distance between entitites
+		Vector deltaV = entity2.getVelocity().getDifference(entity1.getVelocity()); // difference of the velocities
+		
+		double d = (Math.pow(deltaV.dotProduct(deltaR), 2)) - ( (deltaV.dotProduct(deltaV)) * (deltaR.dotProduct(deltaR) - Math.pow(sigma, 2))); 
+		
 		if (deltaV.dotProduct(deltaR) >= 0 || d <= 0)
 		{
 			this.timeToCollision = Double.POSITIVE_INFINITY;
@@ -250,6 +262,9 @@ public final class EntityCollision extends Collision
 	}
 
 	//TODO DOCUMENT
+	/* (non-Javadoc)
+	 * @see world.physics.collision.Collision#toString()
+	 */
 	@Override
 	public String toString ()
 	{

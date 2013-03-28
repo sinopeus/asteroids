@@ -28,7 +28,9 @@ public class EntityCollisionTest
 
 	private static World	testWorld;
 	private static Asteroid	testAsteroid1, testAsteroid2;
+	@SuppressWarnings ("unused")
 	private static Ship		testShip1, testShip2;
+	@SuppressWarnings ("unused")
 	private static Bullet	testBullet1, testBullet2;
 
 	@Test
@@ -39,5 +41,23 @@ public class EntityCollisionTest
 		assertEquals(ec.getEntity1(), testAsteroid1);
 		assertEquals(ec.getEntity2(), testAsteroid2);
 		assertTrue(Util.fuzzyEquals(ec.getTimeToCollision(), 0.6));
+	}
+	
+	@Test
+	public void resolveTest_AsteroidAsteroid() {
+		EntityCollision ec = new EntityCollision(testWorld, testAsteroid1, testAsteroid2);
+		ec.resolve();
+	}
+	
+	
+	@Test
+	public void calculateCollisionTimeTest() {
+		
+	}
+	
+	
+	@Test
+	public void calculateCollisionPositionTest() {
+		
 	}
 }

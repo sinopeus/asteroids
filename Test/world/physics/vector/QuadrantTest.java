@@ -4,6 +4,7 @@ import org.junit.Test;
 
 public class QuadrantTest
 {
+	@SuppressWarnings ("unused")
 	@Test
 	public void quadrantTest ()
 	{

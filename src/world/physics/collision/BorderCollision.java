@@ -75,8 +75,6 @@ public final class BorderCollision extends Collision
 	{
 		Entity e = getCollisionEntity();
 
-		World w = e.getWorld();
-
 		//One case for every boundary to hit
 		switch (getCollisionBorder())
 		{

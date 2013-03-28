@@ -1,7 +1,6 @@
 package world.physics.vector;
 
 import static org.junit.Assert.assertTrue;
-import junit.framework.TestFailure;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -36,6 +35,7 @@ public class ForceTest
 		assertTrue(Util.fuzzyEquals(6, f.getYComponent()));
 	}
 
+	@SuppressWarnings ("unused")
 	@Test(expected = NullPointerException.class)
 	public void byVectorConstructorTest_NullVector()
 	{

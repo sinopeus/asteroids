@@ -165,6 +165,7 @@ public class Asteroids <World, Ship, Asteroid, Bullet> extends JFrame
 			return;
 		}
 		// <begin>
+		@SuppressWarnings ("unchecked")
 		IFacade <world.World, world.entity.ship.Ship, world.entity.Asteroid, world.entity.Bullet> facade = new Facade();
 		// <end>
 		GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();

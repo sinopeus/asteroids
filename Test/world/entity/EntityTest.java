@@ -9,7 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import world.World;
-import world.entity.ship.Ship;
 import world.physics.Mass;
 import world.physics.geometry.Angle;
 import world.physics.geometry.CircleShape;

@@ -1,7 +1,6 @@
 package world;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import main.CollisionListener;
 import world.entity.Entity;

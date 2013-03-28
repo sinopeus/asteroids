@@ -3,8 +3,6 @@ package model;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Random;
-import java.util.Set;
-
 
 import main.CollisionListener;
 import world.World;
@@ -23,270 +21,9 @@ import world.physics.vector.Velocity;
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
  * @version 2.0
  */
+@SuppressWarnings ("rawtypes")
 public class Facade implements IFacade
 {
-	//
-	//	/**
-	//	 * Returns a new ship with default values.
-	//	 *
-	//	 * @return  A new ship with default values.
-	//	 */
-	//	@Override
-	//	public IShip createShip()
-	//	{
-	//		return new Ship();
-	//	}
-	//
-	//	/**
-	//	 * Creates a ship using the given properties.
-	//	 *
-	//	 * @param   x
-	//	 *          The x component of the ship's position vector.
-	//	 * @param   y
-	//	 *          The y component of the ship's position vector.
-	//	 * @param   xVelocity
-	//	 *          The x component of the ship's velocity vector.
-	//	 * @param   yVelocity
-	//	 *          The y component of the ship's velocity vector.
-	//	 * @param   radius
-	//	 *          The ship's radius.
-	//	 * @param   angle
-	//	 *          The ship's angle.
-	//	 * @return  A new ship with the given values.
-	//	 * 			| result == new Ship(...)
-	//	 * @throws  ModelException
-	//	 *          When invalid properties are provided for the ship.	 
-	//	 */
-	//	@Override
-	//	public IShip createShip(double x, double y, double xVelocity, double yVelocity, double radius, double angle) throws ModelException
-	//	{
-	//		Angle a;
-	//		Direction direction;
-	//		Position position;
-	//		CircleShape shape;
-	//		Velocity velocity;
-	//		double speedLimit;
-	//
-	//		try
-	//		{
-	//			a = new Angle(angle);
-	//			direction = new Direction(a);
-	//			position = new Position(x, y);
-	//			shape = new CircleShape(radius);
-	//			velocity = new Velocity(xVelocity, yVelocity);
-	//			speedLimit = Velocity.getSpeedOfLight();
-	//		} catch (ModelException e)
-	//		{
-	//			throw new ModelException("Invalid arguments for facade.createShip(...)");
-	//		} catch (ArithmeticException e)
-	//		{
-	//			throw new ModelException("Invalid arguments for facade.createShip(...)");
-	//		} catch (AssertionError e)
-	//		{
-	//			throw new ModelException("Invalid arguments for facade.createShip(...)");
-	//		}
-	//
-	//		return new Ship(direction, position, shape, speedLimit, velocity);
-	//	}
-	//
-	//	/**
-	//	 * Gets the x component of the ship's position vector.
-	//	 *
-	//	 * @param   ship
-	//	 *          The ship of which we want to get the x component of the position vector.
-	//	 * @return  The x component of the ship's position vector.
-	//	 */
-	//	@Override
-	//	public double getX(IShip ship)
-	//	{
-	//		return ((Ship) ship).getPosition().getXComponent();
-	//	}
-	//
-	//	/**
-	//	 * Gets the y component of the ship's position vector.
-	//	 *
-	//	 * @param   ship
-	//	 *          The ship of which we want to get the y component of the position vector.
-	//	 * @return  The y component of the ship's position vector.
-	//	 */
-	//	@Override
-	//	public double getY(IShip ship)
-	//	{
-	//		return ((Ship) ship).getPosition().getYComponent();
-	//	}
-	//
-	//	/**
-	//	 * Gets the x component of the ship's velocity vector.
-	//	 *
-	//	 * @param   ship
-	//	 *          The ship of which we want to get the x component of the velocity vector.
-	//	 * @return  The x component of the ship's velocity vector.
-	//	 */
-	//	@Override
-	//	public double getXVelocity(IShip ship)
-	//	{
-	//		return ((Ship) ship).getVelocity().getXComponent();
-	//	}
-	//
-	//	/**
-	//	 * Gets the y component of the ship's velocity vector.
-	//	 *
-	//	 * @param   ship
-	//	 *          The ship of which we want to get the y component of the velocity vector.
-	//	 * @return  The y component of the ship's velocity vector.
-	//	 */
-	//	@Override
-	//	public double getYVelocity(IShip ship)
-	//	{
-	//		return ((Ship) ship).getVelocity().getYComponent();
-	//	}
-	//
-	//	/**
-	//	 * Gets the ship's radius.
-	//	 *
-	//	 * @param   ship
-	//	 *          The ship whose radius we want to know.
-	//	 * @return  The ship's radius.
-	//	 */
-	//	@Override
-	//	public double getRadius(IShip ship)
-	//	{
-	//		return ((Ship) ship).getShape().getRadius();
-	//	}
-	//
-	//	/**
-	//	 * Gets the ship's direction expressed in radians.
-	//	 *
-	//	 * @param   ship
-	//	 *          The ship whose direction we want to know. 
-	//	 * @return  The ship's direction in radians.
-	//	 */
-	//	@Override
-	//	public double getDirection(IShip ship)
-	//	{
-	//		return ((Ship) ship).getDirection().getAngle().getAngle();
-	//	}
-	//
-	//	/**
-	//	 * Moves the ship with the current velocity and acceleration for a given time.
-	//	 *
-	//	 * @param   ship  
-	//	 *          The ship we want to move. 
-	//	 * @param   dt    
-	//	 *          The length of time during which we want to move the ship.
-	//	 * @effect  Moves the given ship for the given duration
-	//	 * 			| ship.move(dt)
-	//	 * @throws  ModelException
-	//	 *          When an invalid ship or time is provided.	 
-	//	 */
-	//	@Override
-	//	public void move(IShip ship, double dt) throws ModelException
-	//	{
-	//		if (ship == null)
-	//		{
-	//			throw new ModelException("Invalid ship.");
-	//		}
-	//		if (Double.isNaN(dt) || dt < 0)
-	//		{
-	//			throw new ModelException("Invalid time.");
-	//		}
-	//		((Ship) ship).move(dt);
-	//	}
-	//
-	//	/**
-	//	 * Applies thrust in order to accelerate the ship.
-	//	 *
-	//	 * @param   ship      
-	//	 *          The ship to which we apply thrust.
-	//	 * @param   amount
-	//	 *          The amount of thrust we want to apply.
-	//	 * @effect  Thrusts the given ship for a given acceleration.
-	//	 * 			| ship.thrust(amount)
-	//	 * @throws  ModelException
-	//	 *          When an invalid ship is provided.
-	//	 */
-	//	@Override
-	//	public void thrust(IShip ship, double amount) throws ModelException
-	//	{
-	//		if (ship == null)
-	//		{
-	//			throw new ModelException("Invalid ship.");
-	//		}
-	//		if (Double.isNaN(amount) || amount < 0)
-	//		{
-	//			amount = 0;
-	//		}
-	//		((Ship) ship).thrust(amount);
-	//	}
-	//
-	//	/**
-	//	 * Turns the ship by the given angle.
-	//	 *
-	//	 * @param   ship
-	//	 *          The ship we want to turn.
-	//	 * @param   angle
-	//	 *          The angle by which we want to turn the ship.
-	//	 * @effect  Turns the given ship by a given angle.
-	//	 * 			| ship.turn(new Angle(angle))
-	//	 * @throws  ModelException
-	//	 *          When an invalid ship is provided.
-	//	 */
-	//	@Override
-	//	public void turn(IShip ship, double angle) throws ModelException
-	//	{
-	//		if (ship == null)
-	//		{
-	//			throw new ModelException("Invalid ship.");
-	//		}
-	//		((Ship) ship).turn(new Angle(angle));
-	//	}
-	//
-	//	/**
-	//	 * Gets the distance between two ships.
-	//	 *
-	//	 * @param   ship1
-	//	 *          The first ship.
-	//	 * @param   ship2
-	//	 *          The second ship.
-	//	 * @return	The distance between the two ships.
-	//	 * 			| result == ((Ship) ship1).getPosition().getDistanceTo(((Ship) ship2).getPosition())
-	//	 * @throws  ModelException
-	//	 *          When an invalid ship is provided.
-	//	 */
-	//	@Override
-	//	public double getDistanceBetween(IShip ship1, IShip ship2) throws ModelException
-	//	{
-	//		if ((ship1 == null) || (ship2 == null))
-	//		{
-	//			throw new ModelException("Invalid ship.");
-	//		}
-	//		return ((Ship) ship1).getPosition().getDistanceTo(((Ship) ship2).getPosition());
-	//	}
-	//
-	//	/**
-	//	 * Checks if two ships overlap.
-	//	 *
-	//	 * @param   ship1
-	//	 *          The first ship.
-	//	 * @param   ship2
-	//	 *          The second ship.
-	//	 * @return  Whether the ships overlap or not.
-	//	 * 			| result == getDistanceBetween(ship1, ship2) - getRadius(ship1) - getRadius(ship2) <= 0
-	//	 * @throws  ModelException
-	//	 *          One of the given ships is null
-	//	 *          | ((ship1 == null) || (ship2 == null))
-	//	 */
-	//	@Override
-	//	public boolean overlap(IShip ship1, IShip ship2) throws ModelException
-	//	{
-	//		if ((ship1 == null) || (ship2 == null))
-	//		{
-	//			throw new ModelException("Invalid ship.");
-	//		}
-	//		return getDistanceBetween(ship1, ship2) - getRadius(ship1) - getRadius(ship2) <= 0;
-	//	}
-	//
-
 	@Override
 	public Object createWorld (double width, double height)
 	{
@@ -310,7 +47,7 @@ public class Facade implements IFacade
 	}
 
 	@Override
-	public Set getShips (Object world)
+	public HashSet<Ship> getShips (Object world)
 	{
 		if (world.getClass () != World.class) { throw new ModelException ("The given object is not a world."); }
 		World w = (World) world;
@@ -327,7 +64,7 @@ public class Facade implements IFacade
 	}
 
 	@Override
-	public Set getAsteroids (Object world)
+	public HashSet <Asteroid> getAsteroids (Object world)
 	{
 		if (world.getClass () != World.class) { throw new ModelException ("The given object is not a world."); }
 		World w = (World) world;
@@ -344,7 +81,7 @@ public class Facade implements IFacade
 	}
 
 	@Override
-	public Set getBullets (Object world)
+	public HashSet<Bullet> getBullets (Object world)
 	{
 		if (world.getClass () != World.class) { throw new ModelException ("The given object is not a world."); }
 		World w = (World) world;
@@ -396,7 +133,6 @@ public class Facade implements IFacade
 		if (world.getClass () != World.class) { throw new ModelException ("The given object is not a world."); }
 		World w = (World) world;
 		if (! (asteroid instanceof Asteroid)) { throw new ModelException ("The given object is not an asteroid."); }
-		Asteroid a = (Asteroid) asteroid;
 		w.remove (asteroid);
 	}
 
