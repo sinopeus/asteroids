@@ -46,7 +46,7 @@ public final class EntityCollision extends Collision
 	 * 
 	 * @return entity2	The second entity involved in the collision. 
 	 */
-	public Entity getEntity2 ()
+	private Entity getEntity2 ()
 	{
 		return entity2;
 	}
@@ -56,7 +56,7 @@ public final class EntityCollision extends Collision
 	 * 
 	 * @param entity2
 	 */
-	public void setEntity2 (Entity entity2)
+	private void setEntity2 (Entity entity2)
 	{
 		this.entity2 = entity2;
 	}
