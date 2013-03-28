@@ -272,6 +272,12 @@ public class Vector
 		return this.getDifference(v).getMagnitude();
 	}
 
+	/**
+	 * Returns the quadrant this vector is in.
+	 * 
+	 * @return	The quadrant this vector is in.
+	 * 			| //TODO
+	 */
 	public Quadrant getQuadrant ()
 	{
 		if (getXComponent() >= 0 && getYComponent() >= 0) { return Quadrant.QUADRANT_I; }

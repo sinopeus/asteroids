@@ -227,11 +227,26 @@ public class VectorTest
 	{
 		infiniteVector1.getDistanceTo(infiniteVector1);
 	}
+	
+	@Test
+	public void getQuadrantTest(){
+		assertEquals(new Vector(1, 1).getQuadrant(),Quadrant.QUADRANT_I);
+		assertEquals(new Vector(-1, 1).getQuadrant(),Quadrant.QUADRANT_II);
+		assertEquals(new Vector(-1, -1).getQuadrant(),Quadrant.QUADRANT_III);
+		assertEquals(new Vector(1, -1).getQuadrant(),Quadrant.QUADRANT_IV);
+	}
+	
+	@Test
+	public void toStringTest(){
+		testVector1.toString();
+	}
 
 	@Test
 	public void equalsTest ()
 	{
 		assertTrue(testVector1.equals(new Vector(10, 10)));
+		assertFalse(testVector1.equals(new Vector(10, -10)));
+		assertFalse(testVector1.equals(new Vector(-10, 10)));
 		assertFalse(testVector1.equals(new Vector(5, 5)));
 		assertFalse(testVector1.equals(new Position()));
 		assertFalse(testVector1.equals(null));
@@ -240,9 +255,7 @@ public class VectorTest
 	@Test
 	public void hashCodeTest ()
 	{
-		assertEquals(testVector1.hashCode(), (new Vector(10, 10)).hashCode());
-		assertFalse(testVector1.hashCode() == ( (new Vector(5, 5)).hashCode()));
-		assertFalse(testVector1.hashCode() == ( (new Position()).hashCode()));
+		testVector1.hashCode();
 	}
 
 }

@@ -9,21 +9,21 @@ package world.physics.vector;
 public class Force extends Vector
 {
 	/**
-   * The extended constructor for this class.
-   *
+	* The extended constructor for this class.
+	*
 	 * @param x  The x component of this force.
 	 * @param y  The y component of this force.
 	 * @effect 	 Initializes this acceleration by calling the extended vector constructor.
 	 * 			| Vector(x,y)
 	 */
-	public Force(double x, double y)
+	public Force (double x, double y)
 	{
-		super(x,y); 
+		super(x, y);
 	}
 
 	/**
-   * The vector constructor for this class.
-   *
+	* The vector constructor for this class.
+	*
 	 * @param v  The vector we want to replicate as a force vector.
 	 * @effect	Initializes this acceleration by calling the by vector vector constructor.
 	 * 			| Vector(v)
@@ -31,25 +31,25 @@ public class Force extends Vector
 	 * 			The given vector is null.
 	 * 			| v == null
 	 */
-	public Force(Vector v) throws NullPointerException
+	public Force (Vector v) throws NullPointerException
 	{
 		super(v);
 	}
 
 	/**
 	 * Initializes this force vector with default values.
-   *
+	*
 	 * @effect	Initializes this acceleration by calling the simple vector constructor.
 	 */
-	public Force()
+	public Force ()
 	{
-		super(); 
+		super();
 	}
-	
+
 	//TODO DOCUMENT
-		@Override
-		public String toString()
-		{
-			return "F_" + hashCode() + " = " + super.toString() + " N";
-		}
+	@Override
+	public String toString ()
+	{
+		return "F_" + hashCode() + " = " + super.toString() + " N";
+	}
 }

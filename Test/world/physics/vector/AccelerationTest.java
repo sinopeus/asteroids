@@ -75,10 +75,17 @@ public class AccelerationTest
 		assertTrue(Util.fuzzyEquals(a.getXComponent(), 0));
 		assertTrue(Util.fuzzyEquals(a.getYComponent(), 0));
 	}
+	
+	@Test
+	public void toStringTest(){
+		testAcceleration.toString();
+	}
 
 	@Test
 	public void equalsTest(){
 		assertTrue(testAcceleration.equals(new Acceleration(5, 5)));
+		assertFalse(testAcceleration.equals(new Acceleration(4, 5)));
+		assertFalse(testAcceleration.equals(new Acceleration(5, 4)));
 		assertFalse(testAcceleration.equals(new Acceleration()));
 		assertFalse(testAcceleration.equals(new Vector(5,5)));
 		assertFalse(testAcceleration.equals(null));

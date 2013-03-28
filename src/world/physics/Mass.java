@@ -27,7 +27,7 @@ public class Mass // TODO document
 	 * @throws 	IllegalArgumentException
 	 *         	| !canHaveAsMass(mass)
 	 */
-	public Mass(double mass) throws IllegalArgumentException
+	public Mass (double mass) throws IllegalArgumentException
 	{
 		set(mass);
 	}
@@ -37,7 +37,7 @@ public class Mass // TODO document
 	 */
 	@Basic
 	@Raw
-	public double get()
+	public double get ()
 	{
 		return mass;
 	}
@@ -49,9 +49,9 @@ public class Mass // TODO document
 	 */
 	@Basic
 	@Raw
-	protected boolean canHaveAsMass(double mass)
+	protected boolean canHaveAsMass (double mass)
 	{
-		return mass > 0;
+		return ( (!Double.isNaN(mass)) && (mass > 0));
 	}
 
 	/**
@@ -63,19 +63,16 @@ public class Mass // TODO document
 	 */
 	@Basic
 	@Raw
-	private void set(double mass) throws IllegalArgumentException
+	private void set (double mass) throws IllegalArgumentException
 	{
-		if (!canHaveAsMass(mass))
-		{
-			throw new IllegalArgumentException("Illegal mass provided");
-		}
+		if (!canHaveAsMass(mass)) { throw new IllegalArgumentException("Illegal mass provided"); }
 		this.mass = mass;
 	}
 
 	/**
 	 * A variable registering the value of this mass in kg.
 	 */
-	private double mass;
+	private double	mass;
 
 	/**
 	 * Checks if the given mass is the same as this one.
@@ -84,20 +81,11 @@ public class Mass // TODO document
 	 * @return  | (o != null && o.getClass()==getClass() && Util.fuzzyEquals(o.get(),this.get()))
 	 */
 	@Override
-	public boolean equals(Object o)
+	public boolean equals (Object o)
 	{
-		if (this == o)
-		{
-			return true;
-		}
-		if (o == null)
-		{
-			return false;
-		}
-		if (getClass() != o.getClass())
-		{
-			return false;
-		}
+		if (this == o) { return true; }
+		if (o == null) { return false; }
+		if (getClass() != o.getClass()) { return false; }
 		Mass other = (Mass) o;
 		return Util.fuzzyEquals(other.get(), this.get());
 	}
@@ -106,7 +94,7 @@ public class Mass // TODO document
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString()
+	public String toString ()
 	{
 		return ("m_" + hashCode() + " = " + this.get() + "kg");
 	}
@@ -115,7 +103,7 @@ public class Mass // TODO document
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
-	public int hashCode()
+	public int hashCode ()
 	{
 		return ("" + get()).hashCode();
 	}

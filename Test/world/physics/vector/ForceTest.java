@@ -1,7 +1,9 @@
 package world.physics.vector;
 
 import static org.junit.Assert.assertTrue;
+import junit.framework.TestFailure;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import world.physics.vector.Force;
@@ -11,6 +13,13 @@ import Utilities.Util;
 
 public class ForceTest
 {
+	@Before
+	public void setUpImmutableTestFixture_Force(){
+		testForce = new Force(4, 5);
+	}
+	
+	private static Force testForce;
+	
 	@Test
 	public void extendedConstructorTest_ComponentsMatchGivenComponents_PerfectParameters()
 	{
@@ -39,5 +48,10 @@ public class ForceTest
 		Force f = new Force();
 		assertTrue(Util.fuzzyEquals(0, f.getXComponent()));
 		assertTrue(Util.fuzzyEquals(0, f.getYComponent()));
+	}
+	
+	@Test
+	public void toStringTest(){
+		testForce.toString();
 	}
 }

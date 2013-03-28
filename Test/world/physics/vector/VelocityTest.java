@@ -132,17 +132,24 @@ public class VelocityTest
 	}
 
 	@Test
-	public void getSpeedOfLightTest()
-	{
-		assertTrue(Util.fuzzyEquals(Velocity.getSpeedOfLight(), 300000));
+	public void toStringTest(){
+		testVelocity.toString();
 	}
-
+	
 	@Test
 	public void equalsTest()
 	{
 		assertTrue(testVelocity.equals(new Velocity(10, 10)));
+		assertFalse(testVelocity.equals(new Velocity(10, -10)));
+		assertFalse(testVelocity.equals(new Velocity(-10, 10)));
 		assertFalse(testVelocity.equals(new Velocity()));
 		assertFalse(testVelocity.equals(new Vector(10, 10)));
 		assertFalse(testVelocity.equals(null));
+	}
+	
+	@Test
+	public void getSpeedOfLightTest()
+	{
+		assertTrue(Util.fuzzyEquals(Velocity.getSpeedOfLight(), 300000));
 	}
 }

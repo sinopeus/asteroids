@@ -122,10 +122,10 @@ public abstract class Collision
 		double minimum = Double.POSITIVE_INFINITY;
 		Collision first = null;
 		
-		for (int indexOfFirst = 0; indexOfFirst < world.size(); indexOfFirst++)
+		for (int indexOfFirst = 0; indexOfFirst < world.numberOfEntities(); indexOfFirst++)
 		{
 			Entity e1 = world.get(indexOfFirst);
-			for (int indexOfSecond = indexOfFirst; indexOfSecond < world.size(); indexOfSecond++)
+			for (int indexOfSecond = indexOfFirst; indexOfSecond < world.numberOfEntities(); indexOfSecond++)
 			{
 				Entity e2 = world.get(indexOfSecond);
 				if ( (e1 instanceof Ship) && (e2 instanceof Bullet))

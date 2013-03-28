@@ -84,4 +84,9 @@ public class DirectionTest
 		testDirection.rotate(testAngle);
 		assertEquals(testDirection.getAngle(), new Angle(Math.PI));
 	}
+	
+	@Test
+	public void toStringTest(){
+		testDirection.toString();
+	}
 }

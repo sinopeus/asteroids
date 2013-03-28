@@ -188,9 +188,6 @@ public class Ship extends Entity implements IShip
 		//RECOIL
 		Velocity recoil = Mechanics.ConserVationOfMomentum_CalculateVelocity(b.getVelocity(), b.getMass(), getMass());
 		this.setVelocity(new Velocity(getVelocity().getDifference(recoil)));//TODO something is wrong.
-		System.out.println(getVelocity());
-//		Acceleration a = Mechanics.Newtons_secondLaw_CalculateAcceleration(new Force(getDirection().getScaledBy(thrustPerSecond)),getMass());
-//		getOwner().getVelocity().accelerateBy(a, duration);
 	}
 
 	@Override

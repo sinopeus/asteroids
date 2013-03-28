@@ -5,6 +5,7 @@ import world.physics.vector.Force;
 import world.physics.vector.Velocity;
 
 /**
+ * A class dictating every used law in Newtonian physics.
  * 
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
  * @version 2.0
@@ -59,78 +60,24 @@ public class Mechanics
 		return new Force(f1.getScaledBy(-1.0));
 	}
 
-	//TODO document and test
+	/**
+	 * Returns the velocity as dictated by the conservation of momentum, given the velocity and mass of the first object, and the mass of the second object.
+	 * 
+	 * @param 	v1
+	 * 			The given velocity of the first object.
+	 * @param 	m1
+	 * 			The given mass of the first object.
+	 * @param 	m2
+	 * 			The given mass of the second object.
+	 * @return	A velocity equal and oposite to the velocity of the first object, scaled according to the masses of the objects.
+	 * 			| result == new Velocity(v1.getScaledBy(m1.get() / m2.get()));
+	 * @throws 	IllegalArgumentException
+	 * 			One of the arguments are null
+	 * 			| (v1 == null || m1 == null || m2 == null)
+	 */
 	public static Velocity ConserVationOfMomentum_CalculateVelocity (Velocity v1, Mass m1, Mass m2) throws IllegalArgumentException
 	{
+		if (v1 == null || m1 == null || m2 == null) { throw new IllegalArgumentException("Null parameter provided."); }
 		return new Velocity(v1.getScaledBy(m1.get() / m2.get()));
 	}
-
-	//	/**
-	//	 * Gets the time to collision between two entities.
-	//	 *
-	//	 * @param   entity1
-	//	 *          The first entity.
-	//	 * @param   entity2
-	//	 *          The second entity.
-	//	 * @return  The time to collision between the two entities.
-	//	 *			
-	//	 * @throws  IllegalArgumentException
-	//	 *          One of the given entities is null.
-	//	 *          | ((entity1 == null) || (entity2 == null))
-	//	 */
-	//	public static double getTimeToCollision(Entity entity1, Entity entity2) throws IllegalArgumentException
-	//	{
-	//		if ((entity1 == null) || (entity2 == null))
-	//		{
-	//			throw new IllegalArgumentException("One of the given entities is null.");
-	//		}
-	//
-	//		double sigma = entity1.getShape().getRadius() + entity2.getShape().getRadius();
-	//		Vector deltaR = entity2.getPosition().getDifference(entity1.getPosition());
-	//		Vector deltaV = entity2.getVelocity().getDifference(entity1.getVelocity());
-	//		double d = (Math.pow(deltaV.dotProduct(deltaR), 2)) - ((deltaV.dotProduct(deltaV)) * (deltaR.dotProduct(deltaR) - Math.pow(sigma, 2)));
-	//		if (deltaV.dotProduct(deltaR) >= 0 || d <= 0)
-	//		{
-	//			return Double.POSITIVE_INFINITY;
-	//		} else
-	//		{
-	//			return -(deltaV.dotProduct(deltaR) + Math.sqrt(d)) / (deltaV.dotProduct(deltaV));
-	//		}
-	//	}
-	//
-	//	/**
-	//	 * Gets the position at which two entities will collide.
-	//	 *
-	//	 * @param   entity1
-	//	 *          The first entity.
-	//	 * @param   entity2
-	//	 *          The second entity.
-	//	 * @return  The position of the place of collision.
-	//	 * 
-	//	 * @throws  IllegalArgumentException
-	//	 *          One of the given entities is null.
-	//	 *          | ((entity1 == null) || (entity1 == null))
-	//	 */
-	//	public static Position getCollisionPosition(Entity entity1, Entity entity2) throws IllegalArgumentException //
-	//	{
-	//		if ((entity1 == null) || (entity2 == null))
-	//		{
-	//			throw new IllegalArgumentException("One of the given entities is null.");
-	//		}
-	//
-	//		double deltaT = getTimeToCollision(entity1, entity2);
-	//
-	//		if (Double.isInfinite(deltaT))
-	//		{
-	//			return null;
-	//		}
-	//
-	//		Position newPosShip1 = entity1.getPosition().getSum(entity1.getVelocity().getScaledBy(deltaT));
-	//		Position newPosShip2 = entity2.getPosition().getSum(entity2.getVelocity().getScaledBy(deltaT));
-	//
-	//		double sigma = entity1.getShape().getRadius() + entity2.getShape().getRadius();
-	//		double ship1Radius = entity1.getShape().getRadius();
-	//
-	//		return new Position(newPosShip1.getSum(newPosShip2.getDifference(newPosShip1).getScaledBy(ship1Radius / sigma)));
-	//	}
 };

@@ -1,6 +1,7 @@
 package world;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import main.CollisionListener;
 import world.entity.Entity;
@@ -145,7 +146,7 @@ public class World extends ArrayList <Entity>
 	 */
 	private boolean canHaveAsEntity (Entity entity)
 	{
-		return (entity != null); //TODO check if space is occupied
+		return ((entity != null ) && !(this.contains(entity)));
 	}
 
 	/**
@@ -161,9 +162,9 @@ public class World extends ArrayList <Entity>
 	@Override
 	public boolean add (Entity entity) throws IllegalArgumentException
 	{
-		//TODO ADD CHECKER FOR DOUBLE ENTITIES AND ENTITIES OUTSIDE OF THE WORLD.
+		 //TODO check if space is occupied
 		if (!canHaveAsEntity(entity)) { throw new IllegalArgumentException("Invalid entity added"); }
-		if (isInWorld(entity))
+		if (isInWorld(entity) /*&& isSpaceForEntity(entity)*/)
 		{
 			entity.setWorld(this);
 			super.add(entity);
@@ -222,7 +223,7 @@ public class World extends ArrayList <Entity>
 	 * @param entity
 	 * @return
 	 */
-	public boolean isInWorld (Entity entity)
+	private boolean isInWorld (Entity entity)
 	{
 		if (entity == null) { return false; }
 		double r = entity.getShape().getRadius();
@@ -231,6 +232,24 @@ public class World extends ArrayList <Entity>
 		boolean p3 = isInWorld(entity.getPosition().getSum(new Vector(0, r)));
 		boolean p4 = isInWorld(entity.getPosition().getSum(new Vector(0, -r)));
 		return p1 && p2 && p3 && p4;
+	}
+	
+//	//TODO DOC AND TEST
+//	//TODO SOMETHING IS WRONG HERE
+//	private boolean isSpaceForEntity(Entity entity){
+//		for (Entity e : this)
+//		{
+//			if (e.getPosition().getDistanceTo(entity.getPosition()) < e.getShape().getRadius()+entity.getShape().getRadius()){
+//				return false;
+//			}
+//		}
+//		return true;
+//	}
+	
+	//TODO DOCUMENT & TEST
+	public int numberOfEntities()
+	{
+		return this.size();
 	}
 
 	@Override
