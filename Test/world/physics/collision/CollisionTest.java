@@ -66,7 +66,7 @@ public class CollisionTest
 		assertTrue (c instanceof BorderCollision);
 		BorderCollision bc = (BorderCollision) c;
 		assertEquals (bc.getCollisionBorder (), BorderCollision.Border.BORDER_RIGHT);
-		assertEquals (bc.getCollisionEntity (), testAsteroid1);
+		assertEquals (bc.getCollisionEntity (), testAsteroid2);
 	}
 
 	@Test
@@ -79,7 +79,7 @@ public class CollisionTest
 		assertTrue (c instanceof BorderCollision);
 		BorderCollision bc = (BorderCollision) c;
 		assertEquals (bc.getCollisionBorder (), BorderCollision.Border.BORDER_TOP);
-		assertEquals (bc.getCollisionEntity (), testAsteroid1);
+		assertEquals (bc.getCollisionEntity (), testAsteroid3);
 	}
 
 	@Test
@@ -92,7 +92,7 @@ public class CollisionTest
 		assertTrue (c instanceof BorderCollision);
 		BorderCollision bc = (BorderCollision) c;
 		assertEquals (bc.getCollisionBorder (), BorderCollision.Border.BORDER_BOTTOM);
-		assertEquals (bc.getCollisionEntity (), testAsteroid1);
+		assertEquals (bc.getCollisionEntity (), testAsteroid4);
 	}
 
 	//TODO	
@@ -100,5 +100,6 @@ public class CollisionTest
 	@Test (expected = IllegalArgumentException.class)
 	public void getNextCollisionTest_IllegalWorld ()
 	{
+		Collision.getNextCollision(null);
 	}
 }

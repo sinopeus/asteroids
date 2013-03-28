@@ -116,9 +116,12 @@ public abstract class Collision
 	 * @param 	world
 	 * 			The given world.
 	 * @return	//TODO
+	 * @throws IllegalArgumentException 
 	 */
-	public static Collision getNextCollision (World world)
+	public static Collision getNextCollision (World world) throws IllegalArgumentException
 	{
+		if (world == null){ throw new IllegalArgumentException("Null world provided.");}
+		
 		double minimum = Double.POSITIVE_INFINITY;
 		Collision first = null;
 		

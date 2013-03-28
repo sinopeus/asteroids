@@ -18,8 +18,6 @@ public final class BorderCollision extends Collision
 		setCollisionEntity(entity);
 
 		calculateCollisionTime();
-		//		calculateCollisionPosition ();
-		//		calculateCollisionBorder();
 	}
 
 	//TODO EVERYTHING
@@ -37,11 +35,12 @@ public final class BorderCollision extends Collision
 	//TODO EVERYTHING
 	protected boolean canHaveAsCollisionBorder (Border collisionBorder)
 	{
-		return true;
+		return (collisionBorder != null);
 	}
 
 	public void setCollisionBorder (Border collisionBorder)
 	{
+		if (!canHaveAsCollisionBorder(collisionBorder)) { throw new IllegalArgumentException("Illegal border provided."); }
 		this.collisionBorder = collisionBorder;
 	}
 
@@ -57,12 +56,13 @@ public final class BorderCollision extends Collision
 	//TODO EVERYTHING
 	public boolean canHaveAsEntity (Entity collisionEntity)
 	{
-		return true;
+		return (collisionEntity != null);
 	}
 
 	//TODO EVERYTHING
 	public void setCollisionEntity (Entity collisionEntity)
 	{
+		if (!canHaveAsEntity(collisionEntity)) { throw new IllegalArgumentException("Illegal collision entity provided."); }
 		this.collisionEntity = collisionEntity;
 	}
 
@@ -198,11 +198,9 @@ public final class BorderCollision extends Collision
 	//NOT EVEN NECESSARY?
 	protected void calculateCollisionPosition ()
 	{
-		if (getCollisionEntity() == null) { throw new IllegalArgumentException("One of the given entities is null."); }
-
 		double deltaT = getTimeToCollision();
 
-		if (Double.isInfinite(deltaT)) { return; }
+//		if (Double.isInfinite(deltaT)) { return; }
 
 		Position newPosition = getCollisionEntity().getPosition().getSum(getCollisionEntity().getVelocity().getScaledBy(deltaT));
 
