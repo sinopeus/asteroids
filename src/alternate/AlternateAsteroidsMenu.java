@@ -183,15 +183,10 @@ public class AlternateAsteroidsMenu extends JPanel
 			switch (selectedIndex)
 			{
 				case 0:
-					System.out.println("singleplayer");
 					game.game.startSinglePlayerGame();
-					//TODO
 					break;
 				case 1:
-					System.out.println("multiplayer");
-					game.layout.show(game.getContentPane(), "GAME");
-					game.game.requestFocusInWindow();
-					//TODO
+					game.game.startMultiPlayerGame();
 					break;
 				case 2:
 					System.out.println("settingsmenu.");

@@ -41,6 +41,8 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 	public IFacade <world.World, world.entity.ship.Ship, world.entity.Asteroid, world.entity.Bullet>	facade;
 	private World																						world;
 
+	private boolean																						hasStarted;
+
 	private int																							width,
 			height;
 	private BorderLayout																				layout;
@@ -54,7 +56,7 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 	private Map <Object, Visualization <?>>																visualizations		= new HashMap <Object, Visualization <?>>();
 	private Set <Explosion>																				explosions			= new HashSet <Explosion>();
 
-	public AlternateWorldView (IFacade <world.World, world.entity.ship.Ship, world.entity.Asteroid, world.entity.Bullet> facade,int width,int height)
+	public AlternateWorldView (IFacade <world.World, world.entity.ship.Ship, world.entity.Asteroid, world.entity.Bullet> facade, int width, int height)
 	{
 		this.facade = facade;
 		this.width = width;
@@ -95,19 +97,27 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 	public void startSinglePlayerGame ()
 	{
 		World world = facade.createWorld(width, height);
+		this.world = world;
 		Ship player = facade.createShip(width / 2., height / 2., 0, 0, 40, 0, 5E15);
 		facade.addShip(world, player);
 		Asteroid asteroid1 = facade.createAsteroid(200, 200, 25, 50, 20);
 		facade.addAsteroid(world, asteroid1);
 		Asteroid asteroid2 = facade.createAsteroid(600, 80, -30, -40, 80);
 		facade.addAsteroid(world, asteroid2);
+
+		int size1 = (int) (2 * facade.getShipRadius(player));
+		Image image1 = AlternateResources.getImage("deathstar").getScaledInstance(size1, size1, Image.SCALE_DEFAULT);
+		visualizations.put(player, new ShipVisualization(Color.RED, player, image1));
+
 		game.layout.show(game.getContentPane(), "GAME");
 		requestFocusInWindow();
+		hasStarted = true;
 	}
 
 	public void startMultiPlayerGame ()
 	{
 		World world = facade.createWorld(width, height);
+		this.world = world;
 		Ship player1 = facade.createShip(width / 5 * 4, height / 2., 0, 0, 40, Math.PI, 5E15);
 		facade.addShip(world, player1);
 		Ship player2 = facade.createShip(width / 5, height / 2., 0, 0, 40, 0, 5E15);
@@ -120,8 +130,17 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 		facade.addAsteroid(world, asteroid3);
 		Asteroid asteroid4 = facade.createAsteroid(40, height - 100, 10, -8, 15);
 		facade.addAsteroid(world, asteroid4);
+
+		int size1 = (int) (2 * facade.getShipRadius(player1));
+		Image image1 = AlternateResources.getImage("deathstar").getScaledInstance(size1, size1, Image.SCALE_DEFAULT);
+		visualizations.put(player1, new ShipVisualization(Color.RED, player1, image1));
+		int size2 = (int) (2 * facade.getShipRadius(player2));
+		Image image2 = AlternateResources.getImage("sphere").getScaledInstance(size2, size2, Image.SCALE_DEFAULT);
+		visualizations.put(player2, new ShipVisualization(Color.GREEN, player2, image2));
+
 		game.layout.show(game.getContentPane(), "GAME");
 		requestFocusInWindow();
+		hasStarted = true;
 	}
 
 	// ------------------GAME MODES----------------------
@@ -129,50 +148,53 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 	@Override
 	protected void paintComponent (Graphics g)
 	{
-//		super.paintComponent(g);
-//
-		g.drawImage(AlternateResources.getImage("game-background"), 0, 0, getRootPane().getWidth(), getRootPane().getHeight(), null);
-//
-//		Graphics2D g2d = (Graphics2D) g;
-//		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-//		g2d.setColor(Color.WHITE);
-//		for (Ship ship : facade.getShips(world))
-//		{
-//			if (!visualizations.containsKey(ship))
-//			{
-//				visualizations.put(ship, new ShipVisualization(Color.BLUE, ship, null));
-//			}
-//			visualizations.get(ship).draw(g2d);
-//		}
-//		for (Asteroid asteroid : facade.getAsteroids(world))
-//		{
-//			if (!visualizations.containsKey(asteroid))
-//			{
-//				visualizations.put(asteroid, new AsteroidVisualization(asteroid));
-//			}
-//			visualizations.get(asteroid).draw(g2d);
-//		}
-//		for (Bullet bullet : facade.getBullets(world))
-//		{
-//			if (!visualizations.containsKey(bullet))
-//			{
-//				Ship ship = facade.getBulletSource(bullet);
-//				visualizations.put(bullet, new BulletVisualization(visualizations.get(ship).getColor(), bullet));
-//			}
-//			visualizations.get(bullet).draw(g2d);
-//		}
-//		for (Explosion explosion : explosions)
-//		{
-//			explosion.draw(g2d);
-//		}
-//		if (msg != null)
-//		{
-//			g2d.setColor(Color.WHITE);
-//			g2d.setFont(g2d.getFont().deriveFont(40f));
-//			drawCenteredString(g2d, msg);
-//			g2d.setFont(g2d.getFont().deriveFont(20f));
-//			drawCenteredString(g2d, "Press ESC to continue ...", getHeight() / 3 * 2);
-//		}
+		if (hasStarted)
+		{
+			super.paintComponent(g);
+
+			g.drawImage(AlternateResources.getImage("game-background"), 0, 0, getRootPane().getWidth(), getRootPane().getHeight(), null);
+
+			Graphics2D g2d = (Graphics2D) g;
+			g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+			g2d.setColor(Color.WHITE);
+			for (Ship ship : facade.getShips(world))
+			{
+				if (!visualizations.containsKey(ship))
+				{
+					visualizations.put(ship, new ShipVisualization(Color.BLUE, ship, null));
+				}
+				visualizations.get(ship).draw(g2d);
+			}
+			for (Asteroid asteroid : facade.getAsteroids(world))
+			{
+				if (!visualizations.containsKey(asteroid))
+				{
+					visualizations.put(asteroid, new AsteroidVisualization(asteroid));
+				}
+				visualizations.get(asteroid).draw(g2d);
+			}
+			for (Bullet bullet : facade.getBullets(world))
+			{
+				if (!visualizations.containsKey(bullet))
+				{
+					Ship ship = facade.getBulletSource(bullet);
+					visualizations.put(bullet, new BulletVisualization(visualizations.get(ship).getColor(), bullet));
+				}
+				visualizations.get(bullet).draw(g2d);
+			}
+			for (Explosion explosion : explosions)
+			{
+				explosion.draw(g2d);
+			}
+			if (msg != null)
+			{
+				g2d.setColor(Color.WHITE);
+				g2d.setFont(g2d.getFont().deriveFont(40f));
+				drawCenteredString(g2d, msg);
+				g2d.setFont(g2d.getFont().deriveFont(20f));
+				drawCenteredString(g2d, "Press ESC to continue ...", getHeight() / 3 * 2);
+			}
+		}
 	}
 
 	private void drawCenteredString (Graphics2D g2d, String txt, int y)
