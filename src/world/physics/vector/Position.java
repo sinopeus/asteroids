@@ -67,7 +67,7 @@ public class Position extends Vector
 	 */
 	@Basic
 	@Raw
-	public void setXComponent(double x)
+	public void setX(double x)
 	{
 		if (!canHaveAsComponent(x))
 		{
@@ -91,7 +91,7 @@ public class Position extends Vector
 	 */
 	@Basic
 	@Raw
-	public void setYComponent(double y)
+	public void setY(double y)
 	{
 		if (!canHaveAsComponent(y))
 		{
@@ -149,8 +149,8 @@ public class Position extends Vector
 			throw new IllegalArgumentException("Invalid parameter provided.");
 		}
 		Position p = getSum(v.getScaledBy(duration));
-		setXComponent(p.getXComponent());
-		setYComponent(p.getYComponent());
+		setX(p.getX());
+		setY(p.getY());
 	}
 
 	@Override
@@ -180,6 +180,6 @@ public class Position extends Vector
 			return false;
 		}
 		Position other = (Position) o;
-		return (Util.fuzzyEquals(getXComponent(), other.getXComponent()) && Util.fuzzyEquals(getYComponent(), other.getYComponent()));
+		return (Util.fuzzyEquals(getX(), other.getX()) && Util.fuzzyEquals(getY(), other.getY()));
 	}
 }

@@ -140,7 +140,7 @@ public class Thruster
 	private boolean	isActivated;
 
 	/**
-	 * Gets the owner of this thruster
+	 * Gets the ship to which this thruster belongs.
 	 */
 	@Basic
 	@Raw
@@ -150,10 +150,10 @@ public class Thruster
 	}
 
 	/**
-	 * Checks whether this thruster can have the given owner ship as it's owner ship.
+	 * Checks whether this thruster can have the given ship as its owner ship.
 	 * 
 	 * @param	owner
-	 * 			The given owner ship
+	 * 			The given owner ship.
 	 * @return	True if and only if the given ship is not null
 	 * 			| owner != null
 	 */
@@ -168,7 +168,7 @@ public class Thruster
 	 * Sets the owner ship of this thruster to the given owner ship.
 	 * 
 	 * @param	owner
-	 * 			The given owner ship
+	 * 			The given ship.
 	 * @post	The owner of thruster is now equal to the given owner ship.
 	 * 			| new.getOwner() == owner
 	 * @throws	IllegalArgumentException
@@ -189,20 +189,36 @@ public class Thruster
 	private Ship	ownerShip;
 
 	/**
-	 * Makes the refference to the owner ship null.
+	 * Makes the reference to the owner ship null and mark the thruster as terminated.
 	 */
-	public void terminate () //TODO make this into a state?
+	public void terminate ()
 	{
 		this.ownerShip = null;
+		this.isTerminated = true;
 	}
+	
+	/**
+	 * Indicates whether the thruster is terminated.
+	 * 
+	 * @return	isTerminated == true
+	 */
+	public boolean isTerminated ()
+	{
+		return isTerminated;
+	}
+
+	/**
+	 * A state variable for registering whether this thruster is terminated or not.
+	 */
+	private boolean isTerminated;
 
 	/**
 	 * Thrusts the owner ship with the maximum amount of thrust of this thruster during a given amount of time.
 	 * 
 	 * @param	duration
 	 * 			The given amount of time.
+	 * @effect	//TODO
 	 */
-	//TODO @EFFECT
 	public void thrust (double duration)
 	{
 		thrust(getMaximumThrustPerSecond(), duration);
@@ -214,9 +230,9 @@ public class Thruster
 	 * @param	thrustPerSecond
 	 * 			The given amount of thrust.
 	 * @param	duration
-	 * 			The given amount of time. 
+	 * 			The given amount of time.
+	 * @effect //TODO
 	 */
-	//TODO @EFFECT
 	public void thrust (double thrustPerSecond, double duration)
 	{
 		if (duration < 0)

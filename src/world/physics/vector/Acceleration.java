@@ -79,6 +79,6 @@ public class Acceleration extends Vector
 			return false;
 		}
 		Vector other = (Vector) o;
-		return (Util.fuzzyEquals(getXComponent(), other.getXComponent()) && Util.fuzzyEquals(getYComponent(), other.getYComponent()));
+		return (Util.fuzzyEquals(getX(), other.getX()) && Util.fuzzyEquals(getY(), other.getY()));
 	}
 }

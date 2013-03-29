@@ -38,7 +38,19 @@ public class ThrusterTest
 		assertTrue(Util.fuzzyEquals(25, th.getMaximumThrustPerSecond()));
 		assertEquals(testShip, th.getOwner());
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void extendedConstructorTest_NullShip()
+	{
+		new Thruster(25, null);
+	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void extendedConstructorTest_IllegalThrust()
+	{
+		new Thruster(-1, testShip);
+	}
+	
 	@Test
 	public void canHaveAsMaximumThrustTest()
 	{
@@ -89,6 +101,13 @@ public class ThrusterTest
 	{
 		testThruster.setOwner(null);
 	}
+	
+	@Test
+	public void terminationTest()
+	{
+		testThruster.terminate();
+		assertTrue(testThruster.getOwner() == null);
+	}
 
 	@Test
 	public void simpleThrustTest_PerfectParameters()
@@ -120,7 +139,12 @@ public class ThrusterTest
 		assertEquals(initialVelocity, testShip.getVelocity());
 	}
 	
-	//TODO ADD TEST FOR LARGE AMOUNT OF TRHUST
+	@Test
+	public void extendedThrustTest_EnormousThrust()
+	{
+		testThruster.thrust(Double.MAX_VALUE, 6);
+		assertEquals(testShip.getVelocity(), (new Velocity(3, 4)).getSum(testShip.getDirection().getScaledBy(testShip.getThrustPerSecond())));
+	}
 
 	@Test
 	public void extendedThrustTest_IllegalDuration()

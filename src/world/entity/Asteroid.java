@@ -46,58 +46,63 @@ public class Asteroid extends Entity
 	 */
 	public Asteroid (Direction direction, Position position, Velocity velocity, CircleShape shape) throws IllegalArgumentException
 	{
-		super (direction, position, Velocity.getSpeedOfLight (), velocity, shape, new Mass ( (4 * Math.PI * Math.pow (shape.getRadius (), 3) * density) / 3));
+		super(direction, position, Velocity.getSpeedOfLight(), velocity, shape, new Mass( (4 * Math.PI * Math.pow(shape.getRadius(), 3) * density) / 3));
 	}
 
-	//TODO DOCUMENT & TEST
+	//TODO TEST
+	/**
+	 * Terminates the asteroid; if its dimensions were above a certain threshold, two new asteroids are spawned, each with half the radius of the terminated asteroid.
+	 *
+	 * @effect //TODO
+	 */
 	@Override
 	public void terminate ()
 	{
-		if (getShape ().getRadius () >= hardness) //TODO MAKE GETTER FOR THIS
+		if (getShape().getRadius() >= hardness) //TODO MAKE GETTER FOR THIS
 		{
-			Direction d1 = new Direction (new Angle (getDirection ().getAngle ().get ()));
-			Direction d2 = new Direction (new Angle (getDirection ().getAngle ().get () + Math.PI));
-			Position p1 = new Position (getPosition ().getSum (d1.getScaledBy (getShape ().getRadius () / 2)));
-			Position p2 = new Position (getPosition ().getSum (d2.getScaledBy (getShape ().getRadius () / 2)));
-			Velocity v1 = new Velocity (getVelocity ().getScaledBy (1.5));
-			Velocity v2 = new Velocity (getVelocity ().getScaledBy (-1.5));
-			CircleShape s1 = new CircleShape (getShape ().getRadius () / 2);
-			CircleShape s2 = new CircleShape (getShape ().getRadius () / 2);
+			Direction d1 = new Direction(new Angle(getDirection().getAngle().get()));
+			Direction d2 = new Direction(new Angle(getDirection().getAngle().get() + Math.PI));
+			Position p1 = new Position(getPosition().getSum(d1.getScaledBy(getShape().getRadius() / 2)));
+			Position p2 = new Position(getPosition().getSum(d2.getScaledBy(getShape().getRadius() / 2)));
+			Velocity v1 = new Velocity(getVelocity().getScaledBy(1.5));
+			Velocity v2 = new Velocity(getVelocity().getScaledBy(-1.5));
+			CircleShape s1 = new CircleShape(getShape().getRadius() / 2);
+			CircleShape s2 = new CircleShape(getShape().getRadius() / 2);
 
-			Asteroid a1 = new Asteroid (d1, p1, v1, s1);
-			Asteroid a2 = new Asteroid (d2, p2, v2, s2);
+			Asteroid a1 = new Asteroid(d1, p1, v1, s1);
+			Asteroid a2 = new Asteroid(d2, p2, v2, s2);
 
-			getWorld ().add (a1);
-			getWorld ().add (a2);
+			getWorld().add(a1);
+			getWorld().add(a2);
 		}
-		super.terminate ();
-		}
-	
+		super.terminate();
+	}
+
 	@Override
 	public void advance (double dt)
 	{
-		this.turn (new Angle(Math.PI/period));//TODO MAKE variable for this
-		super.advance (dt);
+		this.turn(new Angle(Math.PI / period));
+		super.advance(dt);
 	}
 
 	@Override
 	public String toString ()
 	{
-		return "Asteroid_" + hashCode () + super.toString();
+		return "Asteroid_" + hashCode() + super.toString();
 	}
-	
+
 	/**
 	 * A variable registering the fixed period of all asteroids
 	 */
-	private static double period = 7.0;
-	
+	private final static double	period		= 7.0;
+
 	/**
 	 * A variable registering the fixed hardness of all asteroids.
 	 */
-	private static double hardness = 30.0;
-	
+	private final static double	hardness	= 30.0;
+
 	/**
 	 * A variable registering the fixed density of all asteroids.
 	 */
-	private static double	density	= 2.65E12;
+	private final static double	density		= 2.65E12;
 }

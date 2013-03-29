@@ -187,7 +187,7 @@ public class Facade implements IFacade
 	{
 		if (! (ship instanceof Ship)) { throw new ModelException ("The given object is not a Ship."); }
 		Ship s = (Ship) ship;
-		return s.getPosition ().getXComponent ();
+		return s.getPosition ().getX ();
 	}
 
 	@Override
@@ -195,7 +195,7 @@ public class Facade implements IFacade
 	{
 		if (! (ship instanceof Ship)) { throw new ModelException ("The given object is not a Ship."); }
 		Ship s = (Ship) ship;
-		return s.getPosition ().getYComponent ();
+		return s.getPosition ().getY ();
 	}
 
 	@Override
@@ -203,7 +203,7 @@ public class Facade implements IFacade
 	{
 		if (! (ship instanceof Ship)) { throw new ModelException ("The given object is not a Ship."); }
 		Ship s = (Ship) ship;
-		return s.getVelocity ().getXComponent ();
+		return s.getVelocity ().getX ();
 	}
 
 	@Override
@@ -211,7 +211,7 @@ public class Facade implements IFacade
 	{
 		if (! (ship instanceof Ship)) { throw new ModelException ("The given object is not a Ship."); }
 		Ship s = (Ship) ship;
-		return s.getVelocity ().getYComponent ();
+		return s.getVelocity ().getY ();
 	}
 
 	@Override
@@ -307,7 +307,7 @@ public class Facade implements IFacade
 	{
 		if (! (asteroid instanceof Asteroid)) { throw new ModelException ("The given object is not an asteroid."); }
 		Asteroid a = (Asteroid) asteroid;
-		return a.getPosition ().getXComponent ();
+		return a.getPosition ().getX ();
 	}
 
 	@Override
@@ -315,7 +315,7 @@ public class Facade implements IFacade
 	{
 		if (! (asteroid instanceof Asteroid)) { throw new ModelException ("The given object is not an asteroid."); }
 		Asteroid a = (Asteroid) asteroid;
-		return a.getPosition ().getYComponent ();
+		return a.getPosition ().getY ();
 	}
 
 	@Override
@@ -323,7 +323,7 @@ public class Facade implements IFacade
 	{
 		if (! (asteroid instanceof Asteroid)) { throw new ModelException ("The given object is not an asteroid."); }
 		Asteroid a = (Asteroid) asteroid;
-		return a.getVelocity ().getXComponent ();
+		return a.getVelocity ().getX ();
 	}
 
 	@Override
@@ -331,7 +331,7 @@ public class Facade implements IFacade
 	{
 		if (! (asteroid instanceof Asteroid)) { throw new ModelException ("The given object is not an asteroid."); }
 		Asteroid a = (Asteroid) asteroid;
-		return a.getVelocity ().getYComponent ();
+		return a.getVelocity ().getY ();
 	}
 
 	@Override
@@ -369,7 +369,7 @@ public class Facade implements IFacade
 	{
 		if (! (bullet instanceof Bullet)) { throw new ModelException ("The given object is not a bullet."); }
 		Bullet b = (Bullet) bullet;
-		return b.getPosition ().getXComponent ();
+		return b.getPosition ().getX ();
 	}
 
 	@Override
@@ -377,7 +377,7 @@ public class Facade implements IFacade
 	{
 		if (! (bullet instanceof Bullet)) { throw new ModelException ("The given object is not a bullet."); }
 		Bullet b = (Bullet) bullet;
-		return b.getPosition ().getYComponent ();
+		return b.getPosition ().getY ();
 	}
 
 	@Override
@@ -385,7 +385,7 @@ public class Facade implements IFacade
 	{
 		if (! (bullet instanceof Bullet)) { throw new ModelException ("The given object is not a bullet."); }
 		Bullet b = (Bullet) bullet;
-		return b.getVelocity ().getXComponent ();
+		return b.getVelocity ().getX ();
 	}
 
 	@Override
@@ -393,7 +393,7 @@ public class Facade implements IFacade
 	{
 		if (! (bullet instanceof Bullet)) { throw new ModelException ("The given object is not a bullet."); }
 		Bullet b = (Bullet) bullet;
-		return b.getVelocity ().getYComponent ();
+		return b.getVelocity ().getY ();
 	}
 
 	@Override

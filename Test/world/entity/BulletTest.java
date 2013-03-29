@@ -24,6 +24,7 @@ public class BulletTest
 	public void constructorTest_PerfectParameter()
 	{
 		testBullet = new Bullet(testShip);
+		assertTrue(testBullet.getShooter() == testShip);
 	}
 
 	@Test(expected = NullPointerException.class)

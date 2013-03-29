@@ -36,8 +36,8 @@ public class Velocity extends Vector //TODO make total
 		if (this.getMagnitude() > Velocity.getSpeedOfLight())
 		{
 			Vector downScaled = this.getScaledBy(Velocity.getSpeedOfLight() / this.getMagnitude());
-			setXComponent(downScaled.getXComponent());
-			setYComponent(downScaled.getYComponent());
+			setX(downScaled.getX());
+			setY(downScaled.getY());
 		}
 	}
 
@@ -56,7 +56,7 @@ public class Velocity extends Vector //TODO make total
 	 */
 	public Velocity(Vector v) throws IllegalArgumentException
 	{
-		this(v.getXComponent(), v.getYComponent());
+		this(v.getX(), v.getY());
 	}
 
 	/**
@@ -84,7 +84,7 @@ public class Velocity extends Vector //TODO make total
 	@Basic
 	@Raw
 	@Override
-	public void setXComponent(double x)
+	public void setX(double x)
 	{
 		if (canHaveAsComponent(x))
 		{
@@ -109,7 +109,7 @@ public class Velocity extends Vector //TODO make total
 	@Basic
 	@Raw
 	@Override
-	public void setYComponent(double y)
+	public void setY(double y)
 	{
 		if (canHaveAsComponent(y))
 		{
@@ -171,14 +171,14 @@ public class Velocity extends Vector //TODO make total
 		{
 			throw new IllegalArgumentException("Invalid duration provided");
 		}
-		Vector v = new Vector(this.getXComponent(), this.getYComponent());
+		Vector v = new Vector(this.getX(), this.getY());
 		v = v.getSum(a.getScaledBy(duration));
 		if (v.getMagnitude() >= Velocity.getSpeedOfLight())
 		{
 			v = v.getScaledBy(Velocity.getSpeedOfLight() / v.getMagnitude());
 		}
-		setXComponent(v.getXComponent());
-		setYComponent(v.getYComponent());
+		setX(v.getX());
+		setY(v.getY());
 	}
 	
 	@Override
@@ -208,7 +208,7 @@ public class Velocity extends Vector //TODO make total
 			return false;
 		}
 		Velocity other = (Velocity) o;
-		return (Util.fuzzyEquals(getXComponent(), other.getXComponent()) && Util.fuzzyEquals(getYComponent(), other.getYComponent()));
+		return (Util.fuzzyEquals(getX(), other.getX()) && Util.fuzzyEquals(getY(), other.getY()));
 	}
 
 	/**

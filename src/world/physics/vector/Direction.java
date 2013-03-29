@@ -118,7 +118,7 @@ public class Direction extends Vector
 	@Override
 	@Basic
 	@Raw
-	public double getXComponent ()
+	public double getX ()
 	{
 		return getAngle().getCos();
 	}
@@ -129,7 +129,7 @@ public class Direction extends Vector
 	@Override
 	@Basic
 	@Raw
-	public double getYComponent ()
+	public double getY ()
 	{
 		return getAngle().getSin();
 	}

@@ -9,6 +9,7 @@ import org.junit.Test;
 
 
 import world.World;
+import world.entity.Bullet;
 import world.entity.ship.Ship;
 import world.physics.Mass;
 import world.physics.geometry.Angle;
@@ -43,6 +44,7 @@ public class ShipTest
 
 	private static Ship testShip;
 	private static Ship terminatedShip;
+	private static Bullet testBullet;
 
 	@Test
 	public void extendedConstructorTest_FieldsMatchPerfectParameters()
@@ -118,6 +120,29 @@ public class ShipTest
 
 	}
 
+	public void fireTest () {
+		World testWorld = new World(1000, 1000);
+		testShip.fire();
+		testWorld.add(testShip);
+		assertTrue(testWorld.get(1).getClass() == Bullet.class);
+		Bullet b = (Bullet) testWorld.get(1);
+		assertEquals(testShip, b.getShooter());
+	}
+	
+	public void recoilTest () {
+		World testWorld = new World(1000, 1000);
+		testWorld.add(testShip);
+		
+		Velocity v = testShip.getVelocity();
+		Mass m = testShip.getMass();
+		Velocity bv = (Velocity) testShip.getDirection().getScaledBy(v.getMagnitude());
+		Mass bm = new Mass( (4 * Math.PI * Math.pow(3, 3) * 7.8E10) / 3.0);
+
+		testShip.fire();
+		
+		assertTrue(testShip.getVelocity().equals(v.getDifference(bv.getScaledBy(m.get() / bm.get()))));
+	}
+	
 	//	@Test
 	//	public void thrustTest_PerfectParameters()
 	//	{

@@ -175,9 +175,9 @@ public final class EntityCollision extends Collision
 
 		//--VELOCITY CALCULATION--
 		//step 1: find the unit normal vector and the unit tangent vector.
-		Vector n = new Vector(p2.getXComponent() - p1.getXComponent(), p2.getYComponent() - p1.getYComponent());
+		Vector n = new Vector(p2.getX() - p1.getX(), p2.getY() - p1.getY());
 		Vector un = n.getScaledBy(1 / n.getMagnitude());
-		Vector ut = new Vector(-un.getYComponent(), un.getXComponent());
+		Vector ut = new Vector(-un.getY(), un.getX());
 
 		//step 2: find the components of the initial velocity in the normal and tangent directions.
 		double v1n = v1.dotProduct(un);

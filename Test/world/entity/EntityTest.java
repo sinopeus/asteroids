@@ -171,8 +171,8 @@ public class EntityTest //TODO test constructors
 		testEntity.move(2.0);
 		assertEquals(testEntity.getVelocity(), originalState.getVelocity());
 		assertEquals(testEntity.getDirection(), originalState.getDirection());
-		assertTrue(Util.fuzzyEquals(testEntity.getPosition().getXComponent(), 65));
-		assertTrue(Util.fuzzyEquals(testEntity.getPosition().getYComponent(), 65));
+		assertTrue(Util.fuzzyEquals(testEntity.getPosition().getX(), 65));
+		assertTrue(Util.fuzzyEquals(testEntity.getPosition().getY(), 65));
 	}
 
 	@Test (expected = IllegalStateException.class)
