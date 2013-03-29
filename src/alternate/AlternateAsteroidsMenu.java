@@ -18,13 +18,18 @@ import javax.swing.KeyStroke;
 public class AlternateAsteroidsMenu <World, Ship, Asteroid, Bullet> extends JPanel
 {
 	private static final long	serialVersionUID	= 1L;
+
+	public AlternateAsteroids	game;
+
 	private BorderLayout		layout;
 	private Box					labelBox;
+	private JLabel				title;
 	private JLabel[]			labels;
 
 	private int					selectedIndex;
-	private static int			options				= 4;
+	private static final int	options				= 4;
 
+	// ------------------------------------- INITIALISATION --------------------------------
 	public AlternateAsteroidsMenu ()
 	{
 		initializeSelf();
@@ -34,7 +39,7 @@ public class AlternateAsteroidsMenu <World, Ship, Asteroid, Bullet> extends JPan
 	private void initializeSelf ()
 	{
 		selectedIndex = 0;
-		this.setBackground(Color.black);
+
 		initializeLayout();
 		initializeComponents();
 	}
@@ -47,14 +52,16 @@ public class AlternateAsteroidsMenu <World, Ship, Asteroid, Bullet> extends JPan
 
 	private void initializeComponents ()
 	{
-		intializeLabelBox();
+		initializeLabelBox();
 	}
 
-	private void intializeLabelBox ()
+	private void initializeLabelBox ()
 	{
 		labels = new JLabel[options];
 		labelBox = new Box(BoxLayout.Y_AXIS);
 		labelBox.add(Box.createVerticalGlue());
+		initializeHeaderLabel();
+		labelBox.add(Box.createVerticalStrut(30));
 		initializeSPLabel();
 		labelBox.add(Box.createVerticalStrut(10));
 		initializeMPLabel();
@@ -72,6 +79,16 @@ public class AlternateAsteroidsMenu <World, Ship, Asteroid, Bullet> extends JPan
 		label.setAlignmentY(Component.CENTER_ALIGNMENT);
 		label.setForeground(Color.white);
 		label.setFont(new Font("calibri", Font.PLAIN, 50));
+	}
+
+	private void initializeHeaderLabel ()
+	{
+		title = new JLabel("Asteroids");
+		title.setAlignmentX(Component.CENTER_ALIGNMENT);
+		title.setAlignmentY(Component.CENTER_ALIGNMENT);
+		title.setForeground(Color.white);
+		title.setFont(new Font("calibri", Font.PLAIN, 150));
+		labelBox.add(title);
 	}
 
 	private void initializeSPLabel ()
@@ -103,6 +120,8 @@ public class AlternateAsteroidsMenu <World, Ship, Asteroid, Bullet> extends JPan
 		labelBox.add(labels[3]);
 	}
 
+	// ------------------KEY BINDINGS----------------------
+
 	private void initializeKeyBindings ()
 	{
 		this.getInputMap().put(KeyStroke.getKeyStroke("ESCAPE"), "ESCAPE");
@@ -113,12 +132,6 @@ public class AlternateAsteroidsMenu <World, Ship, Asteroid, Bullet> extends JPan
 		this.getActionMap().put("DOWN", new Down());
 		this.getInputMap().put(KeyStroke.getKeyStroke("ENTER"), "ENTER");
 		this.getActionMap().put("ENTER", new Select());
-	}
-
-	@Override
-	public void paintComponent (Graphics g)
-	{
-		g.drawImage(AlternateResources.getImage("menu-background"), 0, 0, getRootPane().getWidth(), getRootPane().getHeight(), null);
 	}
 
 	private class Close extends AbstractAction
@@ -176,11 +189,23 @@ public class AlternateAsteroidsMenu <World, Ship, Asteroid, Bullet> extends JPan
 					System.out.println("multiplayer");
 					break;
 				case 2:
-					System.out.println("starting settingsmenu.");
+					System.out.println("settingsmenu.");
+					game.layout.show(game.getContentPane(), "SETTINGS");
+					game.settings.requestFocusInWindow();
 					break;
 				case 3:
 					System.exit(0);
 			}
 		}
+	}
+
+	// ------------------KEY BINDINGS----------------------
+
+	// ------------------------------------- INITIALISATION --------------------------------
+
+	@Override
+	public void paintComponent (Graphics g)
+	{
+		g.drawImage(AlternateResources.getImage("menu-background"), 0, 0, getRootPane().getWidth(), getRootPane().getHeight(), null);
 	}
 }

@@ -21,12 +21,12 @@ import world.entity.ship.Ship;
 public class AlternateAsteroids extends JFrame
 {
 	private IFacade <World, Ship, Asteroid, Bullet>					facade;
-	private CardLayout												layout;
+	public CardLayout												layout;
 	private Sound													sound;
 
-	private AlternateAsteroidsMenu <World, Ship, Asteroid, Bullet>	menu;
-	private AlternateWorldView <World, Ship, Asteroid, Bullet>		game;
-	private AlternateSettingsMenu									settings;
+	public AlternateAsteroidsMenu <World, Ship, Asteroid, Bullet>	menu;
+	public AlternateWorldView <World, Ship, Asteroid, Bullet>		game;
+	public AlternateSettingsMenu									settings;
 
 	public AlternateAsteroids (IFacade <World, Ship, Asteroid, Bullet> facade)
 	{
@@ -77,23 +77,28 @@ public class AlternateAsteroids extends JFrame
 	{
 		menu = new AlternateAsteroidsMenu <World, Ship, Asteroid, Bullet>();
 		getContentPane().add(menu, "MENU");
+		menu.game = this;
 	}
 
 	private void initializeView ()
 	{
 		game = new AlternateWorldView <World, Ship, Asteroid, Bullet>();
 		getContentPane().add(game, "GAME");
+		game.game = this;
 	}
 
 	private void intializeSettings ()
 	{
 		settings = new AlternateSettingsMenu();
 		getContentPane().add(settings, "SETTINGS");
+		settings.game = this;
+		settings.requestFocusInWindow();
 	}
 
 	public void start ()
 	{
 		setVisible(true);
+		layout.show(getContentPane(), "MENU");
 	}
 
 	public static void main (String[] args) throws InvocationTargetException, InterruptedException
@@ -110,45 +115,4 @@ public class AlternateAsteroids extends JFrame
 			}
 		});
 	}
-
-	//	public static void main (final String[] args)
-	//	{
-	//		//---------------------------ARGUMENT SHIT------------------------------
-	//		boolean tryFullscreen = true;
-	//		boolean enableSound = true;
-	//		for (String arg : args)
-	//		{
-	//			if (arg.equals("-window"))
-	//			{
-	//				tryFullscreen = false;
-	//			} else if (arg.equals("-nosound"))
-	//			{
-	//				enableSound = false;
-	//			} else
-	//			{
-	//				System.out.println("unknown option: " + arg);
-	//				return;
-	//			}
-	//		}
-	//		if (args.length > 0 && args[0].equals("-window"))
-	//		{
-	//			tryFullscreen = false;
-	//		}
-	//		if (GraphicsEnvironment.isHeadless())
-	//		{
-	//			System.out.println("no screen found");
-	//			return;
-	//		}
-	//		//---------------------------ARGUMENT SHIT------------------------------
-	//
-	//		IFacade <world.World, world.entity.ship.Ship, world.entity.Asteroid, world.entity.Bullet> facade = new Facade();
-	//
-	//		GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-	//		GraphicsDevice screen = env.getDefaultScreenDevice();
-	//
-	//		AlternateAsteroids asteroids;
-	//		asteroids = new AlternateAsteroids(facade);
-	//
-	//		asteroids.start();
-	//	}
 }
