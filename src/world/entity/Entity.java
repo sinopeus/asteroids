@@ -91,7 +91,6 @@ public class Entity
 	/**
 	 * Gets the position of this entity.
 	 */
-	@SuppressWarnings ("javadoc")
 	@Basic
 	@Raw
 	public Position getPosition ()

@@ -163,6 +163,25 @@ public class EntityTest //TODO test constructors
 		assertTrue(testEntity.canHaveAsShape(new CircleShape(5)));
 		assertFalse(testEntity.canHaveAsShape(null));
 	}
+	
+	@Test
+	public void advanceTest () {
+		Entity originalState = new Entity(testEntity.getDirection(), testEntity.getPosition(), testEntity.getSpeedLimit(), testEntity.getVelocity(), new CircleShape(testEntity.getShape().getRadius()), new Mass(testEntity.getMass().get()));
+		testEntity.advance(2.0);
+		assertEquals(originalState.getPosition(), originalState.getPosition());
+		assertEquals(testEntity.getVelocity(), originalState.getVelocity());
+		assertEquals(testEntity.getDirection(), originalState.getDirection());
+		assertTrue(Util.fuzzyEquals(testEntity.getPosition().getX(), 65));
+		assertTrue(Util.fuzzyEquals(testEntity.getPosition().getY(), 65));
+	}
+	
+	@Test ()
+	public void advanceTest_IllegalDuration ()
+	{
+		Entity originalState = new Entity(testEntity.getDirection(), testEntity.getPosition(), testEntity.getSpeedLimit(), testEntity.getVelocity(), new CircleShape(testEntity.getShape().getRadius()), new Mass(testEntity.getMass().get()));
+		testEntity.advance(-1);
+		assertEquals(originalState.getPosition(), originalState.getPosition());
+	}
 
 	@Test
 	public void moveTest_PerfectParameters ()
@@ -180,6 +199,7 @@ public class EntityTest //TODO test constructors
 	{
 		terminatedEntity.move(2.0);
 	}
+
 
 	@Test ()
 	public void moveTest_IllegalDuration ()
