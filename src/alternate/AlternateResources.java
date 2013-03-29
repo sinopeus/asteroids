@@ -13,7 +13,7 @@ public class AlternateResources
 	{
 		try
 		{
-			File res = new File("src/resources");
+			File res = new File("AlternateResources");
 			String[] imgs = res.list();
 			for (String imgname : imgs)
 			{

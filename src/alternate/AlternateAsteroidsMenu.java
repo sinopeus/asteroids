@@ -208,6 +208,6 @@ public class AlternateAsteroidsMenu extends JPanel
 	@Override
 	public void paintComponent (Graphics g)
 	{
-		g.drawImage(AlternateResources.getImage("menu-background"), 0, 0, getRootPane().getWidth(), getRootPane().getHeight(), null);
+		g.drawImage(AlternateResources.getImage("one"), 0, 0, getRootPane().getWidth(), getRootPane().getHeight(), null);
 	}
 }

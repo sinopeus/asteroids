@@ -70,7 +70,6 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 		this.width = width;
 		this.height = height;
 		initializeSelf();
-		initializeKeyBindings();
 	}
 
 	public void reset ()
@@ -98,6 +97,7 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 				{
 					player2 = players.get(1);
 				}
+
 				long now = System.currentTimeMillis();
 				long millisSinceLastEvolve = now - timeAfterLastEvolve;
 				timeAfterLastEvolve = now;
@@ -106,7 +106,7 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 				{
 					facade.turn(player2.getShip(), player2.getAddingAngle());
 				}
-				if (player1.isFiring() && facade.getShips(world).contains(player1))
+				if (player1.isFiring() && facade.getShips(world).contains(player1.getShip()))
 				{
 					player1.setFiring(false);
 					facade.fireBullet(player1.getShip());
@@ -157,9 +157,73 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 
 	private void initializeKeyBindings ()
 	{
-		this.getInputMap().put(KeyStroke.getKeyStroke("released ESCAPE"), "ESCAPE");
-		this.getActionMap().put("ESCAPE", new Close());
+		getInputMap().clear();
+		getActionMap().clear();
 
+		AlternateShipControl player1 = null;
+		if (players.size() >= 1)
+		{
+			player1 = players.get(0);
+		}
+		AlternateShipControl player2 = null;
+		if (players.size() >= 2)
+		{
+			player2 = players.get(1);
+		}
+
+		this.getInputMap().put(KeyStroke.getKeyStroke("ESCAPE"), "CLOSE");
+		this.getActionMap().put("CLOSE", new Close());
+
+		//CONTROLLS FOR PLAYER 1
+		if (player1 != null)
+		{
+			this.getInputMap().put(KeyStroke.getKeyStroke("UP"), "THRUSTONP1");
+			this.getActionMap().put("THRUSTONP1", new ThrustOn(player1.getShip()));
+			
+			this.getInputMap().put(KeyStroke.getKeyStroke("released UP"), "THRUSTOFFP1");
+			this.getActionMap().put("THRUSTOFFP1", new ThrustOff(player1.getShip()));
+			
+			this.getInputMap().put(KeyStroke.getKeyStroke("RIGHT"), "RIGHTP1");
+			this.getActionMap().put("RIGHTP1", new Right(player1));
+			
+			this.getInputMap().put(KeyStroke.getKeyStroke("released RIGHT"), "RIGHTOFFP1");
+			this.getActionMap().put("RIGHTOFFP1", new TurningOff(player1));
+			
+			this.getInputMap().put(KeyStroke.getKeyStroke("LEFT"), "LEFTP1");
+			this.getActionMap().put("LEFTP1", new Left(player1));
+			
+			this.getInputMap().put(KeyStroke.getKeyStroke("released LEFT"), "LEFTOFFP1");
+			this.getActionMap().put("LEFTOFFP1", new TurningOff(player1));
+			
+			this.getInputMap().put(KeyStroke.getKeyStroke("SPACE"), "FIREP1");
+			this.getActionMap().put("FIREP1", new Fire(player1));
+		}
+
+		//CONTROLLS FOR PLAYER 2
+		if (player2 != null)
+		{
+			this.getInputMap().put(KeyStroke.getKeyStroke("Z"), "THRUSTONP2");
+			this.getActionMap().put("THRUSTONP2", new ThrustOn(player2.getShip()));
+			
+			this.getInputMap().put(KeyStroke.getKeyStroke("released Z"), "THRUSTOFFP2");
+			this.getActionMap().put("THRUSTOFFP2", new ThrustOff(player2.getShip()));
+			
+			this.getInputMap().put(KeyStroke.getKeyStroke("D"), "RIGHTP2");
+			this.getActionMap().put("RIGHTP2", new Right(player2));
+			
+			this.getInputMap().put(KeyStroke.getKeyStroke("released D"), "RIGHTOFFP2");
+			this.getActionMap().put("RIGHTOFFP2", new TurningOff(player2));
+			
+			this.getInputMap().put(KeyStroke.getKeyStroke("Q"), "LEFTP2");
+			this.getActionMap().put("LEFTP2", new Left(player2));
+			
+			this.getInputMap().put(KeyStroke.getKeyStroke("released Q"), "LEFTOFFP2");
+			this.getActionMap().put("LEFTOFFP2", new TurningOff(player2));
+			
+			this.getInputMap().put(KeyStroke.getKeyStroke("LCTRL"), "FIREP2");
+			this.getActionMap().put("FIREP2", new Fire(player2));
+		}
+		
 		this.getInputMap().put(KeyStroke.getKeyStroke("F3"), "DEBUG");
 		this.getActionMap().put("DEBUG", new Debug());
 	}
@@ -174,6 +238,108 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 			timer.stop();
 			game.layout.show(game.getContentPane(), "MENU");
 			game.menu.requestFocusInWindow();
+		}
+	}
+
+	private class ThrustOn extends AbstractAction
+	{
+		private static final long	serialVersionUID	= 1L;
+		private Ship				ship;
+
+		public ThrustOn (Ship ship)
+		{
+			this.ship = ship;
+		}
+
+		@Override
+		public void actionPerformed (ActionEvent e)
+		{
+			facade.setThrusterActive(ship, true);
+		}
+	}
+	
+	private class ThrustOff extends AbstractAction
+	{
+		private static final long	serialVersionUID	= 1L;
+		private Ship				ship;
+
+		public ThrustOff (Ship ship)
+		{
+			this.ship = ship;
+		}
+
+		@Override
+		public void actionPerformed (ActionEvent e)
+		{
+			facade.setThrusterActive(ship, false);
+		}
+	}
+	
+	private class Left extends AbstractAction
+	{
+		private static final long	serialVersionUID	= 1L;
+		private AlternateShipControl				shipcontrol;
+
+		public Left (AlternateShipControl shipcontrol)
+		{
+			this.shipcontrol = shipcontrol;
+		}
+
+		@Override
+		public void actionPerformed (ActionEvent e)
+		{
+			shipcontrol.setAddingAngle(Math.PI / 20);
+		}
+	}
+	
+	private class Right extends AbstractAction
+	{
+		private static final long	serialVersionUID	= 1L;
+		private AlternateShipControl				shipcontrol;
+
+		public Right (AlternateShipControl shipcontrol)
+		{
+			this.shipcontrol = shipcontrol;
+		}
+
+		@Override
+		public void actionPerformed (ActionEvent e)
+		{
+			shipcontrol.setAddingAngle(-Math.PI / 20);
+		}
+	}
+	
+	private class TurningOff extends AbstractAction
+	{
+		private static final long	serialVersionUID	= 1L;
+		private AlternateShipControl				shipcontrol;
+
+		public TurningOff (AlternateShipControl shipcontrol)
+		{
+			this.shipcontrol = shipcontrol;
+		}
+
+		@Override
+		public void actionPerformed (ActionEvent e)
+		{
+			shipcontrol.setAddingAngle(0);
+		}
+	}
+	
+	private class Fire extends AbstractAction
+	{
+		private static final long	serialVersionUID	= 1L;
+		private AlternateShipControl				shipcontrol;
+
+		public Fire (AlternateShipControl shipcontrol)
+		{
+			this.shipcontrol = shipcontrol;
+		}
+
+		@Override
+		public void actionPerformed (ActionEvent e)
+		{
+			shipcontrol.setFiring(true);
 		}
 	}
 
@@ -204,11 +370,13 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 		facade.addAsteroid(world, asteroid2);
 
 		int size1 = (int) (2 * facade.getShipRadius(player));
-		Image image1 = AlternateResources.getImage("deathstar").getScaledInstance(size1, size1, Image.SCALE_DEFAULT);
+		Image image1 = AlternateResources.getImage("chrome").getScaledInstance(size1, size1, Image.SCALE_DEFAULT);
 		visualizations.put(player, new ShipVisualization(Color.RED, player, image1));
 
 		players.add(new AlternateShipControl(player));
 
+		initializeKeyBindings();
+		
 		game.layout.show(game.getContentPane(), "GAME");
 		requestFocusInWindow();
 		startGame();
@@ -233,15 +401,17 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 		facade.addAsteroid(world, asteroid4);
 
 		int size1 = (int) (2 * facade.getShipRadius(player1));
-		Image image1 = AlternateResources.getImage("deathstar").getScaledInstance(size1, size1, Image.SCALE_DEFAULT);
+		Image image1 = AlternateResources.getImage("chrome").getScaledInstance(size1, size1, Image.SCALE_DEFAULT);
 		visualizations.put(player1, new ShipVisualization(Color.RED, player1, image1));
 		int size2 = (int) (2 * facade.getShipRadius(player2));
-		Image image2 = AlternateResources.getImage("sphere").getScaledInstance(size2, size2, Image.SCALE_DEFAULT);
+		Image image2 = AlternateResources.getImage("firefox").getScaledInstance(size2, size2, Image.SCALE_DEFAULT);
 		visualizations.put(player2, new ShipVisualization(Color.GREEN, player2, image2));
 
 		players.add(new AlternateShipControl(player1));
 		players.add(new AlternateShipControl(player2));
 
+		initializeKeyBindings();
+		
 		game.layout.show(game.getContentPane(), "GAME");
 		requestFocusInWindow();
 		startGame();
@@ -264,7 +434,7 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 		{
 			super.paintComponent(g);
 
-			g.drawImage(AlternateResources.getImage("game-background"), 0, 0, getRootPane().getWidth(), getRootPane().getHeight(), null);
+			g.drawImage(AlternateResources.getImage("background"), 0, 0, getRootPane().getWidth(), getRootPane().getHeight(), null);
 
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -338,8 +508,9 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 		Rectangle2D bounds = g2d.getFontMetrics().getStringBounds(txt, g2d);
 		g2d.drawString(txt, width / 2 - (int) bounds.getCenterX(), height / 2 - (int) bounds.getCenterY());
 	}
-	
-	private void showDebugInfo(Graphics2D g2d){
+
+	private void showDebugInfo (Graphics2D g2d)
+	{
 		Rectangle2D bounds = g2d.getFontMetrics().getStringBounds("DEBUG", g2d);
 		g2d.drawString("DEBUG", width / 2 - (int) bounds.getCenterX(), 50);
 	}
@@ -436,7 +607,7 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 
 		public AsteroidVisualization (Asteroid asteroid)
 		{
-			this(facade, asteroid, AlternateResources.getImage("asteroid1"));
+			this(facade, asteroid, AlternateResources.getImage("internetexplorer"));
 		}
 
 		@Override
