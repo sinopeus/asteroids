@@ -49,7 +49,6 @@ public class Asteroid extends Entity
 		super(direction, position, Velocity.getSpeedOfLight(), velocity, shape, new Mass( (4 * Math.PI * Math.pow(shape.getRadius(), 3) * density) / 3));
 	}
 
-	//TODO TEST
 	/**
 	 * Terminates the asteroid; if its dimensions were above a certain threshold, two new asteroids are spawned, each with half the radius of the terminated asteroid.
 	 *
@@ -78,6 +77,14 @@ public class Asteroid extends Entity
 		super.terminate();
 	}
 
+	/**
+	 * Advances the asteroid's state by one turn. This happens in the same way as for a generic entity, except for a fixed turning rate per second.
+	 * 
+	 * @param dt	The time difference over which the state of the asteroid is advanced.
+	 * @effect		| this.turn(new Angle(Math.PI / period))
+	 * 				| super.advance(dt)
+	 * @see world.entity.Entity#advance(double)
+	 */
 	@Override
 	public void advance (double dt)
 	{

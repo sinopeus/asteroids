@@ -1,5 +1,6 @@
 package world.entity;
 
+import static org.junit.Assert.*;
 import static org.junit.Assert.assertTrue;
 
 
@@ -13,7 +14,6 @@ import world.physics.geometry.CircleShape;
 import world.physics.vector.Direction;
 import world.physics.vector.Position;
 import world.physics.vector.Velocity;
-import world.physics.Mass;
 import Utilities.Util;
 
 public class AsteroidTest
@@ -38,10 +38,28 @@ public class AsteroidTest
 	
 	@Test
 	public void terminateTest () { //TODO finish this unit test
-		testAsteroid = new Asteroid(new Direction(), new Position(), new Velocity(), new CircleShape());
+		testAsteroid = new Asteroid(new Direction(), new Position(100,100), new Velocity(3,4), new CircleShape(40));
 		testWorld = new World(1000, 1000);
 		testWorld.add(testAsteroid);
 		testAsteroid.terminate();
+		assertFalse(testWorld.isEmpty());
+		Asteroid child1 = (Asteroid) testWorld.get(0);
+		Asteroid child2 = (Asteroid) testWorld.get(1);
+		assertEquals(child1.getDirection(), new Direction());
+		assertEquals(child2.getDirection(), new Direction(new Angle(Math.PI)));
+		assertEquals(child1.getPosition(), new Position(new Position(100,100).getSum((new Direction()).getScaledBy(20))));
+		assertEquals(child2.getPosition(), new Position(new Position(100,100).getSum((new Direction(new Angle(Math.PI))).getScaledBy(20))));
+		assertEquals(child1.getVelocity(), new Velocity((new Velocity(3,4)).getScaledBy(1.5)));
+		assertEquals(child2.getVelocity(), new Velocity((new Velocity(3,4)).getScaledBy(-1.5)));
+		assertEquals(child1.getShape(), new CircleShape(20));
+		assertEquals(child2.getShape(), new CircleShape(20));
+	}
+	
+	@Test
+	public void advanceTurnTest () {
+		testAsteroid = new Asteroid(new Direction(), new Position(100,100), new Velocity(3,4), new CircleShape(40));
+		testAsteroid.advance(3);
+		assertEquals(testAsteroid.getDirection().getAngle(), new Angle(Math.PI / 7.0));
 	}
 
 	private static Asteroid	testAsteroid;
