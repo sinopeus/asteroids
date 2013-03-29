@@ -182,6 +182,7 @@ public class AlternateSettingsMenu extends JPanel
 		{
 			switch (selectedIndex)
 			{
+				
 				case 0:
 					System.out.println("setting1");
 					break;

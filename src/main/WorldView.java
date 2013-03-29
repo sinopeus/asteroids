@@ -292,20 +292,11 @@ public class WorldView<World, Ship, Asteroid, Bullet> extends JPanel implements 
 	@Override
 	public void boundaryCollision(Object entity, double x, double y)
 	{
-//		Entity e = (Entity) entity;
-//		new BorderCollision(e.getWorld(), e).resolve();
-		
-		//new CollisionResolver().boundaryCollision(entity, x, y); WHY DID I HAVE TO ADD THIS
 	}
 
 	@Override
 	public void objectCollision(Object entity1, Object entity2, double x, double y)
 	{
-//		Entity e1 = (Entity) entity1;
-//		Entity e2 = (Entity) entity2;
-//		new EntityCollision(e1.getWorld(), e1, e2).resolve();
-		//new CollisionResolver().objectCollision(entity1, entity2, x, y); WHY DID I HAVE TO ADD THIS
-		
 		if ((facade.isBullets(entity1) && !facade.isBullets(entity2)) || (facade.isBullets(entity2) && !facade.isBullets(entity1)))
 		{
 			game.getSound().play("explosion");

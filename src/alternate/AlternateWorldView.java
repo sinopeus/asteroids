@@ -220,7 +220,7 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 			this.getInputMap().put(KeyStroke.getKeyStroke("released Q"), "LEFTOFFP2");
 			this.getActionMap().put("LEFTOFFP2", new TurningOff(player2));
 			
-			this.getInputMap().put(KeyStroke.getKeyStroke("LCTRL"), "FIREP2");
+			this.getInputMap().put(KeyStroke.getKeyStroke("A"), "FIREP2");
 			this.getActionMap().put("FIREP2", new Fire(player2));
 		}
 		
@@ -236,6 +236,7 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 		public void actionPerformed (ActionEvent e)
 		{
 			timer.stop();
+			msg = null;
 			game.layout.show(game.getContentPane(), "MENU");
 			game.menu.requestFocusInWindow();
 		}
@@ -520,15 +521,17 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 	@Override
 	public void boundaryCollision (Object entity, double x, double y)
 	{
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void objectCollision (Object entity1, Object entity2, double x, double y)
 	{
-		// TODO Auto-generated method stub
-
+		if ((facade.isBullets(entity1) && !facade.isBullets(entity2)) || (facade.isBullets(entity2) && !facade.isBullets(entity1)))
+		{
+//			game.getSound().play("explosion");
+			explosions.add(new Explosion(x, facade.getWorldHeight(world) - y));
+		}
 	}
 
 	// ------------------COLLISIONLISTENER-----------------------

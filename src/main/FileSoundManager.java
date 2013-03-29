@@ -114,7 +114,7 @@ public class FileSoundManager implements Runnable, Sound {
     BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
     for (String line = reader.readLine(); line != null; line = reader.readLine()) {
       Clip clip = AudioSystem.getClip();
-      URL url = loader.getResource("../Resources/" + line);
+      URL url = loader.getResource("Resources/" + line);
       if (url == null) {
         System.err.println("sound " + line + " not found");
         continue;
