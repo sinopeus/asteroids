@@ -82,7 +82,7 @@ public class Entity
 	 * @effect	Initializes this new entity with the extended entity constructor and default values.
 	 * 			| this(new Direction(), new Position(), Velocity.getSpeedOfLight(), new Velocity())
 	 */
-	public Entity ()//TODO document
+	public Entity ()
 	{
 		//TODO add throws from setters.
 		this (new Direction (), new Position (), Velocity.getSpeedOfLight (), new Velocity (), new CircleShape (40), new Mass (5E15));

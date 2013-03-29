@@ -10,7 +10,16 @@ import world.physics.vector.Velocity;
 /**
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
  * @version 2.0
- * TODO document
+ * @invar	The direction of this asteroid is a valid direction.
+ * 			| canHaveAsDirection(getDirection())
+ * @invar	The position of this asteroid is a valid position.
+ * 			| canHaveAsPosition(getPosition())
+ * @invar	The shape of this asteroid is a valid shape.
+ * 			| canHaveAsShape(getShape())
+ * @invar	The velocity of this asteroid is a valid velocity.
+ * 			| canHaveAsVelocity(getVelocity())
+ * @invar	The speedLimit of this asteroid is a valid speed limit.
+ * 			| canHaveAsSpeedLimit(getSpeedLimit())
  */
 public class Asteroid extends Entity
 {
@@ -52,7 +61,7 @@ public class Asteroid extends Entity
 	/**
 	 * Terminates the asteroid; if its dimensions were above a certain threshold, two new asteroids are spawned, each with half the radius of the terminated asteroid.
 	 *
-	 * @effect //TODO
+	 * @effect //TODO this is going to be really long.
 	 */
 	@Override
 	public void terminate ()
