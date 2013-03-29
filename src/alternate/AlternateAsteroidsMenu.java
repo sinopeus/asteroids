@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
 @SuppressWarnings ("javadoc")
-public class AlternateAsteroidsMenu <World, Ship, Asteroid, Bullet> extends JPanel
+public class AlternateAsteroidsMenu extends JPanel
 {
 	private static final long	serialVersionUID	= 1L;
 
@@ -184,9 +184,14 @@ public class AlternateAsteroidsMenu <World, Ship, Asteroid, Bullet> extends JPan
 			{
 				case 0:
 					System.out.println("singleplayer");
+					game.game.startSinglePlayerGame();
+					//TODO
 					break;
 				case 1:
 					System.out.println("multiplayer");
+					game.layout.show(game.getContentPane(), "GAME");
+					game.game.requestFocusInWindow();
+					//TODO
 					break;
 				case 2:
 					System.out.println("settingsmenu.");

@@ -20,13 +20,13 @@ import world.entity.ship.Ship;
 
 public class AlternateAsteroids extends JFrame
 {
-	private IFacade <World, Ship, Asteroid, Bullet>					facade;
-	public CardLayout												layout;
-	public Sound													sound;
+	private IFacade <World, Ship, Asteroid, Bullet>	facade;
+	public CardLayout								layout;
+	public Sound									sound;
 
-	public AlternateAsteroidsMenu <World, Ship, Asteroid, Bullet>	menu;
-	public AlternateWorldView <World, Ship, Asteroid, Bullet>		game;
-	public AlternateSettingsMenu									settings;
+	public AlternateAsteroidsMenu					menu;
+	public AlternateWorldView						game;
+	public AlternateSettingsMenu					settings;
 
 	public AlternateAsteroids (IFacade <World, Ship, Asteroid, Bullet> facade)
 	{
@@ -75,16 +75,17 @@ public class AlternateAsteroids extends JFrame
 
 	private void initializeMenu ()
 	{
-		menu = new AlternateAsteroidsMenu <World, Ship, Asteroid, Bullet>();
+		menu = new AlternateAsteroidsMenu();
 		getContentPane().add(menu, "MENU");
 		menu.game = this;
 	}
 
 	private void initializeView ()
 	{
-		game = new AlternateWorldView <World, Ship, Asteroid, Bullet>();
+		game = new AlternateWorldView(facade,getWidth(),getHeight());
 		getContentPane().add(game, "GAME");
 		game.game = this;
+		game.facade = facade;
 	}
 
 	private void intializeSettings ()

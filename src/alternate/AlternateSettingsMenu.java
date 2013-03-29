@@ -140,7 +140,8 @@ public class AlternateSettingsMenu extends JPanel
 		@Override
 		public void actionPerformed (ActionEvent e)
 		{
-			System.exit(0);
+			game.layout.show(game.getContentPane(), "MENU");
+			game.menu.requestFocusInWindow();
 		}
 	}
 
