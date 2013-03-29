@@ -20,6 +20,7 @@ import world.entity.Asteroid;
 import world.entity.Bullet;
 import world.entity.Entity;
 import world.entity.ship.Ship;
+import world.physics.Mass;
 import world.physics.geometry.Angle;
 import world.physics.geometry.CircleShape;
 import world.physics.vector.Direction;
@@ -99,15 +100,21 @@ public class WorldTest
 	public void evolveTest ()
 	{
 		//TODO Hoe? :p
-		
-		// Deze shit crasht dat het geen naam heeft ... Gezamenlijk overleg bitte.
-		/*
+
 		testWorld1 = new World(1000, 1000);
+		testShip1 = new Ship(new Direction(), new Position(100, 100), Velocity.getSpeedOfLight(), new Velocity(4, 3), new CircleShape(30), new Mass(50));
+		testShip2 = new Ship(new Direction(), new Position(500, 500), Velocity.getSpeedOfLight(), new Velocity(3, 4), new CircleShape(40), new Mass(40));
+		Asteroid testAsteroid = new Asteroid(new Direction(), new Position(700, 700), new Velocity(-3, 4), new CircleShape(50));
+		testWorld1.addAll(Arrays.asList(testShip1, testShip2, testAsteroid));
+
 		@SuppressWarnings ("unchecked")
-		Asteroids <World, Ship, Asteroid, Bullet> game = new Asteroids <World, Ship, Asteroid, Bullet>(new Facade(), 1000, 1000, true, new FileSoundManager(null));
+		Asteroids <World, Ship, Asteroid, Bullet> game = new Asteroids <World, Ship, Asteroid, Bullet>(new Facade(), 1000, 1000, true, null);
 		WorldView <World, Ship, Asteroid, Bullet> worldview = new WorldView <World, Ship, Asteroid, Bullet>(game, testWorld1, testShip1, testShip2);
 		testWorld1.evolve(10, worldview);
-		*/
+		
+		assertEquals(testShip1.getPosition(), new Position(140,130));
+		assertEquals(testShip2.getPosition(), new Position(530,540));
+		assertEquals(testAsteroid.getPosition(), new Position(670,740));
 	}
 
 	@Test
