@@ -9,11 +9,13 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -22,6 +24,7 @@ import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
+import javax.swing.Timer;
 
 import main.CollisionListener;
 import main.Drawable;
@@ -56,6 +59,11 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 	private Map <Object, Visualization <?>>																visualizations		= new HashMap <Object, Visualization <?>>();
 	private Set <Explosion>																				explosions			= new HashSet <Explosion>();
 
+	private Timer																						timer;
+	private long																						timeAfterLastEvolve;
+
+	private boolean																						debug;
+
 	public AlternateWorldView (IFacade <world.World, world.entity.ship.Ship, world.entity.Asteroid, world.entity.Bullet> facade, int width, int height)
 	{
 		this.facade = facade;
@@ -65,17 +73,95 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 		initializeKeyBindings();
 	}
 
+	public void reset ()
+	{
+		initializeSelf();
+	}
+
 	private void initializeSelf ()
 	{
+		debug = false;
+		players = new ArrayList <AlternateShipControl>();
+		initializeTimer();
+	}
 
+	private void initializeTimer ()
+	{
+		timer = new Timer(1000 / 30, new ActionListener()
+		{
+			@Override
+			public void actionPerformed (ActionEvent e)
+			{
+				AlternateShipControl player1 = players.get(0);
+				AlternateShipControl player2 = null;
+				if (players.size() == 2)
+				{
+					player2 = players.get(1);
+				}
+				long now = System.currentTimeMillis();
+				long millisSinceLastEvolve = now - timeAfterLastEvolve;
+				timeAfterLastEvolve = now;
+				facade.turn(player1.getShip(), player1.getAddingAngle());
+				if (player2 != null && player2.getAddingAngle() != 0)
+				{
+					facade.turn(player2.getShip(), player2.getAddingAngle());
+				}
+				if (player1.isFiring() && facade.getShips(world).contains(player1))
+				{
+					player1.setFiring(false);
+					facade.fireBullet(player1.getShip());
+					//					game.getSound().play("torpedo");
+				}
+				if (player2 != null && player2.isFiring() && facade.getShips(world).contains(player2.getShip()))
+				{
+					player2.setFiring(false);
+					facade.fireBullet(player2.getShip());
+					//					game.getSound().play("torpedo");
+				}
+				facade.evolve(world, millisSinceLastEvolve / 1000., AlternateWorldView.this);
+				Iterator <Explosion> iter = explosions.iterator();
+				while (iter.hasNext())
+				{
+					boolean done = iter.next().evolve(millisSinceLastEvolve / 1000.);
+					if (done) iter.remove();
+				}
+				boolean player1Alive = facade.getShips(world).contains(player1.getShip());
+				if (player1Alive)
+				{
+					if (player2 != null && !facade.getShips(world).contains(player2.getShip()))
+					{
+						timer.stop();
+						msg = "Player 1 wins!";
+					} else if (facade.getAsteroids(world).isEmpty() && player2 == null)
+					{
+						timer.stop();
+						msg = "You win!";
+					}
+				} else
+				{
+					timer.stop();
+					if (player2 == null || !facade.getShips(world).contains(player2.getShip()))
+					{
+						msg = "Asteroids win!";
+					} else
+					{
+						msg = "Player 2 wins!";
+					}
+				}
+				repaint();
+			}
+		});
 	}
 
 	// ------------------KEY BINDINGS----------------------
 
 	private void initializeKeyBindings ()
 	{
-		this.getInputMap().put(KeyStroke.getKeyStroke("ESCAPE"), "ESCAPE");
+		this.getInputMap().put(KeyStroke.getKeyStroke("released ESCAPE"), "ESCAPE");
 		this.getActionMap().put("ESCAPE", new Close());
+
+		this.getInputMap().put(KeyStroke.getKeyStroke("F3"), "DEBUG");
+		this.getActionMap().put("DEBUG", new Debug());
 	}
 
 	private class Close extends AbstractAction
@@ -85,8 +171,20 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 		@Override
 		public void actionPerformed (ActionEvent e)
 		{
+			timer.stop();
 			game.layout.show(game.getContentPane(), "MENU");
 			game.menu.requestFocusInWindow();
+		}
+	}
+
+	private class Debug extends AbstractAction
+	{
+		private static final long	serialVersionUID	= 1L;
+
+		@Override
+		public void actionPerformed (ActionEvent e)
+		{
+			debug = !debug;
 		}
 	}
 
@@ -109,8 +207,11 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 		Image image1 = AlternateResources.getImage("deathstar").getScaledInstance(size1, size1, Image.SCALE_DEFAULT);
 		visualizations.put(player, new ShipVisualization(Color.RED, player, image1));
 
+		players.add(new AlternateShipControl(player));
+
 		game.layout.show(game.getContentPane(), "GAME");
 		requestFocusInWindow();
+		startGame();
 		hasStarted = true;
 	}
 
@@ -138,9 +239,20 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 		Image image2 = AlternateResources.getImage("sphere").getScaledInstance(size2, size2, Image.SCALE_DEFAULT);
 		visualizations.put(player2, new ShipVisualization(Color.GREEN, player2, image2));
 
+		players.add(new AlternateShipControl(player1));
+		players.add(new AlternateShipControl(player2));
+
 		game.layout.show(game.getContentPane(), "GAME");
 		requestFocusInWindow();
+		startGame();
 		hasStarted = true;
+	}
+
+	public void startGame ()
+	{
+		//		game.getSound().loop("game-theme");
+		timeAfterLastEvolve = System.currentTimeMillis();
+		timer.start();
 	}
 
 	// ------------------GAME MODES----------------------
@@ -157,6 +269,8 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 			g2d.setColor(Color.WHITE);
+
+			//RENDER SHIPS
 			for (Ship ship : facade.getShips(world))
 			{
 				if (!visualizations.containsKey(ship))
@@ -165,6 +279,8 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 				}
 				visualizations.get(ship).draw(g2d);
 			}
+
+			//RENDER ASTEROIDS
 			for (Asteroid asteroid : facade.getAsteroids(world))
 			{
 				if (!visualizations.containsKey(asteroid))
@@ -173,6 +289,8 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 				}
 				visualizations.get(asteroid).draw(g2d);
 			}
+
+			//RENDER BULLETS
 			for (Bullet bullet : facade.getBullets(world))
 			{
 				if (!visualizations.containsKey(bullet))
@@ -182,10 +300,14 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 				}
 				visualizations.get(bullet).draw(g2d);
 			}
+
+			//RENDER EXPLOSIONS
 			for (Explosion explosion : explosions)
 			{
 				explosion.draw(g2d);
 			}
+
+			//RENDER MESSAGE
 			if (msg != null)
 			{
 				g2d.setColor(Color.WHITE);
@@ -193,6 +315,11 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 				drawCenteredString(g2d, msg);
 				g2d.setFont(g2d.getFont().deriveFont(20f));
 				drawCenteredString(g2d, "Press ESC to continue ...", getHeight() / 3 * 2);
+			}
+
+			if (debug)
+			{
+				showDebugInfo(g2d);
 			}
 		}
 	}
@@ -210,6 +337,11 @@ public class AlternateWorldView extends JPanel implements CollisionListener
 		int height = getHeight();
 		Rectangle2D bounds = g2d.getFontMetrics().getStringBounds(txt, g2d);
 		g2d.drawString(txt, width / 2 - (int) bounds.getCenterX(), height / 2 - (int) bounds.getCenterY());
+	}
+	
+	private void showDebugInfo(Graphics2D g2d){
+		Rectangle2D bounds = g2d.getFontMetrics().getStringBounds("DEBUG", g2d);
+		g2d.drawString("DEBUG", width / 2 - (int) bounds.getCenterX(), 50);
 	}
 
 	// ------------------COLLISIONLISTENER-----------------------

@@ -183,9 +183,11 @@ public class AlternateAsteroidsMenu extends JPanel
 			switch (selectedIndex)
 			{
 				case 0:
+					game.game.reset();
 					game.game.startSinglePlayerGame();
 					break;
 				case 1:
+					game.game.reset();
 					game.game.startMultiPlayerGame();
 					break;
 				case 2:
