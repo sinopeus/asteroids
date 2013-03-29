@@ -22,7 +22,7 @@ public class AlternateAsteroids extends JFrame
 {
 	private IFacade <World, Ship, Asteroid, Bullet>					facade;
 	public CardLayout												layout;
-	private Sound													sound;
+	public Sound													sound;
 
 	public AlternateAsteroidsMenu <World, Ship, Asteroid, Bullet>	menu;
 	public AlternateWorldView <World, Ship, Asteroid, Bullet>		game;

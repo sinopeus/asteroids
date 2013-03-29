@@ -79,7 +79,7 @@ public class AlternateSettingsMenu extends JPanel
 
 	private void initializeHeaderLabel ()
 	{
-		title = new JLabel("Setting");
+		title = new JLabel("Settings");
 		title.setAlignmentX(Component.CENTER_ALIGNMENT);
 		title.setAlignmentY(Component.CENTER_ALIGNMENT);
 		title.setForeground(Color.white);
