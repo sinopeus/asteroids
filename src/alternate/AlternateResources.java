@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 
 public class AlternateResources
 {
-	public static boolean loadResources ()
+	public static boolean loadImages ()
 	{
 		try
 		{

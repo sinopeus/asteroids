@@ -119,7 +119,7 @@ public class AlternateAsteroids extends JFrame
 			}
 		}
 		final boolean fullscreen = full;
-		AlternateResources.loadResources();
+		AlternateResources.loadImages();
 		EventQueue.invokeAndWait(new Runnable()
 		{
 			@Override
