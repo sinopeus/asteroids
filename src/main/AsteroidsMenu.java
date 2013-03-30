@@ -29,7 +29,7 @@ public class AsteroidsMenu<World, Ship, Asteroid, Bullet> extends JPanel impleme
 		addKeyListener(this);
 		setBackground(Color.BLACK);
 		ClassLoader loader = AsteroidsMenu.class.getClassLoader();
-		background = Toolkit.getDefaultToolkit().getImage(loader.getResource("../Resources/menu-background.jpg"));
+		background = Toolkit.getDefaultToolkit().getImage(loader.getResource("resources/menu-background.jpg"));
 		background = background.getScaledInstance(game.getWidth(), game.getHeight(), Image.SCALE_DEFAULT);
 	}
 

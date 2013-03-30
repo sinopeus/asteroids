@@ -171,7 +171,7 @@ public class Asteroids <World, Ship, Asteroid, Bullet> extends JFrame
 		GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		GraphicsDevice screen = env.getDefaultScreenDevice();
 		Asteroids <world.World, world.entity.ship.Ship, world.entity.Asteroid, world.entity.Bullet> asteroids;
-		Sound sound = enableSound ? new FileSoundManager("Resources/sounds.txt") : new NullSound();
+		Sound sound = enableSound ? new FileSoundManager("resources/sounds.txt") : new NullSound();
 		if (tryFullscreen && screen.isFullScreenSupported())
 		{
 			Rectangle dimensions = screen.getDefaultConfiguration().getBounds();

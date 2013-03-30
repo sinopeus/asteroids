@@ -63,7 +63,7 @@ public class AlternateAsteroids extends JFrame
 
 	private void initializeSound ()
 	{
-		this.sound = new FileSoundManager("resources/sounds.txt");
+		this.sound = new FileSoundManager("AlternateResources/sounds.txt");
 	}
 
 	private void intializeCards ()
