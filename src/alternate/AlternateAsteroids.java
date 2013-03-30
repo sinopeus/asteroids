@@ -28,18 +28,24 @@ public class AlternateAsteroids extends JFrame
 	public AlternateWorldView						game;
 	public AlternateSettingsMenu					settings;
 
-	public AlternateAsteroids (IFacade <World, Ship, Asteroid, Bullet> facade)
+	public AlternateAsteroids (IFacade <World, Ship, Asteroid, Bullet> facade, boolean fullscreen)
 	{
 		this.facade = facade;
 
-		initializeSelf();
+		initializeSelf(fullscreen);
 	}
 
-	private void initializeSelf ()
+	private void initializeSelf (boolean fullscreen)
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-		setBounds(0, 0, screen.width, screen.height);
+		if (fullscreen)
+		{
+			setBounds(0, 0, screen.width, screen.height);
+		} else
+		{
+			setBounds(0, 0, 1200, 675);
+		}
 		setTitle("AlternateAsteroids");
 		setUndecorated(true);
 
@@ -82,7 +88,7 @@ public class AlternateAsteroids extends JFrame
 
 	private void initializeView ()
 	{
-		game = new AlternateWorldView(facade,getWidth(),getHeight());
+		game = new AlternateWorldView(facade, getWidth(), getHeight());
 		getContentPane().add(game, "GAME");
 		game.game = this;
 		game.facade = facade;
@@ -104,6 +110,15 @@ public class AlternateAsteroids extends JFrame
 
 	public static void main (String[] args) throws InvocationTargetException, InterruptedException
 	{
+		boolean full = false;
+		for (String str : args)
+		{
+			if (str.equals("-window"))
+			{
+				full = true;
+			}
+		}
+		final boolean fullscreen = full;
 		AlternateResources.loadResources();
 		EventQueue.invokeAndWait(new Runnable()
 		{
@@ -111,7 +126,7 @@ public class AlternateAsteroids extends JFrame
 			public void run ()
 			{
 				IFacade <World, Ship, Asteroid, Bullet> facade = new Facade();
-				AlternateAsteroids a = new AlternateAsteroids(facade);
+				AlternateAsteroids a = new AlternateAsteroids(facade, fullscreen);
 				a.start();
 			}
 		});
