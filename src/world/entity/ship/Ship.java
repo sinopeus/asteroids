@@ -164,7 +164,6 @@ public class Ship extends Entity implements IShip
 		super.terminate ();
 	}
 
-	// TODO test, will do this in entity
 	/**
 	 * @see world.entity.Entity#advance(double)
 	 */

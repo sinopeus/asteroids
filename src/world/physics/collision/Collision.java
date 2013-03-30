@@ -26,7 +26,8 @@ public abstract class Collision
 	 */
 	public Position getCollisionPosition ()
 	{
-		if(this.collisionPosition == null){
+		if (this.collisionPosition == null)
+		{
 			calculateCollisionPosition();
 		}
 		return this.collisionPosition;
@@ -120,11 +121,11 @@ public abstract class Collision
 	 */
 	public static Collision getNextCollision (World world) throws IllegalArgumentException
 	{
-		if (world == null){ throw new IllegalArgumentException("Null world provided.");}
-		
+		if (world == null) { throw new IllegalArgumentException("Null world provided."); }
+
 		double minimum = Double.POSITIVE_INFINITY;
 		Collision first = null;
-		
+
 		for (int indexOfFirst = 0; indexOfFirst < world.numberOfEntities(); indexOfFirst++)
 		{
 			Entity e1 = world.get(indexOfFirst);
@@ -168,11 +169,16 @@ public abstract class Collision
 		}
 		return first;
 	}
+
 	
-	//TODO DOCUMENT
-		@Override
-		public String toString()
-		{
-			return "Collision_" + hashCode() + " in " + getTimeToCollision() + " s";
-		}
+	/**
+	 * Returns a string representation of this collision.
+	 * 
+	 * @return A representation in String format of this collision.
+	 */
+	@Override
+	public String toString ()
+	{
+		return "Collision_" + hashCode() + " in " + getTimeToCollision() + " s";
+	}
 }

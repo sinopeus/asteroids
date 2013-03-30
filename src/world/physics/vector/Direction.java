@@ -38,7 +38,15 @@ public class Direction extends Vector
 		assert (canHaveAsAngle(getAngle()));
 	}
 
-	//TODO make a constructor with a double instead of an angle. should be easy. test it too!
+	/**
+	 * Initializes this angle with a given angle in double format.
+	 * 
+	 * @param angle		The given angle.
+	 */
+	public Direction (double angle)
+	{
+		this(new Angle(angle));
+	}
 
 	/**
 	 * Initializes this new direction with a default angle.	
@@ -58,7 +66,6 @@ public class Direction extends Vector
 	/**
 	 * Gets the angle of this direction.
 	 */
-	@SuppressWarnings ("javadoc")
 	@Basic
 	@Raw
 	public Angle getAngle ()
@@ -170,7 +177,13 @@ public class Direction extends Vector
 		assert (Util.fuzzyEquals(getMagnitude(), 1.0));
 		assert (canHaveAsAngle(getAngle()));
 	}
-	
+
+	/**
+	 * Returns a string representation of this direction.
+	 * 
+	 * @return A representation in String format of this vector.
+	 * @see world.physics.vector.Vector#toString()
+	 */
 	@Override
 	public String toString ()
 	{

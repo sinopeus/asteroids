@@ -52,7 +52,11 @@ public class Acceleration extends Vector
 		super();
 	}
 	
-	//TODO DOCUMENT
+	/**
+	 * Returns a string representation of this acceleration.
+	 * 
+	 * @see world.physics.vector.Vector#toString()
+	 */
 	@Override
 	public String toString()
 	{

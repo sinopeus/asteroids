@@ -37,7 +37,7 @@ public class AsteroidTest
 	}
 	
 	@Test
-	public void terminateTest () { //TODO finish this unit test
+	public void terminateTest () {
 		testAsteroid = new Asteroid(new Direction(), new Position(100,100), new Velocity(3,4), new CircleShape(40));
 		testWorld = new World(1000, 1000);
 		testWorld.add(testAsteroid);

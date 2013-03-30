@@ -49,6 +49,14 @@ public class DirectionTest
 	}
 	
 	@Test
+	public void extendedConstructorTest_doubleAsParam()
+	{
+		Direction d = new Direction(Math.PI / 2.0);
+		assertTrue(Util.fuzzyEquals(d.getX(), 0.0));
+		assertTrue(Util.fuzzyEquals(d.getY(), 1.0));
+	}
+	
+	@Test
 	public void canHaveAsAngleTest()
 	{
 		assertTrue(testDirection.canHaveAsAngle(testAngle));

@@ -12,6 +12,11 @@ import world.physics.vector.Vector;
 public final class BorderCollision extends Collision
 {
 
+	//TODO document
+	/**
+	 * @param world
+	 * @param entity
+	 */
 	public BorderCollision (World world, Entity entity)
 	{
 		super(world);
@@ -20,56 +25,89 @@ public final class BorderCollision extends Collision
 		calculateCollisionTime();
 	}
 
-	//TODO EVERYTHING
+	//TODO document
+	/**
+	 * @author xavier
+	 *
+	 */
 	public enum Border
 	{
 		BORDER_TOP, BORDER_BOTTOM, BORDER_RIGHT, BORDER_LEFT;
 	}
 
-	//TODO EVERYTHING
+	//TODO document
+	/**
+	 * @return
+	 */
 	public Border getCollisionBorder ()
 	{
 		return collisionBorder;
 	}
 
-	//TODO EVERYTHING
+	//TODO document
+	/**
+	 * @param collisionBorder
+	 * @return
+	 */
 	protected boolean canHaveAsCollisionBorder (Border collisionBorder)
 	{
 		return (collisionBorder != null);
 	}
 
+	//TODO fucking document
+	/**
+	 * @param collisionBorder
+	 */
 	public void setCollisionBorder (Border collisionBorder)
 	{
 		if (!canHaveAsCollisionBorder(collisionBorder)) { throw new IllegalArgumentException("Illegal border provided."); }
 		this.collisionBorder = collisionBorder;
 	}
 
-	//TODO EVERYTHING
+	//TODO document
+	/**
+	 * 
+	 */
 	private Border	collisionBorder;
 
-	//TODO EVERYTHING
+	//TODO document
+	/**
+	 * @return
+	 */
 	public Entity getCollisionEntity ()
 	{
 		return collisionEntity;
 	}
 
-	//TODO EVERYTHING
+	//TODO document
+	/**
+	 * @param collisionEntity
+	 * @return
+	 */
 	public boolean canHaveAsEntity (Entity collisionEntity)
 	{
 		return (collisionEntity != null);
 	}
 
-	//TODO EVERYTHING
+	//TODO document
+	/**
+	 * @param collisionEntity
+	 */
 	public void setCollisionEntity (Entity collisionEntity)
 	{
 		if (!canHaveAsEntity(collisionEntity)) { throw new IllegalArgumentException("Illegal collision entity provided."); }
 		this.collisionEntity = collisionEntity;
 	}
 
-	//TODO EVERYTHING
+	/**
+	 * The entity colliding with a world border.
+	 */
 	private Entity	collisionEntity;
 
-	//TODO EVERYTHING
+	//TODO document
+	/**
+	 * @see world.physics.collision.Collision#resolve()
+	 */
 	@Override
 	public void resolve ()
 	{
@@ -99,13 +137,20 @@ public final class BorderCollision extends Collision
 		}
 	}
 
-	//TODO EVERYTHING
+	//TODO document
+	/**
+	 * @see world.physics.collision.Collision#getTimeToCollision()
+	 */
 	@Override
 	public double getTimeToCollision ()
 	{
 		return this.timeToCollision;
 	}
 
+	/**
+	 * @param b
+	 * @return
+	 */
 	private double getTimeToBorderCollision (Border b)
 	{
 		Position intersectionOfCenter = null;
@@ -151,9 +196,12 @@ public final class BorderCollision extends Collision
 		} else
 		{
 			return Double.POSITIVE_INFINITY;
-		}//TODO
+		}
 	}
 
+	/**
+	 * //TODO
+	 */
 	@Override
 	protected void calculateCollisionTime ()
 	{
@@ -192,8 +240,11 @@ public final class BorderCollision extends Collision
 		this.timeToCollision = minimum;
 	}
 
+	/**
+	 * //TODO not even necessary?
+	 * @see world.physics.collision.Collision#calculateCollisionPosition()
+	 */
 	@Override
-	//NOT EVEN NECESSARY?
 	protected void calculateCollisionPosition ()
 	{
 		double deltaT = getTimeToCollision();
@@ -218,8 +269,10 @@ public final class BorderCollision extends Collision
 				break;
 		}
 	}
-
-	//TODO DOCUMENT
+	/**
+	 * //TODO document this 
+	 * @see world.physics.collision.Collision#toString()
+	 */
 	@Override
 	public String toString ()
 	{
