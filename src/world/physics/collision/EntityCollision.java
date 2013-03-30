@@ -9,6 +9,11 @@ import world.physics.vector.Position;
 import world.physics.vector.Vector;
 import world.physics.vector.Velocity;
 
+/**
+ * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
+ * @version 2.0
+ * TODO document
+ */
 public final class EntityCollision extends Collision
 {
 	/**

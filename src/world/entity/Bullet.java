@@ -11,6 +11,7 @@ import be.kuleuven.cs.som.annotate.Raw;
 
 /**
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
+ * @version 2.0
  * TODO document
  */
 public class Bullet extends Entity
