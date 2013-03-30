@@ -1,6 +1,7 @@
 package world.physics.collision;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -37,11 +38,16 @@ public class CollisionTest
 		testWorld4 = new World (1000, 1000);
 		testAsteroid4 = new Asteroid (new Direction (new Angle (Math.PI)), new Position (500, 50), new Velocity (0, -10), new CircleShape (10));
 		testWorld4.add (testAsteroid4);
+		testWorld5 = new World(1000,1000);
+		testAsteroid5 = new Asteroid(new Direction(), new Position(50,50), new Velocity(10,0), new CircleShape(5));
+		testAsteroid6 = new Asteroid(new Direction(), new Position(100,50), new Velocity(-10,0), new CircleShape(5));
+		testWorld5.add(testAsteroid5);
+		testWorld5.add(testAsteroid6);
 	}
 
-	private static World	testWorld1, testWorld2, testWorld3, testWorld4;
+	private static World	testWorld1, testWorld2, testWorld3, testWorld4,testWorld5;
 	private static Asteroid	testAsteroid1, testAsteroid2, testAsteroid3,
-			testAsteroid4;
+			testAsteroid4,testAsteroid5,testAsteroid6;
 
 	@Test
 	public void getNextCollisionTest_PerfectParameters_LeftBorderCollision ()
@@ -95,11 +101,28 @@ public class CollisionTest
 		assertEquals (bc.getCollisionEntity (), testAsteroid4);
 	}
 
-	//TODO	
+	public void getNextCollisionTest_PerfectParameters_EntityCollision(){
+		Collision c = Collision.getNextCollision(testWorld5);
+	}
 
 	@Test (expected = IllegalArgumentException.class)
 	public void getNextCollisionTest_IllegalWorld ()
 	{
 		Collision.getNextCollision(null);
+	}
+	
+	@Test
+	public void canHaveAsPositionTest(){
+		Collision c = Collision.getNextCollision (testWorld1);
+		assertTrue(c.canHaveAsPosition(new Position(5, 5)));
+		assertFalse(c.canHaveAsPosition(new Position(-5, -5)));
+		assertFalse(c.canHaveAsPosition(null));
+	}
+	
+	@Test
+	public void canHaveAsWorldTest(){
+		Collision c = Collision.getNextCollision (testWorld1);
+		assertTrue(c.canHaveAsWorld(new World(100,100)));
+		assertFalse(c.canHaveAsWorld(null));
 	}
 }

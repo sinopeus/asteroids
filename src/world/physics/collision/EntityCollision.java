@@ -74,7 +74,6 @@ public final class EntityCollision extends Collision
 	 * @param entity
 	 * @return
 	 */
-	@SuppressWarnings ("unused")
 	private boolean canHaveAsEntity (Entity entity)
 	{
 		return (entity != null);
@@ -96,16 +95,16 @@ public final class EntityCollision extends Collision
 	@Override
 	public void resolve ()
 	{
+		if (entity1 == entity2){
+			return;
+		}
 		// see: http://www.vobarian.com/collisions/2dcollisions2.pdf for and explanation.
-		if (! (entity1 instanceof Entity) || ! (entity2 instanceof Entity)) { throw new IllegalArgumentException("One of the provided objects is not an entity"); }
-		Entity e1 = (Entity) entity1;
-		Entity e2 = (Entity) entity2;
 
 		// TODO this part is written shittily, any ideas?
-		if (e1 instanceof Bullet && e2 instanceof Bullet)
+		if (entity1 instanceof Bullet && entity2 instanceof Bullet)
 		{
-			Bullet b1 = (Bullet) e1;
-			Bullet b2 = (Bullet) e2;
+			Bullet b1 = (Bullet) entity1;
+			Bullet b2 = (Bullet) entity2;
 			if (b1.getShooter() == b2.getShooter())
 			{
 				bounce();
@@ -114,49 +113,49 @@ public final class EntityCollision extends Collision
 				b1.terminate();
 				b2.terminate();
 			}
-		} else if ( (e1 instanceof Ship) && (e2 instanceof Ship))
+		} else if ( (entity1 instanceof Ship) && (entity2 instanceof Ship))
 		{
 			bounce();
-		} else if ( (e1 instanceof Asteroid) && (e2 instanceof Asteroid))
+		} else if ( (entity1 instanceof Asteroid) && (entity2 instanceof Asteroid))
 		{
 			bounce();
-		} else if ( (e1 instanceof Asteroid) && (e2 instanceof Bullet))
+		} else if ( (entity1 instanceof Asteroid) && (entity2 instanceof Bullet))
 		{
-			Asteroid a = (Asteroid) e1;
-			Bullet b = (Bullet) e2;
+			Asteroid a = (Asteroid) entity1;
+			Bullet b = (Bullet) entity2;
 			b.terminate();
 			a.terminate();
-		} else if ( (e1 instanceof Bullet) && (e2 instanceof Asteroid))
+		} else if ( (entity1 instanceof Bullet) && (entity2 instanceof Asteroid))
 		{
-			Asteroid a = (Asteroid) e2;
-			Bullet b = (Bullet) e1;
+			Asteroid a = (Asteroid) entity2;
+			Bullet b = (Bullet) entity1;
 			b.terminate();
 			a.terminate();
-		} else if ( (e1 instanceof Ship) && (e2 instanceof Bullet))
+		} else if ( (entity1 instanceof Ship) && (entity2 instanceof Bullet))
 		{
-			Ship s = (Ship) e1;
-			Bullet b = (Bullet) e2;
+			Ship s = (Ship) entity1;
+			Bullet b = (Bullet) entity2;
 			if (b.getShooter() != s)
 			{
 				b.terminate();
 				s.terminate();
 			}
-		} else if ( (e1 instanceof Bullet) && (e2 instanceof Ship))
+		} else if ( (entity1 instanceof Bullet) && (entity2 instanceof Ship))
 		{
-			Ship s = (Ship) e2;
-			Bullet b = (Bullet) e1;
+			Ship s = (Ship) entity2;
+			Bullet b = (Bullet) entity1;
 			if (b.getShooter() != s)
 			{
 				b.terminate();
 				s.terminate();
 			}
-		} else if ( (e1 instanceof Ship) && (e2 instanceof Asteroid))
+		} else if ( (entity1 instanceof Ship) && (entity2 instanceof Asteroid))
 		{
-			Ship s = (Ship) e1;
+			Ship s = (Ship) entity1;
 			s.terminate();
-		} else if ( (e1 instanceof Asteroid) && (e2 instanceof Ship))
+		} else if ( (entity1 instanceof Asteroid) && (entity2 instanceof Ship))
 		{
-			Ship s = (Ship) e2;
+			Ship s = (Ship) entity2;
 			s.terminate();
 		}
 	}
