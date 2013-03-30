@@ -3,6 +3,7 @@ package world.entity;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -42,6 +43,135 @@ public class EntityTest //TODO test constructors
 	private static Entity	testEntity;
 	private static Entity	terminatedEntity;
 
+	@Test
+	public void extendedConstructorTest_FieldsMatchGivenParameters_PerfectParameters(){
+		Direction direction = new Direction(new Angle(5));
+		Position position = new Position(2,3);
+		double speedLimit = 50;
+		Velocity velocity = new Velocity(10,15);
+		CircleShape shape = new CircleShape(20);
+		Mass mass = new Mass(500);
+		Entity e = new Entity(direction, position, speedLimit, velocity, shape, mass);
+		assertEquals(direction, e.getDirection());
+		assertEquals(position, e.getPosition());
+		assertTrue(Util.fuzzyEquals(speedLimit, e.getSpeedLimit()));
+		assertEquals(velocity, e.getVelocity());
+		assertEquals(shape, e.getShape());
+		assertEquals(mass, e.getMass());
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void extendedConstructorTest_FieldsMatchGivenParameters_IllegalPosition(){
+		Direction direction = new Direction(new Angle(5));
+		Position position = null;
+		double speedLimit = 50;
+		Velocity velocity = new Velocity(10,15);
+		CircleShape shape = new CircleShape(20);
+		Mass mass = new Mass(500);
+		Entity e = new Entity(direction, position, speedLimit, velocity, shape, mass);
+	}
+	
+	@Test
+	public void extendedConstructorTest_FieldsMatchGivenParameters_NegativeSpeedLimit(){
+		Direction direction = new Direction(new Angle(5));
+		Position position = new Position(2,3);
+		double speedLimit = -1;
+		Velocity velocity = new Velocity(10,15);
+		CircleShape shape = new CircleShape(20);
+		Mass mass = new Mass(500);
+		Entity e = new Entity(direction, position, speedLimit, velocity, shape, mass);
+		assertEquals(direction, e.getDirection());
+		assertEquals(position, e.getPosition());
+		assertTrue(Util.fuzzyEquals(Velocity.getSpeedOfLight(), e.getSpeedLimit()));
+		assertEquals(velocity, e.getVelocity());
+		assertEquals(shape, e.getShape());
+		assertEquals(mass, e.getMass());
+	}
+	
+	@Test
+	public void extendedConstructorTest_FieldsMatchGivenParameters_ExtremeSpeedLimit(){
+		Direction direction = new Direction(new Angle(5));
+		Position position = new Position(2,3);
+		double speedLimit = Velocity.getSpeedOfLight()+5;
+		Velocity velocity = new Velocity(10,15);
+		CircleShape shape = new CircleShape(20);
+		Mass mass = new Mass(500);
+		Entity e = new Entity(direction, position, speedLimit, velocity, shape, mass);
+		assertEquals(direction, e.getDirection());
+		assertEquals(position, e.getPosition());
+		assertTrue(Util.fuzzyEquals(Velocity.getSpeedOfLight(), e.getSpeedLimit()));
+		assertEquals(velocity, e.getVelocity());
+		assertEquals(shape, e.getShape());
+		assertEquals(mass, e.getMass());
+	}
+	
+	@Test
+	public void extendedConstructorTest_FieldsMatchGivenParameters_IllegalVelocity(){
+		Direction direction = new Direction(new Angle(5));
+		Position position = new Position(2,3);
+		double speedLimit = 50;
+		Velocity velocity = null;
+		CircleShape shape = new CircleShape(20);
+		Mass mass = new Mass(500);
+		Entity e = new Entity(direction, position, speedLimit, velocity, shape, mass);
+		assertEquals(direction, e.getDirection());
+		assertEquals(position, e.getPosition());
+		assertTrue(Util.fuzzyEquals(speedLimit, e.getSpeedLimit()));
+		assertNull(e.getVelocity());
+		assertEquals(shape, e.getShape());
+		assertEquals(mass, e.getMass());
+	}
+	
+	@Test
+	public void extendedConstructorTest_FieldsMatchGivenParameters_ExtremeVelocity(){
+		Direction direction = new Direction(new Angle(5));
+		Position position = new Position(2,3);
+		double speedLimit = 50;
+		Velocity velocity = new Velocity(Velocity.getSpeedOfLight(), Velocity.getSpeedOfLight());
+		CircleShape shape = new CircleShape(20);
+		Mass mass = new Mass(500);
+		Entity e = new Entity(direction, position, speedLimit, velocity, shape, mass);
+		assertEquals(direction, e.getDirection());
+		assertEquals(position, e.getPosition());
+		assertTrue(Util.fuzzyEquals(speedLimit, e.getSpeedLimit()));
+		assertNotSame(velocity, e.getVelocity());
+		assertEquals(shape, e.getShape());
+		assertEquals(mass, e.getMass());
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void extendedConstructorTest_FieldsMatchGivenParameters_IllegalShape(){
+		Direction direction = new Direction(new Angle(5));
+		Position position = new Position(2,3);
+		double speedLimit = 50;
+		Velocity velocity = new Velocity(4, 5);
+		CircleShape shape = null;
+		Mass mass = new Mass(500);
+		Entity e = new Entity(direction, position, speedLimit, velocity, shape, mass);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void extendedConstructorTest_FieldsMatchGivenParameters_IllegalMass(){
+		Direction direction = new Direction(new Angle(5));
+		Position position = new Position(2,3);
+		double speedLimit = 50;
+		Velocity velocity = new Velocity(4, 5);
+		CircleShape shape = new CircleShape(20);
+		Mass mass = null;
+		Entity e = new Entity(direction, position, speedLimit, velocity, shape, mass);
+	}
+	
+	@Test
+	public void simpleConstructorTest(){
+		Entity e = new Entity();
+		assertEquals(new Direction(), e.getDirection());
+		assertEquals(new Position(), e.getPosition());
+		assertTrue(Util.fuzzyEquals(Velocity.getSpeedOfLight(),e.getSpeedLimit()));
+		assertEquals(new Velocity(), e.getVelocity());
+		assertEquals(new CircleShape(40), e.getShape());
+		assertEquals(new Mass(5E15), e.getMass());
+	}
+	
 	@Test
 	public void canHaveAsPositionTest ()
 	{
@@ -162,6 +292,18 @@ public class EntityTest //TODO test constructors
 		assertTrue(testEntity.canHaveAsShape(c));
 		assertTrue(testEntity.canHaveAsShape(new CircleShape(5)));
 		assertFalse(testEntity.canHaveAsShape(null));
+	}
+	
+	@Test
+	public void setWorldTest_LegalCase(){
+		World w =new World(10,10);
+		testEntity.setWorld(w);
+		assertEquals(w, testEntity.getWorld());
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void setWorldTest_IllegalCase(){
+		testEntity.setWorld(null);
 	}
 	
 	@Test

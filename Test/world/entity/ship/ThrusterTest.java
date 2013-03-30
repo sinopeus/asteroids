@@ -24,19 +24,19 @@ public class ThrusterTest
 	@Before
 	public void setUpMutableTestCase_Thruster()
 	{
-		testShip = new Ship(new Direction(new Angle(Math.PI/2.0)), new Position(), 5000.0, new Velocity(3, 4), new CircleShape(Ship.getMinimumRadius()), new Mass(40));
-		testThruster = new Thruster(2, testShip);
+		testShip1 = new Ship(new Direction(new Angle(Math.PI/2.0)), new Position(), 5000.0, new Velocity(3, 4), new CircleShape(Ship.getMinimumRadius()), new Mass(40));
+		testThruster = new Thruster(2, testShip1);
 	}
 
-	private static Ship testShip;
+	private static Ship testShip1;
 	private static Thruster testThruster;
 
 	@Test
 	public void extendedConstructorTest_FieldsMatchParameters_PerfectParameters()
 	{
-		Thruster th = new Thruster(25, testShip);
+		Thruster th = new Thruster(25, testShip1);
 		assertTrue(Util.fuzzyEquals(25, th.getMaximumThrustPerSecond()));
-		assertEquals(testShip, th.getOwner());
+		assertEquals(testShip1, th.getOwner());
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -48,7 +48,7 @@ public class ThrusterTest
 	@Test(expected = IllegalArgumentException.class)
 	public void extendedConstructorTest_IllegalThrust()
 	{
-		new Thruster(-1, testShip);
+		new Thruster(-1, testShip1);
 	}
 	
 	@Test
@@ -79,12 +79,14 @@ public class ThrusterTest
 		testThruster.activate();
 		testThruster.toggleActivation();
 		assertFalse(testThruster.isActivated());
+		testThruster.toggleActivation();
+		assertTrue(testThruster.isActivated());
 	}
 
 	@Test
 	public void canHaveAsOwnerTest()
 	{
-		assertTrue(testThruster.canHaveAsOwner(testShip));
+		assertTrue(testThruster.canHaveAsOwner(testShip1));
 		assertFalse(testThruster.canHaveAsOwner(null));
 	}
 
@@ -107,50 +109,56 @@ public class ThrusterTest
 	{
 		testThruster.terminate();
 		assertTrue(testThruster.getOwner() == null);
+		assertTrue(testThruster.isTerminated());
 	}
 
 	@Test
 	public void simpleThrustTest_PerfectParameters()
 	{
 		testThruster.thrust(6);
-		assertEquals(testShip.getVelocity(),new Velocity(3, 5.8));
+		assertEquals(testShip1.getVelocity(),new Velocity(3, 5.8));
 	}
 
 	@Test
 	public void simpleThrustTest_IllegalDuration()
 	{
-		Velocity initialVelocity = testShip.getVelocity();
+		Velocity initialVelocity = testShip1.getVelocity();
 		testThruster.thrust(-1);
-		assertEquals(initialVelocity, testShip.getVelocity());
+		assertEquals(initialVelocity, testShip1.getVelocity());
 	}
 
 	@Test
 	public void extendedThrustTest_PerfectParameters()
 	{
 		testThruster.thrust(5, 6);
-		assertEquals(testShip.getVelocity(),new Velocity(3, 8.5));
+		assertEquals(testShip1.getVelocity(),new Velocity(3, 8.5));
 	}
 
 	@Test
 	public void extendedThrustTest_IllegalThrust()
 	{
-		Velocity initialVelocity = testShip.getVelocity();
+		Velocity initialVelocity = testShip1.getVelocity();
 		testThruster.thrust(-1, 5);
-		assertEquals(initialVelocity, testShip.getVelocity());
+		assertEquals(initialVelocity, testShip1.getVelocity());
 	}
 	
 	@Test
 	public void extendedThrustTest_EnormousThrust()
 	{
 		testThruster.thrust(Double.MAX_VALUE, 6);
-		assertEquals(testShip.getVelocity(), (new Velocity(3, 4)).getSum(testShip.getDirection().getScaledBy(testShip.getThrustPerSecond())));
+		assertEquals(testShip1.getVelocity(), (new Velocity(3, 4)).getSum(testShip1.getDirection().getScaledBy(testShip1.getThrustPerSecond())));
 	}
 
 	@Test
 	public void extendedThrustTest_IllegalDuration()
 	{
-		Velocity initialVelocity = testShip.getVelocity();
+		Velocity initialVelocity = testShip1.getVelocity();
 		testThruster.thrust(5, -1);
-		assertEquals(initialVelocity, testShip.getVelocity());
+		assertEquals(initialVelocity, testShip1.getVelocity());
+	}
+	
+	@Test
+	public void toStringTest(){
+		testThruster.toString();
 	}
 }

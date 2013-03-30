@@ -12,6 +12,7 @@ import world.World;
 import world.entity.Bullet;
 import world.entity.ship.Ship;
 import world.physics.Mass;
+import world.physics.Mechanics;
 import world.physics.geometry.Angle;
 import world.physics.geometry.CircleShape;
 import world.physics.vector.Direction;
@@ -29,11 +30,11 @@ public class ShipTest
 
 		Angle a = new Angle(Math.PI / 2);
 		Direction d = new Direction(a);
-		Position p = new Position(5, 5);
+		Position p = new Position(50, 50);
 		CircleShape s = new CircleShape(15);
 		double speedLimit = Velocity.getSpeedOfLight();
 		Velocity v = new Velocity(5, 5);
-		Mass m = new Mass(40);
+		Mass m = new Mass(5E15);
 		testShip = new Ship(d, p, speedLimit, v, s, m);
 		w.add(testShip);
 
@@ -119,28 +120,62 @@ public class ShipTest
 		assertEquals(ship.getMass(), m);
 
 	}
+	
+	@Test
+	public void canHaveAsShapeTest(){
+		assertTrue(testShip.canHaveAsShape(new CircleShape(50)));
+		assertFalse(testShip.canHaveAsShape(new CircleShape(5)));
+		assertFalse(testShip.canHaveAsShape(null));
+	}
+	
+	@Test
+	public void advanceTest_thrusterOff(){
+		Position newPosition = new Position(60,60);
+		testShip.advance(2);
+		assertEquals(newPosition, testShip.getPosition());
+	}
+	
+	@Test
+	public void advanceTest_thrusterOn(){
+		Position newPosition = new Position(50.5,52.7);
+		Velocity newVelocity = new Velocity(5,27.0);
+		testShip.getThruster().activate();
+		
+		testShip.advance(0.1);
+		
+		assertEquals(newPosition, testShip.getPosition());
+		assertEquals(newVelocity, testShip.getVelocity());
+	}
 
+	@Test
 	public void fireTest () {
 		World testWorld = new World(1000, 1000);
-		testShip.fire();
 		testWorld.add(testShip);
+		testShip.fire();
 		assertTrue(testWorld.get(1).getClass() == Bullet.class);
 		Bullet b = (Bullet) testWorld.get(1);
 		assertEquals(testShip, b.getShooter());
 	}
 	
+	@Test
 	public void recoilTest () {
 		World testWorld = new World(1000, 1000);
 		testWorld.add(testShip);
 		
 		Velocity v = testShip.getVelocity();
 		Mass m = testShip.getMass();
-		Velocity bv = (Velocity) testShip.getDirection().getScaledBy(v.getMagnitude());
-		Mass bm = new Mass( (4 * Math.PI * Math.pow(3, 3) * 7.8E10) / 3.0);
+		Velocity bv =new Velocity(testShip.getVelocity().getSum(testShip.getDirection().getScaledBy(250)));
+		Mass bm = new Mass((4 * Math.PI * Math.pow(3, 3) * 7.8E10) / 3.0);
+		Velocity newShipVelocity = new Velocity(testShip.getVelocity().getDifference(Mechanics.conservationOfMomentum_CalculateVelocity(bv, bm, m)));
 
 		testShip.fire();
 		
-		assertTrue(testShip.getVelocity().equals(v.getDifference(bv.getScaledBy(m.get() / bm.get()))));
+		assertEquals(testShip.getVelocity(),newShipVelocity);
+	}
+	
+	@Test
+	public void toStringTest(){
+		testShip.toString();
 	}
 	
 	//	@Test

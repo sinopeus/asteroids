@@ -47,6 +47,17 @@ public class BulletTest
 		assertTrue(testBullet.canHaveAsBounceCounter((byte) 0));
 		assertFalse(testBullet.canHaveAsBounceCounter((byte) -1));
 	}
+	
+	@Test
+	public void setBounceCounterTest_LegalCase(){
+		testBullet.setBounceCounter((byte)2);
+		assertEquals(testBullet.getBounceCounter(), 2);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void setBounceCounterTest_IllegalCase(){
+		testBullet.setBounceCounter((byte)-1);
+	}
 
 	
 	@Test
