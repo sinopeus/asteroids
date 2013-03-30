@@ -360,7 +360,7 @@ public class Entity
 	@Raw
 	private boolean canHaveAsMass (Mass mass)
 	{
-		return mass != null;
+		return (mass != null);
 	}
 
 	/**
