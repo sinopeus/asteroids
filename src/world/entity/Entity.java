@@ -57,7 +57,6 @@ public class Entity
 	 * @throws	NullPointerException
 	 * 			| Any of the parameters is null.
 	 */
-	//TODO document
 	public Entity (Direction direction, Position position, double speedLimit, Velocity velocity, CircleShape shape, Mass mass) throws NullPointerException
 	{
 		//TODO add throws from setters.
@@ -364,7 +363,6 @@ public class Entity
 		return mass != null;
 	}
 
-	//TODO TESTERS
 	/**
 	 * Sets the mass of this entity to the given mass.
 	 * @param	mass
@@ -465,7 +463,6 @@ public class Entity
 	 */
 	protected boolean	isTerminated;
 
-	//TODO TEST
 	/**
 	 * Moves this entity over the given time interval. 
 	 * 
@@ -522,6 +519,12 @@ public class Entity
 		this.direction.rotate (angle);
 	}
 
+	/**
+	 * A string representation of this entity.
+	 * 
+	 * @return A representation in String format of this entity.
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString ()
 	{
 		return " at " + getPosition () + "   with velocity " + getVelocity () + "   and shape " + getShape () + "  ";

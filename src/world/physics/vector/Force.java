@@ -46,7 +46,9 @@ public class Force extends Vector
 		super();
 	}
 
-	//TODO DOCUMENT
+	/**
+	 * @see world.physics.vector.Vector#toString()
+	 */
 	@Override
 	public String toString ()
 	{

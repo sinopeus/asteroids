@@ -66,7 +66,7 @@ public class Asteroid extends Entity
 	@Override
 	public void terminate ()
 	{
-		if (getShape().getRadius() >= hardness) //TODO MAKE GETTER FOR THIS
+		if (getShape().getRadius() >= hardness)
 		{
 			Direction d1 = new Direction(new Angle(getDirection().getAngle().get()));
 			Direction d2 = new Direction(new Angle(getDirection().getAngle().get() + Math.PI));

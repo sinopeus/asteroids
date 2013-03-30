@@ -161,9 +161,8 @@ public class World extends ArrayList <Entity>
 	@Override
 	public boolean add (Entity entity) throws IllegalArgumentException
 	{
-		 //TODO check if space is occupied
 		if (!canHaveAsEntity(entity)) { throw new IllegalArgumentException("Invalid entity added"); }
-		if (isInWorld(entity) /*&& isSpaceForEntity(entity)*/)
+		if (isInWorld(entity))
 		{
 			entity.setWorld(this);
 			super.add(entity);
@@ -171,7 +170,11 @@ public class World extends ArrayList <Entity>
 		return true;
 	}
 
-	//TODO DOCUMENT & TEST
+	//TODO DOCUMENT
+	/**
+	 * @param dt
+	 * @param collisionListener
+	 */
 	public void evolve (double dt, CollisionListener collisionListener)
 	{
 		Collision c = Collision.getNextCollision(this);

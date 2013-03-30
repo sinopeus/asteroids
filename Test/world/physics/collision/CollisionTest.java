@@ -93,9 +93,7 @@ public class CollisionTest
 		BorderCollision bc = (BorderCollision) c;
 		assertEquals (bc.getCollisionBorder (), BorderCollision.Border.BORDER_BOTTOM);
 		assertEquals (bc.getCollisionEntity (), testAsteroid4);
-	}
-
-	//TODO	
+	}	
 
 	@Test (expected = IllegalArgumentException.class)
 	public void getNextCollisionTest_IllegalWorld ()

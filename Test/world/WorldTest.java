@@ -99,8 +99,6 @@ public class WorldTest
 	@Test
 	public void evolveTest ()
 	{
-		//TODO Hoe? :p
-
 		testWorld1 = new World(1000, 1000);
 		testShip1 = new Ship(new Direction(), new Position(100, 100), Velocity.getSpeedOfLight(), new Velocity(4, 3), new CircleShape(30), new Mass(50));
 		testShip2 = new Ship(new Direction(), new Position(500, 500), Velocity.getSpeedOfLight(), new Velocity(3, 4), new CircleShape(40), new Mass(40));
