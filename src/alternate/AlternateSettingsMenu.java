@@ -14,6 +14,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
+import world.entity.ship.Ship;
+import Utilities.Util;
+
 public class AlternateSettingsMenu extends JPanel
 {
 	private static final long	serialVersionUID	= 1L;
@@ -27,6 +30,9 @@ public class AlternateSettingsMenu extends JPanel
 
 	private int					selectedIndex;
 	private static final int	options				= 4;
+	private static String[]		settingLabelTexts	=
+													{ "Thrust", "setting2", "setting3" };
+	private ThrustSetting		thrustSetting;
 
 	public AlternateSettingsMenu ()
 	{
@@ -87,9 +93,107 @@ public class AlternateSettingsMenu extends JPanel
 		labelBox.add(title);
 	}
 
+	@SuppressWarnings ("javadoc")
+	public enum ThrustSetting
+	{
+		LOW (0, 1.1E18)
+		{
+			@Override
+			public ThrustSetting left ()
+			{
+				return EXTREME;
+			}
+
+			@Override
+			public ThrustSetting right ()
+			{
+				return MEDIUM;
+			}
+		},
+		MEDIUM (1, 1.1E19)
+		{
+			@Override
+			public ThrustSetting left ()
+			{
+				return LOW;
+			}
+
+			@Override
+			public ThrustSetting right ()
+			{
+				return HIGH;
+			}
+		},
+		HIGH (2, 1.1E20)
+		{
+			@Override
+			public ThrustSetting left ()
+			{
+				return MEDIUM;
+			}
+
+			@Override
+			public ThrustSetting right ()
+			{
+				return EXTREME;
+			}
+		},
+		EXTREME (3, 1.1E21)
+		{
+			@Override
+			public ThrustSetting left ()
+			{
+				return HIGH;
+			}
+
+			@Override
+			public ThrustSetting right ()
+			{
+				return LOW;
+			}
+		};
+
+		private int		value;
+		private double	thrustSetting;
+
+		ThrustSetting (int value, double thrustSetting)
+		{
+			this.value = value;
+			this.thrustSetting = thrustSetting;
+		}
+
+		public int getValue ()
+		{
+			return value;
+		}
+
+		public double getThurstSetting ()
+		{
+			return thrustSetting;
+		}
+
+		public void set ()
+		{
+			Ship.thrustPerSecond = getThurstSetting();
+		}
+
+		public abstract ThrustSetting left ();
+
+		public abstract ThrustSetting right ();
+
+	}
+
 	private void initializeSetting1 ()
 	{
-		labels[0] = new JLabel("Setting 1");
+		for (ThrustSetting ts : ThrustSetting.values())
+		{
+			if (Util.fuzzyEquals(Ship.thrustPerSecond, ts.getThurstSetting()))
+			{
+				this.thrustSetting = ts;
+			}
+		}
+		
+		labels[0] = new JLabel(settingLabelTexts[0] + ": " + this.thrustSetting);
 		setToDefaultStyle(labels[0]);
 		labels[0].setForeground(Color.red);
 		labelBox.add(labels[0]);
@@ -97,7 +201,7 @@ public class AlternateSettingsMenu extends JPanel
 
 	private void initializeSetting2 ()
 	{
-		labels[1] = new JLabel("Setting 2");
+		labels[1] = new JLabel(settingLabelTexts[1]);
 		setToDefaultStyle(labels[1]);
 		labels[1].setForeground(Color.white);
 		labelBox.add(labels[1]);
@@ -105,7 +209,7 @@ public class AlternateSettingsMenu extends JPanel
 
 	private void initializeSetting3 ()
 	{
-		labels[2] = new JLabel("Setting 3");
+		labels[2] = new JLabel(settingLabelTexts[2]);
 		setToDefaultStyle(labels[2]);
 		labels[2].setForeground(Color.white);
 		labelBox.add(labels[2]);
@@ -129,6 +233,10 @@ public class AlternateSettingsMenu extends JPanel
 		this.getActionMap().put("UP", new Up());
 		this.getInputMap().put(KeyStroke.getKeyStroke("DOWN"), "DOWN");
 		this.getActionMap().put("DOWN", new Down());
+		this.getInputMap().put(KeyStroke.getKeyStroke("LEFT"), "LEFT");
+		this.getActionMap().put("LEFT", new Left());
+		this.getInputMap().put(KeyStroke.getKeyStroke("RIGHT"), "RIGHT");
+		this.getActionMap().put("RIGHT", new Right());
 		this.getInputMap().put(KeyStroke.getKeyStroke("ENTER"), "ENTER");
 		this.getActionMap().put("ENTER", new Select());
 	}
@@ -173,6 +281,56 @@ public class AlternateSettingsMenu extends JPanel
 		}
 	}
 
+	private class Left extends AbstractAction
+	{
+		private static final long	serialVersionUID	= 1L;
+
+		@Override
+		public void actionPerformed (ActionEvent e)
+		{
+			switch (selectedIndex)
+			{
+				case 0:
+					AlternateSettingsMenu.this.thrustSetting = AlternateSettingsMenu.this.thrustSetting.left();
+					AlternateSettingsMenu.this.thrustSetting.set();
+					labels[0].setText(settingLabelTexts[0] + ": " + AlternateSettingsMenu.this.thrustSetting);
+					break;
+				case 1:
+					break;
+				case 2:
+					break;
+				case 3:
+					break;
+			}
+		}
+	}
+
+	private class Right extends AbstractAction
+	{
+		private static final long	serialVersionUID	= 1L;
+
+		@Override
+		public void actionPerformed (ActionEvent e)
+		{
+			switch (selectedIndex)
+			{
+				case 0:
+					AlternateSettingsMenu.this.thrustSetting = AlternateSettingsMenu.this.thrustSetting.right();
+					AlternateSettingsMenu.this.thrustSetting.set();
+					labels[0].setText(settingLabelTexts[0] + ": " + AlternateSettingsMenu.this.thrustSetting);
+					labels[0].repaint();
+					break;
+				case 1:
+					break;
+				case 2:
+					break;
+				case 3:
+					break;
+			}
+			AlternateSettingsMenu.this.repaint();
+		}
+	}
+
 	private class Select extends AbstractAction
 	{
 		private static final long	serialVersionUID	= 1L;
@@ -182,7 +340,7 @@ public class AlternateSettingsMenu extends JPanel
 		{
 			switch (selectedIndex)
 			{
-				
+
 				case 0:
 					System.out.println("setting1");
 					break;
