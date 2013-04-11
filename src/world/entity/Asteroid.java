@@ -97,7 +97,7 @@ public class Asteroid extends Entity
 	@Override
 	public void advance (double dt)
 	{
-		this.turn(new Angle(Math.PI / period));
+		this.turn(new Angle(Math.PI / period * dt));
 		super.advance(dt);
 	}
 

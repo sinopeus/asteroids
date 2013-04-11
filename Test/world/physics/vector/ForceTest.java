@@ -23,16 +23,16 @@ public class ForceTest
 	public void extendedConstructorTest_ComponentsMatchGivenComponents_PerfectParameters()
 	{
 		Force f = new Force(3, 4);
-		assertTrue(Util.fuzzyEquals(3, f.getX()));
-		assertTrue(Util.fuzzyEquals(4, f.getY()));
+		assertTrue(Util.fuzzyEquals(3, f._X()));
+		assertTrue(Util.fuzzyEquals(4, f._Y()));
 	}
 
 	@Test
 	public void byVectorConstructorTest_ComponentsMatchGivenComponents_PerfectParameters()
 	{
 		Force f = new Force(new Vector(5, 6));
-		assertTrue(Util.fuzzyEquals(5, f.getX()));
-		assertTrue(Util.fuzzyEquals(6, f.getY()));
+		assertTrue(Util.fuzzyEquals(5, f._X()));
+		assertTrue(Util.fuzzyEquals(6, f._Y()));
 	}
 
 	@SuppressWarnings ("unused")
@@ -46,8 +46,8 @@ public class ForceTest
 	public void simpleConstructorTest_ComponentsMatchGivenComponents()
 	{
 		Force f = new Force();
-		assertTrue(Util.fuzzyEquals(0, f.getX()));
-		assertTrue(Util.fuzzyEquals(0, f.getY()));
+		assertTrue(Util.fuzzyEquals(0, f._X()));
+		assertTrue(Util.fuzzyEquals(0, f._Y()));
 	}
 	
 	@Test

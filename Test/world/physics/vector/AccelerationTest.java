@@ -32,34 +32,34 @@ public class AccelerationTest
 	public void extendedConstructorTest_ComponentsMatchGivenComponents_PerfectParameters()
 	{
 		Acceleration a = new Acceleration(5, 6);
-		assertTrue(Util.fuzzyEquals(a.getX(), 5));
-		assertTrue(Util.fuzzyEquals(a.getY(), 6));
+		assertTrue(Util.fuzzyEquals(a._X(), 5));
+		assertTrue(Util.fuzzyEquals(a._Y(), 6));
 	}
 
 	@Test
 	public void extendedConstructorTest_ComponentsMatchGivenComponents_IllegalXComponent()
 	{
 		Acceleration a = new Acceleration(Double.NaN, 6);
-		assertFalse(Util.fuzzyEquals(a.getX(), 5));
-		assertTrue(Util.fuzzyEquals(a.getX(), 0));
-		assertTrue(Util.fuzzyEquals(a.getY(), 6));
+		assertFalse(Util.fuzzyEquals(a._X(), 5));
+		assertTrue(Util.fuzzyEquals(a._X(), 0));
+		assertTrue(Util.fuzzyEquals(a._Y(), 6));
 	}
 
 	@Test
 	public void extendedConstructorTest_ComponentsMatchGivenComponents_IllegalYComponent()
 	{
 		Acceleration a = new Acceleration(5, Double.NaN);
-		assertTrue(Util.fuzzyEquals(a.getX(), 5));
-		assertFalse(Util.fuzzyEquals(a.getY(), 6));
-		assertTrue(Util.fuzzyEquals(a.getY(), 0));
+		assertTrue(Util.fuzzyEquals(a._X(), 5));
+		assertFalse(Util.fuzzyEquals(a._Y(), 6));
+		assertTrue(Util.fuzzyEquals(a._Y(), 0));
 	}
 
 	@Test
 	public void byVectorAccelerationTest_ComponentsMatchGivenVectorComponents_PerfectParameters()
 	{
 		Acceleration a = new Acceleration(new Vector(2, 3));
-		assertTrue(Util.fuzzyEquals(a.getX(), 2));
-		assertTrue(Util.fuzzyEquals(a.getY(), 3));
+		assertTrue(Util.fuzzyEquals(a._X(), 2));
+		assertTrue(Util.fuzzyEquals(a._Y(), 3));
 	}
 
 	@SuppressWarnings ("unused")
@@ -73,8 +73,8 @@ public class AccelerationTest
 	public void simpleConstructorTest_ComponentsMatchZero()
 	{
 		Acceleration a = new Acceleration();
-		assertTrue(Util.fuzzyEquals(a.getX(), 0));
-		assertTrue(Util.fuzzyEquals(a.getY(), 0));
+		assertTrue(Util.fuzzyEquals(a._X(), 0));
+		assertTrue(Util.fuzzyEquals(a._Y(), 0));
 	}
 	
 	@Test

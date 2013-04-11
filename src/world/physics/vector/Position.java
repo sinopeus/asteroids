@@ -22,7 +22,7 @@ public class Position extends Vector
 	 * @effect	Initializes this new position with the extended constructor of vector.
 	 * 			| Vector(x, y)
 	 */
-	public Position(double x, double y)
+	public Position (double x, double y)
 	{
 		super(x, y);
 	}
@@ -38,7 +38,7 @@ public class Position extends Vector
 	 * 			The given vector is null
 	 * 			| v == null
 	 */
-	public Position(Vector v) throws IllegalArgumentException
+	public Position (Vector v) throws IllegalArgumentException
 	{
 		super(v);
 	}
@@ -49,7 +49,7 @@ public class Position extends Vector
 	 * @effect	Initializes this new position with the simple constructor of vector.
 	 * 			| Vector()
 	 */
-	public Position()
+	public Position ()
 	{
 		super();
 	}
@@ -67,7 +67,7 @@ public class Position extends Vector
 	 */
 	@Basic
 	@Raw
-	public void setX(double x)
+	public void setX (double x)
 	{
 		if (!canHaveAsComponent(x))
 		{
@@ -91,7 +91,7 @@ public class Position extends Vector
 	 */
 	@Basic
 	@Raw
-	public void setY(double y)
+	public void setY (double y)
 	{
 		if (!canHaveAsComponent(y))
 		{
@@ -117,12 +117,9 @@ public class Position extends Vector
 	 * 			| ((Double.isNaN(getXComponent()) || (Double.isNaN(getYComponent())) 
 	 */
 	@Override
-	public Position getSum(Vector v) throws ArithmeticException, IllegalArgumentException
+	public Position getSum (Vector v) throws ArithmeticException, IllegalArgumentException
 	{
-		if (v == null)
-		{
-			throw new IllegalArgumentException("Invalid vector provided.");
-		}
+		if (v == null) { throw new IllegalArgumentException("Invalid vector provided."); }
 		return new Position(super.getSum(v));
 	}
 
@@ -142,19 +139,16 @@ public class Position extends Vector
 	 * 			One of the resulting components is not a valid component.
 	 * 			| ((Double.isNaN(getXComponent()) || (Double.isNaN(getYComponent()))
 	 */
-	public void moveBy(Velocity v, double duration) throws ArithmeticException, IllegalArgumentException
+	public void moveBy (Velocity v, double duration) throws ArithmeticException, IllegalArgumentException
 	{
-		if ((v == null) || (duration < 0))
-		{
-			throw new IllegalArgumentException("Invalid parameter provided.");
-		}
+		if ( (v == null) || (duration < 0)) { throw new IllegalArgumentException("Invalid parameter provided."); }
 		Position p = getSum(v.getScaledBy(duration));
-		setX(p.getX());
-		setY(p.getY());
+		setX(p._X());
+		setY(p._Y());
 	}
 
 	@Override
-	public String toString()
+	public String toString ()
 	{
 		return "P_" + hashCode() + " = " + super.toString() + " m";
 	}
@@ -169,17 +163,11 @@ public class Position extends Vector
 	 */
 	@Override
 	@Raw
-	public boolean equals(Object o)
+	public boolean equals (Object o)
 	{
-		if (o == null)
-		{
-			return false;
-		}
-		if (getClass() != o.getClass())
-		{
-			return false;
-		}
+		if (o == null) { return false; }
+		if (getClass() != o.getClass()) { return false; }
 		Position other = (Position) o;
-		return (Util.fuzzyEquals(getX(), other.getX()) && Util.fuzzyEquals(getY(), other.getY()));
+		return (Util.fuzzyEquals(_X(), other._X()) && Util.fuzzyEquals(_Y(), other._Y()));
 	}
 }

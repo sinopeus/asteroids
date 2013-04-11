@@ -34,34 +34,34 @@ public class VectorTest
 	public void extendedConstructorTest_ComponentsMatchGivenComponents_PerfectParameters ()
 	{
 		Vector v = new Vector(5, 6);
-		assertTrue(Util.fuzzyEquals(v.getX(), 5));
-		assertTrue(Util.fuzzyEquals(v.getY(), 6));
+		assertTrue(Util.fuzzyEquals(v._X(), 5));
+		assertTrue(Util.fuzzyEquals(v._Y(), 6));
 	}
 
 	@Test
 	public void extendedConstructorTest_ComponentsMatchGivenComponents_IllegalXComponent ()
 	{
 		Vector v = new Vector(Double.NaN, 6);
-		assertFalse(Util.fuzzyEquals(v.getX(), 5));
-		assertTrue(Util.fuzzyEquals(v.getX(), 0));
-		assertTrue(Util.fuzzyEquals(v.getY(), 6));
+		assertFalse(Util.fuzzyEquals(v._X(), 5));
+		assertTrue(Util.fuzzyEquals(v._X(), 0));
+		assertTrue(Util.fuzzyEquals(v._Y(), 6));
 	}
 
 	@Test
 	public void extendedConstructorTest_ComponentsMatchGivenComponents_IllegalYComponent ()
 	{
 		Vector v = new Vector(5, Double.NaN);
-		assertTrue(Util.fuzzyEquals(v.getX(), 5));
-		assertFalse(Util.fuzzyEquals(v.getY(), 6));
-		assertTrue(Util.fuzzyEquals(v.getY(), 0));
+		assertTrue(Util.fuzzyEquals(v._X(), 5));
+		assertFalse(Util.fuzzyEquals(v._Y(), 6));
+		assertTrue(Util.fuzzyEquals(v._Y(), 0));
 	}
 
 	@Test
 	public void byVectorConstructorTest_ComponentsMatchGivenVectorsComponents_PerfectParameters ()
 	{
 		Vector v = new Vector(testVector1);
-		assertTrue(Util.fuzzyEquals(v.getX(), testVector1.getX()));
-		assertTrue(Util.fuzzyEquals(v.getY(), testVector1.getY()));
+		assertTrue(Util.fuzzyEquals(v._X(), testVector1._X()));
+		assertTrue(Util.fuzzyEquals(v._Y(), testVector1._Y()));
 	}
 
 	@Test (expected = NullPointerException.class)
@@ -74,36 +74,36 @@ public class VectorTest
 	public void simpleConstructorTest_ComponentsMatchZero ()
 	{
 		Vector v = new Vector();
-		assertTrue(Util.fuzzyEquals(v.getX(), 0));
-		assertTrue(Util.fuzzyEquals(v.getY(), 0));
+		assertTrue(Util.fuzzyEquals(v._X(), 0));
+		assertTrue(Util.fuzzyEquals(v._Y(), 0));
 	}
 
 	@Test
 	public void setXComponentTest_LegalCase ()
 	{
 		testVector1.setX(5);
-		assertTrue(Util.fuzzyEquals(testVector1.getX(), 5));
+		assertTrue(Util.fuzzyEquals(testVector1._X(), 5));
 	}
 
 	@Test
 	public void setXComponentTest_IllegalCase ()
 	{
 		testVector1.setX(Double.NaN);
-		assertFalse(Util.fuzzyEquals(testVector1.getX(), Double.NaN));
+		assertFalse(Util.fuzzyEquals(testVector1._X(), Double.NaN));
 	}
 
 	@Test
 	public void setYComponentTest_LegalCase ()
 	{
 		testVector1.setY(5);
-		assertTrue(Util.fuzzyEquals(testVector1.getY(), 5));
+		assertTrue(Util.fuzzyEquals(testVector1._Y(), 5));
 	}
 
 	@Test
 	public void setYComponentTest_IllegalCase ()
 	{
 		testVector1.setY(Double.NaN);
-		assertFalse(Util.fuzzyEquals(testVector1.getY(), Double.NaN));
+		assertFalse(Util.fuzzyEquals(testVector1._Y(), Double.NaN));
 	}
 
 	@Test
@@ -118,8 +118,8 @@ public class VectorTest
 	{
 		Vector v = new Vector(15, 5);
 		Vector sumVector = testVector1.getSum(testVector2);
-		assertTrue(Util.fuzzyEquals(sumVector.getX(), v.getX()));
-		assertTrue(Util.fuzzyEquals(sumVector.getY(), v.getY()));
+		assertTrue(Util.fuzzyEquals(sumVector._X(), v._X()));
+		assertTrue(Util.fuzzyEquals(sumVector._Y(), v._Y()));
 	}
 
 	@Test (expected = ArithmeticException.class)
@@ -141,8 +141,8 @@ public class VectorTest
 	{
 		Vector v = new Vector(5, 15);
 		Vector differenceVector = testVector1.getDifference(testVector2);
-		assertTrue(Util.fuzzyEquals(differenceVector.getX(), v.getX()));
-		assertTrue(Util.fuzzyEquals(differenceVector.getY(), v.getY()));
+		assertTrue(Util.fuzzyEquals(differenceVector._X(), v._X()));
+		assertTrue(Util.fuzzyEquals(differenceVector._Y(), v._Y()));
 	}
 
 	@Test (expected = ArithmeticException.class)
@@ -163,8 +163,8 @@ public class VectorTest
 	public void scaleByTest_PerfectParameters ()
 	{
 		Vector scaleVector = testVector1.getScaledBy(2.0);
-		assertTrue(Util.fuzzyEquals(scaleVector.getX(), 20.0));
-		assertTrue(Util.fuzzyEquals(scaleVector.getY(), 20.0));
+		assertTrue(Util.fuzzyEquals(scaleVector._X(), 20.0));
+		assertTrue(Util.fuzzyEquals(scaleVector._Y(), 20.0));
 	}
 
 	@Test (expected = ArithmeticException.class)
@@ -205,8 +205,8 @@ public class VectorTest
 	{
 		Vector v = new Vector(Math.sqrt(2) / 2, Math.sqrt(2) / 2);
 		Vector result = testVector1.getUnitVectorInDirection();
-		assertTrue(Util.fuzzyEquals(v.getX(), result.getX()));
-		assertTrue(Util.fuzzyEquals(v.getY(), result.getY()));
+		assertTrue(Util.fuzzyEquals(v._X(), result._X()));
+		assertTrue(Util.fuzzyEquals(v._Y(), result._Y()));
 	}
 
 	@Test (expected = ArithmeticException.class)

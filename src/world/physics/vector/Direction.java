@@ -125,7 +125,7 @@ public class Direction extends Vector
 	@Override
 	@Basic
 	@Raw
-	public double getX ()
+	public double _X ()
 	{
 		return getAngle().getCos();
 	}
@@ -136,7 +136,7 @@ public class Direction extends Vector
 	@Override
 	@Basic
 	@Raw
-	public double getY ()
+	public double _Y ()
 	{
 		return getAngle().getSin();
 	}

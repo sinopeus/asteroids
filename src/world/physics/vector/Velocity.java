@@ -30,14 +30,14 @@ public class Velocity extends Vector //TODO make total
 	 * @post	The magnitude of the velocity is always at most the speed of light.
 	 * 			| this.getVelocity <= Velocity.getSpeedOfLight()
 	 */
-	public Velocity(double x, double y)
+	public Velocity (double x, double y)
 	{
 		super(x, y);
 		if (this.getMagnitude() > Velocity.getSpeedOfLight())
 		{
 			Vector downScaled = this.getScaledBy(Velocity.getSpeedOfLight() / this.getMagnitude());
-			setX(downScaled.getX());
-			setY(downScaled.getY());
+			setX(downScaled._X());
+			setY(downScaled._Y());
 		}
 	}
 
@@ -54,9 +54,9 @@ public class Velocity extends Vector //TODO make total
 	 * 			The given vector is null.
 	 * 			| v == null
 	 */
-	public Velocity(Vector v) throws IllegalArgumentException
+	public Velocity (Vector v) throws IllegalArgumentException
 	{
-		this(v.getX(), v.getY());
+		this(v._X(), v._Y());
 	}
 
 	/**
@@ -65,7 +65,7 @@ public class Velocity extends Vector //TODO make total
 	 * @effect	Initializes this new velocity with the simple vector constructor.
 	 * 			| Vector()
 	 */
-	public Velocity()
+	public Velocity ()
 	{
 		super();
 	}
@@ -84,7 +84,7 @@ public class Velocity extends Vector //TODO make total
 	@Basic
 	@Raw
 	@Override
-	public void setX(double x)
+	public void setX (double x)
 	{
 		if (canHaveAsComponent(x))
 		{
@@ -109,7 +109,7 @@ public class Velocity extends Vector //TODO make total
 	@Basic
 	@Raw
 	@Override
-	public void setY(double y)
+	public void setY (double y)
 	{
 		if (canHaveAsComponent(y))
 		{
@@ -127,7 +127,7 @@ public class Velocity extends Vector //TODO make total
 	 */
 	@Basic
 	@Raw
-	public double get()
+	public double get ()
 	{
 		return getMagnitude();
 	}
@@ -144,7 +144,7 @@ public class Velocity extends Vector //TODO make total
 	 * 			| Double.isNaN(result.getXComponent) || Double.isNaN(result.getYComponent)	 
 	 */
 	@Override
-	public Velocity getSum(Vector v) throws ArithmeticException
+	public Velocity getSum (Vector v) throws ArithmeticException
 	{
 		return new Velocity(super.getSum(v));
 	}
@@ -165,24 +165,21 @@ public class Velocity extends Vector //TODO make total
 	 * 			Any of the resulting components is not a valid component.
 	 * 			| (!canHaveAsComponent(getXComponent()) || ! canHaveAsComponent(getYComponent()))
 	 */
-	public void accelerateBy(Acceleration a, double duration) throws ArithmeticException
+	public void accelerateBy (Acceleration a, double duration) throws ArithmeticException
 	{
-		if (duration < 0)
-		{
-			throw new IllegalArgumentException("Invalid duration provided");
-		}
-		Vector v = new Vector(this.getX(), this.getY());
+		if (duration < 0) { throw new IllegalArgumentException("Invalid duration provided"); }
+		Vector v = new Vector(this._X(), this._Y());
 		v = v.getSum(a.getScaledBy(duration));
 		if (v.getMagnitude() >= Velocity.getSpeedOfLight())
 		{
 			v = v.getScaledBy(Velocity.getSpeedOfLight() / v.getMagnitude());
 		}
-		setX(v.getX());
-		setY(v.getY());
+		setX(v._X());
+		setY(v._Y());
 	}
-	
+
 	@Override
-	public String toString()
+	public String toString ()
 	{
 		return "V_" + hashCode() + " = " + super.toString() + " m/s";
 	}
@@ -197,31 +194,25 @@ public class Velocity extends Vector //TODO make total
 	 */
 	@Override
 	@Raw
-	public boolean equals(Object o)
+	public boolean equals (Object o)
 	{
-		if (o == null)
-		{
-			return false;
-		}
-		if (getClass() != o.getClass())
-		{
-			return false;
-		}
+		if (o == null) { return false; }
+		if (getClass() != o.getClass()) { return false; }
 		Velocity other = (Velocity) o;
-		return (Util.fuzzyEquals(getX(), other.getX()) && Util.fuzzyEquals(getY(), other.getY()));
+		return (Util.fuzzyEquals(this._X(), other._X()) && Util.fuzzyEquals(this._Y(), other._Y()));
 	}
 
 	/**
 	 * Gets the speed of light in km/s.
 	 */
-	@SuppressWarnings("javadoc")
+	@SuppressWarnings ("javadoc")
 	@Basic
 	@Raw
 	@Immutable
-	public static double getSpeedOfLight()
+	public static double getSpeedOfLight ()
 	{
 		return Velocity.SPEED_OF_LIGHT;
 	}
 
-	private static double SPEED_OF_LIGHT = 300000;
+	private static double	SPEED_OF_LIGHT	= 300000;
 }

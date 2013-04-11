@@ -46,7 +46,7 @@ public class Vector
 	 */
 	public Vector (Vector v) throws NullPointerException
 	{
-		this(v.getX(), v.getY());
+		this(v._X(), v._Y());
 	}
 
 	/**
@@ -63,7 +63,7 @@ public class Vector
 	@SuppressWarnings ("javadoc")
 	@Basic
 	@Raw
-	public double getX ()
+	public double _X ()
 	{
 		return this.x;
 	}
@@ -95,7 +95,7 @@ public class Vector
 	@SuppressWarnings ("javadoc")
 	@Basic
 	@Raw
-	public double getY ()
+	public double _Y ()
 	{
 		return this.y;
 	}
@@ -153,11 +153,11 @@ public class Vector
 	 */
 	public Vector getSum (Vector v) throws ArithmeticException
 	{
-		double x = getX() + v.getX();
-		double y = getY() + v.getY();
-		
+		double x = _X() + v._X();
+		double y = _Y() + v._Y();
+
 		if (Double.isNaN(x) || Double.isNaN(y)) { throw new ArithmeticException("A component of the resulting sum vector is not a number"); }
-		
+
 		return new Vector(x, y);
 	}
 
@@ -174,11 +174,11 @@ public class Vector
 	 */
 	public Vector getDifference (Vector v) throws ArithmeticException
 	{
-		double x = getX() - v.getX();
-		double y = getY() - v.getY();
-		
+		double x = _X() - v._X();
+		double y = _Y() - v._Y();
+
 		if (Double.isNaN(x) || Double.isNaN(y)) { throw new ArithmeticException("A component of the resulting sum vector is not a number"); }
-		
+
 		return new Vector(x, y);
 	}
 
@@ -200,11 +200,11 @@ public class Vector
 	 */
 	public Vector getScaledBy (double factor) throws ArithmeticException
 	{
-		double x = getX() * factor;
-		double y = getY() * factor;
-		
+		double x = _X() * factor;
+		double y = _Y() * factor;
+
 		if (Double.isNaN(x) || Double.isNaN(y)) { throw new ArithmeticException("A component of the resulting sum vector is not a number"); }
-		
+
 		return new Vector(x, y);
 	}
 
@@ -225,7 +225,7 @@ public class Vector
 	 */
 	public double dotProduct (Vector v) throws ArithmeticException
 	{
-		double result = (getX() * v.getX()) + (getY() * v.getY());
+		double result = (_X() * v._X()) + (_Y() * v._Y());
 		if (Double.isNaN(result)) { throw new ArithmeticException("The result is not a number"); }
 		return result;
 	}
@@ -280,10 +280,10 @@ public class Vector
 	 */
 	public Quadrant getQuadrant ()
 	{
-		if (getX() >= 0 && getY() >= 0) { return Quadrant.QUADRANT_I; }
-		if (getX() < 0 && getY() >= 0) { return Quadrant.QUADRANT_II; }
-		if (getX() < 0 && getY() < 0) { return Quadrant.QUADRANT_III; }
-		if (getX() >= 0 && getY() < 0) { return Quadrant.QUADRANT_IV; }
+		if (_X() >= 0 && _Y() >= 0) { return Quadrant.QUADRANT_I; }
+		if (_X() < 0 && _Y() >= 0) { return Quadrant.QUADRANT_II; }
+		if (_X() < 0 && _Y() < 0) { return Quadrant.QUADRANT_III; }
+		if (_X() >= 0 && _Y() < 0) { return Quadrant.QUADRANT_IV; }
 		throw new RuntimeException("Java should never reach this piece of code");
 	}
 
@@ -293,7 +293,7 @@ public class Vector
 	@Override
 	public String toString ()
 	{
-		return "(" + (int)getX() + ", " + (int)getY() + ")";
+		return "(" + (int) _X() + ", " + (int) _Y() + ")";
 	}
 
 	/**
@@ -311,7 +311,7 @@ public class Vector
 		if (o == null) { return false; }
 		if (getClass() != o.getClass()) { return false; }
 		Vector other = (Vector) o;
-		return (Util.fuzzyEquals(getX(), other.getX()) && Util.fuzzyEquals(getY(), other.getY()));
+		return (Util.fuzzyEquals(_X(), other._X()) && Util.fuzzyEquals(_Y(), other._Y()));
 	}
 
 	/**

@@ -118,11 +118,11 @@ public final class BorderCollision extends Collision
 		{
 			case BORDER_TOP:
 			case BORDER_BOTTOM:
-				e.getVelocity().setY(-e.getVelocity().getY());
+				e.getVelocity().setY(-e.getVelocity()._Y());
 				break;
 			case BORDER_RIGHT:
 			case BORDER_LEFT:
-				e.getVelocity().setX(-e.getVelocity().getX());
+				e.getVelocity().setX(-e.getVelocity()._X());
 				break;
 		}
 
@@ -159,10 +159,10 @@ public final class BorderCollision extends Collision
 		double wsx = getWorld().getxSize();
 		double wsy = getWorld().getySize();
 		double r = getCollisionEntity().getShape().getRadius();
-		double px = e.getPosition().getX();
-		double py = e.getPosition().getY();
-		double vx = e.getVelocity().getX();
-		double vy = e.getVelocity().getY();
+		double px = e.getPosition()._X();
+		double py = e.getPosition()._Y();
+		double vx = e.getVelocity()._X();
+		double vy = e.getVelocity()._Y();
 
 		double n = 0, x = 0, y = 0;
 		switch (b)

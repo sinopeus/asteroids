@@ -27,37 +27,37 @@ public class Facade implements IFacade
 	@Override
 	public Object createWorld (double width, double height)
 	{
-		return new World (width, height);
+		return new World(width, height);
 	}
 
 	@Override
 	public double getWorldWidth (Object world)
 	{
-		if (world.getClass () != World.class) { throw new ModelException ("The given object is not a world."); }
+		if (world.getClass() != World.class) { throw new ModelException("The given object is not a world."); }
 		World w = (World) world;
-		return w.getxSize ();
+		return w.getxSize();
 	}
 
 	@Override
 	public double getWorldHeight (Object world)
 	{
-		if (world.getClass () != World.class) { throw new ModelException ("The given object is not a world."); }
+		if (world.getClass() != World.class) { throw new ModelException("The given object is not a world."); }
 		World w = (World) world;
-		return w.getySize ();
+		return w.getySize();
 	}
 
 	@Override
-	public HashSet<Ship> getShips (Object world)
+	public HashSet <Ship> getShips (Object world)
 	{
-		if (world.getClass () != World.class) { throw new ModelException ("The given object is not a world."); }
+		if (world.getClass() != World.class) { throw new ModelException("The given object is not a world."); }
 		World w = (World) world;
-		HashSet <Ship> hs = new HashSet <Ship> ();
-		for (Iterator <Entity> iterator = w.iterator (); iterator.hasNext ();)
+		HashSet <Ship> hs = new HashSet <Ship>();
+		for (Iterator <Entity> iterator = w.iterator(); iterator.hasNext();)
 		{
-			Entity e = iterator.next ();
+			Entity e = iterator.next();
 			if (e instanceof Ship)
 			{
-				hs.add ((Ship) e);
+				hs.add((Ship) e);
 			}
 		}
 		return hs;
@@ -66,32 +66,32 @@ public class Facade implements IFacade
 	@Override
 	public HashSet <Asteroid> getAsteroids (Object world)
 	{
-		if (world.getClass () != World.class) { throw new ModelException ("The given object is not a world."); }
+		if (world.getClass() != World.class) { throw new ModelException("The given object is not a world."); }
 		World w = (World) world;
-		HashSet <Asteroid> hs = new HashSet <Asteroid> ();
-		for (Iterator <Entity> iterator = w.iterator (); iterator.hasNext ();)
+		HashSet <Asteroid> hs = new HashSet <Asteroid>();
+		for (Iterator <Entity> iterator = w.iterator(); iterator.hasNext();)
 		{
-			Entity e = iterator.next ();
+			Entity e = iterator.next();
 			if (e instanceof Asteroid)
 			{
-				hs.add ((Asteroid) e);
+				hs.add((Asteroid) e);
 			}
 		}
 		return hs;
 	}
 
 	@Override
-	public HashSet<Bullet> getBullets (Object world)
+	public HashSet <Bullet> getBullets (Object world)
 	{
-		if (world.getClass () != World.class) { throw new ModelException ("The given object is not a world."); }
+		if (world.getClass() != World.class) { throw new ModelException("The given object is not a world."); }
 		World w = (World) world;
-		HashSet <Bullet> hs = new HashSet <Bullet> ();
-		for (Iterator <Entity> iterator = w.iterator (); iterator.hasNext ();)
+		HashSet <Bullet> hs = new HashSet <Bullet>();
+		for (Iterator <Entity> iterator = w.iterator(); iterator.hasNext();)
 		{
-			Entity e = iterator.next ();
+			Entity e = iterator.next();
 			if (e instanceof Bullet)
 			{
-				hs.add ((Bullet) e);
+				hs.add((Bullet) e);
 			}
 		}
 		return hs;
@@ -100,48 +100,48 @@ public class Facade implements IFacade
 	@Override
 	public void addShip (Object world, Object ship)
 	{
-		if (world.getClass () != World.class) { throw new ModelException ("The given object is not a world."); }
+		if (world.getClass() != World.class) { throw new ModelException("The given object is not a world."); }
 		World w = (World) world;
-		if (! (ship instanceof Ship)) { throw new ModelException ("The given object is not a Ship."); }
+		if (! (ship instanceof Ship)) { throw new ModelException("The given object is not a Ship."); }
 		Ship s = (Ship) ship;
-		w.add (s);
+		w.add(s);
 	}
 
 	@Override
 	public void addAsteroid (Object world, Object asteroid)
 	{
-		if (world.getClass () != World.class) { throw new ModelException ("The given object is not a world."); }
+		if (world.getClass() != World.class) { throw new ModelException("The given object is not a world."); }
 		World w = (World) world;
-		if (! (asteroid instanceof Asteroid)) { throw new ModelException ("The given object is not an asteroid."); }
+		if (! (asteroid instanceof Asteroid)) { throw new ModelException("The given object is not an asteroid."); }
 		Asteroid a = (Asteroid) asteroid;
-		w.add (a);
+		w.add(a);
 	}
 
 	@Override
 	public void removeShip (Object world, Object ship)
 	{
-		if (world.getClass () != World.class) { throw new ModelException ("The given object is not a world."); }
+		if (world.getClass() != World.class) { throw new ModelException("The given object is not a world."); }
 		World w = (World) world;
-		if (! (ship instanceof Ship)) { throw new ModelException ("The given object is not a Ship."); }
+		if (! (ship instanceof Ship)) { throw new ModelException("The given object is not a Ship."); }
 		Ship s = (Ship) ship;
-		w.remove (s);
+		w.remove(s);
 	}
 
 	@Override
 	public void removeAsteroid (Object world, Object asteroid)
 	{
-		if (world.getClass () != World.class) { throw new ModelException ("The given object is not a world."); }
+		if (world.getClass() != World.class) { throw new ModelException("The given object is not a world."); }
 		World w = (World) world;
-		if (! (asteroid instanceof Asteroid)) { throw new ModelException ("The given object is not an asteroid."); }
-		w.remove (asteroid);
+		if (! (asteroid instanceof Asteroid)) { throw new ModelException("The given object is not an asteroid."); }
+		w.remove(asteroid);
 	}
 
 	@Override
 	public void evolve (Object world, double dt, CollisionListener collisionListener)
 	{
-		if (world.getClass () != World.class) { throw new ModelException ("The given object is not a world."); }
+		if (world.getClass() != World.class) { throw new ModelException("The given object is not a world."); }
 		World w = (World) world;
-		w.evolve (dt, collisionListener);
+		w.evolve(dt, collisionListener);
 	}
 
 	@Override
@@ -156,24 +156,24 @@ public class Facade implements IFacade
 		Mass m;
 		try
 		{
-			a = new Angle (direction);
-			d = new Direction (a);
-			p = new Position (x, y);
-			s = new CircleShape (radius);
-			v = new Velocity (xVelocity, yVelocity);
-			speedLimit = Velocity.getSpeedOfLight ();
-			m = new Mass (mass);
+			a = new Angle(direction);
+			d = new Direction(a);
+			p = new Position(x, y);
+			s = new CircleShape(radius);
+			v = new Velocity(xVelocity, yVelocity);
+			speedLimit = Velocity.getSpeedOfLight();
+			m = new Mass(mass);
 		} catch (IllegalArgumentException e)
 		{
-			throw new ModelException ("Invalid arguments for facade.createShip(...)");
+			throw new ModelException("Invalid arguments for facade.createShip(...)");
 		} catch (ArithmeticException e)
 		{
-			throw new ModelException ("Invalid arguments for facade.createShip(...)");
+			throw new ModelException("Invalid arguments for facade.createShip(...)");
 		} catch (AssertionError e)
 		{
-			throw new ModelException ("Invalid arguments for facade.createShip(...)");
+			throw new ModelException("Invalid arguments for facade.createShip(...)");
 		}
-		return new Ship (d, p, speedLimit, v, s, m);
+		return new Ship(d, p, speedLimit, v, s, m);
 	}
 
 	@Override
@@ -185,115 +185,115 @@ public class Facade implements IFacade
 	@Override
 	public double getShipX (Object ship)
 	{
-		if (! (ship instanceof Ship)) { throw new ModelException ("The given object is not a Ship."); }
+		if (! (ship instanceof Ship)) { throw new ModelException("The given object is not a Ship."); }
 		Ship s = (Ship) ship;
-		return s.getPosition ().getX ();
+		return s.getPosition()._X();
 	}
 
 	@Override
 	public double getShipY (Object ship)
 	{
-		if (! (ship instanceof Ship)) { throw new ModelException ("The given object is not a Ship."); }
+		if (! (ship instanceof Ship)) { throw new ModelException("The given object is not a Ship."); }
 		Ship s = (Ship) ship;
-		return s.getPosition ().getY ();
+		return s.getPosition()._Y();
 	}
 
 	@Override
 	public double getShipXVelocity (Object ship)
 	{
-		if (! (ship instanceof Ship)) { throw new ModelException ("The given object is not a Ship."); }
+		if (! (ship instanceof Ship)) { throw new ModelException("The given object is not a Ship."); }
 		Ship s = (Ship) ship;
-		return s.getVelocity ().getX ();
+		return s.getVelocity()._X();
 	}
 
 	@Override
 	public double getShipYVelocity (Object ship)
 	{
-		if (! (ship instanceof Ship)) { throw new ModelException ("The given object is not a Ship."); }
+		if (! (ship instanceof Ship)) { throw new ModelException("The given object is not a Ship."); }
 		Ship s = (Ship) ship;
-		return s.getVelocity ().getY ();
+		return s.getVelocity()._Y();
 	}
 
 	@Override
 	public double getShipRadius (Object ship)
 	{
-		if (! (ship instanceof Ship)) { throw new ModelException ("The given object is not a Ship."); }
+		if (! (ship instanceof Ship)) { throw new ModelException("The given object is not a Ship."); }
 		Ship s = (Ship) ship;
-		return s.getShape ().getRadius ();
+		return s.getShape().getRadius();
 	}
 
 	@Override
 	public double getShipDirection (Object ship)
 	{
-		if (! (ship instanceof Ship)) { throw new ModelException ("The given object is not a Ship."); }
+		if (! (ship instanceof Ship)) { throw new ModelException("The given object is not a Ship."); }
 		Ship s = (Ship) ship;
-		return s.getDirection ().getAngle ().get ();
+		return s.getDirection().getAngle().get();
 	}
 
 	@Override
 	public double getShipMass (Object ship)
 	{
-		if (! (ship instanceof Ship)) { throw new ModelException ("The given object is not a Ship."); }
+		if (! (ship instanceof Ship)) { throw new ModelException("The given object is not a Ship."); }
 		Ship s = (Ship) ship;
-		return s.getMass ().get ();
+		return s.getMass().get();
 	}
 
 	@Override
 	public Object getShipWorld (Object ship)
 	{
-		if (! (ship instanceof Ship)) { throw new ModelException ("The given object is not a Ship."); }
+		if (! (ship instanceof Ship)) { throw new ModelException("The given object is not a Ship."); }
 		Ship s = (Ship) ship;
-		return s.getWorld ();
+		return s.getWorld();
 	}
 
 	@Override
 	public boolean isShipThrusterActive (Object ship)
 	{
-		if (! (ship instanceof Ship)) { throw new ModelException ("The given object is not a Ship."); }
+		if (! (ship instanceof Ship)) { throw new ModelException("The given object is not a Ship."); }
 		Ship s = (Ship) ship;
-		return s.getThruster ().isActivated ();
+		return s.getThruster().isActivated();
 	}
 
 	@Override
 	public void setThrusterActive (Object ship, boolean active)
 	{
-		if (! (ship instanceof Ship)) { throw new ModelException ("The given object is not a Ship."); }
+		if (! (ship instanceof Ship)) { throw new ModelException("The given object is not a Ship."); }
 		Ship s = (Ship) ship;
 		if (active)
 		{
-			s.getThruster ().activate ();
+			s.getThruster().activate();
 		} else
 		{
-			s.getThruster ().deactivate ();
+			s.getThruster().deactivate();
 		}
 	}
 
 	@Override
 	public void turn (Object ship, double angle)
 	{
-		if (! (ship instanceof Ship)) { throw new ModelException ("The given object is not a Ship."); }
+		if (! (ship instanceof Ship)) { throw new ModelException("The given object is not a Ship."); }
 		Ship s = (Ship) ship;
-		s.turn (new Angle (angle));
+		s.turn(new Angle(angle));
 	}
 
 	@Override
 	public void fireBullet (Object ship)
 	{
-		if (! (ship instanceof Ship)) { throw new ModelException ("The given object is not a Ship."); }
+		if (! (ship instanceof Ship)) { throw new ModelException("The given object is not a Ship."); }
 		Ship s = (Ship) ship;
-		s.fire ();
+		s.fire();
 	}
 
 	@Override
 	public Object createAsteroid (double x, double y, double xVelocity, double yVelocity, double radius)
 	{
-		return new Asteroid (new Direction (), new Position (x, y), new Velocity (xVelocity, yVelocity), new CircleShape (radius));
+		return new Asteroid(new Direction(), new Position(x, y), new Velocity(xVelocity, yVelocity), new CircleShape(radius));
 	}
 
 	@Override
 	public Object createAsteroid (double x, double y, double xVelocity, double yVelocity, double radius, Random random)
 	{
-		return new Asteroid (new Direction (new Angle (random.nextDouble () * Math.PI * 2)), new Position (x, y), new Velocity (xVelocity, yVelocity), new CircleShape (radius));
+		return new Asteroid(new Direction(new Angle(random.nextDouble() * Math.PI * 2)), new Position(x, y), new Velocity(xVelocity, yVelocity), new CircleShape(radius));
 	}
 
 	@Override
@@ -305,57 +305,57 @@ public class Facade implements IFacade
 	@Override
 	public double getAsteroidX (Object asteroid)
 	{
-		if (! (asteroid instanceof Asteroid)) { throw new ModelException ("The given object is not an asteroid."); }
+		if (! (asteroid instanceof Asteroid)) { throw new ModelException("The given object is not an asteroid."); }
 		Asteroid a = (Asteroid) asteroid;
-		return a.getPosition ().getX ();
+		return a.getPosition()._X();
 	}
 
 	@Override
 	public double getAsteroidY (Object asteroid)
 	{
-		if (! (asteroid instanceof Asteroid)) { throw new ModelException ("The given object is not an asteroid."); }
+		if (! (asteroid instanceof Asteroid)) { throw new ModelException("The given object is not an asteroid."); }
 		Asteroid a = (Asteroid) asteroid;
-		return a.getPosition ().getY ();
+		return a.getPosition()._Y();
 	}
 
 	@Override
 	public double getAsteroidXVelocity (Object asteroid)
 	{
-		if (! (asteroid instanceof Asteroid)) { throw new ModelException ("The given object is not an asteroid."); }
+		if (! (asteroid instanceof Asteroid)) { throw new ModelException("The given object is not an asteroid."); }
 		Asteroid a = (Asteroid) asteroid;
-		return a.getVelocity ().getX ();
+		return a.getVelocity()._X();
 	}
 
 	@Override
 	public double getAsteroidYVelocity (Object asteroid)
 	{
-		if (! (asteroid instanceof Asteroid)) { throw new ModelException ("The given object is not an asteroid."); }
+		if (! (asteroid instanceof Asteroid)) { throw new ModelException("The given object is not an asteroid."); }
 		Asteroid a = (Asteroid) asteroid;
-		return a.getVelocity ().getY ();
+		return a.getVelocity()._Y();
 	}
 
 	@Override
 	public double getAsteroidRadius (Object asteroid)
 	{
-		if (! (asteroid instanceof Asteroid)) { throw new ModelException ("The given object is not an asteroid."); }
+		if (! (asteroid instanceof Asteroid)) { throw new ModelException("The given object is not an asteroid."); }
 		Asteroid a = (Asteroid) asteroid;
-		return a.getShape ().getRadius ();
+		return a.getShape().getRadius();
 	}
 
 	@Override
 	public double getAsteroidMass (Object asteroid)
 	{
-		if (! (asteroid instanceof Asteroid)) { throw new ModelException ("The given object is not an asteroid."); }
+		if (! (asteroid instanceof Asteroid)) { throw new ModelException("The given object is not an asteroid."); }
 		Asteroid a = (Asteroid) asteroid;
-		return a.getMass ().get ();
+		return a.getMass().get();
 	}
 
 	@Override
 	public Object getAsteroidWorld (Object asteroid)
 	{
-		if (! (asteroid instanceof Asteroid)) { throw new ModelException ("The given object is not an asteroid."); }
+		if (! (asteroid instanceof Asteroid)) { throw new ModelException("The given object is not an asteroid."); }
 		Asteroid a = (Asteroid) asteroid;
-		return a.getWorld ();
+		return a.getWorld();
 	}
 
 	@Override
@@ -367,64 +367,64 @@ public class Facade implements IFacade
 	@Override
 	public double getBulletX (Object bullet)
 	{
-		if (! (bullet instanceof Bullet)) { throw new ModelException ("The given object is not a bullet."); }
+		if (! (bullet instanceof Bullet)) { throw new ModelException("The given object is not a bullet."); }
 		Bullet b = (Bullet) bullet;
-		return b.getPosition ().getX ();
+		return b.getPosition()._X();
 	}
 
 	@Override
 	public double getBulletY (Object bullet)
 	{
-		if (! (bullet instanceof Bullet)) { throw new ModelException ("The given object is not a bullet."); }
+		if (! (bullet instanceof Bullet)) { throw new ModelException("The given object is not a bullet."); }
 		Bullet b = (Bullet) bullet;
-		return b.getPosition ().getY ();
+		return b.getPosition()._Y();
 	}
 
 	@Override
 	public double getBulletXVelocity (Object bullet)
 	{
-		if (! (bullet instanceof Bullet)) { throw new ModelException ("The given object is not a bullet."); }
+		if (! (bullet instanceof Bullet)) { throw new ModelException("The given object is not a bullet."); }
 		Bullet b = (Bullet) bullet;
-		return b.getVelocity ().getX ();
+		return b.getVelocity()._X();
 	}
 
 	@Override
 	public double getBulletYVelocity (Object bullet)
 	{
-		if (! (bullet instanceof Bullet)) { throw new ModelException ("The given object is not a bullet."); }
+		if (! (bullet instanceof Bullet)) { throw new ModelException("The given object is not a bullet."); }
 		Bullet b = (Bullet) bullet;
-		return b.getVelocity ().getY ();
+		return b.getVelocity()._Y();
 	}
 
 	@Override
 	public double getBulletRadius (Object bullet)
 	{
-		if (! (bullet instanceof Bullet)) { throw new ModelException ("The given object is not a bullet."); }
+		if (! (bullet instanceof Bullet)) { throw new ModelException("The given object is not a bullet."); }
 		Bullet b = (Bullet) bullet;
-		return b.getShape ().getRadius ();
+		return b.getShape().getRadius();
 	}
 
 	@Override
 	public double getBulletMass (Object bullet)
 	{
-		if (! (bullet instanceof Bullet)) { throw new ModelException ("The given object is not a bullet."); }
+		if (! (bullet instanceof Bullet)) { throw new ModelException("The given object is not a bullet."); }
 		Bullet b = (Bullet) bullet;
-		return b.getMass ().get ();
+		return b.getMass().get();
 	}
 
 	@Override
 	public Object getBulletWorld (Object bullet)
 	{
-		if (! (bullet instanceof Bullet)) { throw new ModelException ("The given object is not a bullet."); }
+		if (! (bullet instanceof Bullet)) { throw new ModelException("The given object is not a bullet."); }
 		Bullet b = (Bullet) bullet;
-		return b.getWorld ();
+		return b.getWorld();
 	}
 
 	@Override
 	public Object getBulletSource (Object bullet)
 	{
-		if (! (bullet instanceof Bullet)) { throw new ModelException ("The given object is not a bullet."); }
+		if (! (bullet instanceof Bullet)) { throw new ModelException("The given object is not a bullet."); }
 		Bullet b = (Bullet) bullet;
-		return b.getShooter ();
+		return b.getShooter();
 	}
 }

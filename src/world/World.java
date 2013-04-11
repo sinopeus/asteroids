@@ -186,11 +186,11 @@ public class World extends ArrayList <Entity>
 			if (c.getClass() == BorderCollision.class)
 			{
 				BorderCollision bc = (BorderCollision) c;
-				collisionListener.boundaryCollision(bc.getCollisionEntity(), collisionPosition.getX(), collisionPosition.getY());
+				collisionListener.boundaryCollision(bc.getCollisionEntity(), collisionPosition._X(), collisionPosition._Y());
 			} else if (c.getClass() == EntityCollision.class)
 			{
 				EntityCollision ec = (EntityCollision) c;
-				collisionListener.objectCollision(ec.getEntity1(), ec.getEntity2(), collisionPosition.getX(), collisionPosition.getY());
+				collisionListener.objectCollision(ec.getEntity1(), ec.getEntity2(), collisionPosition._X(), collisionPosition._Y());
 			}
 			c.resolve();
 			evolve( (dt - c.getTimeToCollision()), collisionListener);
@@ -217,7 +217,7 @@ public class World extends ArrayList <Entity>
 	 */
 	public boolean isInWorld (Position position)
 	{
-		return (position.getX() <= getxSize() && position.getX() >= 0 && position.getY() <= getySize() && position.getY() >= 0);
+		return (position._X() <= getxSize() && position._X() >= 0 && position._Y() <= getySize() && position._Y() >= 0);
 	}
 
 	/**

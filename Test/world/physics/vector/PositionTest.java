@@ -33,8 +33,8 @@ public class PositionTest
 	public void extendedConstructorTest_ComponentsMatchGivenComponents()
 	{
 		Position p = new Position(5, 6);
-		assertTrue(Util.fuzzyEquals(p.getX(), 5));
-		assertTrue(Util.fuzzyEquals(p.getY(), 6));
+		assertTrue(Util.fuzzyEquals(p._X(), 5));
+		assertTrue(Util.fuzzyEquals(p._Y(), 6));
 	}
 
 	@Test
@@ -42,23 +42,23 @@ public class PositionTest
 	{
 		Vector v = new Vector(5, 6);
 		Position p = new Position(v);
-		assertTrue(Util.fuzzyEquals(p.getX(), v.getX()));
-		assertTrue(Util.fuzzyEquals(p.getY(), v.getY()));
+		assertTrue(Util.fuzzyEquals(p._X(), v._X()));
+		assertTrue(Util.fuzzyEquals(p._Y(), v._Y()));
 	}
 
 	@Test
 	public void simpleConstructorTest_ComponentsMatchZero()
 	{
 		Position p = new Position();
-		assertTrue(Util.fuzzyEquals(p.getX(), 0));
-		assertTrue(Util.fuzzyEquals(p.getY(), 0));
+		assertTrue(Util.fuzzyEquals(p._X(), 0));
+		assertTrue(Util.fuzzyEquals(p._Y(), 0));
 	}
 
 	@Test
 	public void setXComponentTest_LegalCase()
 	{
 		testPosition.setX(10);
-		assertTrue(Util.fuzzyEquals(testPosition.getX(), 10));
+		assertTrue(Util.fuzzyEquals(testPosition._X(), 10));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -71,7 +71,7 @@ public class PositionTest
 	public void setYComponentTest_LegalCase()
 	{
 		testPosition.setY(10);
-		assertTrue(Util.fuzzyEquals(testPosition.getY(), 10));
+		assertTrue(Util.fuzzyEquals(testPosition._Y(), 10));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -85,8 +85,8 @@ public class PositionTest
 	{
 		Vector v = new Vector(15, 5);
 		Position sumVector = testPosition.getSum(v);
-		assertTrue(Util.fuzzyEquals(sumVector.getX(), 20));
-		assertTrue(Util.fuzzyEquals(sumVector.getY(), 10));
+		assertTrue(Util.fuzzyEquals(sumVector._X(), 20));
+		assertTrue(Util.fuzzyEquals(sumVector._Y(), 10));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -100,8 +100,8 @@ public class PositionTest
 	{
 		Velocity v = new Velocity(5, 6);
 		testPosition.moveBy(v, 2.5);
-		assertTrue(Util.fuzzyEquals(testPosition.getX(), 17.5));
-		assertTrue(Util.fuzzyEquals(testPosition.getY(), 20.0));
+		assertTrue(Util.fuzzyEquals(testPosition._X(), 17.5));
+		assertTrue(Util.fuzzyEquals(testPosition._Y(), 20.0));
 	}
 
 	@Test(expected = IllegalArgumentException.class)

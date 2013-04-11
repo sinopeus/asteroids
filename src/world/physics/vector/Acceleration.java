@@ -2,7 +2,6 @@ package world.physics.vector;
 
 import Utilities.Util;
 
-
 /**
  * A class of acceleration vectors.
  * 
@@ -21,7 +20,7 @@ public class Acceleration extends Vector
 	 * @effect	Initializes this acceleration by calling the extended vector constructor.
 	 * 			| Vector(x,y)
 	 */
-	public Acceleration(double x, double y)
+	public Acceleration (double x, double y)
 	{
 		super(x, y);
 	}
@@ -37,7 +36,7 @@ public class Acceleration extends Vector
 	 * 			The given vector is null.
 	 * 			| v == null
 	 */
-	public Acceleration(Vector v) throws IllegalArgumentException
+	public Acceleration (Vector v) throws IllegalArgumentException
 	{
 		super(v);
 	}
@@ -47,22 +46,22 @@ public class Acceleration extends Vector
 	 * 
 	 * @effect	Initializes this acceleration by calling the simple vector constructor.
 	 */
-	public Acceleration()
+	public Acceleration ()
 	{
 		super();
 	}
-	
+
 	/**
 	 * Returns a string representation of this acceleration.
 	 * 
 	 * @see world.physics.vector.Vector#toString()
 	 */
 	@Override
-	public String toString()
+	public String toString ()
 	{
 		return "A_" + hashCode() + " = " + super.toString() + " m/s²";
 	}
-	
+
 	/**
 	 * Checks whether the given object is an acceleration and its respective components are equal to this acceleration's components
 	 * 
@@ -72,17 +71,11 @@ public class Acceleration extends Vector
 	 * 			| result =(o != null) && (getClass() != o.getClass()) && Util.fuzzyEquals(getXComponent(), ((Vector) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Vector) o).getYComponent()))
 	 */
 	@Override
-	public boolean equals(Object o)
+	public boolean equals (Object o)
 	{
-		if (o == null)
-		{
-			return false;
-		}
-		if (getClass() != o.getClass())
-		{
-			return false;
-		}
+		if (o == null) { return false; }
+		if (getClass() != o.getClass()) { return false; }
 		Vector other = (Vector) o;
-		return (Util.fuzzyEquals(getX(), other.getX()) && Util.fuzzyEquals(getY(), other.getY()));
+		return (Util.fuzzyEquals(this._X(), other._X()) && Util.fuzzyEquals(this._Y(), other._Y()));
 	}
 }

@@ -36,24 +36,24 @@ public class DirectionTest
 	public void extendedConstructorTest_ComponentsMatchGivenComponents()
 	{
 		Direction d = new Direction(testAngle);
-		assertTrue(Util.fuzzyEquals(d.getX(), testAngle.getCos()));
-		assertTrue(Util.fuzzyEquals(d.getY(), testAngle.getSin()));
+		assertTrue(Util.fuzzyEquals(d._X(), testAngle.getCos()));
+		assertTrue(Util.fuzzyEquals(d._Y(), testAngle.getSin()));
 	}
 
 	@Test
 	public void simpleConstructorTest_ComponentsMatchGivenComponents()
 	{
 		Direction d = new Direction();
-		assertTrue(Util.fuzzyEquals(d.getX(), 1.0));
-		assertTrue(Util.fuzzyEquals(d.getY(), 0.0));
+		assertTrue(Util.fuzzyEquals(d._X(), 1.0));
+		assertTrue(Util.fuzzyEquals(d._Y(), 0.0));
 	}
 	
 	@Test
 	public void extendedConstructorTest_doubleAsParam()
 	{
 		Direction d = new Direction(Math.PI / 2.0);
-		assertTrue(Util.fuzzyEquals(d.getX(), 0.0));
-		assertTrue(Util.fuzzyEquals(d.getY(), 1.0));
+		assertTrue(Util.fuzzyEquals(d._X(), 0.0));
+		assertTrue(Util.fuzzyEquals(d._Y(), 1.0));
 	}
 	
 	@Test
@@ -73,8 +73,8 @@ public class DirectionTest
 	@Test
 	public void getXComponentTest()
 	{
-		assertTrue(Util.fuzzyEquals(testDirection.getX(), 0));
-		assertTrue(Util.fuzzyEquals(testDirection.getY(), 1));
+		assertTrue(Util.fuzzyEquals(testDirection._X(), 0));
+		assertTrue(Util.fuzzyEquals(testDirection._Y(), 1));
 	}
 
 	@Test

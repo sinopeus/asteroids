@@ -313,8 +313,8 @@ public class EntityTest //TODO test constructors
 		assertEquals(originalState.getPosition(), originalState.getPosition());
 		assertEquals(testEntity.getVelocity(), originalState.getVelocity());
 		assertEquals(testEntity.getDirection(), originalState.getDirection());
-		assertTrue(Util.fuzzyEquals(testEntity.getPosition().getX(), 65));
-		assertTrue(Util.fuzzyEquals(testEntity.getPosition().getY(), 65));
+		assertTrue(Util.fuzzyEquals(testEntity.getPosition()._X(), 65));
+		assertTrue(Util.fuzzyEquals(testEntity.getPosition()._Y(), 65));
 	}
 	
 	@Test ()
@@ -332,8 +332,8 @@ public class EntityTest //TODO test constructors
 		testEntity.move(2.0);
 		assertEquals(testEntity.getVelocity(), originalState.getVelocity());
 		assertEquals(testEntity.getDirection(), originalState.getDirection());
-		assertTrue(Util.fuzzyEquals(testEntity.getPosition().getX(), 65));
-		assertTrue(Util.fuzzyEquals(testEntity.getPosition().getY(), 65));
+		assertTrue(Util.fuzzyEquals(testEntity.getPosition()._X(), 65));
+		assertTrue(Util.fuzzyEquals(testEntity.getPosition()._Y(), 65));
 	}
 
 	@Test (expected = IllegalStateException.class)
