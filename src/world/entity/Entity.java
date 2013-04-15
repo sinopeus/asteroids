@@ -6,6 +6,7 @@ import world.physics.geometry.Angle;
 import world.physics.geometry.CircleShape;
 import world.physics.vector.Direction;
 import world.physics.vector.Position;
+import world.physics.vector.Vector;
 import world.physics.vector.Velocity;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
@@ -60,18 +61,18 @@ public class Entity
 	public Entity (Direction direction, Position position, double speedLimit, Velocity velocity, CircleShape shape, Mass mass) throws NullPointerException
 	{
 		//TODO add throws from setters.
-		setDirection (direction);
-		setPosition (position);
-		setSpeedLimit (speedLimit);
-		setVelocity (velocity);
-		if (!canHaveAsShape (shape))
+		setDirection(direction);
+		setPosition(position);
+		setSpeedLimit(speedLimit);
+		setVelocity(velocity);
+		if (!canHaveAsShape(shape))
 		{
-			throw new IllegalArgumentException ("Invalid circle shape provided");
+			throw new IllegalArgumentException("Invalid circle shape provided");
 		} else
 		{
 			this.shape = shape;
 		}
-		setMass (mass);
+		setMass(mass);
 		isTerminated = false;
 	}
 
@@ -84,7 +85,7 @@ public class Entity
 	public Entity ()
 	{
 		//TODO add throws from setters.
-		this (new Direction (), new Position (), Velocity.getSpeedOfLight (), new Velocity (), new CircleShape (40), new Mass (5E15));
+		this(new Direction(), new Position(), Velocity.getSpeedOfLight(), new Velocity(), new CircleShape(40), new Mass(5E15));
 	}
 
 	/**
@@ -129,10 +130,10 @@ public class Entity
 	@Raw
 	public void setPosition (Position position) throws IllegalArgumentException, IllegalStateException
 	{
-		if (this.isTerminated ()) { throw new IllegalStateException ("This entity is terminated."); }
-		if (!canHaveAsPosition (position))
+		if (this.isTerminated()) { throw new IllegalStateException("This entity is terminated."); }
+		if (!canHaveAsPosition(position))
 		{
-			throw new IllegalArgumentException ("Invalid position provided.");
+			throw new IllegalArgumentException("Invalid position provided.");
 		} else
 		{
 			this.position = position;
@@ -167,7 +168,7 @@ public class Entity
 	@Raw
 	protected boolean canHaveAsVelocity (Velocity velocity)
 	{
-		return ( (velocity != null) && (velocity.get () <= getSpeedLimit ()));
+		return ( (velocity != null) && (velocity.get() <= getSpeedLimit()));
 	}
 
 	/**
@@ -186,8 +187,8 @@ public class Entity
 	@Raw
 	public void setVelocity (Velocity velocity) throws IllegalStateException
 	{
-		if (this.isTerminated ()) { throw new IllegalStateException ("This entity is terminated."); }
-		if (canHaveAsVelocity (velocity))
+		if (this.isTerminated()) { throw new IllegalStateException("This entity is terminated."); }
+		if (canHaveAsVelocity(velocity))
 		{
 			this.velocity = velocity;
 		}
@@ -240,10 +241,10 @@ public class Entity
 	@Raw
 	public void setDirection (Direction direction) throws IllegalStateException
 	{
-		if (this.isTerminated ()) { throw new IllegalStateException ("This entity is terminated."); }
-		assert (canHaveAsDirection (direction));
+		if (this.isTerminated()) { throw new IllegalStateException("This entity is terminated."); }
+		assert (canHaveAsDirection(direction));
 		this.direction = direction;
-		assert (getDirection ().equals (direction));
+		assert (getDirection().equals(direction));
 	}
 
 	/**
@@ -259,7 +260,7 @@ public class Entity
 	@Raw
 	public CircleShape getShape ()
 	{
-		return new CircleShape (shape.getRadius ());
+		return new CircleShape(shape.getRadius());
 	}
 
 	/**
@@ -305,7 +306,7 @@ public class Entity
 	@Raw
 	protected boolean canHaveAsSpeedLimit (double speedLimit)
 	{
-		return ( (speedLimit >= 0) && (speedLimit <= Velocity.getSpeedOfLight ()));
+		return ( (speedLimit >= 0) && (speedLimit <= Velocity.getSpeedOfLight()));
 	}
 
 	/**
@@ -324,13 +325,13 @@ public class Entity
 	@Raw
 	public void setSpeedLimit (double speedLimit) throws IllegalStateException
 	{
-		if (this.isTerminated ()) { throw new IllegalStateException ("This entity is terminated."); }
-		if (canHaveAsSpeedLimit (speedLimit))
+		if (this.isTerminated()) { throw new IllegalStateException("This entity is terminated."); }
+		if (canHaveAsSpeedLimit(speedLimit))
 		{
 			this.speedLimit = speedLimit;
 		} else
 		{
-			this.speedLimit = Velocity.getSpeedOfLight ();
+			this.speedLimit = Velocity.getSpeedOfLight();
 		}
 	}
 
@@ -377,7 +378,7 @@ public class Entity
 	@Raw
 	private void setMass (Mass mass) throws IllegalArgumentException
 	{
-		if (!canHaveAsMass (mass)) { throw new IllegalArgumentException ("Invalid mass provided"); }
+		if (!canHaveAsMass(mass)) { throw new IllegalArgumentException("Invalid mass provided"); }
 		this.mass = mass;
 	}
 
@@ -424,7 +425,7 @@ public class Entity
 	@Raw
 	public void setWorld (World world) throws IllegalArgumentException
 	{
-		if (!canHaveAsWorld (world)) { throw new IllegalArgumentException ("Illegal world provided."); }
+		if (!canHaveAsWorld(world)) { throw new IllegalArgumentException("Illegal world provided."); }
 		this.world = world;
 	}
 
@@ -453,7 +454,7 @@ public class Entity
 	 */
 	public void terminate ()
 	{
-		getWorld ().remove (this);
+		getWorld().remove(this);
 		this.world = null;
 		isTerminated = true;
 	}
@@ -471,7 +472,7 @@ public class Entity
 	 */
 	public void advance (double dt)
 	{
-		move (dt);
+		move(dt);
 	}
 
 	/**
@@ -492,12 +493,12 @@ public class Entity
 	 */
 	public void move (double duration) throws ArithmeticException, IllegalArgumentException, IllegalStateException
 	{
-		if (this.isTerminated ()) { throw new IllegalStateException ("This entity is terminated."); }
+		if (this.isTerminated()) { throw new IllegalStateException("This entity is terminated."); }
 		if (duration < 0)
 		{
 			duration = 0;
 		}
-		this.position.moveBy (getVelocity (), duration);
+		this.position.moveBy(getVelocity(), duration);
 	}
 
 	/**
@@ -514,9 +515,178 @@ public class Entity
 	 */
 	public void turn (Angle angle) throws IllegalStateException
 	{
-		if (this.isTerminated ()) { throw new IllegalStateException ("This entity is terminated."); }
+		if (this.isTerminated()) { throw new IllegalStateException("This entity is terminated."); }
 		assert (angle != null);
-		this.direction.rotate (angle);
+		this.direction.rotate(angle);
+	}
+
+	//TODO
+	public double timeToHorizontalCollision ()
+	{
+		Position intersectionOfCenter = null;
+
+		double wsx = getWorld().getxSize();
+		double r = getShape().getRadius();
+		double px = this.getPosition()._X();
+		double py = this.getPosition()._Y();
+		double vx = this.getVelocity()._X();
+		double vy = this.getVelocity()._Y();
+
+		double n1 = 0, n2 = 0, x1 = 0, x2 = 0, y1 = 0, y2 = 0;
+		n1 = ( (wsx - r - px) / vx);
+		x1 = wsx - r;
+		y1 = n1 * vy + py;
+
+		n2 = ( (r - px) / vx);
+		x2 = r;
+		y2 = n2 * vy + py;
+
+		double n = 0, x = 0, y = 0;
+		if (n1 < n2)
+		{
+			n = n1;
+			x = x1;
+			y = y1;
+		} else
+		{
+			n = n2;
+			x = x2;
+			y = y2;
+		}
+
+		if (!Double.isInfinite(n))
+		{
+			intersectionOfCenter = new Position(x, y);
+			double difference = intersectionOfCenter.getDistanceTo(this.getPosition());
+			return difference / this.getVelocity().get();
+		} else
+		{
+			return Double.POSITIVE_INFINITY;
+		}
+	}
+
+	public double timeToVerticalCollision ()
+	{
+		Position intersectionOfCenter = null;
+
+		double wsy = getWorld().getySize();
+		double r = getShape().getRadius();
+		double px = this.getPosition()._X();
+		double py = this.getPosition()._Y();
+		double vx = this.getVelocity()._X();
+		double vy = this.getVelocity()._Y();
+
+		double n1 = 0, n2 = 0, x1 = 0, x2 = 0, y1 = 0, y2 = 0;
+
+		n1 = ( (wsy - r - py) / vy);
+		x1 = n1 * vx + px;
+		y1 = wsy - r;
+
+		n2 = ( (r - py) / vy);
+		x2 = n2 * vx + px;
+		y2 = r;
+
+		double n = 0, x = 0, y = 0;
+		if (n1 < n2)
+		{
+			n = n1;
+			x = x1;
+			y = y1;
+		} else
+		{
+			n = n2;
+			x = x2;
+			y = y2;
+		}
+
+		if (!Double.isInfinite(n))
+		{
+			intersectionOfCenter = new Position(x, y);
+			double difference = intersectionOfCenter.getDistanceTo(this.getPosition());
+			return difference / this.getVelocity().get();
+		} else
+		{
+			return Double.POSITIVE_INFINITY;
+		}
+	}
+
+	public double timeToEntityCollision (Entity other) throws IllegalArgumentException
+	{
+		if ( (this == null) || (other == null)) { throw new IllegalArgumentException("One of the given entities is null."); }
+
+		double sigma = this.getShape().getRadius() + other.getShape().getRadius(); // size difference between entitities
+
+		Vector deltaR = other.getPosition().getDifference(this.getPosition()); // distance between entitites
+		Vector deltaV = other.getVelocity().getDifference(this.getVelocity()); // difference of the velocities
+
+		double d = (Math.pow(deltaV.dotProduct(deltaR), 2)) - ( (deltaV.dotProduct(deltaV)) * (deltaR.dotProduct(deltaR) - Math.pow(sigma, 2)));
+
+		if (deltaV.dotProduct(deltaR) >= 0 || d <= 0)
+		{
+			return Double.POSITIVE_INFINITY;
+		} else
+		{
+			return - (deltaV.dotProduct(deltaR) + Math.sqrt(d)) / (deltaV.dotProduct(deltaV));
+		}
+	}
+
+	public void horizontalWallCollision () throws IllegalStateException
+	{
+		this.getVelocity().setX(-this.getVelocity()._X());
+	}
+
+	public void verticalWallCollision () throws IllegalStateException
+	{
+		this.getVelocity().setY(-this.getVelocity()._Y());
+	}
+
+	public void entityCollision (Entity other)
+	{
+		bounce(this, other);
+	}
+
+	private void bounce (Entity entity1, Entity entity2)
+	{
+		Position p1 = entity1.getPosition();
+		Position p2 = entity2.getPosition();
+		Velocity v1 = entity1.getVelocity();
+		Velocity v2 = entity2.getVelocity();
+		double m1 = entity1.getMass().get();
+		double m2 = entity2.getMass().get();
+
+		//--VELOCITY CALCULATION--
+		//step 1: find the unit normal vector and the unit tangent vector.
+		Vector n = new Vector(p2._X() - p1._X(), p2._Y() - p1._Y());
+		Vector un = n.getScaledBy(1 / n.getMagnitude());
+		Vector ut = new Vector(-un._Y(), un._X());
+
+		//step 2: find the components of the initial velocity in the normal and tangent directions.
+		double v1n = v1.dotProduct(un);
+		double v1t = v1.dotProduct(ut);
+		double v2n = v2.dotProduct(un);
+		double v2t = v2.dotProduct(ut);
+
+		//step 3: the velocity remains the same in the tangent direction.
+		double v1tf = v1t;
+		double v2tf = v2t;
+
+		//step 4: the velocity in the normal is calculated as if it is a one dimensional collision.
+		double v1nf = (v1n * (m1 - m2) + 2 * m2 * v2n) / (m1 + m2);
+		double v2nf = (v2n * (m2 - m1) + 2 * m1 * v1n) / (m1 + m2);
+
+		//step 5: multiply the components by their unit vector to get vectors.
+		Velocity v1nVector = new Velocity(un.getScaledBy(v1nf));
+		Velocity v1tVector = new Velocity(ut.getScaledBy(v1tf));
+		Velocity v2nVector = new Velocity(un.getScaledBy(v2nf));
+		Velocity v2tVector = new Velocity(ut.getScaledBy(v2tf));
+
+		//step 6: add the component vectors together to get the final vectors.
+		Velocity v1f = v1nVector.getSum(v1tVector);
+		Velocity v2f = v2nVector.getSum(v2tVector);
+		//--VELOCITY CALCULATION--
+
+		entity1.setVelocity(v1f);
+		entity2.setVelocity(v2f);
 	}
 
 	/**
@@ -527,6 +697,6 @@ public class Entity
 	 */
 	public String toString ()
 	{
-		return " at " + getPosition () + "   with velocity " + getVelocity () + "   and shape " + getShape () + "  ";
+		return " at " + getPosition() + "   with velocity " + getVelocity() + "   and shape " + getShape() + "  ";
 	};
 }

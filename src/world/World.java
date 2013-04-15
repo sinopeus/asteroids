@@ -1,12 +1,11 @@
 package world;
 
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.PriorityQueue;
 
 import main.CollisionListener;
 import world.entity.Entity;
-import world.physics.collision.BorderCollision;
-import world.physics.collision.Collision;
-import world.physics.collision.EntityCollision;
+import world.physics.collision.Event;
 import world.physics.vector.Position;
 import world.physics.vector.Vector;
 import be.kuleuven.cs.som.annotate.Basic;
@@ -19,7 +18,7 @@ import be.kuleuven.cs.som.annotate.Raw;
  * @version 2.0
  * TODO document
  */
-public class World extends ArrayList <Entity>
+public class World extends HashSet <Entity> //TODO MAKE HASHSET
 {
 	private static final long	serialVersionUID	= 1L;
 
@@ -41,6 +40,8 @@ public class World extends ArrayList <Entity>
 	{
 		setXSize(xSize);
 		setYSize(ySize);
+		setCollisions(new PriorityQueue <Event>());
+		repredictCollisions = true;
 	}
 
 	/**
@@ -52,7 +53,7 @@ public class World extends ArrayList <Entity>
 	}
 
 	/**
-	 * Gets the size on the x axis of this world.
+	 * Gets the size on the x axis of this world.timeStamp
 	 */
 	@SuppressWarnings ("javadoc")
 	@Basic
@@ -145,8 +146,38 @@ public class World extends ArrayList <Entity>
 	 */
 	private boolean canHaveAsEntity (Entity entity)
 	{
-		return ((entity != null ) && !(this.contains(entity)));
+		return ( (entity != null) && ! (this.contains(entity)));
 	}
+
+	public PriorityQueue <Event> getCollisions ()
+	{
+		return collisions;
+	}
+
+	//TODO
+	private boolean canHaveAsCollisionsQueue (PriorityQueue <Event> collisions)
+	{
+		return collisions != null;
+	}
+
+	public void setCollisions (PriorityQueue <Event> collisions)
+	{
+		this.collisions = collisions;
+	}
+
+	private PriorityQueue <Event>	collisions;
+
+	//	private boolean shouldCollisionsBeRepredicted ()
+	//	{
+	//		return repredictCollisions;
+	//	}
+	//
+	//	private void setRepredictCollisions (boolean repredictCollisions)
+	//	{
+	//		this.repredictCollisions = repredictCollisions;
+	//	}
+
+	private boolean					repredictCollisions;
 
 	/**
 	 * Adds the given entity to this world.
@@ -170,35 +201,117 @@ public class World extends ArrayList <Entity>
 		return true;
 	}
 
-	//TODO DOCUMENT
-	/**
-	 * @param dt
-	 * @param collisionListener
-	 */
 	public void evolve (double dt, CollisionListener collisionListener)
 	{
-		Collision c = Collision.getNextCollision(this);
-
-		if (c != null && c.getTimeToCollision() <= dt)
+		if (repredictCollisions)
 		{
-			advanceAll(c.getTimeToCollision());
-			Position collisionPosition = c.getCollisionPosition();
-			if (c.getClass() == BorderCollision.class)
-			{
-				BorderCollision bc = (BorderCollision) c;
-				collisionListener.boundaryCollision(bc.getCollisionEntity(), collisionPosition._X(), collisionPosition._Y());
-			} else if (c.getClass() == EntityCollision.class)
-			{
-				EntityCollision ec = (EntityCollision) c;
-				collisionListener.objectCollision(ec.getEntity1(), ec.getEntity2(), collisionPosition._X(), collisionPosition._Y());
-			}
-			c.resolve();
-			evolve( (dt - c.getTimeToCollision()), collisionListener);
-		} else
+			predictAllCollisions();
+			repredictCollisions = false;
+		}
+		//		if(getCollisions().isEmpty()){
+		//			advanceAll(dt);
+		//			return;
+		//		}
+		Event next = getCollisions().peek();
+		long then = next.getTimeStamp();
+		long now = System.currentTimeMillis();
+		if ( ( (next.getTimeStamp() - now) / 1000.0) >= dt)
 		{
+			System.out.println("daaaw");
 			advanceAll(dt);
+			return;
+		}
+		if (next.isValid())
+		{
+			System.out.println("YAY");
+			next = getCollisions().poll();
+			double timeToCollision = ( (then - now) / 1000.0);
+			advanceAll(timeToCollision);
+
+			Entity e1 = next.getEntity1();
+			Entity e2 = next.getEntity2();
+
+			if (e1 != null && e2 != null)
+			{
+				e1.entityCollision(e2);
+			} else if (e1 == null && e2 != null)
+			{
+				e2.horizontalWallCollision();
+			} else if (e1 != null && e2 == null)
+			{
+				e1.verticalWallCollision();
+			} else
+			{
+				System.out.println("ERROR");
+			}
+
+			for (Event e : getCollisions())
+			{
+				if (e.hasCollidingEntities(next))
+				{
+					e.invalidate();
+				}
+			}
+
+			predictCollisionsOf(next.getEntity1());
+			predictCollisionsOf(next.getEntity2());
+
+			evolve(dt - timeToCollision, collisionListener);
 		}
 	}
+
+	//TODO DOCUMENT & TEST
+
+	private void predictAllCollisions ()
+	{
+		for (Entity e : this)
+		{
+			predictCollisionsOf(e);
+		}
+	}
+
+	public void predictCollisionsOf (Entity e)
+	{
+		if (e == null) return;
+		long now = System.currentTimeMillis();
+		for (Entity other : this)
+		{
+			double dt = e.timeToEntityCollision(other);
+			getCollisions().offer(new Event(now + (long) (dt * 1000), e, other));
+		}
+		getCollisions().offer(new Event(now + (long) (e.timeToVerticalCollision() * 1000), e, null));
+		getCollisions().offer(new Event(now + (long) (e.timeToHorizontalCollision() * 1000), null, e));
+	}
+
+	//	//TODO DOCUMENT
+	//	/**
+	//	 * @param dt
+	//	 * @param collisionListener
+	//	 */
+	//	public void evolve (double dt, CollisionListener collisionListener)
+	//	{
+	//		Collision c = Collision.getNextCollision(this);
+	//
+	//		if (c != null && c.getTimeToCollision() <= dt)
+	//		{
+	//			advanceAll(c.getTimeToCollision());
+	//			Position collisionPosition = c.getCollisionPosition();
+	//			if (c.getClass() == BorderCollision.class)
+	//			{
+	//				BorderCollision bc = (BorderCollision) c;
+	//				collisionListener.boundaryCollision(bc.getCollisionEntity(), collisionPosition._X(), collisionPosition._Y());
+	//			} else if (c.getClass() == EntityCollision.class)
+	//			{
+	//				EntityCollision ec = (EntityCollision) c;
+	//				collisionListener.objectCollision(ec.getEntity1(), ec.getEntity2(), collisionPosition._X(), collisionPosition._Y());
+	//			}
+	//			c.resolve();PriorityQueue <Event> collisions
+	//			evolve( (dt - c.getTimeToCollision()), collisionListener);
+	//		} else
+	//		{
+	//			advanceAll(dt);
+	//		}
+	//	}
 
 	//TODO DOCUMENT &TEST
 	private void advanceAll (double dt)
@@ -235,21 +348,20 @@ public class World extends ArrayList <Entity>
 		boolean p4 = isInWorld(entity.getPosition().getSum(new Vector(0, -r)));
 		return p1 && p2 && p3 && p4;
 	}
-	
-//	//TODO DOC AND TEST
-//	//TODO SOMETHING IS WRONG HERE
-//	private boolean isSpaceForEntity(Entity entity){
-//		for (Entity e : this)
-//		{
-//			if (e.getPosition().getDistanceTo(entity.getPosition()) < e.getShape().getRadius()+entity.getShape().getRadius()){
-//				return false;
-//			}
-//		}
-//		return true;
-//	}
-	
-	//TODO DOCUMENT & TEST
-	public int numberOfEntities()
+
+	//	//TODO DOC AND TEST
+	//	//TODO SOMETHING IS WRONG HERE
+	//	private boolean isSpaceForEntity(Entity entity){
+	//		for (Entity e : this)
+	//		{
+	//			if (e.getPosition().getDistanceTo(entity.getPosition()) < e.getShape().getRadius()+entity.getShape().getRadius()){
+	//				return false;
+	//			}
+	//		}
+	//		return true;
+	//	}
+
+	public int numberOfEntities ()
 	{
 		return this.size();
 	}
