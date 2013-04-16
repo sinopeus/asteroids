@@ -217,9 +217,14 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 
 	public void evolve (double dt, CollisionListener collisionListener)
 	{
+		System.out.println("-----------------------------------------");
+		System.out.println(getCollisions().toString());
+		System.out.println("-----------------------------------------");
+
 		if (repredictCollisions) predictAllCollisions();
-		if(dt <= 0)return;
-		
+		repredictShips();
+		if (dt <= 0) return;
+
 		if (getCollisions().isEmpty())
 		{
 			advanceAll(dt);
@@ -238,16 +243,14 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 			next = getCollisions().peek();
 		}
 		double timeToCollision = next.getTimeStamp() - getGameTime();
-		if ( timeToCollision >= dt)
+		if (timeToCollision >= dt)
 		{
 			advanceAll(dt);
 			return;
 		}
 
 		next = getCollisions().poll();
-		System.out.println(next);
-		assert(next.isValid());
-		
+
 		advanceAll(timeToCollision);
 
 		Entity e1 = next.getEntity1();
@@ -259,7 +262,7 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 
 		for (Event e : getCollisions())
 			if (e.involves(e1) || e.involves(e2)) e.invalidate();
-		
+
 		predictCollisionsOf(e1);
 		predictCollisionsOf(e2);
 
@@ -270,7 +273,8 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 
 	private void predictAllCollisions ()
 	{
-		for (Entity e : this) predictCollisionsOf(e);
+		for (Entity e : this)
+			predictCollisionsOf(e);
 		repredictCollisions = false;
 	}
 
@@ -291,10 +295,9 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 
 		for (Entity other : this)
 		{
-			if (e==other) continue;
-			
+			if (e == other) continue;
+
 			double dt = e.timeToEntityCollision(other);
-			
 			getCollisions().offer(new Event(getGameTime() + dt, e, other));
 		}
 
