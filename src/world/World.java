@@ -257,8 +257,7 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 		
 
 	for (Event e : getCollisions())
-	    if (e.hasCollidingEntities(next))
-		e.invalidate();
+	    if (e.hasCollidingEntities(next)) e.invalidate();
 		
 	next.invalidate();
 
@@ -279,7 +278,7 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
     public void repredictShips ()
     {
 	for (Entity e : this)
-	    if (e instanceof Ship && e.getThruster().isActivated())
+	    if (e instanceof Ship && ((Ship) e).getThruster().isActivated())
 		{
 		    for (Event o : getCollisions()) if (o.involves(e)) o.invalidate();
 		    predictCollisionsOf(e);

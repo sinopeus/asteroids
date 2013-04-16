@@ -64,7 +64,7 @@ public class Event implements Comparable <Event>
 	@Override
 	public int compareTo (Event o)
 	{
-	    return (this.getTimeStamp() - o.getTimeStamp());
+	    return (int) Math.signum(this.getTimeStamp() - o.getTimeStamp());
 		// if (this.getTimeStamp() < o.getTimeStamp())
 		// {
 		// 	return -1;
