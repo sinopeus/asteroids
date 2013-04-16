@@ -4,11 +4,6 @@ import world.entity.Entity;
 
 public class Event implements Comparable <Event>
 {
-	private final double	timeStamp;
-	private final Entity	entity1;
-	private final Entity	entity2;
-	private boolean			valid;
-
 	public Event (double timeStamp, Entity entity1, Entity entity2)
 	{
 		if (!canHaveAsTimeStamp(timeStamp))

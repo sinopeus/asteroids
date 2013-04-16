@@ -530,24 +530,24 @@ public class Entity
 		double vx = this.getVelocity()._X();
 		double vy = this.getVelocity()._Y();
 
-		double n1 = 0, n2 = 0, x1 = 0, x2 = 0, y1 = 0, y2 = 0;
-		n1 = ( (wsx - r - px) / vx);
+		double timeToRight = 0, timeToLeft = 0, x1 = 0, x2 = 0, y1 = 0, y2 = 0;
+		timeToRight = ( (wsx - r - px) / vx);
 		x1 = wsx - r;
-		y1 = n1 * vy + py;
+		y1 = timeToRight * vy + py;
 
-		n2 = ( (px - r) / vx);
+		timeToLeft = ( (px-r) / vx);
 		x2 = r;
-		y2 = n2 * vy + py;
+		y2 = timeToLeft * vy + py;
 
 		double n = 0, x = 0, y = 0;
-		if (n1 <= n2)
+		if (timeToRight <= timeToLeft)
 		{
-			n = n1;
+			n = timeToRight;
 			x = x1;
 			y = y1;
 		} else
 		{
-			n = n2;
+			n = timeToLeft;
 			x = x2;
 			y = y2;
 		}
