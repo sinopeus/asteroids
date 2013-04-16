@@ -41,6 +41,7 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 		setXSize(xSize);
 		setYSize(ySize);
 		setCollisions(new PriorityQueue <Event>());
+		setGameTime(0);
 		repredictCollisions = true;
 	}
 
@@ -167,17 +168,32 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 
 	private PriorityQueue <Event>	collisions;
 
-	//	private boolean shouldCollisionsBeRepredicted ()
-	//	{
-	//		return repredictCollisions;
-	//	}
-	//
-	//	private void setRepredictCollisions (boolean repredictCollisions)
-	//	{
-	//		this.repredictCollisions = repredictCollisions;
-	//	}
-
 	private boolean					repredictCollisions;
+
+	public double getGameTime ()
+	{
+		return gameTime;
+	}
+
+	public boolean canHaveAsGameTime (double gameTime)
+	{
+		return (gameTime >= 0);
+	}
+
+	public void setGameTime (double gameTime)
+	{
+		if (canHaveAsGameTime(gameTime))
+		{
+			this.gameTime = gameTime;
+		}
+	}
+
+	private double	gameTime;
+
+	private void advanceTime (double time)
+	{
+		setGameTime(getGameTime() + time);
+	}
 
 	/**
 	 * Adds the given entity to this world.
@@ -214,9 +230,7 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 			return;
 		}
 		Event next = getCollisions().peek();
-		double then = next.getTimeStamp();
-		double now = (double) System.currentTimeMillis();
-		if ( ( (next.getTimeStamp() - now) / 1000.0) >= dt)
+		if ( (next.getTimeStamp() - getGameTime()) >= dt)
 		{
 			System.out.println("daaaw");
 			advanceAll(dt);
@@ -226,7 +240,7 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 		{
 			System.out.println("YAY");
 			next = getCollisions().poll();
-			double timeToCollision = ( (then - now) / 1000.0);
+			double timeToCollision = next.getTimeStamp() - getGameTime();
 			advanceAll(timeToCollision);
 
 			Entity e1 = next.getEntity1();
@@ -274,14 +288,13 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 	public void predictCollisionsOf (Entity e)
 	{
 		if (e == null) return;
-		long now = System.currentTimeMillis();
 		for (Entity other : this)
 		{
 			double dt = e.timeToEntityCollision(other);
-			getCollisions().offer(new Event(now + (long) (dt * 1000), e, other));
+			getCollisions().offer(new Event(getGameTime() + dt, e, other));
 		}
-		getCollisions().offer(new Event(now + (long) (e.timeToVerticalCollision() * 1000), e, null));
-		getCollisions().offer(new Event(now + (long) (e.timeToHorizontalCollision() * 1000), null, e));
+		getCollisions().offer(new Event(getGameTime() + e.timeToVerticalCollision(), e, null));
+		getCollisions().offer(new Event(getGameTime() + e.timeToHorizontalCollision(), null, e));
 	}
 
 	//	//TODO DOCUMENT
@@ -314,13 +327,19 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 	//		}
 	//	}
 
-	//TODO DOCUMENT &TEST
+	/**
+	 * Advance all entities a given amount of time.
+	 * 
+	 * @param	dt
+	 * 			The given amount of time.
+	 */
 	private void advanceAll (double dt)
 	{
 		for (Entity e : this)
 		{
 			e.advance(dt);
 		}
+		advanceTime(dt);
 	}
 
 	/**
@@ -335,9 +354,11 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 	}
 
 	/**
-	 * TODO DOC
-	 * @param entity
-	 * @return
+	 * Checks whether the given entity is entirely within the world.
+	 * 
+	 * @param 	entity
+	 * 			The given entity
+	 * @return	Whether the given entity is within the world.
 	 */
 	private boolean isInWorld (Entity entity)
 	{
@@ -361,6 +382,7 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 	//		}
 	//		return true;
 	//	}
+
 	/**
 	 * Gets the amount of entities in the world.
 	 * @return	The amount of entities in the world.
