@@ -52,9 +52,13 @@ public class Event implements Comparable <Event>
 		this.valid = false;
 	}
 
-	public boolean hasCollidingEntities (Event e)
-	{
-		return (getEntity1() == e.getEntity1() || getEntity1() == e.getEntity2() || getEntity2() == e.getEntity1() || getEntity2() == e.getEntity2());
+// 	public boolean hasCollidingEntities (Event e)
+// {
+// 		return (getEntity1() == e.getEntity1() || getEntity1() == e.getEntity2() || getEntity2() == e.getEntity1() || getEntity2() == e.getEntity2());
+// 	}
+
+	public boolean involves (Entity e) {
+	    return (getEntity1() == e || getEntity2() == e);
 	}
 
 	@Override
