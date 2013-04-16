@@ -275,7 +275,7 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 	repredictCollisions = false;
     }
 
-    public void repredictShips ()
+    protected void repredictShips ()
     {
 	for (Entity e : this)
 	    if (e instanceof Ship && ((Ship) e).getThruster().isActivated())
@@ -285,7 +285,7 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 		}
     }
 
-    public void predictCollisionsOf (Entity e)
+    protected void predictCollisionsOf (Entity e)
     {
 	if (e == null) return;
 	
