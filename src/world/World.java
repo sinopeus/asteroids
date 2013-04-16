@@ -219,61 +219,69 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 
 	public void evolve (double dt, CollisionListener collisionListener)
 	{
-		System.out.println("running");
 		if (repredictCollisions)
 		{
 			predictAllCollisions();
 			repredictCollisions = false;
 		}
+
 		if (getCollisions().isEmpty())
 		{
 			advanceAll(dt);
 			return;
 		}
+
 		Event next = getCollisions().peek();
+		while (!next.isValid())
+		{
+			getCollisions().poll();
+			if (getCollisions().isEmpty())
+			{
+				advanceAll(dt);
+				return;
+			}
+			next = getCollisions().peek();
+		}
+
 		if ( (next.getTimeStamp() - getGameTime()) >= dt)
 		{
-			System.out.println("daaaw");
 			advanceAll(dt);
 			return;
 		}
-		if (next.isValid())
+		
+		double timeToCollision = next.getTimeStamp() - getGameTime();
+		advanceAll(timeToCollision);
+
+		Entity e1 = next.getEntity1();
+		Entity e2 = next.getEntity2();
+		System.out.println(next);
+		if (e1 != null && e2 != null)
 		{
-			System.out.println("YAY");
-			next = getCollisions().poll();
-			double timeToCollision = next.getTimeStamp() - getGameTime();
-			advanceAll(timeToCollision);
-
-			Entity e1 = next.getEntity1();
-			Entity e2 = next.getEntity2();
-
-			if (e1 != null && e2 != null)
-			{
-				e1.entityCollision(e2);
-			} else if (e1 == null && e2 != null)
-			{
-				e2.horizontalWallCollision();
-			} else if (e1 != null && e2 == null)
-			{
-				e1.verticalWallCollision();
-			} else
-			{
-				System.out.println("ERROR");
-			}
-
-			for (Event e : getCollisions())
-			{
-				if (e.hasCollidingEntities(next))
-				{
-					e.invalidate();
-				}
-			}
-
-			predictCollisionsOf(next.getEntity1());
-			predictCollisionsOf(next.getEntity2());
-
-			evolve(dt - timeToCollision, collisionListener);
+			e1.entityCollision(e2);
+		} else if (e1 == null && e2 != null)
+		{
+			e2.horizontalWallCollision();
+		} else if (e1 != null && e2 == null)
+		{
+			e1.verticalWallCollision();
+		} else
+		{
+			System.out.println("ERROR");
 		}
+
+		for (Event e : getCollisions())
+		{
+			if (e.hasCollidingEntities(next))
+			{
+				e.invalidate();
+			}
+		}
+		next.invalidate();
+		
+		predictCollisionsOf(next.getEntity1());
+		predictCollisionsOf(next.getEntity2());
+
+		evolve(dt - timeToCollision, collisionListener);
 	}
 
 	//TODO DOCUMENT & TEST
@@ -284,6 +292,8 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 		{
 			predictCollisionsOf(e);
 		}
+		for(Event e : getCollisions())
+			System.out.println(e);
 	}
 
 	public void predictCollisionsOf (Entity e)
@@ -294,8 +304,8 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 			double dt = e.timeToEntityCollision(other);
 			getCollisions().offer(new Event(getGameTime() + dt, e, other));
 		}
-		getCollisions().offer(new Event(getGameTime() + e.timeToVerticalCollision(), e, null));
-		getCollisions().offer(new Event(getGameTime() + e.timeToHorizontalCollision(), null, e));
+		getCollisions().offer(new Event(getGameTime() + e.timeToVerticalWallCollision(), e, null));
+		getCollisions().offer(new Event(getGameTime() + e.timeToHorizontalWallCollision(), null, e));
 	}
 
 	//	//TODO DOCUMENT

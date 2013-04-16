@@ -521,10 +521,8 @@ public class Entity
 	}
 
 	//TODO
-	public double timeToHorizontalCollision ()
+	public double timeToVerticalWallCollision ()
 	{
-		Position intersectionOfCenter = null;
-
 		double wsx = getWorld().getxSize();
 		double r = getShape().getRadius();
 		double px = this.getPosition()._X();
@@ -537,12 +535,12 @@ public class Entity
 		x1 = wsx - r;
 		y1 = n1 * vy + py;
 
-		n2 = ( (r - px) / vx);
+		n2 = ( (px - r) / vx);
 		x2 = r;
 		y2 = n2 * vy + py;
 
 		double n = 0, x = 0, y = 0;
-		if (n1 < n2)
+		if (n1 <= n2)
 		{
 			n = n1;
 			x = x1;
@@ -556,7 +554,7 @@ public class Entity
 
 		if (!Double.isInfinite(n))
 		{
-			intersectionOfCenter = new Position(x, y);
+			Position intersectionOfCenter = new Position(x, y);
 			double difference = intersectionOfCenter.getDistanceTo(this.getPosition());
 			return difference / this.getVelocity().get();
 		} else
@@ -565,7 +563,7 @@ public class Entity
 		}
 	}
 
-	public double timeToVerticalCollision ()
+	public double timeToHorizontalWallCollision ()
 	{
 		Position intersectionOfCenter = null;
 
@@ -582,12 +580,12 @@ public class Entity
 		x1 = n1 * vx + px;
 		y1 = wsy - r;
 
-		n2 = ( (r - py) / vy);
+		n2 = ( (py - r) / vy);
 		x2 = n2 * vx + px;
 		y2 = r;
 
 		double n = 0, x = 0, y = 0;
-		if (n1 < n2)
+		if (n1 <= n2)
 		{
 			n = n1;
 			x = x1;
@@ -632,17 +630,17 @@ public class Entity
 
 	public void horizontalWallCollision () throws IllegalStateException
 	{
-		this.getVelocity().setX(-this.getVelocity()._X());
+		this.getVelocity().setY(-this.getVelocity()._Y());
 	}
 
 	public void verticalWallCollision () throws IllegalStateException
 	{
-		this.getVelocity().setY(-this.getVelocity()._Y());
+		this.getVelocity().setX(-this.getVelocity()._X());
 	}
 
 	public void entityCollision (Entity other)
 	{
-		bounce(this, other);
+		bounce(this, other);//TODO
 	}
 
 	private void bounce (Entity entity1, Entity entity2)

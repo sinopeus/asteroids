@@ -71,4 +71,10 @@ public class Event implements Comparable <Event>
 			return 0;
 		}
 	}
+
+	@Override
+	public String toString ()
+	{
+		return "Event" + hashCode() + "\n[timeStamp=" + timeStamp + "\n, entity1=" + entity1 + "\n, entity2=" + entity2 + "\n" + ", valid=" + valid + "]";
+	}
 }
