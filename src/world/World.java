@@ -208,13 +208,14 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 			predictAllCollisions();
 			repredictCollisions = false;
 		}
-		//		if(getCollisions().isEmpty()){
-		//			advanceAll(dt);
-		//			return;
-		//		}
+		if (getCollisions().isEmpty())
+		{
+			advanceAll(dt);
+			return;
+		}
 		Event next = getCollisions().peek();
-		long then = next.getTimeStamp();
-		long now = System.currentTimeMillis();
+		double then = next.getTimeStamp();
+		double now = (double) System.currentTimeMillis();
 		if ( ( (next.getTimeStamp() - now) / 1000.0) >= dt)
 		{
 			System.out.println("daaaw");
@@ -360,7 +361,10 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 	//		}
 	//		return true;
 	//	}
-
+	/**
+	 * Gets the amount of entities in the world.
+	 * @return	The amount of entities in the world.
+	 */
 	public int numberOfEntities ()
 	{
 		return this.size();

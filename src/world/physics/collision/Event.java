@@ -4,12 +4,12 @@ import world.entity.Entity;
 
 public class Event implements Comparable <Event>
 {
-	private final long		timeStamp;
+	private final double	timeStamp;
 	private final Entity	entity1;
 	private final Entity	entity2;
 	private boolean			valid;
 
-	public Event (long timeStamp, Entity entity1, Entity entity2)
+	public Event (double timeStamp, Entity entity1, Entity entity2)
 	{
 		if (!canHaveAsTimeStamp(timeStamp))
 		{
@@ -22,7 +22,7 @@ public class Event implements Comparable <Event>
 	}
 
 	//TODO
-	public long getTimeStamp ()
+	public double getTimeStamp ()
 	{
 		return timeStamp;
 	}
