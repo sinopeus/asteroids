@@ -219,6 +219,7 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 
 	public void evolve (double dt, CollisionListener collisionListener)
 	{
+		System.out.println("running");
 		if (repredictCollisions)
 		{
 			predictAllCollisions();
