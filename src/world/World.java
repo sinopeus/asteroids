@@ -218,7 +218,8 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 	public void evolve (double dt, CollisionListener collisionListener)
 	{
 		if (repredictCollisions) predictAllCollisions();
-
+		if(dt <= 0)return;
+		
 		if (getCollisions().isEmpty())
 		{
 			advanceAll(dt);
@@ -236,32 +237,30 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 			}
 			next = getCollisions().peek();
 		}
-
-		if ( (next.getTimeStamp() - getGameTime()) >= dt)
+		double timeToCollision = next.getTimeStamp() - getGameTime();
+		if ( timeToCollision >= dt)
 		{
 			advanceAll(dt);
 			return;
 		}
 
 		next = getCollisions().poll();
+		assert(next.isValid());
 		
-		double timeToCollision = next.getTimeStamp() - getGameTime();
 		advanceAll(timeToCollision);
 
 		Entity e1 = next.getEntity1();
 		Entity e2 = next.getEntity2();
-		System.out.println(next);
 
 		if (e1 != null && e2 != null) e1.entityCollision(e2);
 		else if (e1 == null && e2 != null) e2.horizontalWallCollision();
 		else if (e1 != null && e2 == null) e1.verticalWallCollision();
-		else System.out.println("ERROR");
 
 		for (Event e : getCollisions())
-			if (e.involves(next.getEntity1()) || e.involves(next.getEntity2())) e.invalidate();
+			if (e.involves(e1) || e.involves(e2)) e.invalidate();
 		
-		predictCollisionsOf(next.getEntity1());
-		predictCollisionsOf(next.getEntity2());
+		predictCollisionsOf(e1);
+		predictCollisionsOf(e2);
 
 		evolve(dt - timeToCollision, collisionListener);
 	}
@@ -270,8 +269,7 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 
 	private void predictAllCollisions ()
 	{
-		for (Entity e : this)
-			predictCollisionsOf(e);
+		for (Entity e : this) predictCollisionsOf(e);
 		repredictCollisions = false;
 	}
 
@@ -292,8 +290,10 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 
 		for (Entity other : this)
 		{
+			if (e.equals(other)) break;
+			
 			double dt = e.timeToEntityCollision(other);
-			assert(other != null);
+			
 			getCollisions().offer(new Event(getGameTime() + dt, e, other));
 		}
 
@@ -323,7 +323,7 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 	//				EntityCollision ec = (EntityCollision) c;
 	//				collisionListener.objectCollision(ec.getEntity1(), ec.getEntity2(), collisionPosition._X(), collisionPosition._Y());
 	//			}
-	//			c.resolve();PriorityQueue <Event> collisions
+	//			c.resolve();
 	//			evolve( (dt - c.getTimeToCollision()), collisionListener);
 	//		} else
 	//		{

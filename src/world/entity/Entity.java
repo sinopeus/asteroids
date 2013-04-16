@@ -88,7 +88,8 @@ public class Entity
 		this(new Direction(), new Position(), Velocity.getSpeedOfLight(), new Velocity(), new CircleShape(40), new Mass(5E15));
 	}
 
-	/**
+
+    /**
 	 * Gets the position of this entity.
 	 */
 	@Basic
@@ -540,7 +541,7 @@ public class Entity
 		y2 = timeToLeft * vy + py;
 
 		double n = 0, x = 0, y = 0;
-		if (timeToRight <= timeToLeft)
+		if (timeToRight <= timeToLeft && timeToRight >= 0)
 		{
 			n = timeToRight;
 			x = x1;
@@ -585,7 +586,7 @@ public class Entity
 		y2 = r;
 
 		double n = 0, x = 0, y = 0;
-		if (n1 <= n2)
+		if (n1 <= n2 && n1 >= 0)
 		{
 			n = n1;
 			x = x1;

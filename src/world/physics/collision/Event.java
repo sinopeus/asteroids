@@ -6,10 +6,6 @@ public class Event implements Comparable <Event>
 {
 	public Event (double timeStamp, Entity entity1, Entity entity2)
 	{
-		if (!canHaveAsTimeStamp(timeStamp))
-		{
-			//TODO
-		}
 		this.timeStamp = timeStamp;
 		this.entity1 = entity1;
 		this.entity2 = entity2;
