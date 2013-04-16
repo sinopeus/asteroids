@@ -4,120 +4,76 @@ import world.entity.Entity;
 
 public class Event implements Comparable <Event>
 {
-    private final double	timeStamp;
-    private final Entity	entity1;
-    private final Entity	entity2;
-    private boolean			valid;
+	private final double	timeStamp;
+	private final Entity	entity1;
+	private final Entity	entity2;
+	private boolean			valid;
 
-    public Event (double timeStamp, Entity entity1, Entity entity2)
+	public Event (double timeStamp, Entity entity1, Entity entity2)
 	{
-	    if (!canHaveAsTimeStamp(timeStamp))
+		if (!canHaveAsTimeStamp(timeStamp))
 		{
-		    //TODO
+			//TODO
 		}
-	    this.timeStamp = timeStamp;
-	    this.entity1 = entity1;
-	    this.entity2 = entity2;
-	    this.valid = true;
+		this.timeStamp = timeStamp;
+		this.entity1 = entity1;
+		this.entity2 = entity2;
+		this.valid = canHaveAsTimeStamp(timeStamp) ? true : false;
 	}
 
-    //TODO
-    public double getTimeStamp ()
-    {
-	return timeStamp;
-    }
+	//TODO
+	public double getTimeStamp ()
+	{
+		return timeStamp;
+	}
 
-    private boolean canHaveAsTimeStamp (double timeStamp)
-    {
-	return (timeStamp > 0);
-    }
+	private boolean canHaveAsTimeStamp (double timeStamp)
+	{
+		return (timeStamp > 0);
+	}
 
-    public Entity getEntity1 ()
-    {
-	return entity1;
-    }
+	private final double	timeStamp;
 
-    public Entity getEntity2 ()
-    {
-	return entity2;
-    }
+	public Entity getEntity1 ()
+	{
+		return entity1;
+	}
 
-    public boolean isValid ()
-    {
-	return valid;
-    }
+	private final Entity	entity1;
 
-    public void invalidate ()
-    {
-	this.valid = false;
-    }
+	public Entity getEntity2 ()
+	{
+		return entity2;
+	}
 
-    // 	public boolean hasCollidingEntities (Event e)
-    // {
-    // 		return (getEntity1() == e.getEntity1() || getEntity1() == e.getEntity2() || getEntity2() == e.getEntity1() || getEntity2() == e.getEntity2());
-    // 	}
+	private final Entity	entity2;
 
-    public boolean involves (Entity e) {
-	return (getEntity1() == e || getEntity2() == e);
-    }
+	public boolean isValid ()
+	{
+		return valid;
+	}
 
-    @Override
+	public void invalidate ()
+	{
+		this.valid = false;
+	}
+
+	private boolean	valid;
+
+	public boolean involves (Entity e)
+	{
+		return (getEntity1() == e || getEntity2() == e);
+	}
+
+	@Override
 	public int compareTo (Event o)
-    {
-	return (int) Math.signum(this.getTimeStamp() - o.getTimeStamp());
-	// if (this.getTimeStamp() < o.getTimeStamp())
-	// {
-	// 	return -1;
-	// } else if (this.getTimeStamp() > o.getTimeStamp())
-	// {
-	// 	return +1;
-	// } else
-	// {
-	// 	return 0;
-	// }
-    }
+	{
+		return (int) Math.signum(this.getTimeStamp() - o.getTimeStamp());
+	}
 
-    @Override
-	public int hashCode() {
-	final int prime = 31;
-	int result = 1;
-	result = prime * result + ((entity1 == null) ? 0 : entity1.hashCode());
-	result = prime * result + ((entity2 == null) ? 0 : entity2.hashCode());
-	long temp;
-	temp = Double.doubleToLongBits(timeStamp);
-	result = prime * result + (int) (temp ^ (temp >>> 32));
-	result = prime * result + (valid ? 1231 : 1237);
-	return result;
-    }
-
-    @Override
-	public boolean equals(Object obj) {
-	if (this == obj)
-	    return true;
-	if (obj == null)
-	    return false;
-	if (getClass() != obj.getClass())
-	    return false;
-	Event other = (Event) obj;
-	if (entity1 == null) {
-	    if (other.entity1 != null)
-		return false;
-	} else if (!entity1.equals(other.entity1))
-	    return false;
-	if (entity2 == null) {
-	    if (other.entity2 != null)
-		return false;
-	} else if (!entity2.equals(other.entity2))
-	    return false;
-	if (Double.doubleToLongBits(timeStamp) != Double
-	    .doubleToLongBits(other.timeStamp))
-	    return false;
-	return true;
-    }
-
-    @Override
+	@Override
 	public String toString ()
-    {
-	return "Event" + hashCode() + "\n[timeStamp=" + timeStamp + "\n, entity1=" + entity1 + "\n, entity2=" + entity2 + "\n" + ", valid=" + valid + "]";
-    }
+	{
+		return "Event" + hashCode() + "\n[timeStamp=" + timeStamp + "\n, entity1=" + entity1 + "\n, entity2=" + entity2 + "\n" + ", valid=" + valid + "]";
+	}
 }
