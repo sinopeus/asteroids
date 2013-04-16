@@ -170,10 +170,7 @@ public class Ship extends Entity implements IShip
 	@Override
 	public void advance (double dt)
 	{
-		if (getThruster ().isActivated ())
-		{
-			getThruster ().thrust (dt);
-		}
+		if (getThruster ().isActivated ()) getThruster ().thrust (dt);
 		super.advance (dt);
 	}
 

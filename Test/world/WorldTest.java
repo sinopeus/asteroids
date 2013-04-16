@@ -99,10 +99,12 @@ public class WorldTest
     @Test
     public void repredictShipsTest() {
 	testWorld1 = new World(1000, 1000);
-	testShip1 = new Ship(new Direction(), new Position(100, 100), Velocity.getSpeedOfLight(), new Velocity(-4, -3), new CircleShape(30), new Mass(50));
-	testShip2 = new Ship(new Direction(), new Position(500, 500), Velocity.getSpeedOfLight(), new Velocity(4, 3), new CircleShape(40), new Mass(40));
+	testShip1 = new Ship(new Direction(), new Position(100, 100), Velocity.getSpeedOfLight(), new Velocity(-10, -10), new CircleShape(30), new Mass(50));
+	testShip2 = new Ship(new Direction(), new Position(500, 500), Velocity.getSpeedOfLight(), new Velocity(10, 10), new CircleShape(40), new Mass(40));
 	Asteroid testAsteroid = new Asteroid(new Direction(), new Position(700, 700), new Velocity(-3, 4), new CircleShape(50));
 	testWorld1.addAll(Arrays.asList(testShip1, testShip2, testAsteroid));
+	Event testEvent = new Event(20, testShip1, testShip2);
+	assertEquals(testWorld1.getCollisions().peek(), testEvent);
 
 	testWorld1.repredictShips();
 	
