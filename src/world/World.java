@@ -272,7 +272,7 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 
 		for (Event e : getCollisions())
 		{
-			if (e.hasCollidingEntities(next))
+			if (e.involves(e1) || e.involves(e2))
 			{
 				e.invalidate();
 			}
