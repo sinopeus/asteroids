@@ -530,30 +530,18 @@ public class Entity
 		double vx = this.getVelocity()._X();
 		double vy = this.getVelocity()._Y();
 
-		double timeToRight = 0, timeToLeft = 0, x1 = 0, x2 = 0, y1 = 0, y2 = 0;
-		timeToRight = ( (wsx - r - px) / vx);
-		x1 = wsx - r;
-		y1 = timeToRight * vy + py;
-
-		timeToLeft = ( (px - r) / vx);
-		x2 = r;
-		y2 = timeToLeft * vy + py;
-
-		if (timeToLeft < 0 && timeToRight < 0) return Double.POSITIVE_INFINITY;
-
 		double n = 0, x = 0, y = 0;
-		if (timeToRight <= timeToLeft && timeToRight >= 0)
+		if (vx >= 0)
 		{
-			n = timeToRight;
-			x = x1;
-			y = y1;
+			n = ( (wsx - r - px) / vx);
+			x = wsx - r;
+			y = n * vy + py;
 		} else
 		{
-			n = timeToLeft;
-			x = x2;
-			y = y2;
+			n = ( (r-px) / vx);
+			x = r;
+			y = n * vy + py;
 		}
-
 		if (!Double.isInfinite(n))
 		{
 			Position intersectionOfCenter = new Position(x, y);
@@ -576,35 +564,18 @@ public class Entity
 		double vx = this.getVelocity()._X();
 		double vy = this.getVelocity()._Y();
 
-		double n1 = 0, n2 = 0, x1 = 0, x2 = 0, y1 = 0, y2 = 0;
-
-		n1 = ( (wsy - r - py) / vy);
-		x1 = n1 * vx + px;
-		y1 = wsy - r;
-
-		n2 = ( (py - r) / vy);
-		x2 = n2 * vx + px;
-		y2 = r;
-
-		if (n1 < 0 && n2 < 0) return Double.POSITIVE_INFINITY;
-
 		double n = 0, x = 0, y = 0;
-		if (n1 <= n2 && n1 >= 0)
+		if (vy >= 0)
 		{
-			n = n1;
-			x = x1;
-			y = y1;
+			n = ( (wsy - r - py) / vy);
+			x = n * vx + px;
+			y = wsy - r;
 		} else
 		{
-			n = n2;
-			x = x2;
-			y = y2;
+			n = ( (r-py) / vy);
+			x = n * vx + px;
+			y = r;
 		}
-		if (n1 < 0 && n2 < 0)
-		{
-			System.out.println("WTF");
-		}
-
 		if (!Double.isInfinite(n))
 		{
 			intersectionOfCenter = new Position(x, y);
