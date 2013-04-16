@@ -88,8 +88,7 @@ public class Entity
 		this(new Direction(), new Position(), Velocity.getSpeedOfLight(), new Velocity(), new CircleShape(40), new Mass(5E15));
 	}
 
-
-    /**
+	/**
 	 * Gets the position of this entity.
 	 */
 	@Basic
@@ -536,9 +535,11 @@ public class Entity
 		x1 = wsx - r;
 		y1 = timeToRight * vy + py;
 
-		timeToLeft = ( (px-r) / vx);
+		timeToLeft = ( (px - r) / vx);
 		x2 = r;
 		y2 = timeToLeft * vy + py;
+
+		if (timeToLeft < 0 && timeToRight < 0) return Double.POSITIVE_INFINITY;
 
 		double n = 0, x = 0, y = 0;
 		if (timeToRight <= timeToLeft && timeToRight >= 0)
@@ -585,6 +586,8 @@ public class Entity
 		x2 = n2 * vx + px;
 		y2 = r;
 
+		if (n1 < 0 && n2 < 0) return Double.POSITIVE_INFINITY;
+
 		double n = 0, x = 0, y = 0;
 		if (n1 <= n2 && n1 >= 0)
 		{
@@ -596,6 +599,10 @@ public class Entity
 			n = n2;
 			x = x2;
 			y = y2;
+		}
+		if (n1 < 0 && n2 < 0)
+		{
+			System.out.println("WTF");
 		}
 
 		if (!Double.isInfinite(n))

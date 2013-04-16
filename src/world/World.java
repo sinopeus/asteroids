@@ -218,11 +218,13 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 	public void evolve (double dt, CollisionListener collisionListener)
 	{
 		if (repredictCollisions) predictAllCollisions();
+		System.out.println(dt);
 		if(dt <= 0)return;
 		
 		if (getCollisions().isEmpty())
 		{
 			advanceAll(dt);
+			System.out.println("collisions are empty");
 			return;
 		}
 
@@ -233,6 +235,7 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 			if (getCollisions().isEmpty())
 			{
 				advanceAll(dt);
+				System.out.println("collisions are empty");
 				return;
 			}
 			next = getCollisions().peek();
@@ -241,10 +244,12 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 		if ( timeToCollision >= dt)
 		{
 			advanceAll(dt);
+			System.out.println("took too long");
 			return;
 		}
 
 		next = getCollisions().poll();
+		System.out.println(next);
 		assert(next.isValid());
 		
 		advanceAll(timeToCollision);
