@@ -4,21 +4,13 @@ import world.entity.Entity;
 
 public class Event implements Comparable <Event>
 {
-	private final double	timeStamp;
-	private final Entity	entity1;
-	private final Entity	entity2;
-	private boolean			valid;
 
 	public Event (double timeStamp, Entity entity1, Entity entity2)
 	{
-		if (!canHaveAsTimeStamp(timeStamp))
-		{
-			//TODO
-		}
 		this.timeStamp = timeStamp;
 		this.entity1 = entity1;
 		this.entity2 = entity2;
-		this.valid = true;
+		this.valid = canHaveAsTimeStamp(timeStamp) ? true : false;
 	}
 
 	//TODO
@@ -32,15 +24,21 @@ public class Event implements Comparable <Event>
 		return (timeStamp > 0);
 	}
 
+	private final double	timeStamp;
+
 	public Entity getEntity1 ()
 	{
 		return entity1;
 	}
 
+	private final Entity	entity1;
+
 	public Entity getEntity2 ()
 	{
 		return entity2;
 	}
+
+	private final Entity	entity2;
 
 	public boolean isValid ()
 	{
@@ -52,13 +50,11 @@ public class Event implements Comparable <Event>
 		this.valid = false;
 	}
 
-// 	public boolean hasCollidingEntities (Event e)
-// {
-// 		return (getEntity1() == e.getEntity1() || getEntity1() == e.getEntity2() || getEntity2() == e.getEntity1() || getEntity2() == e.getEntity2());
-// 	}
+	private boolean	valid;
 
-	public boolean involves (Entity e) {
-	    return (getEntity1() == e || getEntity2() == e);
+	public boolean involves (Entity e)
+	{
+		return (getEntity1() == e || getEntity2() == e);
 	}
 
 	@Override
