@@ -5,6 +5,7 @@ import java.util.PriorityQueue;
 
 import main.CollisionListener;
 import world.entity.Entity;
+import world.entity.ship.Ship;
 import world.physics.collision.Event;
 import world.physics.vector.Position;
 import world.physics.vector.Vector;
@@ -248,7 +249,7 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 			advanceAll(dt);
 			return;
 		}
-		
+
 		double timeToCollision = next.getTimeStamp() - getGameTime();
 		advanceAll(timeToCollision);
 
@@ -277,7 +278,7 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 			}
 		}
 		next.invalidate();
-		
+
 		predictCollisionsOf(next.getEntity1());
 		predictCollisionsOf(next.getEntity2());
 
@@ -292,8 +293,33 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 		{
 			predictCollisionsOf(e);
 		}
-		for(Event e : getCollisions())
-			System.out.println(e);
+	}
+
+	public void repredictShips ()
+	{
+		HashSet <Ship> ships = new HashSet <Ship>();
+		for (Entity e : this)
+		{
+			if (e instanceof Ship)
+			{
+				ships.add((Ship) e);
+			}
+		}
+
+		for (Ship s : ships)
+		{
+			if (s.getThruster().isActivated())
+			{
+				for (Event e : getCollisions())
+				{
+					if (e.involves(s))
+					{
+						e.invalidate();
+					}
+				}
+				predictCollisionsOf(s);
+			}
+		}
 	}
 
 	public void predictCollisionsOf (Entity e)
