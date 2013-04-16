@@ -535,7 +535,7 @@ public class Entity
 		x1 = wsx - r;
 		y1 = n1 * vy + py;
 
-		n2 = ( (px - r) / vx);
+		n2 = ( (px-r) / vx);
 		x2 = r;
 		y2 = n2 * vy + py;
 
