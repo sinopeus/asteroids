@@ -64,16 +64,17 @@ public class Event implements Comparable <Event>
 	@Override
 	public int compareTo (Event o)
 	{
-		if (this.getTimeStamp() < o.getTimeStamp())
-		{
-			return -1;
-		} else if (this.getTimeStamp() > o.getTimeStamp())
-		{
-			return +1;
-		} else
-		{
-			return 0;
-		}
+	    return (this.getTimeStamp() - o.getTimeStamp());
+		// if (this.getTimeStamp() < o.getTimeStamp())
+		// {
+		// 	return -1;
+		// } else if (this.getTimeStamp() > o.getTimeStamp())
+		// {
+		// 	return +1;
+		// } else
+		// {
+		// 	return 0;
+		// }
 	}
 
 	@Override
