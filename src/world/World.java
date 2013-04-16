@@ -291,7 +291,7 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 
 		for (Entity other : this)
 		{
-			if (e.equals(other)) break;
+			if (e==other) continue;
 			
 			double dt = e.timeToEntityCollision(other);
 			
