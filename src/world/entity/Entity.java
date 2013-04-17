@@ -530,27 +530,28 @@ public class Entity
 		double vx = this.getVelocity()._X();
 		double vy = this.getVelocity()._Y();
 
-		double n = 0, x = 0, y = 0;
+		double n = 0/*, x = 0, y = 0*/;
 		if (vx >= 0)
 		{
 			n = ( (wsx - r - px) / vx);
-			x = wsx - r;
-			y = n * vy + py;
+			//x = wsx - r;
+			//y = n * vy + py;
 		} else
 		{
 			n = ( (r-px) / vx);
-			x = r;
-			y = n * vy + py;
+			//x = r;
+			//y = n * vy + py;
 		}
-		if (!Double.isInfinite(n))
-		{
-			Position intersectionOfCenter = new Position(x, y);
-			double difference = intersectionOfCenter.getDistanceTo(this.getPosition());
-			return difference / this.getVelocity().get();
-		} else
-		{
-			return Double.POSITIVE_INFINITY;
-		}
+		return n;
+//		if (!Double.isInfinite(n))
+//		{
+//			Position intersectionOfCenter = new Position(x, y);
+//			double difference = intersectionOfCenter.getDistanceTo(this.getPosition());
+//			return difference / this.getVelocity().get();
+//		} else
+//		{
+//			return Double.POSITIVE_INFINITY;
+//		}
 	}
 
 	public double timeToHorizontalWallCollision ()
@@ -564,27 +565,28 @@ public class Entity
 		double vx = this.getVelocity()._X();
 		double vy = this.getVelocity()._Y();
 
-		double n = 0, x = 0, y = 0;
+		double n = 0/*, x = 0, y = 0*/;
 		if (vy >= 0)
 		{
 			n = ( (wsy - r - py) / vy);
-			x = n * vx + px;
-			y = wsy - r;
+//			x = n * vx + px;
+//			y = wsy - r;
 		} else
 		{
 			n = ( (r-py) / vy);
-			x = n * vx + px;
-			y = r;
+//			x = n * vx + px;
+//			y = r;
 		}
-		if (!Double.isInfinite(n))
-		{
-			intersectionOfCenter = new Position(x, y);
-			double difference = intersectionOfCenter.getDistanceTo(this.getPosition());
-			return difference / this.getVelocity().get();
-		} else
-		{
-			return Double.POSITIVE_INFINITY;
-		}
+		return n;
+//		if (!Double.isInfinite(n))
+//		{
+//			intersectionOfCenter = new Position(x, y);
+//			double difference = intersectionOfCenter.getDistanceTo(this.getPosition());
+//			return difference / this.getVelocity().get();
+//		} else
+//		{
+//			return Double.POSITIVE_INFINITY;
+//		}
 	}
 
 	public double timeToEntityCollision (Entity other) throws IllegalArgumentException
@@ -674,6 +676,6 @@ public class Entity
 	 */
 	public String toString ()
 	{
-		return " at " + getPosition() + "   with velocity " + getVelocity() + "   and shape " + getShape() + "  ";
+		return " at " + getPosition() + "   with velocity " + getVelocity() + "   ,shape " + getShape() + "   and mass " + getMass();
 	};
 }

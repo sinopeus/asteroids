@@ -210,17 +210,15 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 		if (isInWorld(entity))
 		{
 			entity.setWorld(this);
+			predictCollisionsOf(entity);
 			super.add(entity);
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	public void evolve (double dt, CollisionListener collisionListener)
 	{
-		System.out.println("-----------------------------------------");
-		System.out.println(getCollisions().toString());
-		System.out.println("-----------------------------------------");
-
 		if (repredictCollisions) predictAllCollisions();
 		repredictShips();
 		if (dt <= 0) return;
@@ -243,7 +241,7 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 			next = getCollisions().peek();
 		}
 		double timeToCollision = next.getTimeStamp() - getGameTime();
-		if (timeToCollision >= dt)
+		if (timeToCollision > dt)
 		{
 			advanceAll(dt);
 			return;
@@ -274,7 +272,7 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 	private void predictAllCollisions ()
 	{
 		for (Entity e : this)
-			predictCollisionsOf(e);
+			repredictCollisionsOf(e);
 		repredictCollisions = false;
 	}
 
@@ -283,15 +281,23 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 		for (Entity e : this)
 			if (e instanceof Ship && ((Ship) e).getThruster().isActivated())
 			{
-				for (Event o : getCollisions())
-					if (o.involves(e)) o.invalidate();
-				predictCollisionsOf(e);
+				repredictCollisionsOf(e);
 			}
+	}
+
+	protected void repredictCollisionsOf (Entity e)
+	{
+		for (Event o : getCollisions())
+			if (o.involves(e))
+			{
+				o.invalidate();
+			}
+		predictCollisionsOf(e);
 	}
 
 	protected void predictCollisionsOf (Entity e)
 	{
-		if (e == null) return;
+		if (e == null || e.isTerminated()) return;
 
 		for (Entity other : this)
 		{

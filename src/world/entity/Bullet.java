@@ -163,6 +163,32 @@ public class Bullet extends Entity
 		this.unlinkFromShooter();
 		super.terminate();
 	}
+	
+	@Override
+	public void entityCollision (Entity other)
+	{
+		if(other instanceof Ship){
+			if(getShooter() != other){
+				other.terminate();
+				this.terminate();
+				return;
+			}
+		}else if(other instanceof Bullet){
+			if(getShooter() != ((Bullet) other).getShooter()){
+				other.terminate();
+				this.terminate();
+				return;
+			}else{
+				super.entityCollision(other);
+				return;
+			}
+		}else if(other instanceof Asteroid){
+			other.terminate();
+			this.terminate();
+			return;
+		}
+		super.entityCollision(other);
+	}
 
 	@Override
 	public String toString ()

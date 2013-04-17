@@ -9,7 +9,7 @@ public class Event implements Comparable <Event>
 		this.timeStamp = timeStamp;
 		this.entity1 = entity1;
 		this.entity2 = entity2;
-		this.valid = canHaveAsTimeStamp(timeStamp) ? true : false;
+		this.valid = canHaveAsTimeStamp(timeStamp);
 	}
 
 	//TODO
@@ -38,7 +38,7 @@ public class Event implements Comparable <Event>
 	}
 
 	private final Entity	entity2;
-
+	
 	public boolean isValid ()
 	{
 		return valid;

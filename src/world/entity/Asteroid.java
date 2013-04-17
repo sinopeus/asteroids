@@ -1,5 +1,6 @@
 package world.entity;
 
+import world.entity.ship.Ship;
 import world.physics.Mass;
 import world.physics.geometry.Angle;
 import world.physics.geometry.CircleShape;
@@ -99,6 +100,22 @@ public class Asteroid extends Entity
 	{
 		this.turn(new Angle(Math.PI / period * dt));
 		super.advance(dt);
+	}
+
+	@Override
+	public void entityCollision (Entity other)
+	{
+		if (other instanceof Ship)
+		{
+			other.terminate();
+			return;
+		}else if (other instanceof Bullet){
+			other.terminate();
+			this.terminate();
+			return;
+		}else{
+		super.entityCollision(other);
+		}
 	}
 
 	@Override

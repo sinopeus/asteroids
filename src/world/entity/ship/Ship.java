@@ -1,6 +1,7 @@
 package world.entity.ship;
 
 import model.IShip;
+import world.entity.Asteroid;
 import world.entity.Bullet;
 import world.entity.Entity;
 import world.physics.Mass;
@@ -70,8 +71,8 @@ public class Ship extends Entity implements IShip
 	public Ship (Direction direction, Position position, double speedLimit, Velocity velocity, CircleShape shape, Mass mass) throws IllegalArgumentException, NullPointerException
 	{
 		//TODO add throws from setters
-		super (direction, position, speedLimit, velocity, shape, mass);
-		setThruster (new Thruster (getThrustPerSecond (), this));
+		super(direction, position, speedLimit, velocity, shape, mass);
+		setThruster(new Thruster(getThrustPerSecond(), this));
 	}
 
 	/**
@@ -83,7 +84,7 @@ public class Ship extends Entity implements IShip
 	public Ship ()
 	{
 		//TODO add throws from setters
-		this (new Direction (), new Position (), Velocity.getSpeedOfLight (), new Velocity (), new CircleShape (40), new Mass (5E15));
+		this(new Direction(), new Position(), Velocity.getSpeedOfLight(), new Velocity(), new CircleShape(40), new Mass(5E15));
 	}
 
 	/**
@@ -92,7 +93,7 @@ public class Ship extends Entity implements IShip
 	@Override
 	protected boolean canHaveAsShape (@Raw CircleShape shape)
 	{
-		return (super.canHaveAsShape (shape) && (shape.getRadius () >= Ship.getMinimumRadius ()));
+		return (super.canHaveAsShape(shape) && (shape.getRadius() >= Ship.getMinimumRadius()));
 	}
 
 	/**
@@ -145,7 +146,7 @@ public class Ship extends Entity implements IShip
 	 */
 	private void setThruster (Thruster thruster) throws IllegalArgumentException
 	{
-		if (!canHaveAsThruster (thruster)) { throw new IllegalArgumentException ("Invalid thruster provided."); }
+		if (!canHaveAsThruster(thruster)) { throw new IllegalArgumentException("Invalid thruster provided."); }
 		this.thruster = thruster;
 	}
 
@@ -160,8 +161,8 @@ public class Ship extends Entity implements IShip
 	@Override
 	public void terminate ()
 	{
-		getThruster ().terminate ();
-		super.terminate ();
+		getThruster().terminate();
+		super.terminate();
 	}
 
 	/**
@@ -170,8 +171,8 @@ public class Ship extends Entity implements IShip
 	@Override
 	public void advance (double dt)
 	{
-		if (getThruster ().isActivated ()) getThruster ().thrust (dt);
-		super.advance (dt);
+		if (getThruster().isActivated()) getThruster().thrust(dt);
+		super.advance(dt);
 	}
 
 	/**
@@ -181,18 +182,36 @@ public class Ship extends Entity implements IShip
 	 */
 	public void fire ()
 	{
-		Bullet b = new Bullet (this);
-		getWorld ().add (b);
+		Bullet b = new Bullet(this);
+		getWorld().add(b);
 
 		//RECOIL
-		Velocity recoil = Mechanics.conservationOfMomentum_CalculateVelocity (b.getVelocity (), b.getMass (), this.getMass ());
-		this.setVelocity (new Velocity (getVelocity ().getDifference (recoil)));//TODO something is wrong.
+		Velocity recoil = Mechanics.conservationOfMomentum_CalculateVelocity(b.getVelocity(), b.getMass(), this.getMass());
+		this.setVelocity(new Velocity(getVelocity().getDifference(recoil)));//TODO something is wrong.
+	}
+
+	@Override
+	public void entityCollision (Entity other)
+	{
+		if (other instanceof Asteroid)
+		{
+			this.terminate();
+			return;
+		} else if (other instanceof Bullet)
+		{
+			if ( ((Bullet) other).getShooter() != this)
+			{
+				other.terminate();
+				this.terminate();
+				return;
+			}
+		} else super.entityCollision(other);
 	}
 
 	@Override
 	public String toString ()
 	{
-		return "Ship_" + hashCode () + super.toString ();
+		return "Ship_" + hashCode() + super.toString();
 	}
 
 	/**
