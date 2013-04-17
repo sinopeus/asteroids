@@ -241,7 +241,7 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 			next = getCollisions().peek();
 		}
 		double timeToCollision = next.getTimeStamp() - getGameTime();
-		if (timeToCollision > dt)
+		if (timeToCollision >= dt)
 		{
 			advanceAll(dt);
 			return;
@@ -258,11 +258,8 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 		else if (e1 == null && e2 != null) e2.horizontalWallCollision();
 		else if (e1 != null && e2 == null) e1.verticalWallCollision();
 
-		for (Event e : getCollisions())
-			if (e.involves(e1) || e.involves(e2)) e.invalidate();
-
-		predictCollisionsOf(e1);
-		predictCollisionsOf(e2);
+		repredictCollisionsOf(e1);
+		repredictCollisionsOf(e2);
 
 		evolve(dt - timeToCollision, collisionListener);
 	}

@@ -109,12 +109,14 @@ public class Asteroid extends Entity
 		{
 			other.terminate();
 			return;
-		}else if (other instanceof Bullet){
+		} else if (other instanceof Bullet)
+		{
 			other.terminate();
 			this.terminate();
 			return;
-		}else{
-		super.entityCollision(other);
+		} else
+		{
+			super.entityCollision(other);
 		}
 	}
 

@@ -205,7 +205,8 @@ public class Ship extends Entity implements IShip
 				this.terminate();
 				return;
 			}
-		} else super.entityCollision(other);
+		} else
+		super.entityCollision(other);
 	}
 
 	@Override

@@ -556,7 +556,6 @@ public class Entity
 
 	public double timeToHorizontalWallCollision ()
 	{
-		Position intersectionOfCenter = null;
 
 		double wsy = getWorld().getySize();
 		double r = getShape().getRadius();
