@@ -526,9 +526,9 @@ public class Entity
 		double wsx = getWorld().getxSize();
 		double r = getShape().getRadius();
 		double px = this.getPosition()._X();
-		double py = this.getPosition()._Y();
+//		double py = this.getPosition()._Y();
 		double vx = this.getVelocity()._X();
-		double vy = this.getVelocity()._Y();
+//		double vy = this.getVelocity()._Y();
 
 		double n = 0/*, x = 0, y = 0*/;
 		if (vx >= 0)
@@ -542,6 +542,7 @@ public class Entity
 			//x = r;
 			//y = n * vy + py;
 		}
+		assert(n>0);
 		return n;
 //		if (!Double.isInfinite(n))
 //		{
@@ -559,9 +560,9 @@ public class Entity
 
 		double wsy = getWorld().getySize();
 		double r = getShape().getRadius();
-		double px = this.getPosition()._X();
+//		double px = this.getPosition()._X();
 		double py = this.getPosition()._Y();
-		double vx = this.getVelocity()._X();
+//		double vx = this.getVelocity()._X();
 		double vy = this.getVelocity()._Y();
 
 		double n = 0/*, x = 0, y = 0*/;
@@ -576,6 +577,7 @@ public class Entity
 //			x = n * vx + px;
 //			y = r;
 		}
+		assert(n>0);
 		return n;
 //		if (!Double.isInfinite(n))
 //		{

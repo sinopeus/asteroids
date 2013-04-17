@@ -116,66 +116,65 @@ public abstract class Collision
 	 */
 	public abstract void resolve ();
 
-//	/**
-//	 * Gets the next collision to happen in the given world.
-//	 * 
-//	 * @param 	world
-//	 * 			The given world.
-//	 * @return	//TODO
-//	 * @throws IllegalArgumentException 
-//	 */
-//	public static Collision getNextCollision (World world) throws IllegalArgumentException
-//	{
-//		if (world == null) { throw new IllegalArgumentException("Null world provided."); }
-//
-//		double minimum = Double.POSITIVE_INFINITY;
-//		Collision first = null;
-//
-//		for (int indexOfFirst = 0; indexOfFirst < world.numberOfEntities(); indexOfFirst++)
-//		{
-//			Entity e1 = world.get(indexOfFirst);
-//			for (int indexOfSecond = indexOfFirst; indexOfSecond < world.numberOfEntities(); indexOfSecond++)
-//			{
-//				Entity e2 = world.get(indexOfSecond);
-//				if ( (e1 instanceof Ship) && (e2 instanceof Bullet))
-//				{
-//					Ship s = (Ship) e1;
-//					Bullet b = (Bullet) e2;
-//					if (b.getShooter() == s)
-//					{
-//						continue;
-//					}
-//				} else if ( (e1 instanceof Bullet) && (e2 instanceof Ship))
-//				{
-//					Ship s = (Ship) e2;
-//					Bullet b = (Bullet) e1;
-//					if (b.getShooter() == s)
-//					{
-//						continue;
-//					}
-//				}
-//
-//				if (e1 != e2)
-//				{
-//					Collision ec = new EntityCollision(world, e1, e2);
-//					if (ec.getTimeToCollision() < minimum)
-//					{
-//						minimum = ec.getTimeToCollision();
-//						first = ec;
-//					}
-//				}
-//			}
-//			Collision bc = (new BorderCollision(world, e1));
-//			if (bc.getTimeToCollision() < minimum)
-//			{
-//				minimum = bc.getTimeToCollision();
-//				first = bc;
-//			}
-//		}
-//		return first;
-//	}
+	/**
+	 * Gets the next collision to happen in the given world.
+	 * 
+	 * @param 	world
+	 * 			The given world.
+	 * @return	//TODO
+	 * @throws IllegalArgumentException 
+	 */
+	public static Collision getNextCollision (World world) throws IllegalArgumentException
+	{
+		if (world == null) { throw new IllegalArgumentException("Null world provided."); }
 
-	
+		double minimum = Double.POSITIVE_INFINITY;
+		Collision first = null;
+
+		for (int indexOfFirst = 0; indexOfFirst < world.numberOfEntities(); indexOfFirst++)
+		{
+			Entity e1 = world.get(indexOfFirst);
+			for (int indexOfSecond = indexOfFirst; indexOfSecond < world.numberOfEntities(); indexOfSecond++)
+			{
+				Entity e2 = world.get(indexOfSecond);
+				if ( (e1 instanceof Ship) && (e2 instanceof Bullet))
+				{
+					Ship s = (Ship) e1;
+					Bullet b = (Bullet) e2;
+					if (b.getShooter() == s)
+					{
+						continue;
+					}
+				} else if ( (e1 instanceof Bullet) && (e2 instanceof Ship))
+				{
+					Ship s = (Ship) e2;
+					Bullet b = (Bullet) e1;
+					if (b.getShooter() == s)
+					{
+						continue;
+					}
+				}
+
+				if (e1 != e2)
+				{
+					Collision ec = new EntityCollision(world, e1, e2);
+					if (ec.getTimeToCollision() < minimum)
+					{
+						minimum = ec.getTimeToCollision();
+						first = ec;
+					}
+				}
+			}
+			Collision bc = (new BorderCollision(world, e1));
+			if (bc.getTimeToCollision() < minimum)
+			{
+				minimum = bc.getTimeToCollision();
+				first = bc;
+			}
+		}
+		return first;
+	}
+
 	/**
 	 * Returns a string representation of this collision.
 	 * 
