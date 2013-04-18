@@ -110,7 +110,7 @@ public class Asteroid extends Entity
 	/**
 	 * A variable registering the fixed period of all asteroids
 	 */
-	private final static double	period		= 7.0;
+	private final static double	period		= 1.15;
 
 	/**
 	 * A variable registering the fixed hardness of all asteroids.
