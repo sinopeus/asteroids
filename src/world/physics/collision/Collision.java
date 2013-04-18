@@ -39,9 +39,10 @@ public abstract class Collision
 	}
 
 	/**
-	 * Checks if the position for this collision can be a valid position.
+	 * Checks if the given position is a valid position for this collision.
 	 * 
-	 * @param position
+	 * @param 	position
+	 * 			The given position
 	 * @return	Whether this position is not null and within the world.
 	 * 			| position != null && world.isInWorld(position)
 	 */
@@ -83,7 +84,7 @@ public abstract class Collision
 	}
 
 	//TODO canhaveasser
-	
+
 	/**
 	 * A setter for the world in which the collision occurs.
 	 * 
@@ -111,6 +112,9 @@ public abstract class Collision
 
 	protected abstract void calculateCollisionTime ();
 
+	/**
+	 * A variable registering the time to this collision.
+	 */
 	protected double	timeToCollision;
 
 	/**
@@ -123,16 +127,17 @@ public abstract class Collision
 	 * 
 	 * @param 	world
 	 * 			The given world.
-	 * @return	//TODO
-	 * @throws IllegalArgumentException 
+	 * @return	The next collision to happen in the given world.
+	 * 			|//TODO
+	 * @throws 	IllegalArgumentException
+	 * 			The given world is null
+	 * 			world == null
 	 */
 	public static Collision getNextCollision (World world) throws IllegalArgumentException
 	{
 		if (world == null) { throw new IllegalArgumentException("Null world provided."); }
-
 		double minimum = Double.POSITIVE_INFINITY;
 		Collision first = null;
-
 		for (int indexOfFirst = 0; indexOfFirst < world.numberOfEntities(); indexOfFirst++)
 		{
 			Entity e1 = world.get(indexOfFirst);
@@ -177,7 +182,6 @@ public abstract class Collision
 		return first;
 	}
 
-	
 	/**
 	 * Returns a string representation of this collision.
 	 * 
