@@ -9,6 +9,10 @@ import world.physics.vector.Position;
 import world.physics.vector.Quadrant;
 import world.physics.vector.Vector;
 
+/**
+ * @author syd
+ *
+ */
 public final class BorderCollision extends Collision
 {
 
@@ -36,13 +40,29 @@ public final class BorderCollision extends Collision
 	 */
 	public enum Border
 	{
-		BORDER_TOP, BORDER_BOTTOM, BORDER_RIGHT, BORDER_LEFT;
+		/**
+		 * The top border of the world.
+		 */
+		BORDER_TOP,
+		/**
+		* The bottom border of the world.
+		*/
+		BORDER_BOTTOM,
+		/**
+		* The right border of the world.
+		*/
+		BORDER_RIGHT,
+		/**
+		* The left border of the world.
+		*/
+		BORDER_LEFT;
 	}
 
 	//TODO document
 	/**
 	 * Gets the border to collide with.
 	 */
+	@SuppressWarnings ("javadoc")
 	public Border getCollisionBorder ()
 	{
 		return collisionBorder;
@@ -85,6 +105,7 @@ public final class BorderCollision extends Collision
 	/**
 	 * Gets the collisions entity of this border collision.
 	 */
+	@SuppressWarnings ("javadoc")
 	public Entity getCollisionEntity ()
 	{
 		return collisionEntity;
@@ -104,10 +125,15 @@ public final class BorderCollision extends Collision
 	}
 
 	/**
+	 * Sets the collision entity of this border collision to the given entity.
 	 * 
-	 * @param collisionEntity
+	 * @param	collisionEntity
+	 * 			The given entity
+	 * @throws	IllegalArgumentException
+	 * 			The given entity is not a valid collision entity for this border collision.
+	 * 			| !canHaveAsEntity(collisionEntity)
 	 */
-	public void setCollisionEntity (Entity collisionEntity)
+	public void setCollisionEntity (Entity collisionEntity) throws IllegalArgumentException
 	{
 		if (!canHaveAsEntity(collisionEntity)) { throw new IllegalArgumentException("Illegal collision entity provided."); }
 		this.collisionEntity = collisionEntity;
@@ -263,7 +289,7 @@ public final class BorderCollision extends Collision
 	{
 		double deltaT = getTimeToCollision();
 
-//		if (Double.isInfinite(deltaT)) { return; }
+		//		if (Double.isInfinite(deltaT)) { return; }
 
 		Position newPosition = getCollisionEntity().getPosition().getSum(getCollisionEntity().getVelocity().getScaledBy(deltaT));
 
@@ -283,6 +309,7 @@ public final class BorderCollision extends Collision
 				break;
 		}
 	}
+
 	/**
 	 * //TODO document this 
 	 * @see world.physics.collision.Collision#toString()
