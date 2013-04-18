@@ -179,10 +179,9 @@ public class Direction extends Vector
 	}
 
 	/**
-	 * Returns a string representation of this direction.
+	 * Returns a string representation of this object.
 	 * 
-	 * @return A representation in String format of this vector.
-	 * @see world.physics.vector.Vector#toString()
+	 * @return A representation of this object in String format.
 	 */
 	@Override
 	public String toString ()

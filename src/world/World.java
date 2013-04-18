@@ -272,6 +272,11 @@ public class World extends ArrayList <Entity>
 		return this.size();
 	}
 
+	/**
+	 * Returns a string representation of this object.
+	 * 
+	 * @return A representation of this object in String format.
+	 */
 	@Override
 	public String toString ()
 	{

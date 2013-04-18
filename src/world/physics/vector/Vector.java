@@ -288,7 +288,9 @@ public class Vector
 	}
 
 	/**
-	 * Returns a string representation of this vector
+	 * Returns a string representation of this object.
+	 * 
+	 * @return A representation of this object in String format.
 	 */
 	@Override
 	public String toString ()

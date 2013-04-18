@@ -147,6 +147,11 @@ public class Position extends Vector
 		setY(p._Y());
 	}
 
+	/**
+	 * Returns a string representation of this object.
+	 * 
+	 * @return A representation of this object in String format.
+	 */
 	@Override
 	public String toString ()
 	{

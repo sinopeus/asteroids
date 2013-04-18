@@ -223,6 +223,11 @@ public class Ship extends Entity implements IShip
 		this.setVelocity(new Velocity(getVelocity().getDifference(recoil)));//TODO something is wrong.
 	}
 
+	/**
+	 * Returns a string representation of this object.
+	 * 
+	 * @return A representation of this object in String format.
+	 */
 	@Override
 	public String toString ()
 	{

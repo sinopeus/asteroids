@@ -47,7 +47,9 @@ public class Force extends Vector
 	}
 
 	/**
-	 * @see world.physics.vector.Vector#toString()
+	 * Returns a string representation of this object.
+	 * 
+	 * @return A representation of this object in String format.
 	 */
 	@Override
 	public String toString ()
