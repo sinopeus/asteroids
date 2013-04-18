@@ -171,10 +171,16 @@ public class Bullet extends Entity
 	@Override
 	public void collideWith (Bullet that)
 	{
-		this.terminate();
-		that.terminate();
+		if (this.getShooter() == that.getShooter())
+		{
+			this.bounce(that);
+		}
+		{
+			this.terminate();
+			that.terminate();
+		}
 	}
-	
+
 	/**
 	 * Has this Bullet collide with the given Ship.
 	 * 
@@ -200,15 +206,17 @@ public class Bullet extends Entity
 	 * @effect	Has this bullet bounce against the given border.
 	 */
 	@Override
-	public void collideWith(Border that) {
-	if (getBounceCounter() >= maximumBorderBounces) {
-	    terminate();
-	    return;
+	public void collideWith (Border that)
+	{
+		if (getBounceCounter() >= maximumBorderBounces)
+		{
+			terminate();
+			return;
+		}
+		super.collideWith(that);
+		bounceCounter++;
 	}
-	super.collideWith(that);
-	bounceCounter++;
-    }
-	
+
 	/**
 	 * A variable keeping a reference to the ship which shot this bullet.
 	 */
