@@ -3,6 +3,7 @@ package world.entity;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,6 +16,7 @@ import world.physics.vector.Position;
 import world.physics.vector.Velocity;
 import Utilities.Util;
 
+@SuppressWarnings ("javadoc")
 public class AsteroidTest
 {
 	@Before
@@ -60,6 +62,42 @@ public class AsteroidTest
 		testAsteroid = new Asteroid(new Direction(), new Position(100, 100), new Velocity(3, 4), new CircleShape(40));
 		testAsteroid.advance(3);
 		assertEquals(testAsteroid.getDirection().getAngle(), new Angle(Math.PI / 7.0 * 3));
+	}
+	
+	@Test
+	public void colideWithTest_PerfectAsteroid ()
+	{
+		fail();
+	}
+
+	@Test
+	public void colideWithTest_IllegalAsteroid ()
+	{
+		fail();
+	}
+
+	@Test
+	public void colideWithTest_PerfectBullet ()
+	{
+		fail();
+	}
+
+	@Test
+	public void colideWithTest_IllegalBullet ()
+	{
+		fail();
+	}
+	
+	@Test
+	public void colideWithTest_PerfectShip ()
+	{
+		fail();
+	}
+
+	@Test
+	public void colideWithTest_IllegalShip ()
+	{
+		fail();
 	}
 
 	private static Asteroid	testAsteroid;

@@ -3,6 +3,7 @@ package world.entity;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,6 +12,7 @@ import world.entity.Bullet;
 import world.entity.ship.Ship;
 
 
+@SuppressWarnings ("javadoc")
 public class BulletTest
 {
 	@Before
@@ -59,6 +61,53 @@ public class BulletTest
 		testBullet.setBounceCounter((byte)-1);
 	}
 
+	@Test
+	public void colideWithTest_PerfectAsteroid ()
+	{
+		fail();
+	}
+
+	@Test
+	public void colideWithTest_IllegalAsteroid ()
+	{
+		fail();
+	}
+
+	@Test
+	public void colideWithTest_PerfectBullet ()
+	{
+		fail();
+	}
+
+	@Test
+	public void colideWithTest_IllegalBullet ()
+	{
+		fail();
+	}
+	
+	@Test
+	public void colideWithTest_PerfectShip ()
+	{
+		fail();
+	}
+
+	@Test
+	public void colideWithTest_IllegalShip ()
+	{
+		fail();
+	}
+	
+	@Test
+	public void colideWithTest_PerfectBorder ()
+	{
+		fail();
+	}
+
+	@Test
+	public void colideWithTest_IllegalBorder()
+	{
+		fail();
+	}
 	
 	@Test
 	public void unlinkFromShooterTest()

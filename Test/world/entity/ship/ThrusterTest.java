@@ -18,7 +18,7 @@ import world.physics.vector.Velocity;
 
 import Utilities.Util;
 
-
+@SuppressWarnings ("javadoc")
 public class ThrusterTest
 {
 	@Before
@@ -30,7 +30,7 @@ public class ThrusterTest
 
 	private static Ship testShip1;
 	private static Thruster testThruster;
-
+	
 	@Test
 	public void extendedConstructorTest_FieldsMatchParameters_PerfectParameters()
 	{

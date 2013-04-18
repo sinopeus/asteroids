@@ -89,10 +89,9 @@ public class Thruster
 	/**
 	 * Checks whether this thruster is activated.
 	 */
-	@SuppressWarnings ("javadoc")
 	@Basic
 	@Raw
-	public boolean isActivated ()
+	boolean isActivated ()
 	{
 		return isActivated;
 	}
@@ -105,7 +104,7 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
-	public void activate ()
+	void activate ()
 	{
 		this.isActivated = true;
 	}
@@ -118,7 +117,7 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
-	public void deactivate ()
+	void deactivate ()
 	{
 		this.isActivated = false;
 	}
@@ -131,7 +130,7 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
-	public void toggleActivation ()
+	void toggleActivation ()
 	{
 		this.isActivated = !this.isActivated;
 	}
@@ -199,7 +198,7 @@ public class Thruster
 		this.ownerShip = null;
 		this.isTerminated = true;
 	}
-	
+
 	/**
 	 * Indicates whether the thruster is terminated.
 	 * 
@@ -213,7 +212,7 @@ public class Thruster
 	/**
 	 * A state variable for registering whether this thruster is terminated or not.
 	 */
-	private boolean isTerminated;
+	private boolean	isTerminated;
 
 	/**
 	 * Thrusts the owner ship with the maximum amount of thrust of this thruster during a given amount of time.
