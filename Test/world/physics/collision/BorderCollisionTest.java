@@ -12,13 +12,13 @@ import world.entity.Asteroid;
 import world.entity.Bullet;
 import world.entity.ship.Ship;
 import world.physics.Mass;
-import world.physics.collision.BorderCollision.Border;
 import world.physics.geometry.Angle;
 import world.physics.geometry.CircleShape;
 import world.physics.vector.Direction;
 import world.physics.vector.Position;
 import world.physics.vector.Velocity;
 
+@SuppressWarnings ("javadoc")
 public class BorderCollisionTest
 {
 	@Before
@@ -135,7 +135,7 @@ public class BorderCollisionTest
 	@Test
 	public void resolveTest_DissapearingBullet ()
 	{
-		testBullet.setBounceCounter(Bullet.maximumBorderBounces);
+		testBullet.setBounceCounter((byte)(Bullet.maximumBorderBounces-1));
 		horizontalBorderCollision.resolve();
 		assertEquals(horizontalBorderCollision.getCollisionEntity().getVelocity(), new Velocity(-250, 0));
 	}
