@@ -91,7 +91,7 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
-	boolean isActivated ()
+	public boolean isActivated ()
 	{
 		return isActivated;
 	}
