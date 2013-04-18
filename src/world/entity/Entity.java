@@ -28,6 +28,10 @@ import be.kuleuven.cs.som.annotate.Raw;
  * @invar	The velocity of this entity is a valid velocity.
  * 			| canHaveAsVelocity(getVelocity())
  */
+/**
+ * @author xavier
+ *
+ */
 public class Entity
 {
 	/**
@@ -578,6 +582,12 @@ public class Entity
 		return " at " + getPosition() + "   with velocity " + getVelocity() + "   and shape " + getShape() + "  ";
 	}
 
+	/**
+	 * Has this entity bounce with the other.
+	 * 
+	 * @param that The entity with which this entity will bounce.
+	 * @effect //TODO
+	 */
 	public void bounce (Entity that)
 	{
 		try
