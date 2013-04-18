@@ -1,5 +1,6 @@
 package world.entity;
 
+import world.World;
 import world.entity.ship.Ship;
 import world.physics.Mass;
 import world.physics.geometry.Angle;
@@ -71,6 +72,8 @@ public class Asteroid extends Entity
 	@Override
 	public void terminate ()
 	{
+		World world = getWorld();
+		super.terminate();
 		if (getShape().getRadius() >= HARDNESS)
 		{
 			Direction d1 = new Direction(new Angle(getDirection().getAngle().get()));
@@ -85,10 +88,9 @@ public class Asteroid extends Entity
 			Asteroid a1 = new Asteroid(d1, p1, v1, s1);
 			Asteroid a2 = new Asteroid(d2, p2, v2, s2);
 
-			getWorld().add(a1);
-			getWorld().add(a2);
+			world.add(a1);
+			world.add(a2);
 		}
-		super.terminate();
 	}
 
 	/**
@@ -141,6 +143,7 @@ public class Asteroid extends Entity
 	 * @effect	terminates the given bullet.
 	 * 			| that.terminate()
 	 */
+	@Override
 	public void collideWith (Ship that)
 	{
 		that.terminate();

@@ -3,6 +3,7 @@ package world;
 import java.util.ArrayList;
 
 import main.CollisionListener;
+import world.entity.Asteroid;
 import world.entity.Entity;
 import world.physics.collision.BorderCollision;
 import world.physics.collision.Collision;
@@ -163,10 +164,16 @@ public class World extends ArrayList <Entity>
 	{
 		if (entity == null) return false;
 		if (!canHaveAsEntity(entity)) { throw new IllegalArgumentException("Invalid entity added"); }
-		if (isInWorld(entity) && isSpaceForEntity(entity))
+		if (isInWorld(entity))
 		{
+//			if (entity instanceof Asteroid || isSpaceForEntity(entity)){
 			entity.setWorld(this);
 			super.add(entity);
+//			}
+//			Entity collidingEntity = isSpaceForEntity(entity);
+//			if(collidingEntity != null){
+//				entity.collideWith(collidingEntity);
+//			}
 		}
 		return true;
 	}
@@ -249,10 +256,7 @@ public class World extends ArrayList <Entity>
 	private boolean isSpaceForEntity (Entity entity)
 	{
 		if (entity == null) return true;
-		for (Entity e : this)
-		{
-			if (entity.overlapsWith(e)) return false;
-		}
+		for (Entity e : this) if (entity.overlapsWith(e)) return false;
 		return true;
 	}
 

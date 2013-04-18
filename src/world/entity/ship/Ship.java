@@ -179,20 +179,17 @@ public class Ship extends Entity implements IShip
 	}
 
 	//TODO document & test
+	@Override
 	public void collideWith (Asteroid that)
 	{
 		this.terminate();
 	}
 
 	//TODO document & test
+	@Override
 	public void collideWith (Bullet that)
 	{
-		if (that.getShooter() == this)
-		{
-			this.bounce(that);
-			return;
-		}
-
+		if (that.getShooter() == this) return;
 		this.terminate();
 		that.terminate();
 	}
