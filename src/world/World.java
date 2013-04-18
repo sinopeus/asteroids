@@ -145,7 +145,7 @@ public class World extends ArrayList <Entity>
 	 */
 	private boolean canHaveAsEntity (Entity entity)
 	{
-		return ((entity != null ) && !(this.contains(entity)));
+		return ( (entity != null) && ! (this.contains(entity)));
 	}
 
 	/**
@@ -161,8 +161,9 @@ public class World extends ArrayList <Entity>
 	@Override
 	public boolean add (Entity entity) throws IllegalArgumentException
 	{
+		if (entity == null) return false;
 		if (!canHaveAsEntity(entity)) { throw new IllegalArgumentException("Invalid entity added"); }
-		if (isInWorld(entity))
+		if (isInWorld(entity) && isSpaceForEntity(entity))
 		{
 			entity.setWorld(this);
 			super.add(entity);
@@ -236,19 +237,25 @@ public class World extends ArrayList <Entity>
 		boolean p4 = isInWorld(entity.getPosition().getSum(new Vector(0, -r)));
 		return p1 && p2 && p3 && p4;
 	}
-	
-//	//TODO DOC AND TEST
-//	//TODO SOMETHING IS WRONG HERE
-//	private boolean isSpaceForEntity(Entity entity){
-//		for (Entity e : this)
-//		{
-//			if (e.getPosition().getDistanceTo(entity.getPosition()) < e.getShape().getRadius()+entity.getShape().getRadius()){
-//				return false;
-//			}
-//		}
-//		return true;
-//	}
-	
+
+	/**
+	 * Checks whether there is space in the world to add the given entity
+	 * 
+	 * @param	entity
+	 * 			The given entity
+	 * @return	True if and only if the given entity is null or does not overlap with any other entity.
+	 * 			| //TODO
+	 */
+	private boolean isSpaceForEntity (Entity entity)
+	{
+		if (entity == null) return true;
+		for (Entity e : this)
+		{
+			if (entity.overlapsWith(e)) return false;
+		}
+		return true;
+	}
+
 	//TODO TEST
 	/**
 	 * Gets the number of entities in this world.
@@ -256,7 +263,7 @@ public class World extends ArrayList <Entity>
 	 * @return	The number of entities in this world.
 	 * 			| result == this.size();
 	 */
-	public int numberOfEntities()
+	public int numberOfEntities ()
 	{
 		return this.size();
 	}
