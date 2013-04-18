@@ -186,25 +186,25 @@ public class ShipTest
 	}
 
 	@Test
-	public void colideWithTest_PerfectAsteroid ()
+	public void collideWithTest_PerfectAsteroid ()
 	{
 		fail();
 	}
 
 	@Test
-	public void colideWithTest_IllegalAsteroid ()
+	public void collideWithTest_IllegalAsteroid ()
 	{
 		fail();
 	}
 
 	@Test
-	public void colideWithTest_PerfectBullet ()
+	public void collideWithTest_PerfectBullet ()
 	{
 		fail();
 	}
 
 	@Test
-	public void colideWithTest_IllegalBullet ()
+	public void collideWithTest_IllegalBullet ()
 	{
 		fail();
 	}

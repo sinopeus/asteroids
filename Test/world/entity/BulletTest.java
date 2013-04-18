@@ -62,49 +62,49 @@ public class BulletTest
 	}
 
 	@Test
-	public void colideWithTest_PerfectAsteroid ()
+	public void collideWithTest_PerfectAsteroid ()
 	{
 		fail();
 	}
 
 	@Test
-	public void colideWithTest_IllegalAsteroid ()
+	public void collideWithTest_IllegalAsteroid ()
 	{
 		fail();
 	}
 
 	@Test
-	public void colideWithTest_PerfectBullet ()
+	public void collideWithTest_PerfectBullet ()
 	{
 		fail();
 	}
 
 	@Test
-	public void colideWithTest_IllegalBullet ()
+	public void collideWithTest_IllegalBullet ()
 	{
 		fail();
 	}
 	
 	@Test
-	public void colideWithTest_PerfectShip ()
+	public void collideWithTest_PerfectShip ()
 	{
 		fail();
 	}
 
 	@Test
-	public void colideWithTest_IllegalShip ()
+	public void collideWithTest_IllegalShip ()
 	{
 		fail();
 	}
 	
 	@Test
-	public void colideWithTest_PerfectBorder ()
+	public void collideWithTest_PerfectBorder ()
 	{
 		fail();
 	}
 
 	@Test
-	public void colideWithTest_IllegalBorder()
+	public void collideWithTest_IllegalBorder()
 	{
 		fail();
 	}
