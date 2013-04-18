@@ -14,8 +14,12 @@ public final class BorderCollision extends Collision
 
 	//TODO document
 	/**
-	 * @param world
-	 * @param entity
+	 * Initializes this border collision with a given world and a given colliding entity.
+	 * 
+	 * @param	world
+	 * 			The given world.
+	 * @param	entity
+	 * 			The given colliding entity.
 	 */
 	public BorderCollision (World world, Entity entity)
 	{
@@ -25,10 +29,10 @@ public final class BorderCollision extends Collision
 		calculateCollisionTime();
 	}
 
-	//TODO document
 	/**
-	 * @author xavier
-	 *
+	 * An enumeration of borders to collide with.
+	 * 
+	 * @author syd //TODO make names correct
 	 */
 	public enum Border
 	{
@@ -37,7 +41,7 @@ public final class BorderCollision extends Collision
 
 	//TODO document
 	/**
-	 * @return
+	 * Gets the border to collide with.
 	 */
 	public Border getCollisionBorder ()
 	{
@@ -46,17 +50,26 @@ public final class BorderCollision extends Collision
 
 	//TODO document
 	/**
-	 * @param collisionBorder
-	 * @return
+	 * Checks whether the given collision border is a valid border to collide with.
+	 * 
+	 * @param	collisionBorder
+	 * 			The given collision border.
+	 * @return	True if and only if the given collision border is not null.
+	 * 			| result == collisionBorder != null
 	 */
 	protected boolean canHaveAsCollisionBorder (Border collisionBorder)
 	{
 		return (collisionBorder != null);
 	}
 
-	//TODO fucking document
 	/**
-	 * @param collisionBorder
+	 * Sets the collision border of this border collision to the given collision border.
+	 * 
+	 * @param	collisionBorder
+	 * 			| The given collision border.
+	 * @throws	IllegalArgumentException
+	 * 			The given collision border is not a valid collision border.
+	 * 			| !canHaveAsCollisionBorder(collisionBorder)
 	 */
 	public void setCollisionBorder (Border collisionBorder)
 	{
@@ -64,33 +77,34 @@ public final class BorderCollision extends Collision
 		this.collisionBorder = collisionBorder;
 	}
 
-	//TODO document
 	/**
-	 * 
+	 * A variable registering the border with which the entity of this border collision collides.
 	 */
 	private Border	collisionBorder;
 
-	//TODO document
 	/**
-	 * @return
+	 * Gets the collisions entity of this border collision.
 	 */
 	public Entity getCollisionEntity ()
 	{
 		return collisionEntity;
 	}
 
-	//TODO document
 	/**
-	 * @param collisionEntity
-	 * @return
+	 * Checks whether the given entity is a valid entity to collide for this border collision.
+	 * 
+	 * @param	collisionEntity
+	 * 			The given entity.
+	 * @return	True if and only if the given entity is not null.
+	 * 			| result == collisionEntity != null
 	 */
 	public boolean canHaveAsEntity (Entity collisionEntity)
 	{
 		return (collisionEntity != null);
 	}
 
-	//TODO document
 	/**
+	 * 
 	 * @param collisionEntity
 	 */
 	public void setCollisionEntity (Entity collisionEntity)
