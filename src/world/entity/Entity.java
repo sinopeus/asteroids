@@ -605,17 +605,6 @@ public class Entity
 		this.direction.rotate(angle);
 	}
 
-	/**
-	 * A string representation of this entity.
-	 * 
-	 * @return A representation in String format of this entity.
-	 * @see java.lang.Object#toString()
-	 */
-	public String toString ()
-	{
-		return " at " + getPosition() + "   with velocity " + getVelocity() + "   and shape " + getShape() + "  ";
-	}
-
 	public void bounce (Entity that)
 	{
 		try
@@ -705,5 +694,15 @@ public class Entity
 	public double distanceTo (Position p)
 	{
 		return getPosition().getDistanceTo(p);
+	}
+
+	/**
+	 * Returns a string representation of this object.
+	 * 
+	 * @return A representation of this object in String format.
+	 */
+	public String toString ()
+	{
+		return " at " + getPosition() + "   with velocity " + getVelocity() + "   and shape " + getShape() + "  ";
 	}
 }

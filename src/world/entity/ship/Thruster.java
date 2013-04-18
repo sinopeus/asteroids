@@ -254,6 +254,11 @@ public class Thruster
 		getOwner().getVelocity().accelerateBy(a, duration);
 	}
 
+	/**
+	 * Returns a string representation of this object.
+	 * 
+	 * @return A representation of this object in String format.
+	 */
 	@Override
 	public String toString ()
 	{

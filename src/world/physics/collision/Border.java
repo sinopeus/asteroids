@@ -3,7 +3,8 @@ package world.physics.collision;
 /**
  * An enumeration of borders to collide with.
  * 
- * @author syd //TODO make names correct
+ * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
+ * @version 2.0
 */
 public enum Border
 {

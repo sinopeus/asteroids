@@ -90,8 +90,10 @@ public class Mass // TODO document
 		return Util.fuzzyEquals(other.get(), this.get());
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
+	/**
+	 * Returns a string representation of this object.
+	 * 
+	 * @return A representation of this object in String format.
 	 */
 	@Override
 	public String toString ()

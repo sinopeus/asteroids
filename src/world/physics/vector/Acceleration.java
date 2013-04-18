@@ -52,9 +52,9 @@ public class Acceleration extends Vector
 	}
 
 	/**
-	 * Returns a string representation of this acceleration.
+	 * Returns a string representation of this object.
 	 * 
-	 * @see world.physics.vector.Vector#toString()
+	 * @return A representation of this object in String format.
 	 */
 	@Override
 	public String toString ()
