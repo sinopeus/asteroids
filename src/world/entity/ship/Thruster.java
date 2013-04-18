@@ -39,6 +39,7 @@ public class Thruster
 	/**
 	 * Gets the maximum thrust per second of this thruster.
 	 */
+	@SuppressWarnings ("javadoc")
 	@Basic
 	@Raw
 	public double getMaximumThrustPerSecond ()
@@ -88,6 +89,7 @@ public class Thruster
 	/**
 	 * Checks whether this thruster is activated.
 	 */
+	@SuppressWarnings ("javadoc")
 	@Basic
 	@Raw
 	public boolean isActivated ()
@@ -142,6 +144,7 @@ public class Thruster
 	/**
 	 * Gets the ship to which this thruster belongs.
 	 */
+	@SuppressWarnings ("javadoc")
 	@Basic
 	@Raw
 	public Ship getOwner ()

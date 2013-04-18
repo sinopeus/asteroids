@@ -20,11 +20,11 @@ public class Bullet extends Entity
 	/**
 	 * Initializes a new bullet.
 	 * 
-	 * @param   	ship
-	 *          	The ship which has fired this bullet.
-	 * @effect  	Initializes this new bullet using the properties of the given ship.
+	 * @param   ship
+	 *          The ship which has fired this bullet.
+	 * @effect  Initializes this new bullet using the properties of the given ship.
 	 * 			| this.super(ship.getDirection(), ship.getPosition(), ship.getSpeedLimit, initialVelocity, new CircleShape(radius), new Mass(shape.getRadius() * density));
-	 *           | setShooter(ship);
+	 *          | setShooter(ship);
 	 * @throws	NullPointerException
 	 * 			the given ship is null
 	 */
@@ -95,6 +95,7 @@ public class Bullet extends Entity
 	/**
 	 * Returns the the amount of times this bullet has bounced on a worlds edge of this bullet.
 	 */
+	@SuppressWarnings ("javadoc")
 	@Basic
 	@Raw
 	public byte getBounceCounter ()
@@ -117,30 +118,52 @@ public class Bullet extends Entity
 		return (bounceCounter >= 0);
 	}
 
-	//TODO document & test
+	/**
+	 * Has this Bullet collide with the given Asteroid.
+	 * 
+	 * @param 	that
+	 * 			The given Asteroid to collide with.
+	 * @effect	Terminate both this bullet and the given asteroid
+	 * 			| that.terminate()
+	 * 			| this.terminate()
+	 */
 	@Override
 	public void collideWith (Asteroid that)
 	{
 		that.collideWith(this);
 	}
 
-	//TODO document & test
+	/**
+	 * Has this Bullet collide with the given Ship.
+	 * 
+	 * @param 	that
+	 * 			The given Ship to collide with.
+	 * @effect	If this bullet was shot by the given ship, don't do anything.
+	 * 			|
+	 * @effect	Otherwise Terminate both this Ship and the given bullet.
+	 * 			| this.terminate()
+	 * 			| that.terminate()
+	 */
 	@Override
 	public void collideWith (Ship that)
 	{
 		that.collideWith(this);
 	}
 
-	//TODO document & test
+	/**
+	 * Has this Bullet collide with the given Border.
+	 * 
+	 * @param 	that
+	 * 			The given border to collide with.
+	 * @effect	Has this bullet bounce against the given border.
+	 */
 	@Override
 	public void collideWith(Border that) {
-	if (bounceCounter >= maximumBorderBounces) {
+	if (getBounceCounter() >= maximumBorderBounces) {
 	    terminate();
 	    return;
 	}
-
 	super.collideWith(that);
-	
 	bounceCounter++;
     }
 
@@ -153,6 +176,9 @@ public class Bullet extends Entity
 	 * 			then the bounce counter of this bullet is now equal to the given bounce counter.
 	 * 			| if canHaveAsBounceCounter(bounceCounter)
 	 * 			|	then new.getBounceCounter() == bounceCounter
+	 * @throws	IllegalArgumentException
+	 * 			The given bounceCounter is not a valid bounce counter
+	 * 			| !canHaveAsBounceCounter(bounceCounter)
 	 */
 	@Basic
 	@Raw

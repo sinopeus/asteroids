@@ -39,8 +39,6 @@ public class Ship extends Entity implements IShip
 	 * 			The given direction.
 	 * @param	position
 	 * 			The given position.
-	 * @param	shape
-	 * 			The given shape.
 	 * @param	speedLimit
 	 * 			The given speed limit.
 	 * @param	velocity
@@ -53,8 +51,6 @@ public class Ship extends Entity implements IShip
 	 * 			| setDirection(direction)
 	 * @effect	The position of this ship is set to the given position.
 	 * 			| setPosition(position)
-	 * @effect	The shape of this ship is set to the given shape.
-	 * 			| setShape(shape)
 	 * @effect	The speed limit of this ship is set to the given speed limit.
 	 * 			| setSpeedLimit(speedLimit)
 	 * @effect	The velocity of this ship is set to the given velocity.
@@ -115,6 +111,7 @@ public class Ship extends Entity implements IShip
 	/**
 	 * Gets the thruster of this ship.
 	 */
+	@SuppressWarnings ("javadoc")
 	@Basic
 	@Raw
 	public Thruster getThruster ()
@@ -178,14 +175,31 @@ public class Ship extends Entity implements IShip
 		super.advance(dt);
 	}
 
-	//TODO document & test
+	/**
+	 * Has this Ship collide with the given Asteroid.
+	 * 
+	 * @param 	that
+	 * 			The given Asteroid to collide with.
+	 * @effect	terminates the given bullet.
+	 * 			| this.terminate()
+	 */
 	@Override
 	public void collideWith (Asteroid that)
 	{
 		this.terminate();
 	}
 
-	//TODO document & test
+	/**
+	 * Has this Ship collide with the given Bullet.
+	 * 
+	 * @param 	that
+	 * 			The given Bullet to collide with.
+	 * @effect	If this ship shot the given bullet, don't do anything.
+	 * 			|
+	 * @effect	Otherwise Terminate both this Ship and the given bullet.
+	 * 			| that.terminate()
+	 * 			| this.terminate()
+	 */
 	@Override
 	public void collideWith (Bullet that)
 	{
@@ -216,7 +230,7 @@ public class Ship extends Entity implements IShip
 	}
 
 	/**
-	 * @return
+	 * Gets the thrust per second of this ship.
 	 */
 	public double getThrustPerSecond ()
 	{

@@ -33,8 +33,6 @@ public class Asteroid extends Entity
 	 * 			The given direction.
 	 * @param	position
 	 * 			The given position.
-	 * @param	shape
-	 * 			The given shape.
 	 * @param	velocity
 	 * 			The given velocity.
 	 * @param	shape
@@ -43,12 +41,10 @@ public class Asteroid extends Entity
 	 * 			| setDirection(direction)
 	 * @effect	The position of this asteroid is set to the given position.
 	 * 			| setPosition(position)
-	 * @effect	The shape of this asteroid is set to the given shape.
-	 * 			| setShape(shape)
 	 * @effect	The velocity of this asteroid is set to the given velocity.
 	 * 			| setVelocity(velocity)
 	 * @effect	The circle shape of this asteroid is set to the given circle shape.
-	 * 			| this.shape = shape
+	 * 			| setShape(shape)
 	 * @effect	The mass of this asteroid is set to the its radius times the fixed density for asteroids.
 	 * 			| setMass(shape.getRadius() * density)
 	 * @throws	IllegalArgumentException
