@@ -178,14 +178,17 @@ public class World extends ArrayList <Entity>
 		return true;
 	}
 
-	//TODO DOCUMENT
 	/**
-	 * @param dt
-	 * @param collisionListener
+	 * Evolves the state of this world by a given time period and a collision detector. Also needs a collision listener to render explosions.
+	 * 
+	 * @param	dt
+	 * 			The time difference over which to evolve this world.
+	 * @param	coll
+	 * 			The required collision listener.
 	 */
-	public void evolve (double dt, CollisionListener collisionListener)
+	public void evolve (double dt, CollisionListener coll)
 	{
-		Collision c = Collision.getNextCollision(this);
+		Collision c = getNextCollision();
 
 		if (c != null && c.getTimeToCollision() <= dt)
 		{
@@ -194,27 +197,37 @@ public class World extends ArrayList <Entity>
 			if (c.getClass() == BorderCollision.class)
 			{
 				BorderCollision bc = (BorderCollision) c;
-				collisionListener.boundaryCollision(bc.getCollisionEntity(), collisionPosition._X(), collisionPosition._Y());
+				coll.boundaryCollision(bc.getCollisionEntity(), collisionPosition._X(), collisionPosition._Y());
 			} else if (c.getClass() == EntityCollision.class)
 			{
 				EntityCollision ec = (EntityCollision) c;
-				collisionListener.objectCollision(ec.getEntity1(), ec.getEntity2(), collisionPosition._X(), collisionPosition._Y());
+				coll.objectCollision(ec.getEntity1(), ec.getEntity2(), collisionPosition._X(), collisionPosition._Y());
 			}
 			c.resolve();
-			evolve( (dt - c.getTimeToCollision()), collisionListener);
-		} else
-		{
-			advanceAll(dt);
-		}
+			evolve( (dt - c.getTimeToCollision()), coll);
+		} else advanceAll(dt);
+
+	}
+	
+	/**
+	 * Returns the next collision that will occur in this world.
+	 * 
+	 * @return | Collision.getNextCollision(this)
+	 */
+	private Collision getNextCollision () {
+		return Collision.getNextCollision(this);
 	}
 
 	//TODO DOCUMENT &TEST
+	/**
+	 * Advances the state of all entities in this world by a given time <code>dt</code>.
+	 * 
+	 * @param	dt
+	 * 			The time over which to advance all entities.
+	 */
 	private void advanceAll (double dt)
 	{
-		for (Entity e : this)
-		{
-			e.advance(dt);
-		}
+		for (Entity e : this) e.advance(dt);
 	}
 
 	/**

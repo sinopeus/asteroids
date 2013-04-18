@@ -134,6 +134,22 @@ public class Bullet extends Entity
 	}
 
 	/**
+	 * Has this Bullet collide with the given Bullet.
+	 * 
+	 * @param 	that
+	 * 			The given Bullet to collide with.
+	 * @effect	Terminate both this bullet and the other one.
+	 * 			| this.terminate()
+	 * 			| that.terminate()
+	 */
+	@Override
+	public void collideWith (Bullet that)
+	{
+		this.terminate();
+		that.terminate();
+	}
+	
+	/**
 	 * Has this Bullet collide with the given Ship.
 	 * 
 	 * @param 	that
