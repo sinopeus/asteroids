@@ -166,14 +166,8 @@ public class World extends ArrayList <Entity>
 		if (!canHaveAsEntity(entity)) { throw new IllegalArgumentException("Invalid entity added"); }
 		if (isInWorld(entity))
 		{
-//			if (entity instanceof Asteroid || isSpaceForEntity(entity)){
 			entity.setWorld(this);
 			super.add(entity);
-//			}
-//			Entity collidingEntity = isSpaceForEntity(entity);
-//			if(collidingEntity != null){
-//				entity.collideWith(collidingEntity);
-//			}
 		}
 		return true;
 	}
@@ -233,7 +227,8 @@ public class World extends ArrayList <Entity>
 	/**
 	 * Returns whether the given position is within the boundaries of the world.
 	 * 
-	 * @param position
+	 * @param	position
+	 * 			The given position
 	 * @return	| position.x <= this.x && position.x >= 0 && position.y <= this.y && position.y <= this.y
 	 */
 	public boolean isInWorld (Position position)
@@ -273,7 +268,6 @@ public class World extends ArrayList <Entity>
 		return true;
 	}
 
-	//TODO TEST
 	/**
 	 * Gets the number of entities in this world.
 	 * 

@@ -66,7 +66,6 @@ public class Ship extends Entity implements IShip
 	 */
 	public Ship (Direction direction, Position position, double speedLimit, Velocity velocity, CircleShape shape, Mass mass) throws IllegalArgumentException, NullPointerException
 	{
-		//TODO add throws from setters
 		super(direction, position, speedLimit, velocity, shape, mass);
 		setThruster(new Thruster(getThrustPerSecond(), this));
 	}
@@ -79,7 +78,6 @@ public class Ship extends Entity implements IShip
 	 */
 	public Ship ()
 	{
-		//TODO add throws from setters
 		this(new Direction(), new Position(), Velocity.getSpeedOfLight(), new Velocity(), new CircleShape(40), new Mass(5E15));
 	}
 
@@ -175,6 +173,22 @@ public class Ship extends Entity implements IShip
 		super.advance(dt);
 	}
 
+
+	/**
+	 * A method for firing a bullet from this ship.
+	 * 
+	 * @effect Creates a new Bullet object in the World to which this Ship belongs.
+	 */
+	public void fire ()
+	{
+		Bullet b = new Bullet(this);
+		getWorld().add(b);
+
+		//RECOIL
+		Velocity recoil = Mechanics.conservationOfMomentum_CalculateVelocity(b.getVelocity(), b.getMass(), this.getMass());
+		this.setVelocity(new Velocity(getVelocity().getDifference(recoil)));//TODO something is wrong.
+	}
+	
 	/**
 	 * Has this Ship collide with the given Asteroid.
 	 * 
@@ -209,21 +223,6 @@ public class Ship extends Entity implements IShip
 	}
 
 	/**
-	 * A method for firing a bullet from this ship.
-	 * 
-	 * @effect Creates a new Bullet object in the World to which this Ship belongs.
-	 */
-	public void fire ()
-	{
-		Bullet b = new Bullet(this);
-		getWorld().add(b);
-
-		//RECOIL
-		Velocity recoil = Mechanics.conservationOfMomentum_CalculateVelocity(b.getVelocity(), b.getMass(), this.getMass());
-		this.setVelocity(new Velocity(getVelocity().getDifference(recoil)));//TODO something is wrong.
-	}
-
-	/**
 	 * Returns a string representation of this object.
 	 * 
 	 * @return A representation of this object in String format.
@@ -237,6 +236,7 @@ public class Ship extends Entity implements IShip
 	/**
 	 * Gets the thrust per second of this ship.
 	 */
+	@SuppressWarnings ("javadoc")
 	public double getThrustPerSecond ()
 	{
 		return Ship.thrustPerSecond;

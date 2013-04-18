@@ -119,6 +119,32 @@ public class Bullet extends Entity
 	}
 
 	/**
+	 * Sets the bounce counter of this bullet to the given bounce counter.
+	 *
+	 * @param	bounceCounter
+	 *			The new bounce counter for this bullet.
+	 * @post	If this bullet can have the given bounce counter as its bounce counter,
+	 * 			then the bounce counter of this bullet is now equal to the given bounce counter.
+	 * 			| if canHaveAsBounceCounter(bounceCounter)
+	 * 			|	then new.getBounceCounter() == bounceCounter
+	 * @throws	IllegalArgumentException
+	 * 			The given bounceCounter is not a valid bounce counter
+	 * 			| !canHaveAsBounceCounter(bounceCounter)
+	 */
+	@Basic
+	@Raw
+	public void setBounceCounter (byte bounceCounter) throws IllegalArgumentException
+	{
+		if (!canHaveAsBounceCounter(bounceCounter)) { throw new IllegalArgumentException("Invalid bounce counter provided"); }
+		this.bounceCounter = bounceCounter;
+	}
+
+	/**
+	 * A variable registering the amount of times this bullet has bounced on a worlds edge of this bullet.
+	 */
+	private byte	bounceCounter;
+
+	/**
 	 * Has this Bullet collide with the given Asteroid.
 	 * 
 	 * @param 	that
@@ -182,33 +208,7 @@ public class Bullet extends Entity
 	super.collideWith(that);
 	bounceCounter++;
     }
-
-	/**
-	 * Sets the bounce counter of this bullet to the given bounce counter.
-	 *
-	 * @param	bounceCounter
-	 *			The new bounce counter for this bullet.
-	 * @post	If this bullet can have the given bounce counter as its bounce counter,
-	 * 			then the bounce counter of this bullet is now equal to the given bounce counter.
-	 * 			| if canHaveAsBounceCounter(bounceCounter)
-	 * 			|	then new.getBounceCounter() == bounceCounter
-	 * @throws	IllegalArgumentException
-	 * 			The given bounceCounter is not a valid bounce counter
-	 * 			| !canHaveAsBounceCounter(bounceCounter)
-	 */
-	@Basic
-	@Raw
-	public void setBounceCounter (byte bounceCounter) throws IllegalArgumentException
-	{
-		if (!canHaveAsBounceCounter(bounceCounter)) { throw new IllegalArgumentException("Invalid bounce counter provided"); }
-		this.bounceCounter = bounceCounter;
-	}
-
-	/**
-	 * A variable registering the amount of times this bullet has bounced on a worlds edge of this bullet.
-	 */
-	private byte	bounceCounter;
-
+	
 	/**
 	 * A variable keeping a reference to the ship which shot this bullet.
 	 */
