@@ -240,5 +240,5 @@ public class Ship extends Entity implements IShip
 	/**
 	 * A variable registering the thrust that a ship's thruster can exert in one second.
 	 */
-	private static double	thrustPerSecond	= 1.1E19;
+	private static double	thrustPerSecond	= 1.1E21;
 }
