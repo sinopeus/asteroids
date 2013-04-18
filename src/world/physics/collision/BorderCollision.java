@@ -9,91 +9,115 @@ import world.physics.vector.Position;
 import world.physics.vector.Quadrant;
 import world.physics.vector.Vector;
 
+/**
+ * @author syd
+ *
+ */
 public final class BorderCollision extends Collision
 {
 
 	//TODO document
 	/**
-	 * @param world
-	 * @param entity
+	 * Initializes this border collision with a given world and a given colliding entity.
+	 * 
+	 * @param	world
+	 * 			The given world.
+	 * @param	entity
+	 * 			The given colliding entity.
+	 * @effect	Constructs a Collision with the given world.
+	 * 			| super(world)
+	 * @effect	Sets the collision entity of this border collision to the given entity
+	 * 			| setCollisionEntity(entity)
+	 * @effect	Calculates the amount of time to pass before this collision happens.
+	 * 			| calculateCollisionTime()
+	 * @throws	IllegalArgumentException
+	 * 			The given world is not a valid world for this collision
+	 * 			| !canHaveAsWorld(world)
+	 * @throws	IllegalArgumentException
+	 * 			The given entity is not a valid a collision entity for this collision.
+	 * 			| !canHaveAsCollisionEntity(entity)
 	 */
-	public BorderCollision (World world, Entity entity)
+	public BorderCollision (World world, Entity entity) throws IllegalArgumentException
 	{
 		super(world);
 		setCollisionEntity(entity);
-
 		calculateCollisionTime();
 	}
 
-	//TODO document
 	/**
-	 * @author xavier
-	 *
+	 * Gets the border to collide with.
 	 */
-	public enum Border
-	{
-		BORDER_TOP, BORDER_BOTTOM, BORDER_RIGHT, BORDER_LEFT;
-	}
-
-	//TODO document
-	/**
-	 * @return
-	 */
+	@SuppressWarnings ("javadoc")
 	public Border getCollisionBorder ()
 	{
 		return collisionBorder;
 	}
 
-	//TODO document
 	/**
-	 * @param collisionBorder
-	 * @return
+	 * Checks whether the given collision border is a valid border to collide with.
+	 * 
+	 * @param	collisionBorder
+	 * 			The given collision border.
+	 * @return	True if and only if the given collision border is not null.
+	 * 			| result == collisionBorder != null
 	 */
 	protected boolean canHaveAsCollisionBorder (Border collisionBorder)
 	{
 		return (collisionBorder != null);
 	}
 
-	//TODO fucking document
 	/**
-	 * @param collisionBorder
+	 * Sets the collision border of this border collision to the given collision border.
+	 * 
+	 * @param	collisionBorder
+	 * 			| The given collision border.
+	 * @throws	IllegalArgumentException
+	 * 			The given collision border is not a valid collision border.
+	 * 			| !canHaveAsCollisionBorder(collisionBorder)
 	 */
-	public void setCollisionBorder (Border collisionBorder)
+	public void setCollisionBorder (Border collisionBorder) throws IllegalArgumentException
 	{
 		if (!canHaveAsCollisionBorder(collisionBorder)) { throw new IllegalArgumentException("Illegal border provided."); }
 		this.collisionBorder = collisionBorder;
 	}
 
-	//TODO document
 	/**
-	 * 
+	 * A variable registering the border with which the entity of this border collision collides.
 	 */
 	private Border	collisionBorder;
 
-	//TODO document
 	/**
-	 * @return
+	 * Gets the collisions entity of this border collision.
 	 */
+	@SuppressWarnings ("javadoc")
 	public Entity getCollisionEntity ()
 	{
 		return collisionEntity;
 	}
 
-	//TODO document
 	/**
-	 * @param collisionEntity
-	 * @return
+	 * Checks whether the given entity is a valid entity to collide for this border collision.
+	 * 
+	 * @param	collisionEntity
+	 * 			The given entity.
+	 * @return	True if and only if the given entity is not null.
+	 * 			| result == collisionEntity != null
 	 */
 	public boolean canHaveAsEntity (Entity collisionEntity)
 	{
 		return (collisionEntity != null);
 	}
 
-	//TODO document
 	/**
-	 * @param collisionEntity
+	 * Sets the collision entity of this border collision to the given entity.
+	 * 
+	 * @param	collisionEntity
+	 * 			The given entity
+	 * @throws	IllegalArgumentException
+	 * 			The given entity is not a valid collision entity for this border collision.
+	 * 			| !canHaveAsEntity(collisionEntity)
 	 */
-	public void setCollisionEntity (Entity collisionEntity)
+	public void setCollisionEntity (Entity collisionEntity) throws IllegalArgumentException
 	{
 		if (!canHaveAsEntity(collisionEntity)) { throw new IllegalArgumentException("Illegal collision entity provided."); }
 		this.collisionEntity = collisionEntity;
@@ -137,9 +161,8 @@ public final class BorderCollision extends Collision
 		}
 	}
 
-	//TODO document
 	/**
-	 * @see world.physics.collision.Collision#getTimeToCollision()
+	 * Gets the time to collision of this border collision.
 	 */
 	@Override
 	public double getTimeToCollision ()
@@ -148,10 +171,14 @@ public final class BorderCollision extends Collision
 	}
 
 	/**
-	 * @param b
-	 * @return
+	 * Gets the time it takes the collision to collide with a given border.
+	 * 
+	 * @param	border
+	 * 			The given border.
+	 * @return	The time it takes the collision to collide with a given border.
+	 * 			| //TODO weirdly complex?
 	 */
-	private double getTimeToBorderCollision (Border b)
+	private double getTimeToBorderCollision (Border border)
 	{
 		Position intersectionOfCenter = null;
 
@@ -165,7 +192,7 @@ public final class BorderCollision extends Collision
 		double vy = e.getVelocity()._Y();
 
 		double n = 0, x = 0, y = 0;
-		switch (b)
+		switch (border)
 		{
 			case BORDER_TOP: // x = n * vx + px
 				n = ( (wsy - r - py) / vy);
@@ -200,7 +227,10 @@ public final class BorderCollision extends Collision
 	}
 
 	/**
-	 * //TODO
+	 * Calculates the time it takes for the collision entity to collide with a border and sets it to.
+	 * 
+	 * @post	The time to collision of this entity is now equal to the time it takes for the collision entity to collide with a border.
+	 * 			| //TODO WTF
 	 */
 	@Override
 	protected void calculateCollisionTime ()
@@ -241,15 +271,17 @@ public final class BorderCollision extends Collision
 	}
 
 	/**
-	 * //TODO not even necessary?
-	 * @see world.physics.collision.Collision#calculateCollisionPosition()
+	 * Calculates the position this collision occurs at.
+	 * 
+	 * @post	Sets the collision position of this collision to the position this collision occurs at.
+	 * 			| //TODO
 	 */
 	@Override
 	protected void calculateCollisionPosition ()
 	{
 		double deltaT = getTimeToCollision();
 
-//		if (Double.isInfinite(deltaT)) { return; }
+		if (Double.isInfinite(deltaT)) { return; }
 
 		Position newPosition = getCollisionEntity().getPosition().getSum(getCollisionEntity().getVelocity().getScaledBy(deltaT));
 
@@ -269,10 +301,7 @@ public final class BorderCollision extends Collision
 				break;
 		}
 	}
-	/**
-	 * //TODO document this 
-	 * @see world.physics.collision.Collision#toString()
-	 */
+
 	@Override
 	public String toString ()
 	{

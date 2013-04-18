@@ -82,6 +82,8 @@ public abstract class Collision
 		return (world != null);
 	}
 
+	//TODO canhaveasser
+	
 	/**
 	 * A setter for the world in which the collision occurs.
 	 * 

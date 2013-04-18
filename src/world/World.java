@@ -221,9 +221,10 @@ public class World extends ArrayList <Entity>
 	}
 
 	/**
-	 * TODO DOC
-	 * @param entity
-	 * @return
+	 * Checks whether the given entity is within the world.
+	 * @param 	entity
+	 * 			The given entity
+	 * @return	//TODO
 	 */
 	private boolean isInWorld (Entity entity)
 	{
@@ -248,7 +249,13 @@ public class World extends ArrayList <Entity>
 //		return true;
 //	}
 	
-	//TODO DOCUMENT & TEST
+	//TODO TEST
+	/**
+	 * Gets the number of entities in this world.
+	 * 
+	 * @return	The number of entities in this world.
+	 * 			| result == this.size();
+	 */
 	public int numberOfEntities()
 	{
 		return this.size();
