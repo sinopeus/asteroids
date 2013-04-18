@@ -196,17 +196,21 @@ public class Ship extends Entity implements IShip
 		if (other instanceof Asteroid)
 		{
 			this.terminate();
-			return;
 		} else if (other instanceof Bullet)
 		{
 			if ( ((Bullet) other).getShooter() != this)
 			{
 				other.terminate();
 				this.terminate();
+			}else{
 				return;
 			}
 		} else
+		{
+			bounce(this, other);
+		}
 		super.entityCollision(other);
+
 	}
 
 	@Override

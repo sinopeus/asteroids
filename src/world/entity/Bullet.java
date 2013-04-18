@@ -165,27 +165,59 @@ public class Bullet extends Entity
 	}
 	
 	@Override
-	public void entityCollision (Entity other)
+	public void horizontalWallCollision () throws IllegalStateException
 	{
-		if(other instanceof Ship){
-			if(getShooter() != other){
-				other.terminate();
-				this.terminate();
-				return;
-			}
-		}else if(other instanceof Bullet){
-			if(getShooter() != ((Bullet) other).getShooter()){
-				other.terminate();
-				this.terminate();
-				return;
-			}else{
-				super.entityCollision(other);
-				return;
-			}
-		}else if(other instanceof Asteroid){
-			other.terminate();
+		if (getBounceCounter() >= maximumBorderBounces)
+		{
 			this.terminate();
 			return;
+		}
+		bounceCounter++;
+		super.horizontalWallCollision();
+	}
+	
+	@Override
+	public void verticalWallCollision () throws IllegalStateException
+	{
+		if (getBounceCounter() >= maximumBorderBounces)
+		{
+			this.terminate();
+			return;
+		}
+		bounceCounter++;
+		super.verticalWallCollision();
+	}
+
+	@Override
+	public void entityCollision (Entity other)
+	{
+		
+		if (other instanceof Ship)
+		{
+			if (getShooter() != other)
+			{
+				other.terminate();
+				this.terminate();
+			}else{
+				return;
+			}
+		} else if (other instanceof Bullet)
+		{
+			if (getShooter() != ((Bullet) other).getShooter())
+			{
+				other.terminate();
+				this.terminate();
+			} else
+			{
+				bounce(this,other);
+			}
+		} else if (other instanceof Asteroid)
+		{
+			other.terminate();
+			this.terminate();
+		} else
+		{
+			bounce(this, other);
 		}
 		super.entityCollision(other);
 	}
@@ -209,7 +241,7 @@ public class Bullet extends Entity
 	/**
 	 * A variable registering the density of a bullet.
 	 */
-	private static final double	density					= 7.8E10; //heb dit 100 keer kleiner gemaakt
+	private static final double	density					= 7.8E10;	//heb dit 100 keer kleiner gemaakt
 
 	/**
 	 * A variable registering the maximum amount of time a bullet can bounce off the boundaries of the world.

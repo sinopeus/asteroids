@@ -219,10 +219,9 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 
 	public void evolve (double dt, CollisionListener collisionListener)
 	{
+		if (dt <= 0) return;
 		repredictShips();
 		if (repredictCollisions) predictAllCollisions();
-		if (dt <= 0) return;
-
 		if (getCollisions().isEmpty())
 		{
 			advanceAll(dt);
@@ -248,6 +247,7 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 		}
 
 		next = getCollisions().poll();
+		System.out.println(next);
 		advanceAll(timeToCollision);
 
 		Entity e1 = next.getEntity1();
@@ -257,8 +257,8 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 		else if (e1 == null && e2 != null) e2.horizontalWallCollision();
 		else if (e1 != null && e2 == null) e1.verticalWallCollision();
 
-		repredictCollisionsOf(e1);
-		repredictCollisionsOf(e2);
+		predictCollisionsOf(e1);
+		predictCollisionsOf(e2);
 		evolve(dt - timeToCollision, collisionListener);
 	}
 
@@ -266,9 +266,9 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 
 	private void predictAllCollisions ()
 	{
-		setCollisions(new PriorityQueue<Event>());
+		getCollisions().clear();
 		for (Entity e : this)
-			repredictCollisionsOf(e);
+			predictCollisionsOf(e);
 		repredictCollisions = false;
 	}
 
@@ -279,20 +279,21 @@ public class World extends HashSet <Entity> //TODO MAKE HASHSET
 			if (e instanceof Ship && ((Ship) e).getThruster().isActivated())
 			{
 				repredictCollisions = true;
-//				repredictCollisionsOf(e);
+				//				repredictCollisionsOf(e);
 			}
 		}
 	}
 
-	protected void repredictCollisionsOf (Entity e)
-	{
-		for (Event o : getCollisions())
-			if (o.involves(e))
-			{
-				o.invalidate();
-			}
-		predictCollisionsOf(e);
-	}
+	//
+	//	protected void repredictCollisionsOf (Entity e)
+	//	{
+	//		for (Event o : getCollisions())
+	//			if (o.involves(e))
+	//			{
+	//				o.invalidate();
+	//			}
+	//		predictCollisionsOf(e);
+	//	}
 
 	protected void predictCollisionsOf (Entity e)
 	{

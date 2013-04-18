@@ -108,16 +108,14 @@ public class Asteroid extends Entity
 		if (other instanceof Ship)
 		{
 			other.terminate();
-			return;
 		} else if (other instanceof Bullet)
 		{
 			other.terminate();
 			this.terminate();
-			return;
-		} else
-		{
-			super.entityCollision(other);
+		}else{
+			bounce(this,other);
 		}
+		super.entityCollision(other);
 	}
 
 	@Override

@@ -387,6 +387,13 @@ public class Entity
 	 */
 	private Mass	mass;
 
+	public int getCollisionsCounter ()
+	{
+		return collisionsCounter;
+	}
+
+	private int	collisionsCounter;
+
 	/**
 	 * Returns the world of this entity.
 	 */
@@ -526,33 +533,44 @@ public class Entity
 		double wsx = getWorld().getxSize();
 		double r = getShape().getRadius();
 		double px = this.getPosition()._X();
-//		double py = this.getPosition()._Y();
+		//		double py = this.getPosition()._Y();
 		double vx = this.getVelocity()._X();
-//		double vy = this.getVelocity()._Y();
+		//		double vy = this.getVelocity()._Y();
 
-		double n = 0/*, x = 0, y = 0*/;
-		if (vx >= 0)
+		if (vx > 0)
 		{
-			n = ( (wsx - r - px) / vx);
-			//x = wsx - r;
-			//y = n * vy + py;
+			return ( (wsx - r - px) / vx);
+		} else if (vx < 0)
+		{
+			return ( (r - px) / vx);
 		} else
 		{
-			n = ( (r-px) / vx);
-			//x = r;
-			//y = n * vy + py;
+			return Double.POSITIVE_INFINITY;
 		}
-		assert(n>0);
-		return n;
-//		if (!Double.isInfinite(n))
-//		{
-//			Position intersectionOfCenter = new Position(x, y);
-//			double difference = intersectionOfCenter.getDistanceTo(this.getPosition());
-//			return difference / this.getVelocity().get();
-//		} else
-//		{
-//			return Double.POSITIVE_INFINITY;
-//		}
+
+		//		double n = 0/*, x = 0, y = 0*/;
+		//		if (vx >= 0)
+		//		{
+		//			n = ( (wsx - r - px) / vx);
+		//			//x = wsx - r;
+		//			//y = n * vy + py;
+		//		} else
+		//		{
+		//			n = ( (r - px) / vx);
+		//			//x = r;
+		//			//y = n * vy + py;
+		//		}
+		////		assert (n > 0);
+		//		return n;
+		//		//		if (!Double.isInfinite(n))
+		//		//		{
+		//		//			Position intersectionOfCenter = new Position(x, y);
+		//		//			double difference = intersectionOfCenter.getDistanceTo(this.getPosition());
+		//		//			return difference / this.getVelocity().get();
+		//		//		} else
+		//		//		{
+		//		//			return Double.POSITIVE_INFINITY;
+		//		//		}
 	}
 
 	public double timeToHorizontalWallCollision ()
@@ -560,34 +578,45 @@ public class Entity
 
 		double wsy = getWorld().getySize();
 		double r = getShape().getRadius();
-//		double px = this.getPosition()._X();
+		//		double px = this.getPosition()._X();
 		double py = this.getPosition()._Y();
-//		double vx = this.getVelocity()._X();
+		//		double vx = this.getVelocity()._X();
 		double vy = this.getVelocity()._Y();
 
-		double n = 0/*, x = 0, y = 0*/;
-		if (vy >= 0)
+		if (vy > 0)
 		{
-			n = ( (wsy - r - py) / vy);
-//			x = n * vx + px;
-//			y = wsy - r;
+			return ( (wsy - r - py) / vy);
+		} else if (vy < 0)
+		{
+			return ( (r - py) / vy);
 		} else
 		{
-			n = ( (r-py) / vy);
-//			x = n * vx + px;
-//			y = r;
+			return Double.POSITIVE_INFINITY;
 		}
-		assert(n>0);
-		return n;
-//		if (!Double.isInfinite(n))
-//		{
-//			intersectionOfCenter = new Position(x, y);
-//			double difference = intersectionOfCenter.getDistanceTo(this.getPosition());
-//			return difference / this.getVelocity().get();
-//		} else
-//		{
-//			return Double.POSITIVE_INFINITY;
-//		}
+
+		//		double n = 0/*, x = 0, y = 0*/;
+		//		if (vy >= 0)
+		//		{
+		//			
+		//			//			x = n * vx + px;
+		//			//			y = wsy - r;
+		//		} else
+		//		{
+		//			
+		//			//			x = n * vx + px;
+		//			//			y = r;
+		//		}
+		////		assert (n > 0);
+		//		return n;
+		//		//		if (!Double.isInfinite(n))
+		//		//		{
+		//		//			intersectionOfCenter = new Position(x, y);
+		//		//			double difference = intersectionOfCenter.getDistanceTo(this.getPosition());
+		//		//			return difference / this.getVelocity().get();
+		//		//		} else
+		//		//		{
+		//		//			return Double.POSITIVE_INFINITY;
+		//		//		}
 	}
 
 	public double timeToEntityCollision (Entity other) throws IllegalArgumentException
@@ -612,20 +641,23 @@ public class Entity
 
 	public void horizontalWallCollision () throws IllegalStateException
 	{
+		collisionsCounter++;
 		this.getVelocity().setY(-this.getVelocity()._Y());
 	}
 
 	public void verticalWallCollision () throws IllegalStateException
 	{
+		collisionsCounter++;
 		this.getVelocity().setX(-this.getVelocity()._X());
 	}
 
 	public void entityCollision (Entity other)
 	{
-		bounce(this, other);//TODO
+		collisionsCounter++;
+		//bounce(this, other);
 	}
 
-	private void bounce (Entity entity1, Entity entity2)
+	protected void bounce (Entity entity1, Entity entity2)
 	{
 		Position p1 = entity1.getPosition();
 		Position p2 = entity2.getPosition();
