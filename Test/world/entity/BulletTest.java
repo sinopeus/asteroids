@@ -3,14 +3,16 @@ package world.entity;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import Utilities.Util;
+
 import world.World;
 import world.entity.ship.Ship;
 import world.physics.Mass;
+import world.physics.collision.Border;
 import world.physics.geometry.CircleShape;
 import world.physics.vector.Direction;
 import world.physics.vector.Position;
@@ -122,27 +124,39 @@ public class BulletTest
 	}
 
 	@Test
-	public void collideWithTest_PerfectShip ()
+	public void collideWithTest_PerfectShip_ShooterShip ()
 	{
+		testBullet1.collideWith(testShip1);
 		
 	}
 
 	@Test
+	public void collideWithTest_PerfectShip_OtherShip ()
+	{
+		testBullet1.collideWith(testShip2);
+		assertFalse(testWorld.contains(testShip2));
+	}
+	
+	@Test
 	public void collideWithTest_IllegalShip ()
 	{
-		
+		Ship s = null;
+		testBullet1.collideWith(s);
 	}
 
 	@Test
 	public void collideWithTest_PerfectBorder ()
 	{
-		
+		double vx = testBullet1.getVelocity()._X();
+		testBullet1.collideWith(Border.BORDER_TOP);
+		assertTrue(Util.fuzzyEquals(testBullet1.getVelocity()._X(),vx));
 	}
 
 	@Test
 	public void collideWithTest_IllegalBorder ()
 	{
-		
+		Border b = null;
+		testBullet1.collideWith(b);
 	}
 
 	@Test
