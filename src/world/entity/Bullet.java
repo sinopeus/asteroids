@@ -126,6 +126,18 @@ public class Bullet extends Entity
 	that.collideWith(this);
     }
 
+    //TODO document & test
+    public void collideWith(Border that) {
+	if (bounceCounter >= maximumBorderBounces) {
+	    terminate();
+	    return();
+	}
+
+	super.collideWith(that);
+	
+	bounceCounter++;
+    }
+
     /**
      * Sets the bounce counter of this bullet to the given bounce counter.
      *
