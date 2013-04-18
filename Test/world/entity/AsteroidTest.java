@@ -9,6 +9,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import world.World;
+import world.entity.ship.Ship;
+import world.physics.Mass;
+import world.physics.collision.EntityCollision;
 import world.physics.geometry.Angle;
 import world.physics.geometry.CircleShape;
 import world.physics.vector.Direction;
@@ -28,7 +31,25 @@ public class AsteroidTest
 		Velocity v = new Velocity(5, 5);
 		CircleShape s = new CircleShape(10);
 		testAsteroid = new Asteroid(d, p, v, s);
+		
+		testWorld = new World(1000, 1000);
+		testAsteroid1 = new Asteroid(new Direction(), new Position(100,10), new Velocity(5, 5), new CircleShape(2));
+		testAsteroid2 = new Asteroid(new Direction(), new Position(100, 20), new Velocity(5, -5), new CircleShape(2));
+		testShip1 = new Ship(new Direction(), new Position(500, 500), Velocity.getSpeedOfLight(), new Velocity(1, 0), new CircleShape(20), new Mass(2.5E15));
+		testShip2 = new Ship(new Direction(new Angle(Math.PI)), new Position(600, 500), Velocity.getSpeedOfLight(), new Velocity(-1, 0), new CircleShape(20), new Mass(2.5E15));
+		testBullet1 = new Bullet(testShip1);
+		testBullet2 = new Bullet(testShip2);
+		testShip1.turn(new Angle(Math.PI));
+		testBullet3 = new Bullet(testShip1);
+		testWorld.add(testAsteroid1);
+		testWorld.add(testAsteroid2);
+		testWorld.add(testShip1);
+		testWorld.add(testShip2);
+		testWorld.add(testBullet1);
+		testWorld.add(testBullet2);
+		testWorld.add(testBullet3);
 	}
+
 
 	@Test
 	public void massTest ()
@@ -67,40 +88,50 @@ public class AsteroidTest
 	@Test
 	public void collideWithTest_PerfectAsteroid ()
 	{
-		fail();
+		testAsteroid1.collideWith(testAsteroid2);
+		assertEquals(new Velocity(5, -5), testAsteroid1.getVelocity());
+		assertEquals(new Velocity(5, 5), testAsteroid2.getVelocity());
 	}
 
 	@Test
 	public void collideWithTest_IllegalAsteroid ()
 	{
-		fail();
+		testAsteroid1.collideWith((Asteroid) null);
+		assertEquals(new Velocity(5, 5), testAsteroid1.getVelocity());
 	}
 
 	@Test
 	public void collideWithTest_PerfectBullet ()
 	{
-		fail();
+		testAsteroid1.collideWith(testBullet1);
+		assertFalse(testWorld.contains(testAsteroid1));
+		assertFalse(testWorld.contains(testBullet1));
 	}
 
 	@Test
 	public void collideWithTest_IllegalBullet ()
 	{
-		fail();
+		testAsteroid1.collideWith((Bullet) null);
+		assertTrue(testWorld.contains(testAsteroid1));
 	}
 	
 	@Test
 	public void collideWithTest_PerfectShip ()
 	{
-		fail();
+		testAsteroid1.collideWith(testShip1);
+		assertFalse(testWorld.contains(testShip1));
 	}
 
 	@Test
 	public void collideWithTest_IllegalShip ()
 	{
-		fail();
+		testAsteroid1.collideWith((Ship) null);
+		assertTrue(testWorld.contains(testShip1));
 	}
 
 	private static Asteroid	testAsteroid;
 	private static World	testWorld;
-
+	private static Asteroid	testAsteroid1, testAsteroid2;
+	private static Ship		testShip1, testShip2;
+	private static Bullet	testBullet1, testBullet2,testBullet3;
 }

@@ -197,6 +197,7 @@ public class Ship extends Entity implements IShip
 	@Override
 	public void collideWith (Asteroid that)
 	{
+		if (that == null) return;
 		this.terminate();
 	}
 
@@ -214,6 +215,7 @@ public class Ship extends Entity implements IShip
 	@Override
 	public void collideWith (Bullet that)
 	{
+		if (that == null) return;
 		if (that.getShooter() == this) return;
 		this.terminate();
 		that.terminate();
