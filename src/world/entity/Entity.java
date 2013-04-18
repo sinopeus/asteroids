@@ -592,11 +592,11 @@ public class Entity
 			//--VELOCITY CALCULATION--
 			//step 1: find the unit normal vector and the unit tangent vector.
 			Vector n = p2.getDifference(p1);
-//			Vector n = new Vector(p2._X() - p1._X(), p2._Y() - p1._Y());
+			//			Vector n = new Vector(p2._X() - p1._X(), p2._Y() - p1._Y());
 			Vector un = n.getUnitVectorInDirection();
-//			Vector un = n.getScaledBy(1 / n.getMagnitude());
-			Vector ut = new Vector(-un._Y(), un._X());	
-			
+			//			Vector un = n.getScaledBy(1 / n.getMagnitude());
+			Vector ut = new Vector(-un._Y(), un._X());
+
 			//step 2: find the components of the initial velocity in the normal and tangent directions.
 			double v1n = v1.dotProduct(un);
 			double v1t = v1.dotProduct(ut);
@@ -630,16 +630,40 @@ public class Entity
 		}
 	}
 
+	/**
+	 * Checks whether the given entity overlaps with this entity.
+	 * 
+	 * @param	e
+	 * 			The given entity.
+	 * @return	True if and only if the given entity is null of the distance between the entities is smaller than the sum of the radii
+	 * 			| result == ((e != null) && (this.distanceTo(e) < getShape().getRadius() + e.getShape().getRadius()))
+	 */
 	public boolean overlapsWith (Entity e)
 	{
 		return ( (e != null) && (this.distanceTo(e) < getShape().getRadius() + e.getShape().getRadius()));
 	}
 
+	/**
+	 * Gets the distance of this entity to the given entity.
+	 * 
+	 * @param	e
+	 * 			The given entity.
+	 * @return	The distance of this entity to the given entity.
+	 * 			| result == distanceTo(e.getPosition())
+	 */
 	public double distanceTo (Entity e)
 	{
 		return distanceTo(e.getPosition());
 	}
 
+	/**
+	 * Gets the distance of this entity to the given position.
+	 * 
+	 * @param	p
+	 * 			The given position.
+	 * @return	The distance of this entity to the given position.
+	 * 			| result == getPosition().getDistanceTo(p)
+	 */
 	public double distanceTo (Position p)
 	{
 		return getPosition().getDistanceTo(p);
