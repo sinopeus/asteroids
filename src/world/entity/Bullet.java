@@ -156,6 +156,7 @@ public class Bullet extends Entity
 	@Override
 	public void collideWith (Asteroid that)
 	{
+		if(that == null) return;
 		that.collideWith(this);
 	}
 
@@ -171,10 +172,12 @@ public class Bullet extends Entity
 	@Override
 	public void collideWith (Bullet that)
 	{
+		if(that == null) return;
 		if (this.getShooter() == that.getShooter())
 		{
 			this.bounce(that);
 		}
+		else
 		{
 			this.terminate();
 			that.terminate();
@@ -195,6 +198,7 @@ public class Bullet extends Entity
 	@Override
 	public void collideWith (Ship that)
 	{
+		if(that == null) return;
 		that.collideWith(this);
 	}
 
@@ -208,6 +212,7 @@ public class Bullet extends Entity
 	@Override
 	public void collideWith (Border that)
 	{
+		if(that == null) return;
 		if (getBounceCounter() >= maximumBorderBounces)
 		{
 			terminate();

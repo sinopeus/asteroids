@@ -509,6 +509,7 @@ public class Entity
 	 */
 	public void collideWith (Entity that)
 	{
+		if(that == null) return;
 		if (that instanceof Bullet) this.collideWith((Bullet) that);
 		else if (that instanceof Asteroid) this.collideWith((Asteroid) that); 
 		else if (that instanceof Ship) this.collideWith((Ship) that); 
@@ -524,6 +525,7 @@ public class Entity
 	 */
 	public void collideWith (Ship that)
 	{
+		if(that == null) return;
 		this.bounce(that);
 	}
 
@@ -537,6 +539,7 @@ public class Entity
 	 */
 	public void collideWith (Asteroid that)
 	{
+		if(that == null) return;
 		this.bounce(that);
 	}
 
@@ -550,6 +553,7 @@ public class Entity
 	 */
 	public void collideWith (Bullet that)
 	{
+		if(that == null) return;
 		this.bounce(that);
 	}
 
@@ -558,14 +562,10 @@ public class Entity
 	 * 
 	 * @param	that
 	 * 			The given border.
-	 * @throws	IllegalArgumentException
-	 * 			The given border is null
-	 * 			| that == null
 	 */
-	public void collideWith (Border that) throws IllegalArgumentException
+	public void collideWith (Border that)
 	{
-		if (that == null) throw new IllegalArgumentException("Invalid border provided");
-		//One case for every boundary to hit
+		if(that == null) return;		//One case for every boundary to hit
 		switch (that)
 		{
 			case BORDER_TOP:
