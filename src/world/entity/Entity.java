@@ -509,16 +509,9 @@ public class Entity
 	 */
 	public void collideWith (Entity that)
 	{
-		if (that instanceof Bullet)
-		{
-			this.collideWith((Bullet) that);
-		} else if (that instanceof Asteroid)
-		{
-			this.collideWith((Asteroid) that);
-		} else if (that instanceof Ship)
-		{
-			this.collideWith((Ship) that);
-		}
+		if (that instanceof Bullet) this.collideWith((Bullet) that);
+		else if (that instanceof Asteroid) this.collideWith((Asteroid) that); 
+		else if (that instanceof Ship) this.collideWith((Ship) that); 
 	}
 
 	/**

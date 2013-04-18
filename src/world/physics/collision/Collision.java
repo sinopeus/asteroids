@@ -148,18 +148,12 @@ public abstract class Collision
 				{
 					Ship s = (Ship) e1;
 					Bullet b = (Bullet) e2;
-					if (b.getShooter() == s)
-					{
-						continue;
-					}
+					if (b.getShooter() == s) continue;
 				} else if ( (e1 instanceof Bullet) && (e2 instanceof Ship))
 				{
 					Ship s = (Ship) e2;
 					Bullet b = (Bullet) e1;
-					if (b.getShooter() == s)
-					{
-						continue;
-					}
+					if (b.getShooter() == s) continue;
 				}
 
 				if (e1 != e2)

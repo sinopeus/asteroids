@@ -106,7 +106,7 @@ public final class EntityCollision extends Collision
 	public void resolve ()
 	{
 		if (entity1 == entity2) return;
-		else entity1.collideWith(entity2);
+		entity1.collideWith(entity2);
 	}
 
 	/**

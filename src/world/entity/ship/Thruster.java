@@ -104,7 +104,7 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
-	void activate ()
+	public void activate ()
 	{
 		this.isActivated = true;
 	}
@@ -117,7 +117,7 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
-	void deactivate ()
+	public void deactivate ()
 	{
 		this.isActivated = false;
 	}
@@ -130,7 +130,7 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
-	void toggleActivation ()
+	public void toggleActivation ()
 	{
 		this.isActivated = !this.isActivated;
 	}
