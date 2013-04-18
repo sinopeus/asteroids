@@ -43,8 +43,8 @@ public class ShipTest
 		terminatedShip.terminate();
 	}
 
-	private static Ship		testShip;
-	private static Ship		terminatedShip;
+	private static Ship	testShip;
+	private static Ship	terminatedShip;
 
 	@Test
 	public void extendedConstructorTest_FieldsMatchPerfectParameters ()
@@ -147,12 +147,10 @@ public class ShipTest
 	@Test
 	public void advanceTest_thrusterOn ()
 	{
-		Position newPosition = new Position(50.5, 52.7);
-		Velocity newVelocity = new Velocity(5, 27.0);
+		Position newPosition = new Position(50.5, 270.5);
+		Velocity newVelocity = new Velocity(5, 2205);
 		testShip.getThruster().activate();
-
 		testShip.advance(0.1);
-
 		assertEquals(newPosition, testShip.getPosition());
 		assertEquals(newVelocity, testShip.getVelocity());
 	}
