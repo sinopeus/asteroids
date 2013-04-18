@@ -504,8 +504,13 @@ public class Entity
 		this.position.moveBy(getVelocity(), duration);
 	}
 
-	//TODO comment
-
+	/**
+	 * Has this entity collide with the given entity
+	 * 
+	 * @param	that
+	 * 			The given entity
+	 * @effect	//TODO
+	 */
 	public void collideWith (Entity that)
 	{
 		if (that instanceof Bullet)
@@ -520,24 +525,57 @@ public class Entity
 		}
 	}
 
+	/**
+	 * Has this entity collide with the given ship.
+	 * 
+	 * @param	that
+	 * 			The given ship.
+	 * @effect	Has this entity bounce with the given ship.
+	 * 			| this.bounce(that);
+	 */
 	public void collideWith (Ship that)
 	{
 		this.bounce(that);
 	}
 
+	/**
+	 * Has this entity collide with the given asteroid.
+	 * 
+	 * @param	that
+	 * 			The given asteroid.
+	 * @effect	Has this entity bounce with the given asteroid.
+	 * 			| this.bounce(that);
+	 */
 	public void collideWith (Asteroid that)
 	{
 		this.bounce(that);
 	}
 
+	/**
+	 * Has this entity collide with the given bullet.
+	 * 
+	 * @param	that
+	 * 			The given bullet.
+	 * @effect	Has this entity bounce with the given bullet.
+	 * 			| this.bounce(that);
+	 */
 	public void collideWith (Bullet that)
 	{
 		this.bounce(that);
 	}
 
-	//TODO document & test
-	public void collideWith (Border that)
+	/**
+	 * Has this entity collide with the given border.
+	 * 
+	 * @param	that
+	 * 			The given border.
+	 * @throws	IllegalArgumentException
+	 * 			The given border is null
+	 * 			| that == null
+	 */
+	public void collideWith (Border that) throws IllegalArgumentException
 	{
+		if (that == null) throw new IllegalArgumentException("Invalid border provided");
 		//One case for every boundary to hit
 		switch (that)
 		{
