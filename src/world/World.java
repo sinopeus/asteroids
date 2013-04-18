@@ -156,11 +156,9 @@ public class World extends ArrayList <Entity>
 	 * 			The given entity
 	 * @post	This world now contains the given entity.
 	 * 			| new.contains(e)
-	 * @throws	IllegalArgumentException
-	 * 			The given entity is not a valid entity.
 	 */
 	@Override
-	public boolean add (Entity entity) throws IllegalArgumentException
+	public boolean add (Entity entity)
 	{
 		if (entity == null) return false;
 		if (!canHaveAsEntity(entity)) { throw new IllegalArgumentException("Invalid entity added"); }

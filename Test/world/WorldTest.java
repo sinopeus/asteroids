@@ -83,10 +83,10 @@ public class WorldTest
 		assertTrue(testWorld1.contains(testEntity));
 	}
 
-	@Test (expected = IllegalArgumentException.class)
+	@Test
 	public void addTest_NullEntity ()
 	{
-		testWorld1.add(null);
+		assertFalse(testWorld1.add(null));
 	}
 
 	@Test
