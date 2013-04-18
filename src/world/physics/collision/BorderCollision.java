@@ -127,38 +127,12 @@ public final class BorderCollision extends Collision
 	 */
 	private Entity	collisionEntity;
 
-	//TODO document
 	/**
 	 * @see world.physics.collision.Collision#resolve()
 	 */
 	@Override
 	public void resolve ()
 	{
-		// Entity e = getCollisionEntity();
-
-		// //One case for every boundary to hit
-		// switch (getCollisionBorder())
-		// {
-		// 	case BORDER_TOP:
-		// 	case BORDER_BOTTOM:
-		// 		e.getVelocity().setY(-e.getVelocity()._Y());
-		// 		break;
-		// 	case BORDER_RIGHT:
-		// 	case BORDER_LEFT:
-		// 		e.getVelocity().setX(-e.getVelocity()._X());
-		// 		break;
-		// }
-
-		// if (e instanceof Bullet)
-		// {
-		// 	Bullet b = (Bullet) e;
-		// 	b.setBounceCounter((byte) (b.getBounceCounter() + 1));
-		// 	if (b.getBounceCounter() > Bullet.maximumBorderBounces)
-		// 	{
-		// 		b.terminate();
-		// 	}
-		// }
-
 		getCollisionEntity().collideWith(getCollisionBorder());
 	}
 
