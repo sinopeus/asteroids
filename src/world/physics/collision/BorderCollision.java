@@ -262,7 +262,7 @@ public final class BorderCollision extends Collision
 	 * 			| if Double.isInfinite(getTimeToCollision())
 	 * 			|	new.getCollisionPosition() = null
 	 * 			| else
-	 * 			| 	new.getCollisionPosition() = ... //TODO 
+	 * 			| 	new.getCollisionPosition() = point of border closest to the position vector of the entity
 	 */
 	@Override
 	protected void calculateCollisionPosition ()

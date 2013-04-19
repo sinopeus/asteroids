@@ -137,7 +137,7 @@ public abstract class Collision
 	 * 			| for each collision
 	 * 			|   for each other collision
 	 * 			|      calculate collision time
-	 * 			|      if (this collision time < previous collision time)
+	 * 			|      if (this collision time < smallest collision time)
 	 * 			|		 smallest collision time = this collision time
 	 * 			| return smallest collision time
 	 * @throws 	IllegalArgumentException
