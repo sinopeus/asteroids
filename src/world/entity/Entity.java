@@ -57,23 +57,19 @@ public class Entity
 	 * 			| this.shape = shape
 	 * @effect	The mass of this entity is set to the given mass.
 	 * 			| setMass(mass)
-	 * @throws	NullPointerException
+	 * @throws	IllegalArgumentException
 	 * 			| Any of the parameters is null.
+	 * @throws	IllegalArgumentException
+	 * 			| The provided shape is not valid.
 	 */
-	public Entity (Direction direction, Position position, double speedLimit, Velocity velocity, CircleShape shape, Mass mass) throws NullPointerException
+	public Entity (Direction direction, Position position, double speedLimit, Velocity velocity, CircleShape shape, Mass mass) throws IllegalArgumentException
 	{
-		//TODO add throws from setters.
 		setDirection(direction);
 		setPosition(position);
 		setSpeedLimit(speedLimit);
 		setVelocity(velocity);
-		if (!canHaveAsShape(shape))
-		{
-			throw new IllegalArgumentException("Invalid circle shape provided");
-		} else
-		{
-			this.shape = shape;
-		}
+		if (!canHaveAsShape(shape)) throw new IllegalArgumentException("Invalid circle shape provided");
+		else this.shape = shape;
 		setMass(mass);
 		isTerminated = false;
 	}
@@ -86,7 +82,6 @@ public class Entity
 	 */
 	public Entity ()
 	{
-		//TODO add throws from setters.
 		this(new Direction(), new Position(), Velocity.getSpeedOfLight(), new Velocity(), new CircleShape(40), new Mass(5E15));
 	}
 
@@ -505,14 +500,15 @@ public class Entity
 	 * 
 	 * @param	that
 	 * 			The given entity
-	 * @effect	//TODO
+	 * @effect	Has this entity collide with the given entity
+	 * 			| this.collideWith((that.getClass())that) //TODO
 	 */
 	public void collideWith (Entity that)
 	{
-		if(that == null) return;
+		if (that == null) return;
 		if (that instanceof Bullet) this.collideWith((Bullet) that);
-		else if (that instanceof Asteroid) this.collideWith((Asteroid) that); 
-		else if (that instanceof Ship) this.collideWith((Ship) that); 
+		else if (that instanceof Asteroid) this.collideWith((Asteroid) that);
+		else if (that instanceof Ship) this.collideWith((Ship) that);
 	}
 
 	/**
@@ -523,9 +519,9 @@ public class Entity
 	 * @effect	Has this entity bounce with the given ship.
 	 * 			| this.bounce(that);
 	 */
-	public void collideWith (Ship that)
+	protected void collideWith (Ship that)
 	{
-		if(that == null) return;
+		if (that == null) return;
 		this.bounce(that);
 	}
 
@@ -537,9 +533,9 @@ public class Entity
 	 * @effect	Has this entity bounce with the given asteroid.
 	 * 			| this.bounce(that);
 	 */
-	public void collideWith (Asteroid that)
+	protected void collideWith (Asteroid that)
 	{
-		if(that == null) return;
+		if (that == null) return;
 		this.bounce(that);
 	}
 
@@ -551,9 +547,9 @@ public class Entity
 	 * @effect	Has this entity bounce with the given bullet.
 	 * 			| this.bounce(that);
 	 */
-	public void collideWith (Bullet that)
+	protected void collideWith (Bullet that)
 	{
-		if(that == null) return;
+		if (that == null) return;
 		this.bounce(that);
 	}
 
@@ -565,7 +561,7 @@ public class Entity
 	 */
 	public void collideWith (Border that)
 	{
-		if(that == null) return;		//One case for every boundary to hit
+		if (that == null) return; //One case for every boundary to hit
 		switch (that)
 		{
 			case BORDER_TOP:

@@ -170,7 +170,6 @@ public class Ship extends Entity implements IShip
 		super.advance(dt);
 	}
 
-
 	/**
 	 * A method for firing a bullet from this ship.
 	 * 
@@ -185,7 +184,7 @@ public class Ship extends Entity implements IShip
 		Velocity recoil = Mechanics.conservationOfMomentum_CalculateVelocity(b.getVelocity(), b.getMass(), this.getMass());
 		this.setVelocity(new Velocity(getVelocity().getDifference(recoil)));//TODO something is wrong.
 	}
-	
+
 	/**
 	 * Has this Ship collide with the given Asteroid.
 	 * 
@@ -238,11 +237,12 @@ public class Ship extends Entity implements IShip
 	@SuppressWarnings ("javadoc")
 	public double getThrustPerSecond ()
 	{
-		return Ship.thrustPerSecond;
+		return Ship.thrustPerSecond / 1000.0; //This needs to be divided by 1000 because our unit of distance is 1000
 	}
 
 	/**
 	 * A variable registering the thrust that a ship's thruster can exert in one second.
 	 */
 	private static double	thrustPerSecond	= 1.1E21;
+
 }

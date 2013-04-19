@@ -60,8 +60,11 @@ public class Asteroid extends Entity
 	/**
 	 * Terminates the asteroid; if its dimensions were above a certain threshold, two new asteroids are spawned, each with half the radius of the terminated asteroid.
 	 *
+	 * @post	The world in which this asteroid was present now contains one more entity than before.
+	 * 			| new.getWorld().getNumberOfEntities()  = this.getWorld().getNumberOfEntities() + 1
 	 * @effect 	adds two asteroids to the world whose sizes are half of the size of this asteroid.
-	 * 			| //TODO
+	 * 			| world.add(new Asteroid(...))
+	 * 			| world.add(new Asteroid(...)) //TODO
 	 * @effect 	Removes this asteroid from the world.
 	 * 			| this.getWorld().remove
 	 */

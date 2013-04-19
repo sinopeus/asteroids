@@ -83,15 +83,18 @@ public abstract class Collision
 		return (world != null);
 	}
 
-	//TODO canhaveasser
-
 	/**
 	 * A setter for the world in which the collision occurs.
 	 * 
-	 * @param world The world we want to set.
+	 * @param	world
+	 * 			The given world.
+	 * @throws	IllegalArgumentException
+	 * 			The given world is not a valid world.
+	 * 			| !canHaveAsWorld(world)
 	 */
 	public void setWorld (World world)
 	{
+		if (!canHaveAsWorld(world)) throw new IllegalArgumentException("Invalid world provided.");
 		this.world = world;
 	}
 

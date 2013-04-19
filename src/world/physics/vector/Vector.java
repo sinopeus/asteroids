@@ -275,8 +275,11 @@ public class Vector
 	/**
 	 * Returns the quadrant this vector is in.
 	 * 
-	 * @return	The quadrant this vector is in.
-	 * 			| //TODO
+	 * @return	The quadrant this vector is in. //TODO
+	 * 			| if (_X() >= 0 && _Y() >= 0) result == Quadrant.QUADRANT_I
+	 * 			| if (_X() < 0 && _Y() >= 0) result ==  Quadrant.QUADRANT_II
+	 *			| if (_X() < 0 && _Y() < 0) result ==  Quadrant.QUADRANT_III
+	 *			| if (_X() >= 0 && _Y() < 0) result ==  Quadrant.QUADRANT_IV
 	 */
 	public Quadrant getQuadrant ()
 	{

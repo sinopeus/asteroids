@@ -219,7 +219,8 @@ public class Thruster
 	 * 
 	 * @param	duration
 	 * 			The given amount of time.
-	 * @effect	//TODO
+	 * @effect	Thrusts with the maximum of thrust this thruster can exert.
+	 * 			| thrust(getMaximumThrustPerSecond(), duration);
 	 */
 	public void thrust (double duration)
 	{
@@ -233,22 +234,13 @@ public class Thruster
 	 * 			The given amount of thrust.
 	 * @param	duration
 	 * 			The given amount of time.
-	 * @effect //TODO
+	 * @effect 	Increases the velocity of this thruster's owner by the amount calculated by Newton's second law of motion
+	 * 			| getOwner().getVelocity().accelerateBy(Mechanics.Newtons_secondLaw_CalculateAcceleration(new Force(getOwner().getDirection().getScaledBy(thrustPerSecond * duration)), getOwner().getMass()), duration)
 	 */
 	public void thrust (double thrustPerSecond, double duration)
 	{
-		if (duration < 0)
-		{
-			duration = 0;
-		}
-		if (thrustPerSecond < 0)
-		{
-			thrustPerSecond = 0;
-		}
-		if (thrustPerSecond > getOwner().getThrustPerSecond())
-		{
-			thrustPerSecond = getOwner().getThrustPerSecond();
-		}
+		if (duration < 0 || thrustPerSecond < 0) return;
+		if (thrustPerSecond > getOwner().getThrustPerSecond()) thrustPerSecond = getOwner().getThrustPerSecond();
 		Acceleration a = Mechanics.Newtons_secondLaw_CalculateAcceleration(new Force(getOwner().getDirection().getScaledBy(thrustPerSecond * duration)), getOwner().getMass());
 		getOwner().getVelocity().accelerateBy(a, duration);
 	}

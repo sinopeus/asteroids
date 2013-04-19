@@ -249,7 +249,10 @@ public final class BorderCollision extends Collision
 	 * Calculates the position this collision occurs at.
 	 * 
 	 * @post	Sets the collision position of this collision to the position this collision occurs at.
-	 * 			| //TODO
+	 * 			| if Double.isInfinite(getTimeToCollision())
+	 * 			|	new.getCollisionPosition() = null
+	 * 			| else
+	 * 			| 	new.getCollisionPosition() = ... //TODO 
 	 */
 	@Override
 	protected void calculateCollisionPosition ()

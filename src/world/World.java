@@ -3,7 +3,6 @@ package world;
 import java.util.ArrayList;
 
 import main.CollisionListener;
-import world.entity.Asteroid;
 import world.entity.Entity;
 import world.physics.collision.BorderCollision;
 import world.physics.collision.Collision;
@@ -200,13 +199,14 @@ public class World extends ArrayList <Entity>
 		} else advanceAll(dt);
 
 	}
-	
+
 	/**
 	 * Returns the next collision that will occur in this world.
 	 * 
 	 * @return | Collision.getNextCollision(this)
 	 */
-	private Collision getNextCollision () {
+	private Collision getNextCollision ()
+	{
 		return Collision.getNextCollision(this);
 	}
 
@@ -219,7 +219,8 @@ public class World extends ArrayList <Entity>
 	 */
 	private void advanceAll (double dt)
 	{
-		for (Entity e : this) e.advance(dt);
+		for (Entity e : this)
+			e.advance(dt);
 	}
 
 	/**
@@ -238,7 +239,12 @@ public class World extends ArrayList <Entity>
 	 * Checks whether the given entity is within the world.
 	 * @param 	entity
 	 * 			The given entity
-	 * @return	//TODO
+	 * @return	True if and only if the entity is not null and every edge of the shape is in the world. //TODO
+	 * 			| result == (entity != null)
+	 * 			| && isInWorld(entity.getPosition().getSum(new Vector(entity.getShape().getRadius(), 0)))
+	 * 			| && isInWorld(entity.getPosition().getSum(new Vector(-entity.getShape().getRadius(), 0)))
+	 * 			| && isInWorld(entity.getPosition().getSum(new Vector(0, entity.getShape().getRadius())));
+	 * 			| && isInWorld(entity.getPosition().getSum(new Vector(0, -entity.getShape().getRadius())));
 	 */
 	private boolean isInWorld (Entity entity)
 	{
@@ -262,7 +268,8 @@ public class World extends ArrayList <Entity>
 	private boolean isSpaceForEntity (Entity entity)
 	{
 		if (entity == null) return true;
-		for (Entity e : this) if (entity.overlapsWith(e)) return false;
+		for (Entity e : this)
+			if (entity.overlapsWith(e)) return false;
 		return true;
 	}
 
