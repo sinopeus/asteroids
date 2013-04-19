@@ -17,7 +17,16 @@ import be.kuleuven.cs.som.annotate.Raw;
  * 
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
  * @version 2.0
- * TODO document
+ * 
+ * @invar	Both the size in the x dirction and the y direction are valid dimensions.
+ * 			| canHaveAsSize(getxSize()) && canHaveAsSize(getySize())
+ * @invar	A world does not contain the same entity twice.
+ * 			| for each Entity e1 in a world
+ * 			| 	for each other Entity e2 in that world
+ * 			| 	  e1 != e2
+ * @invar	All the entities in a world fit into the dimensional constraints of that world.
+ * 			| for each Entity e in a world
+ * 			| 	isInWorld(e) && isSpaceForEntity(e)
  */
 public class World extends ArrayList <Entity>
 {
@@ -210,7 +219,6 @@ public class World extends ArrayList <Entity>
 		return Collision.getNextCollision(this);
 	}
 
-	//TODO DOCUMENT &TEST
 	/**
 	 * Advances the state of all entities in this world by a given time <code>dt</code>.
 	 * 

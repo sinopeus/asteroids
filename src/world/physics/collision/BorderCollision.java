@@ -14,8 +14,6 @@ import world.physics.vector.Vector;
  */
 public final class BorderCollision extends Collision
 {
-
-	//TODO document
 	/**
 	 * Initializes this border collision with a given world and a given colliding entity.
 	 * 

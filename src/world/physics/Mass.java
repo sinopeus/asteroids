@@ -15,7 +15,7 @@ import be.kuleuven.cs.som.annotate.Value;
  * 			| canHaveAsMass(getMass)
  */
 @Value
-public class Mass // TODO document
+public class Mass
 {
 	/**
 	 * Creates a new mass.

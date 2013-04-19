@@ -19,16 +19,8 @@ import be.kuleuven.cs.som.annotate.Raw;
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
  * @version 2.0
  *
- * @invar	The direction of this ship is a valid direction.
- * 			| canHaveAsDirection(getDirection())
- * @invar	The position of this ship is a valid position.
- * 			| canHaveAsPosition(getPosition())
- * @invar	The shape of this ship is a valid shape.
- * 			| canHaveAsShape(getShape())
- * @invar	The speedLimit of this ship is a valid speed limit.
- * 			| canHaveAsSpeedLimit(getSpeedLimit())
- * @invar	The velocity of this ship is a valid velocity.
- * 			| canHaveAsVelocity(getVelocity())
+ * @invar	The thruster of a ship is a valid thruster
+ * 			| canHaveAsThruster(getThruster)
  */
 public class Ship extends Entity implements IShip
 {

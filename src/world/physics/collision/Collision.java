@@ -11,7 +11,11 @@ import be.kuleuven.cs.som.annotate.Raw;
 /**
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
  * @version 2.0
- * TODO document
+ * 
+ * @invar	The world of this collision is a valid world.
+ * 			| canHaveAsWorld(getWorld())
+ * @invar	The time to collision is always positive.
+ * 			| getTimeToCollision() >= 0
  */
 public abstract class Collision
 {

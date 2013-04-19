@@ -19,13 +19,15 @@ import be.kuleuven.cs.som.annotate.Raw;
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
  * @version 2.0
  *
- * @invar	The direction of this entity is a valid direction.
+ * @invar	The direction of this ship is a valid direction.
  * 			| canHaveAsDirection(getDirection())
- * @invar	The position of this entity is a valid position.
+ * @invar	The position of this ship is a valid position.
  * 			| canHaveAsPosition(getPosition())
- * @invar	The speedLimit of this entity is a valid speed limit.
+ * @invar	The shape of this ship is a valid shape.
+ * 			| canHaveAsShape(getShape())
+ * @invar	The speedLimit of this ship is a valid speed limit.
  * 			| canHaveAsSpeedLimit(getSpeedLimit())
- * @invar	The velocity of this entity is a valid velocity.
+ * @invar	The velocity of this ship is a valid velocity.
  * 			| canHaveAsVelocity(getVelocity())
  */
 public class Entity
@@ -464,7 +466,8 @@ public class Entity
 	/**
 	 * Moves this entity over the given time interval. 
 	 * 
-	 * @param dt	The time interval for the ship's movement.
+	 * @param 		dt
+	 * 				The time interval for the ship's movement.
 	 * @effect		The entity's position vector is altered, taking into account its direction, velocity, and a given time interval.
 	 */
 	public void advance (double dt)
@@ -683,6 +686,33 @@ public class Entity
 	public double distanceTo (Position p)
 	{
 		return getPosition().getDistanceTo(p);
+	}
+
+	/**
+	 * Return the distance between this entity and the given entity, if both
+	 * would move during the given duration.
+	 * 
+	 * @param  	other
+	 *         	The given entity
+	 * @param  	duration
+	 * 	       	The given duration.
+	 * @return	the distance between this entity and the other entity, if both would move during the given time.
+	 *       	Util.fuzzyEquals(result,
+	 *       	| this.getPosition().getPositionAfterMove(getVelocity(),
+	 *       	|  duration).getDistanceTo(other.getPosition().getPositionAfterMove(other.getVelocity(), duration)) - (this.getShape().getRadius() + other.getShape().getRadius());)
+	 * @throws 	NullPointerException
+	 *         	The given entity is null
+	 *       	| other == null
+	 * @throws 	IllegalArgumentException
+	 *         	The given duration is strictly negative
+	 *       	| moveTime < 0.0
+	 */
+	public double distanceBetween (Entity other, double duration) throws NullPointerException, IllegalArgumentException
+	{
+		if (duration < 0.0) throw new IllegalArgumentException();
+		return this.getPosition().getPositionAfterMove(getVelocity(), duration).getDistanceTo(other.getPosition().getPositionAfterMove(other.getVelocity(), duration)) - (this.getShape().getRadius() + other.getShape().getRadius());
+		//		return this.getPositionAfterMove(duration).distanceTo(other.getPositionAfterMove(duration))
+		//				   - (this.getShape().getRadius() + other.getShape().getRadius());
 	}
 
 	/**

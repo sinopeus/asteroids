@@ -11,9 +11,10 @@ import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 
 /**
+ * A Class of Bullets extending entities Involving also a ship.
+ * 
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
  * @version 2.0
- * TODO document
  */
 public class Bullet extends Entity
 {

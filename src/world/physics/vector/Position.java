@@ -142,9 +142,29 @@ public class Position extends Vector
 	public void moveBy (Velocity v, double duration) throws ArithmeticException, IllegalArgumentException
 	{
 		if ( (v == null) || (duration < 0)) { throw new IllegalArgumentException("Invalid parameter provided."); }
-		Position p = getSum(v.getScaledBy(duration));
+		Position p = getPositionAfterMove(v, duration);
 		setX(p._X());
 		setY(p._Y());
+	}
+	/**
+	 * Returns a position, equal to this position moved by the a velocity during the a duration.
+	 * 
+	 * @param	v
+	 * 			The given velocity.
+	 * @param	duration
+	 * 			The given duration.
+	 * @return	A position, equal to this position moved by the given velocity during the given duration.
+	 * 			| result.equals(getSum(v.scaleBy(duration)))
+	 * @throws	IllegalArgumentException
+	 * 			The given vector is null or duration is strictly negative.
+	 * 			| ((v == null) || (duration < 0))
+	 * @throws	ArithmeticException
+	 * 			One of the resulting components is not a valid component.
+	 * 			| ((Double.isNaN(getXComponent()) || (Double.isNaN(getYComponent()))
+	 */
+	public Position getPositionAfterMove(Velocity v, double duration) throws ArithmeticException, IllegalArgumentException{
+		if ( (v == null) || (duration < 0)) { throw new IllegalArgumentException("Invalid parameter provided."); }
+		return getSum(v.getScaledBy(duration));
 	}
 
 	/**

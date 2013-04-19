@@ -14,7 +14,7 @@ import be.kuleuven.cs.som.annotate.Raw;
  * @invar 	The magnitude of the velocity is always at most the speed of light.
  * 			| this.getVelocity <= Velocity.getSpeedOfLight()
  */
-public class Velocity extends Vector //TODO make total
+public class Velocity extends Vector
 {
 	/**
 	 * Initializes this new velocity with a given x-component and y-component.
@@ -50,11 +50,11 @@ public class Velocity extends Vector //TODO make total
 	 * 			| this(v.getXComponent(),v.getYComponent());
 	 * @post	The magnitude of the velocity is always at most the speed of light.
 	 * 			| this.getVelocity <= Velocity.getSpeedOfLight()
-	 * @throws	IllegalArgumentException
+	 * @throws	NullPointerException
 	 * 			The given vector is null.
 	 * 			| v == null
 	 */
-	public Velocity (Vector v) throws IllegalArgumentException
+	public Velocity (Vector v) throws NullPointerException
 	{
 		this(v._X(), v._Y());
 	}
@@ -158,22 +158,16 @@ public class Velocity extends Vector //TODO make total
 	 * 			The given duration.
 	 * @post	Accelerates this Velocity to the calculated velocity.
 	 * 			| new.equals(getSum(v.scaleBy(duration)))
-	 * @throws	IllegalArgumentException
-	 * 			The given duration is strictly negative.
-	 * 			| duration < 0
 	 * @throws	ArithmeticException
 	 * 			Any of the resulting components is not a valid component.
 	 * 			| (!canHaveAsComponent(getXComponent()) || ! canHaveAsComponent(getYComponent()))
 	 */
 	public void accelerateBy (Acceleration a, double duration) throws ArithmeticException
 	{
-		if (duration < 0) { throw new IllegalArgumentException("Invalid duration provided"); }
+		if (duration < 0) return;
 		Vector v = new Vector(this._X(), this._Y());
 		v = v.getSum(a.getScaledBy(duration));
-		if (v.getMagnitude() >= Velocity.getSpeedOfLight())
-		{
-			v = v.getScaledBy(Velocity.getSpeedOfLight() / v.getMagnitude());
-		}
+		if (v.getMagnitude() >= Velocity.getSpeedOfLight())v = v.getScaledBy(Velocity.getSpeedOfLight() / v.getMagnitude());
 		setX(v._X());
 		setY(v._Y());
 	}

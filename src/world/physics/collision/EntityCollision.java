@@ -6,9 +6,13 @@ import world.physics.vector.Position;
 import world.physics.vector.Vector;
 
 /**
+ * A class of entity collisions extending collisions
+ * 
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
  * @version 2.0
- * TODO document
+ * 
+ * @invar	Both entities of this entity collision are valid
+ * 			| canHaveAsEntity(getEntity1()) && canHaveAsEntity(getEntity2())
  */
 public final class EntityCollision extends Collision
 {
@@ -110,8 +114,30 @@ public final class EntityCollision extends Collision
 	}
 
 	/**
-	 * Calculates the time to collision between two entities. //TODO document	
+	 * Calculates the time to collision between two entities.
 	 * 
+	 * @post  The resulting time is not negative and different from Double.NaN
+	 *        | Util.fuzzyLeq(0.0,new.getCollisionTime() && (! Double.isNaN(new.getCollisionTime()))
+	 * @post  If the resulting time is finite, the distance between both
+	 *          ships would be fuzzy equal to zero if they would both move
+	 *          during the resulting time.
+	 *        | if (new.getCollisionTime() < Double.POSITIVE_INFINITY) then
+	 *        |   Util.fuzzyEquals(this.distanceBetween(other,new.getCollisionTime()),0.0)
+	 * @post  If the resulting distance is finite, the distance between both ships
+	 *          would be fuzzy different from zero if they would move for a time shorter than the
+	 *          resulting time.
+	 *        | if (new.getCollisionTime() < Double.POSITIVE_INFINITY) then
+	 *        |   for each time in 0.0..result:
+	 *        |     if (time < new.getCollisionTime())
+	 *        |       then ! Util.fuzzyEquals(getEntity1().distanceTo(getEntity2(),time),0.0)
+	 * @post  If the resulting time is infinite, this ship is the same as the
+	 *          other ship or the distance between both
+	 *          ships would be different from zero for each finite time they would move.
+	 *        | if (result == Double.POSITIVE_INFINITY) then
+	 *        |   (this == other) ||
+	 *        |   (for each time in 0.0..Double.POSITIVE_INFINITY:
+	 *        |     if (! Double.isInfinite(time)) then
+	 *        |       (! Util.fuzzyEquals(this.distanceBetween(other,time),0.0))
 	 * @throws  IllegalArgumentException
 	 *          One of the given entities is null.
 	 *          | ((entity1 == null) || (entity2 == null))
