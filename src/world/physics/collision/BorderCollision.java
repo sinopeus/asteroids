@@ -161,7 +161,7 @@ public final class BorderCollision extends Collision
 	 * @param	border
 	 * 			The given border.
 	 * @return	The time it takes the collision to collide with a given border.
-	 * 			| //TODO weirdly complex?
+	 * 			| time to collision = time for the position vector of the entity to reach a point at distance r from the border
 	 */
 	private double getTimeToBorderCollision (Border border)
 	{
@@ -215,7 +215,7 @@ public final class BorderCollision extends Collision
 	 * Calculates the time it takes for the collision entity to collide with a border and sets it to.
 	 * 
 	 * @post	The time to collision of this entity is now equal to the time it takes for the collision entity to collide with a border.
-	 * 			| //TODO WTF
+	 * 			| time to collision = smallest time to collision with any border
 	 */
 	@Override
 	protected void calculateCollisionTime ()

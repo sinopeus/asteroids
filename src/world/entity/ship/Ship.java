@@ -175,7 +175,7 @@ public class Ship extends Entity implements IShip
 
 		//RECOIL
 		Velocity recoil = Mechanics.conservationOfMomentum_CalculateVelocity(b.getVelocity(), b.getMass(), this.getMass());
-		this.setVelocity(new Velocity(getVelocity().getDifference(recoil)));//TODO something is wrong.
+		this.setVelocity(new Velocity(getVelocity().getDifference(recoil)));
 	}
 
 	/**

@@ -18,7 +18,7 @@ import world.physics.vector.Position;
 import world.physics.vector.Velocity;
 import Utilities.Util;
 
-public class EntityTest //TODO test constructors
+public class EntityTest
 {
 	@Before
 	public void setUpMutableTestFixtureEntity ()
