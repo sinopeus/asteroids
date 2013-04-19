@@ -259,13 +259,8 @@ public class Facade implements IFacade
 	{
 		if (! (ship instanceof Ship)) { throw new ModelException("The given object is not a Ship."); }
 		Ship s = (Ship) ship;
-		if (active)
-		{
-			s.getThruster().activate();
-		} else
-		{
-			s.getThruster().deactivate();
-		}
+		if (active) s.getThruster().activate();
+		else s.getThruster().deactivate();
 	}
 
 	@Override
