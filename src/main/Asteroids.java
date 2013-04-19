@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
-import java.util.Random;
 
 import javax.swing.JFrame;
 
@@ -73,8 +72,18 @@ public class Asteroids <World, Ship, Asteroid, Bullet> extends JFrame
 		facade.addShip(world, player);
 		Asteroid asteroid1 = facade.createAsteroid(60, height / 2., 200, 0, 20);
 		facade.addAsteroid(world, asteroid1);
-		Asteroid asteroid2 = facade.createAsteroid(width / 2., height / 2., -50, 0, 250);
+		Asteroid asteroid2 = facade.createAsteroid(width / 2. - 50, height / 2., 0, 500, 150);
 		facade.addAsteroid(world, asteroid2);
+		for (int i = 0; i < 5; i++)
+		{
+			for (int j = 0; j < 5; j++)
+			{
+				Asteroid x = facade.createAsteroid(750 + 15 * i, 850 + 15 * j, 0, 0, 5);
+				facade.addAsteroid(world, x);
+			}
+		}
+		Asteroid x = facade.createAsteroid(700, 800, 500, 500, 5);
+		facade.addAsteroid(world, x);
 		view = new WorldView <World, Ship, Asteroid, Bullet>(this, world, player, null);
 		if (!isUndecorated()) view.setPreferredSize(new Dimension(width, height));
 		getContentPane().remove(menu);

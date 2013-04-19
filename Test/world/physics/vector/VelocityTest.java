@@ -111,7 +111,7 @@ public class VelocityTest
 		assertTrue(Util.fuzzyEquals(testVelocity._Y(), 25.0));
 	}
 
-	@Test (expected = IllegalArgumentException.class)
+	@Test
 	public void accelerateByTest_IllegalDuration ()
 	{
 		Acceleration a = new Acceleration(5, 5);
