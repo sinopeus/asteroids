@@ -245,7 +245,14 @@ public class Facade implements IFacade
 		return s.getThruster().isActivated();
 	}
 
-
+	@Override
+	public void setThrusterActive (Object ship, boolean active)
+	{
+		if (! (ship instanceof Ship)) { throw new ModelException("The given object is not a Ship."); }
+		Ship s = (Ship) ship;
+		if (active) s.getThruster().activate();
+		else s.getThruster().deactivate();
+	}
 
 	@Override
 	public void turn (Object ship, double angle)
@@ -323,17 +330,11 @@ public class Facade implements IFacade
 
 	@Override
 	public double getAsteroidMass (Object asteroid)
-	return s.getThruster().isActivated();
-}
-@Override
-public void setThrusterActive (Object ship, boolean active)
-{
-	if (! (ship instanceof Ship)) { throw new ModelException("The given object is not a Ship."); }
-	Ship s = (Ship) ship;
-	if (active) s.getThruster().activate();
-	else s.getThruster().deactivate(); 
-}
-
+	{
+		if (! (asteroid instanceof Asteroid)) { throw new ModelException("The given object is not an asteroid."); }
+		Asteroid a = (Asteroid) asteroid;
+		return a.getMass().get();
+	}
 
 	@Override
 	public Object getAsteroidWorld (Object asteroid)
