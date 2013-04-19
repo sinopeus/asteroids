@@ -55,10 +55,7 @@ public class Facade implements IFacade
 		for (Iterator <Entity> iterator = w.iterator(); iterator.hasNext();)
 		{
 			Entity e = iterator.next();
-			if (e instanceof Ship)
-			{
-				hs.add((Ship) e);
-			}
+			if (e instanceof Ship) hs.add((Ship) e);
 		}
 		return hs;
 	}
@@ -72,10 +69,7 @@ public class Facade implements IFacade
 		for (Iterator <Entity> iterator = w.iterator(); iterator.hasNext();)
 		{
 			Entity e = iterator.next();
-			if (e instanceof Asteroid)
-			{
-				hs.add((Asteroid) e);
-			}
+			if (e instanceof Asteroid) hs.add((Asteroid) e);
 		}
 		return hs;
 	}
@@ -89,10 +83,7 @@ public class Facade implements IFacade
 		for (Iterator <Entity> iterator = w.iterator(); iterator.hasNext();)
 		{
 			Entity e = iterator.next();
-			if (e instanceof Bullet)
-			{
-				hs.add((Bullet) e);
-			}
+			if (e instanceof Bullet) hs.add((Bullet) e);
 		}
 		return hs;
 	}
@@ -254,19 +245,7 @@ public class Facade implements IFacade
 		return s.getThruster().isActivated();
 	}
 
-	@Override
-	public void setThrusterActive (Object ship, boolean active)
-	{
-		if (! (ship instanceof Ship)) { throw new ModelException("The given object is not a Ship."); }
-		Ship s = (Ship) ship;
-		if (active)
-		{
-			s.getThruster().activate();
-		} else
-		{
-			s.getThruster().deactivate();
-		}
-	}
+
 
 	@Override
 	public void turn (Object ship, double angle)
@@ -344,11 +323,17 @@ public class Facade implements IFacade
 
 	@Override
 	public double getAsteroidMass (Object asteroid)
-	{
-		if (! (asteroid instanceof Asteroid)) { throw new ModelException("The given object is not an asteroid."); }
-		Asteroid a = (Asteroid) asteroid;
-		return a.getMass().get();
-	}
+	return s.getThruster().isActivated();
+}
+@Override
+public void setThrusterActive (Object ship, boolean active)
+{
+	if (! (ship instanceof Ship)) { throw new ModelException("The given object is not a Ship."); }
+	Ship s = (Ship) ship;
+	if (active) s.getThruster().activate();
+	else s.getThruster().deactivate(); 
+}
+
 
 	@Override
 	public Object getAsteroidWorld (Object asteroid)
