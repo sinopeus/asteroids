@@ -229,7 +229,7 @@ public class Ship extends Entity implements IShip
 	@SuppressWarnings ("javadoc")
 	public double getThrustPerSecond ()
 	{
-		return Ship.thrustPerSecond / 1000.0; //This needs to be divided by 1000 because our unit of distance is 1000
+		return Ship.thrustPerSecond / 1000; //This needs to be divided by 1000 because our unit of distance is 1000
 	}
 
 	/**

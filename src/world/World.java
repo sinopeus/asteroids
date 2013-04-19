@@ -188,24 +188,28 @@ public class World extends ArrayList <Entity>
 	 */
 	public void evolve (double dt, CollisionListener coll)
 	{
-		Collision c = getNextCollision();
-
-		if (c != null && c.getTimeToCollision() <= dt)
+		Collision next = getNextCollision();
+		
+		if (next == null || next.getTimeToCollision() > dt) {
+			advanceAll(dt);
+			return;
+		}
+		else
 		{
-			advanceAll(c.getTimeToCollision());
-			Position collisionPosition = c.getCollisionPosition();
-			if (c.getClass() == BorderCollision.class)
+			advanceAll(next.getTimeToCollision());
+			Position collisionPosition = next.getCollisionPosition();
+			if (next.getClass() == BorderCollision.class)
 			{
-				BorderCollision bc = (BorderCollision) c;
+				BorderCollision bc = (BorderCollision) next;
 				coll.boundaryCollision(bc.getCollisionEntity(), collisionPosition._X(), collisionPosition._Y());
-			} else if (c.getClass() == EntityCollision.class)
+			} else if (next.getClass() == EntityCollision.class)
 			{
-				EntityCollision ec = (EntityCollision) c;
+				EntityCollision ec = (EntityCollision) next;
 				coll.objectCollision(ec.getEntity1(), ec.getEntity2(), collisionPosition._X(), collisionPosition._Y());
 			}
-			c.resolve();
-			evolve( (dt - c.getTimeToCollision()), coll);
-		} else advanceAll(dt);
+			next.resolve();
+			evolve( (dt - next.getTimeToCollision()), coll);
+		}
 
 	}
 

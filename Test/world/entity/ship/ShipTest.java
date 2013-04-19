@@ -30,7 +30,7 @@ public class ShipTest
 
 		Angle a = new Angle(Math.PI / 2);
 		Direction d = new Direction(a);
-		Position p = new Position(50, 50);
+		Position p = new Position(50.0, 50.0);
 		CircleShape s = new CircleShape(15);
 		double speedLimit = Velocity.getSpeedOfLight();
 		Velocity v = new Velocity(5, 5);
@@ -169,10 +169,15 @@ public class ShipTest
 	@Test
 	public void advanceTest_thrusterOn ()
 	{
-		Position newPosition = new Position(50.5, 270.5);
-		Velocity newVelocity = new Velocity(5, 2205);
+		Position newPosition = new Position(50.5, 50.72);
+		Velocity newVelocity = new Velocity(5, 7.2);
 		testShip.getThruster().activate();
 		testShip.advance(0.1);
+		System.out.println(testShip.getVelocity()._X());
+		System.out.println(testShip.getVelocity()._Y());
+
+		System.out.println(newVelocity._X());
+		System.out.println(newVelocity._Y());
 		assertEquals(newPosition, testShip.getPosition());
 		assertEquals(newVelocity, testShip.getVelocity());
 	}
