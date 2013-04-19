@@ -68,6 +68,7 @@ public class EntityTest //TODO test constructors
 		Velocity velocity = new Velocity(10,15);
 		CircleShape shape = new CircleShape(20);
 		Mass mass = new Mass(500);
+		@SuppressWarnings("unused")
 		Entity e = new Entity(direction, position, speedLimit, velocity, shape, mass);
 	}
 	
@@ -147,6 +148,7 @@ public class EntityTest //TODO test constructors
 		Velocity velocity = new Velocity(4, 5);
 		CircleShape shape = null;
 		Mass mass = new Mass(500);
+		@SuppressWarnings("unused")
 		Entity e = new Entity(direction, position, speedLimit, velocity, shape, mass);
 	}
 	
@@ -158,6 +160,7 @@ public class EntityTest //TODO test constructors
 		Velocity velocity = new Velocity(4, 5);
 		CircleShape shape = new CircleShape(20);
 		Mass mass = null;
+		@SuppressWarnings("unused")
 		Entity e = new Entity(direction, position, speedLimit, velocity, shape, mass);
 	}
 	

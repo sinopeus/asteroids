@@ -101,6 +101,7 @@ public class CollisionTest
 
 	public void getNextCollisionTest_PerfectParameters_EntityCollision ()
 	{
+		@SuppressWarnings("unused")
 		Collision c = Collision.getNextCollision(testWorld5);
 	}
 

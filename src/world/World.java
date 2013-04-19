@@ -268,8 +268,7 @@ public class World extends ArrayList <Entity>
 	private boolean isSpaceForEntity (Entity entity)
 	{
 		if (entity == null) return true;
-		for (Entity e : this)
-			if (entity.overlapsWith(e)) return false;
+		for (Entity e : this) if (entity.overlapsWith(e)) return false;
 		return true;
 	}
 
