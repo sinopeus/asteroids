@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +13,6 @@ import world.entity.Asteroid;
 import world.entity.Bullet;
 import world.physics.Mass;
 import world.physics.Mechanics;
-import world.physics.collision.EntityCollision;
 import world.physics.geometry.Angle;
 import world.physics.geometry.CircleShape;
 import world.physics.vector.Direction;

@@ -3,7 +3,6 @@ package world.entity;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +10,6 @@ import org.junit.Test;
 import world.World;
 import world.entity.ship.Ship;
 import world.physics.Mass;
-import world.physics.collision.EntityCollision;
 import world.physics.geometry.Angle;
 import world.physics.geometry.CircleShape;
 import world.physics.vector.Direction;

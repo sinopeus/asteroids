@@ -4,12 +4,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
+
 import java.util.Arrays;
 
 import main.Asteroids;
-import main.FileSoundManager;
-import main.Sound;
+
 import main.WorldView;
 import model.Facade;
 

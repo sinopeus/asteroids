@@ -55,10 +55,7 @@ public class Facade implements IFacade
 		for (Iterator <Entity> iterator = w.iterator(); iterator.hasNext();)
 		{
 			Entity e = iterator.next();
-			if (e instanceof Ship)
-			{
-				hs.add((Ship) e);
-			}
+			if (e instanceof Ship) hs.add((Ship) e);
 		}
 		return hs;
 	}
@@ -72,10 +69,7 @@ public class Facade implements IFacade
 		for (Iterator <Entity> iterator = w.iterator(); iterator.hasNext();)
 		{
 			Entity e = iterator.next();
-			if (e instanceof Asteroid)
-			{
-				hs.add((Asteroid) e);
-			}
+			if (e instanceof Asteroid) hs.add((Asteroid) e);
 		}
 		return hs;
 	}
@@ -89,10 +83,7 @@ public class Facade implements IFacade
 		for (Iterator <Entity> iterator = w.iterator(); iterator.hasNext();)
 		{
 			Entity e = iterator.next();
-			if (e instanceof Bullet)
-			{
-				hs.add((Bullet) e);
-			}
+			if (e instanceof Bullet) hs.add((Bullet) e);
 		}
 		return hs;
 	}
