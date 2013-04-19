@@ -8,9 +8,21 @@ import world.physics.vector.Position;
 import world.physics.vector.Quadrant;
 import world.physics.vector.Vector;
 
+
+import world.entity.Entity;
+import world.physics.vector.Position;
+import world.physics.vector.Vector;
+
 /**
- * @author syd
- *
+ * A class of border collisions extending collisions.
+ * 
+ * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
+ * @version 2.0
+ * 
+ * @invar	The entity involved in this collision is a valid entity.
+ * 			| canHaveAsEntity(getCollisionEntity())
+ * @invar	The border involved in this collision is a valid border.
+ * 			| canHaveAsCollisionBorder(collisionBorder)
  */
 public final class BorderCollision extends Collision
 {
@@ -278,6 +290,11 @@ public final class BorderCollision extends Collision
 		}
 	}
 
+	/**
+	 * Returns a string representation of this collision.
+	 * 
+	 * @return A representation in String format of this collision.
+	 */
 	@Override
 	public String toString ()
 	{

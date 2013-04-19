@@ -27,7 +27,7 @@ public class Bullet extends Entity
 	 * 			| this.super(ship.getDirection(), ship.getPosition(), ship.getSpeedLimit, initialVelocity, new CircleShape(radius), new Mass(shape.getRadius() * density));
 	 *          | setShooter(ship);
 	 * @throws	NullPointerException
-	 * 			the given ship is null
+	 * 			The given ship is null.
 	 */
 	public Bullet (Ship ship) throws NullPointerException
 	{
@@ -42,7 +42,7 @@ public class Bullet extends Entity
 	 * @param	ship
 	 * 			The given ship
 	 * @return	The initial position of this new bullet. (It is placed right next to the ship.)
-	 * 			| 
+	 * 			|  new Position(new Vector(ship.getPosition()).getSum(ship.getDirection().getScaledBy(ship.getShape().getRadius() + bulletRadius)));
 	 */
 	private static Position getInitialPosition (Ship ship)
 	{
@@ -174,10 +174,7 @@ public class Bullet extends Entity
 	public void collideWith (Bullet that)
 	{
 		if(that == null) return;
-		if (this.getShooter() == that.getShooter())
-		{
-			this.bounce(that);
-		}
+		if (this.getShooter() == that.getShooter()) this.bounce(that);
 		else
 		{
 			this.terminate();

@@ -355,6 +355,7 @@ public class Entity
 	 * @param	mass
 	 * 			The given mass
 	 * @return	True if and only if the given mass is not null
+	 * 			| mass != null
 	 */
 	@Basic
 	@Raw
@@ -469,6 +470,7 @@ public class Entity
 	 * @param 		dt
 	 * 				The time interval for the ship's movement.
 	 * @effect		The entity's position vector is altered, taking into account its direction, velocity, and a given time interval.
+	 * 				| move(dt)
 	 */
 	public void advance (double dt)
 	{
@@ -597,7 +599,15 @@ public class Entity
 		this.direction.rotate(angle);
 	}
 
-	public void bounce (Entity that)
+	/**
+	 * Bounces this entity off another according to the classical laws of physics.
+	 * 
+	 * @param	that 
+	 * 			The entity off which this entity bounces.
+	 * @post	The velocity vectors of both entities are modified in accordance with the principles of elastic collision.
+	 * 			| //TODO
+	 */
+	public void bounce (Entity that) 
 	{
 		try
 		{
@@ -611,9 +621,7 @@ public class Entity
 			//--VELOCITY CALCULATION--
 			//step 1: find the unit normal vector and the unit tangent vector.
 			Vector n = p2.getDifference(p1);
-			//			Vector n = new Vector(p2._X() - p1._X(), p2._Y() - p1._Y());
 			Vector un = n.getUnitVectorInDirection();
-			//			Vector un = n.getScaledBy(1 / n.getMagnitude());
 			Vector ut = new Vector(-un._Y(), un._X());
 
 			//step 2: find the components of the initial velocity in the normal and tangent directions.

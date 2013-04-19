@@ -49,8 +49,6 @@ public class Asteroid extends Entity
 	 * 			| setMass(shape.getRadius() * density)
 	 * @throws	IllegalArgumentException
 	 * 			| Any of the parameters is null.
-	 this.shooter = null;
-	
 	*/
 	public Asteroid (Direction direction, Position position, Velocity velocity, CircleShape shape) throws IllegalArgumentException
 	{
@@ -112,6 +110,7 @@ public class Asteroid extends Entity
 	 * 
 	 * @param	that
 	 * 			The given asteroid to collide with.
+	 * @effect	this.bounce(that)
 	 */
 	public void collideWith (Asteroid that)
 	{

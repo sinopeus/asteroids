@@ -13,7 +13,7 @@ import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 
 /**
- * A class of worlds describing the game world of a game of asteroids.
+ * A class of worlds describing the game world of a game of Asteroids.
  * 
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
  * @version 2.0
@@ -33,7 +33,7 @@ public class World extends ArrayList <Entity>
 	private static final long	serialVersionUID	= 1L;
 
 	/**
-	 * Initializes this new world with a given size on the x- and y axis.
+	 * Initializes this new world with a given size on the x and y axis.
 	 * 
 	 * @param	xSize
 	 * 			The given size on the x axis.
@@ -126,6 +126,7 @@ public class World extends ArrayList <Entity>
 	 * @param 	size
 	 * 			The given size.
 	 * @return	True if and only if the given size is strictly positive and at most the max value for a double.
+	 * 			| ((size > 0) && (size <= Double.MAX_VALUE))
 	 */
 	@Basic
 	@Raw
@@ -228,11 +229,11 @@ public class World extends ArrayList <Entity>
 	 * 
 	 * @param	dt
 	 * 			The time over which to advance all entities.
+	 * @effect	| for (Entity e : this) e.advance(dt);
 	 */
 	private void advanceAll (double dt)
 	{
-		for (Entity e : this)
-			e.advance(dt);
+		for (Entity e : this) e.advance(dt);
 	}
 
 	/**
@@ -275,7 +276,7 @@ public class World extends ArrayList <Entity>
 	 * @param	entity
 	 * 			The given entity
 	 * @return	True if and only if the given entity is null or does not overlap with any other entity.
-	 * 			| //TODO
+	 * 			| (entity == null) || for (Entity e : this) (!entity.overlapsWith(e))
 	 */
 	private boolean isSpaceForEntity (Entity entity)
 	{
@@ -304,10 +305,7 @@ public class World extends ArrayList <Entity>
 	public String toString ()
 	{
 		String result = "World_" + hashCode() + " with size (" + getxSize() + "," + getySize() + ")\nEntities in this world: \n";
-		for (Entity e : this)
-		{
-			result = result + e.toString() + "\n";
-		}
+		for (Entity e : this) result = result + e.toString() + "\n";
 		return result;
 	}
 }

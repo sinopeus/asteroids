@@ -165,7 +165,8 @@ public class Ship extends Entity implements IShip
 	/**
 	 * A method for firing a bullet from this ship.
 	 * 
-	 * @effect Creates a new Bullet object in the World to which this Ship belongs.
+	 * @effect	Creates a new Bullet object in the World to which this Ship belongs; the bullet also creates recoil.
+	 * 			| getWorld().add(new Bullet(this)) && getVelocity() = getVelocity() - bullet.getVelocity() * (bullet.mass / ship.mass)
 	 */
 	public void fire ()
 	{
@@ -197,11 +198,8 @@ public class Ship extends Entity implements IShip
 	 * 
 	 * @param 	that
 	 * 			The given Bullet to collide with.
-	 * @effect	If this ship shot the given bullet, don't do anything.
-	 * 			|
-	 * @effect	Otherwise Terminate both this Ship and the given bullet.
-	 * 			| that.terminate()
-	 * 			| this.terminate()
+	 * @effect	If this ship shot the given bullet or the bullet is null, don't do anything. Otherwise Terminate both this Ship and the given bullet.
+	 * 			| if (that != null && shooter != this) that.terminate() && this.terminate()
 	 */
 	@Override
 	public void collideWith (Bullet that)

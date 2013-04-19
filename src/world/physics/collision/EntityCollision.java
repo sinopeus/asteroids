@@ -85,8 +85,9 @@ public final class EntityCollision extends Collision
 	/**
 	 * Returns whether this entity can be an entity.
 	 * 
-	 * @param entity
-	 * @return
+	 * @param 	entity
+	 * 			The entity to be checked for validity.
+	 * @return	| entity != null
 	 */
 	protected boolean canHaveAsEntity (Entity entity)
 	{
@@ -164,6 +165,10 @@ public final class EntityCollision extends Collision
 	 * @throws  IllegalArgumentException
 	 *          One of the given entities is null.
 	 *          | ((entity1 == null) || (entity1 == null))
+	 * @effect	| dt = time to collision
+	 * 			| p1, p2 = positions at collision time
+	 * 			| sigma = radius 1 + radius 2
+	 * 			| collisionPosition = p1 + ((radius 1 / sigma) (p2 - p1)) 
 	 */
 	@Override
 	protected void calculateCollisionPosition ()
@@ -183,6 +188,11 @@ public final class EntityCollision extends Collision
 		this.collisionPosition = new Position(newPosShip1.getSum(newPosShip2.getDifference(newPosShip1).getScaledBy(ship1Radius / sigma)));
 	}
 
+	/**
+	 * Returns a string representation of this collision.
+	 * 
+	 * @return A representation in String format of this collision.
+	 */
 	@Override
 	public String toString ()
 	{

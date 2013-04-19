@@ -9,6 +9,8 @@ import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 
 /**
+ * An abstract class describing the properties of collisions.
+ * 
  * @author Tom Sydney Kerckhove & Xavier Goas Aguililla
  * @version 2.0
  * 
@@ -132,10 +134,15 @@ public abstract class Collision
 	 * @param 	world
 	 * 			The given world.
 	 * @return	The next collision to happen in the given world.
-	 * 			|//TODO
+	 * 			| for each collision
+	 * 			|   for each other collision
+	 * 			|      calculate collision time
+	 * 			|      if (this collision time < previous collision time)
+	 * 			|		 smallest collision time = this collision time
+	 * 			| return smallest collision time
 	 * @throws 	IllegalArgumentException
-	 * 			The given world is null
-	 * 			world == null
+	 * 			The given world is null.
+	 * 			| world == null
 	 */
 	public static Collision getNextCollision (World world) throws IllegalArgumentException
 	{
