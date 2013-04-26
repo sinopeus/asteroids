@@ -75,22 +75,6 @@ public class Mass
 	private double	mass;
 
 	/**
-	 * Checks if the given mass is the same as this one.
-	 * 
-	 * @param   o
-	 * @return  | (o != null && o.getClass()==getClass() && Util.fuzzyEquals(o.get(),this.get()))
-	 */
-	@Override
-	public boolean equals (Object o)
-	{
-		if (this == o) { return true; }
-		if (o == null) { return false; }
-		if (getClass() != o.getClass()) { return false; }
-		Mass other = (Mass) o;
-		return Util.fuzzyEquals(other.get(), this.get());
-	}
-
-	/**
 	 * Returns a string representation of this object.
 	 * 
 	 * @return A representation of this object in String format.
@@ -101,12 +85,25 @@ public class Mass
 		return ("m_" + hashCode() + " = " + this.get() + "kg");
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
 	@Override
 	public int hashCode ()
 	{
-		return ("" + get()).hashCode();
+		final int prime = 31;
+		int result = 1;
+		long temp;
+		temp = Double.doubleToLongBits(mass);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals (Object obj)
+	{
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+		Mass other = (Mass) obj;
+		if (Double.doubleToLongBits(mass) != Double.doubleToLongBits(other.mass)) return false;
+		return true;
 	}
 }

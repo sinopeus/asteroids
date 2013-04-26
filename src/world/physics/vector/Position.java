@@ -178,21 +178,21 @@ public class Position extends Vector
 		return "P_" + hashCode() + " = " + super.toString() + " m";
 	}
 
-	/**
-	 * Checks whether the given object is a position and its respective components are equal to this position's components
-	 * 
-	 * @param	o
-	 * 			The given object.
-	 * @return	True if and only if the given object is a Position and the respective components of the given object and this position are equal.
-	 * 			| result == (o != null) && (getClass() != o.getClass()) && Util.fuzzyEquals(getXComponent(), ((Position) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Position) o).getYComponent()))
-	 */
-	@Override
-	@Raw
-	public boolean equals (Object o)
-	{
-		if (o == null) { return false; }
-		if (getClass() != o.getClass()) { return false; }
-		Position other = (Position) o;
-		return (Util.fuzzyEquals(_X(), other._X()) && Util.fuzzyEquals(_Y(), other._Y()));
-	}
+//	/**
+//	 * Checks whether the given object is a position and its respective components are equal to this position's components
+//	 * 
+//	 * @param	o
+//	 * 			The given object.
+//	 * @return	True if and only if the given object is a Position and the respective components of the given object and this position are equal.
+//	 * 			| result == (o != null) && (getClass() != o.getClass()) && Util.fuzzyEquals(getXComponent(), ((Position) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Position) o).getYComponent()))
+//	 */
+//	@Override
+//	@Raw
+//	public boolean equals (Object o)
+//	{
+//		if (o == null) { return false; }
+//		if (getClass() != o.getClass()) { return false; }
+//		Position other = (Position) o;
+//		return (Util.fuzzyEquals(_X(), other._X()) && Util.fuzzyEquals(_Y(), other._Y()));
+//	}
 }

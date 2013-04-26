@@ -62,20 +62,20 @@ public class Acceleration extends Vector
 		return "A_" + hashCode() + " = " + super.toString() + " m/s²";
 	}
 
-	/**
-	 * Checks whether the given object is an acceleration and its respective components are equal to this acceleration's components
-	 * 
-	 * @param	o
-	 * 			The given object.
-	 * @return	True if and only if the given object is an acceleration and the respective components of the given object and this acceleration are equal.
-	 * 			| result =(o != null) && (getClass() != o.getClass()) && Util.fuzzyEquals(getXComponent(), ((Vector) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Vector) o).getYComponent()))
-	 */
-	@Override
-	public boolean equals (Object o)
-	{
-		if (o == null) { return false; }
-		if (getClass() != o.getClass()) { return false; }
-		Vector other = (Vector) o;
-		return (Util.fuzzyEquals(this._X(), other._X()) && Util.fuzzyEquals(this._Y(), other._Y()));
-	}
+//	/**
+//	 * Checks whether the given object is an acceleration and its respective components are equal to this acceleration's components
+//	 * 
+//	 * @param	o
+//	 * 			The given object.
+//	 * @return	True if and only if the given object is an acceleration and the respective components of the given object and this acceleration are equal.
+//	 * 			| result =(o != null) && (getClass() != o.getClass()) && Util.fuzzyEquals(getXComponent(), ((Vector) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Vector) o).getYComponent()))
+//	 */
+//	@Override
+//	public boolean equals (Object o)
+//	{
+//		if (o == null) { return false; }
+//		if (getClass() != o.getClass()) { return false; }
+//		Vector other = (Vector) o;
+//		return (Util.fuzzyEquals(this._X(), other._X()) && Util.fuzzyEquals(this._Y(), other._Y()));
+//	}
 }

@@ -89,22 +89,44 @@ public class CircleShape
 	{
 		return "CircleShape_" + hashCode() + ": radius = " + getRadius();
 	}
-	
-	/**
-	 * Checks whether the given object's is a circle shape and it's radius is equal to the radius of this circle shape
-	 * 
-	 * @param	o
-	 * 			The given object.
-	 * @return	True if and only if the given object is a non null circle shape and its radius is equal to the radius of this circle shape.
-	 * 			| result == ((o != null) && (getClass() == o.getClass()) && (Util.fuzzyEquals(getXComponent(), ((Vector) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Vector) o).getYComponent())))
-	 */
+
 	@Override
-	@Raw
-	public boolean equals (Object o)
+	public int hashCode ()
 	{
-		if (o == null) { return false; }
-		if (! (getClass() == o.getClass())) { return false; }
-		CircleShape other = (CircleShape) o;
-		return (Util.fuzzyEquals(getRadius(), other.getRadius()));
+		final int prime = 31;
+		int result = 1;
+		long temp;
+		temp = Double.doubleToLongBits(radius);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
 	}
+
+	@Override
+	public boolean equals (Object obj)
+	{
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+		CircleShape other = (CircleShape) obj;
+		if (Double.doubleToLongBits(radius) != Double.doubleToLongBits(other.radius)) return false;
+		return true;
+	}
+	
+//	/**
+//	 * Checks whether the given object's is a circle shape and it's radius is equal to the radius of this circle shape
+//	 * 
+//	 * @param	o
+//	 * 			The given object.
+//	 * @return	True if and only if the given object is a non null circle shape and its radius is equal to the radius of this circle shape.
+//	 * 			| result == ((o != null) && (getClass() == o.getClass()) && (Util.fuzzyEquals(getXComponent(), ((Vector) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Vector) o).getYComponent())))
+//	 */
+//	@Override
+//	@Raw
+//	public boolean equals (Object o)
+//	{
+//		if (o == null) { return false; }
+//		if (! (getClass() == o.getClass())) { return false; }
+//		CircleShape other = (CircleShape) o;
+//		return (Util.fuzzyEquals(getRadius(), other.getRadius()));
+//	}
 }

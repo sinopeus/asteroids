@@ -141,22 +141,22 @@ public class Direction extends Vector
 		return getAngle().getSin();
 	}
 
-	/**
-	 * Checks whether the given object is a direction and it is equal to this direction.
-	 * 
-	 * @param	o
-	 * 			The given object.
-	 * @return	True if and only if the given object is a direction and it is equal to this direction.
-	 * 			| ((result = o != null) && (o instanceof Direction) && (getAngle().equals(o))
-	 */
-	@Override
-	@Raw
-	public boolean equals (Object o)
-	{
-		if (o == null) { return false; }
-		if (! (o instanceof Direction)) { return false; }
-		return getAngle().equals( ((Direction) o).getAngle());
-	}
+//	/**
+//	 * Checks whether the given object is a direction and it is equal to this direction.
+//	 * 
+//	 * @param	o
+//	 * 			The given object.
+//	 * @return	True if and only if the given object is a direction and it is equal to this direction.
+//	 * 			| ((result = o != null) && (o instanceof Direction) && (getAngle().equals(o))
+//	 */
+//	@Override
+//	@Raw
+//	public boolean equals (Object o)
+//	{
+//		if (o == null) { return false; }
+//		if (! (o instanceof Direction)) { return false; }
+//		return getAngle().equals( ((Direction) o).getAngle());
+//	}
 
 	/**
 	 * Rotates this direction by the given angle.
@@ -176,6 +176,29 @@ public class Direction extends Vector
 		getAngle().add(angle);
 		assert (Util.fuzzyEquals(getMagnitude(), 1.0));
 		assert (canHaveAsAngle(getAngle()));
+	}
+
+	@Override
+	public int hashCode ()
+	{
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ( (angle == null) ? 0 : angle.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals (Object obj)
+	{
+		if (this == obj) return true;
+		if (!super.equals(obj)) return false;
+		if (getClass() != obj.getClass()) return false;
+		Direction other = (Direction) obj;
+		if (angle == null)
+		{
+			if (other.angle != null) return false;
+		} else if (!angle.equals(other.angle)) return false;
+		return true;
 	}
 
 	/**

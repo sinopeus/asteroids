@@ -255,4 +255,35 @@ public class Thruster
 	{
 		return "thruster_" + hashCode() + " of " + getOwner();
 	}
+
+	@Override
+	public int hashCode ()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (isActivated ? 1231 : 1237);
+		result = prime * result + (isTerminated ? 1231 : 1237);
+		long temp;
+		temp = Double.doubleToLongBits(maximumThrustPerSecond);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ( (ownerShip == null) ? 0 : ownerShip.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals (Object obj)
+	{
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+		Thruster other = (Thruster) obj;
+		if (isActivated != other.isActivated) return false;
+		if (isTerminated != other.isTerminated) return false;
+		if (Double.doubleToLongBits(maximumThrustPerSecond) != Double.doubleToLongBits(other.maximumThrustPerSecond)) return false;
+		if (ownerShip == null)
+		{
+			if (other.ownerShip != null) return false;
+		} else if (!ownerShip.equals(other.ownerShip)) return false;
+		return true;
+	}
 }

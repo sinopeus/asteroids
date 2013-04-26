@@ -197,4 +197,36 @@ public abstract class Collision
 	{
 		return "Collision_" + hashCode() + " in " + getTimeToCollision() + " s";
 	}
+
+	@Override
+	public int hashCode ()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ( (collisionPosition == null) ? 0 : collisionPosition.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(timeToCollision);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ( (world == null) ? 0 : world.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals (Object obj)
+	{
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+		Collision other = (Collision) obj;
+		if (collisionPosition == null)
+		{
+			if (other.collisionPosition != null) return false;
+		} else if (!collisionPosition.equals(other.collisionPosition)) return false;
+		if (Double.doubleToLongBits(timeToCollision) != Double.doubleToLongBits(other.timeToCollision)) return false;
+		if (world == null)
+		{
+			if (other.world != null) return false;
+		} else if (!world.equals(other.world)) return false;
+		return true;
+	}
 }

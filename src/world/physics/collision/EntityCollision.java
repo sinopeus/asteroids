@@ -198,4 +198,32 @@ public final class EntityCollision extends Collision
 	{
 		return "Entity" + super.toString() + " of " + getEntity1() + " and " + getEntity1();
 	}
+	
+	@Override
+	public int hashCode ()
+	{
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ( (entity1 == null) ? 0 : entity1.hashCode());
+		result = prime * result + ( (entity2 == null) ? 0 : entity2.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals (Object obj)
+	{
+		if (this == obj) return true;
+		if (!super.equals(obj)) return false;
+		if (getClass() != obj.getClass()) return false;
+		EntityCollision other = (EntityCollision) obj;
+		if (entity1 == null)
+		{
+			if (other.entity1 != null) return false;
+		} else if (!entity1.equals(other.entity1)) return false;
+		if (entity2 == null)
+		{
+			if (other.entity2 != null) return false;
+		} else if (!entity2.equals(other.entity2)) return false;
+		return true;
+	}
 }

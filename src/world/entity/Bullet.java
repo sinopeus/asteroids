@@ -255,6 +255,31 @@ public class Bullet extends Entity
 	{
 		return "Bullet_" + hashCode() + super.toString();
 	}
+	
+	@Override
+	public int hashCode ()
+	{
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + bounceCounter;
+		result = prime * result + ( (shooter == null) ? 0 : shooter.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals (Object obj)
+	{
+		if (this == obj) return true;
+		if (!super.equals(obj)) return false;
+		if (getClass() != obj.getClass()) return false;
+		Bullet other = (Bullet) obj;
+		if (bounceCounter != other.bounceCounter) return false;
+		if (shooter == null)
+		{
+			if (other.shooter != null) return false;
+		} else if (!shooter.equals(other.shooter)) return false;
+		return true;
+	}
 
 	/**
 	 * A variable registering the radius of a bullet.

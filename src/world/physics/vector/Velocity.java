@@ -183,23 +183,23 @@ public class Velocity extends Vector
 		return "V_" + hashCode() + " = " + super.toString() + " m/s";
 	}
 
-	/**
-	 * Checks whether the given object is a velocity and its respective components are equal to this velocity's components
-	 * 
-	 * @param	o
-	 * 			The given object.
-	 * @return	True if and only if the given object is a velocity and the respective components of the given object and this velocity are equal.
-	 * 			| result =(o != null) && (getClass() != o.getClass()) && Util.fuzzyEquals(getXComponent(), ((Velocity) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Velocity) o).getYComponent()))
-	 */
-	@Override
-	@Raw
-	public boolean equals (Object o)
-	{
-		if (o == null) { return false; }
-		if (getClass() != o.getClass()) { return false; }
-		Velocity other = (Velocity) o;
-		return (Util.fuzzyEquals(this._X(), other._X()) && Util.fuzzyEquals(this._Y(), other._Y()));
-	}
+//	/**
+//	 * Checks whether the given object is a velocity and its respective components are equal to this velocity's components
+//	 * 
+//	 * @param	o
+//	 * 			The given object.
+//	 * @return	True if and only if the given object is a velocity and the respective components of the given object and this velocity are equal.
+//	 * 			| result =(o != null) && (getClass() != o.getClass()) && Util.fuzzyEquals(getXComponent(), ((Velocity) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Velocity) o).getYComponent()))
+//	 */
+//	@Override
+//	@Raw
+//	public boolean equals (Object o)
+//	{
+//		if (o == null) { return false; }
+//		if (getClass() != o.getClass()) { return false; }
+//		Velocity other = (Velocity) o;
+//		return (Util.fuzzyEquals(this._X(), other._X()) && Util.fuzzyEquals(this._Y(), other._Y()));
+//	}
 
 	/**
 	 * Gets the speed of light in km/s.

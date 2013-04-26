@@ -146,24 +146,46 @@ public class Angle
 	{
 		return "angle_" + hashCode() + " = " + get() + " rad";
 	}
-	
-	/**
-	 * Checks whether the given object is an angle and it is equal to this angle.
-	 * 
-	 * @param	o
-	 * 			The given object.
-	 * @return	True if and only if the given object is an angle and it is equal to this angle.
-	 * 			| result == ((o != null) && (Util.fuzzyEquals(((Angle) o).getAngle(),getAngle())))
-	 */
+
 	@Override
-	@Raw
-	public boolean equals (Object o)
+	public int hashCode ()
 	{
-		if (o == null) { return false; }
-		if (! (o instanceof Angle)) { return false; }
-		Angle other = (Angle) o;
-		return (Util.fuzzyEquals(other.get(), get()));
+		final int prime = 31;
+		int result = 1;
+		long temp;
+		temp = Double.doubleToLongBits(angle);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
 	}
+
+	@Override
+	public boolean equals (Object obj)
+	{
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+		Angle other = (Angle) obj;
+		if (Double.doubleToLongBits(angle) != Double.doubleToLongBits(other.angle)) return false;
+		return true;
+	}
+	
+//	/**
+//	 * Checks whether the given object is an angle and it is equal to this angle.
+//	 * 
+//	 * @param	o
+//	 * 			The given object.
+//	 * @return	True if and only if the given object is an angle and it is equal to this angle.
+//	 * 			| result == ((o != null) && (Util.fuzzyEquals(((Angle) o).getAngle(),getAngle())))
+//	 */
+//	@Override
+//	@Raw
+//	public boolean equals (Object o)
+//	{
+//		if (o == null) { return false; }
+//		if (! (o instanceof Angle)) { return false; }
+//		Angle other = (Angle) o;
+//		return (Util.fuzzyEquals(other.get(), get()));
+//	}
 
 
 }

@@ -732,4 +732,58 @@ public class Entity
 	{
 		return " at " + getPosition() + "   with velocity " + getVelocity() + "   and shape " + getShape() + "  ";
 	}
+
+	@Override
+	public int hashCode ()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ( (direction == null) ? 0 : direction.hashCode());
+		result = prime * result + (isTerminated ? 1231 : 1237);
+		result = prime * result + ( (mass == null) ? 0 : mass.hashCode());
+		result = prime * result + ( (position == null) ? 0 : position.hashCode());
+		result = prime * result + ( (shape == null) ? 0 : shape.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(speedLimit);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ( (velocity == null) ? 0 : velocity.hashCode());
+		result = prime * result + ( (world == null) ? 0 : world.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals (Object obj)
+	{
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+		Entity other = (Entity) obj;
+		if (direction == null)
+		{
+			if (other.direction != null) return false;
+		} else if (!direction.equals(other.direction)) return false;
+		if (isTerminated != other.isTerminated) return false;
+		if (mass == null)
+		{
+			if (other.mass != null) return false;
+		} else if (!mass.equals(other.mass)) return false;
+		if (position == null)
+		{
+			if (other.position != null) return false;
+		} else if (!position.equals(other.position)) return false;
+		if (shape == null)
+		{
+			if (other.shape != null) return false;
+		} else if (!shape.equals(other.shape)) return false;
+		if (Double.doubleToLongBits(speedLimit) != Double.doubleToLongBits(other.speedLimit)) return false;
+		if (velocity == null)
+		{
+			if (other.velocity != null) return false;
+		} else if (!velocity.equals(other.velocity)) return false;
+		if (world == null)
+		{
+			if (other.world != null) return false;
+		} else if (!world.equals(other.world)) return false;
+		return true;
+	}
 }
