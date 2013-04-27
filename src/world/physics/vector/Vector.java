@@ -301,7 +301,32 @@ public class Vector
 		return "(" + (int) _X() + ", " + (int) _Y() + ")";
 	}
 
+	/**
+	 * Checks whether the given object is a vector and its respective components are equal to this vector's components
+	 * 
+	 * @param	o
+	 * 			The given object.
+	 * @return	True if and only if the given object is a vector and the respective components of the given object and this vector are equal.
+	 * 			| result ==( o != null) && (getClass() != o.getClass()) && Util.fuzzyEquals(getXComponent(), ((Vector) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Vector) o).getYComponent()))
+	 */
 	@Override
+	@Raw
+	public boolean equals (Object o)
+	{
+		if (o == null) { return false; }
+		if (getClass() != o.getClass()) { return false; }
+		Vector other = (Vector) o;
+		return (Util.fuzzyEquals(_X(), other._X()) && Util.fuzzyEquals(_Y(), other._Y()));
+	}
+
+	/**
+	 * Returns the hash code for this vector. Designed to be consistent with the equals method.
+	 * 
+	 * @return	A hash code for this vector.
+	 * 			| result == prime * ( prime + (int) (Double.toLongBits(x) ^ (Double.toLongBits(x) >>> 32))) + (int) (Double.toLongBits(y) ^ (Double.toLongBits(y) >>> 32))
+	 */
+	@Override
+	@Raw
 	public int hashCode ()
 	{
 		final int prime = 31;
@@ -313,54 +338,4 @@ public class Vector
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
-
-	@Override
-	public boolean equals (Object obj)
-	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (getClass() != obj.getClass()) return false;
-		Vector other = (Vector) obj;
-		if (Double.doubleToLongBits(x) != Double.doubleToLongBits(other.x)) return false;
-		if (Double.doubleToLongBits(y) != Double.doubleToLongBits(other.y)) return false;
-		return true;
-	}
-
-//	/**
-//	 * Checks whether the given object is a vector and its respective components are equal to this vector's components
-//	 * 
-//	 * @param	o
-//	 * 			The given object.
-//	 * @return	True if and only if the given object is a vector and the respective components of the given object and this vector are equal.
-//	 * 			| result ==( o != null) && (getClass() != o.getClass()) && Util.fuzzyEquals(getXComponent(), ((Vector) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Vector) o).getYComponent()))
-//	 */
-//	@Override
-//	@Raw
-//	public boolean equals (Object o)
-//	{
-//		if (o == null) { return false; }
-//		if (getClass() != o.getClass()) { return false; }
-//		Vector other = (Vector) o;
-//		return (Util.fuzzyEquals(_X(), other._X()) && Util.fuzzyEquals(_Y(), other._Y()));
-//	}
-//
-//	/**
-//	 * Returns the hash code for this vector. Designed to be consistent with the equals method.
-//	 * 
-//	 * @return	A hash code for this vector.
-//	 * 			| result == prime * ( prime + (int) (Double.toLongBits(x) ^ (Double.toLongBits(x) >>> 32))) + (int) (Double.toLongBits(y) ^ (Double.toLongBits(y) >>> 32))
-//	 */
-//	@Override
-//	@Raw
-//	public int hashCode ()
-//	{
-//		final int prime = 31;
-//		int result = 1;
-//		long temp;
-//		temp = Double.doubleToLongBits(x);
-//		result = prime * result + (int) (temp ^ (temp >>> 32));
-//		temp = Double.doubleToLongBits(y);
-//		result = prime * result + (int) (temp ^ (temp >>> 32));
-//		return result;
-//	}
 }

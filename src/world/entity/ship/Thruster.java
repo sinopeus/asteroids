@@ -266,7 +266,6 @@ public class Thruster
 		long temp;
 		temp = Double.doubleToLongBits(maximumThrustPerSecond);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ( (ownerShip == null) ? 0 : ownerShip.hashCode());
 		return result;
 	}
 
@@ -280,10 +279,6 @@ public class Thruster
 		if (isActivated != other.isActivated) return false;
 		if (isTerminated != other.isTerminated) return false;
 		if (Double.doubleToLongBits(maximumThrustPerSecond) != Double.doubleToLongBits(other.maximumThrustPerSecond)) return false;
-		if (ownerShip == null)
-		{
-			if (other.ownerShip != null) return false;
-		} else if (!ownerShip.equals(other.ownerShip)) return false;
 		return true;
 	}
 }

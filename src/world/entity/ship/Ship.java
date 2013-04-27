@@ -221,29 +221,6 @@ public class Ship extends Entity implements IShip
 		return "Ship_" + hashCode() + super.toString();
 	}
 
-	@Override
-	public int hashCode ()
-	{
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + ( (thruster == null) ? 0 : thruster.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals (Object obj)
-	{
-		if (this == obj) return true;
-		if (!super.equals(obj)) return false;
-		if (getClass() != obj.getClass()) return false;
-		Ship other = (Ship) obj;
-		if (thruster == null)
-		{
-			if (other.thruster != null) return false;
-		} else if (!thruster.equals(other.thruster)) return false;
-		return true;
-	}
-
 	/**
 	 * Gets the thrust per second of this ship.
 	 */
