@@ -607,7 +607,7 @@ public class Entity
 	 * @post	The velocity vectors of both entities are modified in accordance with the principles of elastic collision.
 	 * 			| //TODO
 	 */
-	public void bounce (Entity that) 
+	public void bounce (Entity that)
 	{
 		try
 		{
@@ -733,23 +733,23 @@ public class Entity
 		return " at " + getPosition() + "   with velocity " + getVelocity() + "   and shape " + getShape() + "  ";
 	}
 
-	//WEE SHOULDN'T USE THIS
-//	@Override
-//	public int hashCode ()
-//	{
-//		final int prime = 31;
-//		int result = 1;
-//		result = prime * result + ( (direction == null) ? 0 : direction.hashCode());
-//		result = prime * result + (isTerminated ? 1231 : 1237);
-//		result = prime * result + ( (mass == null) ? 0 : mass.hashCode());
-//		result = prime * result + ( (position == null) ? 0 : position.hashCode());
-//		result = prime * result + ( (shape == null) ? 0 : shape.hashCode());
-//		long temp;
-//		temp = Double.doubleToLongBits(speedLimit);
-//		result = prime * result + (int) (temp ^ (temp >>> 32));
-//		result = prime * result + ( (velocity == null) ? 0 : velocity.hashCode());
-//		return result;
-//	}
+	//WE SHOULDN'T USE THIS
+	//	@Override
+	//	public int hashCode ()
+	//	{
+	//		final int prime = 31;
+	//		int result = 1;
+	//		result = prime * result + ( (direction == null) ? 0 : direction.hashCode());
+	//		result = prime * result + (isTerminated ? 1231 : 1237);
+	//		result = prime * result + ( (mass == null) ? 0 : mass.hashCode());
+	//		result = prime * result + ( (position == null) ? 0 : position.hashCode());
+	//		result = prime * result + ( (shape == null) ? 0 : shape.hashCode());
+	//		long temp;
+	//		temp = Double.doubleToLongBits(speedLimit);
+	//		result = prime * result + (int) (temp ^ (temp >>> 32));
+	//		result = prime * result + ( (velocity == null) ? 0 : velocity.hashCode());
+	//		return result;
+	//	}
 
 	@Override
 	public boolean equals (Object obj)
