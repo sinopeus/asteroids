@@ -174,12 +174,12 @@ public class Bullet extends Entity
 	public void collideWith (Bullet that)
 	{
 		if(that == null) return;
-		if (this.getShooter() == that.getShooter()) this.bounce(that);
-		else
-		{
+//		if (this.getShooter() == that.getShooter()) this.bounce(that);
+//		else
+//		{
 			this.terminate();
 			that.terminate();
-		}
+//		}
 	}
 
 	/**
@@ -232,6 +232,8 @@ public class Bullet extends Entity
 	 */
 	public void unlinkFromShooter ()
 	{
+		assert(this.shooter.getBulletList().contains(this));//TODO remove this
+		this.shooter.getBulletList().remove(this);
 		this.shooter = null;
 	}
 

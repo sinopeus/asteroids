@@ -167,15 +167,13 @@ public class World extends ArrayList <Entity>
 	 * 			| new.contains(e)
 	 */
 	@Override
-	public boolean add (Entity entity)
+	public boolean add (Entity entity) //TODO DOCUMENT
 	{
 		if (entity == null) return false;
 		if (!canHaveAsEntity(entity)) { throw new IllegalArgumentException("Invalid entity added"); }
-		if (isInWorld(entity))
-		{
-			entity.setWorld(this);
-			super.add(entity);
-		}
+		if (!isInWorld(entity)) return false;
+		entity.setWorld(this);
+		super.add(entity);
 		return true;
 	}
 
@@ -190,12 +188,12 @@ public class World extends ArrayList <Entity>
 	public void evolve (double dt, CollisionListener coll)
 	{
 		Collision next = getNextCollision();
-		
-		if (next == null || next.getTimeToCollision() > dt) {
+
+		if (next == null || next.getTimeToCollision() > dt)
+		{
 			advanceAll(dt);
 			return;
-		}
-		else
+		} else
 		{
 			advanceAll(next.getTimeToCollision());
 			Position collisionPosition = next.getCollisionPosition();
@@ -233,7 +231,8 @@ public class World extends ArrayList <Entity>
 	 */
 	private void advanceAll (double dt)
 	{
-		for (Entity e : this) e.advance(dt);
+		for (Entity e : this)
+			e.advance(dt);
 	}
 
 	/**
@@ -281,7 +280,8 @@ public class World extends ArrayList <Entity>
 	private boolean isSpaceForEntity (Entity entity)
 	{
 		if (entity == null) return true;
-		for (Entity e : this) if (entity.overlapsWith(e)) return false;
+		for (Entity e : this)
+			if (entity.overlapsWith(e)) return false;
 		return true;
 	}
 
@@ -305,7 +305,8 @@ public class World extends ArrayList <Entity>
 	public String toString ()
 	{
 		String result = "World_" + hashCode() + " with size (" + getxSize() + "," + getySize() + ")\nEntities in this world: \n";
-		for (Entity e : this) result = result + e.toString() + "\n";
+		for (Entity e : this)
+			result = result + e.toString() + "\n";
 		return result;
 	}
 }

@@ -1,5 +1,8 @@
 package world.entity.ship;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+
 import model.IShip;
 import world.entity.Asteroid;
 import world.entity.Bullet;
@@ -60,6 +63,7 @@ public class Ship extends Entity implements IShip
 	{
 		super(direction, position, speedLimit, velocity, shape, mass);
 		setThruster(new Thruster(getThrustPerSecond(), this));
+		setBulletList(new ArrayList <Bullet>(3));
 	}
 
 	/**
@@ -71,6 +75,7 @@ public class Ship extends Entity implements IShip
 	public Ship ()
 	{
 		this(new Direction(), new Position(), Velocity.getSpeedOfLight(), new Velocity(), new CircleShape(40), new Mass(5E15));
+		setBulletList(new ArrayList <Bullet>(3));
 	}
 
 	/**
@@ -143,6 +148,35 @@ public class Ship extends Entity implements IShip
 	private Thruster	thruster;
 
 	/**
+	 * @return the bullets
+	 */
+	public ArrayList <Bullet> getBulletList ()
+	{
+		return bulletList;
+	}
+
+	/**
+	 * TODO document and test
+	 * @param bullets
+	 * @return
+	 */
+	private boolean canHaveAsBulletList (ArrayList <Bullet> bullets)
+	{
+		return (bullets != null);
+	}
+
+	/**
+	 * @param bullets the bullets to set
+	 */
+	private void setBulletList (ArrayList <Bullet> bullets)
+	{
+		if (!canHaveAsBulletList(bullets)) throw new IllegalArgumentException("Invalid bulletlist provided.");
+		this.bulletList = bullets;
+	}
+
+	private ArrayList <Bullet>	bulletList;
+
+	/**
 	 * Terminates this ship.
 	 */
 	@Override
@@ -170,12 +204,16 @@ public class Ship extends Entity implements IShip
 	 */
 	public void fire ()
 	{
+		if(getBulletList().size() >= MAXIMUM_AMOUNT_OF_BULLETS) return;
 		Bullet b = new Bullet(this);
-		getWorld().add(b);
-
-		//RECOIL
-		Velocity recoil = Mechanics.conservationOfMomentum_CalculateVelocity(b.getVelocity(), b.getMass(), this.getMass());
-		this.setVelocity(new Velocity(getVelocity().getDifference(recoil)));
+		if(getWorld().add(b));
+		{
+			this.getBulletList().add(b);
+			
+			//RECOIL
+			Velocity recoil = Mechanics.conservationOfMomentum_CalculateVelocity(b.getVelocity(), b.getMass(), this.getMass());
+			this.setVelocity(new Velocity(getVelocity().getDifference(recoil)));
+		}
 	}
 
 	/**
@@ -234,5 +272,9 @@ public class Ship extends Entity implements IShip
 	 * A variable registering the thrust that a ship's thruster can exert in one second.
 	 */
 	private static double	thrustPerSecond	= 1.1E21;
-
+	
+	/**
+	 * TODO
+	 */
+	private static byte MAXIMUM_AMOUNT_OF_BULLETS = 3;
 }
