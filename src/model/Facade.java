@@ -1,5 +1,8 @@
 package model;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Random;
@@ -412,5 +415,47 @@ public class Facade implements IFacade
 		if (! (bullet instanceof Bullet)) { throw new ModelException("The given object is not a bullet."); }
 		Bullet b = (Bullet) bullet;
 		return b.getShooter();
+	}
+
+	@Override
+	public ParseOutcome parseProgram (String text)
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ParseOutcome loadProgramFromStream (InputStream stream) throws IOException
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ParseOutcome loadProgramFromUrl (URL url) throws IOException
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isTypeCheckingSupported ()
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public TypeCheckOutcome typeCheckProgram (Object program)
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setShipProgram (Object ship, Object program)
+	{
+		// TODO Auto-generated method stub
+		
 	}
 }

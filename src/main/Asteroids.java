@@ -11,8 +11,9 @@ import java.net.URL;
 
 import javax.swing.JFrame;
 
-import main.IFacade.ParseOutcome;
-import main.IFacade.TypeCheckOutcome;
+import model.IFacade;
+import model.IFacade.ParseOutcome;
+import model.IFacade.TypeCheckOutcome;
 
 @SuppressWarnings ("serial")
 public class Asteroids <World, Ship, Asteroid, Bullet, Program> extends JFrame
@@ -225,7 +226,7 @@ public class Asteroids <World, Ship, Asteroid, Bullet, Program> extends JFrame
 			return;
 		}
 		// <begin>
-		IFacade <asteroids.model.World, asteroids.model.Ship, asteroids.model.Asteroid, asteroids.model.Bullet, asteroids.model.programs.Program> facade = new asteroids.model.Facade();
+		IFacade <world.World, world.entity.ship.Ship, world.entity.Asteroid, world.entity.Bullet, model.programs.Program> facade = new model.Facade();
 		// <end>
 		GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		GraphicsDevice screen = env.getDefaultScreenDevice();

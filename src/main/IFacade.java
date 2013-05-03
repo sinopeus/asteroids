@@ -6,6 +6,8 @@ import java.net.URL;
 import java.util.Random;
 import java.util.Set;
 
+import main.CollisionListener;
+
 /**
  * Implement this interface to connect your code to the user interface.
  * 
