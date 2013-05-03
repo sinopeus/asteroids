@@ -1,15 +1,15 @@
 package model.programs.parsing.language.expression;
 
-public class Multiplication extends SecondOrderExpressionOfNumbers
+public class Multiplication extends SecondOrderExpressionOfNumbersToNumber
 {
-	public Multiplication (Object firstArgument, Object secondArgument)
+	public Multiplication (int line, int column, Expression firstArgument, Expression secondArgument)
 	{
-		super(firstArgument, secondArgument);
+		super(line, column, firstArgument, secondArgument);
 	}
 
 	@Override
-	protected Object function (Double first, Double second)
+	protected DoubleLiteral function (DoubleLiteral first, DoubleLiteral second)
 	{
-		return (first * second);
+		return new DoubleLiteral(getLine(), getColumn(), (first.getValue() * second.getValue()));
 	}
 }

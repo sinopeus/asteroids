@@ -2,39 +2,40 @@ package model.programs.parsing.language.expression;
 
 public abstract class SecondOrderExpression extends Expression
 {
-	public SecondOrderExpression (Object firstArgument, Object secondArgument)
+	public SecondOrderExpression (int line, int column, Expression firstArgument, Expression secondArgument)
 	{
+		super(line, column);
 		setFirstArgument(firstArgument);
 		setSecondArgument(secondArgument);
 	}
 
-	Object	firstArgument;
+	Expression	firstArgument;
 
-	public Object getFirstArgument ()
+	public Expression getFirstArgument ()
 	{
 		return firstArgument;
 	}
 
-	protected void setFirstArgument (Object firstArgument)
+	protected void setFirstArgument (Expression firstArgument)
 	{
 		if (!canHaveAsArgument(firstArgument)) throw new IllegalArgumentException("Invalid first argument for second order expression.");
 		this.firstArgument = firstArgument;
 	}
 
-	Object	secondArgument;
+	Expression	secondArgument;
 
-	public Object getSecondArgument ()
+	public Expression getSecondArgument ()
 	{
 		return secondArgument;
 	}
 
-	protected void setSecondArgument (Object secondArgument)
+	protected void setSecondArgument (Expression secondArgument)
 	{
 		if (!canHaveAsArgument(firstArgument)) throw new IllegalArgumentException("Invalid second argument for second order expression.");
 		this.secondArgument = secondArgument;
 	}
 
-	protected boolean canHaveAsArgument (Object argument)
+	protected boolean canHaveAsArgument (Expression argument)
 	{
 		return argument != null;
 	}

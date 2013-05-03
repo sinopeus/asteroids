@@ -2,24 +2,25 @@ package model.programs.parsing.language.expression;
 
 public abstract class FirstOrderExpression extends Expression
 {
-	public FirstOrderExpression (Object argument)
+	public FirstOrderExpression (int line, int column, Expression argument)
 	{
+		super(line, column);
 		setArgument(argument);
 	}
 
-	Object	argument;
+	Expression	argument;
 
-	public Object getArgument ()
+	public Expression getArgument ()
 	{
 		return argument;
 	}
 
-	protected boolean canHaveAsArgument (Object argument)
+	protected boolean canHaveAsArgument (Expression argument)
 	{
 		return argument != null;
 	}
 
-	protected void setArgument (Object argument)
+	protected void setArgument (Expression argument)
 	{
 		if (!canHaveAsArgument(argument)) throw new IllegalArgumentException("Invalid argument for first order expression.");
 		this.argument = argument;

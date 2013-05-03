@@ -2,16 +2,16 @@ package model.programs.parsing.language.expression;
 
 import world.entity.Entity;
 
-public class GetY extends FirstOrderExpressionOfEntity
+public class GetY extends FirstOrderExpressionOfEntityToNumber
 {
-	public GetY (Object argument)
+	public GetY (int line, int column, Expression argument)
 	{
-		super(argument);
+		super(line, column, argument);
 	}
 
 	@Override
-	protected Object function (Entity argument)
+	protected DoubleLiteral function (Entity argument)
 	{
-		return argument.getPosition()._Y();
+		return new DoubleLiteral(getLine(), getColumn(), argument.getPosition()._Y());
 	}
 }

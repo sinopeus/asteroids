@@ -1,15 +1,15 @@
 package model.programs.parsing.language.expression;
 
-public class SquareRoot extends FirstOrderExpressionOfNumber
+public class SquareRoot extends FirstOrderExpressionOfNumberToNumber
 {
-	public SquareRoot (Object argument)
+	public SquareRoot (int line,int column,Expression argument)
 	{
-		super(argument);
+		super(line,column,argument);
 	}
 
 	@Override
-	protected Object function (Double argument)
+	protected DoubleLiteral function (DoubleLiteral argument)
 	{
-		return Math.sqrt(argument);
+		return new DoubleLiteral(getLine(),getColumn(),Math.sqrt(argument.getValue()));
 	}
 }

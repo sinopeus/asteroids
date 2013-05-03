@@ -2,9 +2,14 @@ package model.programs.parsing.language.expression;
 
 public class True extends ConstantExpression
 {
-	@Override
-	public Object evaluate ()
+	public True (int line, int column)
 	{
-		return true;
+		super(line, column);
+	}
+
+	@Override
+	public BooleanLiteral evaluate ()
+	{
+		return new BooleanLiteral(getLine(), getColumn(), true);
 	}
 }
