@@ -78,8 +78,8 @@ public class EntityCollisionTest
 	{
 		EntityCollision ec = new EntityCollision(testWorld, testBullet1, testBullet3);
 		ec.resolve();
-		assertEquals(new Velocity(-249, 0), testBullet1.getVelocity());
-		assertEquals(new Velocity(251, 0), testBullet3.getVelocity());
+		assertEquals(new Velocity(251, 0), testBullet1.getVelocity());
+		assertEquals(new Velocity(-249, 0), testBullet3.getVelocity());
 	}
 	
 	@Test

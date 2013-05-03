@@ -4,13 +4,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-
 import java.util.Arrays;
 
 import main.Asteroids;
-
 import main.WorldView;
 import model.Facade;
+import model.programs.Program;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -105,13 +104,13 @@ public class WorldTest
 		testWorld1.addAll(Arrays.asList(testShip1, testShip2, testAsteroid));
 
 		@SuppressWarnings ("unchecked")
-		Asteroids <World, Ship, Asteroid, Bullet> game = new Asteroids <World, Ship, Asteroid, Bullet>(new Facade(), 1000, 1000, true, null);
-		WorldView <World, Ship, Asteroid, Bullet> worldview = new WorldView <World, Ship, Asteroid, Bullet>(game, testWorld1, testShip1, testShip2);
+		Asteroids <World, Ship, Asteroid, Bullet, Program> game = new Asteroids <World, Ship, Asteroid, Bullet, Program>(new Facade(), 1000, 1000, true, null, null);
+		WorldView <World, Ship, Asteroid, Bullet, Program> worldview = new WorldView <World, Ship, Asteroid, Bullet, Program>(game, testWorld1, testShip1, testShip2, false);
 		testWorld1.evolve(10, worldview);
-		
-		assertEquals(testShip1.getPosition(), new Position(140,130));
-		assertEquals(testShip2.getPosition(), new Position(530,540));
-		assertEquals(testAsteroid.getPosition(), new Position(670,740));
+
+		assertEquals(testShip1.getPosition(), new Position(140, 130));
+		assertEquals(testShip2.getPosition(), new Position(530, 540));
+		assertEquals(testAsteroid.getPosition(), new Position(670, 740));
 	}
 
 	@Test
