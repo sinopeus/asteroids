@@ -1,8 +1,8 @@
 package model.programs.parsing.language.expression;
 
-public class GE extends SecondOrderExpressionOfNumbers
+public class GT extends SecondOrderExpressionOfNumbers
 {
-	public GE (Object firstArgument, Object secondArgument)
+	public GT (Object firstArgument, Object secondArgument)
 	{
 		super(firstArgument, secondArgument);
 	}
@@ -10,6 +10,6 @@ public class GE extends SecondOrderExpressionOfNumbers
 	@Override
 	protected Object function (Double first, Double second)
 	{
-		return first >= second;
+		return (first > second);
 	}
 }

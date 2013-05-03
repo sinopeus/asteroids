@@ -1,5 +1,17 @@
 package model.programs.parsing.language.expression;
 
-public class Self extends Expression
+import world.entity.Entity;
+
+public class Self extends FirstOrderExpressionOfEntity
 {
+	public Self (Object argument)
+	{
+		super(argument);
+	}
+
+	@Override
+	protected Object function (Entity argument)
+	{
+		return argument;
+	}
 }

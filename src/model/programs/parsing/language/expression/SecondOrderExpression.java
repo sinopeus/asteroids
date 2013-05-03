@@ -2,6 +2,12 @@ package model.programs.parsing.language.expression;
 
 public abstract class SecondOrderExpression extends Expression
 {
+	public SecondOrderExpression (Object firstArgument, Object secondArgument)
+	{
+		setFirstArgument(firstArgument);
+		setSecondArgument(secondArgument);
+	}
+
 	Object	firstArgument;
 
 	public Object getFirstArgument ()

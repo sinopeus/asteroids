@@ -1,5 +1,17 @@
 package model.programs.parsing.language.expression;
 
-public class GetX extends Expression
+import world.entity.Entity;
+
+public class GetX extends FirstOrderExpressionOfEntity
 {
+	public GetX (Object argument)
+	{
+		super(argument);
+	}
+
+	@Override
+	protected Object function (Entity argument)
+	{
+		return argument.getPosition()._X();
+	}
 }

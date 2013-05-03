@@ -1,23 +1,15 @@
 package model.programs.parsing.language.expression;
 
-public class Cosine extends FirstOrderExpression
+public class Cosine extends FirstOrderExpressionOfNumber
 {
 	public Cosine (Object argument)
 	{
-		setArgument(argument);
+		super(argument);
 	}
 
 	@Override
-	protected boolean canHaveAsArgument (Object argument)
+	protected Object function (Double argument)
 	{
-		if (!super.canHaveAsArgument(argument)) return false;
-		return argument instanceof Double;
-	}
-
-	@Override
-	public Object evaluate ()
-	{
-		Double first = (Double) getArgument();
-		return Math.cos(first);
+		return Math.cos(argument);
 	}
 }
