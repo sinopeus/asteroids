@@ -456,6 +456,6 @@ public class Facade implements IFacade
 	public void setShipProgram (Object ship, Object program)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 }

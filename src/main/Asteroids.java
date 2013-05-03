@@ -173,7 +173,7 @@ public class Asteroids <World, Ship, Asteroid, Bullet, Program> extends JFrame
 	{
 		boolean tryFullscreen = true;
 		boolean enableSound = true;
-		URL aiProgramUrl = Asteroids.class.getClassLoader().getResource("asteroids/resources/program.txt");
+		URL aiProgramUrl = Asteroids.class.getClassLoader().getResource("resources/program.txt");
 		for (int i = 0; i < args.length; i++)
 		{
 			String arg = args[i];
@@ -222,7 +222,7 @@ public class Asteroids <World, Ship, Asteroid, Bullet, Program> extends JFrame
 		GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		GraphicsDevice screen = env.getDefaultScreenDevice();
 		Asteroids <?, ?, ?, ?, ?> asteroids;
-		Sound sound = enableSound ? new FileSoundManager("asteroids/resources/sounds.txt") : new NullSound();
+		Sound sound = enableSound ? new FileSoundManager("resources/sounds.txt") : new NullSound();
 		if (tryFullscreen && screen.isFullScreenSupported())
 		{
 			Rectangle dimensions = screen.getDefaultConfiguration().getBounds();

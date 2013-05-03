@@ -68,18 +68,18 @@ public class WorldView <World, Ship, Asteroid, Bullet, Program> extends JPanel i
 		this.timer = new Timer(TIMER_DELAY, this);
 		setBackground(Color.BLACK);
 		ClassLoader loader = WorldView.class.getClassLoader();
-		background = Toolkit.getDefaultToolkit().getImage(loader.getResource("asteroids/resources/game-background.jpg"));
+		background = Toolkit.getDefaultToolkit().getImage(loader.getResource("resources/game-background.jpg"));
 		background = background.getScaledInstance(game.getWidth(), game.getHeight(), Image.SCALE_DEFAULT);
 		if (player1 != null)
 		{
 			int size = (int) (2 * facade.getShipRadius(player1));
-			Image image = Toolkit.getDefaultToolkit().getImage(loader.getResource("asteroids/resources/deathstar.png")).getScaledInstance(size, size, Image.SCALE_DEFAULT);
+			Image image = Toolkit.getDefaultToolkit().getImage(loader.getResource("resources/deathstar.png")).getScaledInstance(size, size, Image.SCALE_DEFAULT);
 			visualizations.put(player1, new ShipVisualization(Color.RED, player1, image));
 		}
 		if (player2 != null)
 		{
 			int size = (int) (2 * facade.getShipRadius(player2));
-			Image image = Toolkit.getDefaultToolkit().getImage(loader.getResource("asteroids/resources/sphere.png")).getScaledInstance(size, size, Image.SCALE_DEFAULT);
+			Image image = Toolkit.getDefaultToolkit().getImage(loader.getResource("resources/sphere.png")).getScaledInstance(size, size, Image.SCALE_DEFAULT);
 			visualizations.put(player2, new ShipVisualization(Color.GREEN, player2, image));
 		}
 		addKeyListener(this);
@@ -337,7 +337,7 @@ public class WorldView <World, Ship, Asteroid, Bullet, Program> extends JPanel i
 	{
 		Image[] images = new Image[1];
 		ClassLoader loader = WorldView.class.getClassLoader();
-		images[0] = Toolkit.getDefaultToolkit().createImage(loader.getResource("asteroids/resources/asteroid1.png"));
+		images[0] = Toolkit.getDefaultToolkit().createImage(loader.getResource("resources/asteroid1.png"));
 		return images;
 	}
 

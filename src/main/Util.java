@@ -12,9 +12,13 @@ public class Util
 
 	public static boolean fuzzyLessThanOrEqualTo (double x, double y)
 	{
-		if (fuzzyEquals(x, y)) return true;
-		else return Double.compare(x, y) < 0;
-
+		if (fuzzyEquals(x, y))
+		{
+			return true;
+		} else
+		{
+			return Double.compare(x, y) < 0;
+		}
 	}
 
 	public static double absoluteError (double expected, double actual)
