@@ -1,15 +1,15 @@
 package model.programs.parsing.language.expression;
 
-public class Sine extends FirstOrderExpressionOfNumber
+public class Sine extends FirstOrderExpressionOfNumberToNumber
 {
-	public Sine (Object argument)
+	public Sine (int line, int column, Expression argument)
 	{
-		super(argument);
+		super(line, column, argument);
 	}
 
 	@Override
-	protected Object function (Double argument)
+	protected DoubleLiteral function (DoubleLiteral argument)
 	{
-		return Math.sin(argument);
+		return new DoubleLiteral(getLine(), getColumn(), Math.sin(argument.getValue()));
 	}
 }

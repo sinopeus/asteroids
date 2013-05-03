@@ -1,15 +1,15 @@
 package model.programs.parsing.language.expression;
 
-public class Or extends SecondOrderExpressionOfBooleans
+public class Or extends SecondOrderExpressionOfBooleansToBoolean
 {
-	public Or (Object firstArgument, Object secondArgument)
+	public Or (int line, int column, Expression firstArgument, Expression secondArgument)
 	{
-		super(firstArgument, secondArgument);
+		super(line, column, firstArgument, secondArgument);
 	}
 
 	@Override
-	protected Object function (Boolean first, Boolean second)
+	protected BooleanLiteral function (BooleanLiteral first, BooleanLiteral second)
 	{
-		return (first || second);
+		return new BooleanLiteral(getLine(), getColumn(), (first.getValue() || second.getValue()));
 	}
 }

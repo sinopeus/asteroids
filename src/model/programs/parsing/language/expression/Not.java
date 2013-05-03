@@ -1,15 +1,15 @@
 package model.programs.parsing.language.expression;
 
-public class Not extends FirstOrderExpresionOfBoolean
+public class Not extends FirstOrderExpresionOfBooleanToBoolean
 {
-	public Not (Object argument)
+	public Not (int line, int column, Expression argument)
 	{
-		super(argument);
+		super(line, column, argument);
 	}
 
 	@Override
-	protected Object function (Boolean argument)
+	protected BooleanLiteral function (BooleanLiteral argument)
 	{
-		return !argument;
+		return new BooleanLiteral(getLine(), getColumn(), !argument.getValue());
 	}
 }

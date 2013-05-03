@@ -2,16 +2,16 @@ package model.programs.parsing.language.expression;
 
 import Utilities.Util;
 
-public class Equals extends SecondOrderExpressionOfNumbers
+public class Equals extends SecondOrderExpressionOfNumbersToBoolean
 {
-	public Equals (Object firstArgument, Object secondArgument)
+	public Equals (int line, int column, Expression firstArgument, Expression secondArgument)
 	{
-		super(firstArgument, secondArgument);
+		super(line, column, firstArgument, secondArgument);
 	}
 
 	@Override
-	protected Object function (Double first, Double second)
+	protected BooleanLiteral function (DoubleLiteral first, DoubleLiteral second)
 	{
-		return Util.fuzzyEquals(Double.valueOf(first), Double.valueOf(second));
+		return new BooleanLiteral(getLine(), getColumn(), (Util.fuzzyEquals(first.getValue(), second.getValue())));
 	}
 }

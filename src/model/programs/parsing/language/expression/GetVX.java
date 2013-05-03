@@ -2,16 +2,16 @@ package model.programs.parsing.language.expression;
 
 import world.entity.Entity;
 
-public class GetVX extends FirstOrderExpressionOfEntity
+public class GetVX extends FirstOrderExpressionOfEntityToNumber
 {
-	public GetVX (Object argument)
+	public GetVX (int line, int column, Expression argument)
 	{
-		super(argument);
+		super(line, column, argument);
 	}
 
 	@Override
-	protected Object function (Entity argument)
+	protected DoubleLiteral function (Entity argument)
 	{
-		return argument.getVelocity()._X();
+		return new DoubleLiteral(getLine(), getColumn(), argument.getVelocity()._X());
 	}
 }

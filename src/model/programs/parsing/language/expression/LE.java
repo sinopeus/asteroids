@@ -1,15 +1,15 @@
 package model.programs.parsing.language.expression;
 
-public class LE extends SecondOrderExpressionOfNumbers
+public class LE extends SecondOrderExpressionOfNumbersToBoolean
 {
-	public LE (Object firstArgument, Object secondArgument)
+	public LE (int line, int column, Expression firstArgument, Expression secondArgument)
 	{
-		super(firstArgument, secondArgument);
+		super(line, column, firstArgument, secondArgument);
 	}
 
 	@Override
-	protected Object function (Double first, Double second)
+	protected BooleanLiteral function (DoubleLiteral first, DoubleLiteral second)
 	{
-		return first <= second;
+		return new BooleanLiteral(getLine(), getColumn(), (first.getValue() <= second.getValue()));
 	}
 }
