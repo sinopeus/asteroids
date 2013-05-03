@@ -18,155 +18,180 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 /**
  * Sound manager that reads a text file to determine which sound files to load.
  */
-public class FileSoundManager implements Runnable, Sound {
+public class FileSoundManager implements Runnable, Sound
+{
 
-  public abstract class Request {
-    private final String sound;
+	public abstract class Request
+	{
+		private final String	sound;
 
-    public Request(String sound) {
-      this.sound = sound;
-    }
+		public Request (String sound)
+		{
+			this.sound = sound;
+		}
 
-    public String getSound() {
-      return sound;
-    }
+		public String getSound ()
+		{
+			return sound;
+		}
 
-    public abstract void execute();
-  }
+		public abstract void execute ();
+	}
 
-  public class Play extends Request {
-    public Play(String sound) {
-      super(sound);
-    }
+	public class Play extends Request
+	{
+		public Play (String sound)
+		{
+			super(sound);
+		}
 
-    public void execute() {
-      Clip clip = clips.get(getSound());
-      if (clip == null) {
-        System.err.println("clip " + getSound() + " not found");
-      } else {
-        if (clip.isRunning()) {
-          clip.stop();
-        }
-        clip.setFramePosition(0);
-        clip.start();
-      }
-    }
-  }
+		public void execute ()
+		{
+			Clip clip = clips.get(getSound());
+			if (clip == null) System.err.println("clip " + getSound() + " not found");
+			else
+			{
+				if (clip.isRunning()) clip.stop();
+				clip.setFramePosition(0);
+				clip.start();
+			}
+		}
+	}
 
-  public class Stop extends Request {
-    public Stop(String sound) {
-      super(sound);
-    }
+	public class Stop extends Request
+	{
+		public Stop (String sound)
+		{
+			super(sound);
+		}
 
-    public void execute() {
-      Clip clip = clips.get(getSound());
-      if (clip == null) {
-        System.err.println("clip " + getSound() + " not found");
-      } else {
-        clip.stop();
-      }
-    }
-  }
+		public void execute ()
+		{
+			Clip clip = clips.get(getSound());
+			if (clip == null) System.err.println("clip " + getSound() + " not found");
+			else clip.stop();
 
-  public class Loop extends Request {
-    public Loop(String sound) {
-      super(sound);
-    }
+		}
+	}
 
-    public void execute() {
-      Clip clip = clips.get(getSound());
-      if (clip == null) {
-        System.err.println("clip " + getSound() + " not found");
-      } else {
-        if (clip.isRunning()) {
-          clip.stop();
-        }
-        clip.setFramePosition(0);
-        clip.loop(Clip.LOOP_CONTINUOUSLY);
-      }
-    }
-  }
+	public class Loop extends Request
+	{
+		public Loop (String sound)
+		{
+			super(sound);
+		}
 
-  HashMap<String, Clip> clips = new HashMap<String, Clip>();
-  Queue<Request> requests = new LinkedList<Request>();
+		public void execute ()
+		{
+			Clip clip = clips.get(getSound());
+			if (clip == null) System.err.println("clip " + getSound() + " not found");
+			else
+			{
+				if (clip.isRunning()) clip.stop();
+				clip.setFramePosition(0);
+				clip.loop(Clip.LOOP_CONTINUOUSLY);
+			}
+		}
+	}
 
-  public FileSoundManager(String path) {
-    try {
-      loadSounds(path);
-    } catch (IOException e) {
-      System.err.println("error loading sound description file");
-    } catch (LineUnavailableException e) {
-      System.err.println("no line available");
-    } catch (UnsupportedAudioFileException e) {
-      System.err.println("audio format not supported");
-    } catch (IllegalArgumentException e) {
-      System.err.println("system does not support at least one clip instance through any installed mixer");
-    } catch (SecurityException e) {
-      System.err.println("sound not available due to security restrictions");
-    }
-  }
+	HashMap <String, Clip>	clips		= new HashMap <String, Clip>();
+	Queue <Request>			requests	= new LinkedList <Request>();
 
-  private void loadSounds(String path) throws IOException, LineUnavailableException, UnsupportedAudioFileException {
-    if (AudioSystem.getMixerInfo().length == 0)
-      throw new IllegalArgumentException("no mixer installed");
-    ClassLoader loader = FileSoundManager.class.getClassLoader();
-    InputStream stream = loader.getResourceAsStream(path);
-    BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
-    for (String line = reader.readLine(); line != null; line = reader.readLine()) {
-      Clip clip = AudioSystem.getClip();
-      URL url = loader.getResource("resources/" + line);
-      if (url == null) {
-        System.err.println("sound " + line + " not found");
-        continue;
-      }
-      AudioInputStream audioStream = AudioSystem.getAudioInputStream(url);
-      clip.open(audioStream);
-      clips.put(line.substring(0, line.lastIndexOf('.')), clip);
-    }
-  }
+	public FileSoundManager (String path)
+	{
+		try
+		{
+			loadSounds(path);
+		} catch (IOException e)
+		{
+			System.err.println("error loading sound description file");
+		} catch (LineUnavailableException e)
+		{
+			System.err.println("no line available");
+		} catch (UnsupportedAudioFileException e)
+		{
+			System.err.println("audio format not supported");
+		} catch (IllegalArgumentException e)
+		{
+			System.err.println("system does not support at least one clip instance through any installed mixer");
+		} catch (SecurityException e)
+		{
+			System.err.println("sound not available due to security restrictions");
+		}
+	}
 
-  public void play(String name) {
-    addRequest(new Play(name));
-  }
+	private void loadSounds (String path) throws IOException, LineUnavailableException, UnsupportedAudioFileException
+	{
+		if (AudioSystem.getMixerInfo().length == 0) throw new IllegalArgumentException("no mixer installed");
+		ClassLoader loader = FileSoundManager.class.getClassLoader();
+		InputStream stream = loader.getResourceAsStream(path);
+		BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
+		for (String line = reader.readLine(); line != null; line = reader.readLine())
+		{
+			Clip clip = AudioSystem.getClip();
+			URL url = loader.getResource("asteroids/resources/" + line);
+			if (url == null)
+			{
+				System.err.println("sound " + line + " not found");
+				continue;
+			}
+			AudioInputStream audioStream = AudioSystem.getAudioInputStream(url);
+			clip.open(audioStream);
+			clips.put(line.substring(0, line.lastIndexOf('.')), clip);
+		}
+	}
 
-  public void loop(String name) {
-    addRequest(new Loop(name));
-  }
+	public void play (String name)
+	{
+		addRequest(new Play(name));
+	}
 
-  public void stop(String name) {
-    addRequest(new Stop(name));
-  }
+	public void loop (String name)
+	{
+		addRequest(new Loop(name));
+	}
 
-  public void addRequest(Request request) {
-    synchronized (this) {
-      requests.add(request);
-      notifyAll();
-    }
-  }
+	public void stop (String name)
+	{
+		addRequest(new Stop(name));
+	}
 
-  @Override
-  public void run() {
-    while (true) {
-      Request request = null;
-      synchronized (this) {
-        while (request == null) {
-          if (requests.isEmpty()) {
-            try {
-              wait();
-            } catch (InterruptedException e) {
-              return;
-            }
-          } else {
-            request = requests.remove();
-          }
-        }
-      }
-      request.execute();
-    }
-  }
+	public void addRequest (Request request)
+	{
+		synchronized (this)
+		{
+			requests.add(request);
+			notifyAll();
+		}
+	}
 
-  @Override
-  public void start() {
-    new Thread(this).start();
-  }
+	@Override
+	public void run ()
+	{
+		while (true)
+		{
+			Request request = null;
+			synchronized (this)
+			{
+				while (request == null)
+					if (requests.isEmpty())
+					{
+						try
+						{
+							wait();
+						} catch (InterruptedException e)
+						{
+							return;
+						}
+					} else request = requests.remove();
+			}
+			request.execute();
+		}
+	}
+
+	@Override
+	public void start ()
+	{
+		new Thread(this).start();
+	}
 }

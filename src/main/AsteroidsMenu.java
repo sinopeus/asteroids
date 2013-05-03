@@ -13,33 +13,33 @@ import java.awt.geom.Rectangle2D;
 
 import javax.swing.JPanel;
 
-@SuppressWarnings("serial")
-public class AsteroidsMenu<World, Ship, Asteroid, Bullet> extends JPanel implements KeyListener
+@SuppressWarnings ("serial")
+public class AsteroidsMenu <World, Ship, Asteroid, Bullet, Program> extends JPanel implements KeyListener
 {
 
-	private String[] menu_options =
-	{ "Player vs Asteroids", "Player vs Player", "Exit" };
-	private int selectedIndex = 0;
-	private final Asteroids<World, Ship, Asteroid, Bullet> game;
-	private Image background;
+	private String[]													menu_options	=
+																						{ "Player vs Asteroids", "Player vs Player", "Player vs AI", "Exit" };
+	private int															selectedIndex	= 0;
+	private final Asteroids <World, Ship, Asteroid, Bullet, Program>	game;
+	private Image														background;
 
-	public AsteroidsMenu(Asteroids<World, Ship, Asteroid, Bullet> game)
+	public AsteroidsMenu (Asteroids <World, Ship, Asteroid, Bullet, Program> game)
 	{
 		this.game = game;
 		addKeyListener(this);
 		setBackground(Color.BLACK);
 		ClassLoader loader = AsteroidsMenu.class.getClassLoader();
-		background = Toolkit.getDefaultToolkit().getImage(loader.getResource("resources/menu-background.jpg"));
+		background = Toolkit.getDefaultToolkit().getImage(loader.getResource("asteroids/resources/menu-background.jpg"));
 		background = background.getScaledInstance(game.getWidth(), game.getHeight(), Image.SCALE_DEFAULT);
 	}
 
 	@Override
-	public boolean isFocusable()
+	public boolean isFocusable ()
 	{
 		return true;
 	}
 
-	private void drawCenteredString(Graphics2D g2d, String txt, int y)
+	private void drawCenteredString (Graphics2D g2d, String txt, int y)
 	{
 		int width = getWidth();
 		Rectangle2D bounds = g2d.getFontMetrics().getStringBounds(txt, g2d);
@@ -47,7 +47,7 @@ public class AsteroidsMenu<World, Ship, Asteroid, Bullet> extends JPanel impleme
 	}
 
 	@Override
-	protected void paintComponent(Graphics g)
+	protected void paintComponent (Graphics g)
 	{
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
@@ -62,30 +62,25 @@ public class AsteroidsMenu<World, Ship, Asteroid, Bullet> extends JPanel impleme
 		int optionHeight = g2d.getFontMetrics().getHeight();
 		for (int i = 0; i < menu_options.length; i++)
 		{
-			if (i == selectedIndex)
-			{
-				g2d.setColor(Color.RED);
-			} else
-			{
-				g2d.setColor(Color.WHITE);
-			}
+			if (i == selectedIndex) g2d.setColor(Color.RED);
+			else g2d.setColor(Color.WHITE);
 			drawCenteredString(g2d, menu_options[i], (int) (baseHeight + titleHeight + optionHeight * 1.5 * i));
 		}
 	}
 
 	@Override
-	public void keyTyped(KeyEvent e)
+	public void keyTyped (KeyEvent e)
 	{
 	}
 
 	@Override
-	public Dimension getPreferredSize()
+	public Dimension getPreferredSize ()
 	{
 		return new Dimension(game.getWidth(), game.getHeight());
 	}
 
 	@Override
-	public void keyPressed(KeyEvent e)
+	public void keyPressed (KeyEvent e)
 	{
 		switch (e.getKeyCode())
 		{
@@ -109,9 +104,12 @@ public class AsteroidsMenu<World, Ship, Asteroid, Bullet> extends JPanel impleme
 						game.startSinglePlayerGame();
 						break;
 					case 1:
-						game.startMultiPlayerGame();
+						game.startMultiPlayerGame(false);
 						break;
 					case 2:
+						game.startMultiPlayerGame(true);
+						break;
+					case 3:
 						System.exit(0);
 				}
 				break;
@@ -119,12 +117,12 @@ public class AsteroidsMenu<World, Ship, Asteroid, Bullet> extends JPanel impleme
 	}
 
 	@Override
-	public void keyReleased(KeyEvent e)
+	public void keyReleased (KeyEvent e)
 	{
 
 	}
 
-	public void reset()
+	public void reset ()
 	{
 		game.getSound().stop("game-theme");
 		game.getSound().loop("menu-theme");

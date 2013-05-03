@@ -4,35 +4,40 @@ import java.awt.Dimension;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import javax.swing.JFrame;
 
-import model.Facade;
-import model.IFacade;
+import main.IFacade.ParseOutcome;
+import main.IFacade.TypeCheckOutcome;
 
 @SuppressWarnings ("serial")
-public class Asteroids <World, Ship, Asteroid, Bullet> extends JFrame
+public class Asteroids <World, Ship, Asteroid, Bullet, Program> extends JFrame
 {
 
-	private AsteroidsMenu <World, Ship, Asteroid, Bullet>	menu;
-	private WorldView <World, Ship, Asteroid, Bullet>		view;
-	private IFacade <World, Ship, Asteroid, Bullet>			facade;
-	private int												width;
-	private int												height;
-	private Sound											sound;
+	private AsteroidsMenu <World, Ship, Asteroid, Bullet, Program>	menu;
+	private WorldView <World, Ship, Asteroid, Bullet, Program>		view;
+	private IFacade <World, Ship, Asteroid, Bullet, Program>		facade;
+	private int														width;
+	private int														height;
+	private Sound													sound;
+	private URL														aiProgramUrl;
 
-	public Asteroids (IFacade <World, Ship, Asteroid, Bullet> facade, int width, int height, boolean undecorated, Sound sound)
+	public Asteroids (IFacade <World, Ship, Asteroid, Bullet, Program> facade, int width, int height, boolean undecorated, Sound sound, URL aiProgramUrl)
 	{
 		super("Asteroids");
 		this.sound = sound;
 		this.width = width;
 		this.height = height;
-		menu = new AsteroidsMenu <World, Ship, Asteroid, Bullet>(this);
+		this.aiProgramUrl = aiProgramUrl;
+		menu = new AsteroidsMenu <World, Ship, Asteroid, Bullet, Program>(this);
 		this.facade = facade;
 		setUndecorated(undecorated);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
-		System.out.print("error");
 		getContentPane().add(menu);
 		pack();
 	}
@@ -52,7 +57,7 @@ public class Asteroids <World, Ship, Asteroid, Bullet> extends JFrame
 		return sound;
 	}
 
-	public IFacade <World, Ship, Asteroid, Bullet> getFacade ()
+	public IFacade <World, Ship, Asteroid, Bullet, Program> getFacade ()
 	{
 		return facade;
 	}
@@ -68,40 +73,68 @@ public class Asteroids <World, Ship, Asteroid, Bullet> extends JFrame
 	public void startSinglePlayerGame ()
 	{
 		World world = facade.createWorld(width, height);
-		Ship player = facade.createShip(50, 50, 0, 0, 40, 0, 5E15);
+		Ship player = facade.createShip(width / 2., height / 2., 0, 0, 40, 0, 5E15);
 		facade.addShip(world, player);
-		Asteroid asteroid1 = facade.createAsteroid(60, height / 2., 200, 0, 20);
+		Asteroid asteroid1 = facade.createAsteroid(100, 100, 25, 50, 60);
 		facade.addAsteroid(world, asteroid1);
-		Asteroid asteroid2 = facade.createAsteroid(width / 2. - 50, height / 2., 0, 500, 150);
+		Asteroid asteroid2 = facade.createAsteroid(600, 100, -30, -40, 80);
 		facade.addAsteroid(world, asteroid2);
-		for (int i = 0; i < 5; i++)
-		{
-			for (int j = 0; j < 5; j++)
-			{
-				Asteroid x = facade.createAsteroid(750 + 15 * i, 850 + 15 * j, 0, 0, 5);
-				facade.addAsteroid(world, x);
-			}
-		}
-		Asteroid x = facade.createAsteroid(700, 800, 500, 500, 5);
-		facade.addAsteroid(world, x);
-		view = new WorldView <World, Ship, Asteroid, Bullet>(this, world, player, null);
+		view = new WorldView <World, Ship, Asteroid, Bullet, Program>(this, world, player, null, false);
 		if (!isUndecorated()) view.setPreferredSize(new Dimension(width, height));
 		getContentPane().remove(menu);
 		getContentPane().add(view);
-		revalidate();
+		validate();
 		repaint();
 		view.requestFocusInWindow();
 		view.startGame();
 	}
 
-	public void startMultiPlayerGame ()
+	public void startMultiPlayerGame (boolean vsAI)
 	{
 		World world = facade.createWorld(width, height);
 		Ship player1 = facade.createShip(width / 5 * 4, height / 2., 0, 0, 40, Math.PI, 5E15);
 		facade.addShip(world, player1);
 		Ship player2 = facade.createShip(width / 5, height / 2., 0, 0, 40, 0, 5E15);
 		facade.addShip(world, player2);
-		Asteroid asteroid1 = facade.createAsteroid(width / 2, height / 2, 25, 50, 75);
+		if (vsAI)
+		{
+			ParseOutcome <Program> parseOutcome;
+			try
+			{
+				parseOutcome = facade.loadProgramFromUrl(aiProgramUrl);
+			} catch (IOException e)
+			{
+				System.err.println(e.getMessage());
+				sound.play("load-error");
+				return;
+			}
+			if (parseOutcome.isSuccessful())
+			{
+				Program program = parseOutcome.getProgram();
+				if (facade.isTypeCheckingSupported())
+				{
+					TypeCheckOutcome typeCheckOutcome = facade.typeCheckProgram(program);
+					if (typeCheckOutcome.isSuccessful())
+					{
+						facade.setShipProgram(player2, program);
+					} else
+					{
+						System.err.println(typeCheckOutcome.getMessage());
+						sound.play("load-error");
+						return;
+					}
+				} else
+				{
+					facade.setShipProgram(player2, program);
+				}
+			} else
+			{
+				System.err.println(parseOutcome.getMessage());
+				sound.play("load-error");
+				return;
+			}
+		}
+		Asteroid asteroid1 = facade.createAsteroid(width / 2.5, height / 2.5, 25, 50, 75);
 		facade.addAsteroid(world, asteroid1);
 		Asteroid asteroid2 = facade.createAsteroid(600, 100, -30, -40, 40);
 		facade.addAsteroid(world, asteroid2);
@@ -109,11 +142,11 @@ public class Asteroids <World, Ship, Asteroid, Bullet> extends JFrame
 		facade.addAsteroid(world, asteroid3);
 		Asteroid asteroid4 = facade.createAsteroid(40, height - 100, 10, -8, 15);
 		facade.addAsteroid(world, asteroid4);
-		view = new WorldView <World, Ship, Asteroid, Bullet>(this, world, player1, player2);
+		view = new WorldView <World, Ship, Asteroid, Bullet, Program>(this, world, player1, player2, vsAI);
 		if (!isUndecorated()) view.setPreferredSize(new Dimension(width, height));
 		getContentPane().remove(menu);
 		getContentPane().add(view);
-		revalidate();
+		validate();
 		repaint();
 		view.requestFocusInWindow();
 		view.startGame();
@@ -128,7 +161,7 @@ public class Asteroids <World, Ship, Asteroid, Bullet> extends JFrame
 		}
 		menu.reset();
 		getContentPane().add(menu);
-		revalidate();
+		validate();
 		repaint();
 		menu.requestFocusInWindow();
 		pack();
@@ -139,14 +172,43 @@ public class Asteroids <World, Ship, Asteroid, Bullet> extends JFrame
 	{
 		boolean tryFullscreen = true;
 		boolean enableSound = true;
-		for (String arg : args)
+		URL aiProgramUrl = Asteroids.class.getClassLoader().getResource("asteroids/resources/program.txt");
+		for (int i = 0; i < args.length; i++)
 		{
+			String arg = args[i];
 			if (arg.equals("-window"))
 			{
 				tryFullscreen = false;
 			} else if (arg.equals("-nosound"))
 			{
 				enableSound = false;
+			} else if (arg.equals("-ai"))
+			{
+				if (i + 1 < args.length)
+				{
+					String aiProgramPath = args[++i];
+					File file = new File(aiProgramPath);
+					if (!file.exists())
+					{
+						System.out.println("file " + aiProgramPath + " not found");
+						return;
+					} else
+					{
+						try
+						{
+							aiProgramUrl = file.toURI().toURL();
+						} catch (MalformedURLException e)
+						{
+							System.out.println("malformed url");
+							return;
+						}
+					}
+					i++;
+				} else
+				{
+					System.out.println("no path specified");
+					return;
+				}
 			} else
 			{
 				System.out.println("unknown option: " + arg);
@@ -163,21 +225,20 @@ public class Asteroids <World, Ship, Asteroid, Bullet> extends JFrame
 			return;
 		}
 		// <begin>
-		@SuppressWarnings ("unchecked")
-		IFacade <world.World, world.entity.ship.Ship, world.entity.Asteroid, world.entity.Bullet> facade = new Facade();
+		IFacade <asteroids.model.World, asteroids.model.Ship, asteroids.model.Asteroid, asteroids.model.Bullet, asteroids.model.programs.Program> facade = new asteroids.model.Facade();
 		// <end>
 		GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		GraphicsDevice screen = env.getDefaultScreenDevice();
-		Asteroids <world.World, world.entity.ship.Ship, world.entity.Asteroid, world.entity.Bullet> asteroids;
-		Sound sound = enableSound ? new FileSoundManager("resources/sounds.txt") : new NullSound();
+		Asteroids <?, ?, ?, ?, ?> asteroids;
+		Sound sound = enableSound ? new FileSoundManager("asteroids/resources/sounds.txt") : new NullSound();
 		if (tryFullscreen && screen.isFullScreenSupported())
 		{
 			Rectangle dimensions = screen.getDefaultConfiguration().getBounds();
-			asteroids = new Asteroids <world.World, world.entity.ship.Ship, world.entity.Asteroid, world.entity.Bullet>(facade, dimensions.width, dimensions.height, true, sound);
+			asteroids = new Asteroids <>(facade, dimensions.width, dimensions.height, true, sound, aiProgramUrl);
 			screen.setFullScreenWindow(asteroids);
 		} else
 		{
-			asteroids = new Asteroids <world.World, world.entity.ship.Ship, world.entity.Asteroid, world.entity.Bullet>(facade, 1024, 768, false, sound);
+			asteroids = new Asteroids <>(facade, 1024, 768, false, sound, aiProgramUrl);
 		}
 		asteroids.start();
 	}
