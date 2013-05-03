@@ -177,49 +177,40 @@ public class Asteroids <World, Ship, Asteroid, Bullet, Program> extends JFrame
 		for (int i = 0; i < args.length; i++)
 		{
 			String arg = args[i];
-			if (arg.equals("-window"))
+			if (arg.equals("-window")) tryFullscreen = false;
+			else if (arg.equals("-nosound")) enableSound = false;
+			else if (arg.equals("-ai")) if (i + 1 < args.length)
 			{
-				tryFullscreen = false;
-			} else if (arg.equals("-nosound"))
-			{
-				enableSound = false;
-			} else if (arg.equals("-ai"))
-			{
-				if (i + 1 < args.length)
+				String aiProgramPath = args[++i];
+				File file = new File(aiProgramPath);
+				if (!file.exists())
 				{
-					String aiProgramPath = args[++i];
-					File file = new File(aiProgramPath);
-					if (!file.exists())
-					{
-						System.out.println("file " + aiProgramPath + " not found");
-						return;
-					} else
-					{
-						try
-						{
-							aiProgramUrl = file.toURI().toURL();
-						} catch (MalformedURLException e)
-						{
-							System.out.println("malformed url");
-							return;
-						}
-					}
-					i++;
+					System.out.println("file " + aiProgramPath + " not found");
+					return;
 				} else
 				{
-					System.out.println("no path specified");
-					return;
+					try
+					{
+						aiProgramUrl = file.toURI().toURL();
+					} catch (MalformedURLException e)
+					{
+						System.out.println("malformed url");
+						return;
+					}
 				}
+				i++;
 			} else
+			{
+				System.out.println("no path specified");
+				return;
+			}
+			else
 			{
 				System.out.println("unknown option: " + arg);
 				return;
 			}
 		}
-		if (args.length > 0 && args[0].equals("-window"))
-		{
-			tryFullscreen = false;
-		}
+		if (args.length > 0 && args[0].equals("-window")) tryFullscreen = false;
 		if (GraphicsEnvironment.isHeadless())
 		{
 			System.out.println("no screen found");
@@ -237,10 +228,7 @@ public class Asteroids <World, Ship, Asteroid, Bullet, Program> extends JFrame
 			Rectangle dimensions = screen.getDefaultConfiguration().getBounds();
 			asteroids = new Asteroids <>(facade, dimensions.width, dimensions.height, true, sound, aiProgramUrl);
 			screen.setFullScreenWindow(asteroids);
-		} else
-		{
-			asteroids = new Asteroids <>(facade, 1024, 768, false, sound, aiProgramUrl);
-		}
+		} else asteroids = new Asteroids <>(facade, 1024, 768, false, sound, aiProgramUrl);
 		asteroids.start();
 	}
 }

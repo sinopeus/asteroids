@@ -1,5 +1,6 @@
 package model.programs.parsing.language.expression;
 
-public class Expression
+public abstract class Expression
 {
+	public abstract Object evaluate ();
 }
