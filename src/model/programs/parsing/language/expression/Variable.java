@@ -51,7 +51,7 @@ public class Variable <T extends ConstantExpression> extends Expression
 	}
 
 	@Override
-	public Object evaluate ()
+	public ConstantExpression evaluate ()
 	{
 		return getValue();
 	}

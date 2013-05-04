@@ -1,36 +1,11 @@
 package model.programs.parsing.language.expression;
 
-public class DoubleLiteral extends ConstantExpression
+public class DoubleLiteral extends ConstantExpression <Double>
 {
 
-	public DoubleLiteral (int line, int column, double value)
+	public DoubleLiteral (int line, int column, Double value)
 	{
-		super(line, column);
+		super(line, column, value);
 		setValue(value);
 	}
-
-	Double	value;
-
-	public Double getValue ()
-	{
-		return value;
-	}
-
-	public boolean canHaveAsValue (Double value)
-	{
-		return true;
-	}
-
-	public void setValue (Double value)
-	{
-		if (!canHaveAsValue(value)) throw new IllegalArgumentException("Invalid value for double literal.");
-		this.value = value;
-	}
-
-	@Override
-	public DoubleLiteral evaluate ()
-	{
-		return this;
-	}
-
 }

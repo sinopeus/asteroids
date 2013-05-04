@@ -48,15 +48,10 @@ public class FileSoundManager implements Runnable, Sound
 		public void execute ()
 		{
 			Clip clip = clips.get(getSound());
-			if (clip == null)
+			if (clip == null) System.err.println("clip " + getSound() + " not found");
+			else
 			{
-				System.err.println("clip " + getSound() + " not found");
-			} else
-			{
-				if (clip.isRunning())
-				{
-					clip.stop();
-				}
+				if (clip.isRunning()) clip.stop();
 				clip.setFramePosition(0);
 				clip.start();
 			}
@@ -73,13 +68,8 @@ public class FileSoundManager implements Runnable, Sound
 		public void execute ()
 		{
 			Clip clip = clips.get(getSound());
-			if (clip == null)
-			{
-				System.err.println("clip " + getSound() + " not found");
-			} else
-			{
-				clip.stop();
-			}
+			if (clip == null) System.err.println("clip " + getSound() + " not found");
+			else clip.stop();
 		}
 	}
 
@@ -93,15 +83,10 @@ public class FileSoundManager implements Runnable, Sound
 		public void execute ()
 		{
 			Clip clip = clips.get(getSound());
-			if (clip == null)
+			if (clip == null) System.err.println("clip " + getSound() + " not found");
+			else
 			{
-				System.err.println("clip " + getSound() + " not found");
-			} else
-			{
-				if (clip.isRunning())
-				{
-					clip.stop();
-				}
+				if (clip.isRunning()) clip.stop();
 				clip.setFramePosition(0);
 				clip.loop(Clip.LOOP_CONTINUOUSLY);
 			}
@@ -143,7 +128,7 @@ public class FileSoundManager implements Runnable, Sound
 		for (String line = reader.readLine(); line != null; line = reader.readLine())
 		{
 			Clip clip = AudioSystem.getClip();
-			URL url = loader.getResource("asteroids/resources/" + line);
+			URL url = loader.getResource("resources/" + line);
 			if (url == null)
 			{
 				System.err.println("sound " + line + " not found");
@@ -189,19 +174,14 @@ public class FileSoundManager implements Runnable, Sound
 			{
 				while (request == null)
 				{
-					if (requests.isEmpty())
+					if (requests.isEmpty()) try
 					{
-						try
-						{
-							wait();
-						} catch (InterruptedException e)
-						{
-							return;
-						}
-					} else
+						wait();
+					} catch (InterruptedException e)
 					{
-						request = requests.remove();
+						return;
 					}
+					else request = requests.remove();
 				}
 			}
 			request.execute();

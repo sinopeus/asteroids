@@ -43,10 +43,11 @@ public abstract class Expression
 		if (!canHaveAsColumn(column)) throw new IllegalArgumentException("Invalid column provided for expression.");
 		this.column = column;
 	}
-	
-	public Class getType(){
+
+	public Class getType ()
+	{
 		return evaluate().getClass();
 	}
 
-	public abstract Object evaluate (); //TODO change from object to something useful?
+	public abstract ConstantExpression evaluate (); //TODO change from object to something useful?
 }

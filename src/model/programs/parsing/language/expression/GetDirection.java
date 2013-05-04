@@ -11,8 +11,8 @@ public class GetDirection extends FirstOrderExpressionOfEntityToNumber
 	}
 
 	@Override
-	protected DoubleLiteral function (Entity argument)
+	protected DoubleLiteral function (EntityLiteral argument)
 	{
-		return new DoubleLiteral(getLine(), getColumn(), argument.getDirection().getAngle().get());
+		return new DoubleLiteral(getLine(), getColumn(), argument.getValue().getDirection().getAngle().get());
 	}
 }

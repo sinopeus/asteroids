@@ -1,10 +1,31 @@
 package model.programs.parsing.language.statement;
 
+import model.programs.parsing.language.expression.Expression;
+
 public class Print extends Statement
 {
-	public Print (int line, int column)
+	public Print (int line, int column, Expression textExpression)
 	{
 		super(line, column);
+		setTextExpression(textExpression);
+	}
+
+	private Expression	textExpression;
+
+	private Expression getTextExpression ()
+	{
+		return textExpression;
+	}
+
+	private boolean canHaveAsTextExpression (Expression textExpression)
+	{
+		return (textExpression != null); //TODO more checking?
+	}
+
+	public void setTextExpression (Expression textExpression)
+	{
+		if (!canHaveAsTextExpression(textExpression)) throw new IllegalArgumentException("Invalid expression for print statement."); //TODO other message and/or exception?
+		this.textExpression = textExpression;
 	}
 
 	private String	text;
@@ -26,10 +47,12 @@ public class Print extends Statement
 	}
 
 	@Override
-	public void executeStep ()
+	public boolean executeUntilAction ()
 	{
-		super.executeStep();
+		super.executeUntilAction();
+		setText(getTextExpression().evaluate().toString());
 		System.out.println(getText());
 		finish();
+		return false;
 	}
 }

@@ -55,11 +55,12 @@ public class Assignment extends Statement
 	}
 
 	@Override
-	public void executeStep ()
+	public boolean executeUntilAction ()
 	{
-		super.executeStep();
-		if (!isTypeSafe()) throw new IllegalArgumentException("Type unsafe assignment"); //TODO other kind of exception?
+		super.executeUntilAction();
+		if (!isTypeSafe()) throw new IllegalArgumentException("Type error."); //TODO other kind of exception?
 		getVariable().setValue((ConstantExpression) getValue().evaluate()); //TODO work away cast
 		finish();
+		return false;
 	}
 }

@@ -6,4 +6,9 @@ public class ForEach extends Statement
 	{
 		super(line, column);
 	}
+	
+	public boolean executeUntilAction ()
+	{
+		return false; //TODO
+	}
 }

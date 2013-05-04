@@ -116,18 +116,12 @@ public class WorldView <World, Ship, Asteroid, Bullet, Program> extends JPanel i
 		g2d.setColor(Color.WHITE);
 		for (Ship ship : facade.getShips(world))
 		{
-			if (!visualizations.containsKey(ship))
-			{
-				visualizations.put(ship, new ShipVisualization(Color.BLUE, ship, null));
-			}
+			if (!visualizations.containsKey(ship)) visualizations.put(ship, new ShipVisualization(Color.BLUE, ship, null));
 			visualizations.get(ship).draw(g2d);
 		}
 		for (Asteroid asteroid : facade.getAsteroids(world))
 		{
-			if (!visualizations.containsKey(asteroid))
-			{
-				visualizations.put(asteroid, new AsteroidVisualization(asteroid));
-			}
+			if (!visualizations.containsKey(asteroid)) visualizations.put(asteroid, new AsteroidVisualization(asteroid));
 			visualizations.get(asteroid).draw(g2d);
 		}
 		for (Bullet bullet : facade.getBullets(world))
@@ -140,9 +134,7 @@ public class WorldView <World, Ship, Asteroid, Bullet, Program> extends JPanel i
 			visualizations.get(bullet).draw(g2d);
 		}
 		for (Explosion explosion : explosions)
-		{
 			explosion.draw(g2d);
-		}
 		if (msg != null)
 		{
 			g2d.setColor(Color.WHITE);
@@ -226,14 +218,8 @@ public class WorldView <World, Ship, Asteroid, Bullet, Program> extends JPanel i
 		long now = System.currentTimeMillis();
 		long millisSinceLastEvolve = now - timeAfterLastEvolve;
 		timeAfterLastEvolve = now;
-		if (player1_angle != 0)
-		{
-			facade.turn(player1, player1_angle);
-		}
-		if (player2 != null && player2_angle != 0)
-		{
-			facade.turn(player2, player2_angle);
-		}
+		if (player1_angle != 0) facade.turn(player1, player1_angle);
+		if (player2 != null && player2_angle != 0) facade.turn(player2, player2_angle);
 		if (player1_fire && facade.getShips(world).contains(player1))
 		{
 			player1_fire = false;
@@ -268,13 +254,8 @@ public class WorldView <World, Ship, Asteroid, Bullet, Program> extends JPanel i
 		} else
 		{
 			timer.stop();
-			if (player2 == null || !facade.getShips(world).contains(player2))
-			{
-				msg = "Asteroids win!";
-			} else
-			{
-				msg = "Player 2 wins!";
-			}
+			if (player2 == null || !facade.getShips(world).contains(player2)) msg = "Asteroids win!";
+			else msg = "Player 2 wins!";
 		}
 		repaint();
 	}
@@ -359,10 +340,8 @@ public class WorldView <World, Ship, Asteroid, Bullet, Program> extends JPanel i
 			double x = facade.getShipX(getObject());
 			double y = facade.getWorldHeight(world) - facade.getShipY(getObject());
 			g2d.setColor(getColor());
-			if (getImage() == null)
-			{
-				g2d.drawOval((int) (x - radius), (int) (y - radius), (int) (2 * radius), (int) (2 * radius));
-			} else
+			if (getImage() == null) g2d.drawOval((int) (x - radius), (int) (y - radius), (int) (2 * radius), (int) (2 * radius));
+			else
 			{
 				AffineTransform T = AffineTransform.getTranslateInstance(radius, radius);
 				T.rotate(angle);

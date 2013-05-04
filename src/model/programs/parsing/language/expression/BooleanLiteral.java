@@ -1,30 +1,11 @@
 package model.programs.parsing.language.expression;
 
-public class BooleanLiteral extends ConstantExpression
+public class BooleanLiteral extends ConstantExpression<Boolean>
 {
 
-	public BooleanLiteral (int line, int column, boolean value)
+	public BooleanLiteral (int line, int column, Boolean value)
 	{
-		super(line, column);
+		super(line, column,value);
 		setValue(value);
 	}
-
-	boolean	value;
-
-	public boolean getValue ()
-	{
-		return value;
-	}
-
-	public void setValue (boolean value)
-	{
-		this.value = value;
-	}
-
-	@Override
-	public BooleanLiteral evaluate ()
-	{
-		return this;
-	}
-
 }

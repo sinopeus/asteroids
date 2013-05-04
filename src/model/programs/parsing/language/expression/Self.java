@@ -2,16 +2,11 @@ package model.programs.parsing.language.expression;
 
 import world.entity.Entity;
 
-public class Self extends FirstOrderExpressionOfEntityToEntity
+public class Self extends ConstantExpression <Entity>
 {
-	public Self (int line, int column, Expression argument)
-	{
-		super(line, column, argument);
-	}
 
-	@Override
-	protected Entity function (Entity argument)
+	public Self (int line, int column, Entity value) //TODO not sure about how to do this.
 	{
-		return argument;
+		super(line, column, value);
 	}
 }

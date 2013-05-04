@@ -1,7 +1,5 @@
 package model.programs.parsing.language.expression;
 
-import world.entity.Entity;
-
 public class GetVX extends FirstOrderExpressionOfEntityToNumber
 {
 	public GetVX (int line, int column, Expression argument)
@@ -10,8 +8,8 @@ public class GetVX extends FirstOrderExpressionOfEntityToNumber
 	}
 
 	@Override
-	protected DoubleLiteral function (Entity argument)
+	protected DoubleLiteral function (EntityLiteral argument)
 	{
-		return new DoubleLiteral(getLine(), getColumn(), argument.getVelocity()._X());
+		return new DoubleLiteral(getLine(), getColumn(), argument.getValue().getVelocity()._X());
 	}
 }

@@ -89,13 +89,34 @@ public class If extends Statement
 	}
 
 	@Override
-	public void executeStep ()
+	public boolean executeUntilAction ()
 	{
+		super.executeUntilAction();
 		if (!checked) checkCondition();
-		if (!getThenStatement().isFinished())
+		boolean lastStatementWasAction = false;
+		if (resultOfCondition)
 		{
-			getThenStatement().executeStep();
-			if (getThenStatement().isFinished()) finish();
-		} else finish();
+			if (!getThenStatement().isFinished())
+			{
+				lastStatementWasAction = getThenStatement().executeUntilAction();
+				if (getThenStatement().isFinished()) finish();
+			} else
+			{
+				finish();
+				return false; // TODO make this into an error?
+			}
+		} else
+		{
+			if (!getOtherwiseStatement().isFinished())
+			{
+				lastStatementWasAction = getOtherwiseStatement().executeUntilAction();
+				if (getOtherwiseStatement().isFinished()) finish();
+			} else
+			{
+				finish();
+				return false; // TODO make this into an error?
+			}
+		}
+		return lastStatementWasAction;
 	}
 }

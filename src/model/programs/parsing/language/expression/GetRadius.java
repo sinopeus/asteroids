@@ -1,6 +1,5 @@
 package model.programs.parsing.language.expression;
 
-import world.entity.Entity;
 
 public class GetRadius extends FirstOrderExpressionOfEntityToNumber
 {
@@ -10,8 +9,8 @@ public class GetRadius extends FirstOrderExpressionOfEntityToNumber
 	}
 
 	@Override
-	protected DoubleLiteral function (Entity argument)
+	protected DoubleLiteral function (EntityLiteral argument)
 	{
-		return new DoubleLiteral(getLine(), getColumn(), argument.getShape().getRadius());
+		return new DoubleLiteral(getLine(), getColumn(), argument.getValue().getShape().getRadius());
 	}
 }

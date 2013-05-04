@@ -31,7 +31,14 @@ import model.programs.parsing.language.expression.Substraction;
 import model.programs.parsing.language.expression.Variable;
 import model.programs.parsing.language.statement.Assignment;
 import model.programs.parsing.language.statement.If;
+import model.programs.parsing.language.statement.Print;
+import model.programs.parsing.language.statement.Sequence;
 import model.programs.parsing.language.statement.Statement;
+import model.programs.parsing.language.statement.action.Fire;
+import model.programs.parsing.language.statement.action.Skip;
+import model.programs.parsing.language.statement.action.ThrustOff;
+import model.programs.parsing.language.statement.action.ThrustOn;
+import model.programs.parsing.language.statement.action.Turn;
 
 public class MyFactory implements ProgramFactory <Expression, Statement, Type>
 {
@@ -201,29 +208,25 @@ public class MyFactory implements ProgramFactory <Expression, Statement, Type>
 	@Override
 	public Statement createEnableThruster (int line, int column)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return new ThrustOn(line, column);
 	}
 
 	@Override
 	public Statement createDisableThruster (int line, int column)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return new ThrustOff(line, column);
 	}
 
 	@Override
 	public Statement createFire (int line, int column)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return new Fire(line, column);
 	}
 
 	@Override
 	public Statement createTurn (int line, int column, Expression angle)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return new Turn(line, column);
 	}
 
 	@Override
@@ -257,22 +260,19 @@ public class MyFactory implements ProgramFactory <Expression, Statement, Type>
 	@Override
 	public Statement createSkip (int line, int column)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return new Skip(line, column);
 	}
 
 	@Override
 	public Statement createSequence (int line, int column, List <Statement> statements)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return new Sequence(line, column, statements);
 	}
 
 	@Override
 	public Statement createPrint (int line, int column, Expression e)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return new Print(line, column, e);
 	}
 
 	@Override

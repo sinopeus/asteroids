@@ -9,4 +9,9 @@ public abstract class Action extends Statement
 	{
 		super(line, column);
 	}
+
+	@Override
+	public boolean executeUntilAction (){
+		return true;
+	}
 }

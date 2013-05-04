@@ -6,4 +6,11 @@ public class Fire extends Action
 	{
 		super(line, column);
 	}
+
+	@Override
+	public boolean executeUntilAction ()
+	{
+		//TODO
+		return true;
+	}
 }

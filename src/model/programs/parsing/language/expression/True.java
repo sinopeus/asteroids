@@ -1,10 +1,10 @@
 package model.programs.parsing.language.expression;
 
-public class True extends ConstantExpression
+public class True extends ConstantExpression<Boolean>
 {
 	public True (int line, int column)
 	{
-		super(line, column);
+		super(line, column, true);
 	}
 
 	@Override

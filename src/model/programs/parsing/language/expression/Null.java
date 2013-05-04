@@ -1,15 +1,21 @@
 package model.programs.parsing.language.expression;
 
-public class Null extends ConstantExpression
+public class Null extends ConstantExpression <Object>
 {
 	public Null (int line, int column)
 	{
-		super(line, column);
+		super(line, column, null);
 	}
 
 	@Override
-	public Object evaluate ()
+	public boolean canHaveAsValue (Object value)
 	{
-		return null; //TODO not sure about this
+		return true;
+	}
+
+	@Override
+	public String toString ()
+	{
+		return "null";
 	}
 }

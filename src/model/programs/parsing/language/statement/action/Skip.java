@@ -6,4 +6,11 @@ public class Skip extends Action
 	{
 		super(line, column);
 	}
+	
+	@Override
+	public boolean executeUntilAction ()
+	{
+		//TODO just do nothing?
+		return true;
+	}
 }

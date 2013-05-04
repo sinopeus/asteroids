@@ -10,8 +10,8 @@ public class GetVY extends FirstOrderExpressionOfEntityToNumber
 	}
 
 	@Override
-	protected DoubleLiteral function (Entity argument)
+	protected DoubleLiteral function (EntityLiteral argument)
 	{
-		return new DoubleLiteral(getLine(), getColumn(), argument.getVelocity()._Y());
+		return new DoubleLiteral(getLine(), getColumn(), argument.getValue().getVelocity()._Y());
 	}
 }
