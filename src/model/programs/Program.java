@@ -34,14 +34,11 @@ public class Program extends ArrayList <Statement>
 		return this.get(getCurrentIndex());
 	}
 
-	public void executeUntilNextAction ()
+	public void executeUntilAfterNextAction ()
 	{
-		while (!getCurrentStatement().isFinished()) //TODO this is very ugly.
-		{
-			if (getCurrentStatement().executeUntilAction())
-			{
-				break;
-			} else incrementCurrentIndex();
-		}
+		while (!getCurrentStatement().isFinished())
+			if (!getCurrentStatement().executeUntilAction()) break;
+			else incrementCurrentIndex();
+
 	}
 }

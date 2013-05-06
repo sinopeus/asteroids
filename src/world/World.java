@@ -145,6 +145,29 @@ public class World extends ArrayList <Entity>
 	 */
 	private double	ySize;
 
+	private double	gameTime;
+//TODO document
+	public double getGameTime ()
+	{
+		return gameTime;
+	}
+
+	protected boolean canHaveAsGameTime (double gameTime)
+	{
+		return (gameTime > 0);//TODO more checking?
+	}
+
+	protected void setGameTime (double gameTime)
+	{
+		if (!canHaveAsGameTime(gameTime)) throw new IllegalArgumentException("Invalid game time provided.");
+		this.gameTime = gameTime;
+	}
+
+	protected void advandeGameTime (double time)
+	{
+		setGameTime(getGameTime() + time);
+	}
+
 	/**
 	 * Checks whether the given entity is a valid entity for this world.
 	 *  
@@ -233,6 +256,7 @@ public class World extends ArrayList <Entity>
 	{
 		for (Entity e : this)
 			e.advance(dt);
+		advandeGameTime(dt);//TODO change doc
 	}
 
 	/**

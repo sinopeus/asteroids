@@ -51,7 +51,7 @@ public class Assignment extends Statement
 
 	protected boolean isTypeSafe ()
 	{
-		return (getVariable().getType() == getValue().getType());
+		return (getVariable().getType() == getValue().getType()); //TODO check whether this works.
 	}
 
 	@Override
@@ -59,7 +59,7 @@ public class Assignment extends Statement
 	{
 		super.executeUntilAction();
 		if (!isTypeSafe()) throw new IllegalArgumentException("Type error."); //TODO other kind of exception?
-		getVariable().setValue((ConstantExpression) getValue().evaluate()); //TODO work away cast
+		getVariable().setValue(getValue().evaluate());
 		finish();
 		return false;
 	}

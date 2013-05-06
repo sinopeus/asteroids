@@ -1,9 +1,9 @@
 package world.entity.ship;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 import model.IShip;
+import model.programs.Program;
 import world.entity.Asteroid;
 import world.entity.Bullet;
 import world.entity.Entity;
@@ -176,6 +176,25 @@ public class Ship extends Entity implements IShip
 
 	private ArrayList <Bullet>	bulletList;
 
+	Program						program;
+
+	//TODO document
+	public Program getProgram ()
+	{
+		return program;
+	}
+
+	protected boolean canHaveAsProgram (Program program)
+	{
+		return (program != null); //TODO more checking?
+	}
+
+	public void setProgram (Program program)
+	{
+		if (!canHaveAsProgram(program)) throw new IllegalArgumentException("Invalid program provided."); //TODO is this necessary
+		this.program = program;
+	}
+
 	/**
 	 * Terminates this ship.
 	 */
@@ -192,8 +211,17 @@ public class Ship extends Entity implements IShip
 	@Override
 	public void advance (double dt)
 	{
+		//Add error when terminated.
 		if (getThruster().isActivated()) getThruster().thrust(dt);
 		super.advance(dt);
+		//TODO check order of execution
+
+		double gameTimeStart = getWorld().getGameTime();
+		int pastIterations = (int) (gameTimeStart / SPEED_OF_ACTIONS);
+		double now = gameTimeStart + dt;
+		int requiredIterations = (int) (now / SPEED_OF_ACTIONS);
+		for (int i = 0; i < requiredIterations - pastIterations; i++)
+			getProgram().executeUntilAfterNextAction();
 	}
 
 	/**
@@ -204,12 +232,13 @@ public class Ship extends Entity implements IShip
 	 */
 	public void fire ()
 	{
-		if(getBulletList().size() >= MAXIMUM_AMOUNT_OF_BULLETS) return;
+		if (getBulletList().size() >= MAXIMUM_AMOUNT_OF_BULLETS) return;
 		Bullet b = new Bullet(this);
-		if(getWorld().add(b));
+		if (getWorld().add(b))
+		;
 		{
 			this.getBulletList().add(b);
-			
+
 			//RECOIL
 			Velocity recoil = Mechanics.conservationOfMomentum_CalculateVelocity(b.getVelocity(), b.getMass(), this.getMass());
 			this.setVelocity(new Velocity(getVelocity().getDifference(recoil)));
@@ -271,10 +300,13 @@ public class Ship extends Entity implements IShip
 	/**
 	 * A variable registering the thrust that a ship's thruster can exert in one second.
 	 */
-	private static double	thrustPerSecond	= 1.1E21;
-	
+	private static double	thrustPerSecond				= 1.1E21;
+
 	/**
 	 * TODO
 	 */
-	private static byte MAXIMUM_AMOUNT_OF_BULLETS = 3;
+	private static byte		MAXIMUM_AMOUNT_OF_BULLETS	= Byte.MAX_VALUE;
+
+	//TODO document
+	private static double	SPEED_OF_ACTIONS			= 2E-1;
 }
