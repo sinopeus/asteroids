@@ -186,7 +186,7 @@ public class Ship extends Entity implements IShip
 
 	protected boolean canHaveAsProgram (Program program)
 	{
-		return (program != null); //TODO more checking?
+		return true; //TODO more checking?
 	}
 
 	public void setProgram (Program program)
@@ -216,6 +216,7 @@ public class Ship extends Entity implements IShip
 		super.advance(dt);
 		//TODO check order of execution
 
+		if (getProgram() == null) return;
 		double gameTimeStart = getWorld().getGameTime();
 		int pastIterations = (int) (gameTimeStart / SPEED_OF_ACTIONS);
 		double now = gameTimeStart + dt;
@@ -305,7 +306,7 @@ public class Ship extends Entity implements IShip
 	/**
 	 * TODO
 	 */
-	private static byte		MAXIMUM_AMOUNT_OF_BULLETS	= Byte.MAX_VALUE;
+	private static byte		MAXIMUM_AMOUNT_OF_BULLETS	= 3;
 
 	//TODO document
 	private static double	SPEED_OF_ACTIONS			= 2E-1;

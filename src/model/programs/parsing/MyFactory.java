@@ -250,7 +250,7 @@ public class MyFactory implements ProgramFactory <Expression, Statement, Type>
 	}
 
 	@Override
-	public Statement createForeach (int line, int column, model.programs.parsing.ProgramFactory.ForeachType type, String variableName, Statement body)
+	public Statement createForeach (int line, int column, ProgramFactory.ForeachType type, String variableName, Statement body)
 	{
 		// TODO Auto-generated method stub
 		return null;

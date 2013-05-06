@@ -75,12 +75,12 @@ public class While extends Statement
 	public boolean execute ()//TODO check this, TEST IT
 	{
 		super.execute();
-		boolean actionOcurred = false;
+		boolean actionOccurred = false;
 		if (!checked) checkCondition();
 		if (resultOfCondition)
 		{
-			actionOcurred = getBody().execute();
-			if (actionOcurred) return true;
+			actionOccurred = getBody().execute();
+			if (actionOccurred) return true;
 			else
 			{
 				finishIteration();

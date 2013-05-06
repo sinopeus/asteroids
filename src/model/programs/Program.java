@@ -1,25 +1,28 @@
 package model.programs;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import model.programs.parsing.language.Type;
+import model.programs.parsing.language.expression.BooleanLiteral;
+import model.programs.parsing.language.expression.DoubleLiteral;
+import model.programs.parsing.language.expression.EntityLiteral;
+import model.programs.parsing.language.expression.Variable;
 import model.programs.parsing.language.statement.Statement;
 
 import org.antlr.runtime.RecognitionException;
 
 public class Program
 {
-	private int	currentIndex;
-
 	public Program (Map <String, Type> globals, Statement statement) throws RecognitionException
 	{
-		if (!canHaveAsGlobals(globals)) throw new RecognitionException();
-		if (!canHaveAsStatement(statement)) throw new RecognitionException(); //TODO correct exceptions?
+		setGlobals(globals);
+		setStatement(statement);
 	}
 
-	Map <String, Type>	globals;
+	ArrayList <Variable>	globals;
 
-	public Map <String, Type> getGlobals ()
+	public ArrayList <Variable> getGlobals ()
 	{
 		return globals;
 	}
@@ -32,7 +35,24 @@ public class Program
 	private void setGlobals (Map <String, Type> globals) throws RecognitionException
 	{
 		if (!canHaveAsGlobals(globals)) throw new RecognitionException();
-		this.globals = globals;
+		ArrayList <Variable> globalVariables = new ArrayList <Variable>();
+		int counter = 0;
+		for (String name : globals.keySet())
+		{
+			switch (globals.get(name))
+			{
+				case TYPE_DOUBLE:
+					globalVariables.add(new Variable <DoubleLiteral>(counter++, 0, name));
+					break;
+				case TYPE_BOOLEAN:
+					globalVariables.add(new Variable <BooleanLiteral>(counter++, 0, name));
+					break;
+				case TYPE_ENTITY:
+					globalVariables.add(new Variable <EntityLiteral>(counter++, 0, name));
+					break;
+			}
+		}
+		this.globals = globalVariables;
 	}
 
 	Statement	statement;
