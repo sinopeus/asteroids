@@ -8,7 +8,7 @@ public class Skip extends Action
 	}
 	
 	@Override
-	public boolean executeUntilAction ()
+	public boolean execute ()
 	{
 		//TODO just do nothing?
 		return true;

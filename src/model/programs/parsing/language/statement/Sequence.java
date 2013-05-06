@@ -29,7 +29,7 @@ public class Sequence extends Statement
 		this.sequence = sequence;
 	}
 	
-	public boolean executeUntilAction ()
+	public boolean execute ()
 	{
 		return false; //TODO
 	}

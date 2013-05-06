@@ -21,7 +21,7 @@ public class If extends Statement
 		return resultOfCondition;
 	}
 
-	boolean	checked;
+	private boolean	checked;
 
 	private boolean isChecked ()
 	{
@@ -30,7 +30,7 @@ public class If extends Statement
 
 	private void checkCondition ()
 	{
-		this.resultOfCondition = false; //TODO IMPORTANT SHIT
+		resultOfCondition = ((BooleanLiteral) (getCondition().evaluate())).getValue();
 		checked = true;
 	}
 
@@ -88,21 +88,11 @@ public class If extends Statement
 		this.then = otherwise;
 	}
 
-	@Override
-	public boolean executeUntilAction ()
-	{
-		super.executeUntilAction();
-		if (!checked) checkCondition();
-		boolean lastStatementWasAction = false;
-		lastStatementWasAction = resultOfCondition ? execute(getThenStatement()) : execute(getOtherwiseStatement());
-		return lastStatementWasAction;
-	}
-
 	private boolean execute (Statement statement)
 	{
 		if (!statement.isFinished())
 		{
-			boolean lastStatementWasAction = statement.executeUntilAction();
+			boolean lastStatementWasAction = statement.execute();
 			if (statement.isFinished()) finish();
 			return lastStatementWasAction;
 		} else
@@ -110,5 +100,13 @@ public class If extends Statement
 			finish();
 			return false; // TODO make this into an error?
 		}
+	}
+
+	@Override
+	public boolean execute ()
+	{
+		super.execute();
+		if (!checked) checkCondition();
+		return resultOfCondition ? execute(getThenStatement()) : execute(getOtherwiseStatement());
 	}
 }

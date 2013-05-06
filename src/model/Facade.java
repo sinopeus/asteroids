@@ -1,13 +1,25 @@
 package model;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 
 import main.CollisionListener;
+import model.programs.Program;
+import model.programs.parsing.MyFactory;
+import model.programs.parsing.ProgramParser;
+import model.programs.parsing.language.Type;
+import model.programs.parsing.language.expression.Expression;
+import model.programs.parsing.language.statement.Statement;
+
+import org.antlr.runtime.RecognitionException;
+
 import world.World;
 import world.entity.Asteroid;
 import world.entity.Bullet;
@@ -420,42 +432,70 @@ public class Facade implements IFacade
 	@Override
 	public ParseOutcome parseProgram (String text)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		MyFactory factory = new MyFactory();
+		ProgramParser <Expression, Statement, Type> parser = new ProgramParser <>(factory);
+		try
+		{
+			parser.parse(text);
+			List <String> errors = parser.getErrors();
+			if (!errors.isEmpty())
+			{
+				return ParseOutcome.failure(errors.get(0));
+			} else
+			{
+				return ParseOutcome.success(new Program(parser.getGlobals(), parser.getStatement()));
+			}
+		} catch (RecognitionException e)
+		{
+			return ParseOutcome.failure(e.getMessage());
+		}
 	}
 
 	@Override
 	public ParseOutcome loadProgramFromStream (InputStream stream) throws IOException
 	{
-		// TODO Auto-generated method stub
-		return null;
+		BufferedReader br = new BufferedReader(new InputStreamReader(stream));
+		StringBuilder sb = new StringBuilder();
+		String line;
+		while ( (line = br.readLine()) != null)
+			;
+		sb.append(line);
+		stream.close();
+		return parseProgram(sb.toString());
 	}
 
 	@Override
 	public ParseOutcome loadProgramFromUrl (URL url) throws IOException
 	{
-		// TODO Auto-generated method stub
-		return null;
+		BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
+		StringBuilder sb = new StringBuilder();
+		String line;
+		while ( (line = br.readLine()) != null)
+			;
+		sb.append(line);
+		br.close();
+		return parseProgram(sb.toString());
 	}
 
 	@Override
 	public boolean isTypeCheckingSupported ()
 	{
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public TypeCheckOutcome typeCheckProgram (Object program)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return TypeCheckOutcome.success();
 	}
 
 	@Override
 	public void setShipProgram (Object ship, Object program)
 	{
-		// TODO Auto-generated method stub
-
+		if (! (ship instanceof Ship)) throw new IllegalArgumentException("The given object is not a ship.");
+		if (! (program instanceof Program)) throw new IllegalArgumentException("The given object is not a program");
+		Ship s = (Ship) ship;
+		Program p = (Program) program;
+		s.setProgram(p);
 	}
 }

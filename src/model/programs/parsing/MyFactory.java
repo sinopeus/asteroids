@@ -42,7 +42,6 @@ import model.programs.parsing.language.statement.action.Turn;
 
 public class MyFactory implements ProgramFactory <Expression, Statement, Type>
 {
-
 	@Override
 	public Expression createDoubleLiteral (int line, int column, double d)
 	{

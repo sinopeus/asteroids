@@ -11,7 +11,7 @@ public abstract class Action extends Statement
 	}
 
 	@Override
-	public boolean executeUntilAction (){
+	public boolean execute (){
 		return true;
 	}
 }

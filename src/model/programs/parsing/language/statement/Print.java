@@ -47,9 +47,9 @@ public class Print extends Statement
 	}
 
 	@Override
-	public boolean executeUntilAction ()
+	public boolean execute ()
 	{
-		super.executeUntilAction();
+		super.execute();
 		setText(getTextExpression().evaluate().toString());
 		System.out.println(getText());
 		finish();

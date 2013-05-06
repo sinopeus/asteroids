@@ -1,44 +1,61 @@
 package model.programs;
 
-import java.util.ArrayList;
+import java.util.Map;
 
+import model.programs.parsing.language.Type;
 import model.programs.parsing.language.statement.Statement;
 
-public class Program extends ArrayList <Statement>
+import org.antlr.runtime.RecognitionException;
+
+public class Program
 {
 	private int	currentIndex;
 
-	private int getCurrentIndex ()
+	public Program (Map <String, Type> globals, Statement statement) throws RecognitionException
 	{
-		return currentIndex;
+		if (!canHaveAsGlobals(globals)) throw new RecognitionException();
+		if (!canHaveAsStatement(statement)) throw new RecognitionException(); //TODO correct exceptions?
 	}
 
-	private boolean canHaveAsCurrentIndex (int index)
+	Map <String, Type>	globals;
+
+	public Map <String, Type> getGlobals ()
 	{
-		return ( (index >= 0) && (index < this.size()));
+		return globals;
 	}
 
-	private void setCurrentIndex (int currentIndex)
+	protected boolean canHaveAsGlobals (Map <String, Type> globals)
 	{
-		if (!canHaveAsCurrentIndex(currentIndex)) throw new IllegalArgumentException("invalid current index."); //TODO change message and/or style?
-		this.currentIndex = currentIndex;
+		return (globals != null); // TODO more checking?
 	}
 
-	private void incrementCurrentIndex ()
+	private void setGlobals (Map <String, Type> globals) throws RecognitionException
 	{
-		setCurrentIndex(getCurrentIndex() + 1);
+		if (!canHaveAsGlobals(globals)) throw new RecognitionException();
+		this.globals = globals;
 	}
 
-	private Statement getCurrentStatement ()
+	Statement	statement;
+
+	public Statement getStatement ()
 	{
-		return this.get(getCurrentIndex());
+		return statement;
+	}
+
+	protected boolean canHaveAsStatement (Statement statement)
+	{
+		return (statement != null); // TODO more checking?
+	}
+
+	public void setStatement (Statement statement) throws RecognitionException
+	{
+		if (!canHaveAsStatement(statement)) throw new RecognitionException();
+		this.statement = statement;
 	}
 
 	public void executeUntilAfterNextAction ()
 	{
-		while (!getCurrentStatement().isFinished())
-			if (!getCurrentStatement().executeUntilAction()) break;
-			else incrementCurrentIndex();
-
+		while (!getStatement().isFinished())
+			if (getStatement().execute()) break;
 	}
 }

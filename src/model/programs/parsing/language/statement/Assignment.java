@@ -55,9 +55,9 @@ public class Assignment extends Statement
 	}
 
 	@Override
-	public boolean executeUntilAction ()
+	public boolean execute ()
 	{
-		super.executeUntilAction();
+		super.execute();
 		if (!isTypeSafe()) throw new IllegalArgumentException("Type error."); //TODO other kind of exception?
 		getVariable().setValue(getValue().evaluate());
 		finish();
