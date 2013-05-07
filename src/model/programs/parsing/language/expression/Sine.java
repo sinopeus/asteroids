@@ -12,4 +12,10 @@ public class Sine extends FirstOrderExpressionOfNumberToNumber
 	{
 		return new DoubleLiteral(getLine(), getColumn(), Math.sin(argument.getValue()));
 	}
+
+	@Override
+	public String toString ()
+	{
+		return "Sine [argument=" + argument + "]";
+	}
 }

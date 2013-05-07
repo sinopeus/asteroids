@@ -221,8 +221,10 @@ public class Ship extends Entity implements IShip
 		int pastIterations = (int) (gameTimeStart / SPEED_OF_ACTIONS);
 		double now = gameTimeStart + dt;
 		int requiredIterations = (int) (now / SPEED_OF_ACTIONS);
-		for (int i = 0; i < requiredIterations - pastIterations; i++)
+		for (int i = 0; i < requiredIterations - pastIterations; i++){
 			getProgram().executeUntilAfterNextAction();
+		System.out.println(getProgram());
+		}
 	}
 
 	/**

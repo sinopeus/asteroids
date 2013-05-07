@@ -54,6 +54,11 @@ public abstract class Statement
 		return finished;
 	}
 
+	public void unfinish ()
+	{
+		this.finished = false;
+	}
+
 	protected void finish ()
 	{
 		this.finished = true;

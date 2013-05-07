@@ -17,9 +17,10 @@ public class Fire extends Action
 		finish();
 		return true;
 	}
+
 	@Override
 	public String toString ()
 	{
-		return "Fire";
+		return "Fire [isFinished()=" + isFinished() + "]";
 	}
 }

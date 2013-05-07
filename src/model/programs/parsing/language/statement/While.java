@@ -70,17 +70,20 @@ public class While extends Statement
 
 	private void finishIteration ()
 	{
+		getBody().unfinish();
 		checked = false;
 	}
 
 	public boolean execute (Ship ship)//TODO check this, TEST IT
 	{
+		System.out.println(getBody());
 		super.execute(ship);
-		boolean actionOccurred = false;
 		if (!checked) checkCondition(ship);
+		System.out.println(resultOfCondition);
 		if (resultOfCondition)
 		{
-			actionOccurred = getBody().execute(ship);
+			boolean actionOccurred = getBody().execute(ship);
+			System.out.println(actionOccurred);
 			if (actionOccurred) return true;
 			else
 			{

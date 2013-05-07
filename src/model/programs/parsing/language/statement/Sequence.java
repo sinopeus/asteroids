@@ -61,7 +61,6 @@ public class Sequence extends Statement
 
 	private Statement getCurrentStatement ()
 	{
-		if (getSequence().isEmpty()) return null;
 		return getSequence().get(getSelectedIndex());
 	}
 
@@ -69,7 +68,7 @@ public class Sequence extends Statement
 	public boolean execute (Ship ship)
 	{
 		super.execute(ship);
-		if (getCurrentStatement() == null)
+		if (getSequence().isEmpty())
 		{
 			finish();
 			return false;
@@ -82,12 +81,13 @@ public class Sequence extends Statement
 				return true;
 			} else incrementIndex();
 		}
+		finish();
 		return false;
 	}
 
 	@Override
 	public String toString ()
 	{
-		return "Sequence [sequence=" + sequence + "]";
+		return "Sequence [sequence=" + sequence + ", selectedIndex=" + selectedIndex + ", isFinished()=" + isFinished() + "]";
 	}
 }
