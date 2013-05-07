@@ -40,6 +40,7 @@ public class Sequence extends Statement
 
 	protected boolean canHaveAsSelectedIndex (int selectedIndex)
 	{
+		if(getSequence().size()==0) return true;
 		return ( (selectedIndex >= 0) && (selectedIndex < getSequence().size()));
 	}
 
@@ -65,6 +66,30 @@ public class Sequence extends Statement
 	}
 
 	@Override
+	protected void finish ()
+	{
+		for (Statement s : getSequence())
+			s.finish();
+		super.finish();
+	}
+
+	@Override
+	public void unfinish ()
+	{
+		for (Statement s : getSequence())
+			s.unfinish();
+		super.unfinish();
+		setSelectedIndex(0);
+	}
+
+	private boolean containsAnyUnfinishedStatements ()
+	{
+		for (Statement s : getSequence())
+			if (!s.isFinished()) return true;
+		return false;
+	}
+
+	@Override
 	public boolean execute (Ship ship)
 	{
 		super.execute(ship);
@@ -73,13 +98,21 @@ public class Sequence extends Statement
 			finish();
 			return false;
 		}
-		while (!getCurrentStatement().isFinished())
+		while (!getCurrentStatement().isFinished() && !this.isFinished())
 		{
 			if (getCurrentStatement().execute(ship))
 			{
-				if (getCurrentStatement().isFinished()) incrementIndex();
+				if (getCurrentStatement().isFinished())
+				{
+					incrementIndex();
+					if (this.isFinished()) return false;
+				}
 				return true;
-			} else incrementIndex();
+			} else
+			{
+				incrementIndex();
+				if (this.isFinished()) return false;
+			}
 		}
 		finish();
 		return false;

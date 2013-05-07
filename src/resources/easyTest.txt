@@ -1,1 +1,5 @@
-while(true){fire;}
+thrust;
+while(true){
+fire;
+turn 0.1;
+}

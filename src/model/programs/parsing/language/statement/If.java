@@ -89,6 +89,14 @@ public class If extends Statement
 		this.then = otherwise;
 	}
 
+	@Override
+	public void unfinish ()
+	{
+		getThenStatement().unfinish();
+		getOtherwiseStatement().unfinish();
+		super.unfinish();
+	}
+	
 	private boolean execute (Ship ship, Statement statement)
 	{
 		if (!statement.isFinished())

@@ -223,7 +223,6 @@ public class Ship extends Entity implements IShip
 		int requiredIterations = (int) (now / SPEED_OF_ACTIONS);
 		for (int i = 0; i < requiredIterations - pastIterations; i++){
 			getProgram().executeUntilAfterNextAction();
-		System.out.println(getProgram());
 		}
 	}
 

@@ -12,7 +12,9 @@ public class ThrustOff extends Action
 	@Override
 	public boolean execute (Ship ship)
 	{
+		super.execute(ship);
 		ship.getThruster().deactivate();
+		finish();
 		return true;
 	}
 }

@@ -9,6 +9,7 @@ public class While extends Statement
 	public While (int line, int column, Expression condition, Statement body)
 	{
 		super(line, column);
+		checked = false;
 		setCondition(condition);
 		setBody(body);
 	}
@@ -68,29 +69,35 @@ public class While extends Statement
 		checked = true;
 	}
 
-	private void finishIteration ()
+	private void finishIteration (Ship ship)
 	{
 		getBody().unfinish();
-		checked = false;
+		checkCondition(ship);
+	}
+
+	@Override
+	public void unfinish ()
+	{
+		getBody().unfinish();
+		super.unfinish();
 	}
 
 	public boolean execute (Ship ship)//TODO check this, TEST IT
 	{
-		System.out.println(getBody());
 		super.execute(ship);
 		if (!checked) checkCondition(ship);
-		System.out.println(resultOfCondition);
-		if (resultOfCondition)
+		while (getResultOfCondition())
 		{
-			boolean actionOccurred = getBody().execute(ship);
-			System.out.println(actionOccurred);
-			if (actionOccurred) return true;
-			else
+			if (getBody().isFinished())
 			{
-				finishIteration();
-				return execute(ship);
+				finishIteration(ship);
+				continue;
 			}
-		} else finish();
+			if (getBody().execute(ship)) return true;
+			else finishIteration(ship);
+		}
+		finish();
 		return false;
+
 	}
 }

@@ -1,6 +1,12 @@
 Utilities
 main
 model
+model.programs
+model.programs.parsing
+model.programs.parsing.language
+model.programs.parsing.language.expression
+model.programs.parsing.language.statement
+model.programs.parsing.language.statement.action
 world
 world.entity
 world.entity.ship

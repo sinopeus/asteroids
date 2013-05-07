@@ -12,6 +12,8 @@ public class Skip extends Action
 	@Override
 	public boolean execute (Ship ship)
 	{
+		super.execute(ship);
+		finish();
 		return true;
 	}
 }
