@@ -2,6 +2,7 @@ package model.programs.parsing.language.statement;
 
 import model.programs.parsing.language.expression.BooleanLiteral;
 import model.programs.parsing.language.expression.Expression;
+import world.entity.ship.Ship;
 
 public class While extends Statement
 {
@@ -61,9 +62,9 @@ public class While extends Statement
 		return checked;
 	}
 
-	private void checkCondition ()
+	private void checkCondition (Ship ship)
 	{
-		resultOfCondition = ((BooleanLiteral) (getCondition().evaluate())).getValue();
+		resultOfCondition = ((BooleanLiteral) (getCondition().evaluate(ship))).getValue();
 		checked = true;
 	}
 
@@ -72,19 +73,19 @@ public class While extends Statement
 		checked = false;
 	}
 
-	public boolean execute ()//TODO check this, TEST IT
+	public boolean execute (Ship ship)//TODO check this, TEST IT
 	{
-		super.execute();
+		super.execute(ship);
 		boolean actionOccurred = false;
-		if (!checked) checkCondition();
+		if (!checked) checkCondition(ship);
 		if (resultOfCondition)
 		{
-			actionOccurred = getBody().execute();
+			actionOccurred = getBody().execute(ship);
 			if (actionOccurred) return true;
 			else
 			{
 				finishIteration();
-				return execute();
+				return execute(ship);
 			}
 		} else finish();
 		return false;

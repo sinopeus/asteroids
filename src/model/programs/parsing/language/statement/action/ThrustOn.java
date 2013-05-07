@@ -1,5 +1,7 @@
 package model.programs.parsing.language.statement.action;
 
+import world.entity.ship.Ship;
+
 public class ThrustOn extends Action
 {
 	public ThrustOn (int line, int column)
@@ -8,9 +10,9 @@ public class ThrustOn extends Action
 	}
 	
 	@Override
-	public boolean execute ()
+	public boolean execute (Ship ship)
 	{
-		//TODO
+		ship.getThruster().activate();
 		return true;
 	}
 }

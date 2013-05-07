@@ -1,5 +1,7 @@
 package model.programs.parsing.language.statement;
 
+import world.entity.ship.Ship;
+
 public abstract class Statement
 {
 	public Statement (int line, int column)
@@ -54,14 +56,14 @@ public abstract class Statement
 
 	protected void finish ()
 	{
-		this.finished = false;
+		this.finished = true;
 	}
 
 	/**
 	 * 
 	 * @return True if and only if the last executed statement was an action.
 	 */
-	public boolean execute ()
+	public boolean execute (Ship ship)
 	{
 		if (isFinished()) throw new IllegalStateException("This statement is already finished.");
 		return false;

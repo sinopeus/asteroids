@@ -1,5 +1,7 @@
 package model.programs.parsing.language.expression;
 
+import world.entity.ship.Ship;
+
 public abstract class ConstantExpression <T> extends Expression
 {
 	public ConstantExpression (int line, int column, T value)
@@ -27,7 +29,7 @@ public abstract class ConstantExpression <T> extends Expression
 	}
 
 	@Override
-	public ConstantExpression <T> evaluate ()
+	public ConstantExpression <T> evaluate (Ship ship)
 	{
 		return this;
 	}
@@ -35,6 +37,6 @@ public abstract class ConstantExpression <T> extends Expression
 	@Override
 	public String toString ()
 	{
-		return getValue().toString();
+		return "ConstantExpression [value=" + value + "]";
 	}
 }

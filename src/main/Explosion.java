@@ -11,7 +11,7 @@ public class Explosion implements Drawable
 	private double				timeLeft			= INITIAL_TIME_LEFT;
 	private int					x, y;
 
-	private static final Image	explosions			= Toolkit.getDefaultToolkit().createImage(Explosion.class.getClassLoader().getResource("asteroids/resources/explosions.png"));
+	private static final Image	explosions			= Toolkit.getDefaultToolkit().createImage(Explosion.class.getClassLoader().getResource("resources/explosions.png"));
 
 	public Explosion (double x, double y)
 	{

@@ -13,4 +13,10 @@ public class And extends SecondOrderExpressionOfBooleansToBoolean
 		return new BooleanLiteral(getLine(), getColumn(), (first.getValue() && second.getValue()));
 	}
 
+	@Override
+	public String toString ()
+	{
+		return "And [firstArgument=" + firstArgument + ", secondArgument=" + secondArgument + "]";
+	}
+
 }

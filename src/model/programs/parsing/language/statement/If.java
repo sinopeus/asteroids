@@ -2,6 +2,7 @@ package model.programs.parsing.language.statement;
 
 import model.programs.parsing.language.expression.BooleanLiteral;
 import model.programs.parsing.language.expression.Expression;
+import world.entity.ship.Ship;
 
 public class If extends Statement
 {
@@ -28,9 +29,9 @@ public class If extends Statement
 		return checked;
 	}
 
-	private void checkCondition ()
+	private void checkCondition (Ship ship)
 	{
-		resultOfCondition = ((BooleanLiteral) (getCondition().evaluate())).getValue();
+		resultOfCondition = ((BooleanLiteral) (getCondition().evaluate(ship))).getValue();
 		checked = true;
 	}
 
@@ -43,7 +44,7 @@ public class If extends Statement
 
 	public boolean canHaveAsCondition (Expression condition)
 	{
-		return ( (condition != null) && condition.evaluate() instanceof BooleanLiteral);
+		return (condition != null);//TODO more checking?
 	}
 
 	public void setCondition (Expression condition)
@@ -88,11 +89,11 @@ public class If extends Statement
 		this.then = otherwise;
 	}
 
-	private boolean execute (Statement statement)
+	private boolean execute (Ship ship, Statement statement)
 	{
 		if (!statement.isFinished())
 		{
-			boolean lastStatementWasAction = statement.execute();
+			boolean lastStatementWasAction = statement.execute(ship);
 			if (statement.isFinished()) finish();
 			return lastStatementWasAction;
 		} else
@@ -103,10 +104,10 @@ public class If extends Statement
 	}
 
 	@Override
-	public boolean execute ()
+	public boolean execute (Ship ship)
 	{
-		super.execute();
-		if (!checked) checkCondition();
-		return resultOfCondition ? execute(getThenStatement()) : execute(getOtherwiseStatement());
+		super.execute(ship);
+		if (!checked) checkCondition(ship);
+		return resultOfCondition ? execute(ship, getThenStatement()) : execute(ship, getOtherwiseStatement());
 	}
 }

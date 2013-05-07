@@ -1,5 +1,7 @@
 package model.programs.parsing.language.statement.action;
 
+import world.entity.ship.Ship;
+
 public class Fire extends Action
 {
 	public Fire (int line, int column)
@@ -8,9 +10,16 @@ public class Fire extends Action
 	}
 
 	@Override
-	public boolean execute ()
+	public boolean execute (Ship ship)
 	{
-		//TODO
+		super.execute(ship);
+		ship.fire();
+		finish();
 		return true;
+	}
+	@Override
+	public String toString ()
+	{
+		return "Fire";
 	}
 }

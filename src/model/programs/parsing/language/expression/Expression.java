@@ -1,5 +1,7 @@
 package model.programs.parsing.language.expression;
 
+import world.entity.ship.Ship;
+
 public abstract class Expression
 {
 	public Expression (int line, int column)
@@ -44,10 +46,10 @@ public abstract class Expression
 		this.column = column;
 	}
 
-	public Class getType ()
-	{
-		return evaluate().getClass();
-	}
+//	public Class getType ()
+//	{
+//		return evaluate().getClass();
+//	}
 
-	public abstract ConstantExpression evaluate (); //TODO change from object to something useful?
+	public abstract ConstantExpression evaluate (Ship ship); //TODO change from object to something useful?
 }

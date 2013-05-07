@@ -458,8 +458,7 @@ public class Facade implements IFacade
 		StringBuilder sb = new StringBuilder();
 		String line;
 		while ( (line = br.readLine()) != null)
-			;
-		sb.append(line);
+			sb.append(line);
 		stream.close();
 		return parseProgram(sb.toString());
 	}
@@ -471,8 +470,7 @@ public class Facade implements IFacade
 		StringBuilder sb = new StringBuilder();
 		String line;
 		while ( (line = br.readLine()) != null)
-			;
-		sb.append(line);
+			sb.append(line);
 		br.close();
 		return parseProgram(sb.toString());
 	}
@@ -497,5 +495,7 @@ public class Facade implements IFacade
 		Ship s = (Ship) ship;
 		Program p = (Program) program;
 		s.setProgram(p);
+		p.setOwner(s);
+		System.out.println(p);
 	}
 }

@@ -6,6 +6,7 @@ import model.programs.parsing.language.Type;
 import model.programs.parsing.language.expression.Addition;
 import model.programs.parsing.language.expression.And;
 import model.programs.parsing.language.expression.BooleanLiteral;
+import model.programs.parsing.language.expression.ConstantExpression;
 import model.programs.parsing.language.expression.Cosine;
 import model.programs.parsing.language.expression.Division;
 import model.programs.parsing.language.expression.DoubleLiteral;
@@ -13,6 +14,7 @@ import model.programs.parsing.language.expression.Equals;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.GE;
 import model.programs.parsing.language.expression.GT;
+import model.programs.parsing.language.expression.GetDirection;
 import model.programs.parsing.language.expression.GetRadius;
 import model.programs.parsing.language.expression.GetVX;
 import model.programs.parsing.language.expression.GetVY;
@@ -25,15 +27,18 @@ import model.programs.parsing.language.expression.Not;
 import model.programs.parsing.language.expression.NotEquals;
 import model.programs.parsing.language.expression.Null;
 import model.programs.parsing.language.expression.Or;
+import model.programs.parsing.language.expression.Self;
 import model.programs.parsing.language.expression.Sine;
 import model.programs.parsing.language.expression.SquareRoot;
 import model.programs.parsing.language.expression.Substraction;
 import model.programs.parsing.language.expression.Variable;
 import model.programs.parsing.language.statement.Assignment;
+import model.programs.parsing.language.statement.ForEach;
 import model.programs.parsing.language.statement.If;
 import model.programs.parsing.language.statement.Print;
 import model.programs.parsing.language.statement.Sequence;
 import model.programs.parsing.language.statement.Statement;
+import model.programs.parsing.language.statement.While;
 import model.programs.parsing.language.statement.action.Fire;
 import model.programs.parsing.language.statement.action.Skip;
 import model.programs.parsing.language.statement.action.ThrustOff;
@@ -81,7 +86,7 @@ public class MyFactory implements ProgramFactory <Expression, Statement, Type>
 	@Override
 	public Expression createSelf (int line, int column)
 	{
-		return null;//TODO, not sure about the argument
+		return new Self(line, column);
 	}
 
 	@Override
@@ -189,7 +194,7 @@ public class MyFactory implements ProgramFactory <Expression, Statement, Type>
 	@Override
 	public Expression createGetDirection (int line, int column)
 	{
-		return null;//TODO, huh?
+		return new GetDirection(line, column);
 	}
 
 	@Override
@@ -225,7 +230,7 @@ public class MyFactory implements ProgramFactory <Expression, Statement, Type>
 	@Override
 	public Statement createTurn (int line, int column, Expression angle)
 	{
-		return new Turn(line, column);
+		return new Turn(line, column, angle);
 	}
 
 	@Override
@@ -245,15 +250,13 @@ public class MyFactory implements ProgramFactory <Expression, Statement, Type>
 	@Override
 	public Statement createWhile (int line, int column, Expression condition, Statement body)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return new While(line, column, condition, body);
 	}
 
 	@Override
 	public Statement createForeach (int line, int column, ProgramFactory.ForeachType type, String variableName, Statement body)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return new ForEach(line, column, type, variableName, body);
 	}
 
 	@Override

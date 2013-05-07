@@ -12,4 +12,10 @@ public class Cosine extends FirstOrderExpressionOfNumberToNumber
 	{
 		return new DoubleLiteral(getLine(), getColumn(), (Math.cos(argument.getValue())));
 	}
+
+	@Override
+	public String toString ()
+	{
+		return "Cosine [argument=" + argument + "]";
+	}
 }

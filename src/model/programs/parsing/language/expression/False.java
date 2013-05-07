@@ -1,5 +1,7 @@
 package model.programs.parsing.language.expression;
 
+import world.entity.ship.Ship;
+
 public class False extends ConstantExpression <Boolean>
 {
 	public False (int line, int column)
@@ -8,7 +10,7 @@ public class False extends ConstantExpression <Boolean>
 	}
 
 	@Override
-	public BooleanLiteral evaluate ()
+	public BooleanLiteral evaluate (Ship ship)
 	{
 		return new BooleanLiteral(getLine(), getColumn(), false);
 	}

@@ -7,4 +7,10 @@ public class BooleanLiteral extends ConstantExpression<Boolean>
 	{
 		super(line, column,value);
 	}
+
+	@Override
+	public String toString ()
+	{
+		return "BooleanLiteral [value=" + value + "]";
+	}
 }

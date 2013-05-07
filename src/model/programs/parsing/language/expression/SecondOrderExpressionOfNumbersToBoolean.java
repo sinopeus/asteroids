@@ -1,5 +1,7 @@
 package model.programs.parsing.language.expression;
 
+import world.entity.ship.Ship;
+
 public abstract class SecondOrderExpressionOfNumbersToBoolean extends SecondOrderExpression
 {
 
@@ -12,14 +14,15 @@ public abstract class SecondOrderExpressionOfNumbersToBoolean extends SecondOrde
 	protected boolean canHaveAsArgument (Expression argument)
 	{
 		if (!super.canHaveAsArgument(argument)) return false;
-		return argument.evaluate() instanceof DoubleLiteral;
+		//		return argument.evaluate() instanceof DoubleLiteral; //TODO
+		return true;
 	}
 
 	protected abstract BooleanLiteral function (DoubleLiteral first, DoubleLiteral second);
 
 	@Override
-	public BooleanLiteral evaluate ()
+	public BooleanLiteral evaluate (Ship ship)
 	{
-		return function((DoubleLiteral) getFirstArgument().evaluate(), (DoubleLiteral) getSecondArgument().evaluate());
+		return function((DoubleLiteral) getFirstArgument().evaluate(ship), (DoubleLiteral) getSecondArgument().evaluate(ship));
 	}
 }

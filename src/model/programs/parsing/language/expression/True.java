@@ -1,6 +1,8 @@
 package model.programs.parsing.language.expression;
 
-public class True extends ConstantExpression<Boolean>
+import world.entity.ship.Ship;
+
+public class True extends ConstantExpression <Boolean>
 {
 	public True (int line, int column)
 	{
@@ -8,8 +10,14 @@ public class True extends ConstantExpression<Boolean>
 	}
 
 	@Override
-	public BooleanLiteral evaluate ()
+	public BooleanLiteral evaluate (Ship ship)
 	{
 		return new BooleanLiteral(getLine(), getColumn(), true);
+	}
+
+	@Override
+	public String toString ()
+	{
+		return "true";
 	}
 }

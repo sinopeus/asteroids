@@ -1,6 +1,8 @@
 package model.programs.parsing.language.expression;
 
-public class Variable <T extends ConstantExpression> extends Expression
+import world.entity.ship.Ship;
+
+public class Variable <T extends ConstantExpression <U>, U> extends Expression
 {
 
 	public Variable (int line, int column, String name)
@@ -29,9 +31,9 @@ public class Variable <T extends ConstantExpression> extends Expression
 
 	T	value;
 
-	private T getValue ()
+	private U getValue ()
 	{
-		return value;
+		return value.getValue();
 	}
 
 	protected boolean canHaveAsValue (T value)
@@ -51,9 +53,14 @@ public class Variable <T extends ConstantExpression> extends Expression
 	}
 
 	@Override
-	public ConstantExpression evaluate ()
+	public ConstantExpression evaluate (Ship ship)
 	{
-		return getValue();
+		return value;
 	}
 
+	@Override
+	public String toString ()
+	{
+		return "Variable [name=" + name + ", value=" + value + "]";
+	}
 }

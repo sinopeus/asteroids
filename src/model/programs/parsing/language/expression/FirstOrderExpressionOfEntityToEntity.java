@@ -1,5 +1,7 @@
 package model.programs.parsing.language.expression;
 
+import world.entity.ship.Ship;
+
 public abstract class FirstOrderExpressionOfEntityToEntity extends FirstOrderExpression
 {
 	public FirstOrderExpressionOfEntityToEntity (int line, int column, Expression argument)
@@ -11,14 +13,15 @@ public abstract class FirstOrderExpressionOfEntityToEntity extends FirstOrderExp
 	protected boolean canHaveAsArgument (Expression argument)
 	{
 		if (!super.canHaveAsArgument(argument)) return false;
-		return argument.evaluate() instanceof EntityLiteral;
+		//		return argument.evaluate() instanceof EntityLiteral; //TODO
+		return true;
 	}
 
 	protected abstract EntityLiteral function (EntityLiteral argument);
 
 	@Override
-	public EntityLiteral evaluate ()
+	public EntityLiteral evaluate (Ship ship)
 	{
-		return function((EntityLiteral) getArgument().evaluate());
+		return function((EntityLiteral) getArgument().evaluate(ship));
 	}
 }

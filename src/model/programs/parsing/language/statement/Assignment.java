@@ -1,8 +1,8 @@
 package model.programs.parsing.language.statement;
 
-import model.programs.parsing.language.expression.ConstantExpression;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.Variable;
+import world.entity.ship.Ship;
 
 public class Assignment extends Statement
 {
@@ -49,18 +49,24 @@ public class Assignment extends Statement
 		this.value = value;
 	}
 
-	protected boolean isTypeSafe ()
+	//	protected boolean isTypeSafe ()
+	//	{
+	//		return (getVariable().getType() == getValue().getType()); //TODO check whether this works.
+	//	}
+
+	@Override
+	public boolean execute (Ship ship)
 	{
-		return (getVariable().getType() == getValue().getType()); //TODO check whether this works.
+		super.execute(ship);
+		//		if (!isTypeSafe()) throw new IllegalArgumentException("Type error."); //TODO other kind of exception?
+		getVariable().setValue(getValue().evaluate(ship));
+		finish();
+		return false;
 	}
 
 	@Override
-	public boolean execute ()
+	public String toString ()
 	{
-		super.execute();
-		if (!isTypeSafe()) throw new IllegalArgumentException("Type error."); //TODO other kind of exception?
-		getVariable().setValue(getValue().evaluate());
-		finish();
-		return false;
+		return "Assignment [variable=" + variable + ", value=" + value + "]";
 	}
 }

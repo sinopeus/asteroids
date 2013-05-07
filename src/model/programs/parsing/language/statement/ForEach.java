@@ -16,23 +16,23 @@ public class ForEach extends Statement
 	public ForEach (int line, int column, ProgramFactory.ForeachType type, String variableName, Statement body)
 	{
 		super(line, column);
-		setVariable(new Variable <EntityLiteral>(line, column, variableName));
+		setVariable(new Variable <EntityLiteral,Entity>(line, column, variableName));
 		setBody(body);
 	}
 
-	Variable <EntityLiteral>	variable;
+	Variable <EntityLiteral,Entity>	variable;
 
-	public Variable <EntityLiteral> getVariable ()
+	public Variable <EntityLiteral,Entity> getVariable ()
 	{
 		return variable;
 	}
 
-	protected boolean canHaveAsVariable (Variable <EntityLiteral> variable)
+	protected boolean canHaveAsVariable (Variable <EntityLiteral,Entity> variable)
 	{
 		return (variable != null); //TODO more checking.
 	}
 
-	private void setVariable (Variable <EntityLiteral> variable)
+	private void setVariable (Variable <EntityLiteral,Entity> variable)
 	{
 		if (!canHaveAsVariable(variable)) throw new IllegalArgumentException("Invalid variable provided for foreach statement.");//text & type
 		this.variable = variable;

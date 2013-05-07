@@ -254,7 +254,10 @@ public class World extends ArrayList <Entity>
 	 */
 	private void advanceAll (double dt)
 	{
-		for (Entity e : this)
+		ArrayList<Entity> temp = new ArrayList<Entity>(this.numberOfEntities()*2 +1);
+		for(Entity e : this)
+			temp.add(e);
+		for (Entity e : temp)
 			e.advance(dt);
 		advandeGameTime(dt);//TODO change doc
 	}
