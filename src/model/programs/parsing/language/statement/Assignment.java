@@ -58,7 +58,8 @@ public class Assignment extends Statement
 	public boolean execute (Ship ship)
 	{
 		super.execute(ship);
-		//		if (!isTypeSafe()) throw new IllegalArgumentException("Type error."); //TODO other kind of exception?
+		System.out.println(getVariable());
+		System.out.println(getValue());
 		getVariable().setValue(getValue().evaluate(ship));
 		finish();
 		return false;

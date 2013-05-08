@@ -105,6 +105,6 @@ public class ForEach extends Statement
 
 	public boolean execute ()
 	{
-		return false;
+		return false;//TODO important shit.
 	}
 }
