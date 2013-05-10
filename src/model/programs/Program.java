@@ -5,7 +5,6 @@ import java.util.Map;
 
 import model.programs.parsing.language.Type;
 import model.programs.parsing.language.expression.BooleanLiteral;
-import model.programs.parsing.language.expression.BooleanVariable;
 import model.programs.parsing.language.expression.DoubleLiteral;
 import model.programs.parsing.language.expression.EntityLiteral;
 import model.programs.parsing.language.expression.Variable;
@@ -49,12 +48,12 @@ public class Program
 					globalVariables.put(name, new Variable <DoubleLiteral, Double>(counter, 0, name));
 					break;
 				case TYPE_BOOLEAN:
-					globalVariables.put(name, new BooleanVariable(counter, 0, name));
+					globalVariables.put(name, new Variable <BooleanLiteral, Boolean>(counter, 0, name));
 					break;
 				case TYPE_ENTITY:
 					globalVariables.put(name, new Variable <EntityLiteral, Entity>(counter, 0, name));
 					break;
-					default:
+				default:
 					break;
 			}
 			counter++;

@@ -1,12 +1,5 @@
 thrust;
 while(true){
 fire;
-turn 0.5;
-print getx self;
-print gety self;
-print getvx self;
-print getvy self;
-print true && true;
-print false || false;
-print (((5 * 6) + 4) / 2);
+turn 0.2;
 }
