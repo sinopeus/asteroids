@@ -1,5 +1,7 @@
 package model.programs.parsing.language.expression;
 
+import model.programs.Program;
+
 public abstract class SecondOrderExpression extends Expression
 {
 	public SecondOrderExpression (int line, int column, Expression firstArgument, Expression secondArgument)
@@ -38,5 +40,13 @@ public abstract class SecondOrderExpression extends Expression
 	protected boolean canHaveAsArgument (Expression argument)
 	{
 		return argument != null;
+	}
+	
+	@Override
+	public void setParrentProgram (Program parrentProgram)
+	{
+		super.setParrentProgram(parrentProgram);
+		getFirstArgument().setParrentProgram(parrentProgram);
+		getSecondArgument().setParrentProgram(parrentProgram);
 	}
 }

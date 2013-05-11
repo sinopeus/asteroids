@@ -21,8 +21,8 @@ public abstract class SecondOrderExpressionOfBooleansToBoolean extends SecondOrd
 	protected abstract BooleanLiteral function (BooleanLiteral first, BooleanLiteral second);
 
 	@Override
-	public BooleanLiteral evaluate (Ship ship)
+	public BooleanLiteral evaluate ()
 	{
-		return function((BooleanLiteral) getFirstArgument().evaluate(ship), (BooleanLiteral) getSecondArgument().evaluate(ship));
+		return function((BooleanLiteral) getFirstArgument().evaluate(), (BooleanLiteral) getSecondArgument().evaluate());
 	}
 }

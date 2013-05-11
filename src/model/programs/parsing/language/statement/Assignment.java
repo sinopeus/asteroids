@@ -1,5 +1,6 @@
 package model.programs.parsing.language.statement;
 
+import model.programs.Program;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.Variable;
 import world.entity.ship.Ship;
@@ -48,19 +49,20 @@ public class Assignment extends Statement
 		if (!canHaveAsValue(value)) throw new IllegalArgumentException("Invalid value provided for assignment");
 		this.value = value;
 	}
-
-	//	protected boolean isTypeSafe ()
-	//	{
-	//		return (getVariable().getType() == getValue().getType()); //TODO check whether this works.
-	//	}
+	
+	@Override
+	public void setParrentProgram (Program parrentProgram)
+	{
+		super.setParrentProgram(parrentProgram);
+		getVariable().setParrentProgram(parrentProgram);
+		getValue().setParrentProgram(parrentProgram);
+	}
 
 	@Override
-	public boolean execute (Ship ship)
+	public boolean execute ()
 	{
-		super.execute(ship);
-		System.out.println(getVariable());
-		System.out.println(getValue());
-		getVariable().setValue(getValue().evaluate(ship));
+		super.execute();
+		getParrentProgram().setVariableValue(getVariable().getName(), getValue().evaluate());
 		finish();
 		return false;
 	}

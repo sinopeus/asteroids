@@ -12,8 +12,8 @@ public class Self extends ConstantExpression <Entity>
 	}
 	
 	@Override
-	public ConstantExpression <Entity> evaluate (Ship ship)
+	public ConstantExpression <Entity> evaluate ()
 	{
-		return new EntityLiteral(getLine(),getColumn(), ship);
+		return new EntityLiteral(getLine(),getColumn(), getOwnerShip());
 	}
 }

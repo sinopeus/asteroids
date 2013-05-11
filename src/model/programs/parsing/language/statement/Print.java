@@ -1,5 +1,6 @@
 package model.programs.parsing.language.statement;
 
+import model.programs.Program;
 import model.programs.parsing.language.expression.Expression;
 import world.entity.ship.Ship;
 
@@ -48,10 +49,17 @@ public class Print extends Statement
 	}
 
 	@Override
-	public boolean execute (Ship ship)
+	public void setParrentProgram (Program parrentProgram)
 	{
-		super.execute(ship);
-		setText(getTextExpression().evaluate(ship).getValue().toString());
+		super.setParrentProgram(parrentProgram);
+		getTextExpression().setParrentProgram(parrentProgram);
+	}
+	
+	@Override
+	public boolean execute ()
+	{
+		super.execute();
+		setText(getTextExpression().evaluate().getValue().toString());
 		System.out.println(getText()); //DON'T REMOVE THIS.
 		finish();
 		return false;

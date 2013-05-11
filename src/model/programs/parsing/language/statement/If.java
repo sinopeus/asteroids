@@ -1,5 +1,6 @@
 package model.programs.parsing.language.statement;
 
+import model.programs.Program;
 import model.programs.parsing.language.expression.BooleanLiteral;
 import model.programs.parsing.language.expression.Expression;
 import world.entity.ship.Ship;
@@ -29,9 +30,9 @@ public class If extends Statement
 		return checked;
 	}
 
-	private void checkCondition (Ship ship)
+	private void checkCondition ()
 	{
-		resultOfCondition = ((BooleanLiteral) (getCondition().evaluate(ship))).getValue();
+		resultOfCondition = ((BooleanLiteral) (getCondition().evaluate())).getValue();
 		checked = true;
 	}
 
@@ -88,6 +89,15 @@ public class If extends Statement
 		if (!canHaveAsOtherwiseStatement(otherwise)) throw new IllegalArgumentException("Invalid otherwise statement for if statement");
 		this.then = otherwise;
 	}
+	
+	@Override
+	public void setParrentProgram (Program parrentProgram)
+	{
+		super.setParrentProgram(parrentProgram);
+		getCondition().setParrentProgram(parrentProgram);
+		getThenStatement().setParrentProgram(parrentProgram);
+		if(getOtherwiseStatement() != null)getOtherwiseStatement().setParrentProgram(parrentProgram);
+	}
 
 	@Override
 	public void unfinish ()
@@ -97,11 +107,15 @@ public class If extends Statement
 		super.unfinish();
 	}
 	
-	private boolean execute (Ship ship, Statement statement)
+	private boolean execute (Statement statement)
 	{
+		if(statement == null){
+			finish();
+			return false;
+		}
 		if (!statement.isFinished())
 		{
-			boolean lastStatementWasAction = statement.execute(ship);
+			boolean lastStatementWasAction = statement.execute();
 			if (statement.isFinished()) finish();
 			return lastStatementWasAction;
 		} else
@@ -112,10 +126,10 @@ public class If extends Statement
 	}
 
 	@Override
-	public boolean execute (Ship ship)
+	public boolean execute ()
 	{
-		super.execute(ship);
-		if (!checked) checkCondition(ship);
-		return resultOfCondition ? execute(ship, getThenStatement()) : execute(ship, getOtherwiseStatement());
+		super.execute();
+		if (!checked) checkCondition();
+		return resultOfCondition ? execute(getThenStatement()) : execute(getOtherwiseStatement());
 	}
 }

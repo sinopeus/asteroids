@@ -20,8 +20,8 @@ public abstract class FirstOrderExpressionOfEntityToEntity extends FirstOrderExp
 	protected abstract EntityLiteral function (EntityLiteral argument);
 
 	@Override
-	public EntityLiteral evaluate (Ship ship)
+	public EntityLiteral evaluate ()
 	{
-		return function((EntityLiteral) getArgument().evaluate(ship));
+		return function((EntityLiteral) getArgument().evaluate());
 	}
 }

@@ -12,8 +12,8 @@ public class GetDirection extends ConstantExpression <Double>
 	}
 
 	@Override
-	public ConstantExpression <Double> evaluate (Ship ship)
+	public ConstantExpression <Double> evaluate ()
 	{
-		return new DoubleLiteral(getLine(), getColumn(), ship.getDirection().getAngle().get());
+		return new DoubleLiteral(getLine(), getColumn(), getOwnerShip().getDirection().getAngle().get());
 	}
 }

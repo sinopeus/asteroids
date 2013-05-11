@@ -10,10 +10,10 @@ public class ThrustOn extends Action
 	}
 	
 	@Override
-	public boolean execute (Ship ship)
+	public boolean execute ()
 	{
-		super.execute(ship);
-		ship.getThruster().activate();
+		super.execute();
+		getOwnerShip().getThruster().activate();
 		finish();
 		return true;
 	}

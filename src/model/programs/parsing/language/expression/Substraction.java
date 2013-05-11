@@ -12,4 +12,10 @@ public class Substraction extends SecondOrderExpressionOfNumbersToNumber
 	{
 		return new DoubleLiteral(getLine(), getColumn(), (first.getValue() - second.getValue()));
 	}
+
+	@Override
+	public String toString ()
+	{
+		return "Substraction [firstArgument=" + firstArgument + ", secondArgument=" + secondArgument + "]";
+	}
 }

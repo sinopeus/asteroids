@@ -29,7 +29,7 @@ public abstract class ConstantExpression <T> extends Expression
 	}
 
 	@Override
-	public ConstantExpression <T> evaluate (Ship ship)
+	public ConstantExpression <T> evaluate ()
 	{
 		return this;
 	}

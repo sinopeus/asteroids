@@ -1,5 +1,6 @@
 package model.programs.parsing.language.statement;
 
+import model.programs.Program;
 import model.programs.parsing.language.expression.BooleanLiteral;
 import model.programs.parsing.language.expression.Expression;
 import world.entity.ship.Ship;
@@ -62,17 +63,25 @@ public class While extends Statement
 	{
 		return checked;
 	}
-
-	private void checkCondition (Ship ship)
+	
+	@Override
+	public void setParrentProgram (Program parrentProgram)
 	{
-		resultOfCondition = ((BooleanLiteral) (getCondition().evaluate(ship))).getValue();
+		super.setParrentProgram(parrentProgram);
+		getCondition().setParrentProgram(parrentProgram);
+		getBody().setParrentProgram(parrentProgram);
+	}
+
+	private void checkCondition ()
+	{
+		resultOfCondition = ((BooleanLiteral) (getCondition().evaluate())).getValue();
 		checked = true;
 	}
 
-	private void finishIteration (Ship ship)
+	private void finishIteration ()
 	{
 		getBody().unfinish();
-		checkCondition(ship);
+		checkCondition();
 	}
 
 	@Override
@@ -82,19 +91,19 @@ public class While extends Statement
 		super.unfinish();
 	}
 
-	public boolean execute (Ship ship)//TODO check this, TEST IT
+	public boolean execute ()//TODO check this, TEST IT
 	{
-		super.execute(ship);
-		if (!checked) checkCondition(ship);
+		super.execute();
+		if (!checked) checkCondition();
 		while (getResultOfCondition())
 		{
 			if (getBody().isFinished())
 			{
-				finishIteration(ship);
+				finishIteration();
 				continue;
 			}
-			if (getBody().execute(ship)) return true;
-			else finishIteration(ship);
+			if (getBody().execute()) return true;
+			else finishIteration();
 		}
 		finish();
 		return false;

@@ -2,9 +2,9 @@ package model.programs.parsing.language.statement;
 
 import java.util.ArrayList;
 
-import model.programs.parsing.ProgramFactory;
+import model.programs.Program;
+import model.programs.parsing.ProgramFactory.ForeachType;
 import model.programs.parsing.language.expression.EntityLiteral;
-import model.programs.parsing.language.expression.Variable;
 import world.World;
 import world.entity.Asteroid;
 import world.entity.Bullet;
@@ -13,29 +13,49 @@ import world.entity.ship.Ship;
 
 public class ForEach extends Statement
 {
-	public ForEach (int line, int column, ProgramFactory.ForeachType type, String variableName, Statement body)
+	public ForEach (int line, int column, ForeachType type, String variableName, Statement body)
 	{
 		super(line, column);
-		setVariable(new Variable <EntityLiteral, Entity>(line, column, variableName));
+		setType(type);
+		setVariableName(variableName);
 		setBody(body);
+		this.isAtStartOfIteration = true;
 	}
 
-	Variable <EntityLiteral, Entity>	variable;
+	private ForeachType	type;
 
-	public Variable <EntityLiteral, Entity> getVariable ()
+	public ForeachType getType ()
 	{
-		return variable;
+		return type;
 	}
 
-	protected boolean canHaveAsVariable (Variable <EntityLiteral, Entity> variable)
+	protected boolean canHaveAsType (ForeachType type)
 	{
-		return (variable != null); //TODO more checking.
+		return true;
 	}
 
-	private void setVariable (Variable <EntityLiteral, Entity> variable)
+	public void setType (ForeachType type)
 	{
-		if (!canHaveAsVariable(variable)) throw new IllegalArgumentException("Invalid variable provided for foreach statement.");//text & type
-		this.variable = variable;
+		if (!canHaveAsType(type)) throw new IllegalArgumentException("Invalid type for foreach statement");
+		this.type = type;
+	}
+
+	String	variableName;
+
+	public String getVariableName ()
+	{
+		return variableName;
+	}
+
+	protected boolean canHaveAsVariable (String variableName)
+	{
+		return (variableName != null); //TODO more checking.
+	}
+
+	public void setVariableName (String variableName)
+	{
+		if (!canHaveAsVariable(variableName)) throw new IllegalArgumentException("Invalid variable  name provided for foreach statement.");
+		this.variableName = variableName;
 	}
 
 	Statement	body;
@@ -68,11 +88,11 @@ public class ForEach extends Statement
 		return (selection != null);//TODO more checking?
 	}
 
-	private void calculateSelection (ProgramFactory.ForeachType type)
+	private void calculateSelection () //TODO can I change the enum in programfactory?
 	{
 		ArrayList <EntityLiteral> selection = new ArrayList <EntityLiteral>();
-		World w = null; //TODO change this into something useful.
-		switch (type)
+		World w = getOwnerShip().getWorld();
+		switch (getType())
 		{
 			case SHIP:
 				for (Entity e : w)
@@ -96,6 +116,61 @@ public class ForEach extends Statement
 		this.selection = selection;
 	}
 
+	private int	currentIndex;
+
+	public int getCurrentIndex ()
+	{
+		return currentIndex;
+	}
+
+	protected boolean canHaveAsCurrentIndex (int selectedIndex)
+	{
+		if (getSelection().size() == 0) return true;
+		return ( (selectedIndex >= 0) && (selectedIndex < getSelection().size()));
+	}
+
+	private void setSelectedIndex (int selectedIndex)
+	{
+		if (!canHaveAsCurrentIndex(selectedIndex)) throw new IllegalArgumentException("Illegal selected index for sequence " + selectedIndex);
+		this.currentIndex = selectedIndex;
+	}
+
+	private void incrementIndex ()
+	{
+		if (getCurrentIndex() >= getSelection().size() - 1)
+		{
+			finish();
+			return;
+		}
+		setSelectedIndex(getCurrentIndex() + 1);
+		getBody().unfinish();
+	}
+
+	private boolean	isAtStartOfIteration;
+
+	private boolean isAtStartOfIteration ()
+	{
+		return isAtStartOfIteration;
+	}
+
+	private void startIteration ()
+	{
+		getParrentProgram().setVariableValue(getVariableName(), getSelection().get(getCurrentIndex()));
+		isAtStartOfIteration = false;
+	}
+
+	private void finishIteration ()
+	{
+		isAtStartOfIteration = true;
+	}
+
+	@Override
+	public void setParrentProgram (Program parrentProgram)
+	{
+		super.setParrentProgram(parrentProgram);
+		getBody().setParrentProgram(parrentProgram);
+	}
+
 	@Override
 	public void unfinish ()
 	{
@@ -105,6 +180,33 @@ public class ForEach extends Statement
 
 	public boolean execute ()
 	{
-		return false;//TODO important shit.
+		super.execute();
+		if (getSelection() == null) calculateSelection();
+		if (getSelection().isEmpty())
+		{
+			finish();
+			return false;
+		}
+
+		while (!this.isFinished())
+		{
+			if (isAtStartOfIteration) startIteration();
+			if (getBody().execute())
+			{
+				if (getBody().isFinished())
+				{
+					incrementIndex();
+					if (this.isFinished()) return true;
+				}
+				return true;
+			} else
+			{
+				incrementIndex();
+				if (this.isFinished()) return false;
+			}
+			finishIteration();
+		}
+		finish();
+		return false;
 	}
 }

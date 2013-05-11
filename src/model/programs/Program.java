@@ -5,60 +5,57 @@ import java.util.Map;
 
 import model.programs.parsing.language.Type;
 import model.programs.parsing.language.expression.BooleanLiteral;
+import model.programs.parsing.language.expression.ConstantExpression;
 import model.programs.parsing.language.expression.DoubleLiteral;
 import model.programs.parsing.language.expression.EntityLiteral;
-import model.programs.parsing.language.expression.Variable;
 import model.programs.parsing.language.statement.Statement;
 
 import org.antlr.runtime.RecognitionException;
 
-import world.entity.Entity;
 import world.entity.ship.Ship;
 
 public class Program
 {
 	public Program (Map <String, Type> globals, Statement statement) throws RecognitionException
 	{
-		setGlobals(globals);
+		setGlobalTypes(globals);
+		setGlobalValues(globals);
 		setStatement(statement);
 	}
 
-	HashMap <String, Variable>	globals;
+	Map <String, Type>	globalTypes;
 
-	public HashMap <String, Variable> getGlobals ()
+	public Map <String, Type> getGlobalTypes ()
 	{
-		return globals;
+		return globalTypes;
+	}
+
+	public void setGlobalTypes (Map <String, Type> globalTypes) throws RecognitionException
+	{
+		if (!canHaveAsGlobals(globalTypes)) throw new RecognitionException();
+		this.globalTypes = globalTypes;
+	}
+
+	HashMap <String, ConstantExpression>	globalValues;
+
+	public HashMap <String, ConstantExpression> getGlobalValues ()
+	{
+		return globalValues;
+	}
+
+	private void setGlobalValues (Map <String, Type> globalsTypes) throws RecognitionException
+	{
+		if (!canHaveAsGlobals(globalsTypes)) throw new RecognitionException();
+		HashMap <String, ConstantExpression> globalVariables = new HashMap <String, ConstantExpression>();
+		int counter = 0;
+		for (String name : globalsTypes.keySet())
+			globalVariables.put(name, globalTypes.get(name).defaultValue(counter++, 0));
+		this.globalValues = globalVariables;
 	}
 
 	protected boolean canHaveAsGlobals (Map <String, Type> globals)
 	{
 		return (globals != null); // TODO more checking?
-	}
-
-	private void setGlobals (Map <String, Type> globals) throws RecognitionException
-	{
-		if (!canHaveAsGlobals(globals)) throw new RecognitionException();
-		HashMap <String, Variable> globalVariables = new HashMap <String, Variable>();
-		int counter = 0;
-		for (String name : globals.keySet())
-		{
-			switch (globals.get(name))
-			{
-				case TYPE_DOUBLE:
-					globalVariables.put(name, new Variable <DoubleLiteral, Double>(counter, 0, name));
-					break;
-				case TYPE_BOOLEAN:
-					globalVariables.put(name, new Variable <BooleanLiteral, Boolean>(counter, 0, name));
-					break;
-				case TYPE_ENTITY:
-					globalVariables.put(name, new Variable <EntityLiteral, Entity>(counter, 0, name));
-					break;
-				default:
-					break;
-			}
-			counter++;
-		}
-		this.globals = globalVariables;
 	}
 
 	Statement	statement;
@@ -77,6 +74,7 @@ public class Program
 	{
 		if (!canHaveAsStatement(statement)) throw new RecognitionException();
 		this.statement = statement;
+		statement.setParrentProgram(this);
 	}
 
 	private Ship	owner;
@@ -109,10 +107,23 @@ public class Program
 		this.finished = true;
 	}
 
+	public ConstantExpression getVariableNamed (String name)
+	{
+		if(!globalValues.containsKey(name)) throw new IllegalArgumentException("invalid variable name");
+		return getGlobalValues().get(name);
+	}
+
+	public void setVariableValue (String name, ConstantExpression value)
+	{
+		if(!globalValues.containsKey(name)) throw new IllegalArgumentException("invalid variable name");
+		getGlobalValues().remove(name);
+		getGlobalValues().put(name, value);
+	}
+
 	public void executeUntilAfterNextAction ()
 	{
 		while (!getStatement().isFinished())
-			if (getStatement().execute(getOwner())) break;
+			if (getStatement().execute()) break;
 	}
 
 	/* (non-Javadoc)
@@ -121,6 +132,6 @@ public class Program
 	@Override
 	public String toString ()
 	{
-		return "Program [globals = " + globals + ", finished = " + finished + ", statement = " + statement + "]";
+		return "Program [globals = " + globalValues + ", finished = " + finished + ", statement = " + statement + "]";
 	}
 }

@@ -2,6 +2,8 @@ package model.programs.parsing.language.statement;
 
 import java.util.List;
 
+import model.programs.Program;
+
 import world.entity.ship.Ship;
 
 public class Sequence extends Statement
@@ -64,6 +66,14 @@ public class Sequence extends Statement
 	{
 		return getSequence().get(getSelectedIndex());
 	}
+	
+	@Override
+	public void setParrentProgram (Program parrentProgram)
+	{
+		super.setParrentProgram(parrentProgram);
+		for (Statement s : getSequence())
+			s.setParrentProgram(parrentProgram);
+	}
 
 	@Override
 	protected void finish ()
@@ -90,9 +100,9 @@ public class Sequence extends Statement
 	}
 
 	@Override
-	public boolean execute (Ship ship)
+	public boolean execute ()
 	{
-		super.execute(ship);
+		super.execute();
 		if (getSequence().isEmpty())
 		{
 			finish();
@@ -100,12 +110,12 @@ public class Sequence extends Statement
 		}
 		while (!getCurrentStatement().isFinished() && !this.isFinished())
 		{
-			if (getCurrentStatement().execute(ship))
+			if (getCurrentStatement().execute())
 			{
 				if (getCurrentStatement().isFinished())
 				{
 					incrementIndex();
-					if (this.isFinished()) return false;
+					if (this.isFinished()) return true;
 				}
 				return true;
 			} else

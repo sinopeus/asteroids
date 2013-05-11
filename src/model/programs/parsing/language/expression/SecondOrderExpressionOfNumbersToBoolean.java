@@ -21,8 +21,8 @@ public abstract class SecondOrderExpressionOfNumbersToBoolean extends SecondOrde
 	protected abstract BooleanLiteral function (DoubleLiteral first, DoubleLiteral second);
 
 	@Override
-	public BooleanLiteral evaluate (Ship ship)
+	public BooleanLiteral evaluate ()
 	{
-		return function((DoubleLiteral) getFirstArgument().evaluate(ship), (DoubleLiteral) getSecondArgument().evaluate(ship));
+		return function((DoubleLiteral) getFirstArgument().evaluate(), (DoubleLiteral) getSecondArgument().evaluate());
 	}
 }

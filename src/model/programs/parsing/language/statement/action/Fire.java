@@ -10,10 +10,10 @@ public class Fire extends Action
 	}
 
 	@Override
-	public boolean execute (Ship ship)
+	public boolean execute ()
 	{
-		super.execute(ship);
-		ship.fire();
+		super.execute();
+		getOwnerShip().fire();
 		finish();
 		return true;
 	}

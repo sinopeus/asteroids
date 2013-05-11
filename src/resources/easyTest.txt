@@ -1,5 +1,4 @@
-thrust;
-while(true){
-fire;
-turn 0.2;
-}
+bool b;
+double d;
+entity e;
+

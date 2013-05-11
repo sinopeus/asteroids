@@ -20,8 +20,8 @@ public abstract class FirstOrderExpressionOfEntityToNumber extends FirstOrderExp
 	protected abstract DoubleLiteral function (EntityLiteral argument);
 
 	@Override
-	public DoubleLiteral evaluate (Ship ship)
+	public DoubleLiteral evaluate ()
 	{
-		return function((EntityLiteral) getArgument().evaluate(ship));
+		return function((EntityLiteral) getArgument().evaluate());
 	}
 }

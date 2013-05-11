@@ -32,11 +32,11 @@ public class Turn extends Action
 	}
 
 	@Override
-	public boolean execute (Ship ship)
+	public boolean execute ()
 	{
-		super.execute(ship);
-		double amount = ((DoubleLiteral) (getAngle().evaluate(ship))).getValue();
-		ship.turn(new Angle(amount));
+		super.execute();
+		double amount = ((DoubleLiteral) (getAngle().evaluate())).getValue();
+		getOwnerShip().turn(new Angle(amount));
 		finish();
 		return true;
 	}

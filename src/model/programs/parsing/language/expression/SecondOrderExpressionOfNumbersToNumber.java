@@ -21,8 +21,8 @@ public abstract class SecondOrderExpressionOfNumbersToNumber extends SecondOrder
 	protected abstract DoubleLiteral function (DoubleLiteral first, DoubleLiteral second);
 
 	@Override
-	public DoubleLiteral evaluate (Ship ship)
+	public DoubleLiteral evaluate ()
 	{
-		return function((DoubleLiteral) getFirstArgument().evaluate(ship), (DoubleLiteral) getSecondArgument().evaluate(ship));
+		return function((DoubleLiteral) getFirstArgument().evaluate(), (DoubleLiteral) getSecondArgument().evaluate());
 	}
 }

@@ -2,7 +2,7 @@ package model.programs.parsing.language.expression;
 
 import world.entity.ship.Ship;
 
-public class Variable <T extends ConstantExpression <U>, U> extends Expression
+public class Variable extends Expression
 {
 
 	public Variable (int line, int column, String name)
@@ -29,38 +29,15 @@ public class Variable <T extends ConstantExpression <U>, U> extends Expression
 		this.name = name;
 	}
 
-	T	value;
-
-	private U getValue ()
-	{
-		return value.getValue();
-	}
-
-	protected boolean canHaveAsValue (T value)
-	{
-		return (value != null); //TODO some more checking?
-	}
-
-	public void setValue (T value)
-	{
-		if (!canHaveAsValue(value)) throw new IllegalArgumentException("Invalid value for variable.");
-		this.value = value;
-	}
-
-	public Class getType ()
-	{
-		return getValue().getClass();
-	}
-
 	@Override
-	public ConstantExpression evaluate (Ship ship)
+	public ConstantExpression evaluate ()
 	{
-		return value;
+		return getParrentProgram().getVariableNamed(getName());
 	}
 
 	@Override
 	public String toString ()
 	{
-		return "Variable [name=" + name + ", value=" + value + "]";
+		return "Variable [name=" + name + ", value=" + evaluate() + "]";
 	}
 }

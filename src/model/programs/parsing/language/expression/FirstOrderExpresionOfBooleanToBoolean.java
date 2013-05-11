@@ -20,8 +20,8 @@ public abstract class FirstOrderExpresionOfBooleanToBoolean extends FirstOrderEx
 	protected abstract BooleanLiteral function (BooleanLiteral argument);
 
 	@Override
-	public BooleanLiteral evaluate (Ship ship)
+	public BooleanLiteral evaluate ()
 	{
-		return function((BooleanLiteral) getArgument().evaluate(ship));
+		return function((BooleanLiteral) getArgument().evaluate());
 	}
 }

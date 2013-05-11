@@ -12,7 +12,7 @@ public abstract class Action extends Statement
 	}
 
 	@Override
-	public boolean execute (Ship ship)
+	public boolean execute ()
 	{
 		return true;
 	}

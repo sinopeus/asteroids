@@ -10,7 +10,7 @@ public class False extends ConstantExpression <Boolean>
 	}
 
 	@Override
-	public BooleanLiteral evaluate (Ship ship)
+	public BooleanLiteral evaluate ()
 	{
 		return new BooleanLiteral(getLine(), getColumn(), false);
 	}
