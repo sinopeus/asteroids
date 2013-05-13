@@ -29,9 +29,9 @@ public abstract class FirstOrderExpression extends Expression
 	}
 	
 	@Override
-	public void setParrentProgram (Program parrentProgram)
+	public void setParentProgram (Program parrentProgram)
 	{
-		super.setParrentProgram(parrentProgram);
-		getArgument().setParrentProgram(parrentProgram);
+		super.setParentProgram(parrentProgram);
+		getArgument().setParentProgram(parrentProgram);
 	}
 }

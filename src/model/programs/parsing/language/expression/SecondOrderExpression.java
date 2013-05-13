@@ -43,10 +43,10 @@ public abstract class SecondOrderExpression extends Expression
 	}
 	
 	@Override
-	public void setParrentProgram (Program parrentProgram)
+	public void setParentProgram (Program parentProgram)
 	{
-		super.setParrentProgram(parrentProgram);
-		getFirstArgument().setParrentProgram(parrentProgram);
-		getSecondArgument().setParrentProgram(parrentProgram);
+		super.setParentProgram(parentProgram);
+		getFirstArgument().setParentProgram(parentProgram);
+		getSecondArgument().setParentProgram(parentProgram);
 	}
 }

@@ -3,7 +3,6 @@ package model.programs.parsing.language.statement;
 import model.programs.Program;
 import model.programs.parsing.language.expression.BooleanLiteral;
 import model.programs.parsing.language.expression.Expression;
-import world.entity.ship.Ship;
 
 public class While extends Statement
 {
@@ -65,11 +64,11 @@ public class While extends Statement
 	}
 	
 	@Override
-	public void setParrentProgram (Program parrentProgram)
+	public void setParentProgram (Program parrentProgram)
 	{
-		super.setParrentProgram(parrentProgram);
-		getCondition().setParrentProgram(parrentProgram);
-		getBody().setParrentProgram(parrentProgram);
+		super.setParentProgram(parrentProgram);
+		getCondition().setParentProgram(parrentProgram);
+		getBody().setParentProgram(parrentProgram);
 	}
 
 	private void checkCondition ()

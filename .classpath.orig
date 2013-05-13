@@ -5,6 +5,10 @@
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry exported="true" kind="lib" path="lib/AnnotationsDoclets.jar"/>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="/home/xavier/workspace/asteroids/lib/antlr-4.0-complete.jar"/>
+=======
+	<classpathentry kind="lib" path="/home/syd/Dropbox/Asteroids/antlr-4.0-complete.jar"/>
+>>>>>>> 6a8b29aa38b192e1910f98833bafb9eebd403417
 	<classpathentry kind="output" path="bin"/>
 </classpath>

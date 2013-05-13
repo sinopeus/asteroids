@@ -1,9 +1,9 @@
 package model.programs.parsing.language.expression;
 
 
-public abstract class FirstOrderExpresionOfBooleanToBoolean extends FirstOrderExpression
+public abstract class FirstOrderExpressionOfBooleanToBoolean extends FirstOrderExpression
 {
-	public FirstOrderExpresionOfBooleanToBoolean (int line, int column, Expression argument)
+	public FirstOrderExpressionOfBooleanToBoolean (int line, int column, Expression argument)
 	{
 		super(line, column, argument);
 	}

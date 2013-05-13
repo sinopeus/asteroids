@@ -13,7 +13,7 @@ public abstract class ProgramPart
 
 	Program	parrentProgram;
 
-	public Program getParrentProgram ()
+	public Program getParentProgram ()
 	{
 		return parrentProgram;
 	}
@@ -23,7 +23,7 @@ public abstract class ProgramPart
 		return (program != null);
 	}
 
-	public void setParrentProgram (Program parrentProgram)
+	public void setParentProgram (Program parrentProgram)
 	{
 		if (!canHaveAsParentProgram(parrentProgram)) throw new IllegalArgumentException();//TODO
 		this.parrentProgram = parrentProgram;
@@ -67,6 +67,6 @@ public abstract class ProgramPart
 
 	protected Ship getOwnerShip ()
 	{
-		return getParrentProgram().getOwner();
+		return getParentProgram().getOwner();
 	}
 }

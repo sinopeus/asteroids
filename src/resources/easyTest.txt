@@ -1,0 +1,6 @@
+bool b;
+b := true;
+
+while (b) {
+turn 20;
+}

@@ -91,12 +91,12 @@ public class If extends Statement
 	}
 	
 	@Override
-	public void setParrentProgram (Program parrentProgram)
+	public void setParentProgram (Program parrentProgram)
 	{
-		super.setParrentProgram(parrentProgram);
-		getCondition().setParrentProgram(parrentProgram);
-		getThenStatement().setParrentProgram(parrentProgram);
-		if(getOtherwiseStatement() != null)getOtherwiseStatement().setParrentProgram(parrentProgram);
+		super.setParentProgram(parrentProgram);
+		getCondition().setParentProgram(parrentProgram);
+		getThenStatement().setParentProgram(parrentProgram);
+		if(getOtherwiseStatement() != null)getOtherwiseStatement().setParentProgram(parrentProgram);
 	}
 
 	@Override

@@ -4,8 +4,6 @@ import java.util.List;
 
 import model.programs.Program;
 
-import world.entity.ship.Ship;
-
 public class Sequence extends Statement
 {
 
@@ -68,11 +66,11 @@ public class Sequence extends Statement
 	}
 	
 	@Override
-	public void setParrentProgram (Program parrentProgram)
+	public void setParentProgram (Program parrentProgram)
 	{
-		super.setParrentProgram(parrentProgram);
+		super.setParentProgram(parrentProgram);
 		for (Statement s : getSequence())
-			s.setParrentProgram(parrentProgram);
+			s.setParentProgram(parrentProgram);
 	}
 
 	@Override

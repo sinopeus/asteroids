@@ -1,6 +1,5 @@
 package model.programs.parsing.language.expression;
 
-import world.entity.ship.Ship;
 
 public class Variable extends Expression
 {
@@ -32,7 +31,7 @@ public class Variable extends Expression
 	@Override
 	public ConstantExpression evaluate ()
 	{
-		return getParrentProgram().getVariableNamed(getName());
+		return getParentProgram().getVariableNamed(getName());
 	}
 
 	@Override

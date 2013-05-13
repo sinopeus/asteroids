@@ -1,6 +1,5 @@
 package model.programs.parsing.language.expression;
 
-import world.entity.Entity;
 
 public class GetY extends FirstOrderExpressionOfEntityToNumber
 {

@@ -51,18 +51,18 @@ public class Assignment extends Statement
 	}
 	
 	@Override
-	public void setParrentProgram (Program parrentProgram)
+	public void setParentProgram (Program parentProgram)
 	{
-		super.setParrentProgram(parrentProgram);
-		getVariable().setParrentProgram(parrentProgram);
-		getValue().setParrentProgram(parrentProgram);
+		super.setParentProgram(parentProgram);
+		getVariable().setParentProgram(parentProgram);
+		getValue().setParentProgram(parentProgram);
 	}
 
 	@Override
 	public boolean execute ()
 	{
 		super.execute();
-		getParrentProgram().setVariableValue(getVariable().getName(), getValue().evaluate());
+		getParentProgram().setVariableValue(getVariable().getName(), getValue().evaluate());
 		finish();
 		return false;
 	}

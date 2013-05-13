@@ -1,6 +1,6 @@
 package model.programs.parsing.language.expression;
 
-public class Not extends FirstOrderExpresionOfBooleanToBoolean
+public class Not extends FirstOrderExpressionOfBooleanToBoolean
 {
 	public Not (int line, int column, Expression argument)
 	{

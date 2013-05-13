@@ -155,7 +155,7 @@ public class ForEach extends Statement
 
 	private void startIteration ()
 	{
-		getParrentProgram().setVariableValue(getVariableName(), getSelection().get(getCurrentIndex()));
+		getParentProgram().setVariableValue(getVariableName(), getSelection().get(getCurrentIndex()));
 		isAtStartOfIteration = false;
 	}
 
@@ -165,10 +165,10 @@ public class ForEach extends Statement
 	}
 
 	@Override
-	public void setParrentProgram (Program parrentProgram)
+	public void setParentProgram (Program parrentProgram)
 	{
-		super.setParrentProgram(parrentProgram);
-		getBody().setParrentProgram(parrentProgram);
+		super.setParentProgram(parrentProgram);
+		getBody().setParentProgram(parrentProgram);
 	}
 
 	@Override

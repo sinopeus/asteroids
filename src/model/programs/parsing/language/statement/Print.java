@@ -2,7 +2,6 @@ package model.programs.parsing.language.statement;
 
 import model.programs.Program;
 import model.programs.parsing.language.expression.Expression;
-import world.entity.ship.Ship;
 
 public class Print extends Statement
 {
@@ -49,10 +48,10 @@ public class Print extends Statement
 	}
 
 	@Override
-	public void setParrentProgram (Program parrentProgram)
+	public void setParentProgram (Program parrentProgram)
 	{
-		super.setParrentProgram(parrentProgram);
-		getTextExpression().setParrentProgram(parrentProgram);
+		super.setParentProgram(parrentProgram);
+		getTextExpression().setParentProgram(parrentProgram);
 	}
 	
 	@Override
