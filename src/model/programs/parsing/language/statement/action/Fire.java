@@ -1,6 +1,5 @@
 package model.programs.parsing.language.statement.action;
 
-import world.entity.ship.Ship;
 
 public class Fire extends Action
 {

@@ -1,7 +1,6 @@
 package model.programs.parsing.language.expression;
 
 import model.programs.parsing.language.ProgramPart;
-import world.entity.ship.Ship;
 
 public abstract class Expression extends ProgramPart
 {

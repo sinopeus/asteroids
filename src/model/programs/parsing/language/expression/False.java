@@ -1,6 +1,5 @@
 package model.programs.parsing.language.expression;
 
-import world.entity.ship.Ship;
 
 public class False extends ConstantExpression <Boolean>
 {

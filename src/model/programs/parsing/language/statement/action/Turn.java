@@ -2,7 +2,6 @@ package model.programs.parsing.language.statement.action;
 
 import model.programs.parsing.language.expression.DoubleLiteral;
 import model.programs.parsing.language.expression.Expression;
-import world.entity.ship.Ship;
 import world.physics.geometry.Angle;
 
 public class Turn extends Action

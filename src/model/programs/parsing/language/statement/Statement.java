@@ -1,7 +1,6 @@
 package model.programs.parsing.language.statement;
 
 import model.programs.parsing.language.ProgramPart;
-import world.entity.ship.Ship;
 
 public abstract class Statement extends ProgramPart
 {

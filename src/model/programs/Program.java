@@ -74,7 +74,7 @@ public class Program
 	{
 		if (!canHaveAsStatement(statement)) throw new RecognitionException();
 		this.statement = statement;
-		statement.setParrentProgram(this);
+		statement.setParentProgram(this);
 	}
 
 	private Ship	owner;

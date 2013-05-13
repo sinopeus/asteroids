@@ -1,7 +1,5 @@
 package model.programs.parsing.language.expression;
 
-import world.entity.Entity;
-import world.entity.ship.Ship;
 
 public class GetDirection extends ConstantExpression <Double>
 {

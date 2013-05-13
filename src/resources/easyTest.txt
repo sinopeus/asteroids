@@ -1,4 +1,6 @@
 bool b;
-double d;
-entity e;
+b := true;
 
+while (b) {
+turn 20;
+}
