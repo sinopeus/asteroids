@@ -1,4 +1,0 @@
-bool b;
-double d;
-entity e;
-

@@ -14,7 +14,6 @@ public abstract class SecondOrderExpressionOfNumbersToNumber extends SecondOrder
 	protected boolean canHaveAsArgument (Expression argument)
 	{
 		if (!super.canHaveAsArgument(argument)) return false;
-		//		return argument.evaluate() instanceof DoubleLiteral;//TODO
 		return true;
 	}
 
