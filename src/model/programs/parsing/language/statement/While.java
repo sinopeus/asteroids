@@ -1,8 +1,8 @@
 package model.programs.parsing.language.statement;
 
 import model.programs.Program;
-import model.programs.parsing.language.expression.BooleanLiteral;
 import model.programs.parsing.language.expression.Expression;
+import model.programs.parsing.language.expression.constant.literal.BooleanLiteral;
 
 public class While extends Statement
 {

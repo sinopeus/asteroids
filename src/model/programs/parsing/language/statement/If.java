@@ -1,9 +1,8 @@
 package model.programs.parsing.language.statement;
 
 import model.programs.Program;
-import model.programs.parsing.language.expression.BooleanLiteral;
 import model.programs.parsing.language.expression.Expression;
-import world.entity.ship.Ship;
+import model.programs.parsing.language.expression.constant.literal.BooleanLiteral;
 
 public class If extends Statement
 {
@@ -87,29 +86,31 @@ public class If extends Statement
 	protected void setOtherwiseStatement (Statement otherwise)
 	{
 		if (!canHaveAsOtherwiseStatement(otherwise)) throw new IllegalArgumentException("Invalid otherwise statement for if statement");
-		this.then = otherwise;
+		this.otherwise = otherwise;
 	}
-	
+
 	@Override
 	public void setParentProgram (Program parrentProgram)
 	{
 		super.setParentProgram(parrentProgram);
 		getCondition().setParentProgram(parrentProgram);
 		getThenStatement().setParentProgram(parrentProgram);
-		if(getOtherwiseStatement() != null)getOtherwiseStatement().setParentProgram(parrentProgram);
+		if (getOtherwiseStatement() != null) getOtherwiseStatement().setParentProgram(parrentProgram);
 	}
 
 	@Override
 	public void unfinish ()
 	{
-		getThenStatement().unfinish();
-		getOtherwiseStatement().unfinish();
 		super.unfinish();
+		getThenStatement().unfinish();
+		if (getOtherwiseStatement() != null) getOtherwiseStatement().unfinish();
 	}
-	
+
 	private boolean execute (Statement statement)
 	{
-		if(statement == null){
+		super.execute();
+		if (statement == null)
+		{
 			finish();
 			return false;
 		}
@@ -131,5 +132,11 @@ public class If extends Statement
 		super.execute();
 		if (!checked) checkCondition();
 		return resultOfCondition ? execute(getThenStatement()) : execute(getOtherwiseStatement());
+	}
+
+	@Override
+	public String toString ()
+	{
+		return "If [condition=" + condition + ", then=" + then + ", otherwise=" + otherwise + "]";
 	}
 }
