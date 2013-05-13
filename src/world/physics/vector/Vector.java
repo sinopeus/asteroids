@@ -29,6 +29,7 @@ public class Vector
 	 **/
 	public Vector (double x, double y)
 	{
+		components = new double[2];
 		setX(x);
 		setY(y);
 	}
@@ -65,7 +66,7 @@ public class Vector
 	@Raw
 	public double _X ()
 	{
-		return this.x;
+		return this.components[0];
 	}
 
 	/**
@@ -81,13 +82,13 @@ public class Vector
 	@Raw
 	public void setX (double x)
 	{
-		if (canHaveAsComponent(x)) this.x = x;
+		if (canHaveAsComponent(x)) this.components[0] = x;
 	}
 
 	/**
-	 * The x component of the vector.
+	 * The components of the vector.
 	 */
-	protected double	x;
+	protected double[]	components;
 
 	/**
 	 * Gets the y component of the vector.
@@ -97,7 +98,7 @@ public class Vector
 	@Raw
 	public double _Y ()
 	{
-		return this.y;
+		return this.components[1];
 	}
 
 	/**
@@ -113,13 +114,8 @@ public class Vector
 	@Raw
 	public void setY (double y)
 	{
-		if (canHaveAsComponent(y)) this.y = y;
+		if (canHaveAsComponent(y)) this.components[1] = y;
 	}
-
-	/**
-	 * The y component of the vector.
-	 */
-	protected double	y;
 
 	/**
 	 * Checks whether the given component can be a component of this vector.
@@ -332,9 +328,9 @@ public class Vector
 		final int prime = 31;
 		int result = 1;
 		long temp;
-		temp = Double.doubleToLongBits(x);
+		temp = Double.doubleToLongBits(components[0]);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(y);
+		temp = Double.doubleToLongBits(components[1]);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}

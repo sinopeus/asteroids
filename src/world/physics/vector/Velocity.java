@@ -1,6 +1,5 @@
 package world.physics.vector;
 
-import Utilities.Util;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Immutable;
 import be.kuleuven.cs.som.annotate.Raw;
@@ -88,10 +87,10 @@ public class Velocity extends Vector
 	{
 		if (canHaveAsComponent(x))
 		{
-			this.x = x;
+			this.components[0] = x;
 		} else
 		{
-			this.x = 0;
+			this.components[0] = 0;
 		}
 	}
 
@@ -113,10 +112,10 @@ public class Velocity extends Vector
 	{
 		if (canHaveAsComponent(y))
 		{
-			this.y = y;
+			this.components[1] = y;
 		} else
 		{
-			this.y = 0;
+			this.components[1] = 0;
 		}
 	}
 

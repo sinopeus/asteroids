@@ -1,6 +1,5 @@
 package world.physics.vector;
 
-import Utilities.Util;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 
@@ -74,7 +73,7 @@ public class Position extends Vector
 			throw new IllegalArgumentException("Invalid vector component provided");
 		} else
 		{
-			this.x = x;
+			this.components[0] = x;
 		}
 	}
 
@@ -98,7 +97,7 @@ public class Position extends Vector
 			throw new IllegalArgumentException("Invalid vector component provided");
 		} else
 		{
-			this.y = y;
+			this.components[1] = y;
 		}
 	}
 
@@ -157,7 +156,7 @@ public class Position extends Vector
 	 * 			| result.equals(getSum(v.scaleBy(duration)))
 	 * @throws	IllegalArgumentException
 	 * 			The given vector is null or duration is strictly negative.
-	 * 			| ((v == null) || (duration < 0))
+	 * 			| ((v == nulls) || (duration < 0))
 	 * @throws	ArithmeticException
 	 * 			One of the resulting components is not a valid component.
 	 * 			| ((Double.isNaN(getXComponent()) || (Double.isNaN(getYComponent()))
