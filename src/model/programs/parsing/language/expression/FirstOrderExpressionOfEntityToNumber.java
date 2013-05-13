@@ -1,6 +1,5 @@
 package model.programs.parsing.language.expression;
 
-import world.entity.ship.Ship;
 
 public abstract class FirstOrderExpressionOfEntityToNumber extends FirstOrderExpression
 {
@@ -13,7 +12,6 @@ public abstract class FirstOrderExpressionOfEntityToNumber extends FirstOrderExp
 	protected boolean canHaveAsArgument (Expression argument)
 	{
 		if (!super.canHaveAsArgument(argument)) return false;
-		//		return argument.evaluate() instanceof EntityLiteral; //TODO
 		return true;
 	}
 

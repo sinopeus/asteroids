@@ -12,7 +12,6 @@ public abstract class FirstOrderExpressionOfBooleanToBoolean extends FirstOrderE
 	protected boolean canHaveAsArgument (Expression argument)
 	{
 		if (!super.canHaveAsArgument(argument)) return false;
-		//		return argument.evaluate() instanceof BooleanLiteral; //TODO
 		return true;
 	}
 

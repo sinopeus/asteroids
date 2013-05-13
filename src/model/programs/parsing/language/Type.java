@@ -3,6 +3,7 @@ package model.programs.parsing.language;
 import model.programs.parsing.language.expression.BooleanLiteral;
 import model.programs.parsing.language.expression.ConstantExpression;
 import model.programs.parsing.language.expression.DoubleLiteral;
+import model.programs.parsing.language.expression.EntityLiteral;
 
 public enum Type
 {
@@ -22,8 +23,7 @@ public enum Type
 		@Override
 		public ConstantExpression defaultValue (int line,int column)
 		{
-			// TODO Auto-generated method stub
-			return null;
+			return new EntityLiteral(line, column, null);
 		}
 	};
 	

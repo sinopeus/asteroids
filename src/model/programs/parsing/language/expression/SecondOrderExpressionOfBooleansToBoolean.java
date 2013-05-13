@@ -14,7 +14,6 @@ public abstract class SecondOrderExpressionOfBooleansToBoolean extends SecondOrd
 	protected boolean canHaveAsArgument (Expression argument)
 	{
 		if (!super.canHaveAsArgument(argument)) return false;
-		//		return argument.evaluate() instanceof BooleanLiteral;
 		return true; //TODO
 	}
 
