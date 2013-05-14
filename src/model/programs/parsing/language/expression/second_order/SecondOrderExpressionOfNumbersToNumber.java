@@ -7,7 +7,7 @@ import model.programs.parsing.language.expression.constant.literal.DoubleLiteral
 public abstract class SecondOrderExpressionOfNumbersToNumber extends SecondOrderExpression
 {
 
-	public SecondOrderExpressionOfNumbersToNumber (int line, int column, Expression firstArgument, Expression secondArgument)
+	protected SecondOrderExpressionOfNumbersToNumber (int line, int column, Expression firstArgument, Expression secondArgument)
 	{
 		super(line, column, firstArgument, secondArgument);
 	}

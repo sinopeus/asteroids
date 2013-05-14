@@ -3,10 +3,9 @@ package model.programs.parsing.language.expression.first_order;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.constant.literal.BooleanLiteral;
 
-
 public abstract class FirstOrderExpressionOfBooleanToBoolean extends FirstOrderExpression
 {
-	public FirstOrderExpressionOfBooleanToBoolean (int line, int column, Expression argument)
+	protected FirstOrderExpressionOfBooleanToBoolean (int line, int column, Expression argument)
 	{
 		super(line, column, argument);
 	}

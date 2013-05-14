@@ -1,6 +1,5 @@
 package model.programs.parsing.language.expression.constant;
 
-
 public class Null extends ConstantExpression <Object>
 {
 	public Null (int line, int column)
@@ -9,7 +8,7 @@ public class Null extends ConstantExpression <Object>
 	}
 
 	@Override
-	public boolean canHaveAsValue (Object value)
+	protected boolean canHaveAsValue (Object value)
 	{
 		return true;
 	}
@@ -17,6 +16,6 @@ public class Null extends ConstantExpression <Object>
 	@Override
 	public String toString ()
 	{
-		return "null";
+		return "Null";
 	}
 }

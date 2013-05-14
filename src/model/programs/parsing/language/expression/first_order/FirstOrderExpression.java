@@ -5,7 +5,7 @@ import model.programs.parsing.language.expression.Expression;
 
 public abstract class FirstOrderExpression extends Expression
 {
-	public FirstOrderExpression (int line, int column, Expression argument)
+	protected FirstOrderExpression (int line, int column, Expression argument)
 	{
 		super(line, column);
 		setArgument(argument);
@@ -13,7 +13,7 @@ public abstract class FirstOrderExpression extends Expression
 
 	Expression	argument;
 
-	public Expression getArgument ()
+	protected Expression getArgument ()
 	{
 		return argument;
 	}

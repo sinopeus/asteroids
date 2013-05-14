@@ -6,7 +6,7 @@ import world.entity.ship.Ship;
 
 public abstract class FirstOrderExpressionOfNumberToNumber extends FirstOrderExpression
 {
-	public FirstOrderExpressionOfNumberToNumber (int line, int column, Expression argument)
+	protected FirstOrderExpressionOfNumberToNumber (int line, int column, Expression argument)
 	{
 		super(line, column, argument);
 	}
@@ -15,7 +15,6 @@ public abstract class FirstOrderExpressionOfNumberToNumber extends FirstOrderExp
 	protected boolean canHaveAsArgument (Expression argument)
 	{
 		if (!super.canHaveAsArgument(argument)) return false;
-		//		return argument.evaluate() instanceof DoubleLiteral; //TODO
 		return true;
 	}
 

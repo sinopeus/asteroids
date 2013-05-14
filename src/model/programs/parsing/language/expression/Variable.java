@@ -14,7 +14,7 @@ public class Variable extends Expression
 
 	String	name;
 
-	protected String getName ()
+	public String getName ()
 	{
 		return name;
 	}

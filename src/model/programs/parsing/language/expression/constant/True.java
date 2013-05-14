@@ -2,8 +2,6 @@ package model.programs.parsing.language.expression.constant;
 
 import model.programs.parsing.language.expression.constant.literal.BooleanLiteral;
 
-
-
 public class True extends ConstantExpression <Boolean>
 {
 	public True (int line, int column)
@@ -20,6 +18,6 @@ public class True extends ConstantExpression <Boolean>
 	@Override
 	public String toString ()
 	{
-		return "true";
+		return "True";
 	}
 }

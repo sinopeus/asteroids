@@ -4,10 +4,9 @@ import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.constant.literal.DoubleLiteral;
 import model.programs.parsing.language.expression.constant.literal.EntityLiteral;
 
-
 public abstract class FirstOrderExpressionOfEntityToNumber extends FirstOrderExpression
 {
-	public FirstOrderExpressionOfEntityToNumber (int line, int column, Expression argument)
+	protected FirstOrderExpressionOfEntityToNumber (int line, int column, Expression argument)
 	{
 		super(line, column, argument);
 	}

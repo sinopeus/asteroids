@@ -5,7 +5,7 @@ import model.programs.parsing.language.expression.Expression;
 
 public abstract class SecondOrderExpression extends Expression
 {
-	public SecondOrderExpression (int line, int column, Expression firstArgument, Expression secondArgument)
+	protected SecondOrderExpression (int line, int column, Expression firstArgument, Expression secondArgument)
 	{
 		super(line, column);
 		setFirstArgument(firstArgument);
@@ -14,7 +14,7 @@ public abstract class SecondOrderExpression extends Expression
 
 	Expression	firstArgument;
 
-	public Expression getFirstArgument ()
+	protected Expression getFirstArgument ()
 	{
 		return firstArgument;
 	}
@@ -27,7 +27,7 @@ public abstract class SecondOrderExpression extends Expression
 
 	Expression	secondArgument;
 
-	public Expression getSecondArgument ()
+	protected Expression getSecondArgument ()
 	{
 		return secondArgument;
 	}

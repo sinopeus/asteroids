@@ -5,7 +5,6 @@ import world.entity.Entity;
 
 public class Self extends ConstantExpression <Entity>
 {
-
 	public Self (int line, int column) //TODO not sure about how to do this.
 	{
 		super(line, column, null);
@@ -15,5 +14,11 @@ public class Self extends ConstantExpression <Entity>
 	public ConstantExpression <Entity> evaluate ()
 	{
 		return new EntityLiteral(getLine(),getColumn(), getOwnerShip());
+	}
+
+	@Override
+	public String toString ()
+	{
+		return "Self";
 	}
 }

@@ -3,10 +3,9 @@ package model.programs.parsing.language.expression.first_order;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.constant.literal.EntityLiteral;
 
-
 public abstract class FirstOrderExpressionOfEntityToEntity extends FirstOrderExpression
 {
-	public FirstOrderExpressionOfEntityToEntity (int line, int column, Expression argument)
+	protected FirstOrderExpressionOfEntityToEntity (int line, int column, Expression argument)
 	{
 		super(line, column, argument);
 	}

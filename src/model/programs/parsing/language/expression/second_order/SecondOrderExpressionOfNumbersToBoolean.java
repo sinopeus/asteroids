@@ -8,7 +8,7 @@ import world.entity.ship.Ship;
 public abstract class SecondOrderExpressionOfNumbersToBoolean extends SecondOrderExpression
 {
 
-	public SecondOrderExpressionOfNumbersToBoolean (int line, int column, Expression firstArgument, Expression secondArgument)
+	protected SecondOrderExpressionOfNumbersToBoolean (int line, int column, Expression firstArgument, Expression secondArgument)
 	{
 		super(line, column, firstArgument, secondArgument);
 	}

@@ -4,7 +4,6 @@ import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.constant.literal.DoubleLiteral;
 import model.programs.parsing.language.expression.constant.literal.EntityLiteral;
 
-
 public class GetRadius extends FirstOrderExpressionOfEntityToNumber
 {
 	public GetRadius (int line, int column, Expression argument)
