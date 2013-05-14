@@ -207,6 +207,7 @@ public class World extends ArrayList <Entity>
 	 * 			The time difference over which to evolve this world.
 	 * @param	coll
 	 * 			The required collision listener.
+	 * @note	//TODO more extensive informal doc
 	 */
 	public void evolve (double dt, CollisionListener coll)
 	{

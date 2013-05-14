@@ -6,12 +6,12 @@ import model.programs.parsing.language.Type;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.Variable;
 import model.programs.parsing.language.expression.constant.ConstantExpression;
-import model.programs.parsing.language.expression.constant.GetDirection;
 import model.programs.parsing.language.expression.constant.Null;
 import model.programs.parsing.language.expression.constant.Self;
 import model.programs.parsing.language.expression.constant.literal.BooleanLiteral;
 import model.programs.parsing.language.expression.constant.literal.DoubleLiteral;
 import model.programs.parsing.language.expression.first_order.Cosine;
+import model.programs.parsing.language.expression.first_order.GetDirection;
 import model.programs.parsing.language.expression.first_order.GetRadius;
 import model.programs.parsing.language.expression.first_order.GetVX;
 import model.programs.parsing.language.expression.first_order.GetVY;
@@ -194,7 +194,7 @@ public class MyFactory implements ProgramFactory <Expression, Statement, Type>
 	@Override
 	public Expression createGetDirection (int line, int column)
 	{
-		return new GetDirection(line, column);
+		return new GetDirection(line, column,null);//TODO change this
 	}
 
 	@Override
