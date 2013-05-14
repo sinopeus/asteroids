@@ -1,12 +1,18 @@
-@SuppressWarnings("javadoc")
-public class ProgramParserTest.java
+package model.programs.parsing;
+
+import org.junit.Before;
+import org.junit.Test;
+
+@SuppressWarnings ("javadoc")
+public class ProgramParserTest
 {
-t@Before
-public void setUp ()
-{
-}
-t@Test
-public void Test ()
-{
-}
+	@Before
+	public void setUp ()
+	{
+	}
+
+	@Test
+	public void Test ()
+	{
+	}
 }
