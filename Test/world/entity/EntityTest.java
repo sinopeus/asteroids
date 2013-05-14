@@ -1,12 +1,12 @@
 @SuppressWarnings("javadoc")
 public class EntityTest.java
-\{
-\t@Before
+{
+t@Before
 public void setUp ()
-\{
-\}
-\t@Test
+{
+}
+t@Test
 public void Test ()
-\{
-\}
-\}
+{
+}
+}

@@ -1,12 +1,12 @@
 @SuppressWarnings("javadoc")
 public class CircleShapeTest.java
-\{
-\t@Before
+{
+t@Before
 public void setUp ()
-\{
-\}
-\t@Test
+{
+}
+t@Test
 public void Test ()
-\{
-\}
-\}
+{
+}
+}
