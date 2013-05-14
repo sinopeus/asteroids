@@ -26,7 +26,7 @@ public class While extends Statement
 		return (condition != null);//TODO more checking?
 	}
 
-	private void setCondition (Expression condition)
+	protected void setCondition (Expression condition)
 	{
 		if (!canHaveAsCondition(condition)) throw new IllegalArgumentException("Invalid condition provided for while statement."); //TODO ?
 		this.condition = condition;
@@ -44,21 +44,21 @@ public class While extends Statement
 		return (body != null); //TODO more checking?
 	}
 
-	private void setBody (Statement body)
+	protected void setBody (Statement body)
 	{
 		this.body = body;
 	}
 
 	boolean	resultOfCondition;
 
-	public boolean getResultOfCondition ()
+	protected boolean getResultOfCondition ()
 	{
 		return resultOfCondition;
 	}
 
 	private boolean	checked;
 
-	public boolean isChecked ()
+	protected boolean isChecked ()
 	{
 		return checked;
 	}
@@ -71,13 +71,13 @@ public class While extends Statement
 		getBody().setParentProgram(parrentProgram);
 	}
 
-	private void checkCondition ()
+	protected void checkCondition ()
 	{
 		resultOfCondition = ((BooleanLiteral) (getCondition().evaluate())).getValue();
 		checked = true;
 	}
 
-	private void finishIteration ()
+	protected void finishIteration ()
 	{
 		getBody().unfinish();
 		checkCondition();

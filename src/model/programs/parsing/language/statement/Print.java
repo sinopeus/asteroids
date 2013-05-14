@@ -13,17 +13,17 @@ public class Print extends Statement
 
 	private Expression	textExpression;
 
-	private Expression getTextExpression ()
+	protected Expression getTextExpression ()
 	{
 		return textExpression;
 	}
 
-	private boolean canHaveAsTextExpression (Expression textExpression)
+	protected boolean canHaveAsTextExpression (Expression textExpression)
 	{
 		return (textExpression != null); //TODO more checking?
 	}
 
-	public void setTextExpression (Expression textExpression)
+	protected void setTextExpression (Expression textExpression)
 	{
 		if (!canHaveAsTextExpression(textExpression)) throw new IllegalArgumentException("Invalid expression for print statement."); //TODO other message and/or exception?
 		this.textExpression = textExpression;
@@ -31,17 +31,17 @@ public class Print extends Statement
 
 	private String	text;
 
-	public String getText ()
+	protected String getText ()
 	{
 		return text;
 	}
 
-	public boolean canHaveAsText (String text)
+	protected boolean canHaveAsText (String text)
 	{
 		return (text != null);//TODO more checking?
 	}
 
-	public void setText (String text)
+	protected void setText (String text)
 	{
 		if (!canHaveAsText(text)) throw new IllegalArgumentException("Invalid text provided for print statement.");
 		this.text = text;

@@ -11,11 +11,11 @@ public abstract class ProgramPart
 		setColumn(column);
 	}
 
-	Program	parrentProgram;
+	Program	parentProgram;
 
-	public Program getParentProgram ()
+	protected Program getParentProgram ()
 	{
-		return parrentProgram;
+		return parentProgram;
 	}
 
 	protected boolean canHaveAsParentProgram (Program program)
@@ -26,7 +26,7 @@ public abstract class ProgramPart
 	public void setParentProgram (Program parrentProgram)
 	{
 		if (!canHaveAsParentProgram(parrentProgram)) throw new IllegalArgumentException();//TODO
-		this.parrentProgram = parrentProgram;
+		this.parentProgram = parrentProgram;
 	}
 
 	int	line;
@@ -36,12 +36,12 @@ public abstract class ProgramPart
 		return line;
 	}
 
-	private boolean canHaveAsLine (int line)
+	protected boolean canHaveAsLine (int line)
 	{
 		return (line >= 0); //TODO GE?
 	}
 
-	public void setLine (int line)
+	protected void setLine (int line)
 	{
 		if (!canHaveAsLine(line)) throw new IllegalArgumentException("Invalid line provided for expression.");
 		this.line = line;
@@ -54,12 +54,12 @@ public abstract class ProgramPart
 		return column;
 	}
 
-	private boolean canHaveAsColumn (int column)
+	protected boolean canHaveAsColumn (int column)
 	{
 		return (column >= 0); //TODO GE?
 	}
 
-	public void setColumn (int column)
+	protected void setColumn (int column)
 	{
 		if (!canHaveAsColumn(column)) throw new IllegalArgumentException("Invalid column provided for expression.");
 		this.column = column;

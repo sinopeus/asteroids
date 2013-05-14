@@ -5,9 +5,6 @@ import java.util.Map;
 
 import model.programs.parsing.language.Type;
 import model.programs.parsing.language.expression.constant.ConstantExpression;
-import model.programs.parsing.language.expression.constant.literal.BooleanLiteral;
-import model.programs.parsing.language.expression.constant.literal.DoubleLiteral;
-import model.programs.parsing.language.expression.constant.literal.EntityLiteral;
 import model.programs.parsing.language.statement.Statement;
 
 import org.antlr.runtime.RecognitionException;
@@ -25,12 +22,12 @@ public class Program
 
 	Map <String, Type>	globalTypes;
 
-	public Map <String, Type> getGlobalTypes ()
+	protected Map <String, Type> getGlobalTypes ()
 	{
 		return globalTypes;
 	}
 
-	public void setGlobalTypes (Map <String, Type> globalTypes) throws RecognitionException
+	protected void setGlobalTypes (Map <String, Type> globalTypes) throws RecognitionException
 	{
 		if (!canHaveAsGlobals(globalTypes)) throw new RecognitionException();
 		this.globalTypes = globalTypes;
@@ -38,12 +35,12 @@ public class Program
 
 	HashMap <String, ConstantExpression>	globalValues;
 
-	public HashMap <String, ConstantExpression> getGlobalValues ()
+	protected HashMap <String, ConstantExpression> getGlobalValues ()
 	{
 		return globalValues;
 	}
 
-	private void setGlobalValues (Map <String, Type> globalsTypes) throws RecognitionException
+	protected void setGlobalValues (Map <String, Type> globalsTypes) throws RecognitionException
 	{
 		if (!canHaveAsGlobals(globalsTypes)) throw new RecognitionException();
 		HashMap <String, ConstantExpression> globalVariables = new HashMap <String, ConstantExpression>();
@@ -60,7 +57,7 @@ public class Program
 
 	Statement	statement;
 
-	public Statement getStatement ()
+	protected Statement getStatement ()
 	{
 		return statement;
 	}
@@ -70,7 +67,7 @@ public class Program
 		return (statement != null); // TODO more checking?
 	}
 
-	public void setStatement (Statement statement) throws RecognitionException
+	protected void setStatement (Statement statement) throws RecognitionException
 	{
 		if (!canHaveAsStatement(statement)) throw new RecognitionException();
 		this.statement = statement;
@@ -109,13 +106,13 @@ public class Program
 
 	public ConstantExpression getVariableNamed (String name)
 	{
-		if(!globalValues.containsKey(name)) throw new IllegalArgumentException("invalid variable name");
+		if (!globalValues.containsKey(name)) throw new IllegalArgumentException("invalid variable name");
 		return getGlobalValues().get(name);
 	}
 
 	public void setVariableValue (String name, ConstantExpression value)
 	{
-		if(!globalValues.containsKey(name)) throw new IllegalArgumentException("invalid variable name");
+		if (!globalValues.containsKey(name)) throw new IllegalArgumentException("invalid variable name");
 		getGlobalValues().remove(name);
 		getGlobalValues().put(name, value);
 	}
@@ -126,9 +123,6 @@ public class Program
 			if (getStatement().execute()) break;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString ()
 	{

@@ -19,12 +19,12 @@ public class ForEach extends Statement
 		setType(type);
 		setVariableName(variableName);
 		setBody(body);
-		this.isAtStartOfIteration = true;
+		this.AtStartOfIteration = true;
 	}
 
 	private ForeachType	type;
 
-	public ForeachType getType ()
+	protected ForeachType getType ()
 	{
 		return type;
 	}
@@ -34,7 +34,7 @@ public class ForEach extends Statement
 		return true;
 	}
 
-	public void setType (ForeachType type)
+	protected void setType (ForeachType type)
 	{
 		if (!canHaveAsType(type)) throw new IllegalArgumentException("Invalid type for foreach statement");
 		this.type = type;
@@ -42,7 +42,7 @@ public class ForEach extends Statement
 
 	String	variableName;
 
-	public String getVariableName ()
+	protected String getVariableName ()
 	{
 		return variableName;
 	}
@@ -52,7 +52,7 @@ public class ForEach extends Statement
 		return (variableName != null); //TODO more checking.
 	}
 
-	public void setVariableName (String variableName)
+	protected void setVariableName (String variableName)
 	{
 		if (!canHaveAsVariable(variableName)) throw new IllegalArgumentException("Invalid variable  name provided for foreach statement.");
 		this.variableName = variableName;
@@ -60,7 +60,7 @@ public class ForEach extends Statement
 
 	Statement	body;
 
-	public Statement getBody ()
+	protected Statement getBody ()
 	{
 		return body;
 	}
@@ -70,7 +70,7 @@ public class ForEach extends Statement
 		return (body != null);//TODO more checking?
 	}
 
-	private void setBody (Statement body)
+	protected void setBody (Statement body)
 	{
 		if (!canHaveAsBody(body)) throw new IllegalArgumentException("Invalid body provided for foreach statement.");//text & type
 		this.body = body;
@@ -78,7 +78,7 @@ public class ForEach extends Statement
 
 	private ArrayList <EntityLiteral>	selection;
 
-	public ArrayList <EntityLiteral> getSelection ()
+	protected ArrayList <EntityLiteral> getSelection ()
 	{
 		return selection;
 	}
@@ -88,7 +88,7 @@ public class ForEach extends Statement
 		return (selection != null);//TODO more checking?
 	}
 
-	private void calculateSelection () //TODO can I change the enum in programfactory?
+	protected void calculateSelection () //TODO can I change the enum in programfactory?
 	{
 		ArrayList <EntityLiteral> selection = new ArrayList <EntityLiteral>();
 		World w = getOwnerShip().getWorld();
@@ -121,7 +121,7 @@ public class ForEach extends Statement
 
 	private int	currentIndex;
 
-	public int getCurrentIndex ()
+	protected int getCurrentIndex ()
 	{
 		return currentIndex;
 	}
@@ -132,13 +132,13 @@ public class ForEach extends Statement
 		return ( (selectedIndex >= 0) && (selectedIndex < getSelection().size()));
 	}
 
-	private void setSelectedIndex (int selectedIndex)
+	protected void setSelectedIndex (int selectedIndex)
 	{
 		if (!canHaveAsCurrentIndex(selectedIndex)) throw new IllegalArgumentException("Illegal selected index for sequence " + selectedIndex);
 		this.currentIndex = selectedIndex;
 	}
 
-	private void incrementIndex ()
+	protected void incrementIndex ()
 	{
 		if (getCurrentIndex() >= getSelection().size() - 1)
 		{
@@ -149,22 +149,22 @@ public class ForEach extends Statement
 		getBody().unfinish();
 	}
 
-	private boolean	isAtStartOfIteration;
+	private boolean	AtStartOfIteration;
 
-	private boolean isAtStartOfIteration ()
+	protected boolean isAtStartOfIteration ()
 	{
-		return isAtStartOfIteration;
+		return AtStartOfIteration;
 	}
 
-	private void startIteration ()
+	protected void startIteration ()
 	{
 		getParentProgram().setVariableValue(getVariableName(), getSelection().get(getCurrentIndex()));
-		isAtStartOfIteration = false;
+		AtStartOfIteration = false;
 	}
 
-	private void finishIteration ()
+	protected void finishIteration ()
 	{
-		isAtStartOfIteration = true;
+		AtStartOfIteration = true;
 	}
 
 	@Override
@@ -193,7 +193,7 @@ public class ForEach extends Statement
 
 		while (!this.isFinished())
 		{
-			if (isAtStartOfIteration) startIteration();
+			if (isAtStartOfIteration()) startIteration();
 			if (getBody().execute())
 			{
 				if (getBody().isFinished())

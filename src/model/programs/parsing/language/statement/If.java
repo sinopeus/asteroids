@@ -17,19 +17,19 @@ public class If extends Statement
 
 	boolean	resultOfCondition;
 
-	public boolean getResultOfCondition ()
+	protected boolean getResultOfCondition ()
 	{
 		return resultOfCondition;
 	}
 
 	private boolean	checked;
 
-	private boolean isChecked ()
+	protected boolean isChecked ()
 	{
 		return checked;
 	}
 
-	private void checkCondition ()
+	protected void checkCondition ()
 	{
 		resultOfCondition = ((BooleanLiteral) (getCondition().evaluate())).getValue();
 		checked = true;
@@ -37,17 +37,17 @@ public class If extends Statement
 
 	Expression	condition;
 
-	public Expression getCondition ()
+	protected Expression getCondition ()
 	{
 		return condition;
 	}
 
-	public boolean canHaveAsCondition (Expression condition)
+	protected boolean canHaveAsCondition (Expression condition)
 	{
 		return (condition != null);//TODO more checking?
 	}
 
-	public void setCondition (Expression condition)
+	protected void setCondition (Expression condition)
 	{
 		if (!canHaveAsCondition(condition)) throw new IllegalArgumentException("Invalid condition for if statement."); //TODO change the kind of exception?
 		this.condition = condition;
@@ -55,7 +55,7 @@ public class If extends Statement
 
 	Statement	then;
 
-	public Statement getThenStatement ()
+	protected Statement getThenStatement ()
 	{
 		return then;
 	}
@@ -73,7 +73,7 @@ public class If extends Statement
 
 	Statement	otherwise;
 
-	public Statement getOtherwiseStatement ()
+	protected Statement getOtherwiseStatement ()
 	{
 		return otherwise;
 	}
@@ -130,7 +130,7 @@ public class If extends Statement
 	public boolean execute ()
 	{
 		super.execute();
-		if (!checked) checkCondition();
+		if (!isChecked()) checkCondition();
 		return resultOfCondition ? execute(getThenStatement()) : execute(getOtherwiseStatement());
 	}
 

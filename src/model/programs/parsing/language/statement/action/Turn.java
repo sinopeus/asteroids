@@ -14,7 +14,7 @@ public class Turn extends Action
 
 	Expression	angle;
 
-	public Expression getAngle ()
+	protected Expression getAngle ()
 	{
 		return angle;
 	}
@@ -24,7 +24,7 @@ public class Turn extends Action
 		return (angle != null);//TODO more checking?
 	}
 
-	public void setAngle (Expression angle)
+	protected void setAngle (Expression angle)
 	{
 		if (!canHaveAsAngle(angle)) throw new IllegalArgumentException("Invalid angle provided for turn statement.");
 		this.angle = angle;

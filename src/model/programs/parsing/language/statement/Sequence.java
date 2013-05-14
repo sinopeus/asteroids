@@ -15,17 +15,17 @@ public class Sequence extends Statement
 
 	private List <Statement>	sequence;
 
-	private List <Statement> getSequence ()
+	protected List <Statement> getSequence ()
 	{
 		return sequence;
 	}
 
-	private boolean canHaveAsSequence (List <Statement> sequence)
+	protected boolean canHaveAsSequence (List <Statement> sequence)
 	{
 		return (sequence != null);//TODO more checking?
 	}
 
-	private void setSequence (List <Statement> sequence)
+	protected void setSequence (List <Statement> sequence)
 	{
 		if (!canHaveAsSequence(sequence)) throw new IllegalArgumentException("Invalid sequence of statements.");//TODO other message and/or exception.
 		this.sequence = sequence;
@@ -33,7 +33,7 @@ public class Sequence extends Statement
 
 	private int	selectedIndex;
 
-	public int getSelectedIndex ()
+	protected int getSelectedIndex ()
 	{
 		return selectedIndex;
 	}
@@ -44,13 +44,13 @@ public class Sequence extends Statement
 		return ( (selectedIndex >= 0) && (selectedIndex < getSequence().size()));
 	}
 
-	private void setSelectedIndex (int selectedIndex)
+	protected void setSelectedIndex (int selectedIndex)
 	{
 		if (!canHaveAsSelectedIndex(selectedIndex)) throw new IllegalArgumentException("Illegal selected index for sequence " + selectedIndex);
 		this.selectedIndex = selectedIndex;
 	}
 
-	private void incrementIndex ()
+	protected void incrementIndex ()
 	{
 		if (getSelectedIndex() >= getSequence().size() - 1)
 		{
@@ -60,7 +60,7 @@ public class Sequence extends Statement
 		setSelectedIndex(getSelectedIndex() + 1);
 	}
 
-	private Statement getCurrentStatement ()
+	protected Statement getCurrentStatement ()
 	{
 		return getSequence().get(getSelectedIndex());
 	}
@@ -88,13 +88,6 @@ public class Sequence extends Statement
 			s.unfinish();
 		super.unfinish();
 		setSelectedIndex(0);
-	}
-
-	private boolean containsAnyUnfinishedStatements ()
-	{
-		for (Statement s : getSequence())
-			if (!s.isFinished()) return true;
-		return false;
 	}
 
 	@Override

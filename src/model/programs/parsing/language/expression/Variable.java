@@ -14,7 +14,7 @@ public class Variable extends Expression
 
 	String	name;
 
-	public String getName ()
+	protected String getName ()
 	{
 		return name;
 	}
@@ -24,7 +24,7 @@ public class Variable extends Expression
 		return (name != null); //TODO more checking
 	}
 
-	private void setName (String name)
+	protected void setName (String name)
 	{
 		if (!canHaveAsName(name)) throw new IllegalArgumentException("Invalid name for variable.");
 		this.name = name;

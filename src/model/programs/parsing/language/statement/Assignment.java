@@ -16,7 +16,7 @@ public class Assignment extends Statement
 
 	Variable	variable;
 
-	public Variable getVariable ()
+	protected Variable getVariable ()
 	{
 		return variable;
 	}
@@ -34,7 +34,7 @@ public class Assignment extends Statement
 
 	Expression	value;
 
-	public Expression getValue ()
+	protected Expression getValue ()
 	{
 		return value;
 	}
