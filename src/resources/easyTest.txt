@@ -4,7 +4,6 @@ double b;
 double r;
 
 while (true) {
-	print self;
 	foreach(ship, e){
 		a := (((gety e) - (gety self)) / ((getx e) - (getx self)));
 		b := (getdirection self);
