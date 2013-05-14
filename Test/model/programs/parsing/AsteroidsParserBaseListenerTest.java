@@ -1,11 +1,13 @@
+package model.programs.parsing;
+
 @SuppressWarnings("javadoc")
-public class AsteroidsParserBaseListenerTest.java
+public class AsteroidsParserBaseListenerTest
 {
-t@Before
+@Before
 public void setUp ()
 {
 }
-t@Test
+@Test
 public void Test ()
 {
 }
