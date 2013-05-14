@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import model.programs.Program;
 import model.programs.parsing.ProgramFactory.ForeachType;
-import model.programs.parsing.language.expression.EntityLiteral;
+import model.programs.parsing.language.expression.constant.literal.EntityLiteral;
 import world.World;
 import world.entity.Asteroid;
 import world.entity.Bullet;
@@ -96,7 +96,10 @@ public class ForEach extends Statement
 		{
 			case SHIP:
 				for (Entity e : w)
+				{
+					if (e == getOwnerShip()) continue; //TODO  remove this?
 					if (e instanceof Ship) selection.add(new EntityLiteral(getLine(), getColumn(), e));
+				}
 				break;
 			case ASTEROID:
 				for (Entity e : w)
@@ -208,5 +211,11 @@ public class ForEach extends Statement
 		}
 		finish();
 		return false;
+	}
+
+	@Override
+	public String toString ()
+	{
+		return "ForEach [type=" + type + ", variableName=" + variableName + ", body=" + body + "]";
 	}
 }

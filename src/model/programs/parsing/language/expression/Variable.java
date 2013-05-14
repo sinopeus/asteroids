@@ -1,5 +1,7 @@
 package model.programs.parsing.language.expression;
 
+import model.programs.parsing.language.expression.constant.ConstantExpression;
+
 
 public class Variable extends Expression
 {

@@ -3,35 +3,35 @@ package model.programs.parsing;
 import java.util.List;
 
 import model.programs.parsing.language.Type;
-import model.programs.parsing.language.expression.Addition;
-import model.programs.parsing.language.expression.And;
-import model.programs.parsing.language.expression.BooleanLiteral;
-import model.programs.parsing.language.expression.ConstantExpression;
-import model.programs.parsing.language.expression.Cosine;
-import model.programs.parsing.language.expression.Division;
-import model.programs.parsing.language.expression.DoubleLiteral;
-import model.programs.parsing.language.expression.Equals;
 import model.programs.parsing.language.expression.Expression;
-import model.programs.parsing.language.expression.GE;
-import model.programs.parsing.language.expression.GT;
-import model.programs.parsing.language.expression.GetDirection;
-import model.programs.parsing.language.expression.GetRadius;
-import model.programs.parsing.language.expression.GetVX;
-import model.programs.parsing.language.expression.GetVY;
-import model.programs.parsing.language.expression.GetX;
-import model.programs.parsing.language.expression.GetY;
-import model.programs.parsing.language.expression.LE;
-import model.programs.parsing.language.expression.LT;
-import model.programs.parsing.language.expression.Multiplication;
-import model.programs.parsing.language.expression.Not;
-import model.programs.parsing.language.expression.NotEquals;
-import model.programs.parsing.language.expression.Null;
-import model.programs.parsing.language.expression.Or;
-import model.programs.parsing.language.expression.Self;
-import model.programs.parsing.language.expression.Sine;
-import model.programs.parsing.language.expression.SquareRoot;
-import model.programs.parsing.language.expression.Substraction;
 import model.programs.parsing.language.expression.Variable;
+import model.programs.parsing.language.expression.constant.ConstantExpression;
+import model.programs.parsing.language.expression.constant.Null;
+import model.programs.parsing.language.expression.constant.Self;
+import model.programs.parsing.language.expression.constant.literal.BooleanLiteral;
+import model.programs.parsing.language.expression.constant.literal.DoubleLiteral;
+import model.programs.parsing.language.expression.first_order.Cosine;
+import model.programs.parsing.language.expression.first_order.GetDirection;
+import model.programs.parsing.language.expression.first_order.GetRadius;
+import model.programs.parsing.language.expression.first_order.GetVX;
+import model.programs.parsing.language.expression.first_order.GetVY;
+import model.programs.parsing.language.expression.first_order.GetX;
+import model.programs.parsing.language.expression.first_order.GetY;
+import model.programs.parsing.language.expression.first_order.Not;
+import model.programs.parsing.language.expression.first_order.Sine;
+import model.programs.parsing.language.expression.first_order.SquareRoot;
+import model.programs.parsing.language.expression.second_order.Addition;
+import model.programs.parsing.language.expression.second_order.And;
+import model.programs.parsing.language.expression.second_order.Division;
+import model.programs.parsing.language.expression.second_order.Equals;
+import model.programs.parsing.language.expression.second_order.GE;
+import model.programs.parsing.language.expression.second_order.GT;
+import model.programs.parsing.language.expression.second_order.LE;
+import model.programs.parsing.language.expression.second_order.LT;
+import model.programs.parsing.language.expression.second_order.Multiplication;
+import model.programs.parsing.language.expression.second_order.NotEquals;
+import model.programs.parsing.language.expression.second_order.Or;
+import model.programs.parsing.language.expression.second_order.Substraction;
 import model.programs.parsing.language.statement.Assignment;
 import model.programs.parsing.language.statement.ForEach;
 import model.programs.parsing.language.statement.If;
@@ -194,7 +194,7 @@ public class MyFactory implements ProgramFactory <Expression, Statement, Type>
 	@Override
 	public Expression createGetDirection (int line, int column)
 	{
-		return new GetDirection(line, column);
+		return new GetDirection(line, column,null);//TODO change this
 	}
 
 	@Override

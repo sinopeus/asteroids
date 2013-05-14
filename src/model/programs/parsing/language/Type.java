@@ -1,9 +1,9 @@
 package model.programs.parsing.language;
 
-import model.programs.parsing.language.expression.BooleanLiteral;
-import model.programs.parsing.language.expression.ConstantExpression;
-import model.programs.parsing.language.expression.DoubleLiteral;
-import model.programs.parsing.language.expression.EntityLiteral;
+import model.programs.parsing.language.expression.constant.ConstantExpression;
+import model.programs.parsing.language.expression.constant.literal.BooleanLiteral;
+import model.programs.parsing.language.expression.constant.literal.DoubleLiteral;
+import model.programs.parsing.language.expression.constant.literal.EntityLiteral;
 
 public enum Type
 {
