@@ -48,10 +48,15 @@ public class FileSoundManager implements Runnable, Sound
 		public void execute ()
 		{
 			Clip clip = clips.get(getSound());
-			if (clip == null) System.err.println("clip " + getSound() + " not found");
-			else
+			if (clip == null)
 			{
-				if (clip.isRunning()) clip.stop();
+				System.err.println("clip " + getSound() + " not found");
+			} else
+			{
+				if (clip.isRunning())
+				{
+					clip.stop();
+				}
 				clip.setFramePosition(0);
 				clip.start();
 			}
@@ -68,8 +73,13 @@ public class FileSoundManager implements Runnable, Sound
 		public void execute ()
 		{
 			Clip clip = clips.get(getSound());
-			if (clip == null) System.err.println("clip " + getSound() + " not found");
-			else clip.stop();
+			if (clip == null)
+			{
+				System.err.println("clip " + getSound() + " not found");
+			} else
+			{
+				clip.stop();
+			}
 		}
 	}
 
@@ -83,10 +93,15 @@ public class FileSoundManager implements Runnable, Sound
 		public void execute ()
 		{
 			Clip clip = clips.get(getSound());
-			if (clip == null) System.err.println("clip " + getSound() + " not found");
-			else
+			if (clip == null)
 			{
-				if (clip.isRunning()) clip.stop();
+				System.err.println("clip " + getSound() + " not found");
+			} else
+			{
+				if (clip.isRunning())
+				{
+					clip.stop();
+				}
 				clip.setFramePosition(0);
 				clip.loop(Clip.LOOP_CONTINUOUSLY);
 			}
@@ -174,14 +189,19 @@ public class FileSoundManager implements Runnable, Sound
 			{
 				while (request == null)
 				{
-					if (requests.isEmpty()) try
+					if (requests.isEmpty())
 					{
-						wait();
-					} catch (InterruptedException e)
+						try
+						{
+							wait();
+						} catch (InterruptedException e)
+						{
+							return;
+						}
+					} else
 					{
-						return;
+						request = requests.remove();
 					}
-					else request = requests.remove();
 				}
 			}
 			request.execute();

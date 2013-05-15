@@ -1,5 +1,30 @@
-thrust;
-while(true){
-turn 0.1;
-fire;
+entity e;
+double a;
+double b;
+double s;
+double t;
+
+while (true) {
+	foreach(ship, e){
+		a := (((gety e) - (gety self)) / ((getx e) - (getx self)));
+		print a;
+		b := ( sin( getdir ) / cos( getdir ) );
+		print b;
+		print (a - b);
+		
+		while(((a - b) >= 0.1) || ((a - b) <= -0.1)){
+			print true;
+			turn 0.1;
+			a := (((gety e) - (gety self)) / ((getx e) - (getx self)));
+			print a;
+			b := ( sin( getdir ) / cos( getdir ) );
+			print b;
+			print (a - b);
+		}
+		print false;
+		
+		fire;
+		turn 3.14;
+		fire;
+	}
 }

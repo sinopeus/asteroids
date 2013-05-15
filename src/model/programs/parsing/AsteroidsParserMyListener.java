@@ -54,13 +54,22 @@ public class AsteroidsParserMyListener <E, S, T> implements AsteroidsParserListe
 		S statements = null;
 
 		// assignment
-		if (eval.assign() != null) statements = StatementOfAssign(eval.assign().IDENTIFIER(), eval.assign().expr());
+		if (eval.assign() != null)
+		{
+			statements = StatementOfAssign(eval.assign().IDENTIFIER(), eval.assign().expr());
+		}
 
 		// if, while, etc.
-		if (eval.ctrl() != null) statements = StatementOfCtrl(eval.ctrl());
+		if (eval.ctrl() != null)
+		{
+			statements = StatementOfCtrl(eval.ctrl());
+		}
 
 		// fire, turn, etc.
-		if (eval.action() != null) statements = StatementOfAction(eval.action());
+		if (eval.action() != null)
+		{
+			statements = StatementOfAction(eval.action());
+		}
 
 		// declarations
 		if (eval.decl() != null)
@@ -74,23 +83,34 @@ public class AsteroidsParserMyListener <E, S, T> implements AsteroidsParserListe
 			}
 		}
 
-		if (eval.PRINT() != null) statements = factory.createPrint(line, column, ExpressionOfExpr(eval.expr()));
+		if (eval.PRINT() != null)
+		{
+			statements = factory.createPrint(line, column, ExpressionOfExpr(eval.expr()));
+		}
 
 		// recurse to process sequence of statements
-		if (eval.eval() != null) if (statements == null)
+		if (eval.eval() != null)
 		{
-			statements = StatementOfEval(eval.eval());
-		} else
-		{
-			java.util.List <S> l = new java.util.ArrayList <S>();
-			l.add(statements);
-			l.add(StatementOfEval(eval.eval()));
-			statements = factory.createSequence(line, column, l);
+			if (statements == null)
+			{
+				statements = StatementOfEval(eval.eval());
+			} else
+			{
+				java.util.List <S> l = new java.util.ArrayList <S>();
+				l.add(statements);
+				l.add(StatementOfEval(eval.eval()));
+				statements = factory.createSequence(line, column, l);
+			}
 		}
 
 		// return something sensible for empty bodies
-		if (statements != null) return (statements);
-		else return (factory.createSequence(line, column, Collections.<S> emptyList()));
+		if (statements != null)
+		{
+			return (statements);
+		} else
+		{
+			return (factory.createSequence(line, column, Collections.<S> emptyList()));
+		}
 	}
 
 	private S StatementOfAssign (TerminalNode identifier, AsteroidsParserParser.ExprContext expr)
@@ -170,11 +190,17 @@ public class AsteroidsParserMyListener <E, S, T> implements AsteroidsParserListe
 		switch (e.size())
 		{
 			case 0:
+			{
 				break;
+			}
 			case 1:
+			{
 				return (factory.createIf(line, column, ExpressionOfExpr(c), StatementOfEval(e.get(0)), factory.createSequence(line, column, Collections.<S> emptyList())));
+			}
 			case 2:
+			{
 				return (factory.createIf(line, column, ExpressionOfExpr(c), StatementOfEval(e.get(0)), StatementOfEval(e.get(1))));
+			}
 			default:
 			{
 			}
@@ -201,11 +227,22 @@ public class AsteroidsParserMyListener <E, S, T> implements AsteroidsParserListe
 		int line = ctx.getStart().getLine();
 		int column = ctx.getStart().getCharPositionInLine();
 		ProgramFactory.ForeachType type = null;
-		if (ctx.entityspec().ANY() != null) type = ForeachType.ANY;
-		if (ctx.entityspec().BULLET() != null) type = ForeachType.BULLET;
-		if (ctx.entityspec().SHIP() != null) type = ForeachType.SHIP;
-		if (ctx.entityspec().ASTEROID() != null) type = ForeachType.ASTEROID;
-
+		if (ctx.entityspec().ANY() != null)
+		{
+			type = ForeachType.ANY;
+		}
+		if (ctx.entityspec().BULLET() != null)
+		{
+			type = ForeachType.BULLET;
+		}
+		if (ctx.entityspec().SHIP() != null)
+		{
+			type = ForeachType.SHIP;
+		}
+		if (ctx.entityspec().ASTEROID() != null)
+		{
+			type = ForeachType.ASTEROID;
+		}
 		assert (type != null);
 
 		return (factory.createForeach(line, column, type, ctx.IDENTIFIER().getText(), StatementOfEval(ctx.eval())));
@@ -285,17 +322,23 @@ public class AsteroidsParserMyListener <E, S, T> implements AsteroidsParserListe
 		switch (e.size())
 		{
 			case 0:
+			{
 				if (expr.namedconst() != null) { return (ExpressionOfNamedConst(expr.namedconst())); }
 				if (expr.NUMBER() != null) { return (ExpressionOfNumber(expr.NUMBER())); }
 				if (expr.IDENTIFIER() != null) { return (factory.createVariable(line, column, expr.IDENTIFIER().getText())); }
 				if (expr.unop() != null) { return (ExpressionOfUnop(expr.unop())); }
 				if (expr.GETDIR() != null) { return factory.createGetDirection(line, column); }
 				break;
+			}
 			case 1:
+			{
 				return (ExpressionOfExpr(e.get(0)));
+			}
 			case 2:
+			{
 				if (expr.binop() != null) { return (ExpressionOfBinop(expr.binop(), e.get(0), e.get(1))); }
 				break;
+			}
 			default:
 			{
 			}
@@ -315,8 +358,13 @@ public class AsteroidsParserMyListener <E, S, T> implements AsteroidsParserListe
 
 	public Map <String, T> getGlobals ()
 	{
-		if (globals == null) return Collections.emptyMap();
-		else return globals;
+		if (globals == null)
+		{
+			return Collections.emptyMap();
+		} else
+		{
+			return globals;
+		}
 	}
 
 	public S getStatement ()

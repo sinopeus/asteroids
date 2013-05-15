@@ -87,6 +87,7 @@ public class While extends Statement
 	public void unfinish ()
 	{
 		getBody().unfinish();
+		checked = false;
 		super.unfinish();
 	}
 

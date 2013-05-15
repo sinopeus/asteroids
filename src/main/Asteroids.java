@@ -48,7 +48,7 @@ public class Asteroids <World, Ship, Asteroid, Bullet, Program> extends JFrame
 		return width;
 	}
 
-	public int getHeight ()
+	public int getHeight ()// TODO Auto-generated method stub
 	{
 		return height;
 	}
@@ -95,7 +95,7 @@ public class Asteroids <World, Ship, Asteroid, Bullet, Program> extends JFrame
 		World world = facade.createWorld(width, height);
 		Ship player1 = facade.createShip(width / 5 * 4, height / 2., 0, 0, 40, Math.PI, 5E15);
 		facade.addShip(world, player1);
-		Ship player2 = facade.createShip(width / 5, height / 2., 0, 0, 40, 0, 5E15);
+		Ship player2 = facade.createShip(width / 5, height / 2.+100, 0, 0, 40, 0, 5E15);
 		facade.addShip(world, player2);
 		if (vsAI)
 		{
@@ -135,14 +135,16 @@ public class Asteroids <World, Ship, Asteroid, Bullet, Program> extends JFrame
 				return;
 			}
 		}
-		Asteroid asteroid1 = facade.createAsteroid(width / 2.5, height / 2.5, 25, 50, 75);
+		Asteroid asteroid1 = facade.createAsteroid(width / 2.5, height / 2.5, 0, 0, 75);
 		facade.addAsteroid(world, asteroid1);
-		Asteroid asteroid2 = facade.createAsteroid(600, 100, -30, -40, 40);
-		facade.addAsteroid(world, asteroid2);
-		Asteroid asteroid3 = facade.createAsteroid(990, 550, -20, -3, 25);
-		facade.addAsteroid(world, asteroid3);
-		Asteroid asteroid4 = facade.createAsteroid(40, height - 100, 10, -8, 15);
-		facade.addAsteroid(world, asteroid4);
+//		Asteroid asteroid1 = facade.createAsteroid(width / 2.5, height / 2.5, 25, 50, 75);
+//		facade.addAsteroid(world, asteroid1);
+//		Asteroid asteroid2 = facade.createAsteroid(600, 100, -30, -40, 40);
+//		facade.addAsteroid(world, asteroid2);
+//		Asteroid asteroid3 = facade.createAsteroid(990, 550, -20, -3, 25);
+//		facade.addAsteroid(world, asteroid3);
+//		Asteroid asteroid4 = facade.createAsteroid(40, height - 100, 10, -8, 15);
+//		facade.addAsteroid(world, asteroid4);
 		view = new WorldView <World, Ship, Asteroid, Bullet, Program>(this, world, player1, player2, vsAI);
 		if (!isUndecorated()) view.setPreferredSize(new Dimension(width, height));
 		getContentPane().remove(menu);
@@ -177,40 +179,49 @@ public class Asteroids <World, Ship, Asteroid, Bullet, Program> extends JFrame
 		for (int i = 0; i < args.length; i++)
 		{
 			String arg = args[i];
-			if (arg.equals("-window")) tryFullscreen = false;
-			else if (arg.equals("-nosound")) enableSound = false;
-			else if (arg.equals("-ai")) if (i + 1 < args.length)
+			if (arg.equals("-window"))
 			{
-				String aiProgramPath = args[++i];
-				File file = new File(aiProgramPath);
-				if (!file.exists())
+				tryFullscreen = false;
+			} else if (arg.equals("-nosound"))
+			{
+				enableSound = false;
+			} else if (arg.equals("-ai"))
+			{
+				if (i + 1 < args.length)
 				{
-					System.out.println("file " + aiProgramPath + " not found");
-					return;
+					String aiProgramPath = args[++i];
+					File file = new File(aiProgramPath);
+					if (!file.exists())
+					{
+						System.out.println("file " + aiProgramPath + " not found");
+						return;
+					} else
+					{
+						try
+						{
+							aiProgramUrl = file.toURI().toURL();
+						} catch (MalformedURLException e)
+						{
+							System.out.println("malformed url");
+							return;
+						}
+					}
+					i++;
 				} else
 				{
-					try
-					{
-						aiProgramUrl = file.toURI().toURL();
-					} catch (MalformedURLException e)
-					{
-						System.out.println("malformed url");
-						return;
-					}
+					System.out.println("no path specified");
+					return;
 				}
-				i++;
 			} else
-			{
-				System.out.println("no path specified");
-				return;
-			}
-			else
 			{
 				System.out.println("unknown option: " + arg);
 				return;
 			}
 		}
-		if (args.length > 0 && args[0].equals("-window")) tryFullscreen = false;
+		if (args.length > 0 && args[0].equals("-window"))
+		{
+			tryFullscreen = false;
+		}
 		if (GraphicsEnvironment.isHeadless())
 		{
 			System.out.println("no screen found");
@@ -228,7 +239,10 @@ public class Asteroids <World, Ship, Asteroid, Bullet, Program> extends JFrame
 			Rectangle dimensions = screen.getDefaultConfiguration().getBounds();
 			asteroids = new Asteroids <>(facade, dimensions.width, dimensions.height, true, sound, aiProgramUrl);
 			screen.setFullScreenWindow(asteroids);
-		} else asteroids = new Asteroids <>(facade, 1024, 768, false, sound, aiProgramUrl);
+		} else
+		{
+			asteroids = new Asteroids <>(facade, 1024, 768, false, sound, aiProgramUrl);
+		}
 		asteroids.start();
 	}
 }
