@@ -18,82 +18,22 @@ public class AsteroidsParserBaseListener implements AsteroidsParserListener
 	}
 
 	@Override
-	public void enterAssign (AsteroidsParserParser.AssignContext ctx)
-	{
-	}
-
-	@Override
-	public void exitAssign (AsteroidsParserParser.AssignContext ctx)
-	{
-	}
-
-	@Override
-	public void enterEval (AsteroidsParserParser.EvalContext ctx)
-	{
-	}
-
-	@Override
-	public void exitEval (AsteroidsParserParser.EvalContext ctx)
-	{
-	}
-
-	@Override
-	public void enterNamedconst (AsteroidsParserParser.NamedconstContext ctx)
-	{
-	}
-
-	@Override
-	public void exitNamedconst (AsteroidsParserParser.NamedconstContext ctx)
-	{
-	}
-
-	@Override
-	public void enterExpr (AsteroidsParserParser.ExprContext ctx)
-	{
-	}
-
-	@Override
-	public void exitExpr (AsteroidsParserParser.ExprContext ctx)
-	{
-	}
-
-	@Override
-	public void enterCtrl (AsteroidsParserParser.CtrlContext ctx)
-	{
-	}
-
-	@Override
-	public void exitCtrl (AsteroidsParserParser.CtrlContext ctx)
-	{
-	}
-
-	@Override
-	public void enterType (AsteroidsParserParser.TypeContext ctx)
-	{
-	}
-
-	@Override
-	public void exitType (AsteroidsParserParser.TypeContext ctx)
-	{
-	}
-
-	@Override
-	public void enterBinop (AsteroidsParserParser.BinopContext ctx)
-	{
-	}
-
-	@Override
-	public void exitBinop (AsteroidsParserParser.BinopContext ctx)
-	{
-	}
-
-	@Override
 	public void enterWhiledo (AsteroidsParserParser.WhiledoContext ctx)
 	{
 	}
 
 	@Override
 	public void exitWhiledo (AsteroidsParserParser.WhiledoContext ctx)
+	{
+	}
+
+	@Override
+	public void enterAssign (AsteroidsParserParser.AssignContext ctx)
+	{
+	}
+
+	@Override
+	public void exitAssign (AsteroidsParserParser.AssignContext ctx)
 	{
 	}
 
@@ -118,6 +58,16 @@ public class AsteroidsParserBaseListener implements AsteroidsParserListener
 	}
 
 	@Override
+	public void enterEval (AsteroidsParserParser.EvalContext ctx)
+	{
+	}
+
+	@Override
+	public void exitEval (AsteroidsParserParser.EvalContext ctx)
+	{
+	}
+
+	@Override
 	public void enterAction (AsteroidsParserParser.ActionContext ctx)
 	{
 	}
@@ -128,12 +78,62 @@ public class AsteroidsParserBaseListener implements AsteroidsParserListener
 	}
 
 	@Override
+	public void enterNamedconst (AsteroidsParserParser.NamedconstContext ctx)
+	{
+	}
+
+	@Override
+	public void exitNamedconst (AsteroidsParserParser.NamedconstContext ctx)
+	{
+	}
+
+	@Override
+	public void enterExpr (AsteroidsParserParser.ExprContext ctx)
+	{
+	}
+
+	@Override
+	public void exitExpr (AsteroidsParserParser.ExprContext ctx)
+	{
+	}
+
+	@Override
+	public void enterType (AsteroidsParserParser.TypeContext ctx)
+	{
+	}
+
+	@Override
+	public void exitType (AsteroidsParserParser.TypeContext ctx)
+	{
+	}
+
+	@Override
+	public void enterCtrl (AsteroidsParserParser.CtrlContext ctx)
+	{
+	}
+
+	@Override
+	public void exitCtrl (AsteroidsParserParser.CtrlContext ctx)
+	{
+	}
+
+	@Override
 	public void enterEntityspec (AsteroidsParserParser.EntityspecContext ctx)
 	{
 	}
 
 	@Override
 	public void exitEntityspec (AsteroidsParserParser.EntityspecContext ctx)
+	{
+	}
+
+	@Override
+	public void enterBinop (AsteroidsParserParser.BinopContext ctx)
+	{
+	}
+
+	@Override
+	public void exitBinop (AsteroidsParserParser.BinopContext ctx)
 	{
 	}
 

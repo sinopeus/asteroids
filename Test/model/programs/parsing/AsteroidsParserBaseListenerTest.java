@@ -1,14 +1,18 @@
 package model.programs.parsing;
 
-@SuppressWarnings("javadoc")
+import org.junit.Before;
+import org.junit.Test;
+
+@SuppressWarnings ("javadoc")
 public class AsteroidsParserBaseListenerTest
 {
-@Before
-public void setUp ()
-{
-}
-@Test
-public void Test ()
-{
-}
+	@Before
+	public void setUp ()
+	{
+	}
+
+	@Test
+	public void Test ()
+	{
+	}
 }

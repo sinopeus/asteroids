@@ -193,6 +193,7 @@ public class Ship extends Entity implements IShip
 	{
 		if (!canHaveAsProgram(program)) throw new IllegalArgumentException("Invalid program provided."); //TODO is this necessary
 		this.program = program;
+		program.setOwner(this);
 	}
 
 	/**

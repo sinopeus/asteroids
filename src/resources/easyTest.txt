@@ -6,7 +6,7 @@ double r;
 while (true) {
 	foreach(ship, e){
 		a := (((gety e) - (gety self)) / ((getx e) - (getx self)));
-		b := (getdirection self);
+		b := ( sin( getdir ) / cos( getdir ) );
 		r := (getradius e);
 		while ((a - b) >= r){
 			turn 0.1;
