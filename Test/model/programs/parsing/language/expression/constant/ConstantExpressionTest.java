@@ -6,13 +6,21 @@ import org.junit.Test;
 @SuppressWarnings ("javadoc")
 public class ConstantExpressionTest
 {
-	@Before
-	public void setUp ()
-	{
-	}
+    @Before
+    public void setUpTests ()
+    {
+	//TODO
+    }
+    
+    @Test
+    public void canHaveAsTest ()
+    {
+	//TODO really necessary? returns true
+    }
 
-	@Test
-	public void Test ()
-	{
-	}
+    @Test
+    public void evaluateTest ()
+    {
+	//TODO really necessary? returns the object
+    }
 }

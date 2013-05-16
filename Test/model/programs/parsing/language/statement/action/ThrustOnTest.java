@@ -9,10 +9,30 @@ public class ThrustOnTest
 	@Before
 	public void setUp ()
 	{
+	    //TODO
 	}
 
 	@Test
-	public void Test ()
+	public void constructorTest_perfectParams ()
 	{
+	    //TODO
+	}
+
+	@Test
+	public void constructorTest_nullLine ()
+	{
+	    //TODO
+	}
+
+	@Test
+	public void Test_nullColumn ()
+	{
+	    //TODO
+	}
+
+	@Test
+	public void executeTest ()
+	{
+	    //TODO
 	}
 }

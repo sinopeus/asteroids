@@ -6,13 +6,51 @@ import org.junit.Test;
 @SuppressWarnings ("javadoc")
 public class FirstOrderExpressionOfBooleanToBooleanTest
 {
-	@Before
-	public void setUp ()
-	{
-	}
+    @Before
+    public void setUp ()
+    {
+	//TODO
+    }
 
-	@Test
-	public void Test ()
-	{
-	}
+    @Test
+    public void constructorTest_perfectParams ()
+    {
+	//TODO
+    }
+
+    @Test
+    public void constructorTest_nullLine ()
+    {
+	//TODO
+    }
+
+    @Test
+    public void constructorTest_nullColumn ()
+    {
+	//TODO
+    }
+
+    @Test
+    public void constructorTest_nullArgument ()
+    {
+	//TODO
+    }
+
+    @Test
+    public void canHaveAsArgumentTest ()
+    {
+	//TODO
+    }
+
+    @Test
+    public void setArgumentTest ()
+    {
+	//TODO
+    }
+
+    @Test
+    public void setParentProgramTest ()
+    {
+	//TODO
+    }
 }

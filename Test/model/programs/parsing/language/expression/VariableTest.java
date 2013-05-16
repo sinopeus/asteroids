@@ -6,13 +6,51 @@ import org.junit.Test;
 @SuppressWarnings ("javadoc")
 public class VariableTest
 {
-	@Before
-	public void setUp ()
-	{
-	}
+    @Before
+    public void setUp ()
+    {
+	//TODO
+    }
 
-	@Test
-	public void Test ()
-	{
-	}
+    @Test
+    public void constructorTest_perfectParams ()
+    {
+	//TODO
+    }
+
+    @Test
+    public void constructorTest_nullLine ()
+    {
+	//TODO
+    }
+
+    @Test
+    public void constructorTest_nullColumn ()
+    {
+	//TODO
+    }
+
+    @Test
+    public void constructorTest_nullName ()
+    {
+	//TODO
+    }
+
+    @Test
+    public void canHaveAsTest ()
+    {
+	//TODO
+    }
+
+    @Test
+    public void setNameTest ()
+    {
+	//TODO
+    }
+
+    @Test
+    public void evaluateTest ()
+    {
+	//TODO
+    }
 }
