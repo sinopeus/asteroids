@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import model.programs.Program;
 import model.programs.parsing.ProgramFactory.ForeachType;
+import model.programs.parsing.language.ProgramException;
 import model.programs.parsing.language.expression.constant.literal.EntityLiteral;
 import world.World;
 import world.entity.Asteroid;
@@ -13,7 +14,7 @@ import world.entity.ship.Ship;
 
 public class ForEach extends Statement
 {
-	public ForEach (int line, int column, ForeachType type, String variableName, Statement body)
+	public ForEach (int line, int column, ForeachType type, String variableName, Statement body) throws ProgramException
 	{
 		super(line, column);
 		setType(type);
@@ -90,33 +91,7 @@ public class ForEach extends Statement
 
 	protected void calculateSelection () //TODO can I change the enum in programfactory?
 	{
-		ArrayList <EntityLiteral> selection = new ArrayList <EntityLiteral>();
-		World w = getOwnerShip().getWorld();
-		switch (getType())
-		{
-			case SHIP:
-				for (Entity e : w)
-				{
-					if (e == getOwnerShip()) continue; //TODO  remove this?
-					if (e instanceof Ship) selection.add(new EntityLiteral(getLine(), getColumn(), e));
-				}
-				break;
-			case ASTEROID:
-				for (Entity e : w)
-					if (e instanceof Asteroid) selection.add(new EntityLiteral(getLine(), getColumn(), e));
-				break;
-			case BULLET:
-				for (Entity e : w)
-					if (e instanceof Bullet) selection.add(new EntityLiteral(getLine(), getColumn(), e));
-				break;
-			case ANY:
-				for (Entity e : w)
-					if (e instanceof Entity) selection.add(new EntityLiteral(getLine(), getColumn(), e));
-				break;
-			default:
-				throw new RuntimeException();
-		}
-		this.selection = selection;
+		this.selection = getType().getSelectionFromWorld(getCurrentIndex(), getColumn(), getOwnerShip().getWorld());
 	}
 
 	private int	currentIndex;
@@ -168,7 +143,7 @@ public class ForEach extends Statement
 	}
 
 	@Override
-	public void setParentProgram (Program parrentProgram)
+	public void setParentProgram (Program parrentProgram) throws ProgramException
 	{
 		super.setParentProgram(parrentProgram);
 		getBody().setParentProgram(parrentProgram);

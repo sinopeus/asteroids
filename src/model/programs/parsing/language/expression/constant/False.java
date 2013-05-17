@@ -1,10 +1,11 @@
 package model.programs.parsing.language.expression.constant;
 
+import model.programs.parsing.language.ProgramException;
 import model.programs.parsing.language.expression.constant.literal.BooleanLiteral;
 
 public class False extends ConstantExpression <Boolean>
 {
-	public False (int line, int column)
+	public False (int line, int column) throws ProgramException
 	{
 		super(line, column, false);
 	}
@@ -12,7 +13,15 @@ public class False extends ConstantExpression <Boolean>
 	@Override
 	public BooleanLiteral evaluate ()
 	{
-		return new BooleanLiteral(getLine(), getColumn(), false);
+		BooleanLiteral bl = null;
+		try
+		{
+			bl = new BooleanLiteral(getLine(), getColumn(), false);
+		} catch (ProgramException e)
+		{
+			e.printStackTrace(); //THIS should never ever happen, 
+		}
+		return bl;
 	}
 
 	@Override

@@ -1,11 +1,12 @@
 package model.programs.parsing.language.expression.first_order;
 
+import model.programs.parsing.language.ProgramException;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.constant.literal.DoubleLiteral;
 
 public class SquareRoot extends FirstOrderExpressionOfNumberToNumber
 {
-	public SquareRoot (int line,int column,Expression argument)
+	public SquareRoot (int line,int column,Expression argument) throws ProgramException
 	{
 		super(line,column,argument);
 	}
@@ -13,6 +14,19 @@ public class SquareRoot extends FirstOrderExpressionOfNumberToNumber
 	@Override
 	protected DoubleLiteral function (DoubleLiteral argument)
 	{
-		return new DoubleLiteral(getLine(),getColumn(),Math.sqrt(argument.getValue()));
+		try
+		{
+			return new DoubleLiteral(getLine(),getColumn(),Math.sqrt(argument.getValue()));
+		} catch (ProgramException e)
+		{
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public String toString ()
+	{
+		return "SquareRoot [argument=" + argument + "]";
 	}
 }

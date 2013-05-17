@@ -1,12 +1,13 @@
 package model.programs.parsing.language.statement;
 
 import model.programs.Program;
+import model.programs.parsing.language.ProgramException;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.constant.literal.BooleanLiteral;
 
 public class While extends Statement
 {
-	public While (int line, int column, Expression condition, Statement body)
+	public While (int line, int column, Expression condition, Statement body) throws ProgramException
 	{
 		super(line, column);
 		checked = false;
@@ -64,7 +65,7 @@ public class While extends Statement
 	}
 	
 	@Override
-	public void setParentProgram (Program parrentProgram)
+	public void setParentProgram (Program parrentProgram) throws ProgramException
 	{
 		super.setParentProgram(parrentProgram);
 		getCondition().setParentProgram(parrentProgram);

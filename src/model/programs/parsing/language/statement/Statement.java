@@ -1,10 +1,11 @@
 package model.programs.parsing.language.statement;
 
+import model.programs.parsing.language.ProgramException;
 import model.programs.parsing.language.ProgramPart;
 
 public abstract class Statement extends ProgramPart
 {
-	protected Statement (int line, int column)
+	protected Statement (int line, int column) throws ProgramException
 	{
 		super(line,column);
 		finished = false;
@@ -26,7 +27,6 @@ public abstract class Statement extends ProgramPart
 	{
 		this.finished = true;
 	}
-
 	
 	/**
 	 * 

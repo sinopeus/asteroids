@@ -1,12 +1,13 @@
 package model.programs.parsing.language.statement;
 
 import model.programs.Program;
+import model.programs.parsing.language.ProgramException;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.constant.literal.BooleanLiteral;
 
 public class If extends Statement
 {
-	public If (int line, int column, Expression condition, Statement then, Statement otherwise)
+	public If (int line, int column, Expression condition, Statement then, Statement otherwise) throws ProgramException
 	{
 		super(line, column);
 		setCondition(condition);
@@ -90,7 +91,7 @@ public class If extends Statement
 	}
 
 	@Override
-	public void setParentProgram (Program parrentProgram)
+	public void setParentProgram (Program parrentProgram) throws ProgramException
 	{
 		super.setParentProgram(parrentProgram);
 		getCondition().setParentProgram(parrentProgram);

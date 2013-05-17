@@ -1,9 +1,11 @@
 package model.programs.parsing.language.statement.action;
 
+import model.programs.parsing.language.ProgramException;
+
 
 public class Fire extends Action
 {
-	public Fire (int line, int column)
+	public Fire (int line, int column) throws ProgramException
 	{
 		super(line, column);
 	}
@@ -20,6 +22,6 @@ public class Fire extends Action
 	@Override
 	public String toString ()
 	{
-		return "Fire [isFinished()=" + isFinished() + "]";
+		return "Fire";
 	}
 }

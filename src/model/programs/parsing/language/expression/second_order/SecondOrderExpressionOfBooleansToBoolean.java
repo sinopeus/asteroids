@@ -1,5 +1,6 @@
 package model.programs.parsing.language.expression.second_order;
 
+import model.programs.parsing.language.ProgramException;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.constant.literal.BooleanLiteral;
 import world.entity.ship.Ship;
@@ -7,7 +8,7 @@ import world.entity.ship.Ship;
 public abstract class SecondOrderExpressionOfBooleansToBoolean extends SecondOrderExpression
 {
 
-	protected SecondOrderExpressionOfBooleansToBoolean (int line, int column, Expression firstArgument, Expression secondArgument)
+	protected SecondOrderExpressionOfBooleansToBoolean (int line, int column, Expression firstArgument, Expression secondArgument) throws ProgramException
 	{
 		super(line, column, firstArgument, secondArgument);
 	}

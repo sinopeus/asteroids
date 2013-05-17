@@ -1,12 +1,13 @@
 package model.programs.parsing.language.statement.action;
 
+import model.programs.parsing.language.ProgramException;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.constant.literal.DoubleLiteral;
 import world.physics.geometry.Angle;
 
 public class Turn extends Action
 {
-	public Turn (int line, int column, Expression angle)
+	public Turn (int line, int column, Expression angle) throws ProgramException
 	{
 		super(line, column);
 		setAngle(angle);

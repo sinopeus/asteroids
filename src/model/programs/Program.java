@@ -3,6 +3,7 @@ package model.programs;
 import java.util.HashMap;
 import java.util.Map;
 
+import model.programs.parsing.language.ProgramException;
 import model.programs.parsing.language.Type;
 import model.programs.parsing.language.expression.constant.ConstantExpression;
 import model.programs.parsing.language.statement.Statement;
@@ -71,7 +72,13 @@ public class Program
 	{
 		if (!canHaveAsStatement(statement)) throw new RecognitionException();
 		this.statement = statement;
-		statement.setParentProgram(this);
+		try
+		{
+			statement.setParentProgram(this);
+		} catch (ProgramException e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	private Ship	owner;

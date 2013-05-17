@@ -1,13 +1,14 @@
 package model.programs.parsing.language.statement;
 
 import model.programs.Program;
+import model.programs.parsing.language.ProgramException;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.Variable;
 import world.entity.ship.Ship;
 
 public class Assignment extends Statement
 {
-	public Assignment (int line, int column, Variable variable, Expression value)
+	public Assignment (int line, int column, Variable variable, Expression value) throws ProgramException
 	{
 		super(line, column);
 		setVariable(variable);
@@ -51,7 +52,7 @@ public class Assignment extends Statement
 	}
 	
 	@Override
-	public void setParentProgram (Program parentProgram)
+	public void setParentProgram (Program parentProgram) throws ProgramException
 	{
 		super.setParentProgram(parentProgram);
 		getVariable().setParentProgram(parentProgram);

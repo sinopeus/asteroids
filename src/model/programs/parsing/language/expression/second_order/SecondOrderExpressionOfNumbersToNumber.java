@@ -1,5 +1,6 @@
 package model.programs.parsing.language.expression.second_order;
 
+import model.programs.parsing.language.ProgramException;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.constant.literal.DoubleLiteral;
 
@@ -7,7 +8,7 @@ import model.programs.parsing.language.expression.constant.literal.DoubleLiteral
 public abstract class SecondOrderExpressionOfNumbersToNumber extends SecondOrderExpression
 {
 
-	protected SecondOrderExpressionOfNumbersToNumber (int line, int column, Expression firstArgument, Expression secondArgument)
+	protected SecondOrderExpressionOfNumbersToNumber (int line, int column, Expression firstArgument, Expression secondArgument) throws ProgramException
 	{
 		super(line, column, firstArgument, secondArgument);
 	}

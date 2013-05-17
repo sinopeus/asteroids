@@ -1,10 +1,11 @@
 package model.programs.parsing.language.expression.constant;
 
+import model.programs.parsing.language.ProgramException;
 import model.programs.parsing.language.expression.Expression;
 
 public abstract class ConstantExpression <T> extends Expression
 {
-	protected ConstantExpression (int line, int column, T value)
+	protected ConstantExpression (int line, int column, T value) throws ProgramException
 	{
 		super(line, column);
 		setValue(value);
@@ -19,12 +20,12 @@ public abstract class ConstantExpression <T> extends Expression
 
 	protected boolean canHaveAsValue (T value)
 	{
-		return true;
+		return (value != null);
 	}
 
-	protected void setValue (T value)
+	protected void setValue (T value) throws ProgramException
 	{
-		if (!canHaveAsValue(value)) throw new IllegalArgumentException("Invalid value for literal.");
+		if (!canHaveAsValue(value)) throw new ProgramException(getLine(),getColumn(),"Invalid value for literal.");
 		this.value = value;
 	}
 

@@ -1,11 +1,12 @@
 package model.programs.parsing.language.expression.second_order;
 
+import model.programs.parsing.language.ProgramException;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.constant.literal.BooleanLiteral;
 
 public class Or extends SecondOrderExpressionOfBooleansToBoolean
 {
-	public Or (int line, int column, Expression firstArgument, Expression secondArgument)
+	public Or (int line, int column, Expression firstArgument, Expression secondArgument) throws ProgramException
 	{
 		super(line, column, firstArgument, secondArgument);
 	}
@@ -13,6 +14,13 @@ public class Or extends SecondOrderExpressionOfBooleansToBoolean
 	@Override
 	protected BooleanLiteral function (BooleanLiteral first, BooleanLiteral second)
 	{
-		return new BooleanLiteral(getLine(), getColumn(), (first.getValue() || second.getValue()));
+		try
+		{
+			return new BooleanLiteral(getLine(), getColumn(), (first.getValue() || second.getValue()));
+		} catch (ProgramException e)
+		{
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

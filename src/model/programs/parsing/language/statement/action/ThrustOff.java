@@ -1,9 +1,11 @@
 package model.programs.parsing.language.statement.action;
 
+import model.programs.parsing.language.ProgramException;
+
 
 public class ThrustOff extends Action
 {
-	public ThrustOff (int line, int column)
+	public ThrustOff (int line, int column) throws ProgramException
 	{
 		super(line, column);
 	}
@@ -15,5 +17,11 @@ public class ThrustOff extends Action
 		getOwnerShip().getThruster().deactivate();
 		finish();
 		return true;
+	}
+
+	@Override
+	public String toString ()
+	{
+		return "ThrustOff";
 	}
 }

@@ -1,11 +1,12 @@
 package model.programs.parsing.language.statement;
 
 import model.programs.Program;
+import model.programs.parsing.language.ProgramException;
 import model.programs.parsing.language.expression.Expression;
 
 public class Print extends Statement
 {
-	public Print (int line, int column, Expression textExpression)
+	public Print (int line, int column, Expression textExpression) throws ProgramException
 	{
 		super(line, column);
 		setTextExpression(textExpression);
@@ -48,7 +49,7 @@ public class Print extends Statement
 	}
 
 	@Override
-	public void setParentProgram (Program parrentProgram)
+	public void setParentProgram (Program parrentProgram) throws ProgramException
 	{
 		super.setParentProgram(parrentProgram);
 		getTextExpression().setParentProgram(parrentProgram);

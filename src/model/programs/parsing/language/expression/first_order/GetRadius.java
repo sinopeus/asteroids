@@ -1,12 +1,13 @@
 package model.programs.parsing.language.expression.first_order;
 
+import model.programs.parsing.language.ProgramException;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.constant.literal.DoubleLiteral;
 import model.programs.parsing.language.expression.constant.literal.EntityLiteral;
 
 public class GetRadius extends FirstOrderExpressionOfEntityToNumber
 {
-	public GetRadius (int line, int column, Expression argument)
+	public GetRadius (int line, int column, Expression argument) throws ProgramException
 	{
 		super(line, column, argument);
 	}
@@ -14,6 +15,13 @@ public class GetRadius extends FirstOrderExpressionOfEntityToNumber
 	@Override
 	protected DoubleLiteral function (EntityLiteral argument)
 	{
-		return new DoubleLiteral(getLine(), getColumn(), argument.getValue().getShape().getRadius());
+		try
+		{
+			return new DoubleLiteral(getLine(), getColumn(), argument.getValue().getShape().getRadius());
+		} catch (ProgramException e)
+		{
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

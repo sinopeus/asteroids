@@ -1,12 +1,13 @@
 package model.programs.parsing.language.expression;
 
+import model.programs.parsing.language.ProgramException;
 import model.programs.parsing.language.expression.constant.ConstantExpression;
 
 
 public class Variable extends Expression
 {
 
-	public Variable (int line, int column, String name)
+	public Variable (int line, int column, String name) throws ProgramException
 	{
 		super(line, column);
 		setName(name);

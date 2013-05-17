@@ -37,7 +37,7 @@ public class ForEachTest
     }
 
     @Test
-    public void constructorTest_nullVariable?ame ()
+    public void constructorTest_nullVariableName ()
     {
 	//TODO
     }

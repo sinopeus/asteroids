@@ -5,7 +5,7 @@ import world.entity.ship.Ship;
 
 public abstract class ProgramPart
 {
-	protected ProgramPart (int line, int column)
+	protected ProgramPart (int line, int column) throws ProgramException
 	{
 		setLine(line);
 		setColumn(column);
@@ -23,9 +23,9 @@ public abstract class ProgramPart
 		return (program != null);
 	}
 
-	public void setParentProgram (Program parrentProgram)
+	public void setParentProgram (Program parrentProgram) throws ProgramException
 	{
-		if (!canHaveAsParentProgram(parrentProgram)) throw new IllegalArgumentException();//TODO
+		if (!canHaveAsParentProgram(parrentProgram)) throw new ProgramException(getLine(),getColumn(),"Illegal parent program provided.");//TODO
 		this.parentProgram = parrentProgram;
 	}
 
@@ -41,9 +41,9 @@ public abstract class ProgramPart
 		return (line >= 0); //TODO GE?
 	}
 
-	protected void setLine (int line)
+	protected void setLine (int line) throws ProgramException
 	{
-		if (!canHaveAsLine(line)) throw new IllegalArgumentException("Invalid line provided for expression.");
+		if (!canHaveAsLine(line)) throw new ProgramException(getLine(),getColumn(),"Invalid line provided for expression.");
 		this.line = line;
 	}
 
@@ -59,9 +59,9 @@ public abstract class ProgramPart
 		return (column >= 0); //TODO GE?
 	}
 
-	protected void setColumn (int column)
+	protected void setColumn (int column) throws ProgramException
 	{
-		if (!canHaveAsColumn(column)) throw new IllegalArgumentException("Invalid column provided for expression.");
+		if (!canHaveAsColumn(column)) throw new ProgramException(getLine(),getColumn(),"Invalid column provided for expression.");
 		this.column = column;
 	}
 

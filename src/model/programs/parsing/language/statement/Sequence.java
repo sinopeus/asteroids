@@ -3,11 +3,12 @@ package model.programs.parsing.language.statement;
 import java.util.List;
 
 import model.programs.Program;
+import model.programs.parsing.language.ProgramException;
 
 public class Sequence extends Statement
 {
 
-	public Sequence (int line, int column, List <Statement> sequence)
+	public Sequence (int line, int column, List <Statement> sequence) throws ProgramException
 	{
 		super(line, column);
 		setSequence(sequence);
@@ -66,7 +67,7 @@ public class Sequence extends Statement
 	}
 	
 	@Override
-	public void setParentProgram (Program parrentProgram)
+	public void setParentProgram (Program parrentProgram) throws ProgramException
 	{
 		super.setParentProgram(parrentProgram);
 		for (Statement s : getSequence())

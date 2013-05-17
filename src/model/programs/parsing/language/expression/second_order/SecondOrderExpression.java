@@ -1,11 +1,12 @@
 package model.programs.parsing.language.expression.second_order;
 
 import model.programs.Program;
+import model.programs.parsing.language.ProgramException;
 import model.programs.parsing.language.expression.Expression;
 
 public abstract class SecondOrderExpression extends Expression
 {
-	protected SecondOrderExpression (int line, int column, Expression firstArgument, Expression secondArgument)
+	protected SecondOrderExpression (int line, int column, Expression firstArgument, Expression secondArgument) throws ProgramException
 	{
 		super(line, column);
 		setFirstArgument(firstArgument);
@@ -44,7 +45,7 @@ public abstract class SecondOrderExpression extends Expression
 	}
 	
 	@Override
-	public void setParentProgram (Program parentProgram)
+	public void setParentProgram (Program parentProgram) throws ProgramException
 	{
 		super.setParentProgram(parentProgram);
 		getFirstArgument().setParentProgram(parentProgram);
