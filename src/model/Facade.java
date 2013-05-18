@@ -228,6 +228,13 @@ public class Facade implements IFacade <World, Ship, Asteroid, Bullet, Program>
 	{
 		ship.turn(new Angle(angle));
 	}
+	
+	@Override
+	public boolean canFire (Ship ship)
+	{
+		return ship.canFire();
+	}
+
 
 	@Override
 	public void fireBullet (Ship ship)

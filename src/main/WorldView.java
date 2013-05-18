@@ -43,8 +43,7 @@ public class WorldView <World, Ship, Asteroid, Bullet, Program> extends JPanel i
 	private Asteroids <World, Ship, Asteroid, Bullet, Program>	game;
 	private IFacade <World, Ship, Asteroid, Bullet, Program>	facade;
 	private World												world;
-	private Ship												player1,
-			player2;
+	private Ship												player1, player2;
 	private boolean												player2IsAI;
 	private double												player1_angle,
 			player2_angle;
@@ -237,14 +236,15 @@ public class WorldView <World, Ship, Asteroid, Bullet, Program> extends JPanel i
 		if (player1_fire && facade.getShips(world).contains(player1))
 		{
 			player1_fire = false;
+			if (facade.canFire(player1)) game.getSound().play("torpedo");
 			facade.fireBullet(player1);
-			game.getSound().play("torpedo");
+
 		}
 		if (player2 != null && player2_fire && facade.getShips(world).contains(player2))
 		{
 			player2_fire = false;
+			if (facade.canFire(player2)) game.getSound().play("torpedo");
 			facade.fireBullet(player2);
-			game.getSound().play("torpedo");
 		}
 		facade.evolve(world, millisSinceLastEvolve / 1000., this);
 		Iterator <Explosion> iter = explosions.iterator();

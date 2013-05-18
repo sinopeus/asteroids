@@ -6,6 +6,8 @@ import java.net.URL;
 import java.util.Random;
 import java.util.Set;
 
+import world.entity.ship.Ship;
+
 import main.CollisionListener;
 
 /**
@@ -181,6 +183,12 @@ public interface IFacade<World, Ship, Asteroid, Bullet, Program> {
    */
   public void setThrusterActive(Ship ship, boolean active);
 
+  /**
+   * Returns whether the ship can fire.
+   */
+  
+  public boolean canFire (Ship ship);
+  
   /**
    * Update the direction of <code>ship</code> by adding <code>angle</code> (in
    * radians) to its current direction. <code>angle</code> may be negative.

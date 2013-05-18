@@ -227,6 +227,11 @@ public class Ship extends Entity implements IShip
 		}
 	}
 
+	public boolean canFire ()
+	{
+		return (getBulletList().size() < MAXIMUM_AMOUNT_OF_BULLETS);
+	}
+	
 	/**
 	 * A method for firing a bullet from this ship.
 	 * 
@@ -235,7 +240,7 @@ public class Ship extends Entity implements IShip
 	 */
 	public void fire ()
 	{
-		if (getBulletList().size() >= MAXIMUM_AMOUNT_OF_BULLETS) return;
+		if (!canFire()) return;
 		Bullet b = new Bullet(this);
 		if (getWorld().add(b))
 		;
