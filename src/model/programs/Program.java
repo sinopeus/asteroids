@@ -34,9 +34,9 @@ public class Program
 		this.globalTypes = globalTypes;
 	}
 
-	private HashMap <String, ConstantExpression>	globalValues;
+	private HashMap <String, ConstantExpression<?>>	globalValues;
 
-	public HashMap <String, ConstantExpression> getGlobalValues ()
+	public HashMap <String, ConstantExpression<?>> getGlobalValues ()
 	{
 		return globalValues;
 	}
@@ -44,7 +44,7 @@ public class Program
 	protected void setGlobalValues (Map <String, Type> globalsTypes) throws RecognitionException
 	{
 		if (!canHaveAsGlobals(globalsTypes)) throw new RecognitionException();
-		HashMap <String, ConstantExpression> globalVariables = new HashMap <String, ConstantExpression>();
+		HashMap <String, ConstantExpression<?>> globalVariables = new HashMap <String, ConstantExpression<?>>();
 		int counter = 0;
 		for (String name : globalsTypes.keySet())
 			globalVariables.put(name, globalTypes.get(name).defaultValue(counter++, 0));
@@ -111,13 +111,13 @@ public class Program
 		this.finished = true;
 	}
 
-	public ConstantExpression getVariableNamed (String name)
+	public ConstantExpression<?> getVariableNamed (String name)
 	{
 		if (!globalValues.containsKey(name)) throw new IllegalArgumentException("invalid variable name");
 		return getGlobalValues().get(name);
 	}
 
-	public void setVariableValue (String name, ConstantExpression value)
+	public void setVariableValue (String name, ConstantExpression<?> value)
 	{
 		if (!globalValues.containsKey(name)) throw new IllegalArgumentException("invalid variable name");
 		getGlobalValues().remove(name);
