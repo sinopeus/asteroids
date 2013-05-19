@@ -24,9 +24,4 @@ public class Not extends FirstOrderExpressionOfBooleanToBoolean
 		return null;
 	}
 
-	@Override
-	public String toString ()
-	{
-		return "Not [argument=" + argument + "]";
-	}
 }

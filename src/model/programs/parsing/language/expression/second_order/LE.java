@@ -25,9 +25,5 @@ public class LE extends SecondOrderExpressionOfNumbersToBoolean
 		return null;
 	}
 	
-	@Override
-	public String toString ()
-	{
-		return "Lesser than or equal [firstArgument=" + firstArgument + ", secondArgument=" + secondArgument + "]";
-	}
+
 }

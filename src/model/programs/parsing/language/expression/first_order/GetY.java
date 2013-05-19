@@ -25,9 +25,4 @@ public class GetY extends FirstOrderExpressionOfEntityToNumber
 		return null;
 	}
 
-	@Override
-	public String toString ()
-	{
-		return "GetY [argument=" + argument + "]";
-	}
 }

@@ -51,4 +51,10 @@ public abstract class SecondOrderExpression extends Expression
 		getFirstArgument().setParentProgram(parentProgram);
 		getSecondArgument().setParentProgram(parentProgram);
 	}
+	
+	@Override
+	public String toString ()
+	{
+		return this.getClass().getSimpleName() + "[firstArgument=" + firstArgument + ", secondArgument=" + secondArgument + "]";
+	}
 }

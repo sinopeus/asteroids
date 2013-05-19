@@ -24,9 +24,4 @@ public class SquareRoot extends FirstOrderExpressionOfNumberToNumber
 		return null;
 	}
 
-	@Override
-	public String toString ()
-	{
-		return "SquareRoot [argument=" + argument + "]";
-	}
 }

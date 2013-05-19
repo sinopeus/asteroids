@@ -24,10 +24,5 @@ public class GE extends SecondOrderExpressionOfNumbersToBoolean
 		}
 		return null;
 	}
-	
-	@Override
-	public String toString ()
-	{
-		return "Greater than or equal [firstArgument=" + firstArgument + ", secondArgument=" + secondArgument + "]";
-	}
+
 }

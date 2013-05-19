@@ -36,4 +36,10 @@ public abstract class FirstOrderExpression extends Expression
 		super.setParentProgram(parrentProgram);
 		getArgument().setParentProgram(parrentProgram);
 	}
+	
+	@Override
+	public String toString ()
+	{
+		return this.getClass().getSimpleName() + " [argument=" + argument + "]";
+	}
 }

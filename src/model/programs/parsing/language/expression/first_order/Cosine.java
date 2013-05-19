@@ -24,9 +24,4 @@ public class Cosine extends FirstOrderExpressionOfNumberToNumber
 		return null;
 	}
 
-	@Override
-	public String toString ()
-	{
-		return "Cosine [argument=" + argument + "]";
-	}
 }

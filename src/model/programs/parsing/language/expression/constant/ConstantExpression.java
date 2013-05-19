@@ -38,6 +38,6 @@ public abstract class ConstantExpression <T> extends Expression
 	@Override
 	public String toString ()
 	{
-		return "ConstantExpression [value=" + value + "]";
+		return this.getClass().getSimpleName() + " [value=" + value + "]";
 	}
 }

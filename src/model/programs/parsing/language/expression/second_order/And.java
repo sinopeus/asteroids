@@ -24,10 +24,5 @@ public class And extends SecondOrderExpressionOfBooleansToBoolean
 		return null;
 	}
 
-	@Override
-	public String toString ()
-	{
-		return "And [firstArgument=" + firstArgument + ", secondArgument=" + secondArgument + "]";
-	}
 
 }
