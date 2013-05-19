@@ -4,7 +4,6 @@ import model.programs.parsing.language.ProgramException;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.constant.literal.BooleanLiteral;
 import model.programs.parsing.language.expression.constant.literal.DoubleLiteral;
-import world.entity.ship.Ship;
 
 public abstract class SecondOrderExpressionOfNumbersToBoolean extends SecondOrderExpression
 {

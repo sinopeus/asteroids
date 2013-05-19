@@ -32,7 +32,7 @@ public class Variable extends Expression
 	}
 
 	@Override
-	public ConstantExpression evaluate ()
+	public ConstantExpression<?> evaluate ()
 	{
 		return getParentProgram().getVariableNamed(getName());
 	}

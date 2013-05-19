@@ -4,7 +4,6 @@ import model.programs.Program;
 import model.programs.parsing.language.ProgramException;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.Variable;
-import world.entity.ship.Ship;
 
 public class Assignment extends Statement
 {

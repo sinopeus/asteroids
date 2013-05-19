@@ -1,5 +1,6 @@
 package model.programs.parsing.language;
 
+import world.entity.Entity;
 import model.programs.parsing.language.expression.constant.ConstantExpression;
 import model.programs.parsing.language.expression.constant.literal.BooleanLiteral;
 import model.programs.parsing.language.expression.constant.literal.DoubleLiteral;
@@ -10,7 +11,7 @@ public enum Type
 	TYPE_BOOLEAN
 	{
 		@Override
-		public ConstantExpression defaultValue (int line, int column)
+		public ConstantExpression<Boolean> defaultValue (int line, int column)
 		{
 			try
 			{
@@ -25,7 +26,7 @@ public enum Type
 	TYPE_DOUBLE
 	{
 		@Override
-		public ConstantExpression defaultValue (int line, int column)
+		public ConstantExpression<Double> defaultValue (int line, int column)
 		{
 			try
 			{
@@ -40,7 +41,7 @@ public enum Type
 	TYPE_ENTITY
 	{
 		@Override
-		public ConstantExpression defaultValue (int line, int column)
+		public ConstantExpression<Entity> defaultValue (int line, int column)
 		{
 			try
 			{
@@ -53,5 +54,5 @@ public enum Type
 		}
 	};
 
-	public abstract ConstantExpression defaultValue (int line, int column);
+	public abstract ConstantExpression<?> defaultValue (int line, int column);
 }

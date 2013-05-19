@@ -3,7 +3,6 @@ package model.programs.parsing.language.expression.second_order;
 import model.programs.parsing.language.ProgramException;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.constant.literal.BooleanLiteral;
-import world.entity.ship.Ship;
 
 public abstract class SecondOrderExpressionOfBooleansToBoolean extends SecondOrderExpression
 {
