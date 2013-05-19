@@ -1,8 +1,9 @@
 package model.programs.parsing.language.expression.constant.literal;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
-import model.programs.parsing.language.ProgramException;
+import model.programs.ProgramException;
+import model.programs.parsing.language.Type;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -29,22 +30,34 @@ public class BooleanLiteralTest
 		assertTrue(bl.getValue());
 	}
 
-	@Test(expected = ProgramException.class)
+	@Test (expected = ProgramException.class)
 	public void constructorTest_IllegalLine () throws ProgramException
 	{
 		new BooleanLiteral(-1, 2, true);
 	}
 
-	@Test(expected = ProgramException.class)
+	@Test (expected = ProgramException.class)
 	public void constructorTest_IllegalColumn () throws ProgramException
 	{
 		new BooleanLiteral(1, -2, true);
 	}
-	
+
 	@Test (expected = ProgramException.class)
-	public void constructorTest_IllegalBoolean() throws ProgramException
+	public void constructorTest_IllegalBoolean () throws ProgramException
 	{
 		new BooleanLiteral(1, 2, null);
+	}
+
+	@Test
+	public void isTypeSafeTest ()
+	{
+		assertTrue(testLiteral.isTypeSafe());
+	}
+
+	@Test
+	public void getType ()
+	{
+		assertEquals(testLiteral.getType(), Type.TYPE_BOOLEAN);
 	}
 
 	@Test

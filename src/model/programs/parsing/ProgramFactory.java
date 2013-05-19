@@ -3,7 +3,7 @@ package model.programs.parsing;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.programs.parsing.language.ProgramException;
+import model.programs.ProgramException;
 import model.programs.parsing.language.expression.constant.literal.EntityLiteral;
 import world.World;
 import world.entity.Asteroid;

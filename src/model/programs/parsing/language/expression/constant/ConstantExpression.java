@@ -1,6 +1,6 @@
 package model.programs.parsing.language.expression.constant;
 
-import model.programs.parsing.language.ProgramException;
+import model.programs.ProgramException;
 import model.programs.parsing.language.expression.Expression;
 
 public abstract class ConstantExpression <T> extends Expression
@@ -25,7 +25,7 @@ public abstract class ConstantExpression <T> extends Expression
 
 	protected void setValue (T value) throws ProgramException
 	{
-		if (!canHaveAsValue(value)) throw new ProgramException(getLine(),getColumn(),"Invalid value for literal.");
+		if (!canHaveAsValue(value)) throw new ProgramException(getLine(), getColumn(), "Invalid value: " + value + " for literal.");
 		this.value = value;
 	}
 
@@ -39,5 +39,28 @@ public abstract class ConstantExpression <T> extends Expression
 	public String toString ()
 	{
 		return this.getClass().getSimpleName() + " [value=" + value + "]";
+	}
+
+	@Override
+	public int hashCode ()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ( (value == null) ? 0 : value.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals (Object obj)
+	{
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+		ConstantExpression other = (ConstantExpression) obj;
+		if (value == null)
+		{
+			if (other.value != null) return false;
+		} else if (!value.equals(other.value)) return false;
+		return true;
 	}
 }

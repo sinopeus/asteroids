@@ -137,6 +137,12 @@ public class Asteroids <World, Ship, Asteroid, Bullet, Program> extends JFrame
 		}
 		Asteroid asteroid1 = facade.createAsteroid(width / 2.5, height / 2.5, 0, 0, 75);
 		facade.addAsteroid(world, asteroid1);
+		Asteroid asteroid2 = facade.createAsteroid(600, 100, 0, 0, 40);
+		facade.addAsteroid(world, asteroid2);
+		Asteroid asteroid3 = facade.createAsteroid(990, 550, 0, 0, 25);
+		facade.addAsteroid(world, asteroid3);
+		Asteroid asteroid4 = facade.createAsteroid(40, height - 100, 00, 0, 15);
+		facade.addAsteroid(world, asteroid4);
 //		Asteroid asteroid1 = facade.createAsteroid(width / 2.5, height / 2.5, 25, 50, 75);
 //		facade.addAsteroid(world, asteroid1);
 //		Asteroid asteroid2 = facade.createAsteroid(600, 100, -30, -40, 40);

@@ -134,28 +134,4 @@ public class WorldTest
 	{
 		testWorld2.toString();
 	}
-
-	//	public void isInWorldTest_Entity ()
-	//	{
-	//		Direction d = new Direction();
-	//		Velocity v = new Velocity();
-	//		CircleShape s = new CircleShape(50);
-	//
-	//		Asteroid a1 = new Asteroid(d, new Position(100, 100), v, s);
-	//		Asteroid a2 = new Asteroid(d, new Position(100, 20), v, s);
-	//		Asteroid a3 = new Asteroid(d, new Position(20, 100), v, s);
-	//		Asteroid a4 = new Asteroid(d, new Position(20, 20), v, s);
-	//		Asteroid a5 = new Asteroid(d, new Position(980, 100), v, s);
-	//		Asteroid a6 = new Asteroid(d, new Position(100, 980), v, s);
-	//		Asteroid a7 = null;
-	//
-	//		assertTrue(testWorld1.isInWorld(a1));
-	//		assertFalse(testWorld1.isInWorld(a2));
-	//		assertFalse(testWorld1.isInWorld(a3));
-	//		assertFalse(testWorld1.isInWorld(a4));
-	//		assertFalse(testWorld1.isInWorld(a5));
-	//		assertFalse(testWorld1.isInWorld(a6));
-	//		assertFalse(testWorld1.isInWorld(a7));
-	//	}
-
 }

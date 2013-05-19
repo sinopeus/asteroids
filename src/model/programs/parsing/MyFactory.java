@@ -2,7 +2,7 @@ package model.programs.parsing;
 
 import java.util.List;
 
-import model.programs.parsing.language.ProgramException;
+import model.programs.ProgramException;
 import model.programs.parsing.language.Type;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.Variable;

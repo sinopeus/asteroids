@@ -406,13 +406,16 @@ public class Facade implements IFacade <World, Ship, Asteroid, Bullet, Program>
 	@Override
 	public boolean isTypeCheckingSupported ()
 	{
-		return false;
+		return true;
 	}
 
 	@Override
 	public model.IFacade.TypeCheckOutcome typeCheckProgram (Program program)
 	{
-		return TypeCheckOutcome.success();
+		boolean safe = program.isTypeSafe();
+		System.out.println(safe);
+		if (safe)return TypeCheckOutcome.success();
+		else return TypeCheckOutcome.failure("failure");
 	}
 
 	@Override

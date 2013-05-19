@@ -1,7 +1,7 @@
 package model.programs.parsing.language.statement;
 
 import model.programs.Program;
-import model.programs.parsing.language.ProgramException;
+import model.programs.ProgramException;
 import model.programs.parsing.language.expression.Expression;
 
 public class Print extends Statement
@@ -62,6 +62,18 @@ public class Print extends Statement
 		setText(getTextExpression().evaluate().getValue().toString());
 		System.out.println(getText()); //DON'T REMOVE THIS.
 		finish();
+		return false;
+	}
+	
+	@Override
+	public boolean isTypeSafe ()
+	{
+		return getTextExpression().isTypeSafe();
+	}
+	
+	@Override
+	public boolean containsAction ()
+	{
 		return false;
 	}
 

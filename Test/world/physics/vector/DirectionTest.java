@@ -4,36 +4,28 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-
 import org.junit.Before;
 import org.junit.Test;
 
 import world.entity.ship.Ship;
 import world.physics.geometry.Angle;
-import world.physics.vector.Direction;
-
 import Utilities.Util;
 
-
-
-
-
-
-@SuppressWarnings("javadoc")
+@SuppressWarnings ("javadoc")
 public class DirectionTest
 {
 	@Before
-	public void setUpImmutableTestFixture_Direction()
+	public void setUpImmutableTestFixture_Direction ()
 	{
 		testAngle = new Angle(Math.PI / 2.0);
 		testDirection = new Direction(testAngle);
 	}
 
-	private static Angle testAngle;
-	private static Direction testDirection;
+	private static Angle		testAngle;
+	private static Direction	testDirection;
 
 	@Test
-	public void extendedConstructorTest_ComponentsMatchGivenComponents()
+	public void extendedConstructorTest_ComponentsMatchGivenComponents ()
 	{
 		Direction d = new Direction(testAngle);
 		assertTrue(Util.fuzzyEquals(d._X(), testAngle.getCos()));
@@ -41,44 +33,44 @@ public class DirectionTest
 	}
 
 	@Test
-	public void simpleConstructorTest_ComponentsMatchGivenComponents()
+	public void simpleConstructorTest_ComponentsMatchGivenComponents ()
 	{
 		Direction d = new Direction();
 		assertTrue(Util.fuzzyEquals(d._X(), 1.0));
 		assertTrue(Util.fuzzyEquals(d._Y(), 0.0));
 	}
-	
+
 	@Test
-	public void extendedConstructorTest_doubleAsParam()
+	public void extendedConstructorTest_doubleAsParam ()
 	{
 		Direction d = new Direction(Math.PI / 2.0);
 		assertTrue(Util.fuzzyEquals(d._X(), 0.0));
 		assertTrue(Util.fuzzyEquals(d._Y(), 1.0));
 	}
-	
+
 	@Test
-	public void canHaveAsAngleTest()
+	public void canHaveAsAngleTest ()
 	{
 		assertTrue(testDirection.canHaveAsAngle(testAngle));
 		assertFalse(testDirection.canHaveAsAngle(null));
 	}
 
 	@Test
-	public void setAngleTest_LegalCase()
+	public void setAngleTest_LegalCase ()
 	{
 		testDirection.setAngle(new Angle(Math.PI));
 		assertEquals(testDirection.getAngle(), new Angle(Math.PI));
 	}
 
 	@Test
-	public void getXComponentTest()
+	public void getXComponentTest ()
 	{
 		assertTrue(Util.fuzzyEquals(testDirection._X(), 0));
 		assertTrue(Util.fuzzyEquals(testDirection._Y(), 1));
 	}
 
 	@Test
-	public void equalsTest()
+	public void equalsTest ()
 	{
 		assertTrue(testDirection.equals(new Direction(testAngle)));
 		assertFalse(testDirection.equals(new Direction()));
@@ -87,14 +79,15 @@ public class DirectionTest
 	}
 
 	@Test
-	public void rotateTest()
+	public void rotateTest ()
 	{
 		testDirection.rotate(testAngle);
 		assertEquals(testDirection.getAngle(), new Angle(Math.PI));
 	}
-	
+
 	@Test
-	public void toStringTest(){
+	public void toStringTest ()
+	{
 		testDirection.toString();
 	}
 }

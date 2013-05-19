@@ -3,7 +3,7 @@ package model.programs.parsing.language.statement;
 import java.util.List;
 
 import model.programs.Program;
-import model.programs.parsing.language.ProgramException;
+import model.programs.ProgramException;
 
 public class Sequence extends Statement
 {
@@ -120,6 +120,24 @@ public class Sequence extends Statement
 		return false;
 	}
 
+	@Override
+	public boolean isTypeSafe ()
+	{
+		for (Statement s : getSequence())
+			if(!s.isTypeSafe())
+				return false;
+		return true;
+	}
+	
+	@Override
+	public boolean containsAction ()
+	{
+		for (Statement s : getSequence())
+			if(s.containsAction())
+				return true;
+		return false;
+	}
+	
 	@Override
 	public String toString ()
 	{

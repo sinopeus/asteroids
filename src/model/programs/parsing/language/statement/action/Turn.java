@@ -1,6 +1,7 @@
 package model.programs.parsing.language.statement.action;
 
-import model.programs.parsing.language.ProgramException;
+import model.programs.ProgramException;
+import model.programs.parsing.language.Type;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.constant.literal.DoubleLiteral;
 import world.physics.geometry.Angle;
@@ -39,6 +40,14 @@ public class Turn extends Action
 		getOwnerShip().turn(new Angle(amount));
 		finish();
 		return true;
+	}
+
+	@Override
+	public boolean isTypeSafe ()
+	{
+		boolean angleIsTypeSafe = getAngle().isTypeSafe();
+		boolean angleIsNumber = getAngle().getType() == Type.TYPE_DOUBLE;
+		return (angleIsTypeSafe && angleIsNumber);
 	}
 
 	@Override

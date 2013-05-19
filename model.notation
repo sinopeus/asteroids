@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML">
+  <notation:Diagram xmi:id="_8AWEsL8YEeKyY82FItO8sw" type="PapyrusUMLClassDiagram" name="NewDiagram" measurementUnit="Pixel">
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_8AWrwL8YEeKyY82FItO8sw"/>
+    <element xmi:type="uml:Model" href="model.uml#_8ADJwL8YEeKyY82FItO8sw"/>
+  </notation:Diagram>
+  <notation:Diagram xmi:id="_8Aa9ML8YEeKyY82FItO8sw" type="Package" name="NewDiagram" measurementUnit="Pixel">
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_8Aa9Mb8YEeKyY82FItO8sw"/>
+    <element xmi:type="uml:Model" href="model.uml#_8ADJwL8YEeKyY82FItO8sw"/>
+  </notation:Diagram>
+</xmi:XMI>

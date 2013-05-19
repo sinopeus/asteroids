@@ -3,7 +3,6 @@ package model.programs;
 import java.util.HashMap;
 import java.util.Map;
 
-import model.programs.parsing.language.ProgramException;
 import model.programs.parsing.language.Type;
 import model.programs.parsing.language.expression.constant.ConstantExpression;
 import model.programs.parsing.language.statement.Statement;
@@ -113,7 +112,7 @@ public class Program
 
 	public ConstantExpression<?> getVariableNamed (String name)
 	{
-		if (!globalValues.containsKey(name)) throw new IllegalArgumentException("invalid variable name");
+		if (!globalValues.containsKey(name)) throw new IllegalArgumentException("invalid variable name: " + name);
 		return getGlobalValues().get(name);
 	}
 
@@ -128,6 +127,10 @@ public class Program
 	{
 		while (!getStatement().isFinished())
 			if (getStatement().execute()) break;
+	}
+	
+	public boolean isTypeSafe(){
+		return getStatement().isTypeSafe();
 	}
 
 	@Override

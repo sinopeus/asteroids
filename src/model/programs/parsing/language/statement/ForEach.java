@@ -3,8 +3,9 @@ package model.programs.parsing.language.statement;
 import java.util.ArrayList;
 
 import model.programs.Program;
+import model.programs.ProgramException;
 import model.programs.parsing.ProgramFactory.ForeachType;
-import model.programs.parsing.language.ProgramException;
+import model.programs.parsing.language.Type;
 import model.programs.parsing.language.expression.constant.literal.EntityLiteral;
 
 public class ForEach extends Statement
@@ -148,6 +149,9 @@ public class ForEach extends Statement
 	public void unfinish ()
 	{
 		getBody().unfinish();
+		setSelectedIndex(0);
+		calculateSelection();
+		AtStartOfIteration = true;
 		super.unfinish();
 	}
 
@@ -181,6 +185,21 @@ public class ForEach extends Statement
 		}
 		finish();
 		return false;
+	}
+
+	@Override
+	public boolean isTypeSafe ()
+	{
+		boolean variableIsEntity = getParentProgram().getVariableNamed(getVariableName()).getType() == Type.TYPE_ENTITY;
+		boolean bodyIsTypeSafe = getBody().isTypeSafe();
+		boolean bodyConstainsAction = getBody().containsAction();
+		return (variableIsEntity && bodyIsTypeSafe && !bodyConstainsAction);
+	}
+
+	@Override
+	public boolean containsAction ()
+	{
+		return true;
 	}
 
 	@Override

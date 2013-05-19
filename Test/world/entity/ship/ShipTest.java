@@ -173,11 +173,6 @@ public class ShipTest
 		Velocity newVelocity = new Velocity(5, 7.2);
 		testShip.getThruster().activate();
 		testShip.advance(0.1);
-		System.out.println(testShip.getVelocity()._X());
-		System.out.println(testShip.getVelocity()._Y());
-
-		System.out.println(newVelocity._X());
-		System.out.println(newVelocity._Y());
 		assertEquals(newPosition, testShip.getPosition());
 		assertEquals(newVelocity, testShip.getVelocity());
 	}

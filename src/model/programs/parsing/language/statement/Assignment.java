@@ -1,7 +1,7 @@
 package model.programs.parsing.language.statement;
 
 import model.programs.Program;
-import model.programs.parsing.language.ProgramException;
+import model.programs.ProgramException;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.Variable;
 
@@ -23,10 +23,7 @@ public class Assignment extends Statement
 
 	protected boolean canHaveAsVariable (Variable variable)
 	{
-		if (variable == null) return false;
-		if (!getParentProgram().getGlobalTypes().containsKey(variable.getName())) return false; //TODO implies that we cannot simultaneously declare and assign!
-		
-		return true;
+		return (variable != null);
 	}
 
 	protected void setVariable (Variable variable)
@@ -44,12 +41,7 @@ public class Assignment extends Statement
 
 	protected boolean canHaveAsValue (Expression value)
 	{
-		if (value == null) return false;
-		Class<?> one = value.evaluate().getClass();
-		Class<?> other = getParentProgram().getGlobalTypes().get(getVariable().getName()).defaultValue(getLine(), getColumn()).getClass();
-		if (one != other ) return false;
-		
-		return true;
+		return (value != null);
 	}
 
 	protected void setValue (Expression value)
@@ -57,7 +49,7 @@ public class Assignment extends Statement
 		if (!canHaveAsValue(value)) throw new IllegalArgumentException("Invalid value provided for assignment");
 		this.value = value;
 	}
-	
+
 	@Override
 	public void setParentProgram (Program parentProgram) throws ProgramException
 	{
@@ -72,6 +64,20 @@ public class Assignment extends Statement
 		super.execute();
 		getParentProgram().setVariableValue(getVariable().getName(), getValue().evaluate());
 		finish();
+		return false;
+	}
+	
+	@Override
+	public boolean isTypeSafe ()
+	{
+		boolean expressionIsTypeSafe = getValue().isTypeSafe();
+		boolean sameTypes = getValue().getType() == getVariable().getType();
+		return (expressionIsTypeSafe && sameTypes);
+	}
+	
+	@Override
+	public boolean containsAction ()
+	{
 		return false;
 	}
 

@@ -1,7 +1,8 @@
 package model.programs.parsing.language.statement;
 
 import model.programs.Program;
-import model.programs.parsing.language.ProgramException;
+import model.programs.ProgramException;
+import model.programs.parsing.language.Type;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.constant.literal.BooleanLiteral;
 
@@ -133,6 +134,22 @@ public class If extends Statement
 		super.execute();
 		if (!isChecked()) checkCondition();
 		return resultOfCondition ? execute(getThenStatement()) : execute(getOtherwiseStatement());
+	}
+
+	@Override
+	public boolean isTypeSafe ()
+	{
+		boolean conditionIsTypeSafe = getCondition().isTypeSafe();
+		boolean conditionIsBoolean = getCondition().getType() == Type.TYPE_BOOLEAN;
+		boolean thenIsTypeSafe = getThenStatement().isTypeSafe();
+		boolean otherwiseIsTypeSafe = getOtherwiseStatement() == null ? true : getOtherwiseStatement().isTypeSafe();
+		return (conditionIsTypeSafe && conditionIsBoolean && thenIsTypeSafe && otherwiseIsTypeSafe);
+	}
+	
+	@Override
+	public boolean containsAction ()
+	{
+		return (getThenStatement().containsAction() || getOtherwiseStatement().containsAction());
 	}
 
 	@Override
