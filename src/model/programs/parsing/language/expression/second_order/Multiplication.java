@@ -23,4 +23,10 @@ public class Multiplication extends SecondOrderExpressionOfNumbersToNumber
 		}
 		return null;
 	}
+	
+	@Override
+	public String toString ()
+	{
+		return "Multiplication [firstArgument=" + firstArgument + ", secondArgument=" + secondArgument + "]";
+	}
 }
