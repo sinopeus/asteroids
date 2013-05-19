@@ -24,7 +24,7 @@ public class Assignment extends Statement
 	protected boolean canHaveAsVariable (Variable variable)
 	{
 		if (variable == null) return false;
-		if (getParentProgram().getGlobalTypes().containsKey(variable.getName())) return false; //TODO implies that we cannot simultaneously declare and assign!
+		if (!getParentProgram().getGlobalTypes().containsKey(variable.getName())) return false; //TODO implies that we cannot simultaneously declare and assign!
 		
 		return true;
 	}
