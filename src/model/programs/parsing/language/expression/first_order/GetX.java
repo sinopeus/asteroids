@@ -24,10 +24,4 @@ public class GetX extends FirstOrderExpressionOfEntityToNumber
 		}return null;
 	}
 
-	@Override
-	public String toString ()
-	{
-		return "GetX [argument=" + argument + "]";
-	}
-
 }

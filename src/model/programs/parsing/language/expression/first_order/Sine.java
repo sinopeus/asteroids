@@ -24,9 +24,4 @@ public class Sine extends FirstOrderExpressionOfNumberToNumber
 		return null;
 	}
 
-	@Override
-	public String toString ()
-	{
-		return "Sine [argument=" + argument + "]";
-	}
 }

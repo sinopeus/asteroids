@@ -24,9 +24,4 @@ public class Addition extends SecondOrderExpressionOfNumbersToNumber
 		return null;
 	}
 
-	@Override
-	public String toString ()
-	{
-		return "Addition [firstArgument=" + firstArgument + ", secondArgument=" + secondArgument + "]";
-	}
 }

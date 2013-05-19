@@ -4,9 +4,9 @@ import model.programs.parsing.language.ProgramException;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.constant.literal.DoubleLiteral;
 
-public class Substraction extends SecondOrderExpressionOfNumbersToNumber
+public class Subtraction extends SecondOrderExpressionOfNumbersToNumber
 {
-	public Substraction (int line, int column, Expression firstArgument, Expression secondArgument) throws ProgramException
+	public Subtraction (int line, int column, Expression firstArgument, Expression secondArgument) throws ProgramException
 	{
 		super(line, column, firstArgument, secondArgument);
 	}
@@ -24,9 +24,4 @@ public class Substraction extends SecondOrderExpressionOfNumbersToNumber
 		return null;
 	}
 
-	@Override
-	public String toString ()
-	{
-		return "Substraction [firstArgument=" + firstArgument + ", secondArgument=" + secondArgument + "]";
-	}
 }

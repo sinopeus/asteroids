@@ -4,7 +4,6 @@ import model.programs.Program;
 import model.programs.parsing.language.ProgramException;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.Variable;
-import world.entity.ship.Ship;
 
 public class Assignment extends Statement
 {
@@ -24,7 +23,10 @@ public class Assignment extends Statement
 
 	protected boolean canHaveAsVariable (Variable variable)
 	{
-		return variable != null; //TODO more checking?
+		if (variable == null) return false;
+		if (!getParentProgram().getGlobalTypes().containsKey(variable.getName())) return false; //TODO implies that we cannot simultaneously declare and assign!
+		
+		return true;
 	}
 
 	protected void setVariable (Variable variable)
@@ -42,7 +44,12 @@ public class Assignment extends Statement
 
 	protected boolean canHaveAsValue (Expression value)
 	{
-		return (value != null);//TODO more checking?
+		if (value == null) return false;
+		Class<?> one = value.evaluate().getClass();
+		Class<?> other = getParentProgram().getGlobalTypes().get(getVariable().getName()).defaultValue(getLine(), getColumn()).getClass();
+		if (one != other ) return false;
+		
+		return true;
 	}
 
 	protected void setValue (Expression value)

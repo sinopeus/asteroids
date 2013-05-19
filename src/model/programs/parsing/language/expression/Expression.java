@@ -11,5 +11,5 @@ public abstract class Expression extends ProgramPart
 		super(line,column);
 	}
 
-	public abstract ConstantExpression evaluate ();
+	public abstract ConstantExpression<?> evaluate ();
 }

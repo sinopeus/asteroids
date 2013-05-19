@@ -24,10 +24,5 @@ public class LT extends SecondOrderExpressionOfNumbersToBoolean
 		}
 		return null;
 	}
-	
-	@Override
-	public String toString ()
-	{
-		return "Lesser than [firstArgument=" + firstArgument + ", secondArgument=" + secondArgument + "]";
-	}
+
 }

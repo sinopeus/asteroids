@@ -6,11 +6,6 @@ import model.programs.Program;
 import model.programs.parsing.ProgramFactory.ForeachType;
 import model.programs.parsing.language.ProgramException;
 import model.programs.parsing.language.expression.constant.literal.EntityLiteral;
-import world.World;
-import world.entity.Asteroid;
-import world.entity.Bullet;
-import world.entity.Entity;
-import world.entity.ship.Ship;
 
 public class ForEach extends Statement
 {

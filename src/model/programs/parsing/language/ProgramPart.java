@@ -11,7 +11,7 @@ public abstract class ProgramPart
 		setColumn(column);
 	}
 
-	Program	parentProgram;
+	protected Program	parentProgram;
 
 	protected Program getParentProgram ()
 	{
@@ -23,10 +23,10 @@ public abstract class ProgramPart
 		return (program != null);
 	}
 
-	public void setParentProgram (Program parrentProgram) throws ProgramException
+	public void setParentProgram (Program parentProgram) throws ProgramException
 	{
-		if (!canHaveAsParentProgram(parrentProgram)) throw new ProgramException(getLine(),getColumn(),"Illegal parent program provided.");//TODO
-		this.parentProgram = parrentProgram;
+		if (!canHaveAsParentProgram(parentProgram)) throw new ProgramException(getLine(),getColumn(),"Illegal parent program provided.");//TODO
+		this.parentProgram = parentProgram;
 	}
 
 	int	line;

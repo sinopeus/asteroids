@@ -26,9 +26,4 @@ public class NotEquals extends SecondOrderExpressionOfNumbersToBoolean
 		return null;
 	}
 
-	@Override
-	public String toString ()
-	{
-		return "NotEquals [firstArgument=" + firstArgument + ", secondArgument=" + secondArgument + "]";
-	}
 }

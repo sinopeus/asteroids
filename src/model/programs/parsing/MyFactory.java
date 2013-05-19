@@ -31,7 +31,7 @@ import model.programs.parsing.language.expression.second_order.LT;
 import model.programs.parsing.language.expression.second_order.Multiplication;
 import model.programs.parsing.language.expression.second_order.NotEquals;
 import model.programs.parsing.language.expression.second_order.Or;
-import model.programs.parsing.language.expression.second_order.Substraction;
+import model.programs.parsing.language.expression.second_order.Subtraction;
 import model.programs.parsing.language.statement.Assignment;
 import model.programs.parsing.language.statement.ForEach;
 import model.programs.parsing.language.statement.If;
@@ -312,7 +312,7 @@ public class MyFactory implements ProgramFactory <Expression, Statement, Type>
 	{
 		try
 		{
-			return new Substraction(line, column, e1, e2);
+			return new Subtraction(line, column, e1, e2);
 		} catch (ProgramException e)
 		{
 			e.printStackTrace();

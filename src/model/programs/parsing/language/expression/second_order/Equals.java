@@ -26,9 +26,5 @@ public class Equals extends SecondOrderExpressionOfNumbersToBoolean
 		return null;
 	}
 	
-	@Override
-	public String toString ()
-	{
-		return "Equals [firstArgument=" + firstArgument + ", secondArgument=" + secondArgument + "]";
-	}
+
 }
