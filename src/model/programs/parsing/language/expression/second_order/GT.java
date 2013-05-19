@@ -24,4 +24,10 @@ public class GT extends SecondOrderExpressionOfNumbersToBoolean
 		}
 		return null;
 	}
+	
+	@Override
+	public String toString ()
+	{
+		return "Greater than [firstArgument=" + firstArgument + ", secondArgument=" + secondArgument + "]";
+	}
 }

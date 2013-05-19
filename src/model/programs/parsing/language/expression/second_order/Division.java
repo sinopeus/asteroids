@@ -23,4 +23,10 @@ public class Division extends SecondOrderExpressionOfNumbersToNumber
 		}
 		return null;
 	}
+	
+	@Override
+	public String toString ()
+	{
+		return "Division [firstArgument=" + firstArgument + ", secondArgument=" + secondArgument + "]";
+	}
 }

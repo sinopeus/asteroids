@@ -23,4 +23,5 @@ public class GetDirection extends ConstantExpression <Double>
 		}
 		return dl;
 	}
+	
 }

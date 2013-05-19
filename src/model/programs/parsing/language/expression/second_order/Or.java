@@ -23,4 +23,10 @@ public class Or extends SecondOrderExpressionOfBooleansToBoolean
 		}
 		return null;
 	}
+	
+	@Override
+	public String toString ()
+	{
+		return "Or [firstArgument=" + firstArgument + ", secondArgument=" + secondArgument + "]";
+	}
 }
