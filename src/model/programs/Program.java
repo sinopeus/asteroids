@@ -21,9 +21,9 @@ public class Program
 		setStatement(statement);
 	}
 
-	Map <String, Type>	globalTypes;
+	private Map <String, Type>	globalTypes;
 
-	protected Map <String, Type> getGlobalTypes ()
+	public Map <String, Type> getGlobalTypes ()
 	{
 		return globalTypes;
 	}
@@ -34,9 +34,9 @@ public class Program
 		this.globalTypes = globalTypes;
 	}
 
-	HashMap <String, ConstantExpression>	globalValues;
+	private HashMap <String, ConstantExpression>	globalValues;
 
-	protected HashMap <String, ConstantExpression> getGlobalValues ()
+	public HashMap <String, ConstantExpression> getGlobalValues ()
 	{
 		return globalValues;
 	}

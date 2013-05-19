@@ -11,7 +11,7 @@ public abstract class ProgramPart
 		setColumn(column);
 	}
 
-	Program	parentProgram;
+	protected Program	parentProgram;
 
 	protected Program getParentProgram ()
 	{
