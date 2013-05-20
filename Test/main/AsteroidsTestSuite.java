@@ -15,7 +15,6 @@ import model.programs.parsing.language.expression.constant.literal.DoubleLiteral
 import model.programs.parsing.language.expression.constant.literal.EntityLiteralTest;
 import model.programs.parsing.language.expression.first_order.CosineTest;
 import model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfBooleanToBooleanTest;
-import model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfEntityToEntityTest;
 import model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfEntityToNumberTest;
 import model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfNumberToNumberTest;
 import model.programs.parsing.language.expression.first_order.FirstOrderExpressionTest;

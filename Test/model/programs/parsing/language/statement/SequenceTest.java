@@ -15,78 +15,78 @@ public class SequenceTest
     @Test
     public void constructorTest_perfectParams ()
     {
-	//TODO
+    	System.out.println("untested");//TODO
     }
 
     @Test
     public void constructorTest_nullLine ()
     {
-	//TODO
+    	System.out.println("untested");//TODO
     }
 
     @Test
     public void constructorTest_nullColumn ()
     {
-	//TODO
+    	System.out.println("untested");//TODO
     }
 
     @Test
     public void constructorTest_nullSequence ()
     {
-	//TODO
+    	System.out.println("untested");//TODO
     }
 
     @Test
     public void canHaveAsSequenceTest ()
     {
-	//TODO
+    	System.out.println("untested");//TODO
     }
 
     @Test
     public void setSequenceTest ()
     {
-	//TODO
+    	System.out.println("untested");//TODO
     }
 
     @Test
     public void canHaveAsSelectedIndexTest ()
     {
-	//TODO
+    	System.out.println("untested");//TODO
     }
 
     @Test
     public void setSelectedIndexTest ()
     {
-	//TODO
+    	System.out.println("untested");//TODO
     }
 
     @Test
     public void incrementIndexTest ()
     {
-	//TODO
+    	System.out.println("untested");//TODO
     }
 
     @Test
     public void setParentProgramTest ()
     {
-	//TODO
+    	System.out.println("untested");//TODO
     }
 
     @Test
     public void finishTest ()
     {
-	//TODO
+    	System.out.println("untested");//TODO
     }
 
     @Test
     public void unfinishTest ()
     {
-	//TODO
+    	System.out.println("untested");//TODO
     }
 
     @Test
     public void executeTest ()
     {
-	//TODO
+    	System.out.println("IMPORTANT UNTESTED SHIT");//TODO important untested shit
     }
 }
