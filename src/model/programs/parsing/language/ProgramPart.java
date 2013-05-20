@@ -14,7 +14,7 @@ public abstract class ProgramPart
 
 	protected Program	parentProgram;
 
-	protected Program getParentProgram ()
+	public Program getParentProgram ()
 	{
 		return parentProgram;
 	}
@@ -66,7 +66,7 @@ public abstract class ProgramPart
 		this.column = column;
 	}
 
-	protected Ship getOwnerShip ()
+	public Ship getOwnerShip ()
 	{
 		return getParentProgram().getOwner();
 	}

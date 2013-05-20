@@ -40,12 +40,12 @@ public class Program
 		return globalValues;
 	}
 
-	protected void setGlobalValues (Map <String, Type> globalsTypes) throws RecognitionException
+	protected void setGlobalValues (Map <String, Type> globalTypes) throws RecognitionException
 	{
-		if (!canHaveAsGlobals(globalsTypes)) throw new RecognitionException();
+		if (!canHaveAsGlobals(globalTypes)) throw new RecognitionException();
 		HashMap <String, ConstantExpression<?>> globalVariables = new HashMap <String, ConstantExpression<?>>();
 		int counter = 0;
-		for (String name : globalsTypes.keySet())
+		for (String name : globalTypes.keySet())
 			globalVariables.put(name, globalTypes.get(name).defaultValue(counter++, 0));
 		this.globalValues = globalVariables;
 	}
@@ -92,7 +92,7 @@ public class Program
 		return (owner != null);//TODO more checking
 	}
 
-	public void setOwner (Ship owner)
+	public void setOwner (Ship owner) throws IllegalArgumentException
 	{
 		if (!canHaveAsOwner(owner)) throw new IllegalArgumentException("Invalid owner provided in program");
 		this.owner = owner;
@@ -110,14 +110,16 @@ public class Program
 		this.finished = true;
 	}
 
-	public ConstantExpression<?> getVariableNamed (String name)
+	public ConstantExpression<?> getVariableNamed (String name) throws IllegalArgumentException
 	{
 		if (!globalValues.containsKey(name)) throw new IllegalArgumentException("invalid variable name: " + name);
 		return getGlobalValues().get(name);
 	}
 
-	public void setVariableValue (String name, ConstantExpression<?> value)
+	public void setVariableValue (String name, ConstantExpression<?> value) throws IllegalArgumentException
 	{
+		if(name == null) throw new IllegalArgumentException("Illegal name.");
+		if(value == null) throw new IllegalArgumentException("Illegal value.");
 		if (!globalValues.containsKey(name)) throw new IllegalArgumentException("invalid variable name");
 		getGlobalValues().remove(name);
 		getGlobalValues().put(name, value);
