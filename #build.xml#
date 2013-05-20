@@ -1,0 +1,56 @@
+<project name="asteroids" basedir="." default="main">
+
+  <property name="src.dir"      value="src"/>
+  <property name="build.dir"    value="build"/>
+  <property name="lib.dir"      value="lib"/>
+  <property name="javadoc.dir"      value="doc"/>
+  <property name="uml.dir"      value="uml"/>
+
+  <path id="classpath">
+    <fileset dir="${lib.dir}" includes="**/*.jar"/>
+  </path>
+
+  <target name="javadocs" description="generates javadoc and also UML Diagram">
+    <javadoc sourcepath="${src.dir}" packagenames="*" destdir="${javadoc.dir}" classpathref="java.classpath" private="true">
+
+      <doclet name="org.umlgraph.doclet.UmlGraphDoc" path="${lib.dir}/UmlGraph.jar">
+	<param name="-attributes" />
+	<param name="-operations" />
+	<param name="-qualify" />
+	<param name="-types" />
+	<param name="-visibility" />
+      </doclet>
+    </javadoc>
+    <apply executable="dot" dest="${uml.dir}" parallel="false">
+      <arg value="-Tpng"/>
+      <arg value="-o"/>
+      <targetfile/>
+      <srcfile/>
+      <fileset dir="${uml.dir}" includes="*.dot"/>
+      <mapper type="glob" from="*.dot" to="*.png"/>
+    </apply>
+  </target>
+
+  <!-- <target name="uml" depends="prepare"> -->
+  <!--      <property name="uml.dir" value="${basedir}/uml"/> -->
+  <!--      <property name="src.uml.dir" value="${src.dir}/uml"/> -->
+  <!--      <mkdir dir="${uml.dir}"/> -->
+  <!--      <path id="uml.source.path"> -->
+  <!--          <pathelement path="${src.uml.dir}/"/> -->
+  <!--          <pathelement path="${src.java.dir}"/> -->
+  <!--        </path> -->
+  <!--      <javadoc sourcepathref="uml.source.path" packagenames="*" package="true"> -->
+  <!--          <doclet name="org.umlgraph.doclet.UmlGraph" path="${basedir}/lib/UmlGraph.jar"> -->
+  <!--              <param name="-d" value="${uml.dir}"/> -->
+  <!--          </doclet> -->
+  <!--      </javadoc> -->
+  <!--      <apply executable="dot" dest="${uml.dir}" parallel="false"> -->
+  <!--        <arg value="-Tpng"/> -->
+  <!--        <arg value="-o"/> -->
+  <!--        <targetfile/> -->
+  <!--        <srcfile/> -->
+  <!--        <fileset dir="${uml.dir}" includes="*.dot"/> -->
+  <!--        <mapper type="glob" from="*.dot" to="*.png"/> -->
+  <!--      </apply> -->
+  <!--  </target> -->
+</project>

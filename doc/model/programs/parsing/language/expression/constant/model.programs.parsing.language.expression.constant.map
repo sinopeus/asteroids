@@ -1,0 +1,14 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./ConstantExpression.html" title="model.programs.parsing.language.expression.constant.ConstantExpression" alt="" coords="578,11,827,181"/>
+<area shape="rect" id="node1" href="./ConstantExpression.html" title="&lt;TABLE&gt;" alt="" coords="567,6,838,186"/>
+<area shape="rect" id="node2_1" href="./False.html" title="model.programs.parsing.language.expression.constant.False" alt="" coords="16,249,200,370"/>
+<area shape="rect" id="node2" href="./False.html" title="&lt;TABLE&gt;" alt="" coords="5,243,211,375"/>
+<area shape="rect" id="node3_2" href="./Self.html" title="model.programs.parsing.language.expression.constant.Self" alt="" coords="245,241,520,378"/>
+<area shape="rect" id="node3" href="./Self.html" title="&lt;TABLE&gt;" alt="" coords="235,235,531,383"/>
+<area shape="rect" id="node4_3" href="./Null.html" title="model.programs.parsing.language.expression.constant.Null" alt="" coords="565,249,840,370"/>
+<area shape="rect" id="node4" href="./Null.html" title="&lt;TABLE&gt;" alt="" coords="555,243,851,375"/>
+<area shape="rect" id="node5_4" href="./GetDirection.html" title="model.programs.parsing.language.expression.constant.GetDirection" alt="" coords="885,249,1163,370"/>
+<area shape="rect" id="node5" href="./GetDirection.html" title="&lt;TABLE&gt;" alt="" coords="875,243,1173,375"/>
+<area shape="rect" id="node6_5" href="./True.html" title="model.programs.parsing.language.expression.constant.True" alt="" coords="1208,249,1392,370"/>
+<area shape="rect" id="node6" href="./True.html" title="&lt;TABLE&gt;" alt="" coords="1197,243,1403,375"/>
+</map>

@@ -1,0 +1,20 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="../ProgramPart.html" title="model.programs.parsing.language.ProgramPart" alt="" coords="1254,11,1711,277"/>
+<area shape="rect" id="node1" href="../ProgramPart.html" title="&lt;TABLE&gt;" alt="" coords="1243,6,1722,282"/>
+<area shape="rect" id="node2_1" href="./Statement.html" title="model.programs.parsing.language.statement.Statement" alt="" coords="1391,337,1575,474"/>
+<area shape="rect" id="node2" href="./Statement.html" title="&lt;TABLE&gt;" alt="" coords="1380,331,1585,479"/>
+<area shape="rect" id="node3_2" href="./ForEach.html" title="model.programs.parsing.language.statement.ForEach" alt="" coords="15,534,435,1071"/>
+<area shape="rect" id="node3" href="./ForEach.html" title="&lt;TABLE&gt;" alt="" coords="5,529,446,1077"/>
+<area shape="rect" id="node4_3" href="./Assignment.html" title="model.programs.parsing.language.statement.Assignment" alt="" coords="481,678,797,927"/>
+<area shape="rect" id="node4" href="./Assignment.html" title="&lt;TABLE&gt;" alt="" coords="470,673,807,933"/>
+<area shape="rect" id="node5_4" href="./Print.html" title="model.programs.parsing.language.statement.Print" alt="" coords="842,678,1262,927"/>
+<area shape="rect" id="node5" href="./Print.html" title="&lt;TABLE&gt;" alt="" coords="831,673,1273,933"/>
+<area shape="rect" id="node6_5" href="./While.html" title="model.programs.parsing.language.statement.While" alt="" coords="1308,622,1657,983"/>
+<area shape="rect" id="node6" href="./While.html" title="&lt;TABLE&gt;" alt="" coords="1297,617,1668,989"/>
+<area shape="rect" id="node7_6" href="./If.html" title="model.programs.parsing.language.statement.If" alt="" coords="1703,590,2115,1015"/>
+<area shape="rect" id="node7" href="./If.html" title="&lt;TABLE&gt;" alt="" coords="1693,585,2126,1021"/>
+<area shape="rect" id="node8_7" href="./Sequence.html" title="model.programs.parsing.language.statement.Sequence" alt="" coords="2161,646,2549,959"/>
+<area shape="rect" id="node8" href="./Sequence.html" title="&lt;TABLE&gt;" alt="" coords="2150,641,2559,965"/>
+<area shape="rect" id="node9_8" href="./action/Action.html" title="model.programs.parsing.language.statement.action.Action" alt="" coords="2595,758,2952,847"/>
+<area shape="rect" id="node9" href="./action/Action.html" title="&lt;TABLE&gt;" alt="" coords="2584,753,2963,853"/>
+</map>

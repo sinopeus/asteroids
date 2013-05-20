@@ -1,0 +1,14 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./IShip.html" title="model.IShip" alt="" coords="16,435,101,477"/>
+<area shape="rect" id="node1" href="./IShip.html" title="&lt;TABLE&gt;" alt="" coords="5,430,112,482"/>
+<area shape="rect" id="node2_1" href="./Facade.html" title="model.Facade" alt="" coords="147,961,925,1834"/>
+<area shape="rect" id="node2" href="./Facade.html" title="&lt;TABLE&gt;" alt="" coords="137,955,935,1839"/>
+<area shape="rect" id="node3_2" href="./IFacade.html" title="model.IFacade" alt="" coords="147,11,925,901"/>
+<area shape="rect" id="node3" href="./IFacade.html" title="&lt;TABLE&gt;" alt="" coords="137,6,935,906"/>
+<area shape="rect" id="node4_3" href="./IFacade.ParseOutcome.html" title="model.IFacade.ParseOutcome" alt="" coords="971,371,1384,541"/>
+<area shape="rect" id="node4" href="./IFacade.ParseOutcome.html" title="&lt;TABLE&gt;" alt="" coords="960,366,1395,546"/>
+<area shape="rect" id="node5_4" href="./IFacade.TypeCheckOutcome.html" title="model.IFacade.TypeCheckOutcome" alt="" coords="1429,387,1787,525"/>
+<area shape="rect" id="node5" href="./IFacade.TypeCheckOutcome.html" title="&lt;TABLE&gt;" alt="" coords="1419,382,1797,530"/>
+<area shape="rect" id="node6_5" href="./ModelException.html" title="model.ModelException" alt="" coords="1833,443,1946,469"/>
+<area shape="rect" id="node6" href="./ModelException.html" title="&lt;TABLE&gt;" alt="" coords="1822,432,1957,480"/>
+</map>
