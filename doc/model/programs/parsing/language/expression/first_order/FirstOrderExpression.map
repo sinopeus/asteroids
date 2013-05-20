@@ -1,6 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="../Expression.html" title="model.programs.parsing.language.expression.Expression" alt="" coords="267,11,829,101"/>
-<area shape="rect" id="node1" href="../Expression.html" title="&lt;TABLE&gt;" alt="" coords="256,6,840,106"/>
+<area shape="rect" id="node1_0" href="../Expression.html" title="model.programs.parsing.language.expression.Expression" alt="" coords="427,11,669,101"/>
+<area shape="rect" id="node1" href="../Expression.html" title="&lt;TABLE&gt;" alt="" coords="416,6,680,106"/>
 <area shape="rect" id="node3_1" href="./FirstOrderExpression.html" title="model.programs.parsing.language.expression.first_order.FirstOrderExpression" alt="" coords="372,161,724,298"/>
 <area shape="rect" id="node3" href="./FirstOrderExpression.html" title="&lt;TABLE&gt;" alt="" coords="361,155,735,303"/>
 <area shape="rect" id="node2_2" href="./FirstOrderExpressionOfBooleanToBoolean.html" title="model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfBooleanToBoolean" alt="" coords="16,358,344,479"/>

@@ -1,6 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="../ConstantExpression.html" title="model.programs.parsing.language.expression.constant.ConstantExpression" alt="" coords="15,11,579,181"/>
-<area shape="rect" id="node1" href="../ConstantExpression.html" title="&lt;TABLE&gt;" alt="" coords="5,6,590,186"/>
-<area shape="rect" id="node2_1" href="./BooleanLiteral.html" title="model.programs.parsing.language.expression.constant.literal.BooleanLiteral" alt="" coords="215,241,379,346"/>
-<area shape="rect" id="node2" href="./BooleanLiteral.html" title="&lt;TABLE&gt;" alt="" coords="205,235,390,351"/>
+<area shape="rect" id="node1_0" href="../ConstantExpression.html" title="model.programs.parsing.language.expression.constant.ConstantExpression" alt="" coords="15,11,265,181"/>
+<area shape="rect" id="node1" href="../ConstantExpression.html" title="&lt;TABLE&gt;" alt="" coords="5,6,275,186"/>
+<area shape="rect" id="node2_1" href="./BooleanLiteral.html" title="model.programs.parsing.language.expression.constant.literal.BooleanLiteral" alt="" coords="58,241,222,346"/>
+<area shape="rect" id="node2" href="./BooleanLiteral.html" title="&lt;TABLE&gt;" alt="" coords="47,235,233,351"/>
 </map>

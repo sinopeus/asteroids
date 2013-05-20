@@ -1,8 +1,8 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="../../../model/IShip.html" title="model.IShip" alt="" coords="15,371,105,413"/>
-<area shape="rect" id="node1" href="../../../model/IShip.html" title="&lt;TABLE&gt;" alt="" coords="5,366,115,418"/>
-<area shape="rect" id="node3_1" href="./Ship.html" title="world.entity.ship.Ship" alt="" coords="37,833,403,1290"/>
-<area shape="rect" id="node3" href="./Ship.html" title="&lt;TABLE&gt;" alt="" coords="26,827,414,1295"/>
-<area shape="rect" id="node2_2" href="../Entity.html" title="world.entity.Entity" alt="" coords="151,11,612,773"/>
-<area shape="rect" id="node2" href="../Entity.html" title="&lt;TABLE&gt;" alt="" coords="140,6,623,778"/>
+<area shape="rect" id="node1_0" href="../../../model/IShip.html" title="model.IShip" alt="" coords="20,371,105,413"/>
+<area shape="rect" id="node1" href="../../../model/IShip.html" title="&lt;TABLE&gt;" alt="" coords="9,366,116,418"/>
+<area shape="rect" id="node3_1" href="./Ship.html" title="world.entity.ship.Ship" alt="" coords="15,833,382,1290"/>
+<area shape="rect" id="node3" href="./Ship.html" title="&lt;TABLE&gt;" alt="" coords="5,827,393,1295"/>
+<area shape="rect" id="node2_2" href="../Entity.html" title="world.entity.Entity" alt="" coords="151,11,521,773"/>
+<area shape="rect" id="node2" href="../Entity.html" title="&lt;TABLE&gt;" alt="" coords="141,6,531,778"/>
 </map>

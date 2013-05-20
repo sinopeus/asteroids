@@ -12,24 +12,24 @@ digraph G {
 	// model.programs.parsing.language.ProgramPart
 	c16090 [label=<<table title="model.programs.parsing.language.ProgramPart" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../ProgramPart.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> model.programs.parsing.language.ProgramPart </font></td></tr>
+<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> ProgramPart </font></td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> # parentProgram : model.programs.Program </td></tr>
+<tr><td align="left" balign="left"> # parentProgram : Program </td></tr>
 <tr><td align="left" balign="left"> ~ line : int </td></tr>
 <tr><td align="left" balign="left"> ~ column : int </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + getParentProgram() : model.programs.Program </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsParentProgram(program : model.programs.Program) : boolean </td></tr>
-<tr><td align="left" balign="left"> + setParentProgram(parentProgram : model.programs.Program) </td></tr>
+<tr><td align="left" balign="left"> + getParentProgram() : Program </td></tr>
+<tr><td align="left" balign="left"> # canHaveAsParentProgram(program : Program) : boolean </td></tr>
+<tr><td align="left" balign="left"> + setParentProgram(parentProgram : Program) </td></tr>
 <tr><td align="left" balign="left"> + getLine() : int </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsLine(line : int) : boolean </td></tr>
 <tr><td align="left" balign="left"> # setLine(line : int) </td></tr>
 <tr><td align="left" balign="left"> + getColumn() : int </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsColumn(column : int) : boolean </td></tr>
 <tr><td align="left" balign="left"> # setColumn(column : int) </td></tr>
-<tr><td align="left" balign="left"> + getOwnerShip() : world.entity.ship.Ship </td></tr>
+<tr><td align="left" balign="left"> + getOwnerShip() : Ship </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> + isTypeSafe() : boolean </font></td></tr>
 		</table></td></tr>
 		</table>>, URL="../ProgramPart.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
@@ -230,7 +230,7 @@ digraph G {
 	// model.programs.parsing.language.statement.action.Action
 	c16139 [label=<<table title="model.programs.parsing.language.statement.action.Action" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./action/Action.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> model.programs.parsing.language.statement.action.Action </font></td></tr>
+<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> Action </font></td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left">  </td></tr>

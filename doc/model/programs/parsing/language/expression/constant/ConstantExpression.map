@@ -1,6 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="../Expression.html" title="model.programs.parsing.language.expression.Expression" alt="" coords="880,11,1443,101"/>
-<area shape="rect" id="node1" href="../Expression.html" title="&lt;TABLE&gt;" alt="" coords="869,6,1453,106"/>
+<area shape="rect" id="node1_0" href="../Expression.html" title="model.programs.parsing.language.expression.Expression" alt="" coords="1040,11,1283,101"/>
+<area shape="rect" id="node1" href="../Expression.html" title="&lt;TABLE&gt;" alt="" coords="1029,6,1293,106"/>
 <area shape="rect" id="node2_1" href="./ConstantExpression.html" title="model.programs.parsing.language.expression.constant.ConstantExpression" alt="" coords="1037,161,1286,330"/>
 <area shape="rect" id="node2" href="./ConstantExpression.html" title="&lt;TABLE&gt;" alt="" coords="1026,155,1297,335"/>
 <area shape="rect" id="node3_2" href="./False.html" title="model.programs.parsing.language.expression.constant.False" alt="" coords="16,398,200,519"/>
@@ -13,10 +13,10 @@
 <area shape="rect" id="node6" href="./GetDirection.html" title="&lt;TABLE&gt;" alt="" coords="875,393,1173,525"/>
 <area shape="rect" id="node7_6" href="./True.html" title="model.programs.parsing.language.expression.constant.True" alt="" coords="1208,398,1392,519"/>
 <area shape="rect" id="node7" href="./True.html" title="&lt;TABLE&gt;" alt="" coords="1197,393,1403,525"/>
-<area shape="rect" id="node8_7" href="./literal/EntityLiteral.html" title="model.programs.parsing.language.expression.constant.literal.EntityLiteral" alt="" coords="1437,398,1883,519"/>
-<area shape="rect" id="node8" href="./literal/EntityLiteral.html" title="&lt;TABLE&gt;" alt="" coords="1427,393,1893,525"/>
-<area shape="rect" id="node9_8" href="./literal/DoubleLiteral.html" title="model.programs.parsing.language.expression.constant.literal.DoubleLiteral" alt="" coords="1929,406,2381,511"/>
-<area shape="rect" id="node9" href="./literal/DoubleLiteral.html" title="&lt;TABLE&gt;" alt="" coords="1918,401,2391,517"/>
-<area shape="rect" id="node10_9" href="./literal/BooleanLiteral.html" title="model.programs.parsing.language.expression.constant.literal.BooleanLiteral" alt="" coords="2426,406,2883,511"/>
-<area shape="rect" id="node10" href="./literal/BooleanLiteral.html" title="&lt;TABLE&gt;" alt="" coords="2415,401,2894,517"/>
+<area shape="rect" id="node8_7" href="./literal/EntityLiteral.html" title="model.programs.parsing.language.expression.constant.literal.EntityLiteral" alt="" coords="1437,398,1712,519"/>
+<area shape="rect" id="node8" href="./literal/EntityLiteral.html" title="&lt;TABLE&gt;" alt="" coords="1427,393,1723,525"/>
+<area shape="rect" id="node9_8" href="./literal/DoubleLiteral.html" title="model.programs.parsing.language.expression.constant.literal.DoubleLiteral" alt="" coords="1758,406,1922,511"/>
+<area shape="rect" id="node9" href="./literal/DoubleLiteral.html" title="&lt;TABLE&gt;" alt="" coords="1747,401,1933,517"/>
+<area shape="rect" id="node10_9" href="./literal/BooleanLiteral.html" title="model.programs.parsing.language.expression.constant.literal.BooleanLiteral" alt="" coords="1967,406,2131,511"/>
+<area shape="rect" id="node10" href="./literal/BooleanLiteral.html" title="&lt;TABLE&gt;" alt="" coords="1957,401,2142,517"/>
 </map>

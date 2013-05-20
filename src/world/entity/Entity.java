@@ -8,6 +8,7 @@ import world.physics.geometry.Angle;
 import world.physics.geometry.CircleShape;
 import world.physics.vector.Direction;
 import world.physics.vector.Position;
+
 import world.physics.vector.Vector;
 import world.physics.vector.Velocity;
 import be.kuleuven.cs.som.annotate.Basic;

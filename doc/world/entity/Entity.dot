@@ -118,36 +118,36 @@ digraph G {
 	// world.entity.ship.Ship
 	c7896 [label=<<table title="world.entity.ship.Ship" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ship/Ship.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> world.entity.ship.Ship </td></tr>
+<tr><td align="center" balign="center"> Ship </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> - minimumRadius : double </td></tr>
-<tr><td align="left" balign="left"> - thruster : world.entity.ship.Thruster </td></tr>
-<tr><td align="left" balign="left"> - bulletList : java.util.ArrayList&lt;world.entity.Bullet&gt; </td></tr>
-<tr><td align="left" balign="left"> ~ program : model.programs.Program </td></tr>
+<tr><td align="left" balign="left"> - thruster : Thruster </td></tr>
+<tr><td align="left" balign="left"> - bulletList : ArrayList&lt;Bullet&gt; </td></tr>
+<tr><td align="left" balign="left"> ~ program : Program </td></tr>
 <tr><td align="left" balign="left"> - thrustPerSecond : double </td></tr>
 <tr><td align="left" balign="left"> - MAXIMUM_AMOUNT_OF_BULLETS : byte </td></tr>
 <tr><td align="left" balign="left"> - SPEED_OF_ACTIONS : double </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> # canHaveAsShape(shape : world.physics.geometry.CircleShape) : boolean </td></tr>
+<tr><td align="left" balign="left"> # canHaveAsShape(shape : CircleShape) : boolean </td></tr>
 <tr><td align="left" balign="left"> + getMinimumRadius() : double </td></tr>
-<tr><td align="left" balign="left"> + getThruster() : world.entity.ship.Thruster </td></tr>
-<tr><td align="left" balign="left"> - canHaveAsThruster(thruster : world.entity.ship.Thruster) : boolean </td></tr>
-<tr><td align="left" balign="left"> - setThruster(thruster : world.entity.ship.Thruster) </td></tr>
-<tr><td align="left" balign="left"> + getBulletList() : java.util.ArrayList&lt;world.entity.Bullet&gt; </td></tr>
-<tr><td align="left" balign="left"> - canHaveAsBulletList(bullets : java.util.ArrayList&lt;world.entity.Bullet&gt;) : boolean </td></tr>
-<tr><td align="left" balign="left"> - setBulletList(bullets : java.util.ArrayList&lt;world.entity.Bullet&gt;) </td></tr>
-<tr><td align="left" balign="left"> + getProgram() : model.programs.Program </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsProgram(program : model.programs.Program) : boolean </td></tr>
-<tr><td align="left" balign="left"> + setProgram(program : model.programs.Program) </td></tr>
+<tr><td align="left" balign="left"> + getThruster() : Thruster </td></tr>
+<tr><td align="left" balign="left"> - canHaveAsThruster(thruster : Thruster) : boolean </td></tr>
+<tr><td align="left" balign="left"> - setThruster(thruster : Thruster) </td></tr>
+<tr><td align="left" balign="left"> + getBulletList() : ArrayList&lt;Bullet&gt; </td></tr>
+<tr><td align="left" balign="left"> - canHaveAsBulletList(bullets : ArrayList&lt;Bullet&gt;) : boolean </td></tr>
+<tr><td align="left" balign="left"> - setBulletList(bullets : ArrayList&lt;Bullet&gt;) </td></tr>
+<tr><td align="left" balign="left"> + getProgram() : Program </td></tr>
+<tr><td align="left" balign="left"> # canHaveAsProgram(program : Program) : boolean </td></tr>
+<tr><td align="left" balign="left"> + setProgram(program : Program) </td></tr>
 <tr><td align="left" balign="left"> + terminate() </td></tr>
 <tr><td align="left" balign="left"> + advance(dt : double) </td></tr>
 <tr><td align="left" balign="left"> + canFire() : boolean </td></tr>
 <tr><td align="left" balign="left"> + fire() </td></tr>
-<tr><td align="left" balign="left"> + collideWith(that : world.entity.Asteroid) </td></tr>
-<tr><td align="left" balign="left"> + collideWith(that : world.entity.Bullet) </td></tr>
-<tr><td align="left" balign="left"> + toString() : java.lang.String </td></tr>
+<tr><td align="left" balign="left"> + collideWith(that : Asteroid) </td></tr>
+<tr><td align="left" balign="left"> + collideWith(that : Bullet) </td></tr>
+<tr><td align="left" balign="left"> + toString() : String </td></tr>
 <tr><td align="left" balign="left"> + getThrustPerSecond() : double </td></tr>
 		</table></td></tr>
 		</table>>, URL="./ship/Ship.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];

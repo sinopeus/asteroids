@@ -15,7 +15,6 @@
       <doclet name="org.umlgraph.doclet.UmlGraphDoc" path="${lib.dir}/UmlGraph.jar">
 	<param name="-attributes" />
 	<param name="-operations" />
-	<param name="-qualify" />
 	<param name="-types" />
 	<param name="-visibility" />
       </doclet>

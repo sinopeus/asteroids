@@ -1,6 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="../ProgramPart.html" title="model.programs.parsing.language.ProgramPart" alt="" coords="1254,11,1711,277"/>
-<area shape="rect" id="node1" href="../ProgramPart.html" title="&lt;TABLE&gt;" alt="" coords="1243,6,1722,282"/>
+<area shape="rect" id="node1_0" href="../ProgramPart.html" title="model.programs.parsing.language.ProgramPart" alt="" coords="1303,11,1663,277"/>
+<area shape="rect" id="node1" href="../ProgramPart.html" title="&lt;TABLE&gt;" alt="" coords="1292,6,1673,282"/>
 <area shape="rect" id="node2_1" href="./Statement.html" title="model.programs.parsing.language.statement.Statement" alt="" coords="1391,337,1575,474"/>
 <area shape="rect" id="node2" href="./Statement.html" title="&lt;TABLE&gt;" alt="" coords="1380,331,1585,479"/>
 <area shape="rect" id="node3_2" href="./ForEach.html" title="model.programs.parsing.language.statement.ForEach" alt="" coords="15,534,435,1071"/>
@@ -15,6 +15,6 @@
 <area shape="rect" id="node7" href="./If.html" title="&lt;TABLE&gt;" alt="" coords="1693,585,2126,1021"/>
 <area shape="rect" id="node8_7" href="./Sequence.html" title="model.programs.parsing.language.statement.Sequence" alt="" coords="2161,646,2549,959"/>
 <area shape="rect" id="node8" href="./Sequence.html" title="&lt;TABLE&gt;" alt="" coords="2150,641,2559,965"/>
-<area shape="rect" id="node9_8" href="./action/Action.html" title="model.programs.parsing.language.statement.action.Action" alt="" coords="2595,758,2952,847"/>
-<area shape="rect" id="node9" href="./action/Action.html" title="&lt;TABLE&gt;" alt="" coords="2584,753,2963,853"/>
+<area shape="rect" id="node9_8" href="./action/Action.html" title="model.programs.parsing.language.statement.action.Action" alt="" coords="2593,758,2777,847"/>
+<area shape="rect" id="node9" href="./action/Action.html" title="&lt;TABLE&gt;" alt="" coords="2583,753,2788,853"/>
 </map>

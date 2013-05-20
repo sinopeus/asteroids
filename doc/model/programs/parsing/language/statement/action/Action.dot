@@ -12,7 +12,7 @@ digraph G {
 	// model.programs.parsing.language.statement.Statement
 	c2852 [label=<<table title="model.programs.parsing.language.statement.Statement" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../Statement.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> model.programs.parsing.language.statement.Statement </font></td></tr>
+<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> Statement </font></td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> - finished : boolean </td></tr>
