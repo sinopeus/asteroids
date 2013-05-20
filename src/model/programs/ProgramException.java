@@ -1,4 +1,4 @@
-package model.programs.parsing.language;
+package model.programs;
 
 public class ProgramException extends Exception
 {

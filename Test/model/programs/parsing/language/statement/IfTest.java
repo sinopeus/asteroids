@@ -9,102 +9,102 @@ public class IfTest
     @Before
     public void setUp ()
     {
-	//TODO
+    	//TODO
     }
 
     @Test
     public void constructorTest_perfectParams ()
     {
-	//TODO
+    	System.out.println("untested");//TODO
     }
 
     @Test
     public void constructorTest_nullLine ()
     {
-	//TODO
+    	System.out.println("untested");//TODO
     }
 
     @Test
     public void constructorTest_nullColumn ()
     {
-	//TODO
+    	System.out.println("untested");//TODO
     }
 
     @Test
     public void constructorTest_nullCondition ()
     {
-	//TODO
+    	System.out.println("untested");//TODO
     }
 
     @Test
     public void constructorTest_nullThen ()
     {
-	//TODO
+    	System.out.println("untested");//TODO
     }
 
     @Test
     public void constructorTest_nullOtherwise ()
     {
-	//TODO
+    	System.out.println("untested");//TODO
     }
 
     @Test
     public void checkConditionTest ()
     {
-	//TODO
+    	System.out.println("untested");//TODO
     }
 
     @Test
     public void canHaveAsConditionTest ()
     {
-	//TODO
+    	System.out.println("untested");//TODO
     }
 
     @Test
     public void setConditionTest ()
     {
-	//TODO
+    	System.out.println("untested");//TODO
     }
 
     @Test
     public void canHaveAsThenStatementTest ()
     {
-	//TODO
+    	System.out.println("untested");//TODO
     }
 
     @Test
     public void setThenStatementTest ()
     {
-	//TODO
+    	System.out.println("untested");//TODO
     }
 
     @Test
     public void canHaveAsOtherwiseStatementTest ()
     {
-	//TODO
+    	System.out.println("untested");//TODO
     }
 
     @Test
     public void setOtherwiseStatementTest ()
     {
-	//TODO
+    	System.out.println("untested");//TODO
     }
 
     @Test
     public void setParentProgramTest ()
     {
-	//TODO
+    	System.out.println("untested");//TODO
     }
 
     @Test
     public void unfinishTest ()
     {
-	//TODO
+    	System.out.println("untested");//TODO
     }
 
     @Test
     public void executeTest ()
     {
-	//TODO
+    	System.out.println("IMPORTANT UNTESTED SHIT");//TODO THIS IS IMPORTANT!!
     }
 }

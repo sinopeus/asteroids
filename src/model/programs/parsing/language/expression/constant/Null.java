@@ -1,8 +1,10 @@
 package model.programs.parsing.language.expression.constant;
 
-import model.programs.parsing.language.ProgramException;
+import model.programs.ProgramException;
+import model.programs.parsing.language.Type;
+import world.entity.Entity;
 
-public class Null extends ConstantExpression <Object>
+public class Null extends ConstantExpression <Entity>
 {
 	public Null (int line, int column) throws ProgramException
 	{
@@ -10,9 +12,21 @@ public class Null extends ConstantExpression <Object>
 	}
 
 	@Override
-	protected boolean canHaveAsValue (Object value)
+	protected boolean canHaveAsValue (Entity value)
 	{
 		return true;
+	}
+	
+	@Override
+	public boolean isTypeSafe ()
+	{
+		return true;
+	}
+	
+	@Override
+	public Type getType ()
+	{
+		return Type.TYPE_ENTITY;
 	}
 
 	@Override

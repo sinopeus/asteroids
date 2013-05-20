@@ -2,7 +2,8 @@ package model.programs.parsing.language.expression.constant.literal;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import model.programs.parsing.language.ProgramException;
+import model.programs.ProgramException;
+import model.programs.parsing.language.Type;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -48,10 +49,16 @@ public class EntityLiteralTest
 		new EntityLiteral(1, -2, testEntity);
 	}
 	
-	@Test (expected = ProgramException.class)
-	public void constructorTest_IllegalEntity () throws ProgramException
+	@Test
+	public void isTypeSafeTest ()
 	{
-		new EntityLiteral(1, 2, null);
+		assertTrue(testLiteral.isTypeSafe());
+	}
+
+	@Test
+	public void getType ()
+	{
+		assertEquals(testLiteral.getType(), Type.TYPE_ENTITY);
 	}
 
 	@Test

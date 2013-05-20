@@ -1,6 +1,7 @@
 package model.programs.parsing.language;
 
 import model.programs.Program;
+import model.programs.ProgramException;
 import world.entity.ship.Ship;
 
 public abstract class ProgramPart
@@ -13,7 +14,7 @@ public abstract class ProgramPart
 
 	protected Program	parentProgram;
 
-	protected Program getParentProgram ()
+	public Program getParentProgram ()
 	{
 		return parentProgram;
 	}
@@ -65,8 +66,10 @@ public abstract class ProgramPart
 		this.column = column;
 	}
 
-	protected Ship getOwnerShip ()
+	public Ship getOwnerShip ()
 	{
 		return getParentProgram().getOwner();
 	}
+	
+	public abstract boolean isTypeSafe();
 }

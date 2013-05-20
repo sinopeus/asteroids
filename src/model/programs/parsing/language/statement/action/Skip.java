@@ -1,6 +1,6 @@
 package model.programs.parsing.language.statement.action;
 
-import model.programs.parsing.language.ProgramException;
+import model.programs.ProgramException;
 
 public class Skip extends Action
 {
@@ -17,6 +17,12 @@ public class Skip extends Action
 		return true;
 	}
 
+	@Override
+	public boolean isTypeSafe ()
+	{
+		return true;
+	}
+	
 	@Override
 	public String toString ()
 	{

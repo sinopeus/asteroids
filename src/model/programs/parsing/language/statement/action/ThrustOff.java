@@ -1,6 +1,6 @@
 package model.programs.parsing.language.statement.action;
 
-import model.programs.parsing.language.ProgramException;
+import model.programs.ProgramException;
 
 
 public class ThrustOff extends Action
@@ -19,6 +19,12 @@ public class ThrustOff extends Action
 		return true;
 	}
 
+	@Override
+	public boolean isTypeSafe ()
+	{
+		return true;
+	}
+	
 	@Override
 	public String toString ()
 	{

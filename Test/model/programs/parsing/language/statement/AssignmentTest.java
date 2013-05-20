@@ -9,66 +9,66 @@ public class AssignmentTest
 	@Before
 	public void setUp ()
 	{
-	    //TODO
+		//TODO
 	}
 
 	@Test
 	public void constructorTest_nullLine ()
 	{
-	    //TODO
+		System.out.println("untested");//TODO
 	}
 
 	@Test
 	public void constructorTest_nullColumn ()
 	{
-	    //TODO
+		System.out.println("untested");//TODO
 	}
 
 	@Test
 	public void constructorTest_nullVariable ()
 	{
-	    //TODO
+		System.out.println("untested");//TODO
 	}
 
 	@Test
 	public void constructorTest_nullExpression ()
 	{
-	    //TODO
+		System.out.println("untested");//TODO
 	}
-    
+
 	@Test
 	public void canHaveAsVariableTest ()
 	{
-	    //TODO
+		System.out.println("untested");//TODO
 	}
 
 	@Test
 	public void setVariableTest ()
 	{
-	    //TODO
+		System.out.println("untested");//TODO
 	}
 
 	@Test
 	public void canHaveAsValueTest ()
 	{
-	    //TODO
+		System.out.println("untested");//TODO
 	}
 
 	@Test
 	public void setValueTest ()
 	{
-	    //TODO
+		System.out.println("untested"); //TODO
 	}
 
 	@Test
 	public void setParentProgramTest ()
 	{
-	    //TODO
+		System.out.println("untested");//TODO
 	}
 
 	@Test
 	public void executeTest ()
 	{
-	    //TODO
+		System.out.println("IMPORTANT UNTESTED SHIT");//TODO THIS is important!!
 	}
 }

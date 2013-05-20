@@ -1,18 +1,14 @@
 package model.programs.parsing.language.expression.constant;
 
-import org.junit.Before;
 import org.junit.Test;
 
 @SuppressWarnings ("javadoc")
 public class SelfTest
 {
-	@Before
-	public void setUp ()
-	{
-	}
-
+	//TODO test this?
 	@Test
-	public void Test ()
+	public void testname () throws Exception
 	{
+		System.out.println("untested");
 	}
 }

@@ -1,7 +1,9 @@
 package model.programs.parsing.language.expression.constant.literal;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import model.programs.parsing.language.ProgramException;
+import model.programs.ProgramException;
+import model.programs.parsing.language.Type;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -44,6 +46,18 @@ public class DoubleLiteralTest
 	public void constructorTest_IllegalDouble() throws ProgramException
 	{
 		new DoubleLiteral(1, 2, null);
+	}
+	
+	@Test
+	public void isTypeSafeTest ()
+	{
+		assertTrue(testLiteral.isTypeSafe());
+	}
+
+	@Test
+	public void getType ()
+	{
+		assertEquals(testLiteral.getType(), Type.TYPE_DOUBLE);
 	}
 
 	@Test

@@ -1,6 +1,7 @@
 package model.programs.parsing.language.expression.second_order;
 
-import model.programs.parsing.language.ProgramException;
+import model.programs.ProgramException;
+import model.programs.parsing.language.Type;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.constant.literal.BooleanLiteral;
 import model.programs.parsing.language.expression.constant.literal.DoubleLiteral;
@@ -22,6 +23,22 @@ public abstract class SecondOrderExpressionOfNumbersToBoolean extends SecondOrde
 
 	protected abstract BooleanLiteral function (DoubleLiteral first, DoubleLiteral second);
 
+	@Override
+	public boolean isTypeSafe ()
+	{
+		boolean firstArgumentIsTypeSafe = getFirstArgument().isTypeSafe();
+		boolean secondArgumentIsTypeSafe = getSecondArgument().isTypeSafe();
+		boolean firstArgumentIsCorrectType = getFirstArgument().getType() == Type.TYPE_DOUBLE;
+		boolean secondArgumentIsCorrectType = getSecondArgument().getType() == Type.TYPE_DOUBLE;
+		return (firstArgumentIsTypeSafe && secondArgumentIsTypeSafe && firstArgumentIsCorrectType && secondArgumentIsCorrectType);
+	}
+
+	@Override
+	public Type getType ()
+	{
+		return Type.TYPE_BOOLEAN;
+	}
+	
 	@Override
 	public BooleanLiteral evaluate ()
 	{

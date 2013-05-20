@@ -39,7 +39,6 @@ public class BulletTest
 		testWorld.add(testBullet2);
 		testWorld.add(testBullet3);
 		testWorld.add(testAsteroid);
-		System.out.println(testWorld);
 	}
 
 	private static Ship	testShip1, testShip2;

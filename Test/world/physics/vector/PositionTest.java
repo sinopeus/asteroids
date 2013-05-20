@@ -3,34 +3,24 @@ package world.physics.vector;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-
 import org.junit.Before;
 import org.junit.Test;
 
-import world.physics.vector.Position;
-import world.physics.vector.Vector;
-import world.physics.vector.Velocity;
-
 import Utilities.Util;
 
-
-
-
-
-
-@SuppressWarnings("javadoc")
+@SuppressWarnings ("javadoc")
 public class PositionTest
 {
 	@Before
-	public void setUpImmutableTestFixture_Position()
+	public void setUpImmutableTestFixture_Position ()
 	{
 		testPosition = new Position(5, 5);
 	}
 
-	private static Position testPosition;
+	private static Position	testPosition;
 
 	@Test
-	public void extendedConstructorTest_ComponentsMatchGivenComponents()
+	public void extendedConstructorTest_ComponentsMatchGivenComponents ()
 	{
 		Position p = new Position(5, 6);
 		assertTrue(Util.fuzzyEquals(p._X(), 5));
@@ -38,7 +28,7 @@ public class PositionTest
 	}
 
 	@Test
-	public void byVectorConstructorTest_ComponentsMatchVectorComponents()
+	public void byVectorConstructorTest_ComponentsMatchVectorComponents ()
 	{
 		Vector v = new Vector(5, 6);
 		Position p = new Position(v);
@@ -47,7 +37,7 @@ public class PositionTest
 	}
 
 	@Test
-	public void simpleConstructorTest_ComponentsMatchZero()
+	public void simpleConstructorTest_ComponentsMatchZero ()
 	{
 		Position p = new Position();
 		assertTrue(Util.fuzzyEquals(p._X(), 0));
@@ -55,33 +45,33 @@ public class PositionTest
 	}
 
 	@Test
-	public void setXComponentTest_LegalCase()
+	public void setXComponentTest_LegalCase ()
 	{
 		testPosition.setX(10);
 		assertTrue(Util.fuzzyEquals(testPosition._X(), 10));
 	}
 
-	@Test(expected = IllegalArgumentException.class)
-	public void setXComponentTest_IllegalCase()
+	@Test (expected = IllegalArgumentException.class)
+	public void setXComponentTest_IllegalCase ()
 	{
 		testPosition.setX(Double.NaN);
 	}
 
 	@Test
-	public void setYComponentTest_LegalCase()
+	public void setYComponentTest_LegalCase ()
 	{
 		testPosition.setY(10);
 		assertTrue(Util.fuzzyEquals(testPosition._Y(), 10));
 	}
 
-	@Test(expected = IllegalArgumentException.class)
-	public void setYComponentTest_IllegalCase()
+	@Test (expected = IllegalArgumentException.class)
+	public void setYComponentTest_IllegalCase ()
 	{
 		testPosition.setY(Double.NaN);
 	}
 
 	@Test
-	public void getSumTest()
+	public void getSumTest ()
 	{
 		Vector v = new Vector(15, 5);
 		Position sumVector = testPosition.getSum(v);
@@ -89,14 +79,14 @@ public class PositionTest
 		assertTrue(Util.fuzzyEquals(sumVector._Y(), 10));
 	}
 
-	@Test(expected = IllegalArgumentException.class)
-	public void getSumTest_nullVector()
+	@Test (expected = IllegalArgumentException.class)
+	public void getSumTest_nullVector ()
 	{
 		testPosition.getSum(null);
 	}
 
 	@Test
-	public void moveByTest_PerfectParameters()
+	public void moveByTest_PerfectParameters ()
 	{
 		Velocity v = new Velocity(5, 6);
 		testPosition.moveBy(v, 2.5);
@@ -104,26 +94,27 @@ public class PositionTest
 		assertTrue(Util.fuzzyEquals(testPosition._Y(), 20.0));
 	}
 
-	@Test(expected = IllegalArgumentException.class)
-	public void moveByTest_nullVelocity()
+	@Test (expected = IllegalArgumentException.class)
+	public void moveByTest_nullVelocity ()
 	{
 		testPosition.moveBy(null, 1);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
-	public void moveByTest_IllegalDuration()
+	@Test (expected = IllegalArgumentException.class)
+	public void moveByTest_IllegalDuration ()
 	{
 		Velocity v = new Velocity(5, 5);
 		testPosition.moveBy(v, -1);
 	}
-	
+
 	@Test
-	public void toStringTest(){
+	public void toStringTest ()
+	{
 		testPosition.toString();
 	}
 
 	@Test
-	public void equalsTest()
+	public void equalsTest ()
 	{
 		assertTrue(testPosition.equals(new Position(5, 5)));
 		assertFalse(testPosition.equals(new Position(4, 5)));

@@ -1,6 +1,6 @@
 package model.programs.parsing.language.statement;
 
-import model.programs.parsing.language.ProgramException;
+import model.programs.ProgramException;
 import model.programs.parsing.language.ProgramPart;
 
 public abstract class Statement extends ProgramPart
@@ -27,6 +27,8 @@ public abstract class Statement extends ProgramPart
 	{
 		this.finished = true;
 	}
+	
+	public abstract boolean containsAction();
 	
 	/**
 	 * 

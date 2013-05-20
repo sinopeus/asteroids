@@ -1,6 +1,7 @@
 package model.programs.parsing.language;
 
 import world.entity.Entity;
+import model.programs.ProgramException;
 import model.programs.parsing.language.expression.constant.ConstantExpression;
 import model.programs.parsing.language.expression.constant.literal.BooleanLiteral;
 import model.programs.parsing.language.expression.constant.literal.DoubleLiteral;

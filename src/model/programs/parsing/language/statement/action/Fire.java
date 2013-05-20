@@ -1,6 +1,6 @@
 package model.programs.parsing.language.statement.action;
 
-import model.programs.parsing.language.ProgramException;
+import model.programs.ProgramException;
 
 
 public class Fire extends Action
@@ -16,6 +16,12 @@ public class Fire extends Action
 		super.execute();
 		getOwnerShip().fire();
 		finish();
+		return true;
+	}
+	
+	@Override
+	public boolean isTypeSafe ()
+	{
 		return true;
 	}
 

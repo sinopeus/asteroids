@@ -1,20 +1,9 @@
-entity e;
 double a;
-double b;
-double s;
-double t;
 
-while (true) {
-	foreach(asteroid, e){
-		a := (((gety e) - (gety self)) / ((getx e) - (getx self)));
-		b := ( sin( getdir ) / cos( getdir ) );
-		while(((a - b) >= 0.1) || ((a - b) <= -0.1)){
-			turn 0.1;
-			a := (((gety e) - (gety self)) / ((getx e) - (getx self)));
-			b := ( sin( getdir ) / cos( getdir ) );
-		}
-		fire;
-		turn 3.14;
-		fire;
-	}
+a := 0;
+thrust;
+while(true){
+fire;
+turn 0.1;
+a := (a + 1);
 }
