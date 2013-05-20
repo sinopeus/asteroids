@@ -1,6 +1,10 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="./ProgramFactory.html" title="model.programs.parsing.ProgramFactory" alt="" coords="66,11,742,741"/>
-<area shape="rect" id="node1" href="./ProgramFactory.html" title="&lt;TABLE&gt;" alt="" coords="55,6,753,746"/>
-<area shape="rect" id="node2_1" href="./MyFactory.html" title="model.programs.parsing.MyFactory" alt="" coords="15,801,793,1514"/>
-<area shape="rect" id="node2" href="./MyFactory.html" title="&lt;TABLE&gt;" alt="" coords="5,795,803,1519"/>
+<area shape="rect" id="node1_0" href="./ProgramFactory.html" title="model.programs.parsing.ProgramFactory" alt="" coords="453,993,1129,1722"/>
+<area shape="rect" id="node1" href="./ProgramFactory.html" title="&lt;TABLE&gt;" alt="" coords="442,987,1139,1727"/>
+<area shape="rect" id="node2_1" href="./MyFactory.html" title="model.programs.parsing.MyFactory" alt="" coords="402,1782,1179,2511"/>
+<area shape="rect" id="node2" href="./MyFactory.html" title="&lt;TABLE&gt;" alt="" coords="391,1777,1190,2517"/>
+<area shape="rect" id="node3_2" href="./AsteroidsParserMyListener.html" title="model.programs.parsing.AsteroidsParserMyListener" alt="" coords="16,11,909,933"/>
+<area shape="rect" id="node3" href="./AsteroidsParserMyListener.html" title="&lt;TABLE&gt;" alt="" coords="5,6,920,938"/>
+<area shape="rect" id="node4_3" href="./ProgramParser.html" title="model.programs.parsing.ProgramParser" alt="" coords="955,379,1285,565"/>
+<area shape="rect" id="node4" href="./ProgramParser.html" title="&lt;TABLE&gt;" alt="" coords="944,374,1296,570"/>
 </map>

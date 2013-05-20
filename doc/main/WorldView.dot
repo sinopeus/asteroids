@@ -9,8 +9,35 @@ digraph G {
 	node [fontname="Helvetica",fontsize=10,shape=plaintext];
 	nodesep=0.25;
 	ranksep=0.5;
+	// main.Asteroids<World, Ship, Asteroid, Bullet, Program>
+	c17975 [label=<<table title="main.Asteroids" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Asteroids.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> Asteroids&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> - menu : AsteroidsMenu&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
+<tr><td align="left" balign="left"> - view : WorldView&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
+<tr><td align="left" balign="left"> - facade : IFacade&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
+<tr><td align="left" balign="left"> - width : int </td></tr>
+<tr><td align="left" balign="left"> - height : int </td></tr>
+<tr><td align="left" balign="left"> - sound : Sound </td></tr>
+<tr><td align="left" balign="left"> - aiProgramUrl : URL </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Asteroids(facade : IFacade&lt;World, Ship, Asteroid, Bullet, Program&gt;, width : int, height : int, undecorated : boolean, sound : Sound, aiProgramUrl : URL) </td></tr>
+<tr><td align="left" balign="left"> + getWidth() : int </td></tr>
+<tr><td align="left" balign="left"> + getHeight() : int </td></tr>
+<tr><td align="left" balign="left"> + getSound() : Sound </td></tr>
+<tr><td align="left" balign="left"> + getFacade() : IFacade&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
+<tr><td align="left" balign="left"> + start() </td></tr>
+<tr><td align="left" balign="left"> + startSinglePlayerGame() </td></tr>
+<tr><td align="left" balign="left"> + startMultiPlayerGame(vsAI : boolean) </td></tr>
+<tr><td align="left" balign="left"> + showMenu() </td></tr>
+<tr><td align="left" balign="left"> + main(args : String[]) </td></tr>
+		</table></td></tr>
+		</table>>, URL="./Asteroids.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// main.CollisionListener
-	c17926 [label=<<table title="main.CollisionListener" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./CollisionListener.html">
+	c17976 [label=<<table title="main.CollisionListener" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./CollisionListener.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> CollisionListener </td></tr>
@@ -24,7 +51,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./CollisionListener.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// main.WorldView<World, Ship, Asteroid, Bullet, Program>
-	c17927 [label=<<table title="main.WorldView" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./WorldView.html">
+	c17977 [label=<<table title="main.WorldView" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./WorldView.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> WorldView&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
 		</table></td></tr>
@@ -57,6 +84,7 @@ digraph G {
 <tr><td align="left" balign="left"> - asteroidImages : Image[] </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + WorldView(game : Asteroids&lt;World, Ship, Asteroid, Bullet, Program&gt;, world : World, player1 : Ship, player2 : Ship, player2IsAI : boolean) </td></tr>
 <tr><td align="left" balign="left"> + isFocusable() : boolean </td></tr>
 <tr><td align="left" balign="left"> - drawCenteredString(g2d : Graphics2D, txt : String, y : int) </td></tr>
 <tr><td align="left" balign="left"> - drawCenteredString(g2d : Graphics2D, txt : String) </td></tr>
@@ -72,7 +100,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./WorldView.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// main.Drawable
-	c17930 [label=<<table title="main.Drawable" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Drawable.html">
+	c17980 [label=<<table title="main.Drawable" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Drawable.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> Drawable </td></tr>
@@ -84,24 +112,188 @@ digraph G {
 <tr><td align="left" balign="left"> + draw(g2d : Graphics2D) </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Drawable.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	// model.IFacade<World, Ship, Asteroid, Bullet, Program>
+	c17990 [label=<<table title="model.IFacade" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../model/IFacade.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
+<tr><td align="center" balign="center"> IFacade&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + createWorld(width : double, height : double) : World </td></tr>
+<tr><td align="left" balign="left"> + getWorldWidth(world : World) : double </td></tr>
+<tr><td align="left" balign="left"> + getWorldHeight(world : World) : double </td></tr>
+<tr><td align="left" balign="left"> + getShips(world : World) : Set&lt;Ship&gt; </td></tr>
+<tr><td align="left" balign="left"> + getAsteroids(world : World) : Set&lt;Asteroid&gt; </td></tr>
+<tr><td align="left" balign="left"> + getBullets(world : World) : Set&lt;Bullet&gt; </td></tr>
+<tr><td align="left" balign="left"> + addShip(world : World, ship : Ship) </td></tr>
+<tr><td align="left" balign="left"> + addAsteroid(world : World, asteroid : Asteroid) </td></tr>
+<tr><td align="left" balign="left"> + removeShip(world : World, ship : Ship) </td></tr>
+<tr><td align="left" balign="left"> + removeAsteroid(world : World, asteroid : Asteroid) </td></tr>
+<tr><td align="left" balign="left"> + evolve(world : World, dt : double, collisionListener : CollisionListener) </td></tr>
+<tr><td align="left" balign="left"> + createShip(x : double, y : double, xVelocity : double, yVelocity : double, radius : double, direction : double, mass : double) : Ship </td></tr>
+<tr><td align="left" balign="left"> + isShip(o : Object) : boolean </td></tr>
+<tr><td align="left" balign="left"> + getShipX(ship : Ship) : double </td></tr>
+<tr><td align="left" balign="left"> + getShipY(ship : Ship) : double </td></tr>
+<tr><td align="left" balign="left"> + getShipXVelocity(ship : Ship) : double </td></tr>
+<tr><td align="left" balign="left"> + getShipYVelocity(ship : Ship) : double </td></tr>
+<tr><td align="left" balign="left"> + getShipRadius(ship : Ship) : double </td></tr>
+<tr><td align="left" balign="left"> + getShipDirection(ship : Ship) : double </td></tr>
+<tr><td align="left" balign="left"> + getShipMass(ship : Ship) : double </td></tr>
+<tr><td align="left" balign="left"> + getShipWorld(ship : Ship) : World </td></tr>
+<tr><td align="left" balign="left"> + isShipThrusterActive(ship : Ship) : boolean </td></tr>
+<tr><td align="left" balign="left"> + setThrusterActive(ship : Ship, active : boolean) </td></tr>
+<tr><td align="left" balign="left"> + canFire(ship : Ship) : boolean </td></tr>
+<tr><td align="left" balign="left"> + turn(ship : Ship, angle : double) </td></tr>
+<tr><td align="left" balign="left"> + fireBullet(ship : Ship) </td></tr>
+<tr><td align="left" balign="left"> + createAsteroid(x : double, y : double, xVelocity : double, yVelocity : double, radius : double) : Asteroid </td></tr>
+<tr><td align="left" balign="left"> + createAsteroid(x : double, y : double, xVelocity : double, yVelocity : double, radius : double, random : Random) : Asteroid </td></tr>
+<tr><td align="left" balign="left"> + isAsteroid(o : Object) : boolean </td></tr>
+<tr><td align="left" balign="left"> + getAsteroidX(asteroid : Asteroid) : double </td></tr>
+<tr><td align="left" balign="left"> + getAsteroidY(asteroid : Asteroid) : double </td></tr>
+<tr><td align="left" balign="left"> + getAsteroidXVelocity(asteroid : Asteroid) : double </td></tr>
+<tr><td align="left" balign="left"> + getAsteroidYVelocity(asteroid : Asteroid) : double </td></tr>
+<tr><td align="left" balign="left"> + getAsteroidRadius(asteroid : Asteroid) : double </td></tr>
+<tr><td align="left" balign="left"> + getAsteroidMass(asteroid : Asteroid) : double </td></tr>
+<tr><td align="left" balign="left"> + getAsteroidWorld(asteroid : Asteroid) : World </td></tr>
+<tr><td align="left" balign="left"> + isBullets(o : Object) : boolean </td></tr>
+<tr><td align="left" balign="left"> + getBulletX(bullet : Bullet) : double </td></tr>
+<tr><td align="left" balign="left"> + getBulletY(bullet : Bullet) : double </td></tr>
+<tr><td align="left" balign="left"> + getBulletXVelocity(bullet : Bullet) : double </td></tr>
+<tr><td align="left" balign="left"> + getBulletYVelocity(bullet : Bullet) : double </td></tr>
+<tr><td align="left" balign="left"> + getBulletRadius(bullet : Bullet) : double </td></tr>
+<tr><td align="left" balign="left"> + getBulletMass(bullet : Bullet) : double </td></tr>
+<tr><td align="left" balign="left"> + getBulletWorld(bullet : Bullet) : World </td></tr>
+<tr><td align="left" balign="left"> + getBulletSource(bullet : Bullet) : Ship </td></tr>
+<tr><td align="left" balign="left"> + parseProgram(text : String) : IFacade.ParseOutcome&lt;Program&gt; </td></tr>
+<tr><td align="left" balign="left"> + loadProgramFromStream(stream : InputStream) : IFacade.ParseOutcome&lt;Program&gt; </td></tr>
+<tr><td align="left" balign="left"> + loadProgramFromUrl(url : URL) : IFacade.ParseOutcome&lt;Program&gt; </td></tr>
+<tr><td align="left" balign="left"> + isTypeCheckingSupported() : boolean </td></tr>
+<tr><td align="left" balign="left"> + typeCheckProgram(program : Program) : IFacade.TypeCheckOutcome </td></tr>
+<tr><td align="left" balign="left"> + setShipProgram(ship : Ship, program : Program) </td></tr>
+		</table></td></tr>
+		</table>>, URL="../model/IFacade.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//main.WorldView<World, Ship, Asteroid, Bullet, Program> extends javax.swing.JPanel
-	c18047:p -> c17927:p [dir=back,arrowtail=empty];
+	c18097:p -> c17977:p [dir=back,arrowtail=empty];
 	//main.WorldView<World, Ship, Asteroid, Bullet, Program> implements java.awt.event.KeyListener
-	c18048:p -> c17927:p [dir=back,arrowtail=empty,style=dashed];
+	c18098:p -> c17977:p [dir=back,arrowtail=empty,style=dashed];
 	//main.WorldView<World, Ship, Asteroid, Bullet, Program> implements java.awt.event.ActionListener
-	c18049:p -> c17927:p [dir=back,arrowtail=empty,style=dashed];
+	c18099:p -> c17977:p [dir=back,arrowtail=empty,style=dashed];
 	//main.WorldView<World, Ship, Asteroid, Bullet, Program> implements main.CollisionListener
-	c17926:p -> c17927:p [dir=back,arrowtail=empty,style=dashed];
+	c17976:p -> c17977:p [dir=back,arrowtail=empty,style=dashed];
 	//main.WorldView<World, Ship, Asteroid, Bullet, Program>.Visualization<T> implements main.Drawable
-	c17930:p -> c17927:p [dir=back,arrowtail=empty,style=dashed];
+	c17980:p -> c17977:p [dir=back,arrowtail=empty,style=dashed];
 	//main.WorldView<World, Ship, Asteroid, Bullet, Program>.ShipVisualization extends main.WorldView<World, Ship, Asteroid, Bullet, Program>.Visualization<Ship>
-	c17927:p -> c17927:p [dir=back,arrowtail=empty];
+	c17977:p -> c17977:p [dir=back,arrowtail=empty];
 	//main.WorldView<World, Ship, Asteroid, Bullet, Program>.AsteroidVisualization extends main.WorldView<World, Ship, Asteroid, Bullet, Program>.Visualization<Asteroid>
-	c17927:p -> c17927:p [dir=back,arrowtail=empty];
+	c17977:p -> c17977:p [dir=back,arrowtail=empty];
 	//main.WorldView<World, Ship, Asteroid, Bullet, Program>.BulletVisualization extends main.WorldView<World, Ship, Asteroid, Bullet, Program>.Visualization<Bullet>
-	c17927:p -> c17927:p [dir=back,arrowtail=empty];
+	c17977:p -> c17977:p [dir=back,arrowtail=empty];
+	// main.Asteroids<World, Ship, Asteroid, Bullet, Program> NAVASSOC main.WorldView<World, Ship, Asteroid, Bullet, Program>
+	c17975:p -> c17977:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// main.Asteroids<World, Ship, Asteroid, Bullet, Program> NAVASSOC model.IFacade<World, Ship, Asteroid, Bullet, Program>
+	c17975:p -> c17990:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// main.WorldView<World, Ship, Asteroid, Bullet, Program> NAVASSOC main.Asteroids<World, Ship, Asteroid, Bullet, Program>
+	c17977:p -> c17975:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// main.WorldView<World, Ship, Asteroid, Bullet, Program> NAVASSOC model.IFacade<World, Ship, Asteroid, Bullet, Program>
+	c17977:p -> c17990:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// main.WorldView<World, Ship, Asteroid, Bullet, Program> NAVASSOC javax.swing.Timer
+	c17977:p -> c18100:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// main.WorldView<World, Ship, Asteroid, Bullet, Program> NAVASSOC java.awt.Image
+	c17977:p -> c18101:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// main.WorldView<World, Ship, Asteroid, Bullet, Program> NAVASSOC java.lang.String
+	c17977:p -> c18102:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// main.WorldView<World, Ship, Asteroid, Bullet, Program> NAVASSOC java.util.Map<K, V>
+	c17977:p -> c18103:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// main.WorldView<World, Ship, Asteroid, Bullet, Program> NAVASSOC java.util.Set<E>
+	c17977:p -> c18104:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// main.WorldView<World, Ship, Asteroid, Bullet, Program>.Visualization<T> NAVASSOC java.awt.Color
+	c17977:p -> c18105:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// main.WorldView<World, Ship, Asteroid, Bullet, Program>.Visualization<T> NAVASSOC java.awt.Image
+	c17977:p -> c18101:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// java.awt.Color
+	c18105 [label=<<table title="java.awt.Color" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/awt/Color.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> Color </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + white : Color </td></tr>
+<tr><td align="left" balign="left"> + WHITE : Color </td></tr>
+<tr><td align="left" balign="left"> + lightGray : Color </td></tr>
+<tr><td align="left" balign="left"> + LIGHT_GRAY : Color </td></tr>
+<tr><td align="left" balign="left"> + gray : Color </td></tr>
+<tr><td align="left" balign="left"> + GRAY : Color </td></tr>
+<tr><td align="left" balign="left"> + darkGray : Color </td></tr>
+<tr><td align="left" balign="left"> + DARK_GRAY : Color </td></tr>
+<tr><td align="left" balign="left"> + black : Color </td></tr>
+<tr><td align="left" balign="left"> + BLACK : Color </td></tr>
+<tr><td align="left" balign="left"> + red : Color </td></tr>
+<tr><td align="left" balign="left"> + RED : Color </td></tr>
+<tr><td align="left" balign="left"> + pink : Color </td></tr>
+<tr><td align="left" balign="left"> + PINK : Color </td></tr>
+<tr><td align="left" balign="left"> + orange : Color </td></tr>
+<tr><td align="left" balign="left"> + ORANGE : Color </td></tr>
+<tr><td align="left" balign="left"> + yellow : Color </td></tr>
+<tr><td align="left" balign="left"> + YELLOW : Color </td></tr>
+<tr><td align="left" balign="left"> + green : Color </td></tr>
+<tr><td align="left" balign="left"> + GREEN : Color </td></tr>
+<tr><td align="left" balign="left"> + magenta : Color </td></tr>
+<tr><td align="left" balign="left"> + MAGENTA : Color </td></tr>
+<tr><td align="left" balign="left"> + cyan : Color </td></tr>
+<tr><td align="left" balign="left"> + CYAN : Color </td></tr>
+<tr><td align="left" balign="left"> + blue : Color </td></tr>
+<tr><td align="left" balign="left"> + BLUE : Color </td></tr>
+<tr><td align="left" balign="left"> ~ value : int </td></tr>
+<tr><td align="left" balign="left"> - frgbvalue : float[] </td></tr>
+<tr><td align="left" balign="left"> - fvalue : float[] </td></tr>
+<tr><td align="left" balign="left"> - falpha : float </td></tr>
+<tr><td align="left" balign="left"> - cs : ColorSpace </td></tr>
+<tr><td align="left" balign="left"> - serialVersionUID : long </td></tr>
+<tr><td align="left" balign="left"> - FACTOR : double </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Color(arg0 : int, arg1 : int, arg2 : int) </td></tr>
+<tr><td align="left" balign="left"> + Color(arg0 : int, arg1 : int, arg2 : int, arg3 : int) </td></tr>
+<tr><td align="left" balign="left"> + Color(arg0 : int) </td></tr>
+<tr><td align="left" balign="left"> + Color(arg0 : int, arg1 : boolean) </td></tr>
+<tr><td align="left" balign="left"> + Color(arg0 : float, arg1 : float, arg2 : float) </td></tr>
+<tr><td align="left" balign="left"> + Color(arg0 : float, arg1 : float, arg2 : float, arg3 : float) </td></tr>
+<tr><td align="left" balign="left"> + Color(arg0 : ColorSpace, arg1 : float[], arg2 : float) </td></tr>
+<tr><td align="left" balign="left"> - initIDs() </td></tr>
+<tr><td align="left" balign="left"> - testColorValueRange(arg0 : int, arg1 : int, arg2 : int, arg3 : int) </td></tr>
+<tr><td align="left" balign="left"> - testColorValueRange(arg0 : float, arg1 : float, arg2 : float, arg3 : float) </td></tr>
+<tr><td align="left" balign="left"> + getRed() : int </td></tr>
+<tr><td align="left" balign="left"> + getGreen() : int </td></tr>
+<tr><td align="left" balign="left"> + getBlue() : int </td></tr>
+<tr><td align="left" balign="left"> + getAlpha() : int </td></tr>
+<tr><td align="left" balign="left"> + getRGB() : int </td></tr>
+<tr><td align="left" balign="left"> + brighter() : Color </td></tr>
+<tr><td align="left" balign="left"> + darker() : Color </td></tr>
+<tr><td align="left" balign="left"> + hashCode() : int </td></tr>
+<tr><td align="left" balign="left"> + equals(arg0 : Object) : boolean </td></tr>
+<tr><td align="left" balign="left"> + toString() : String </td></tr>
+<tr><td align="left" balign="left"> + decode(arg0 : String) : Color </td></tr>
+<tr><td align="left" balign="left"> + getColor(arg0 : String) : Color </td></tr>
+<tr><td align="left" balign="left"> + getColor(arg0 : String, arg1 : Color) : Color </td></tr>
+<tr><td align="left" balign="left"> + getColor(arg0 : String, arg1 : int) : Color </td></tr>
+<tr><td align="left" balign="left"> + HSBtoRGB(arg0 : float, arg1 : float, arg2 : float) : int </td></tr>
+<tr><td align="left" balign="left"> + RGBtoHSB(arg0 : int, arg1 : int, arg2 : int, arg3 : float[]) : float[] </td></tr>
+<tr><td align="left" balign="left"> + getHSBColor(arg0 : float, arg1 : float, arg2 : float) : Color </td></tr>
+<tr><td align="left" balign="left"> + getRGBComponents(arg0 : float[]) : float[] </td></tr>
+<tr><td align="left" balign="left"> + getRGBColorComponents(arg0 : float[]) : float[] </td></tr>
+<tr><td align="left" balign="left"> + getComponents(arg0 : float[]) : float[] </td></tr>
+<tr><td align="left" balign="left"> + getColorComponents(arg0 : float[]) : float[] </td></tr>
+<tr><td align="left" balign="left"> + getComponents(arg0 : ColorSpace, arg1 : float[]) : float[] </td></tr>
+<tr><td align="left" balign="left"> + getColorComponents(arg0 : ColorSpace, arg1 : float[]) : float[] </td></tr>
+<tr><td align="left" balign="left"> + getColorSpace() : ColorSpace </td></tr>
+<tr><td align="left" balign="left"> + createContext(arg0 : ColorModel, arg1 : Rectangle, arg2 : Rectangle2D, arg3 : AffineTransform, arg4 : RenderingHints) : PaintContext </td></tr>
+<tr><td align="left" balign="left"> + getTransparency() : int </td></tr>
+		</table></td></tr>
+		</table>>, URL="http://java.sun.com/j2se/1.4.2/docs/api/java/awt/Color.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// javax.swing.JPanel
-	c18047 [label=<<table title="javax.swing.JPanel" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/javax/swing/JPanel.html">
+	c18097 [label=<<table title="javax.swing.JPanel" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/javax/swing/JPanel.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> JPanel </td></tr>
 		</table></td></tr>
@@ -109,6 +301,10 @@ digraph G {
 <tr><td align="left" balign="left"> - uiClassID : String </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + JPanel(arg0 : LayoutManager, arg1 : boolean) </td></tr>
+<tr><td align="left" balign="left"> + JPanel(arg0 : LayoutManager) </td></tr>
+<tr><td align="left" balign="left"> + JPanel(arg0 : boolean) </td></tr>
+<tr><td align="left" balign="left"> + JPanel() </td></tr>
 <tr><td align="left" balign="left"> + updateUI() </td></tr>
 <tr><td align="left" balign="left"> + getUI() : PanelUI </td></tr>
 <tr><td align="left" balign="left"> + setUI(arg0 : PanelUI) </td></tr>
@@ -119,7 +315,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="http://java.sun.com/j2se/1.4.2/docs/api/javax/swing/JPanel.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// java.awt.event.KeyListener
-	c18048 [label=<<table title="java.awt.event.KeyListener" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/awt/event/KeyListener.html">
+	c18098 [label=<<table title="java.awt.event.KeyListener" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/awt/event/KeyListener.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> KeyListener </td></tr>
@@ -133,8 +329,192 @@ digraph G {
 <tr><td align="left" balign="left"> + keyReleased(arg0 : KeyEvent) </td></tr>
 		</table></td></tr>
 		</table>>, URL="http://java.sun.com/j2se/1.4.2/docs/api/java/awt/event/KeyListener.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	// javax.swing.Timer
+	c18100 [label=<<table title="javax.swing.Timer" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/javax/swing/Timer.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> Timer </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # listenerList : EventListenerList </td></tr>
+<tr><td align="left" balign="left"> - notify : AtomicBoolean </td></tr>
+<tr><td align="left" balign="left"> - initialDelay : int </td></tr>
+<tr><td align="left" balign="left"> - delay : int </td></tr>
+<tr><td align="left" balign="left"> - repeats : boolean </td></tr>
+<tr><td align="left" balign="left"> - coalesce : boolean </td></tr>
+<tr><td align="left" balign="left"> - doPostEvent : Runnable </td></tr>
+<tr><td align="left" balign="left"> - logTimers : boolean </td></tr>
+<tr><td align="left" balign="left"> - lock : Lock </td></tr>
+<tr><td align="left" balign="left"> ~ delayedTimer : TimerQueue.DelayedTimer </td></tr>
+<tr><td align="left" balign="left"> - actionCommand : String </td></tr>
+<tr><td align="left" balign="left"> - acc : AccessControlContext </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Timer(arg0 : int, arg1 : ActionListener) </td></tr>
+<tr><td align="left" balign="left"> ~ getAccessControlContext() : AccessControlContext </td></tr>
+<tr><td align="left" balign="left"> + addActionListener(arg0 : ActionListener) </td></tr>
+<tr><td align="left" balign="left"> + removeActionListener(arg0 : ActionListener) </td></tr>
+<tr><td align="left" balign="left"> + getActionListeners() : ActionListener[] </td></tr>
+<tr><td align="left" balign="left"> # fireActionPerformed(arg0 : ActionEvent) </td></tr>
+<tr><td align="left" balign="left"> + getListeners(arg0 : Class&lt;T&gt;) : T[] </td></tr>
+<tr><td align="left" balign="left"> - timerQueue() : TimerQueue </td></tr>
+<tr><td align="left" balign="left"> + setLogTimers(arg0 : boolean) </td></tr>
+<tr><td align="left" balign="left"> + getLogTimers() : boolean </td></tr>
+<tr><td align="left" balign="left"> + setDelay(arg0 : int) </td></tr>
+<tr><td align="left" balign="left"> + getDelay() : int </td></tr>
+<tr><td align="left" balign="left"> + setInitialDelay(arg0 : int) </td></tr>
+<tr><td align="left" balign="left"> + getInitialDelay() : int </td></tr>
+<tr><td align="left" balign="left"> + setRepeats(arg0 : boolean) </td></tr>
+<tr><td align="left" balign="left"> + isRepeats() : boolean </td></tr>
+<tr><td align="left" balign="left"> + setCoalesce(arg0 : boolean) </td></tr>
+<tr><td align="left" balign="left"> + isCoalesce() : boolean </td></tr>
+<tr><td align="left" balign="left"> + setActionCommand(arg0 : String) </td></tr>
+<tr><td align="left" balign="left"> + getActionCommand() : String </td></tr>
+<tr><td align="left" balign="left"> + start() </td></tr>
+<tr><td align="left" balign="left"> + isRunning() : boolean </td></tr>
+<tr><td align="left" balign="left"> + stop() </td></tr>
+<tr><td align="left" balign="left"> + restart() </td></tr>
+<tr><td align="left" balign="left"> ~ cancelEvent() </td></tr>
+<tr><td align="left" balign="left"> ~ post() </td></tr>
+<tr><td align="left" balign="left"> ~ getLock() : Lock </td></tr>
+<tr><td align="left" balign="left"> - readObject(arg0 : ObjectInputStream) </td></tr>
+<tr><td align="left" balign="left"> - readResolve() : Object </td></tr>
+		</table></td></tr>
+		</table>>, URL="http://java.sun.com/j2se/1.4.2/docs/api/javax/swing/Timer.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	// java.util.Set<E>
+	c18104 [label=<<table title="java.util.Set" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/Set.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
+<tr><td align="center" balign="center"> Set&lt;E&gt; </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + size() : int </td></tr>
+<tr><td align="left" balign="left"> + isEmpty() : boolean </td></tr>
+<tr><td align="left" balign="left"> + contains(arg0 : Object) : boolean </td></tr>
+<tr><td align="left" balign="left"> + iterator() : Iterator&lt;E&gt; </td></tr>
+<tr><td align="left" balign="left"> + toArray() : Object[] </td></tr>
+<tr><td align="left" balign="left"> + toArray(arg0 : T[]) : T[] </td></tr>
+<tr><td align="left" balign="left"> + add(arg0 : E) : boolean </td></tr>
+<tr><td align="left" balign="left"> + remove(arg0 : Object) : boolean </td></tr>
+<tr><td align="left" balign="left"> + containsAll(arg0 : Collection&lt;?&gt;) : boolean </td></tr>
+<tr><td align="left" balign="left"> + addAll(arg0 : Collection&lt;?&gt;) : boolean </td></tr>
+<tr><td align="left" balign="left"> + retainAll(arg0 : Collection&lt;?&gt;) : boolean </td></tr>
+<tr><td align="left" balign="left"> + removeAll(arg0 : Collection&lt;?&gt;) : boolean </td></tr>
+<tr><td align="left" balign="left"> + clear() </td></tr>
+<tr><td align="left" balign="left"> + equals(arg0 : Object) : boolean </td></tr>
+<tr><td align="left" balign="left"> + hashCode() : int </td></tr>
+		</table></td></tr>
+		</table>>, URL="http://java.sun.com/j2se/1.4.2/docs/api/java/util/Set.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	// java.lang.String
+	c18102 [label=<<table title="java.lang.String" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/String.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> String </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> - value : char[] </td></tr>
+<tr><td align="left" balign="left"> - hash : int </td></tr>
+<tr><td align="left" balign="left"> - serialVersionUID : long </td></tr>
+<tr><td align="left" balign="left"> - serialPersistentFields : ObjectStreamField[] </td></tr>
+<tr><td align="left" balign="left"> + CASE_INSENSITIVE_ORDER : Comparator&lt;String&gt; </td></tr>
+<tr><td align="left" balign="left"> - HASHING_SEED : int </td></tr>
+<tr><td align="left" balign="left"> - hash32 : int </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + String() </td></tr>
+<tr><td align="left" balign="left"> + String(arg0 : String) </td></tr>
+<tr><td align="left" balign="left"> + String(arg0 : char[]) </td></tr>
+<tr><td align="left" balign="left"> + String(arg0 : char[], arg1 : int, arg2 : int) </td></tr>
+<tr><td align="left" balign="left"> + String(arg0 : int[], arg1 : int, arg2 : int) </td></tr>
+<tr><td align="left" balign="left"> + String(arg0 : byte[], arg1 : int, arg2 : int, arg3 : int) </td></tr>
+<tr><td align="left" balign="left"> + String(arg0 : byte[], arg1 : int) </td></tr>
+<tr><td align="left" balign="left"> + String(arg0 : byte[], arg1 : int, arg2 : int, arg3 : String) </td></tr>
+<tr><td align="left" balign="left"> + String(arg0 : byte[], arg1 : int, arg2 : int, arg3 : Charset) </td></tr>
+<tr><td align="left" balign="left"> + String(arg0 : byte[], arg1 : String) </td></tr>
+<tr><td align="left" balign="left"> + String(arg0 : byte[], arg1 : Charset) </td></tr>
+<tr><td align="left" balign="left"> + String(arg0 : byte[], arg1 : int, arg2 : int) </td></tr>
+<tr><td align="left" balign="left"> + String(arg0 : byte[]) </td></tr>
+<tr><td align="left" balign="left"> + String(arg0 : StringBuffer) </td></tr>
+<tr><td align="left" balign="left"> + String(arg0 : StringBuilder) </td></tr>
+<tr><td align="left" balign="left"> ~ String(arg0 : char[], arg1 : boolean) </td></tr>
+<tr><td align="left" balign="left"> ~ String(arg0 : int, arg1 : int, arg2 : char[]) </td></tr>
+<tr><td align="left" balign="left"> - checkBounds(arg0 : byte[], arg1 : int, arg2 : int) </td></tr>
+<tr><td align="left" balign="left"> + length() : int </td></tr>
+<tr><td align="left" balign="left"> + isEmpty() : boolean </td></tr>
+<tr><td align="left" balign="left"> + charAt(arg0 : int) : char </td></tr>
+<tr><td align="left" balign="left"> + codePointAt(arg0 : int) : int </td></tr>
+<tr><td align="left" balign="left"> + codePointBefore(arg0 : int) : int </td></tr>
+<tr><td align="left" balign="left"> + codePointCount(arg0 : int, arg1 : int) : int </td></tr>
+<tr><td align="left" balign="left"> + offsetByCodePoints(arg0 : int, arg1 : int) : int </td></tr>
+<tr><td align="left" balign="left"> ~ getChars(arg0 : char[], arg1 : int) </td></tr>
+<tr><td align="left" balign="left"> + getChars(arg0 : int, arg1 : int, arg2 : char[], arg3 : int) </td></tr>
+<tr><td align="left" balign="left"> + getBytes(arg0 : int, arg1 : int, arg2 : byte[], arg3 : int) </td></tr>
+<tr><td align="left" balign="left"> + getBytes(arg0 : String) : byte[] </td></tr>
+<tr><td align="left" balign="left"> + getBytes(arg0 : Charset) : byte[] </td></tr>
+<tr><td align="left" balign="left"> + getBytes() : byte[] </td></tr>
+<tr><td align="left" balign="left"> + equals(arg0 : Object) : boolean </td></tr>
+<tr><td align="left" balign="left"> + contentEquals(arg0 : StringBuffer) : boolean </td></tr>
+<tr><td align="left" balign="left"> + contentEquals(arg0 : CharSequence) : boolean </td></tr>
+<tr><td align="left" balign="left"> + equalsIgnoreCase(arg0 : String) : boolean </td></tr>
+<tr><td align="left" balign="left"> + compareTo(arg0 : String) : int </td></tr>
+<tr><td align="left" balign="left"> + compareToIgnoreCase(arg0 : String) : int </td></tr>
+<tr><td align="left" balign="left"> + regionMatches(arg0 : int, arg1 : String, arg2 : int, arg3 : int) : boolean </td></tr>
+<tr><td align="left" balign="left"> + regionMatches(arg0 : boolean, arg1 : int, arg2 : String, arg3 : int, arg4 : int) : boolean </td></tr>
+<tr><td align="left" balign="left"> + startsWith(arg0 : String, arg1 : int) : boolean </td></tr>
+<tr><td align="left" balign="left"> + startsWith(arg0 : String) : boolean </td></tr>
+<tr><td align="left" balign="left"> + endsWith(arg0 : String) : boolean </td></tr>
+<tr><td align="left" balign="left"> + hashCode() : int </td></tr>
+<tr><td align="left" balign="left"> + indexOf(arg0 : int) : int </td></tr>
+<tr><td align="left" balign="left"> + indexOf(arg0 : int, arg1 : int) : int </td></tr>
+<tr><td align="left" balign="left"> - indexOfSupplementary(arg0 : int, arg1 : int) : int </td></tr>
+<tr><td align="left" balign="left"> + lastIndexOf(arg0 : int) : int </td></tr>
+<tr><td align="left" balign="left"> + lastIndexOf(arg0 : int, arg1 : int) : int </td></tr>
+<tr><td align="left" balign="left"> - lastIndexOfSupplementary(arg0 : int, arg1 : int) : int </td></tr>
+<tr><td align="left" balign="left"> + indexOf(arg0 : String) : int </td></tr>
+<tr><td align="left" balign="left"> + indexOf(arg0 : String, arg1 : int) : int </td></tr>
+<tr><td align="left" balign="left"> ~ indexOf(arg0 : char[], arg1 : int, arg2 : int, arg3 : char[], arg4 : int, arg5 : int, arg6 : int) : int </td></tr>
+<tr><td align="left" balign="left"> + lastIndexOf(arg0 : String) : int </td></tr>
+<tr><td align="left" balign="left"> + lastIndexOf(arg0 : String, arg1 : int) : int </td></tr>
+<tr><td align="left" balign="left"> ~ lastIndexOf(arg0 : char[], arg1 : int, arg2 : int, arg3 : char[], arg4 : int, arg5 : int, arg6 : int) : int </td></tr>
+<tr><td align="left" balign="left"> + substring(arg0 : int) : String </td></tr>
+<tr><td align="left" balign="left"> + substring(arg0 : int, arg1 : int) : String </td></tr>
+<tr><td align="left" balign="left"> + subSequence(arg0 : int, arg1 : int) : CharSequence </td></tr>
+<tr><td align="left" balign="left"> + concat(arg0 : String) : String </td></tr>
+<tr><td align="left" balign="left"> + replace(arg0 : char, arg1 : char) : String </td></tr>
+<tr><td align="left" balign="left"> + matches(arg0 : String) : boolean </td></tr>
+<tr><td align="left" balign="left"> + contains(arg0 : CharSequence) : boolean </td></tr>
+<tr><td align="left" balign="left"> + replaceFirst(arg0 : String, arg1 : String) : String </td></tr>
+<tr><td align="left" balign="left"> + replaceAll(arg0 : String, arg1 : String) : String </td></tr>
+<tr><td align="left" balign="left"> + replace(arg0 : CharSequence, arg1 : CharSequence) : String </td></tr>
+<tr><td align="left" balign="left"> + split(arg0 : String, arg1 : int) : String[] </td></tr>
+<tr><td align="left" balign="left"> + split(arg0 : String) : String[] </td></tr>
+<tr><td align="left" balign="left"> + toLowerCase(arg0 : Locale) : String </td></tr>
+<tr><td align="left" balign="left"> + toLowerCase() : String </td></tr>
+<tr><td align="left" balign="left"> + toUpperCase(arg0 : Locale) : String </td></tr>
+<tr><td align="left" balign="left"> + toUpperCase() : String </td></tr>
+<tr><td align="left" balign="left"> + trim() : String </td></tr>
+<tr><td align="left" balign="left"> + toString() : String </td></tr>
+<tr><td align="left" balign="left"> + toCharArray() : char[] </td></tr>
+<tr><td align="left" balign="left"> + format(arg0 : String, arg1 : Object[]) : String </td></tr>
+<tr><td align="left" balign="left"> + format(arg0 : Locale, arg1 : String, arg2 : Object[]) : String </td></tr>
+<tr><td align="left" balign="left"> + valueOf(arg0 : Object) : String </td></tr>
+<tr><td align="left" balign="left"> + valueOf(arg0 : char[]) : String </td></tr>
+<tr><td align="left" balign="left"> + valueOf(arg0 : char[], arg1 : int, arg2 : int) : String </td></tr>
+<tr><td align="left" balign="left"> + copyValueOf(arg0 : char[], arg1 : int, arg2 : int) : String </td></tr>
+<tr><td align="left" balign="left"> + copyValueOf(arg0 : char[]) : String </td></tr>
+<tr><td align="left" balign="left"> + valueOf(arg0 : boolean) : String </td></tr>
+<tr><td align="left" balign="left"> + valueOf(arg0 : char) : String </td></tr>
+<tr><td align="left" balign="left"> + valueOf(arg0 : int) : String </td></tr>
+<tr><td align="left" balign="left"> + valueOf(arg0 : long) : String </td></tr>
+<tr><td align="left" balign="left"> + valueOf(arg0 : float) : String </td></tr>
+<tr><td align="left" balign="left"> + valueOf(arg0 : double) : String </td></tr>
+<tr><td align="left" balign="left"> + intern() : String </td></tr>
+<tr><td align="left" balign="left"> ~ hash32() : int </td></tr>
+		</table></td></tr>
+		</table>>, URL="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/String.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// java.awt.event.ActionListener
-	c18049 [label=<<table title="java.awt.event.ActionListener" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/awt/event/ActionListener.html">
+	c18099 [label=<<table title="java.awt.event.ActionListener" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/awt/event/ActionListener.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> ActionListener </td></tr>
@@ -146,5 +526,61 @@ digraph G {
 <tr><td align="left" balign="left"> + actionPerformed(arg0 : ActionEvent) </td></tr>
 		</table></td></tr>
 		</table>>, URL="http://java.sun.com/j2se/1.4.2/docs/api/java/awt/event/ActionListener.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	// java.util.Map<K, V>
+	c18103 [label=<<table title="java.util.Map" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/Map.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
+<tr><td align="center" balign="center"> Map&lt;K, V&gt; </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + size() : int </td></tr>
+<tr><td align="left" balign="left"> + isEmpty() : boolean </td></tr>
+<tr><td align="left" balign="left"> + containsKey(arg0 : Object) : boolean </td></tr>
+<tr><td align="left" balign="left"> + containsValue(arg0 : Object) : boolean </td></tr>
+<tr><td align="left" balign="left"> + get(arg0 : Object) : V </td></tr>
+<tr><td align="left" balign="left"> + put(arg0 : K, arg1 : V) : V </td></tr>
+<tr><td align="left" balign="left"> + remove(arg0 : Object) : V </td></tr>
+<tr><td align="left" balign="left"> + putAll(arg0 : Map&lt;?, ?&gt;) </td></tr>
+<tr><td align="left" balign="left"> + clear() </td></tr>
+<tr><td align="left" balign="left"> + keySet() : Set&lt;K&gt; </td></tr>
+<tr><td align="left" balign="left"> + values() : Collection&lt;V&gt; </td></tr>
+<tr><td align="left" balign="left"> + entrySet() : Set&lt;Map.Entry&lt;K, V&gt;&gt; </td></tr>
+<tr><td align="left" balign="left"> + equals(arg0 : Object) : boolean </td></tr>
+<tr><td align="left" balign="left"> + hashCode() : int </td></tr>
+		</table></td></tr>
+		</table>>, URL="http://java.sun.com/j2se/1.4.2/docs/api/java/util/Map.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	// java.awt.Image
+	c18101 [label=<<table title="java.awt.Image" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/awt/Image.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> Image </font></td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> - defaultImageCaps : ImageCapabilities </td></tr>
+<tr><td align="left" balign="left"> # accelerationPriority : float </td></tr>
+<tr><td align="left" balign="left"> + UndefinedProperty : Object </td></tr>
+<tr><td align="left" balign="left"> + SCALE_DEFAULT : int </td></tr>
+<tr><td align="left" balign="left"> + SCALE_FAST : int </td></tr>
+<tr><td align="left" balign="left"> + SCALE_SMOOTH : int </td></tr>
+<tr><td align="left" balign="left"> + SCALE_REPLICATE : int </td></tr>
+<tr><td align="left" balign="left"> + SCALE_AREA_AVERAGING : int </td></tr>
+<tr><td align="left" balign="left"> ~ surfaceManager : SurfaceManager </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Image() </td></tr>
+<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> + getWidth(arg0 : ImageObserver) : int </font></td></tr>
+<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> + getHeight(arg0 : ImageObserver) : int </font></td></tr>
+<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> + getSource() : ImageProducer </font></td></tr>
+<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> + getGraphics() : Graphics </font></td></tr>
+<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> + getProperty(arg0 : String, arg1 : ImageObserver) : Object </font></td></tr>
+<tr><td align="left" balign="left"> + getScaledInstance(arg0 : int, arg1 : int, arg2 : int) : Image </td></tr>
+<tr><td align="left" balign="left"> + flush() </td></tr>
+<tr><td align="left" balign="left"> + getCapabilities(arg0 : GraphicsConfiguration) : ImageCapabilities </td></tr>
+<tr><td align="left" balign="left"> + setAccelerationPriority(arg0 : float) </td></tr>
+<tr><td align="left" balign="left"> + getAccelerationPriority() : float </td></tr>
+		</table></td></tr>
+		</table>>, URL="http://java.sun.com/j2se/1.4.2/docs/api/java/awt/Image.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 }
 

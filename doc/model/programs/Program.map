@@ -1,4 +1,14 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="./Program.html" title="model.programs.Program" alt="" coords="15,11,425,421"/>
-<area shape="rect" id="node1" href="./Program.html" title="&lt;TABLE&gt;" alt="" coords="5,6,435,426"/>
+<area shape="rect" id="node1_0" href="./Program.html" title="model.programs.Program" alt="" coords="386,353,795,778"/>
+<area shape="rect" id="node1" href="./Program.html" title="&lt;TABLE&gt;" alt="" coords="375,347,806,783"/>
+<area shape="rect" id="node5_1" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/Map.html" title="java.util.Map" alt="" coords="283,1134,538,1431"/>
+<area shape="rect" id="node5" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/Map.html" title="&lt;TABLE&gt;" alt="" coords="273,1129,549,1437"/>
+<area shape="rect" id="node6_2" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/HashMap.html" title="java.util.HashMap" alt="" coords="583,838,961,1727"/>
+<area shape="rect" id="node6" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/HashMap.html" title="&lt;TABLE&gt;" alt="" coords="573,833,971,1733"/>
+<area shape="rect" id="node3_3" href="./parsing/language/statement/Statement.html" title="model.programs.parsing.language.statement.Statement" alt="" coords="16,1206,237,1359"/>
+<area shape="rect" id="node3" href="./parsing/language/statement/Statement.html" title="&lt;TABLE&gt;" alt="" coords="5,1201,248,1365"/>
+<area shape="rect" id="node4_4" href="../../world/entity/ship/Ship.html" title="world.entity.ship.Ship" alt="" coords="1006,1038,1741,1527"/>
+<area shape="rect" id="node4" href="../../world/entity/ship/Ship.html" title="&lt;TABLE&gt;" alt="" coords="995,1033,1751,1533"/>
+<area shape="rect" id="node2_5" href="./parsing/language/ProgramPart.html" title="model.programs.parsing.language.ProgramPart" alt="" coords="193,11,553,293"/>
+<area shape="rect" id="node2" href="./parsing/language/ProgramPart.html" title="&lt;TABLE&gt;" alt="" coords="183,6,564,298"/>
 </map>

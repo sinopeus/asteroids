@@ -20,6 +20,7 @@ digraph G {
 <tr><td align="left" balign="left"> ~ column : int </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # ProgramPart(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"> + getParentProgram() : Program </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsParentProgram(program : Program) : boolean </td></tr>
 <tr><td align="left" balign="left"> + setParentProgram(parentProgram : Program) </td></tr>
@@ -41,6 +42,11 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> TYPE_BOOLEAN </td></tr>
+<tr><td align="left" balign="left"> TYPE_DOUBLE </td></tr>
+<tr><td align="left" balign="left"> TYPE_ENTITY </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Type.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 }

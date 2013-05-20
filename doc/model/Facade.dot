@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.Facade
-	c8554 [label=<<table title="model.Facade" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Facade.html">
+	c8592 [label=<<table title="model.Facade" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Facade.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Facade </td></tr>
 		</table></td></tr>
@@ -18,6 +18,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Facade() </td></tr>
 <tr><td align="left" balign="left"> + createWorld(width : double, height : double) : World </td></tr>
 <tr><td align="left" balign="left"> + getWorldWidth(world : World) : double </td></tr>
 <tr><td align="left" balign="left"> + getWorldHeight(world : World) : double </td></tr>
@@ -72,7 +73,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Facade.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.IFacade<World, Ship, Asteroid, Bullet, Program>
-	c8555 [label=<<table title="model.IFacade" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./IFacade.html">
+	c8593 [label=<<table title="model.IFacade" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./IFacade.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> IFacade&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
@@ -135,6 +136,6 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./IFacade.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.Facade implements model.IFacade<World, Ship, Asteroid, Bullet, Program>
-	c8555:p -> c8554:p [dir=back,arrowtail=empty,style=dashed];
+	c8593:p -> c8592:p [dir=back,arrowtail=empty,style=dashed];
 }
 

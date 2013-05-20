@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.parsing.language.statement.action.Action
-	c9511 [label=<<table title="model.programs.parsing.language.statement.action.Action" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Action.html">
+	c9554 [label=<<table title="model.programs.parsing.language.statement.action.Action" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Action.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> Action </font></td></tr>
 		</table></td></tr>
@@ -18,12 +18,13 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Action(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
 <tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Action.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.statement.action.Fire
-	c9512 [label=<<table title="model.programs.parsing.language.statement.action.Fire" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Fire.html">
+	c9555 [label=<<table title="model.programs.parsing.language.statement.action.Fire" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Fire.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Fire </td></tr>
 		</table></td></tr>
@@ -31,12 +32,13 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Fire(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Fire.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.parsing.language.statement.action.Fire extends model.programs.parsing.language.statement.action.Action
-	c9511:p -> c9512:p [dir=back,arrowtail=empty];
+	c9554:p -> c9555:p [dir=back,arrowtail=empty];
 }
 

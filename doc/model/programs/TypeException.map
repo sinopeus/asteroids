@@ -1,6 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="./TypeException.html" title="model.programs.TypeException" alt="" coords="15,145,179,218"/>
-<area shape="rect" id="node1" href="./TypeException.html" title="&lt;TABLE&gt;" alt="" coords="5,139,190,223"/>
-<area shape="rect" id="node2_1" href="./ProgramException.html" title="model.programs.ProgramException" alt="" coords="15,11,179,85"/>
-<area shape="rect" id="node2" href="./ProgramException.html" title="&lt;TABLE&gt;" alt="" coords="5,6,190,90"/>
+<area shape="rect" id="node1_0" href="./TypeException.html" title="model.programs.TypeException" alt="" coords="25,161,383,250"/>
+<area shape="rect" id="node1" href="./TypeException.html" title="&lt;TABLE&gt;" alt="" coords="15,155,393,255"/>
+<area shape="rect" id="node2_1" href="./ProgramException.html" title="model.programs.ProgramException" alt="" coords="15,11,393,101"/>
+<area shape="rect" id="node2" href="./ProgramException.html" title="&lt;TABLE&gt;" alt="" coords="5,6,403,106"/>
 </map>

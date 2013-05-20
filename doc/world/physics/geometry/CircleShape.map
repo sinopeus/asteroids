@@ -1,4 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="./CircleShape.html" title="world.physics.geometry.CircleShape" alt="" coords="16,11,307,149"/>
-<area shape="rect" id="node1" href="./CircleShape.html" title="&lt;TABLE&gt;" alt="" coords="5,6,317,154"/>
+<area shape="rect" id="node1_0" href="../../entity/Entity.html" title="world.entity.Entity" alt="" coords="15,11,758,805"/>
+<area shape="rect" id="node1" href="../../entity/Entity.html" title="&lt;TABLE&gt;" alt="" coords="5,6,769,810"/>
+<area shape="rect" id="node2_1" href="./CircleShape.html" title="world.physics.geometry.CircleShape" alt="" coords="241,865,532,1034"/>
+<area shape="rect" id="node2" href="./CircleShape.html" title="&lt;TABLE&gt;" alt="" coords="231,859,543,1039"/>
 </map>

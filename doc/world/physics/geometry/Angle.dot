@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// world.physics.geometry.Angle
-	c3253 [label=<<table title="world.physics.geometry.Angle" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Angle.html">
+	c3264 [label=<<table title="world.physics.geometry.Angle" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Angle.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Angle </td></tr>
 		</table></td></tr>
@@ -18,6 +18,8 @@ digraph G {
 <tr><td align="left" balign="left"> - angle : double </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Angle(angle : double) </td></tr>
+<tr><td align="left" balign="left"> + Angle() </td></tr>
 <tr><td align="left" balign="left"> + get() : double </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsAngle(angle : double) : boolean </td></tr>
 <tr><td align="left" balign="left"> + set(angle : double) </td></tr>
@@ -29,5 +31,30 @@ digraph G {
 <tr><td align="left" balign="left"> + equals(obj : Object) : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Angle.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	// world.physics.vector.Direction
+	c3267 [label=<<table title="world.physics.vector.Direction" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../vector/Direction.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> Direction </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> - angle : Angle </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Direction(angle : Angle) </td></tr>
+<tr><td align="left" balign="left"> + Direction(angle : double) </td></tr>
+<tr><td align="left" balign="left"> + Direction() </td></tr>
+<tr><td align="left" balign="left"> + getAngle() : Angle </td></tr>
+<tr><td align="left" balign="left"> # canHaveAsAngle(angle : Angle) : boolean </td></tr>
+<tr><td align="left" balign="left"> + setAngle(angle : Angle) </td></tr>
+<tr><td align="left" balign="left"> + _X() : double </td></tr>
+<tr><td align="left" balign="left"> + _Y() : double </td></tr>
+<tr><td align="left" balign="left"> + rotate(angle : Angle) </td></tr>
+<tr><td align="left" balign="left"> + hashCode() : int </td></tr>
+<tr><td align="left" balign="left"> + equals(obj : Object) : boolean </td></tr>
+<tr><td align="left" balign="left"> + toString() : String </td></tr>
+		</table></td></tr>
+		</table>>, URL="../vector/Direction.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	// world.physics.vector.Direction NAVASSOC world.physics.geometry.Angle
+	c3267:p -> c3264:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 }
 

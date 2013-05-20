@@ -14,9 +14,14 @@
     <javadoc sourcepath="${src.dir}" packagenames="*" destdir="${javadoc.dir}" private="true">
       <doclet name="org.umlgraph.doclet.UmlGraphDoc" path="${lib.dir}/UmlGraph.jar">
 	<param name="-attributes" />
+	<param name="-constructors" />
 	<param name="-operations" />
 	<param name="-types" />
 	<param name="-visibility" />
+	<param name="-enumerations" />
+	<param name="-enumconstants" />
+	<param name="-inferrel" />
+	<param name="-useimports" />
       </doclet>
     </javadoc>
     <apply executable="dot" dest="${uml.dir}" parallel="false">

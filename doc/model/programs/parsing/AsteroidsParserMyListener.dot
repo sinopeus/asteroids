@@ -9,8 +9,61 @@ digraph G {
 	node [fontname="Helvetica",fontsize=10,shape=plaintext];
 	nodesep=0.25;
 	ranksep=0.5;
+	// model.programs.parsing.ProgramFactory<E, S, T>
+	c4201 [label=<<table title="model.programs.parsing.ProgramFactory" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ProgramFactory.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
+<tr><td align="center" balign="center"> ProgramFactory&lt;E, S, T&gt; </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + createDoubleLiteral(line : int, column : int, d : double) : E </td></tr>
+<tr><td align="left" balign="left"> + createBooleanLiteral(line : int, column : int, b : boolean) : E </td></tr>
+<tr><td align="left" balign="left"> + createAnd(line : int, column : int, e1 : E, e2 : E) : E </td></tr>
+<tr><td align="left" balign="left"> + createOr(line : int, column : int, e1 : E, e2 : E) : E </td></tr>
+<tr><td align="left" balign="left"> + createNot(line : int, column : int, e : E) : E </td></tr>
+<tr><td align="left" balign="left"> + createNull(line : int, column : int) : E </td></tr>
+<tr><td align="left" balign="left"> + createSelf(line : int, column : int) : E </td></tr>
+<tr><td align="left" balign="left"> + createGetX(line : int, column : int, e : E) : E </td></tr>
+<tr><td align="left" balign="left"> + createGetY(line : int, column : int, e : E) : E </td></tr>
+<tr><td align="left" balign="left"> + createGetVX(line : int, column : int, e : E) : E </td></tr>
+<tr><td align="left" balign="left"> + createGetVY(line : int, column : int, e : E) : E </td></tr>
+<tr><td align="left" balign="left"> + createGetRadius(line : int, column : int, e : E) : E </td></tr>
+<tr><td align="left" balign="left"> + createVariable(line : int, column : int, name : String) : E </td></tr>
+<tr><td align="left" balign="left"> + createLessThan(line : int, column : int, e1 : E, e2 : E) : E </td></tr>
+<tr><td align="left" balign="left"> + createGreaterThan(line : int, column : int, e1 : E, e2 : E) : E </td></tr>
+<tr><td align="left" balign="left"> + createLessThanOrEqualTo(line : int, column : int, e1 : E, e2 : E) : E </td></tr>
+<tr><td align="left" balign="left"> + createGreaterThanOrEqualTo(line : int, column : int, e1 : E, e2 : E) : E </td></tr>
+<tr><td align="left" balign="left"> + createEquality(line : int, column : int, e1 : E, e2 : E) : E </td></tr>
+<tr><td align="left" balign="left"> + createInequality(line : int, column : int, e1 : E, e2 : E) : E </td></tr>
+<tr><td align="left" balign="left"> + createAdd(line : int, column : int, e1 : E, e2 : E) : E </td></tr>
+<tr><td align="left" balign="left"> + createSubtraction(line : int, column : int, e1 : E, e2 : E) : E </td></tr>
+<tr><td align="left" balign="left"> + createMul(line : int, column : int, e1 : E, e2 : E) : E </td></tr>
+<tr><td align="left" balign="left"> + createDivision(line : int, column : int, e1 : E, e2 : E) : E </td></tr>
+<tr><td align="left" balign="left"> + createSqrt(line : int, column : int, e : E) : E </td></tr>
+<tr><td align="left" balign="left"> + createGetDirection(line : int, column : int) : E </td></tr>
+<tr><td align="left" balign="left"> + createSin(line : int, column : int, e : E) : E </td></tr>
+<tr><td align="left" balign="left"> + createCos(line : int, column : int, e : E) : E </td></tr>
+<tr><td align="left" balign="left"> + createEnableThruster(line : int, column : int) : S </td></tr>
+<tr><td align="left" balign="left"> + createDisableThruster(line : int, column : int) : S </td></tr>
+<tr><td align="left" balign="left"> + createFire(line : int, column : int) : S </td></tr>
+<tr><td align="left" balign="left"> + createTurn(line : int, column : int, angle : E) : S </td></tr>
+<tr><td align="left" balign="left"> + createAssignment(line : int, column : int, variable : String, rhs : E) : S </td></tr>
+<tr><td align="left" balign="left"> + createIf(line : int, column : int, condition : E, then : S, otherwise : S) : S </td></tr>
+<tr><td align="left" balign="left"> + createWhile(line : int, column : int, condition : E, body : S) : S </td></tr>
+<tr><td align="left" balign="left"> + createForeach(line : int, column : int, type : ProgramFactory.ForeachType, variableName : String, body : S) : S </td></tr>
+<tr><td align="left" balign="left"> + createSkip(line : int, column : int) : S </td></tr>
+<tr><td align="left" balign="left"> + createSequence(line : int, column : int, statements : List&lt;S&gt;) : S </td></tr>
+<tr><td align="left" balign="left"> + createPrint(line : int, column : int, e : E) : S </td></tr>
+<tr><td align="left" balign="left"> + createDoubleType() : T </td></tr>
+<tr><td align="left" balign="left"> + createBooleanType() : T </td></tr>
+<tr><td align="left" balign="left"> + createEntityType() : T </td></tr>
+		</table></td></tr>
+		</table>>, URL="./ProgramFactory.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.AsteroidsParserMyListener<E, S, T>
-	c4176 [label=<<table title="model.programs.parsing.AsteroidsParserMyListener" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./AsteroidsParserMyListener.html">
+	c4205 [label=<<table title="model.programs.parsing.AsteroidsParserMyListener" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./AsteroidsParserMyListener.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> AsteroidsParserMyListener&lt;E, S, T&gt; </td></tr>
 		</table></td></tr>
@@ -22,6 +75,7 @@ digraph G {
 <tr><td align="left" balign="left"> - evalVisited : Boolean </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + AsteroidsParserMyListener(factory : ProgramFactory&lt;E, S, T&gt;) </td></tr>
 <tr><td align="left" balign="left"> + canHaveAsFactory(factory : ProgramFactory&lt;E, S, T&gt;) : boolean </td></tr>
 <tr><td align="left" balign="left"> - StatementOfEval(eval : AsteroidsParserParser.EvalContext) : S </td></tr>
 <tr><td align="left" balign="left"> - StatementOfAssign(identifier : TerminalNode, expr : AsteroidsParserParser.ExprContext) : S </td></tr>
@@ -74,7 +128,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./AsteroidsParserMyListener.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.AsteroidsParserListener
-	c4177 [label=<<table title="model.programs.parsing.AsteroidsParserListener" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./AsteroidsParserListener.html">
+	c4206 [label=<<table title="model.programs.parsing.AsteroidsParserListener" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./AsteroidsParserListener.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> AsteroidsParserListener </td></tr>
@@ -114,6 +168,106 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./AsteroidsParserListener.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.parsing.AsteroidsParserMyListener<E, S, T> implements model.programs.parsing.AsteroidsParserListener
-	c4177:p -> c4176:p [dir=back,arrowtail=empty,style=dashed];
+	c4206:p -> c4205:p [dir=back,arrowtail=empty,style=dashed];
+	// model.programs.parsing.AsteroidsParserMyListener<E, S, T> NAVASSOC java.util.Map<K, V>
+	c4205:p -> c4301:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// model.programs.parsing.AsteroidsParserMyListener<E, S, T> NAVASSOC java.util.List<E>
+	c4205:p -> c4302:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// model.programs.parsing.AsteroidsParserMyListener<E, S, T> NAVASSOC model.programs.parsing.ProgramFactory<E, S, T>
+	c4205:p -> c4201:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// model.programs.parsing.AsteroidsParserMyListener<E, S, T> NAVASSOC java.lang.Boolean
+	c4205:p -> c4303:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// java.lang.Boolean
+	c4303 [label=<<table title="java.lang.Boolean" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/Boolean.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> Boolean </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + TRUE : Boolean </td></tr>
+<tr><td align="left" balign="left"> + FALSE : Boolean </td></tr>
+<tr><td align="left" balign="left"> + TYPE : Class&lt;Boolean&gt; </td></tr>
+<tr><td align="left" balign="left"> - value : boolean </td></tr>
+<tr><td align="left" balign="left"> - serialVersionUID : long </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Boolean(arg0 : boolean) </td></tr>
+<tr><td align="left" balign="left"> + Boolean(arg0 : String) </td></tr>
+<tr><td align="left" balign="left"> + parseBoolean(arg0 : String) : boolean </td></tr>
+<tr><td align="left" balign="left"> + booleanValue() : boolean </td></tr>
+<tr><td align="left" balign="left"> + valueOf(arg0 : boolean) : Boolean </td></tr>
+<tr><td align="left" balign="left"> + valueOf(arg0 : String) : Boolean </td></tr>
+<tr><td align="left" balign="left"> + toString(arg0 : boolean) : String </td></tr>
+<tr><td align="left" balign="left"> + toString() : String </td></tr>
+<tr><td align="left" balign="left"> + hashCode() : int </td></tr>
+<tr><td align="left" balign="left"> + equals(arg0 : Object) : boolean </td></tr>
+<tr><td align="left" balign="left"> + getBoolean(arg0 : String) : boolean </td></tr>
+<tr><td align="left" balign="left"> + compareTo(arg0 : Boolean) : int </td></tr>
+<tr><td align="left" balign="left"> + compare(arg0 : boolean, arg1 : boolean) : int </td></tr>
+<tr><td align="left" balign="left"> - toBoolean(arg0 : String) : boolean </td></tr>
+		</table></td></tr>
+		</table>>, URL="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/Boolean.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	// java.util.List<E>
+	c4302 [label=<<table title="java.util.List" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/List.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
+<tr><td align="center" balign="center"> List&lt;E&gt; </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + size() : int </td></tr>
+<tr><td align="left" balign="left"> + isEmpty() : boolean </td></tr>
+<tr><td align="left" balign="left"> + contains(arg0 : Object) : boolean </td></tr>
+<tr><td align="left" balign="left"> + iterator() : Iterator&lt;E&gt; </td></tr>
+<tr><td align="left" balign="left"> + toArray() : Object[] </td></tr>
+<tr><td align="left" balign="left"> + toArray(arg0 : T[]) : T[] </td></tr>
+<tr><td align="left" balign="left"> + add(arg0 : E) : boolean </td></tr>
+<tr><td align="left" balign="left"> + remove(arg0 : Object) : boolean </td></tr>
+<tr><td align="left" balign="left"> + containsAll(arg0 : Collection&lt;?&gt;) : boolean </td></tr>
+<tr><td align="left" balign="left"> + addAll(arg0 : Collection&lt;?&gt;) : boolean </td></tr>
+<tr><td align="left" balign="left"> + addAll(arg0 : int, arg1 : Collection&lt;?&gt;) : boolean </td></tr>
+<tr><td align="left" balign="left"> + removeAll(arg0 : Collection&lt;?&gt;) : boolean </td></tr>
+<tr><td align="left" balign="left"> + retainAll(arg0 : Collection&lt;?&gt;) : boolean </td></tr>
+<tr><td align="left" balign="left"> + clear() </td></tr>
+<tr><td align="left" balign="left"> + equals(arg0 : Object) : boolean </td></tr>
+<tr><td align="left" balign="left"> + hashCode() : int </td></tr>
+<tr><td align="left" balign="left"> + get(arg0 : int) : E </td></tr>
+<tr><td align="left" balign="left"> + set(arg0 : int, arg1 : E) : E </td></tr>
+<tr><td align="left" balign="left"> + add(arg0 : int, arg1 : E) </td></tr>
+<tr><td align="left" balign="left"> + remove(arg0 : int) : E </td></tr>
+<tr><td align="left" balign="left"> + indexOf(arg0 : Object) : int </td></tr>
+<tr><td align="left" balign="left"> + lastIndexOf(arg0 : Object) : int </td></tr>
+<tr><td align="left" balign="left"> + listIterator() : ListIterator&lt;E&gt; </td></tr>
+<tr><td align="left" balign="left"> + listIterator(arg0 : int) : ListIterator&lt;E&gt; </td></tr>
+<tr><td align="left" balign="left"> + subList(arg0 : int, arg1 : int) : List&lt;E&gt; </td></tr>
+		</table></td></tr>
+		</table>>, URL="http://java.sun.com/j2se/1.4.2/docs/api/java/util/List.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	// java.util.Map<K, V>
+	c4301 [label=<<table title="java.util.Map" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/Map.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
+<tr><td align="center" balign="center"> Map&lt;K, V&gt; </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + size() : int </td></tr>
+<tr><td align="left" balign="left"> + isEmpty() : boolean </td></tr>
+<tr><td align="left" balign="left"> + containsKey(arg0 : Object) : boolean </td></tr>
+<tr><td align="left" balign="left"> + containsValue(arg0 : Object) : boolean </td></tr>
+<tr><td align="left" balign="left"> + get(arg0 : Object) : V </td></tr>
+<tr><td align="left" balign="left"> + put(arg0 : K, arg1 : V) : V </td></tr>
+<tr><td align="left" balign="left"> + remove(arg0 : Object) : V </td></tr>
+<tr><td align="left" balign="left"> + putAll(arg0 : Map&lt;?, ?&gt;) </td></tr>
+<tr><td align="left" balign="left"> + clear() </td></tr>
+<tr><td align="left" balign="left"> + keySet() : Set&lt;K&gt; </td></tr>
+<tr><td align="left" balign="left"> + values() : Collection&lt;V&gt; </td></tr>
+<tr><td align="left" balign="left"> + entrySet() : Set&lt;Map.Entry&lt;K, V&gt;&gt; </td></tr>
+<tr><td align="left" balign="left"> + equals(arg0 : Object) : boolean </td></tr>
+<tr><td align="left" balign="left"> + hashCode() : int </td></tr>
+		</table></td></tr>
+		</table>>, URL="http://java.sun.com/j2se/1.4.2/docs/api/java/util/Map.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 }
 

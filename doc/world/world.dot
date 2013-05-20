@@ -21,6 +21,8 @@ digraph G {
 <tr><td align="left" balign="left"> - gameTime : double </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + World(xSize : double, ySize : double) </td></tr>
+<tr><td align="left" balign="left"> + World() </td></tr>
 <tr><td align="left" balign="left"> + getxSize() : double </td></tr>
 <tr><td align="left" balign="left"> - setXSize(xSize : double) </td></tr>
 <tr><td align="left" balign="left"> + getySize() : double </td></tr>

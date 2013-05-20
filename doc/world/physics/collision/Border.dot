@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// world.physics.collision.Border
-	c6400 [label=<<table title="world.physics.collision.Border" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Border.html">
+	c6432 [label=<<table title="world.physics.collision.Border" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Border.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;enumeration&#187; </td></tr>
 <tr><td align="center" balign="center"> Border </td></tr>
@@ -18,6 +18,41 @@ digraph G {
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> BORDER_TOP </td></tr>
+<tr><td align="left" balign="left"> BORDER_BOTTOM </td></tr>
+<tr><td align="left" balign="left"> BORDER_RIGHT </td></tr>
+<tr><td align="left" balign="left"> BORDER_LEFT </td></tr>
+		</table></td></tr>
 		</table>>, URL="./Border.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	// world.physics.collision.BorderCollision
+	c6433 [label=<<table title="world.physics.collision.BorderCollision" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./BorderCollision.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> BorderCollision </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> - collisionBorder : Border </td></tr>
+<tr><td align="left" balign="left"> - collisionEntity : Entity </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + BorderCollision(world : World, entity : Entity) </td></tr>
+<tr><td align="left" balign="left"> + getCollisionBorder() : Border </td></tr>
+<tr><td align="left" balign="left"> # canHaveAsCollisionBorder(collisionBorder : Border) : boolean </td></tr>
+<tr><td align="left" balign="left"> + setCollisionBorder(collisionBorder : Border) </td></tr>
+<tr><td align="left" balign="left"> + getCollisionEntity() : Entity </td></tr>
+<tr><td align="left" balign="left"> + canHaveAsEntity(collisionEntity : Entity) : boolean </td></tr>
+<tr><td align="left" balign="left"> + setCollisionEntity(collisionEntity : Entity) </td></tr>
+<tr><td align="left" balign="left"> + resolve() </td></tr>
+<tr><td align="left" balign="left"> + getTimeToCollision() : double </td></tr>
+<tr><td align="left" balign="left"> - getTimeToBorderCollision(border : Border) : double </td></tr>
+<tr><td align="left" balign="left"> # calculateCollisionTime() </td></tr>
+<tr><td align="left" balign="left"> # calculateCollisionPosition() </td></tr>
+<tr><td align="left" balign="left"> + toString() : String </td></tr>
+<tr><td align="left" balign="left"> + hashCode() : int </td></tr>
+<tr><td align="left" balign="left"> + equals(obj : Object) : boolean </td></tr>
+		</table></td></tr>
+		</table>>, URL="./BorderCollision.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	// world.physics.collision.BorderCollision NAVASSOC world.physics.collision.Border
+	c6433:p -> c6432:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 }
 

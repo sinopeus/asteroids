@@ -9,8 +9,22 @@ digraph G {
 	node [fontname="Helvetica",fontsize=10,shape=plaintext];
 	nodesep=0.25;
 	ranksep=0.5;
+	// model.programs.parsing.language.expression.Expression
+	c17773 [label=<<table title="model.programs.parsing.language.expression.Expression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../expression/Expression.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> Expression </font></td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # Expression(line : int, column : int) </td></tr>
+<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> + evaluate() : ConstantExpression&lt;?&gt; </font></td></tr>
+<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> + getType() : Type </font></td></tr>
+		</table></td></tr>
+		</table>>, URL="../expression/Expression.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.statement.Statement
-	c17757 [label=<<table title="model.programs.parsing.language.statement.Statement" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Statement.html">
+	c17812 [label=<<table title="model.programs.parsing.language.statement.Statement" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Statement.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> Statement </font></td></tr>
 		</table></td></tr>
@@ -18,6 +32,7 @@ digraph G {
 <tr><td align="left" balign="left"> - finished : boolean </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # Statement(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"> + isFinished() : boolean </td></tr>
 <tr><td align="left" balign="left"> + unfinish() </td></tr>
 <tr><td align="left" balign="left"> # finish() </td></tr>
@@ -26,7 +41,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Statement.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.statement.While
-	c17761 [label=<<table title="model.programs.parsing.language.statement.While" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./While.html">
+	c17816 [label=<<table title="model.programs.parsing.language.statement.While" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./While.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> While </td></tr>
 		</table></td></tr>
@@ -37,6 +52,7 @@ digraph G {
 <tr><td align="left" balign="left"> - checked : boolean </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + While(line : int, column : int, condition : Expression, body : Statement) </td></tr>
 <tr><td align="left" balign="left"> + getCondition() : Expression </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsCondition(condition : Expression) : boolean </td></tr>
 <tr><td align="left" balign="left"> # setCondition(condition : Expression) </td></tr>
@@ -56,6 +72,10 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./While.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.parsing.language.statement.While extends model.programs.parsing.language.statement.Statement
-	c17757:p -> c17761:p [dir=back,arrowtail=empty];
+	c17812:p -> c17816:p [dir=back,arrowtail=empty];
+	// model.programs.parsing.language.statement.While NAVASSOC model.programs.parsing.language.expression.Expression
+	c17816:p -> c17773:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// model.programs.parsing.language.statement.While NAVASSOC model.programs.parsing.language.statement.Statement
+	c17816:p -> c17812:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 }
 

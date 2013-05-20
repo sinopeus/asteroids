@@ -1,6 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="./CollisionListener.html" title="main.CollisionListener" alt="" coords="15,11,457,117"/>
-<area shape="rect" id="node1" href="./CollisionListener.html" title="&lt;TABLE&gt;" alt="" coords="5,6,467,122"/>
-<area shape="rect" id="node2_1" href="./WorldView.html" title="main.WorldView" alt="" coords="15,177,457,826"/>
-<area shape="rect" id="node2" href="./WorldView.html" title="&lt;TABLE&gt;" alt="" coords="5,171,467,831"/>
+<area shape="rect" id="node1_0" href="./CollisionListener.html" title="main.CollisionListener" alt="" coords="211,11,653,117"/>
+<area shape="rect" id="node1" href="./CollisionListener.html" title="&lt;TABLE&gt;" alt="" coords="201,6,663,122"/>
+<area shape="rect" id="node2_1" href="./WorldView.html" title="main.WorldView" alt="" coords="15,177,849,842"/>
+<area shape="rect" id="node2" href="./WorldView.html" title="&lt;TABLE&gt;" alt="" coords="5,171,859,847"/>
 </map>

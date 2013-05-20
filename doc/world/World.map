@@ -1,6 +1,10 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="./World.html" title="world.World" alt="" coords="37,785,377,1194"/>
-<area shape="rect" id="node1" href="./World.html" title="&lt;TABLE&gt;" alt="" coords="26,779,387,1199"/>
-<area shape="rect" id="node2_1" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/ArrayList.html" title="java.util.ArrayList" alt="" coords="15,11,398,725"/>
-<area shape="rect" id="node2" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/ArrayList.html" title="&lt;TABLE&gt;" alt="" coords="5,6,409,730"/>
+<area shape="rect" id="node1_0" href="./World.html" title="world.World" alt="" coords="793,865,1133,1306"/>
+<area shape="rect" id="node1" href="./World.html" title="&lt;TABLE&gt;" alt="" coords="782,859,1143,1311"/>
+<area shape="rect" id="node2_1" href="./entity/Entity.html" title="world.entity.Entity" alt="" coords="15,11,758,805"/>
+<area shape="rect" id="node2" href="./entity/Entity.html" title="&lt;TABLE&gt;" alt="" coords="5,6,769,810"/>
+<area shape="rect" id="node3_2" href="./physics/collision/Collision.html" title="world.physics.collision.Collision" alt="" coords="804,251,1121,565"/>
+<area shape="rect" id="node3" href="./physics/collision/Collision.html" title="&lt;TABLE&gt;" alt="" coords="793,246,1132,570"/>
+<area shape="rect" id="node4_3" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/ArrayList.html" title="java.util.ArrayList" alt="" coords="1167,27,1550,789"/>
+<area shape="rect" id="node4" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/ArrayList.html" title="&lt;TABLE&gt;" alt="" coords="1157,22,1561,794"/>
 </map>

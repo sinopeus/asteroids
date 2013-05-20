@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// world.entity.Asteroid
-	c3491 [label=<<table title="world.entity.Asteroid" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Asteroid.html">
+	c3505 [label=<<table title="world.entity.Asteroid" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Asteroid.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Asteroid </td></tr>
 		</table></td></tr>
@@ -20,6 +20,7 @@ digraph G {
 <tr><td align="left" balign="left"> - DENSITY : double </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Asteroid(direction : Direction, position : Position, velocity : Velocity, shape : CircleShape) </td></tr>
 <tr><td align="left" balign="left"> + terminate() </td></tr>
 <tr><td align="left" balign="left"> + advance(dt : double) </td></tr>
 <tr><td align="left" balign="left"> + collideWith(that : Asteroid) </td></tr>
@@ -29,7 +30,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Asteroid.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// world.entity.Entity
-	c3492 [label=<<table title="world.entity.Entity" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Entity.html">
+	c3506 [label=<<table title="world.entity.Entity" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Entity.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Entity </td></tr>
 		</table></td></tr>
@@ -44,6 +45,8 @@ digraph G {
 <tr><td align="left" balign="left"> # isTerminated : boolean </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Entity(direction : Direction, position : Position, speedLimit : double, velocity : Velocity, shape : CircleShape, mass : Mass) </td></tr>
+<tr><td align="left" balign="left"> + Entity() </td></tr>
 <tr><td align="left" balign="left"> + getPosition() : Position </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsPosition(position : Position) : boolean </td></tr>
 <tr><td align="left" balign="left"> + setPosition(position : Position) </td></tr>
@@ -84,6 +87,6 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Entity.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//world.entity.Asteroid extends world.entity.Entity
-	c3492:p -> c3491:p [dir=back,arrowtail=empty];
+	c3506:p -> c3505:p [dir=back,arrowtail=empty];
 }
 

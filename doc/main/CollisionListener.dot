@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// main.CollisionListener
-	c6916 [label=<<table title="main.CollisionListener" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./CollisionListener.html">
+	c6952 [label=<<table title="main.CollisionListener" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./CollisionListener.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> CollisionListener </td></tr>
@@ -24,7 +24,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./CollisionListener.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// main.WorldView<World, Ship, Asteroid, Bullet, Program>
-	c6917 [label=<<table title="main.WorldView" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./WorldView.html">
+	c6953 [label=<<table title="main.WorldView" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./WorldView.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> WorldView&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
 		</table></td></tr>
@@ -57,6 +57,7 @@ digraph G {
 <tr><td align="left" balign="left"> - asteroidImages : Image[] </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + WorldView(game : Asteroids&lt;World, Ship, Asteroid, Bullet, Program&gt;, world : World, player1 : Ship, player2 : Ship, player2IsAI : boolean) </td></tr>
 <tr><td align="left" balign="left"> + isFocusable() : boolean </td></tr>
 <tr><td align="left" balign="left"> - drawCenteredString(g2d : Graphics2D, txt : String, y : int) </td></tr>
 <tr><td align="left" balign="left"> - drawCenteredString(g2d : Graphics2D, txt : String) </td></tr>
@@ -72,6 +73,6 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./WorldView.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//main.WorldView<World, Ship, Asteroid, Bullet, Program> implements main.CollisionListener
-	c6916:p -> c6917:p [dir=back,arrowtail=empty,style=dashed];
+	c6952:p -> c6953:p [dir=back,arrowtail=empty,style=dashed];
 }
 

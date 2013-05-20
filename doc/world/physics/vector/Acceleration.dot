@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// world.physics.vector.Acceleration
-	c2751 [label=<<table title="world.physics.vector.Acceleration" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Acceleration.html">
+	c2765 [label=<<table title="world.physics.vector.Acceleration" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Acceleration.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Acceleration </td></tr>
 		</table></td></tr>
@@ -18,11 +18,14 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Acceleration(x : double, y : double) </td></tr>
+<tr><td align="left" balign="left"> + Acceleration(v : Vector) </td></tr>
+<tr><td align="left" balign="left"> + Acceleration() </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Acceleration.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// world.physics.vector.Vector
-	c2760 [label=<<table title="world.physics.vector.Vector" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Vector.html">
+	c2771 [label=<<table title="world.physics.vector.Vector" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Vector.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Vector </td></tr>
 		</table></td></tr>
@@ -30,6 +33,9 @@ digraph G {
 <tr><td align="left" balign="left"> # components : double[] </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Vector(x : double, y : double) </td></tr>
+<tr><td align="left" balign="left"> + Vector(v : Vector) </td></tr>
+<tr><td align="left" balign="left"> + Vector() </td></tr>
 <tr><td align="left" balign="left"> + _X() : double </td></tr>
 <tr><td align="left" balign="left"> + setX(x : double) </td></tr>
 <tr><td align="left" balign="left"> + _Y() : double </td></tr>
@@ -49,6 +55,6 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Vector.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//world.physics.vector.Acceleration extends world.physics.vector.Vector
-	c2760:p -> c2751:p [dir=back,arrowtail=empty];
+	c2771:p -> c2765:p [dir=back,arrowtail=empty];
 }
 

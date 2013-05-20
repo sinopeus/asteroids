@@ -1,8 +1,10 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="./Sound.html" title="main.Sound" alt="" coords="156,11,300,149"/>
-<area shape="rect" id="node1" href="./Sound.html" title="&lt;TABLE&gt;" alt="" coords="145,6,311,154"/>
-<area shape="rect" id="node2_1" href="./NullSound.html" title="main.NullSound" alt="" coords="16,241,160,362"/>
-<area shape="rect" id="node2" href="./NullSound.html" title="&lt;TABLE&gt;" alt="" coords="5,235,171,367"/>
-<area shape="rect" id="node3_2" href="./FileSoundManager.html" title="main.FileSoundManager" alt="" coords="206,209,533,394"/>
-<area shape="rect" id="node3" href="./FileSoundManager.html" title="&lt;TABLE&gt;" alt="" coords="195,203,543,399"/>
+<area shape="rect" id="node1_0" href="./Sound.html" title="main.Sound" alt="" coords="401,385,545,522"/>
+<area shape="rect" id="node1" href="./Sound.html" title="&lt;TABLE&gt;" alt="" coords="391,379,556,527"/>
+<area shape="rect" id="node3_1" href="./NullSound.html" title="main.NullSound" alt="" coords="261,614,405,751"/>
+<area shape="rect" id="node3" href="./NullSound.html" title="&lt;TABLE&gt;" alt="" coords="251,609,416,757"/>
+<area shape="rect" id="node4_2" href="./FileSoundManager.html" title="main.FileSoundManager" alt="" coords="451,582,778,783"/>
+<area shape="rect" id="node4" href="./FileSoundManager.html" title="&lt;TABLE&gt;" alt="" coords="441,577,789,789"/>
+<area shape="rect" id="node2_3" href="./Asteroids.html" title="main.Asteroids" alt="" coords="15,11,932,325"/>
+<area shape="rect" id="node2" href="./Asteroids.html" title="&lt;TABLE&gt;" alt="" coords="4,6,943,330"/>
 </map>

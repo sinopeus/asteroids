@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// Utilities.Util
-	c17166 [label=<<table title="Utilities.Util" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Util.html">
+	c17220 [label=<<table title="Utilities.Util" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Util.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Util </td></tr>
 		</table></td></tr>
@@ -18,6 +18,7 @@ digraph G {
 <tr><td align="left" balign="left"> + EPSILON : double </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Util() </td></tr>
 <tr><td align="left" balign="left"> + fuzzyEquals(x : double, y : double) : boolean </td></tr>
 <tr><td align="left" balign="left"> + fuzzyLessThanOrEqualTo(x : double, y : double) : boolean </td></tr>
 <tr><td align="left" balign="left"> + absoluteError(expected : double, actual : double) : double </td></tr>

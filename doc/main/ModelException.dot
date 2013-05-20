@@ -10,15 +10,22 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// main.ModelException
-	c12423 [label=<<table title="main.ModelException" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./ModelException.html">
+	c12470 [label=<<table title="main.ModelException" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./ModelException.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> ModelException </td></tr>
 		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + ModelException(message : String) </td></tr>
+<tr><td align="left" balign="left"> + ModelException(nested : Throwable) </td></tr>
+		</table></td></tr>
 		</table>>, URL="./ModelException.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//main.ModelException extends java.lang.RuntimeException
-	c12538:p -> c12423:p [dir=back,arrowtail=empty];
+	c12585:p -> c12470:p [dir=back,arrowtail=empty];
 	// java.lang.RuntimeException
-	c12538 [label=<<table title="java.lang.RuntimeException" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/RuntimeException.html">
+	c12585 [label=<<table title="java.lang.RuntimeException" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/RuntimeException.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> RuntimeException </td></tr>
 		</table></td></tr>
@@ -26,7 +33,11 @@ digraph G {
 <tr><td align="left" balign="left"> ~ serialVersionUID : long </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
+<tr><td align="left" balign="left"> + RuntimeException() </td></tr>
+<tr><td align="left" balign="left"> + RuntimeException(arg0 : String) </td></tr>
+<tr><td align="left" balign="left"> + RuntimeException(arg0 : String, arg1 : Throwable) </td></tr>
+<tr><td align="left" balign="left"> + RuntimeException(arg0 : Throwable) </td></tr>
+<tr><td align="left" balign="left"> # RuntimeException(arg0 : String, arg1 : Throwable, arg2 : boolean, arg3 : boolean) </td></tr>
 		</table></td></tr>
 		</table>>, URL="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/RuntimeException.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 }

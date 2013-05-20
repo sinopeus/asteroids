@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.TypeException
-	c13936 [label=<<table title="model.programs.TypeException" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./TypeException.html">
+	c13986 [label=<<table title="model.programs.TypeException" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./TypeException.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> TypeException </td></tr>
 		</table></td></tr>
@@ -18,11 +18,12 @@ digraph G {
 <tr><td align="left" balign="left"> - serialVersionUID : long </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
+<tr><td align="left" balign="left"> + TypeException(line : int, column : int) </td></tr>
+<tr><td align="left" balign="left"> + TypeException(line : int, column : int, message : String) </td></tr>
 		</table></td></tr>
 		</table>>, URL="./TypeException.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.ProgramException
-	c13938 [label=<<table title="model.programs.ProgramException" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./ProgramException.html">
+	c13988 [label=<<table title="model.programs.ProgramException" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./ProgramException.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> ProgramException </td></tr>
 		</table></td></tr>
@@ -30,15 +31,16 @@ digraph G {
 <tr><td align="left" balign="left"> - serialVersionUID : long </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
+<tr><td align="left" balign="left"> + ProgramException(line : int, column : int) </td></tr>
+<tr><td align="left" balign="left"> + ProgramException(line : int, column : int, message : String) </td></tr>
 		</table></td></tr>
 		</table>>, URL="./ProgramException.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.TypeException extends model.programs.ProgramException
-	c13938:p -> c13936:p [dir=back,arrowtail=empty];
+	c13988:p -> c13986:p [dir=back,arrowtail=empty];
 	//model.programs.ProgramException extends java.lang.Exception
-	c14040:p -> c13938:p [dir=back,arrowtail=empty];
+	c14090:p -> c13988:p [dir=back,arrowtail=empty];
 	// java.lang.Exception
-	c14040 [label=<<table title="java.lang.Exception" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/Exception.html">
+	c14090 [label=<<table title="java.lang.Exception" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/Exception.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Exception </td></tr>
 		</table></td></tr>
@@ -46,7 +48,11 @@ digraph G {
 <tr><td align="left" balign="left"> ~ serialVersionUID : long </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
+<tr><td align="left" balign="left"> + Exception() </td></tr>
+<tr><td align="left" balign="left"> + Exception(arg0 : String) </td></tr>
+<tr><td align="left" balign="left"> + Exception(arg0 : String, arg1 : Throwable) </td></tr>
+<tr><td align="left" balign="left"> + Exception(arg0 : Throwable) </td></tr>
+<tr><td align="left" balign="left"> # Exception(arg0 : String, arg1 : Throwable, arg2 : boolean, arg3 : boolean) </td></tr>
 		</table></td></tr>
 		</table>>, URL="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/Exception.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 }

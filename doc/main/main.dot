@@ -18,6 +18,7 @@ digraph G {
 <tr><td align="left" balign="left"> + EPSILON : double </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Util() </td></tr>
 <tr><td align="left" balign="left"> + fuzzyEquals(x : double, y : double) : boolean </td></tr>
 <tr><td align="left" balign="left"> + fuzzyLessThanOrEqualTo(x : double, y : double) : boolean </td></tr>
 <tr><td align="left" balign="left"> + absoluteError(expected : double, actual : double) : double </td></tr>
@@ -55,6 +56,7 @@ digraph G {
 <tr><td align="left" balign="left"> - aiProgramUrl : URL </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Asteroids(facade : IFacade&lt;World, Ship, Asteroid, Bullet, Program&gt;, width : int, height : int, undecorated : boolean, sound : Sound, aiProgramUrl : URL) </td></tr>
 <tr><td align="left" balign="left"> + getWidth() : int </td></tr>
 <tr><td align="left" balign="left"> + getHeight() : int </td></tr>
 <tr><td align="left" balign="left"> + getSound() : Sound </td></tr>
@@ -114,6 +116,7 @@ digraph G {
 <tr><td align="left" balign="left"> - asteroidImages : Image[] </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + WorldView(game : Asteroids&lt;World, Ship, Asteroid, Bullet, Program&gt;, world : World, player1 : Ship, player2 : Ship, player2IsAI : boolean) </td></tr>
 <tr><td align="left" balign="left"> + isFocusable() : boolean </td></tr>
 <tr><td align="left" balign="left"> - drawCenteredString(g2d : Graphics2D, txt : String, y : int) </td></tr>
 <tr><td align="left" balign="left"> - drawCenteredString(g2d : Graphics2D, txt : String) </td></tr>
@@ -141,6 +144,7 @@ digraph G {
 <tr><td align="left" balign="left"> - explosions : Image </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Explosion(x : double, y : double) </td></tr>
 <tr><td align="left" balign="left"> + evolve(dt : double) : boolean </td></tr>
 <tr><td align="left" balign="left"> + draw(g2d : Graphics2D) </td></tr>
 		</table></td></tr>
@@ -157,6 +161,7 @@ digraph G {
 <tr><td align="left" balign="left"> - background : Image </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + AsteroidsMenu(game : Asteroids&lt;World, Ship, Asteroid, Bullet, Program&gt;) </td></tr>
 <tr><td align="left" balign="left"> + isFocusable() : boolean </td></tr>
 <tr><td align="left" balign="left"> - drawCenteredString(g2d : Graphics2D, txt : String, y : int) </td></tr>
 <tr><td align="left" balign="left"> # paintComponent(g : Graphics) </td></tr>
@@ -189,6 +194,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + NullSound() </td></tr>
 <tr><td align="left" balign="left"> + play(name : String) </td></tr>
 <tr><td align="left" balign="left"> + stop(name : String) </td></tr>
 <tr><td align="left" balign="left"> + loop(name : String) </td></tr>
@@ -199,6 +205,13 @@ digraph G {
 	c135 [label=<<table title="main.ModelException" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ModelException.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> ModelException </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + ModelException(message : String) </td></tr>
+<tr><td align="left" balign="left"> + ModelException(nested : Throwable) </td></tr>
 		</table></td></tr>
 		</table>>, URL="./ModelException.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// main.FileSoundManager
@@ -211,6 +224,7 @@ digraph G {
 <tr><td align="left" balign="left"> ~ requests : Queue&lt;FileSoundManager.Request&gt; </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + FileSoundManager(path : String) </td></tr>
 <tr><td align="left" balign="left"> - loadSounds(path : String) </td></tr>
 <tr><td align="left" balign="left"> + play(name : String) </td></tr>
 <tr><td align="left" balign="left"> + loop(name : String) </td></tr>
@@ -229,6 +243,7 @@ digraph G {
 <tr><td align="left" balign="left"> - sound : String </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + FileSoundManager.Request(sound : String) </td></tr>
 <tr><td align="left" balign="left"> + getSound() : String </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> + execute() </font></td></tr>
 		</table></td></tr>
@@ -242,6 +257,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + FileSoundManager.Play(sound : String) </td></tr>
 <tr><td align="left" balign="left"> + execute() </td></tr>
 		</table></td></tr>
 		</table>>, URL="./FileSoundManager.Play.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
@@ -254,6 +270,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + FileSoundManager.Stop(sound : String) </td></tr>
 <tr><td align="left" balign="left"> + execute() </td></tr>
 		</table></td></tr>
 		</table>>, URL="./FileSoundManager.Stop.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
@@ -266,6 +283,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + FileSoundManager.Loop(sound : String) </td></tr>
 <tr><td align="left" balign="left"> + execute() </td></tr>
 		</table></td></tr>
 		</table>>, URL="./FileSoundManager.Loop.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
@@ -291,5 +309,15 @@ digraph G {
 	c137:p -> c139:p [dir=back,arrowtail=empty];
 	//main.FileSoundManager.Loop extends main.FileSoundManager.Request
 	c137:p -> c140:p [dir=back,arrowtail=empty];
+	// main.Asteroids<World, Ship, Asteroid, Bullet, Program> NAVASSOC main.AsteroidsMenu<World, Ship, Asteroid, Bullet, Program>
+	c128:p -> c132:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// main.Asteroids<World, Ship, Asteroid, Bullet, Program> NAVASSOC main.WorldView<World, Ship, Asteroid, Bullet, Program>
+	c128:p -> c130:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// main.Asteroids<World, Ship, Asteroid, Bullet, Program> NAVASSOC main.Sound
+	c128:p -> c127:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// main.WorldView<World, Ship, Asteroid, Bullet, Program> NAVASSOC main.Asteroids<World, Ship, Asteroid, Bullet, Program>
+	c130:p -> c128:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// main.AsteroidsMenu<World, Ship, Asteroid, Bullet, Program> NAVASSOC main.Asteroids<World, Ship, Asteroid, Bullet, Program>
+	c132:p -> c128:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 }
 

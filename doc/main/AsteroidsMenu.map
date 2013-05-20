@@ -1,8 +1,14 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="./AsteroidsMenu.html" title="main.AsteroidsMenu" alt="" coords="127,241,492,474"/>
-<area shape="rect" id="node1" href="./AsteroidsMenu.html" title="&lt;TABLE&gt;" alt="" coords="116,235,503,479"/>
-<area shape="rect" id="node2_1" href="http://java.sun.com/j2se/1.4.2/docs/api/javax/swing/JPanel.html" title="javax.swing.JPanel" alt="" coords="16,11,307,181"/>
-<area shape="rect" id="node2" href="http://java.sun.com/j2se/1.4.2/docs/api/javax/swing/JPanel.html" title="&lt;TABLE&gt;" alt="" coords="5,6,317,186"/>
-<area shape="rect" id="node3_2" href="http://java.sun.com/j2se/1.4.2/docs/api/java/awt/event/KeyListener.html" title="java.awt.event.KeyListener" alt="" coords="352,35,563,157"/>
-<area shape="rect" id="node3" href="http://java.sun.com/j2se/1.4.2/docs/api/java/awt/event/KeyListener.html" title="&lt;TABLE&gt;" alt="" coords="341,30,573,162"/>
+<area shape="rect" id="node1_0" href="./Asteroids.html" title="main.Asteroids" alt="" coords="16,11,933,325"/>
+<area shape="rect" id="node1" href="./Asteroids.html" title="&lt;TABLE&gt;" alt="" coords="5,6,944,330"/>
+<area shape="rect" id="node2_1" href="./AsteroidsMenu.html" title="main.AsteroidsMenu" alt="" coords="567,385,1033,634"/>
+<area shape="rect" id="node2" href="./AsteroidsMenu.html" title="&lt;TABLE&gt;" alt="" coords="557,379,1043,639"/>
+<area shape="rect" id="node5_2" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/String.html" title="java.lang.String" alt="" coords="242,694,819,2271"/>
+<area shape="rect" id="node5" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/String.html" title="&lt;TABLE&gt;" alt="" coords="231,689,830,2277"/>
+<area shape="rect" id="node6_3" href="http://java.sun.com/j2se/1.4.2/docs/api/java/awt/Image.html" title="java.awt.Image" alt="" coords="865,1302,1274,1663"/>
+<area shape="rect" id="node6" href="http://java.sun.com/j2se/1.4.2/docs/api/java/awt/Image.html" title="&lt;TABLE&gt;" alt="" coords="854,1297,1285,1669"/>
+<area shape="rect" id="node3_4" href="http://java.sun.com/j2se/1.4.2/docs/api/javax/swing/JPanel.html" title="javax.swing.JPanel" alt="" coords="978,51,1275,285"/>
+<area shape="rect" id="node3" href="http://java.sun.com/j2se/1.4.2/docs/api/javax/swing/JPanel.html" title="&lt;TABLE&gt;" alt="" coords="967,46,1286,290"/>
+<area shape="rect" id="node4_5" href="http://java.sun.com/j2se/1.4.2/docs/api/java/awt/event/KeyListener.html" title="java.awt.event.KeyListener" alt="" coords="1321,107,1532,229"/>
+<area shape="rect" id="node4" href="http://java.sun.com/j2se/1.4.2/docs/api/java/awt/event/KeyListener.html" title="&lt;TABLE&gt;" alt="" coords="1311,102,1543,234"/>
 </map>

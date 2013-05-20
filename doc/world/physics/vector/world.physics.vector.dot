@@ -18,6 +18,9 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Force(x : double, y : double) </td></tr>
+<tr><td align="left" balign="left"> + Force(v : Vector) </td></tr>
+<tr><td align="left" balign="left"> + Force() </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Force.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
@@ -30,6 +33,9 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Acceleration(x : double, y : double) </td></tr>
+<tr><td align="left" balign="left"> + Acceleration(v : Vector) </td></tr>
+<tr><td align="left" balign="left"> + Acceleration() </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Acceleration.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
@@ -42,6 +48,9 @@ digraph G {
 <tr><td align="left" balign="left"> - angle : Angle </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Direction(angle : Angle) </td></tr>
+<tr><td align="left" balign="left"> + Direction(angle : double) </td></tr>
+<tr><td align="left" balign="left"> + Direction() </td></tr>
 <tr><td align="left" balign="left"> + getAngle() : Angle </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsAngle(angle : Angle) : boolean </td></tr>
 <tr><td align="left" balign="left"> + setAngle(angle : Angle) </td></tr>
@@ -62,6 +71,9 @@ digraph G {
 <tr><td align="left" balign="left"> - SPEED_OF_LIGHT : double </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Velocity(x : double, y : double) </td></tr>
+<tr><td align="left" balign="left"> + Velocity(v : Vector) </td></tr>
+<tr><td align="left" balign="left"> + Velocity() </td></tr>
 <tr><td align="left" balign="left"> + setX(x : double) </td></tr>
 <tr><td align="left" balign="left"> + setY(y : double) </td></tr>
 <tr><td align="left" balign="left"> + get() : double </td></tr>
@@ -80,6 +92,9 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Position(x : double, y : double) </td></tr>
+<tr><td align="left" balign="left"> + Position(v : Vector) </td></tr>
+<tr><td align="left" balign="left"> + Position() </td></tr>
 <tr><td align="left" balign="left"> + setX(x : double) </td></tr>
 <tr><td align="left" balign="left"> + setY(y : double) </td></tr>
 <tr><td align="left" balign="left"> + getSum(v : Vector) : Position </td></tr>
@@ -97,6 +112,12 @@ digraph G {
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> QUADRANT_I </td></tr>
+<tr><td align="left" balign="left"> QUADRANT_II </td></tr>
+<tr><td align="left" balign="left"> QUADRANT_III </td></tr>
+<tr><td align="left" balign="left"> QUADRANT_IV </td></tr>
+		</table></td></tr>
 		</table>>, URL="./Quadrant.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// world.physics.vector.Vector
 	c2499 [label=<<table title="world.physics.vector.Vector" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Vector.html">
@@ -107,6 +128,9 @@ digraph G {
 <tr><td align="left" balign="left"> # components : double[] </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Vector(x : double, y : double) </td></tr>
+<tr><td align="left" balign="left"> + Vector(v : Vector) </td></tr>
+<tr><td align="left" balign="left"> + Vector() </td></tr>
 <tr><td align="left" balign="left"> + _X() : double </td></tr>
 <tr><td align="left" balign="left"> + setX(x : double) </td></tr>
 <tr><td align="left" balign="left"> + _Y() : double </td></tr>

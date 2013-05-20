@@ -18,6 +18,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + And(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # function(first : BooleanLiteral, second : BooleanLiteral) : BooleanLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./And.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
@@ -30,6 +31,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Or(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # function(first : BooleanLiteral, second : BooleanLiteral) : BooleanLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Or.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
@@ -42,6 +44,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Addition(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : DoubleLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Addition.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
@@ -54,6 +57,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + NotEquals(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./NotEquals.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
@@ -66,6 +70,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Equals(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Equals.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
@@ -79,6 +84,7 @@ digraph G {
 <tr><td align="left" balign="left"> ~ secondArgument : Expression </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # SecondOrderExpression(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # getFirstArgument() : Expression </td></tr>
 <tr><td align="left" balign="left"> # setFirstArgument(firstArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # getSecondArgument() : Expression </td></tr>
@@ -97,6 +103,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + GT(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./GT.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
@@ -109,6 +116,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # SecondOrderExpressionOfNumbersToBoolean(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsArgument(argument : Expression) : boolean </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </font></td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
@@ -125,6 +133,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + LT(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./LT.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
@@ -137,6 +146,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + LE(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./LE.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
@@ -149,6 +159,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Multiplication(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : DoubleLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Multiplication.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
@@ -161,6 +172,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # SecondOrderExpressionOfBooleansToBoolean(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsArgument(argument : Expression) : boolean </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(first : BooleanLiteral, second : BooleanLiteral) : BooleanLiteral </font></td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
@@ -177,6 +189,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Subtraction(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : DoubleLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Subtraction.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
@@ -189,6 +202,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Division(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : DoubleLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Division.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
@@ -201,6 +215,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + GE(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./GE.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
@@ -213,6 +228,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # SecondOrderExpressionOfNumbersToNumber(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsArgument(argument : Expression) : boolean </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(first : DoubleLiteral, second : DoubleLiteral) : DoubleLiteral </font></td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>

@@ -10,14 +10,48 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.IShip
-	c15432 [label=<<table title="model.IShip" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../../model/IShip.html">
+	c15485 [label=<<table title="model.IShip" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../../model/IShip.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> IShip </td></tr>
 		</table></td></tr>
 		</table>>, URL="../../../model/IShip.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	// model.programs.Program
+	c15492 [label=<<table title="model.programs.Program" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../../model/programs/Program.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> Program </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> - globalTypes : Map&lt;String, Type&gt; </td></tr>
+<tr><td align="left" balign="left"> - globalValues : HashMap&lt;String, ConstantExpression&lt;?&gt;&gt; </td></tr>
+<tr><td align="left" balign="left"> ~ statement : Statement </td></tr>
+<tr><td align="left" balign="left"> - owner : Ship </td></tr>
+<tr><td align="left" balign="left"> - finished : boolean </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Program(globals : Map&lt;String, Type&gt;, statement : Statement) </td></tr>
+<tr><td align="left" balign="left"> + getGlobalTypes() : Map&lt;String, Type&gt; </td></tr>
+<tr><td align="left" balign="left"> # setGlobalTypes(globalTypes : Map&lt;String, Type&gt;) </td></tr>
+<tr><td align="left" balign="left"> + getGlobalValues() : HashMap&lt;String, ConstantExpression&lt;?&gt;&gt; </td></tr>
+<tr><td align="left" balign="left"> # setGlobalValues(globalTypes : Map&lt;String, Type&gt;) </td></tr>
+<tr><td align="left" balign="left"> # canHaveAsGlobals(globals : Map&lt;String, Type&gt;) : boolean </td></tr>
+<tr><td align="left" balign="left"> # getStatement() : Statement </td></tr>
+<tr><td align="left" balign="left"> # canHaveAsStatement(statement : Statement) : boolean </td></tr>
+<tr><td align="left" balign="left"> # setStatement(statement : Statement) </td></tr>
+<tr><td align="left" balign="left"> + getOwner() : Ship </td></tr>
+<tr><td align="left" balign="left"> # canHaveAsOwner(owner : Ship) : boolean </td></tr>
+<tr><td align="left" balign="left"> + setOwner(owner : Ship) </td></tr>
+<tr><td align="left" balign="left"> + isFinished() : boolean </td></tr>
+<tr><td align="left" balign="left"> # finish() </td></tr>
+<tr><td align="left" balign="left"> + getVariableNamed(name : String) : ConstantExpression&lt;?&gt; </td></tr>
+<tr><td align="left" balign="left"> + setVariableValue(name : String, value : ConstantExpression&lt;?&gt;) </td></tr>
+<tr><td align="left" balign="left"> + executeUntilAfterNextAction() </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + toString() : String </td></tr>
+		</table></td></tr>
+		</table>>, URL="../../../model/programs/Program.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// world.entity.Entity
-	c15522 [label=<<table title="world.entity.Entity" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../Entity.html">
+	c15575 [label=<<table title="world.entity.Entity" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../Entity.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Entity </td></tr>
 		</table></td></tr>
@@ -32,6 +66,8 @@ digraph G {
 <tr><td align="left" balign="left"> # isTerminated : boolean </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Entity(direction : Direction, position : Position, speedLimit : double, velocity : Velocity, shape : CircleShape, mass : Mass) </td></tr>
+<tr><td align="left" balign="left"> + Entity() </td></tr>
 <tr><td align="left" balign="left"> + getPosition() : Position </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsPosition(position : Position) : boolean </td></tr>
 <tr><td align="left" balign="left"> + setPosition(position : Position) </td></tr>
@@ -71,8 +107,73 @@ digraph G {
 <tr><td align="left" balign="left"> + equals(obj : Object) : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="../Entity.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	// world.entity.Bullet
+	c15576 [label=<<table title="world.entity.Bullet" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../Bullet.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> Bullet </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> - bounceCounter : byte </td></tr>
+<tr><td align="left" balign="left"> - shooter : Ship </td></tr>
+<tr><td align="left" balign="left"> - bulletRadius : double </td></tr>
+<tr><td align="left" balign="left"> - bulletInitialVelocity : double </td></tr>
+<tr><td align="left" balign="left"> - density : double </td></tr>
+<tr><td align="left" balign="left"> + maximumBorderBounces : byte </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Bullet(ship : Ship) </td></tr>
+<tr><td align="left" balign="left"> - getInitialPosition(ship : Ship) : Position </td></tr>
+<tr><td align="left" balign="left"> + getShooter() : Ship </td></tr>
+<tr><td align="left" balign="left"> - canHaveAsShooter(shooter : Ship) : boolean </td></tr>
+<tr><td align="left" balign="left"> - setShooter(shooter : Ship) </td></tr>
+<tr><td align="left" balign="left"> + getBounceCounter() : byte </td></tr>
+<tr><td align="left" balign="left"> # canHaveAsBounceCounter(bounceCounter : byte) : boolean </td></tr>
+<tr><td align="left" balign="left"> + setBounceCounter(bounceCounter : byte) </td></tr>
+<tr><td align="left" balign="left"> + collideWith(that : Asteroid) </td></tr>
+<tr><td align="left" balign="left"> + collideWith(that : Bullet) </td></tr>
+<tr><td align="left" balign="left"> + collideWith(that : Ship) </td></tr>
+<tr><td align="left" balign="left"> + collideWith(that : Border) </td></tr>
+<tr><td align="left" balign="left"> + unlinkFromShooter() </td></tr>
+<tr><td align="left" balign="left"> + terminate() </td></tr>
+<tr><td align="left" balign="left"> + toString() : String </td></tr>
+<tr><td align="left" balign="left"> + hashCode() : int </td></tr>
+<tr><td align="left" balign="left"> + equals(obj : Object) : boolean </td></tr>
+		</table></td></tr>
+		</table>>, URL="../Bullet.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	// world.entity.ship.Thruster
+	c15577 [label=<<table title="world.entity.ship.Thruster" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Thruster.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> Thruster </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> - maximumThrustPerSecond : double </td></tr>
+<tr><td align="left" balign="left"> - isActivated : boolean </td></tr>
+<tr><td align="left" balign="left"> - ownerShip : Ship </td></tr>
+<tr><td align="left" balign="left"> - isTerminated : boolean </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Thruster(maximumThrust : double, owner : Ship) </td></tr>
+<tr><td align="left" balign="left"> + getMaximumThrustPerSecond() : double </td></tr>
+<tr><td align="left" balign="left"> # canHaveAsMaximumThrust(maximumThrust : double) : boolean </td></tr>
+<tr><td align="left" balign="left"> - setMaximumThrustPerSecond(maximumThrust : double) </td></tr>
+<tr><td align="left" balign="left"> + isActivated() : boolean </td></tr>
+<tr><td align="left" balign="left"> + activate() </td></tr>
+<tr><td align="left" balign="left"> + deactivate() </td></tr>
+<tr><td align="left" balign="left"> + toggleActivation() </td></tr>
+<tr><td align="left" balign="left"> + getOwner() : Ship </td></tr>
+<tr><td align="left" balign="left"> # canHaveAsOwner(owner : Ship) : boolean </td></tr>
+<tr><td align="left" balign="left"> + setOwner(owner : Ship) </td></tr>
+<tr><td align="left" balign="left"> + terminate() </td></tr>
+<tr><td align="left" balign="left"> + isTerminated() : boolean </td></tr>
+<tr><td align="left" balign="left"> + thrust(duration : double) </td></tr>
+<tr><td align="left" balign="left"> + thrust(thrustPerSecond : double, duration : double) </td></tr>
+<tr><td align="left" balign="left"> + toString() : String </td></tr>
+<tr><td align="left" balign="left"> + hashCode() : int </td></tr>
+<tr><td align="left" balign="left"> + equals(obj : Object) : boolean </td></tr>
+		</table></td></tr>
+		</table>>, URL="./Thruster.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// world.entity.ship.Ship
-	c15525 [label=<<table title="world.entity.ship.Ship" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Ship.html">
+	c15578 [label=<<table title="world.entity.ship.Ship" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Ship.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Ship </td></tr>
 		</table></td></tr>
@@ -86,6 +187,8 @@ digraph G {
 <tr><td align="left" balign="left"> - SPEED_OF_ACTIONS : double </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Ship(direction : Direction, position : Position, speedLimit : double, velocity : Velocity, shape : CircleShape, mass : Mass) </td></tr>
+<tr><td align="left" balign="left"> + Ship() </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsShape(shape : CircleShape) : boolean </td></tr>
 <tr><td align="left" balign="left"> + getMinimumRadius() : double </td></tr>
 <tr><td align="left" balign="left"> + getThruster() : Thruster </td></tr>
@@ -107,9 +210,78 @@ digraph G {
 <tr><td align="left" balign="left"> + getThrustPerSecond() : double </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Ship.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	//world.entity.Bullet extends world.entity.Entity
+	c15575:p -> c15576:p [dir=back,arrowtail=empty];
 	//world.entity.ship.Ship extends world.entity.Entity
-	c15522:p -> c15525:p [dir=back,arrowtail=empty];
+	c15575:p -> c15578:p [dir=back,arrowtail=empty];
 	//world.entity.ship.Ship implements model.IShip
-	c15432:p -> c15525:p [dir=back,arrowtail=empty,style=dashed];
+	c15485:p -> c15578:p [dir=back,arrowtail=empty,style=dashed];
+	// model.programs.Program NAVASSOC world.entity.ship.Ship
+	c15492:p -> c15578:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// world.entity.Bullet NAVASSOC world.entity.ship.Ship
+	c15576:p -> c15578:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// world.entity.ship.Thruster NAVASSOC world.entity.ship.Ship
+	c15577:p -> c15578:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// world.entity.ship.Ship NAVASSOC world.entity.ship.Thruster
+	c15578:p -> c15577:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// world.entity.ship.Ship NAVASSOC java.util.ArrayList<E>
+	c15578:p -> c15594:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// world.entity.ship.Ship NAVASSOC model.programs.Program
+	c15578:p -> c15492:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// java.util.ArrayList<E>
+	c15594 [label=<<table title="java.util.ArrayList" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/ArrayList.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> ArrayList&lt;E&gt; </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> - serialVersionUID : long </td></tr>
+<tr><td align="left" balign="left"> - elementData : Object[] </td></tr>
+<tr><td align="left" balign="left"> - size : int </td></tr>
+<tr><td align="left" balign="left"> - MAX_ARRAY_SIZE : int </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + ArrayList(arg0 : int) </td></tr>
+<tr><td align="left" balign="left"> + ArrayList() </td></tr>
+<tr><td align="left" balign="left"> + ArrayList(arg0 : Collection&lt;?&gt;) </td></tr>
+<tr><td align="left" balign="left"> + trimToSize() </td></tr>
+<tr><td align="left" balign="left"> + ensureCapacity(arg0 : int) </td></tr>
+<tr><td align="left" balign="left"> - ensureCapacityInternal(arg0 : int) </td></tr>
+<tr><td align="left" balign="left"> - grow(arg0 : int) </td></tr>
+<tr><td align="left" balign="left"> - hugeCapacity(arg0 : int) : int </td></tr>
+<tr><td align="left" balign="left"> + size() : int </td></tr>
+<tr><td align="left" balign="left"> + isEmpty() : boolean </td></tr>
+<tr><td align="left" balign="left"> + contains(arg0 : Object) : boolean </td></tr>
+<tr><td align="left" balign="left"> + indexOf(arg0 : Object) : int </td></tr>
+<tr><td align="left" balign="left"> + lastIndexOf(arg0 : Object) : int </td></tr>
+<tr><td align="left" balign="left"> + clone() : Object </td></tr>
+<tr><td align="left" balign="left"> + toArray() : Object[] </td></tr>
+<tr><td align="left" balign="left"> + toArray(arg0 : T[]) : T[] </td></tr>
+<tr><td align="left" balign="left"> ~ elementData(arg0 : int) : E </td></tr>
+<tr><td align="left" balign="left"> + get(arg0 : int) : E </td></tr>
+<tr><td align="left" balign="left"> + set(arg0 : int, arg1 : E) : E </td></tr>
+<tr><td align="left" balign="left"> + add(arg0 : E) : boolean </td></tr>
+<tr><td align="left" balign="left"> + add(arg0 : int, arg1 : E) </td></tr>
+<tr><td align="left" balign="left"> + remove(arg0 : int) : E </td></tr>
+<tr><td align="left" balign="left"> + remove(arg0 : Object) : boolean </td></tr>
+<tr><td align="left" balign="left"> - fastRemove(arg0 : int) </td></tr>
+<tr><td align="left" balign="left"> + clear() </td></tr>
+<tr><td align="left" balign="left"> + addAll(arg0 : Collection&lt;?&gt;) : boolean </td></tr>
+<tr><td align="left" balign="left"> + addAll(arg0 : int, arg1 : Collection&lt;?&gt;) : boolean </td></tr>
+<tr><td align="left" balign="left"> # removeRange(arg0 : int, arg1 : int) </td></tr>
+<tr><td align="left" balign="left"> - rangeCheck(arg0 : int) </td></tr>
+<tr><td align="left" balign="left"> - rangeCheckForAdd(arg0 : int) </td></tr>
+<tr><td align="left" balign="left"> - outOfBoundsMsg(arg0 : int) : String </td></tr>
+<tr><td align="left" balign="left"> + removeAll(arg0 : Collection&lt;?&gt;) : boolean </td></tr>
+<tr><td align="left" balign="left"> + retainAll(arg0 : Collection&lt;?&gt;) : boolean </td></tr>
+<tr><td align="left" balign="left"> - batchRemove(arg0 : Collection&lt;?&gt;, arg1 : boolean) : boolean </td></tr>
+<tr><td align="left" balign="left"> - writeObject(arg0 : ObjectOutputStream) </td></tr>
+<tr><td align="left" balign="left"> - readObject(arg0 : ObjectInputStream) </td></tr>
+<tr><td align="left" balign="left"> + listIterator(arg0 : int) : ListIterator&lt;E&gt; </td></tr>
+<tr><td align="left" balign="left"> + listIterator() : ListIterator&lt;E&gt; </td></tr>
+<tr><td align="left" balign="left"> + iterator() : Iterator&lt;E&gt; </td></tr>
+<tr><td align="left" balign="left"> + subList(arg0 : int, arg1 : int) : List&lt;E&gt; </td></tr>
+<tr><td align="left" balign="left"> ~ subListRangeCheck(arg0 : int, arg1 : int, arg2 : int) </td></tr>
+		</table></td></tr>
+		</table>>, URL="http://java.sun.com/j2se/1.4.2/docs/api/java/util/ArrayList.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 }
 

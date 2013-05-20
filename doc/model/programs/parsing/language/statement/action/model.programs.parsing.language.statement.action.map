@@ -1,14 +1,14 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="./Action.html" title="model.programs.parsing.language.statement.action.Action" alt="" coords="424,11,608,101"/>
-<area shape="rect" id="node1" href="./Action.html" title="&lt;TABLE&gt;" alt="" coords="413,6,619,106"/>
-<area shape="rect" id="node2_1" href="./Fire.html" title="model.programs.parsing.language.statement.action.Fire" alt="" coords="15,185,179,290"/>
-<area shape="rect" id="node2" href="./Fire.html" title="&lt;TABLE&gt;" alt="" coords="5,179,190,295"/>
-<area shape="rect" id="node3_2" href="./ThrustOn.html" title="model.programs.parsing.language.statement.action.ThrustOn" alt="" coords="225,185,389,290"/>
-<area shape="rect" id="node3" href="./ThrustOn.html" title="&lt;TABLE&gt;" alt="" coords="214,179,399,295"/>
-<area shape="rect" id="node4_3" href="./Skip.html" title="model.programs.parsing.language.statement.action.Skip" alt="" coords="434,185,598,290"/>
-<area shape="rect" id="node4" href="./Skip.html" title="&lt;TABLE&gt;" alt="" coords="423,179,609,295"/>
-<area shape="rect" id="node5_4" href="./ThrustOff.html" title="model.programs.parsing.language.statement.action.ThrustOff" alt="" coords="643,185,807,290"/>
-<area shape="rect" id="node5" href="./ThrustOff.html" title="&lt;TABLE&gt;" alt="" coords="633,179,818,295"/>
-<area shape="rect" id="node6_5" href="./Turn.html" title="model.programs.parsing.language.statement.action.Turn" alt="" coords="853,161,1158,314"/>
-<area shape="rect" id="node6" href="./Turn.html" title="&lt;TABLE&gt;" alt="" coords="842,155,1169,319"/>
+<area shape="rect" id="node1_0" href="./Action.html" title="model.programs.parsing.language.statement.action.Action" alt="" coords="504,11,704,117"/>
+<area shape="rect" id="node1" href="./Action.html" title="&lt;TABLE&gt;" alt="" coords="493,6,715,122"/>
+<area shape="rect" id="node2_1" href="./Fire.html" title="model.programs.parsing.language.statement.action.Fire" alt="" coords="15,201,201,322"/>
+<area shape="rect" id="node2" href="./Fire.html" title="&lt;TABLE&gt;" alt="" coords="5,195,211,327"/>
+<area shape="rect" id="node3_2" href="./ThrustOn.html" title="model.programs.parsing.language.statement.action.ThrustOn" alt="" coords="246,201,463,322"/>
+<area shape="rect" id="node3" href="./ThrustOn.html" title="&lt;TABLE&gt;" alt="" coords="235,195,474,327"/>
+<area shape="rect" id="node4_3" href="./Skip.html" title="model.programs.parsing.language.statement.action.Skip" alt="" coords="509,201,699,322"/>
+<area shape="rect" id="node4" href="./Skip.html" title="&lt;TABLE&gt;" alt="" coords="499,195,709,327"/>
+<area shape="rect" id="node5_4" href="./ThrustOff.html" title="model.programs.parsing.language.statement.action.ThrustOff" alt="" coords="745,201,962,322"/>
+<area shape="rect" id="node5" href="./ThrustOff.html" title="&lt;TABLE&gt;" alt="" coords="734,195,973,327"/>
+<area shape="rect" id="node6_5" href="./Turn.html" title="model.programs.parsing.language.statement.action.Turn" alt="" coords="1007,177,1313,346"/>
+<area shape="rect" id="node6" href="./Turn.html" title="&lt;TABLE&gt;" alt="" coords="997,171,1323,351"/>
 </map>

@@ -1,10 +1,10 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="./Collision.html" title="world.physics.collision.Collision" alt="" coords="239,11,556,309"/>
-<area shape="rect" id="node1" href="./Collision.html" title="&lt;TABLE&gt;" alt="" coords="228,6,567,314"/>
-<area shape="rect" id="node3_1" href="./BorderCollision.html" title="world.physics.collision.BorderCollision" alt="" coords="15,369,403,666"/>
-<area shape="rect" id="node3" href="./BorderCollision.html" title="&lt;TABLE&gt;" alt="" coords="5,363,414,671"/>
-<area shape="rect" id="node4_2" href="./EntityCollision.html" title="world.physics.collision.EntityCollision" alt="" coords="448,393,725,642"/>
-<area shape="rect" id="node4" href="./EntityCollision.html" title="&lt;TABLE&gt;" alt="" coords="437,387,736,647"/>
-<area shape="rect" id="node2_3" href="./Border.html" title="world.physics.collision.Border" alt="" coords="602,127,707,193"/>
-<area shape="rect" id="node2" href="./Border.html" title="&lt;TABLE&gt;" alt="" coords="591,122,718,198"/>
+<area shape="rect" id="node1_0" href="./Collision.html" title="world.physics.collision.Collision" alt="" coords="267,11,584,325"/>
+<area shape="rect" id="node1" href="./Collision.html" title="&lt;TABLE&gt;" alt="" coords="256,6,595,330"/>
+<area shape="rect" id="node3_1" href="./BorderCollision.html" title="world.physics.collision.BorderCollision" alt="" coords="15,385,403,698"/>
+<area shape="rect" id="node3" href="./BorderCollision.html" title="&lt;TABLE&gt;" alt="" coords="5,379,414,703"/>
+<area shape="rect" id="node4_2" href="./EntityCollision.html" title="world.physics.collision.EntityCollision" alt="" coords="449,409,837,674"/>
+<area shape="rect" id="node4" href="./EntityCollision.html" title="&lt;TABLE&gt;" alt="" coords="438,403,847,679"/>
+<area shape="rect" id="node2_3" href="./Border.html" title="world.physics.collision.Border" alt="" coords="139,758,280,895"/>
+<area shape="rect" id="node2" href="./Border.html" title="&lt;TABLE&gt;" alt="" coords="128,753,291,901"/>
 </map>

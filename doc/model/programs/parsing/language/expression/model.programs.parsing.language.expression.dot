@@ -18,6 +18,7 @@ digraph G {
 <tr><td align="left" balign="left"> ~ name : String </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Variable(line : int, column : int, name : String) </td></tr>
 <tr><td align="left" balign="left"> + getName() : String </td></tr>
 <tr><td align="left" balign="left"> # setName(name : String) </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsName(name : String) : boolean </td></tr>
@@ -36,6 +37,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # Expression(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> + evaluate() : ConstantExpression&lt;?&gt; </font></td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> + getType() : Type </font></td></tr>
 		</table></td></tr>

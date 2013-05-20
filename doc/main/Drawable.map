@@ -1,6 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="./Explosion.html" title="main.Explosion" alt="" coords="112,161,315,314"/>
-<area shape="rect" id="node1" href="./Explosion.html" title="&lt;TABLE&gt;" alt="" coords="101,155,325,319"/>
-<area shape="rect" id="node2_1" href="./Drawable.html" title="main.Drawable" alt="" coords="41,11,212,101"/>
-<area shape="rect" id="node2" href="./Drawable.html" title="&lt;TABLE&gt;" alt="" coords="31,6,223,106"/>
+<area shape="rect" id="node1_0" href="./Explosion.html" title="main.Explosion" alt="" coords="113,161,333,330"/>
+<area shape="rect" id="node1" href="./Explosion.html" title="&lt;TABLE&gt;" alt="" coords="102,155,343,335"/>
+<area shape="rect" id="node2_1" href="./Drawable.html" title="main.Drawable" alt="" coords="47,11,217,101"/>
+<area shape="rect" id="node2" href="./Drawable.html" title="&lt;TABLE&gt;" alt="" coords="36,6,228,106"/>
 </map>

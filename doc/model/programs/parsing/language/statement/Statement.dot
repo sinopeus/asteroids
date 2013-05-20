@@ -9,8 +9,42 @@ digraph G {
 	node [fontname="Helvetica",fontsize=10,shape=plaintext];
 	nodesep=0.25;
 	ranksep=0.5;
+	// model.programs.Program
+	c16118 [label=<<table title="model.programs.Program" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../../Program.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> Program </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> - globalTypes : Map&lt;String, Type&gt; </td></tr>
+<tr><td align="left" balign="left"> - globalValues : HashMap&lt;String, ConstantExpression&lt;?&gt;&gt; </td></tr>
+<tr><td align="left" balign="left"> ~ statement : Statement </td></tr>
+<tr><td align="left" balign="left"> - owner : Ship </td></tr>
+<tr><td align="left" balign="left"> - finished : boolean </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Program(globals : Map&lt;String, Type&gt;, statement : Statement) </td></tr>
+<tr><td align="left" balign="left"> + getGlobalTypes() : Map&lt;String, Type&gt; </td></tr>
+<tr><td align="left" balign="left"> # setGlobalTypes(globalTypes : Map&lt;String, Type&gt;) </td></tr>
+<tr><td align="left" balign="left"> + getGlobalValues() : HashMap&lt;String, ConstantExpression&lt;?&gt;&gt; </td></tr>
+<tr><td align="left" balign="left"> # setGlobalValues(globalTypes : Map&lt;String, Type&gt;) </td></tr>
+<tr><td align="left" balign="left"> # canHaveAsGlobals(globals : Map&lt;String, Type&gt;) : boolean </td></tr>
+<tr><td align="left" balign="left"> # getStatement() : Statement </td></tr>
+<tr><td align="left" balign="left"> # canHaveAsStatement(statement : Statement) : boolean </td></tr>
+<tr><td align="left" balign="left"> # setStatement(statement : Statement) </td></tr>
+<tr><td align="left" balign="left"> + getOwner() : Ship </td></tr>
+<tr><td align="left" balign="left"> # canHaveAsOwner(owner : Ship) : boolean </td></tr>
+<tr><td align="left" balign="left"> + setOwner(owner : Ship) </td></tr>
+<tr><td align="left" balign="left"> + isFinished() : boolean </td></tr>
+<tr><td align="left" balign="left"> # finish() </td></tr>
+<tr><td align="left" balign="left"> + getVariableNamed(name : String) : ConstantExpression&lt;?&gt; </td></tr>
+<tr><td align="left" balign="left"> + setVariableValue(name : String, value : ConstantExpression&lt;?&gt;) </td></tr>
+<tr><td align="left" balign="left"> + executeUntilAfterNextAction() </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + toString() : String </td></tr>
+		</table></td></tr>
+		</table>>, URL="../../../Program.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.ProgramPart
-	c16090 [label=<<table title="model.programs.parsing.language.ProgramPart" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../ProgramPart.html">
+	c16144 [label=<<table title="model.programs.parsing.language.ProgramPart" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../ProgramPart.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> ProgramPart </font></td></tr>
 		</table></td></tr>
@@ -20,6 +54,7 @@ digraph G {
 <tr><td align="left" balign="left"> ~ column : int </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # ProgramPart(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"> + getParentProgram() : Program </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsParentProgram(program : Program) : boolean </td></tr>
 <tr><td align="left" balign="left"> + setParentProgram(parentProgram : Program) </td></tr>
@@ -34,7 +69,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="../ProgramPart.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.statement.Statement
-	c16132 [label=<<table title="model.programs.parsing.language.statement.Statement" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Statement.html">
+	c16186 [label=<<table title="model.programs.parsing.language.statement.Statement" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Statement.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> Statement </font></td></tr>
 		</table></td></tr>
@@ -42,6 +77,7 @@ digraph G {
 <tr><td align="left" balign="left"> - finished : boolean </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # Statement(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"> + isFinished() : boolean </td></tr>
 <tr><td align="left" balign="left"> + unfinish() </td></tr>
 <tr><td align="left" balign="left"> # finish() </td></tr>
@@ -50,7 +86,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Statement.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.statement.ForEach
-	c16133 [label=<<table title="model.programs.parsing.language.statement.ForEach" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ForEach.html">
+	c16187 [label=<<table title="model.programs.parsing.language.statement.ForEach" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ForEach.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> ForEach </td></tr>
 		</table></td></tr>
@@ -63,6 +99,7 @@ digraph G {
 <tr><td align="left" balign="left"> - AtStartOfIteration : boolean </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + ForEach(line : int, column : int, type : ProgramFactory.ForeachType, variableName : String, body : Statement) </td></tr>
 <tr><td align="left" balign="left"> # getType() : ProgramFactory.ForeachType </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsType(type : ProgramFactory.ForeachType) : boolean </td></tr>
 <tr><td align="left" balign="left"> # setType(type : ProgramFactory.ForeachType) </td></tr>
@@ -91,7 +128,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./ForEach.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.statement.Assignment
-	c16134 [label=<<table title="model.programs.parsing.language.statement.Assignment" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Assignment.html">
+	c16188 [label=<<table title="model.programs.parsing.language.statement.Assignment" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Assignment.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Assignment </td></tr>
 		</table></td></tr>
@@ -100,6 +137,7 @@ digraph G {
 <tr><td align="left" balign="left"> ~ value : Expression </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Assignment(line : int, column : int, variable : Variable, value : Expression) </td></tr>
 <tr><td align="left" balign="left"> # getVariable() : Variable </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsVariable(variable : Variable) : boolean </td></tr>
 <tr><td align="left" balign="left"> # setVariable(variable : Variable) </td></tr>
@@ -114,7 +152,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Assignment.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.statement.Print
-	c16135 [label=<<table title="model.programs.parsing.language.statement.Print" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Print.html">
+	c16189 [label=<<table title="model.programs.parsing.language.statement.Print" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Print.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Print </td></tr>
 		</table></td></tr>
@@ -123,6 +161,7 @@ digraph G {
 <tr><td align="left" balign="left"> - text : String </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Print(line : int, column : int, textExpression : Expression) </td></tr>
 <tr><td align="left" balign="left"> # getTextExpression() : Expression </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsTextExpression(textExpression : Expression) : boolean </td></tr>
 <tr><td align="left" balign="left"> # setTextExpression(textExpression : Expression) </td></tr>
@@ -137,7 +176,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Print.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.statement.While
-	c16136 [label=<<table title="model.programs.parsing.language.statement.While" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./While.html">
+	c16190 [label=<<table title="model.programs.parsing.language.statement.While" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./While.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> While </td></tr>
 		</table></td></tr>
@@ -148,6 +187,7 @@ digraph G {
 <tr><td align="left" balign="left"> - checked : boolean </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + While(line : int, column : int, condition : Expression, body : Statement) </td></tr>
 <tr><td align="left" balign="left"> + getCondition() : Expression </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsCondition(condition : Expression) : boolean </td></tr>
 <tr><td align="left" balign="left"> # setCondition(condition : Expression) </td></tr>
@@ -167,7 +207,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./While.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.statement.If
-	c16137 [label=<<table title="model.programs.parsing.language.statement.If" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./If.html">
+	c16191 [label=<<table title="model.programs.parsing.language.statement.If" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./If.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> If </td></tr>
 		</table></td></tr>
@@ -179,6 +219,7 @@ digraph G {
 <tr><td align="left" balign="left"> ~ otherwise : Statement </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + If(line : int, column : int, condition : Expression, then : Statement, otherwise : Statement) </td></tr>
 <tr><td align="left" balign="left"> # getResultOfCondition() : boolean </td></tr>
 <tr><td align="left" balign="left"> # isChecked() : boolean </td></tr>
 <tr><td align="left" balign="left"> # checkCondition() </td></tr>
@@ -201,7 +242,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./If.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.statement.Sequence
-	c16138 [label=<<table title="model.programs.parsing.language.statement.Sequence" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Sequence.html">
+	c16192 [label=<<table title="model.programs.parsing.language.statement.Sequence" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Sequence.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Sequence </td></tr>
 		</table></td></tr>
@@ -210,6 +251,7 @@ digraph G {
 <tr><td align="left" balign="left"> - selectedIndex : int </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Sequence(line : int, column : int, sequence : List&lt;Statement&gt;) </td></tr>
 <tr><td align="left" balign="left"> # getSequence() : List&lt;Statement&gt; </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsSequence(sequence : List&lt;Statement&gt;) : boolean </td></tr>
 <tr><td align="left" balign="left"> # setSequence(sequence : List&lt;Statement&gt;) </td></tr>
@@ -228,7 +270,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Sequence.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.statement.action.Action
-	c16139 [label=<<table title="model.programs.parsing.language.statement.action.Action" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./action/Action.html">
+	c16193 [label=<<table title="model.programs.parsing.language.statement.action.Action" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./action/Action.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> Action </font></td></tr>
 		</table></td></tr>
@@ -236,25 +278,38 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Action(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
 <tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="./action/Action.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.parsing.language.statement.Statement extends model.programs.parsing.language.ProgramPart
-	c16090:p -> c16132:p [dir=back,arrowtail=empty];
+	c16144:p -> c16186:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.statement.ForEach extends model.programs.parsing.language.statement.Statement
-	c16132:p -> c16133:p [dir=back,arrowtail=empty];
+	c16186:p -> c16187:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.statement.Assignment extends model.programs.parsing.language.statement.Statement
-	c16132:p -> c16134:p [dir=back,arrowtail=empty];
+	c16186:p -> c16188:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.statement.Print extends model.programs.parsing.language.statement.Statement
-	c16132:p -> c16135:p [dir=back,arrowtail=empty];
+	c16186:p -> c16189:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.statement.While extends model.programs.parsing.language.statement.Statement
-	c16132:p -> c16136:p [dir=back,arrowtail=empty];
+	c16186:p -> c16190:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.statement.If extends model.programs.parsing.language.statement.Statement
-	c16132:p -> c16137:p [dir=back,arrowtail=empty];
+	c16186:p -> c16191:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.statement.Sequence extends model.programs.parsing.language.statement.Statement
-	c16132:p -> c16138:p [dir=back,arrowtail=empty];
+	c16186:p -> c16192:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.statement.action.Action extends model.programs.parsing.language.statement.Statement
-	c16132:p -> c16139:p [dir=back,arrowtail=empty];
+	c16186:p -> c16193:p [dir=back,arrowtail=empty];
+	// model.programs.Program NAVASSOC model.programs.parsing.language.statement.Statement
+	c16118:p -> c16186:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// model.programs.parsing.language.ProgramPart NAVASSOC model.programs.Program
+	c16144:p -> c16118:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// model.programs.parsing.language.statement.ForEach NAVASSOC model.programs.parsing.language.statement.Statement
+	c16187:p -> c16186:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// model.programs.parsing.language.statement.While NAVASSOC model.programs.parsing.language.statement.Statement
+	c16190:p -> c16186:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// model.programs.parsing.language.statement.If NAVASSOC model.programs.parsing.language.statement.Statement
+	c16191:p -> c16186:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// model.programs.parsing.language.statement.If NAVASSOC model.programs.parsing.language.statement.Statement
+	c16191:p -> c16186:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 }
 

@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// main.Explosion
-	c7668 [label=<<table title="main.Explosion" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Explosion.html">
+	c7704 [label=<<table title="main.Explosion" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Explosion.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Explosion </td></tr>
 		</table></td></tr>
@@ -22,12 +22,13 @@ digraph G {
 <tr><td align="left" balign="left"> - explosions : Image </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Explosion(x : double, y : double) </td></tr>
 <tr><td align="left" balign="left"> + evolve(dt : double) : boolean </td></tr>
 <tr><td align="left" balign="left"> + draw(g2d : Graphics2D) </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Explosion.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// main.Drawable
-	c7670 [label=<<table title="main.Drawable" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Drawable.html">
+	c7706 [label=<<table title="main.Drawable" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Drawable.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> Drawable </td></tr>
@@ -40,8 +41,8 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Drawable.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//main.WorldView<World, Ship, Asteroid, Bullet, Program>.Visualization<T> implements main.Drawable
-	c7670:p -> c7667:p [dir=back,arrowtail=empty,style=dashed];
+	c7706:p -> c7703:p [dir=back,arrowtail=empty,style=dashed];
 	//main.Explosion implements main.Drawable
-	c7670:p -> c7668:p [dir=back,arrowtail=empty,style=dashed];
+	c7706:p -> c7704:p [dir=back,arrowtail=empty,style=dashed];
 }
 

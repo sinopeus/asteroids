@@ -9,8 +9,84 @@ digraph G {
 	node [fontname="Helvetica",fontsize=10,shape=plaintext];
 	nodesep=0.25;
 	ranksep=0.5;
+	// main.Asteroids<World, Ship, Asteroid, Bullet, Program>
+	c11336 [label=<<table title="main.Asteroids" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../main/Asteroids.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> Asteroids&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> - menu : AsteroidsMenu&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
+<tr><td align="left" balign="left"> - view : WorldView&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
+<tr><td align="left" balign="left"> - facade : IFacade&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
+<tr><td align="left" balign="left"> - width : int </td></tr>
+<tr><td align="left" balign="left"> - height : int </td></tr>
+<tr><td align="left" balign="left"> - sound : Sound </td></tr>
+<tr><td align="left" balign="left"> - aiProgramUrl : URL </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Asteroids(facade : IFacade&lt;World, Ship, Asteroid, Bullet, Program&gt;, width : int, height : int, undecorated : boolean, sound : Sound, aiProgramUrl : URL) </td></tr>
+<tr><td align="left" balign="left"> + getWidth() : int </td></tr>
+<tr><td align="left" balign="left"> + getHeight() : int </td></tr>
+<tr><td align="left" balign="left"> + getSound() : Sound </td></tr>
+<tr><td align="left" balign="left"> + getFacade() : IFacade&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
+<tr><td align="left" balign="left"> + start() </td></tr>
+<tr><td align="left" balign="left"> + startSinglePlayerGame() </td></tr>
+<tr><td align="left" balign="left"> + startMultiPlayerGame(vsAI : boolean) </td></tr>
+<tr><td align="left" balign="left"> + showMenu() </td></tr>
+<tr><td align="left" balign="left"> + main(args : String[]) </td></tr>
+		</table></td></tr>
+		</table>>, URL="../main/Asteroids.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	// main.WorldView<World, Ship, Asteroid, Bullet, Program>
+	c11338 [label=<<table title="main.WorldView" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../main/WorldView.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> WorldView&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> - LEFT_P1 : int </td></tr>
+<tr><td align="left" balign="left"> - RIGHT_P1 : int </td></tr>
+<tr><td align="left" balign="left"> - FIRE_P1 : int </td></tr>
+<tr><td align="left" balign="left"> - THRUSTER_P1 : int </td></tr>
+<tr><td align="left" balign="left"> - LEFT_P2 : int </td></tr>
+<tr><td align="left" balign="left"> - RIGHT_P2 : int </td></tr>
+<tr><td align="left" balign="left"> - FIRE_P2 : int </td></tr>
+<tr><td align="left" balign="left"> - THRUSTER_P2 : int </td></tr>
+<tr><td align="left" balign="left"> - TIMER_DELAY : int </td></tr>
+<tr><td align="left" balign="left"> - game : Asteroids&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
+<tr><td align="left" balign="left"> - facade : IFacade&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
+<tr><td align="left" balign="left"> - world : World </td></tr>
+<tr><td align="left" balign="left"> - player1 : Ship </td></tr>
+<tr><td align="left" balign="left"> - player2 : Ship </td></tr>
+<tr><td align="left" balign="left"> - player2IsAI : boolean </td></tr>
+<tr><td align="left" balign="left"> - player1_angle : double </td></tr>
+<tr><td align="left" balign="left"> - player2_angle : double </td></tr>
+<tr><td align="left" balign="left"> - player1_fire : boolean </td></tr>
+<tr><td align="left" balign="left"> - player2_fire : boolean </td></tr>
+<tr><td align="left" balign="left"> - timer : Timer </td></tr>
+<tr><td align="left" balign="left"> - timeAfterLastEvolve : long </td></tr>
+<tr><td align="left" balign="left"> - background : Image </td></tr>
+<tr><td align="left" balign="left"> - msg : String </td></tr>
+<tr><td align="left" balign="left"> - visualizations : Map&lt;Object, WorldView.Visualization&lt;?&gt;&gt; </td></tr>
+<tr><td align="left" balign="left"> - explosions : Set&lt;Explosion&gt; </td></tr>
+<tr><td align="left" balign="left"> - asteroidImages : Image[] </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + WorldView(game : Asteroids&lt;World, Ship, Asteroid, Bullet, Program&gt;, world : World, player1 : Ship, player2 : Ship, player2IsAI : boolean) </td></tr>
+<tr><td align="left" balign="left"> + isFocusable() : boolean </td></tr>
+<tr><td align="left" balign="left"> - drawCenteredString(g2d : Graphics2D, txt : String, y : int) </td></tr>
+<tr><td align="left" balign="left"> - drawCenteredString(g2d : Graphics2D, txt : String) </td></tr>
+<tr><td align="left" balign="left"> # paintComponent(g : Graphics) </td></tr>
+<tr><td align="left" balign="left"> + keyTyped(e : KeyEvent) </td></tr>
+<tr><td align="left" balign="left"> + keyPressed(e : KeyEvent) </td></tr>
+<tr><td align="left" balign="left"> + keyReleased(e : KeyEvent) </td></tr>
+<tr><td align="left" balign="left"> + actionPerformed(e : ActionEvent) </td></tr>
+<tr><td align="left" balign="left"> + startGame() </td></tr>
+<tr><td align="left" balign="left"> + boundaryCollision(entity : Object, x : double, y : double) </td></tr>
+<tr><td align="left" balign="left"> + objectCollision(entity1 : Object, entity2 : Object, x : double, y : double) </td></tr>
+<tr><td align="left" balign="left"> - getImages() : Image[] </td></tr>
+		</table></td></tr>
+		</table>>, URL="../main/WorldView.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.Facade
-	c11305 [label=<<table title="model.Facade" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Facade.html">
+	c11350 [label=<<table title="model.Facade" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Facade.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Facade </td></tr>
 		</table></td></tr>
@@ -18,6 +94,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Facade() </td></tr>
 <tr><td align="left" balign="left"> + createWorld(width : double, height : double) : World </td></tr>
 <tr><td align="left" balign="left"> + getWorldWidth(world : World) : double </td></tr>
 <tr><td align="left" balign="left"> + getWorldHeight(world : World) : double </td></tr>
@@ -72,7 +149,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Facade.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.IFacade<World, Ship, Asteroid, Bullet, Program>
-	c11306 [label=<<table title="model.IFacade" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./IFacade.html">
+	c11351 [label=<<table title="model.IFacade" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./IFacade.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> IFacade&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
@@ -135,6 +212,14 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./IFacade.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.Facade implements model.IFacade<World, Ship, Asteroid, Bullet, Program>
-	c11306:p -> c11305:p [dir=back,arrowtail=empty,style=dashed];
+	c11351:p -> c11350:p [dir=back,arrowtail=empty,style=dashed];
+	// main.Asteroids<World, Ship, Asteroid, Bullet, Program> NAVASSOC main.WorldView<World, Ship, Asteroid, Bullet, Program>
+	c11336:p -> c11338:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// main.Asteroids<World, Ship, Asteroid, Bullet, Program> NAVASSOC model.IFacade<World, Ship, Asteroid, Bullet, Program>
+	c11336:p -> c11351:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// main.WorldView<World, Ship, Asteroid, Bullet, Program> NAVASSOC main.Asteroids<World, Ship, Asteroid, Bullet, Program>
+	c11338:p -> c11336:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// main.WorldView<World, Ship, Asteroid, Bullet, Program> NAVASSOC model.IFacade<World, Ship, Asteroid, Bullet, Program>
+	c11338:p -> c11351:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 }
 

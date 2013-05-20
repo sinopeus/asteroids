@@ -1,8 +1,8 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="./Asteroid.html" title="world.entity.Asteroid" alt="" coords="16,937,203,1122"/>
-<area shape="rect" id="node1" href="./Asteroid.html" title="&lt;TABLE&gt;" alt="" coords="5,931,213,1127"/>
-<area shape="rect" id="node2_1" href="./Entity.html" title="world.entity.Entity" alt="" coords="89,11,458,773"/>
-<area shape="rect" id="node2" href="./Entity.html" title="&lt;TABLE&gt;" alt="" coords="78,6,469,778"/>
-<area shape="rect" id="node3_2" href="./Bullet.html" title="world.entity.Bullet" alt="" coords="249,833,629,1226"/>
-<area shape="rect" id="node3" href="./Bullet.html" title="&lt;TABLE&gt;" alt="" coords="238,827,639,1231"/>
+<area shape="rect" id="node1_0" href="./Asteroid.html" title="world.entity.Asteroid" alt="" coords="16,969,568,1170"/>
+<area shape="rect" id="node1" href="./Asteroid.html" title="&lt;TABLE&gt;" alt="" coords="5,963,579,1175"/>
+<area shape="rect" id="node2_1" href="./Entity.html" title="world.entity.Entity" alt="" coords="177,11,919,805"/>
+<area shape="rect" id="node2" href="./Entity.html" title="&lt;TABLE&gt;" alt="" coords="166,6,930,810"/>
+<area shape="rect" id="node3_2" href="./Bullet.html" title="world.entity.Bullet" alt="" coords="614,865,994,1274"/>
+<area shape="rect" id="node3" href="./Bullet.html" title="&lt;TABLE&gt;" alt="" coords="603,859,1005,1279"/>
 </map>

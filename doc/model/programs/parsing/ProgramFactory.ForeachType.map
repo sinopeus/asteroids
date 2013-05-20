@@ -1,4 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="./ProgramFactory.ForeachType.html" title="model.programs.parsing.ProgramFactory.ForeachType" alt="" coords="15,11,121,77"/>
-<area shape="rect" id="node1" href="./ProgramFactory.ForeachType.html" title="&lt;TABLE&gt;" alt="" coords="5,6,131,82"/>
+<area shape="rect" id="node1_0" href="./ProgramFactory.ForeachType.html" title="model.programs.parsing.ProgramFactory.ForeachType" alt="" coords="299,625,405,762"/>
+<area shape="rect" id="node1" href="./ProgramFactory.ForeachType.html" title="&lt;TABLE&gt;" alt="" coords="289,619,415,767"/>
+<area shape="rect" id="node2_1" href="./language/statement/ForEach.html" title="model.programs.parsing.language.statement.ForEach" alt="" coords="16,11,688,565"/>
+<area shape="rect" id="node2" href="./language/statement/ForEach.html" title="&lt;TABLE&gt;" alt="" coords="5,6,699,570"/>
 </map>

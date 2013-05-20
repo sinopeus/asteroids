@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.parsing.language.expression.constant.ConstantExpression<T>
-	c7590 [label=<<table title="model.programs.parsing.language.expression.constant.ConstantExpression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../ConstantExpression.html">
+	c7626 [label=<<table title="model.programs.parsing.language.expression.constant.ConstantExpression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../ConstantExpression.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> ConstantExpression&lt;T&gt; </font></td></tr>
 		</table></td></tr>
@@ -18,6 +18,7 @@ digraph G {
 <tr><td align="left" balign="left"> # value : T </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # ConstantExpression(line : int, column : int, value : T) </td></tr>
 <tr><td align="left" balign="left"> + getValue() : T </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsValue(value : T) : boolean </td></tr>
 <tr><td align="left" balign="left"> # setValue(value : T) </td></tr>
@@ -28,7 +29,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="../ConstantExpression.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.constant.literal.DoubleLiteral
-	c7597 [label=<<table title="model.programs.parsing.language.expression.constant.literal.DoubleLiteral" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./DoubleLiteral.html">
+	c7633 [label=<<table title="model.programs.parsing.language.expression.constant.literal.DoubleLiteral" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./DoubleLiteral.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> DoubleLiteral </td></tr>
 		</table></td></tr>
@@ -36,12 +37,13 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + DoubleLiteral(line : int, column : int, value : Double) </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./DoubleLiteral.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.parsing.language.expression.constant.literal.DoubleLiteral extends model.programs.parsing.language.expression.constant.ConstantExpression<java.lang.Double>
-	c7590:p -> c7597:p [dir=back,arrowtail=empty];
+	c7626:p -> c7633:p [dir=back,arrowtail=empty];
 }
 

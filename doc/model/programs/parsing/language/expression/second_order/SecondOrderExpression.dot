@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.parsing.language.expression.Expression
-	c14718 [label=<<table title="model.programs.parsing.language.expression.Expression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../Expression.html">
+	c14770 [label=<<table title="model.programs.parsing.language.expression.Expression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../Expression.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> Expression </font></td></tr>
 		</table></td></tr>
@@ -18,12 +18,13 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # Expression(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> + evaluate() : ConstantExpression&lt;?&gt; </font></td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> + getType() : Type </font></td></tr>
 		</table></td></tr>
 		</table>>, URL="../Expression.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.second_order.SecondOrderExpression
-	c14746 [label=<<table title="model.programs.parsing.language.expression.second_order.SecondOrderExpression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./SecondOrderExpression.html">
+	c14798 [label=<<table title="model.programs.parsing.language.expression.second_order.SecondOrderExpression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./SecondOrderExpression.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> SecondOrderExpression </font></td></tr>
 		</table></td></tr>
@@ -32,6 +33,7 @@ digraph G {
 <tr><td align="left" balign="left"> ~ secondArgument : Expression </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # SecondOrderExpression(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # getFirstArgument() : Expression </td></tr>
 <tr><td align="left" balign="left"> # setFirstArgument(firstArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # getSecondArgument() : Expression </td></tr>
@@ -42,7 +44,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./SecondOrderExpression.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToBoolean
-	c14748 [label=<<table title="model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToBoolean" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./SecondOrderExpressionOfNumbersToBoolean.html">
+	c14800 [label=<<table title="model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToBoolean" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./SecondOrderExpressionOfNumbersToBoolean.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> SecondOrderExpressionOfNumbersToBoolean </font></td></tr>
 		</table></td></tr>
@@ -50,6 +52,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # SecondOrderExpressionOfNumbersToBoolean(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsArgument(argument : Expression) : boolean </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </font></td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
@@ -58,7 +61,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./SecondOrderExpressionOfNumbersToBoolean.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfBooleansToBoolean
-	c14752 [label=<<table title="model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfBooleansToBoolean" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./SecondOrderExpressionOfBooleansToBoolean.html">
+	c14804 [label=<<table title="model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfBooleansToBoolean" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./SecondOrderExpressionOfBooleansToBoolean.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> SecondOrderExpressionOfBooleansToBoolean </font></td></tr>
 		</table></td></tr>
@@ -66,6 +69,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # SecondOrderExpressionOfBooleansToBoolean(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsArgument(argument : Expression) : boolean </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(first : BooleanLiteral, second : BooleanLiteral) : BooleanLiteral </font></td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
@@ -74,7 +78,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./SecondOrderExpressionOfBooleansToBoolean.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToNumber
-	c14756 [label=<<table title="model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToNumber" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./SecondOrderExpressionOfNumbersToNumber.html">
+	c14808 [label=<<table title="model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToNumber" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./SecondOrderExpressionOfNumbersToNumber.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> SecondOrderExpressionOfNumbersToNumber </font></td></tr>
 		</table></td></tr>
@@ -82,6 +86,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # SecondOrderExpressionOfNumbersToNumber(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsArgument(argument : Expression) : boolean </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(first : DoubleLiteral, second : DoubleLiteral) : DoubleLiteral </font></td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
@@ -90,12 +95,16 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./SecondOrderExpressionOfNumbersToNumber.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.parsing.language.expression.second_order.SecondOrderExpression extends model.programs.parsing.language.expression.Expression
-	c14718:p -> c14746:p [dir=back,arrowtail=empty];
+	c14770:p -> c14798:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToBoolean extends model.programs.parsing.language.expression.second_order.SecondOrderExpression
-	c14746:p -> c14748:p [dir=back,arrowtail=empty];
+	c14798:p -> c14800:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfBooleansToBoolean extends model.programs.parsing.language.expression.second_order.SecondOrderExpression
-	c14746:p -> c14752:p [dir=back,arrowtail=empty];
+	c14798:p -> c14804:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToNumber extends model.programs.parsing.language.expression.second_order.SecondOrderExpression
-	c14746:p -> c14756:p [dir=back,arrowtail=empty];
+	c14798:p -> c14808:p [dir=back,arrowtail=empty];
+	// model.programs.parsing.language.expression.second_order.SecondOrderExpression NAVASSOC model.programs.parsing.language.expression.Expression
+	c14798:p -> c14770:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// model.programs.parsing.language.expression.second_order.SecondOrderExpression NAVASSOC model.programs.parsing.language.expression.Expression
+	c14798:p -> c14770:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 }
 

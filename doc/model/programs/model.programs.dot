@@ -18,7 +18,8 @@ digraph G {
 <tr><td align="left" balign="left"> - serialVersionUID : long </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
+<tr><td align="left" balign="left"> + TypeException(line : int, column : int) </td></tr>
+<tr><td align="left" balign="left"> + TypeException(line : int, column : int, message : String) </td></tr>
 		</table></td></tr>
 		</table>>, URL="./TypeException.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.Program
@@ -34,6 +35,7 @@ digraph G {
 <tr><td align="left" balign="left"> - finished : boolean </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Program(globals : Map&lt;String, Type&gt;, statement : Statement) </td></tr>
 <tr><td align="left" balign="left"> + getGlobalTypes() : Map&lt;String, Type&gt; </td></tr>
 <tr><td align="left" balign="left"> # setGlobalTypes(globalTypes : Map&lt;String, Type&gt;) </td></tr>
 <tr><td align="left" balign="left"> + getGlobalValues() : HashMap&lt;String, ConstantExpression&lt;?&gt;&gt; </td></tr>
@@ -63,7 +65,8 @@ digraph G {
 <tr><td align="left" balign="left"> - serialVersionUID : long </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
+<tr><td align="left" balign="left"> + ProgramException(line : int, column : int) </td></tr>
+<tr><td align="left" balign="left"> + ProgramException(line : int, column : int, message : String) </td></tr>
 		</table></td></tr>
 		</table>>, URL="./ProgramException.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.TypeException extends model.programs.ProgramException

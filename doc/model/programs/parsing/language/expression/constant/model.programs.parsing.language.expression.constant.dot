@@ -18,6 +18,7 @@ digraph G {
 <tr><td align="left" balign="left"> # value : T </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # ConstantExpression(line : int, column : int, value : T) </td></tr>
 <tr><td align="left" balign="left"> + getValue() : T </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsValue(value : T) : boolean </td></tr>
 <tr><td align="left" balign="left"> # setValue(value : T) </td></tr>
@@ -36,6 +37,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + False(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"> + evaluate() : BooleanLiteral </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
@@ -51,6 +53,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Self(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsValue(value : Entity) : boolean </td></tr>
 <tr><td align="left" balign="left"> + evaluate() : ConstantExpression&lt;Entity&gt; </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
@@ -67,6 +70,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Null(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsValue(value : Entity) : boolean </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
@@ -82,6 +86,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + GetDirection(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"> + evaluate() : ConstantExpression&lt;Double&gt; </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
@@ -97,6 +102,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + True(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"> + evaluate() : BooleanLiteral </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>

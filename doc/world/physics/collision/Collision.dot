@@ -9,8 +9,43 @@ digraph G {
 	node [fontname="Helvetica",fontsize=10,shape=plaintext];
 	nodesep=0.25;
 	ranksep=0.5;
+	// world.World
+	c6927 [label=<<table title="world.World" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../World.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> World </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> - serialVersionUID : long </td></tr>
+<tr><td align="left" balign="left"> - xSize : double </td></tr>
+<tr><td align="left" balign="left"> - ySize : double </td></tr>
+<tr><td align="left" balign="left"> - gameTime : double </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + World(xSize : double, ySize : double) </td></tr>
+<tr><td align="left" balign="left"> + World() </td></tr>
+<tr><td align="left" balign="left"> + getxSize() : double </td></tr>
+<tr><td align="left" balign="left"> - setXSize(xSize : double) </td></tr>
+<tr><td align="left" balign="left"> + getySize() : double </td></tr>
+<tr><td align="left" balign="left"> - setYSize(ySize : double) </td></tr>
+<tr><td align="left" balign="left"> - canHaveAsSize(size : double) : boolean </td></tr>
+<tr><td align="left" balign="left"> + getGameTime() : double </td></tr>
+<tr><td align="left" balign="left"> # canHaveAsGameTime(gameTime : double) : boolean </td></tr>
+<tr><td align="left" balign="left"> # setGameTime(gameTime : double) </td></tr>
+<tr><td align="left" balign="left"> # advandeGameTime(time : double) </td></tr>
+<tr><td align="left" balign="left"> - canHaveAsEntity(entity : Entity) : boolean </td></tr>
+<tr><td align="left" balign="left"> + add(entity : Entity) : boolean </td></tr>
+<tr><td align="left" balign="left"> + evolve(dt : double, coll : CollisionListener) </td></tr>
+<tr><td align="left" balign="left"> - getNextCollision() : Collision </td></tr>
+<tr><td align="left" balign="left"> - advanceAll(dt : double) </td></tr>
+<tr><td align="left" balign="left"> + isInWorld(position : Position) : boolean </td></tr>
+<tr><td align="left" balign="left"> - isInWorld(entity : Entity) : boolean </td></tr>
+<tr><td align="left" balign="left"> - isSpaceForEntity(entity : Entity) : boolean </td></tr>
+<tr><td align="left" balign="left"> + numberOfEntities() : int </td></tr>
+<tr><td align="left" balign="left"> + toString() : String </td></tr>
+		</table></td></tr>
+		</table>>, URL="../../World.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// world.physics.collision.Collision
-	c6899 [label=<<table title="world.physics.collision.Collision" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Collision.html">
+	c6935 [label=<<table title="world.physics.collision.Collision" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Collision.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> Collision </font></td></tr>
 		</table></td></tr>
@@ -20,6 +55,7 @@ digraph G {
 <tr><td align="left" balign="left"> # timeToCollision : double </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # Collision(world : World) </td></tr>
 <tr><td align="left" balign="left"> + getCollisionPosition() : Position </td></tr>
 <tr><td align="left" balign="left"> + canHaveAsPosition(position : Position) : boolean </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # calculateCollisionPosition() </font></td></tr>
@@ -36,7 +72,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Collision.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// world.physics.collision.BorderCollision
-	c6901 [label=<<table title="world.physics.collision.BorderCollision" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./BorderCollision.html">
+	c6937 [label=<<table title="world.physics.collision.BorderCollision" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./BorderCollision.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> BorderCollision </td></tr>
 		</table></td></tr>
@@ -45,6 +81,7 @@ digraph G {
 <tr><td align="left" balign="left"> - collisionEntity : Entity </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + BorderCollision(world : World, entity : Entity) </td></tr>
 <tr><td align="left" balign="left"> + getCollisionBorder() : Border </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsCollisionBorder(collisionBorder : Border) : boolean </td></tr>
 <tr><td align="left" balign="left"> + setCollisionBorder(collisionBorder : Border) </td></tr>
@@ -62,7 +99,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./BorderCollision.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// world.physics.collision.EntityCollision
-	c6902 [label=<<table title="world.physics.collision.EntityCollision" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./EntityCollision.html">
+	c6938 [label=<<table title="world.physics.collision.EntityCollision" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./EntityCollision.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> EntityCollision </td></tr>
 		</table></td></tr>
@@ -71,6 +108,7 @@ digraph G {
 <tr><td align="left" balign="left"> - entity2 : Entity </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + EntityCollision(world : World, entity1 : Entity, entity2 : Entity) </td></tr>
 <tr><td align="left" balign="left"> + getEntity1() : Entity </td></tr>
 <tr><td align="left" balign="left"> + setEntity1(entity1 : Entity) </td></tr>
 <tr><td align="left" balign="left"> + getEntity2() : Entity </td></tr>
@@ -84,9 +122,33 @@ digraph G {
 <tr><td align="left" balign="left"> + equals(obj : Object) : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="./EntityCollision.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	// world.physics.vector.Position
+	c6945 [label=<<table title="world.physics.vector.Position" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../vector/Position.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> Position </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Position(x : double, y : double) </td></tr>
+<tr><td align="left" balign="left"> + Position(v : Vector) </td></tr>
+<tr><td align="left" balign="left"> + Position() </td></tr>
+<tr><td align="left" balign="left"> + setX(x : double) </td></tr>
+<tr><td align="left" balign="left"> + setY(y : double) </td></tr>
+<tr><td align="left" balign="left"> + getSum(v : Vector) : Position </td></tr>
+<tr><td align="left" balign="left"> + moveBy(v : Velocity, duration : double) </td></tr>
+<tr><td align="left" balign="left"> + getPositionAfterMove(v : Velocity, duration : double) : Position </td></tr>
+<tr><td align="left" balign="left"> + toString() : String </td></tr>
+		</table></td></tr>
+		</table>>, URL="../vector/Position.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//world.physics.collision.BorderCollision extends world.physics.collision.Collision
-	c6899:p -> c6901:p [dir=back,arrowtail=empty];
+	c6935:p -> c6937:p [dir=back,arrowtail=empty];
 	//world.physics.collision.EntityCollision extends world.physics.collision.Collision
-	c6899:p -> c6902:p [dir=back,arrowtail=empty];
+	c6935:p -> c6938:p [dir=back,arrowtail=empty];
+	// world.physics.collision.Collision NAVASSOC world.physics.vector.Position
+	c6935:p -> c6945:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// world.physics.collision.Collision NAVASSOC world.World
+	c6935:p -> c6927:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 }
 

@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.parsing.language.expression.Expression
-	c7089 [label=<<table title="model.programs.parsing.language.expression.Expression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../Expression.html">
+	c7125 [label=<<table title="model.programs.parsing.language.expression.Expression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../Expression.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> Expression </font></td></tr>
 		</table></td></tr>
@@ -18,12 +18,13 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # Expression(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> + evaluate() : ConstantExpression&lt;?&gt; </font></td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> + getType() : Type </font></td></tr>
 		</table></td></tr>
 		</table>>, URL="../Expression.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.constant.ConstantExpression<T>
-	c7090 [label=<<table title="model.programs.parsing.language.expression.constant.ConstantExpression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./ConstantExpression.html">
+	c7126 [label=<<table title="model.programs.parsing.language.expression.constant.ConstantExpression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./ConstantExpression.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> ConstantExpression&lt;T&gt; </font></td></tr>
 		</table></td></tr>
@@ -31,6 +32,7 @@ digraph G {
 <tr><td align="left" balign="left"> # value : T </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # ConstantExpression(line : int, column : int, value : T) </td></tr>
 <tr><td align="left" balign="left"> + getValue() : T </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsValue(value : T) : boolean </td></tr>
 <tr><td align="left" balign="left"> # setValue(value : T) </td></tr>
@@ -41,7 +43,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./ConstantExpression.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.constant.False
-	c7091 [label=<<table title="model.programs.parsing.language.expression.constant.False" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./False.html">
+	c7127 [label=<<table title="model.programs.parsing.language.expression.constant.False" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./False.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> False </td></tr>
 		</table></td></tr>
@@ -49,6 +51,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + False(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"> + evaluate() : BooleanLiteral </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
@@ -56,7 +59,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./False.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.constant.Self
-	c7092 [label=<<table title="model.programs.parsing.language.expression.constant.Self" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Self.html">
+	c7128 [label=<<table title="model.programs.parsing.language.expression.constant.Self" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Self.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Self </td></tr>
 		</table></td></tr>
@@ -64,6 +67,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Self(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsValue(value : Entity) : boolean </td></tr>
 <tr><td align="left" balign="left"> + evaluate() : ConstantExpression&lt;Entity&gt; </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
@@ -72,7 +76,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Self.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.constant.Null
-	c7093 [label=<<table title="model.programs.parsing.language.expression.constant.Null" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Null.html">
+	c7129 [label=<<table title="model.programs.parsing.language.expression.constant.Null" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Null.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Null </td></tr>
 		</table></td></tr>
@@ -80,6 +84,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Null(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsValue(value : Entity) : boolean </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
@@ -87,7 +92,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Null.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.constant.GetDirection
-	c7094 [label=<<table title="model.programs.parsing.language.expression.constant.GetDirection" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GetDirection.html">
+	c7130 [label=<<table title="model.programs.parsing.language.expression.constant.GetDirection" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GetDirection.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> GetDirection </td></tr>
 		</table></td></tr>
@@ -95,6 +100,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + GetDirection(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"> + evaluate() : ConstantExpression&lt;Double&gt; </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
@@ -102,7 +108,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./GetDirection.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.constant.True
-	c7095 [label=<<table title="model.programs.parsing.language.expression.constant.True" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./True.html">
+	c7131 [label=<<table title="model.programs.parsing.language.expression.constant.True" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./True.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> True </td></tr>
 		</table></td></tr>
@@ -110,6 +116,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + True(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"> + evaluate() : BooleanLiteral </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
@@ -117,7 +124,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./True.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.constant.literal.EntityLiteral
-	c7096 [label=<<table title="model.programs.parsing.language.expression.constant.literal.EntityLiteral" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./literal/EntityLiteral.html">
+	c7132 [label=<<table title="model.programs.parsing.language.expression.constant.literal.EntityLiteral" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./literal/EntityLiteral.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> EntityLiteral </td></tr>
 		</table></td></tr>
@@ -125,6 +132,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + EntityLiteral(line : int, column : int, entity : Entity) </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsValue(value : Entity) : boolean </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
@@ -132,7 +140,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./literal/EntityLiteral.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.constant.literal.DoubleLiteral
-	c7097 [label=<<table title="model.programs.parsing.language.expression.constant.literal.DoubleLiteral" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./literal/DoubleLiteral.html">
+	c7133 [label=<<table title="model.programs.parsing.language.expression.constant.literal.DoubleLiteral" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./literal/DoubleLiteral.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> DoubleLiteral </td></tr>
 		</table></td></tr>
@@ -140,13 +148,14 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + DoubleLiteral(line : int, column : int, value : Double) </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./literal/DoubleLiteral.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.constant.literal.BooleanLiteral
-	c7098 [label=<<table title="model.programs.parsing.language.expression.constant.literal.BooleanLiteral" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./literal/BooleanLiteral.html">
+	c7134 [label=<<table title="model.programs.parsing.language.expression.constant.literal.BooleanLiteral" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./literal/BooleanLiteral.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> BooleanLiteral </td></tr>
 		</table></td></tr>
@@ -154,28 +163,29 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + BooleanLiteral(line : int, column : int, value : Boolean) </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./literal/BooleanLiteral.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.parsing.language.expression.constant.ConstantExpression<T> extends model.programs.parsing.language.expression.Expression
-	c7089:p -> c7090:p [dir=back,arrowtail=empty];
+	c7125:p -> c7126:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.expression.constant.False extends model.programs.parsing.language.expression.constant.ConstantExpression<java.lang.Boolean>
-	c7090:p -> c7091:p [dir=back,arrowtail=empty];
+	c7126:p -> c7127:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.expression.constant.Self extends model.programs.parsing.language.expression.constant.ConstantExpression<world.entity.Entity>
-	c7090:p -> c7092:p [dir=back,arrowtail=empty];
+	c7126:p -> c7128:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.expression.constant.Null extends model.programs.parsing.language.expression.constant.ConstantExpression<world.entity.Entity>
-	c7090:p -> c7093:p [dir=back,arrowtail=empty];
+	c7126:p -> c7129:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.expression.constant.GetDirection extends model.programs.parsing.language.expression.constant.ConstantExpression<java.lang.Double>
-	c7090:p -> c7094:p [dir=back,arrowtail=empty];
+	c7126:p -> c7130:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.expression.constant.True extends model.programs.parsing.language.expression.constant.ConstantExpression<java.lang.Boolean>
-	c7090:p -> c7095:p [dir=back,arrowtail=empty];
+	c7126:p -> c7131:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.expression.constant.literal.EntityLiteral extends model.programs.parsing.language.expression.constant.ConstantExpression<world.entity.Entity>
-	c7090:p -> c7096:p [dir=back,arrowtail=empty];
+	c7126:p -> c7132:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.expression.constant.literal.DoubleLiteral extends model.programs.parsing.language.expression.constant.ConstantExpression<java.lang.Double>
-	c7090:p -> c7097:p [dir=back,arrowtail=empty];
+	c7126:p -> c7133:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.expression.constant.literal.BooleanLiteral extends model.programs.parsing.language.expression.constant.ConstantExpression<java.lang.Boolean>
-	c7090:p -> c7098:p [dir=back,arrowtail=empty];
+	c7126:p -> c7134:p [dir=back,arrowtail=empty];
 }
 

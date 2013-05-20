@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.parsing.language.expression.first_order.Sine
-	c15604 [label=<<table title="model.programs.parsing.language.expression.first_order.Sine" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Sine.html">
+	c15658 [label=<<table title="model.programs.parsing.language.expression.first_order.Sine" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Sine.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Sine </td></tr>
 		</table></td></tr>
@@ -18,11 +18,12 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Sine(line : int, column : int, argument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # function(argument : DoubleLiteral) : DoubleLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Sine.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfNumberToNumber
-	c15611 [label=<<table title="model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfNumberToNumber" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FirstOrderExpressionOfNumberToNumber.html">
+	c15665 [label=<<table title="model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfNumberToNumber" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FirstOrderExpressionOfNumberToNumber.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> FirstOrderExpressionOfNumberToNumber </font></td></tr>
 		</table></td></tr>
@@ -30,6 +31,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # FirstOrderExpressionOfNumberToNumber(line : int, column : int, argument : Expression) </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(argument : DoubleLiteral) : DoubleLiteral </font></td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
@@ -37,6 +39,6 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./FirstOrderExpressionOfNumberToNumber.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.parsing.language.expression.first_order.Sine extends model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfNumberToNumber
-	c15611:p -> c15604:p [dir=back,arrowtail=empty];
+	c15665:p -> c15658:p [dir=back,arrowtail=empty];
 }
 

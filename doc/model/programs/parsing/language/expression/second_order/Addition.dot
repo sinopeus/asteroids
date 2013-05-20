@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.parsing.language.expression.second_order.Addition
-	c2963 [label=<<table title="model.programs.parsing.language.expression.second_order.Addition" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Addition.html">
+	c2974 [label=<<table title="model.programs.parsing.language.expression.second_order.Addition" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Addition.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Addition </td></tr>
 		</table></td></tr>
@@ -18,11 +18,12 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Addition(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : DoubleLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Addition.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToNumber
-	c2976 [label=<<table title="model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToNumber" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./SecondOrderExpressionOfNumbersToNumber.html">
+	c2987 [label=<<table title="model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToNumber" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./SecondOrderExpressionOfNumbersToNumber.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> SecondOrderExpressionOfNumbersToNumber </font></td></tr>
 		</table></td></tr>
@@ -30,6 +31,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # SecondOrderExpressionOfNumbersToNumber(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsArgument(argument : Expression) : boolean </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(first : DoubleLiteral, second : DoubleLiteral) : DoubleLiteral </font></td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
@@ -38,6 +40,6 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./SecondOrderExpressionOfNumbersToNumber.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.parsing.language.expression.second_order.Addition extends model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToNumber
-	c2976:p -> c2963:p [dir=back,arrowtail=empty];
+	c2987:p -> c2974:p [dir=back,arrowtail=empty];
 }
 

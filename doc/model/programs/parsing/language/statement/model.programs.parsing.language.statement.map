@@ -1,16 +1,16 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="./Statement.html" title="model.programs.parsing.language.statement.Statement" alt="" coords="1175,11,1359,149"/>
-<area shape="rect" id="node1" href="./Statement.html" title="&lt;TABLE&gt;" alt="" coords="1164,6,1369,154"/>
-<area shape="rect" id="node2_1" href="./ForEach.html" title="model.programs.parsing.language.statement.ForEach" alt="" coords="15,209,435,746"/>
-<area shape="rect" id="node2" href="./ForEach.html" title="&lt;TABLE&gt;" alt="" coords="5,203,446,751"/>
-<area shape="rect" id="node3_2" href="./Assignment.html" title="model.programs.parsing.language.statement.Assignment" alt="" coords="481,353,797,602"/>
-<area shape="rect" id="node3" href="./Assignment.html" title="&lt;TABLE&gt;" alt="" coords="470,347,807,607"/>
-<area shape="rect" id="node4_3" href="./Print.html" title="model.programs.parsing.language.statement.Print" alt="" coords="842,353,1262,602"/>
-<area shape="rect" id="node4" href="./Print.html" title="&lt;TABLE&gt;" alt="" coords="831,347,1273,607"/>
-<area shape="rect" id="node5_4" href="./While.html" title="model.programs.parsing.language.statement.While" alt="" coords="1308,297,1657,658"/>
-<area shape="rect" id="node5" href="./While.html" title="&lt;TABLE&gt;" alt="" coords="1297,291,1668,663"/>
-<area shape="rect" id="node6_5" href="./If.html" title="model.programs.parsing.language.statement.If" alt="" coords="1703,265,2115,690"/>
-<area shape="rect" id="node6" href="./If.html" title="&lt;TABLE&gt;" alt="" coords="1693,259,2126,695"/>
-<area shape="rect" id="node7_6" href="./Sequence.html" title="model.programs.parsing.language.statement.Sequence" alt="" coords="2161,321,2549,634"/>
-<area shape="rect" id="node7" href="./Sequence.html" title="&lt;TABLE&gt;" alt="" coords="2150,315,2559,639"/>
+<area shape="rect" id="node1_0" href="./Statement.html" title="model.programs.parsing.language.statement.Statement" alt="" coords="1815,11,2036,165"/>
+<area shape="rect" id="node1" href="./Statement.html" title="&lt;TABLE&gt;" alt="" coords="1804,6,2047,170"/>
+<area shape="rect" id="node2_1" href="./ForEach.html" title="model.programs.parsing.language.statement.ForEach" alt="" coords="16,225,688,778"/>
+<area shape="rect" id="node2" href="./ForEach.html" title="&lt;TABLE&gt;" alt="" coords="5,219,699,783"/>
+<area shape="rect" id="node3_2" href="./Assignment.html" title="model.programs.parsing.language.statement.Assignment" alt="" coords="734,369,1194,634"/>
+<area shape="rect" id="node3" href="./Assignment.html" title="&lt;TABLE&gt;" alt="" coords="723,363,1205,639"/>
+<area shape="rect" id="node4_3" href="./Print.html" title="model.programs.parsing.language.statement.Print" alt="" coords="1239,369,1659,634"/>
+<area shape="rect" id="node4" href="./Print.html" title="&lt;TABLE&gt;" alt="" coords="1229,363,1670,639"/>
+<area shape="rect" id="node5_4" href="./While.html" title="model.programs.parsing.language.statement.While" alt="" coords="1705,313,2146,690"/>
+<area shape="rect" id="node5" href="./While.html" title="&lt;TABLE&gt;" alt="" coords="1694,307,2157,695"/>
+<area shape="rect" id="node6_5" href="./If.html" title="model.programs.parsing.language.statement.If" alt="" coords="2191,281,2740,722"/>
+<area shape="rect" id="node6" href="./If.html" title="&lt;TABLE&gt;" alt="" coords="2180,275,2751,727"/>
+<area shape="rect" id="node7_6" href="./Sequence.html" title="model.programs.parsing.language.statement.Sequence" alt="" coords="2786,337,3179,666"/>
+<area shape="rect" id="node7" href="./Sequence.html" title="&lt;TABLE&gt;" alt="" coords="2775,331,3190,671"/>
 </map>

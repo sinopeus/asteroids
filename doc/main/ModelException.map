@@ -1,6 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="./ModelException.html" title="main.ModelException" alt="" coords="43,150,157,175"/>
-<area shape="rect" id="node1" href="./ModelException.html" title="&lt;TABLE&gt;" alt="" coords="33,139,167,187"/>
-<area shape="rect" id="node2_1" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/RuntimeException.html" title="java.lang.RuntimeException" alt="" coords="16,11,184,85"/>
-<area shape="rect" id="node2" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/RuntimeException.html" title="&lt;TABLE&gt;" alt="" coords="5,6,195,90"/>
+<area shape="rect" id="node1_0" href="./ModelException.html" title="main.ModelException" alt="" coords="144,209,389,298"/>
+<area shape="rect" id="node1" href="./ModelException.html" title="&lt;TABLE&gt;" alt="" coords="133,203,400,303"/>
+<area shape="rect" id="node2_1" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/RuntimeException.html" title="java.lang.RuntimeException" alt="" coords="15,11,518,149"/>
+<area shape="rect" id="node2" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/RuntimeException.html" title="&lt;TABLE&gt;" alt="" coords="5,6,529,154"/>
 </map>

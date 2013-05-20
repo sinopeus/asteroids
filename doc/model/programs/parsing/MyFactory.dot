@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.parsing.ProgramFactory<E, S, T>
-	c12689 [label=<<table title="model.programs.parsing.ProgramFactory" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ProgramFactory.html">
+	c12736 [label=<<table title="model.programs.parsing.ProgramFactory" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ProgramFactory.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> ProgramFactory&lt;E, S, T&gt; </td></tr>
@@ -63,7 +63,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./ProgramFactory.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.MyFactory
-	c12692 [label=<<table title="model.programs.parsing.MyFactory" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./MyFactory.html">
+	c12739 [label=<<table title="model.programs.parsing.MyFactory" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./MyFactory.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> MyFactory </td></tr>
 		</table></td></tr>
@@ -71,6 +71,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + MyFactory() </td></tr>
 <tr><td align="left" balign="left"> + createDoubleLiteral(line : int, column : int, d : double) : Expression </td></tr>
 <tr><td align="left" balign="left"> + createBooleanLiteral(line : int, column : int, b : boolean) : Expression </td></tr>
 <tr><td align="left" balign="left"> + createAnd(line : int, column : int, e1 : Expression, e2 : Expression) : Expression </td></tr>
@@ -115,6 +116,6 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./MyFactory.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.parsing.MyFactory implements model.programs.parsing.ProgramFactory<E, S, T>
-	c12689:p -> c12692:p [dir=back,arrowtail=empty,style=dashed];
+	c12736:p -> c12739:p [dir=back,arrowtail=empty,style=dashed];
 }
 

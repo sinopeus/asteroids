@@ -18,6 +18,7 @@ digraph G {
 <tr><td align="left" balign="left"> - finished : boolean </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # Statement(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"> + isFinished() : boolean </td></tr>
 <tr><td align="left" balign="left"> + unfinish() </td></tr>
 <tr><td align="left" balign="left"> # finish() </td></tr>
@@ -39,6 +40,7 @@ digraph G {
 <tr><td align="left" balign="left"> - AtStartOfIteration : boolean </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + ForEach(line : int, column : int, type : ProgramFactory.ForeachType, variableName : String, body : Statement) </td></tr>
 <tr><td align="left" balign="left"> # getType() : ProgramFactory.ForeachType </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsType(type : ProgramFactory.ForeachType) : boolean </td></tr>
 <tr><td align="left" balign="left"> # setType(type : ProgramFactory.ForeachType) </td></tr>
@@ -76,6 +78,7 @@ digraph G {
 <tr><td align="left" balign="left"> ~ value : Expression </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Assignment(line : int, column : int, variable : Variable, value : Expression) </td></tr>
 <tr><td align="left" balign="left"> # getVariable() : Variable </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsVariable(variable : Variable) : boolean </td></tr>
 <tr><td align="left" balign="left"> # setVariable(variable : Variable) </td></tr>
@@ -99,6 +102,7 @@ digraph G {
 <tr><td align="left" balign="left"> - text : String </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Print(line : int, column : int, textExpression : Expression) </td></tr>
 <tr><td align="left" balign="left"> # getTextExpression() : Expression </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsTextExpression(textExpression : Expression) : boolean </td></tr>
 <tr><td align="left" balign="left"> # setTextExpression(textExpression : Expression) </td></tr>
@@ -124,6 +128,7 @@ digraph G {
 <tr><td align="left" balign="left"> - checked : boolean </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + While(line : int, column : int, condition : Expression, body : Statement) </td></tr>
 <tr><td align="left" balign="left"> + getCondition() : Expression </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsCondition(condition : Expression) : boolean </td></tr>
 <tr><td align="left" balign="left"> # setCondition(condition : Expression) </td></tr>
@@ -155,6 +160,7 @@ digraph G {
 <tr><td align="left" balign="left"> ~ otherwise : Statement </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + If(line : int, column : int, condition : Expression, then : Statement, otherwise : Statement) </td></tr>
 <tr><td align="left" balign="left"> # getResultOfCondition() : boolean </td></tr>
 <tr><td align="left" balign="left"> # isChecked() : boolean </td></tr>
 <tr><td align="left" balign="left"> # checkCondition() </td></tr>
@@ -186,6 +192,7 @@ digraph G {
 <tr><td align="left" balign="left"> - selectedIndex : int </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Sequence(line : int, column : int, sequence : List&lt;Statement&gt;) </td></tr>
 <tr><td align="left" balign="left"> # getSequence() : List&lt;Statement&gt; </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsSequence(sequence : List&lt;Statement&gt;) : boolean </td></tr>
 <tr><td align="left" balign="left"> # setSequence(sequence : List&lt;Statement&gt;) </td></tr>
@@ -215,5 +222,13 @@ digraph G {
 	c1466:p -> c1471:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.statement.Sequence extends model.programs.parsing.language.statement.Statement
 	c1466:p -> c1472:p [dir=back,arrowtail=empty];
+	// model.programs.parsing.language.statement.ForEach NAVASSOC model.programs.parsing.language.statement.Statement
+	c1467:p -> c1466:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// model.programs.parsing.language.statement.While NAVASSOC model.programs.parsing.language.statement.Statement
+	c1470:p -> c1466:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// model.programs.parsing.language.statement.If NAVASSOC model.programs.parsing.language.statement.Statement
+	c1471:p -> c1466:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// model.programs.parsing.language.statement.If NAVASSOC model.programs.parsing.language.statement.Statement
+	c1471:p -> c1466:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 }
 

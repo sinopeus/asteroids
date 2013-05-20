@@ -1,6 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="./CircleShape.html" title="world.physics.geometry.CircleShape" alt="" coords="16,43,307,181"/>
-<area shape="rect" id="node1" href="./CircleShape.html" title="&lt;TABLE&gt;" alt="" coords="5,38,317,186"/>
-<area shape="rect" id="node2_1" href="./Angle.html" title="world.physics.geometry.Angle" alt="" coords="353,11,631,213"/>
-<area shape="rect" id="node2" href="./Angle.html" title="&lt;TABLE&gt;" alt="" coords="342,6,642,218"/>
+<area shape="rect" id="node1_0" href="./CircleShape.html" title="world.physics.geometry.CircleShape" alt="" coords="16,43,307,213"/>
+<area shape="rect" id="node1" href="./CircleShape.html" title="&lt;TABLE&gt;" alt="" coords="5,38,317,218"/>
+<area shape="rect" id="node2_1" href="./Angle.html" title="world.physics.geometry.Angle" alt="" coords="353,11,631,245"/>
+<area shape="rect" id="node2" href="./Angle.html" title="&lt;TABLE&gt;" alt="" coords="342,6,642,250"/>
 </map>

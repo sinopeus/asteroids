@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// main.Sound
-	c15793 [label=<<table title="main.Sound" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Sound.html">
+	c15847 [label=<<table title="main.Sound" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Sound.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> Sound </td></tr>
@@ -25,8 +25,35 @@ digraph G {
 <tr><td align="left" balign="left"> + start() </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Sound.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	// main.Asteroids<World, Ship, Asteroid, Bullet, Program>
+	c15848 [label=<<table title="main.Asteroids" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Asteroids.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> Asteroids&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> - menu : AsteroidsMenu&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
+<tr><td align="left" balign="left"> - view : WorldView&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
+<tr><td align="left" balign="left"> - facade : IFacade&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
+<tr><td align="left" balign="left"> - width : int </td></tr>
+<tr><td align="left" balign="left"> - height : int </td></tr>
+<tr><td align="left" balign="left"> - sound : Sound </td></tr>
+<tr><td align="left" balign="left"> - aiProgramUrl : URL </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Asteroids(facade : IFacade&lt;World, Ship, Asteroid, Bullet, Program&gt;, width : int, height : int, undecorated : boolean, sound : Sound, aiProgramUrl : URL) </td></tr>
+<tr><td align="left" balign="left"> + getWidth() : int </td></tr>
+<tr><td align="left" balign="left"> + getHeight() : int </td></tr>
+<tr><td align="left" balign="left"> + getSound() : Sound </td></tr>
+<tr><td align="left" balign="left"> + getFacade() : IFacade&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
+<tr><td align="left" balign="left"> + start() </td></tr>
+<tr><td align="left" balign="left"> + startSinglePlayerGame() </td></tr>
+<tr><td align="left" balign="left"> + startMultiPlayerGame(vsAI : boolean) </td></tr>
+<tr><td align="left" balign="left"> + showMenu() </td></tr>
+<tr><td align="left" balign="left"> + main(args : String[]) </td></tr>
+		</table></td></tr>
+		</table>>, URL="./Asteroids.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// main.NullSound
-	c15800 [label=<<table title="main.NullSound" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./NullSound.html">
+	c15854 [label=<<table title="main.NullSound" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./NullSound.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> NullSound </td></tr>
 		</table></td></tr>
@@ -34,6 +61,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + NullSound() </td></tr>
 <tr><td align="left" balign="left"> + play(name : String) </td></tr>
 <tr><td align="left" balign="left"> + stop(name : String) </td></tr>
 <tr><td align="left" balign="left"> + loop(name : String) </td></tr>
@@ -41,7 +69,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./NullSound.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// main.FileSoundManager
-	c15802 [label=<<table title="main.FileSoundManager" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FileSoundManager.html">
+	c15856 [label=<<table title="main.FileSoundManager" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FileSoundManager.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> FileSoundManager </td></tr>
 		</table></td></tr>
@@ -50,6 +78,7 @@ digraph G {
 <tr><td align="left" balign="left"> ~ requests : Queue&lt;FileSoundManager.Request&gt; </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + FileSoundManager(path : String) </td></tr>
 <tr><td align="left" balign="left"> - loadSounds(path : String) </td></tr>
 <tr><td align="left" balign="left"> + play(name : String) </td></tr>
 <tr><td align="left" balign="left"> + loop(name : String) </td></tr>
@@ -60,8 +89,10 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./FileSoundManager.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//main.NullSound implements main.Sound
-	c15793:p -> c15800:p [dir=back,arrowtail=empty,style=dashed];
+	c15847:p -> c15854:p [dir=back,arrowtail=empty,style=dashed];
 	//main.FileSoundManager implements main.Sound
-	c15793:p -> c15802:p [dir=back,arrowtail=empty,style=dashed];
+	c15847:p -> c15856:p [dir=back,arrowtail=empty,style=dashed];
+	// main.Asteroids<World, Ship, Asteroid, Bullet, Program> NAVASSOC main.Sound
+	c15848:p -> c15847:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 }
 

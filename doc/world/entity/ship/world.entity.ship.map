@@ -1,6 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="./Thruster.html" title="world.entity.ship.Thruster" alt="" coords="15,51,417,429"/>
-<area shape="rect" id="node1" href="./Thruster.html" title="&lt;TABLE&gt;" alt="" coords="4,46,428,434"/>
-<area shape="rect" id="node2_1" href="./Ship.html" title="world.entity.ship.Ship" alt="" coords="462,11,829,469"/>
-<area shape="rect" id="node2" href="./Ship.html" title="&lt;TABLE&gt;" alt="" coords="451,6,839,474"/>
+<area shape="rect" id="node1_0" href="./Thruster.html" title="world.entity.ship.Thruster" alt="" coords="181,11,584,405"/>
+<area shape="rect" id="node1" href="./Thruster.html" title="&lt;TABLE&gt;" alt="" coords="171,6,595,410"/>
+<area shape="rect" id="node2_1" href="./Ship.html" title="world.entity.ship.Ship" alt="" coords="15,465,750,954"/>
+<area shape="rect" id="node2" href="./Ship.html" title="&lt;TABLE&gt;" alt="" coords="5,459,761,959"/>
 </map>

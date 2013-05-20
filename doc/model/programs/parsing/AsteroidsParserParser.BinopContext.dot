@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.parsing.AsteroidsParserParser.BinopContext
-	c4697 [label=<<table title="model.programs.parsing.AsteroidsParserParser.BinopContext" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./AsteroidsParserParser.BinopContext.html">
+	c4729 [label=<<table title="model.programs.parsing.AsteroidsParserParser.BinopContext" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./AsteroidsParserParser.BinopContext.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> BinopContext </td></tr>
 		</table></td></tr>
@@ -18,6 +18,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + AsteroidsParserParser.BinopContext(parent : ParserRuleContext, invokingState : int) </td></tr>
 <tr><td align="left" balign="left"> + GT() : TerminalNode </td></tr>
 <tr><td align="left" balign="left"> + LT() : TerminalNode </td></tr>
 <tr><td align="left" balign="left"> + SUB() : TerminalNode </td></tr>
@@ -36,9 +37,9 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./AsteroidsParserParser.BinopContext.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.parsing.AsteroidsParserParser.BinopContext extends ParserRuleContext
-	c4775:p -> c4697:p [dir=back,arrowtail=empty];
+	c4807:p -> c4729:p [dir=back,arrowtail=empty];
 	// ParserRuleContext
-	c4775[label=<<table title="ParserRuleContext" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api//ParserRuleContext.html">
+	c4807[label=<<table title="ParserRuleContext" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api//ParserRuleContext.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> ParserRuleContext </td></tr>
 		</table></td></tr>

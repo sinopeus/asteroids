@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.parsing.AsteroidsParserParser.EntityspecContext
-	c5074 [label=<<table title="model.programs.parsing.AsteroidsParserParser.EntityspecContext" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./AsteroidsParserParser.EntityspecContext.html">
+	c5106 [label=<<table title="model.programs.parsing.AsteroidsParserParser.EntityspecContext" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./AsteroidsParserParser.EntityspecContext.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> EntityspecContext </td></tr>
 		</table></td></tr>
@@ -18,6 +18,7 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + AsteroidsParserParser.EntityspecContext(parent : ParserRuleContext, invokingState : int) </td></tr>
 <tr><td align="left" balign="left"> + ANY() : TerminalNode </td></tr>
 <tr><td align="left" balign="left"> + BULLET() : TerminalNode </td></tr>
 <tr><td align="left" balign="left"> + SHIP() : TerminalNode </td></tr>
@@ -28,9 +29,9 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./AsteroidsParserParser.EntityspecContext.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.parsing.AsteroidsParserParser.EntityspecContext extends ParserRuleContext
-	c5153:p -> c5074:p [dir=back,arrowtail=empty];
+	c5185:p -> c5106:p [dir=back,arrowtail=empty];
 	// ParserRuleContext
-	c5153[label=<<table title="ParserRuleContext" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api//ParserRuleContext.html">
+	c5185[label=<<table title="ParserRuleContext" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api//ParserRuleContext.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> ParserRuleContext </td></tr>
 		</table></td></tr>

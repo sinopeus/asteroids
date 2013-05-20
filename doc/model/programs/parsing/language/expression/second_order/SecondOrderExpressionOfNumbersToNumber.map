@@ -1,14 +1,14 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="./Addition.html" title="model.programs.parsing.language.expression.second_order.Addition" alt="" coords="16,454,437,527"/>
-<area shape="rect" id="node1" href="./Addition.html" title="&lt;TABLE&gt;" alt="" coords="5,449,448,533"/>
-<area shape="rect" id="node2_1" href="./SecondOrderExpression.html" title="model.programs.parsing.language.expression.second_order.SecondOrderExpression" alt="" coords="751,11,1103,197"/>
-<area shape="rect" id="node2" href="./SecondOrderExpression.html" title="&lt;TABLE&gt;" alt="" coords="740,6,1113,202"/>
-<area shape="rect" id="node6_2" href="./SecondOrderExpressionOfNumbersToNumber.html" title="model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToNumber" alt="" coords="716,257,1137,394"/>
-<area shape="rect" id="node6" href="./SecondOrderExpressionOfNumbersToNumber.html" title="&lt;TABLE&gt;" alt="" coords="705,251,1148,399"/>
-<area shape="rect" id="node3_3" href="./Multiplication.html" title="model.programs.parsing.language.expression.second_order.Multiplication" alt="" coords="483,454,904,527"/>
-<area shape="rect" id="node3" href="./Multiplication.html" title="&lt;TABLE&gt;" alt="" coords="472,449,915,533"/>
-<area shape="rect" id="node4_4" href="./Subtraction.html" title="model.programs.parsing.language.expression.second_order.Subtraction" alt="" coords="949,454,1371,527"/>
-<area shape="rect" id="node4" href="./Subtraction.html" title="&lt;TABLE&gt;" alt="" coords="939,449,1381,533"/>
-<area shape="rect" id="node5_5" href="./Division.html" title="model.programs.parsing.language.expression.second_order.Division" alt="" coords="1416,454,1837,527"/>
-<area shape="rect" id="node5" href="./Division.html" title="&lt;TABLE&gt;" alt="" coords="1405,449,1848,533"/>
+<area shape="rect" id="node1_0" href="./Addition.html" title="model.programs.parsing.language.expression.second_order.Addition" alt="" coords="15,486,571,575"/>
+<area shape="rect" id="node1" href="./Addition.html" title="&lt;TABLE&gt;" alt="" coords="5,481,582,581"/>
+<area shape="rect" id="node2_1" href="./SecondOrderExpression.html" title="model.programs.parsing.language.expression.second_order.SecondOrderExpression" alt="" coords="897,11,1546,213"/>
+<area shape="rect" id="node2" href="./SecondOrderExpression.html" title="&lt;TABLE&gt;" alt="" coords="886,6,1557,218"/>
+<area shape="rect" id="node6_2" href="./SecondOrderExpressionOfNumbersToNumber.html" title="model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToNumber" alt="" coords="833,273,1610,426"/>
+<area shape="rect" id="node6" href="./SecondOrderExpressionOfNumbersToNumber.html" title="&lt;TABLE&gt;" alt="" coords="822,267,1621,431"/>
+<area shape="rect" id="node3_3" href="./Multiplication.html" title="model.programs.parsing.language.expression.second_order.Multiplication" alt="" coords="617,486,1202,575"/>
+<area shape="rect" id="node3" href="./Multiplication.html" title="&lt;TABLE&gt;" alt="" coords="606,481,1213,581"/>
+<area shape="rect" id="node4_4" href="./Subtraction.html" title="model.programs.parsing.language.expression.second_order.Subtraction" alt="" coords="1247,486,1822,575"/>
+<area shape="rect" id="node4" href="./Subtraction.html" title="&lt;TABLE&gt;" alt="" coords="1237,481,1833,581"/>
+<area shape="rect" id="node5_5" href="./Division.html" title="model.programs.parsing.language.expression.second_order.Division" alt="" coords="1867,486,2423,575"/>
+<area shape="rect" id="node5" href="./Division.html" title="&lt;TABLE&gt;" alt="" coords="1857,481,2434,581"/>
 </map>
