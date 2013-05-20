@@ -5,6 +5,10 @@ model.programs
 model.programs.parsing
 model.programs.parsing.language
 model.programs.parsing.language.expression
+model.programs.parsing.language.expression.constant
+model.programs.parsing.language.expression.constant.literal
+model.programs.parsing.language.expression.first_order
+model.programs.parsing.language.expression.second_order
 model.programs.parsing.language.statement
 model.programs.parsing.language.statement.action
 world
