@@ -4,11 +4,13 @@ import model.programs.ProgramException;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.constant.literal.BooleanLiteral;
 import model.programs.parsing.language.expression.constant.literal.DoubleLiteral;
+import model.programs.parsing.language.expression.constant.literal.EntityLiteral;
 import Utilities.Util;
 
-public class Equals extends SecondOrderExpressionOfNumbersToBoolean
+public class Equals extends SecondOrderExpressionOfEntitiesOrDoublesToBoolean
 {
-	public Equals (int line, int column, Expression firstArgument, Expression secondArgument) throws ProgramException
+
+	public Equals (int line, int column, Expression firstArgument, Expression secondArgument) throws IllegalArgumentException
 	{
 		super(line, column, firstArgument, secondArgument);
 	}
@@ -16,15 +18,12 @@ public class Equals extends SecondOrderExpressionOfNumbersToBoolean
 	@Override
 	protected BooleanLiteral function (DoubleLiteral first, DoubleLiteral second)
 	{
-		try
-		{
-			return new BooleanLiteral(getLine(), getColumn(), (Util.fuzzyEquals(first.getValue(), second.getValue())));
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
 		return null;
 	}
-	
 
+	@Override
+	protected BooleanLiteral function (EntityLiteral first, EntityLiteral second)
+	{
+		return null;
+	}
 }

@@ -7,7 +7,7 @@ import model.programs.parsing.language.expression.constant.literal.EntityLiteral
 
 public class GetRadius extends FirstOrderExpressionOfEntityToNumber
 {
-	public GetRadius (int line, int column, Expression argument) throws ProgramException
+	public GetRadius (int line, int column, Expression argument) throws IllegalArgumentException
 	{
 		super(line, column, argument);
 	}
@@ -15,13 +15,8 @@ public class GetRadius extends FirstOrderExpressionOfEntityToNumber
 	@Override
 	protected DoubleLiteral function (EntityLiteral argument)
 	{
-		try
-		{
+
 			return new DoubleLiteral(getLine(), getColumn(), argument.getValue().getShape().getRadius());
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+
 	}
 }

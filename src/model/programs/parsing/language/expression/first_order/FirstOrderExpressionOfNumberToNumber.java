@@ -7,7 +7,7 @@ import model.programs.parsing.language.expression.constant.literal.DoubleLiteral
 
 public abstract class FirstOrderExpressionOfNumberToNumber extends FirstOrderExpression
 {
-	protected FirstOrderExpressionOfNumberToNumber (int line, int column, Expression argument) throws ProgramException
+	protected FirstOrderExpressionOfNumberToNumber (int line, int column, Expression argument) throws IllegalArgumentException
 	{
 		super(line, column, argument);
 	}

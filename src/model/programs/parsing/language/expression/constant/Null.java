@@ -6,19 +6,13 @@ import world.entity.Entity;
 
 public class Null extends ConstantExpression <Entity>
 {
-	public Null (int line, int column) throws ProgramException
+	public Null (int line, int column) throws IllegalArgumentException
 	{
 		super(line, column, null);
 	}
 
 	@Override
 	protected boolean canHaveAsValue (Entity value)
-	{
-		return true;
-	}
-	
-	@Override
-	public boolean isTypeSafe ()
 	{
 		return true;
 	}

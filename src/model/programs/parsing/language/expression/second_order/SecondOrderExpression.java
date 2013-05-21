@@ -1,12 +1,12 @@
 package model.programs.parsing.language.expression.second_order;
 
+import model.IFacade.TypeCheckOutcome;
 import model.programs.Program;
-import model.programs.ProgramException;
 import model.programs.parsing.language.expression.Expression;
 
 public abstract class SecondOrderExpression extends Expression
 {
-	protected SecondOrderExpression (int line, int column, Expression firstArgument, Expression secondArgument) throws ProgramException
+	protected SecondOrderExpression (int line, int column, Expression firstArgument, Expression secondArgument) throws IllegalArgumentException
 	{
 		super(line, column);
 		setFirstArgument(firstArgument);
@@ -43,15 +43,25 @@ public abstract class SecondOrderExpression extends Expression
 	{
 		return argument != null;
 	}
-	
+
 	@Override
-	public void setParentProgram (Program parentProgram) throws ProgramException
+	public void setParentProgram (Program parentProgram) throws IllegalArgumentException
 	{
 		super.setParentProgram(parentProgram);
 		getFirstArgument().setParentProgram(parentProgram);
 		getSecondArgument().setParentProgram(parentProgram);
 	}
-	
+
+	@Override
+	public TypeCheckOutcome isTypeSafe ()
+	{
+		TypeCheckOutcome firstArgumentIsTypeSafe = getFirstArgument().isTypeSafe();
+		if (!firstArgumentIsTypeSafe.isSuccessful()) return TypeCheckOutcome.failure("The first argument of the second order expression of booleans to a boolean at " + getLine() + ", " + getColumn() + " is not type safe.");
+		TypeCheckOutcome secondArgumentIsTypeSafe = getSecondArgument().isTypeSafe();
+		if (!secondArgumentIsTypeSafe.isSuccessful()) return TypeCheckOutcome.failure("The second argument of the second order expression of booleans to a boolean at " + getLine() + ", " + getColumn() + " is not type safe.");
+		return TypeCheckOutcome.success();
+	}
+
 	@Override
 	public String toString ()
 	{

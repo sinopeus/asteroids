@@ -32,7 +32,7 @@ import world.entity.ship.Ship;
 public class ProgramTest
 {
 	@Before
-	public void setUpMutableTestFixture_Program () throws ProgramException, RecognitionException
+	public void setUpMutableTestFixture_Program () throws IllegalArgumentException, RecognitionException
 	{
 		testGlobals = new HashMap <String, Type>();
 		testGlobals.put("a", Type.TYPE_BOOLEAN);
@@ -53,7 +53,7 @@ public class ProgramTest
 	private static Program				testProgram;
 
 	@Test
-	public void constructorTest_perfectParams () throws ProgramException, RecognitionException
+	public void constructorTest_perfectParams () throws IllegalArgumentException, RecognitionException
 	{
 		Map <String, Type> g = new HashMap <String, Type>();
 		g.put("a", Type.TYPE_BOOLEAN);
@@ -72,7 +72,7 @@ public class ProgramTest
 	}
 
 	@Test (expected = RecognitionException.class)
-	public void constructorTest_nullMap () throws ProgramException, RecognitionException
+	public void constructorTest_nullMap () throws IllegalArgumentException, RecognitionException
 	{
 		Statement s = new Fire(0, 0);
 		Program program = new Program(null, s);
@@ -132,7 +132,7 @@ public class ProgramTest
 	}
 
 	@Test
-	public void canHaveAsStatementTest () throws ProgramException
+	public void canHaveAsStatementTest () throws IllegalArgumentException
 	{
 		Statement s = new Fire(0, 0);
 		assertTrue(testProgram.canHaveAsStatement(s));
@@ -140,7 +140,7 @@ public class ProgramTest
 	}
 
 	@Test
-	public void setStatementTest_perfectParams () throws ProgramException, RecognitionException
+	public void setStatementTest_perfectParams () throws IllegalArgumentException, RecognitionException
 	{
 		Statement s = new Fire(0, 0);
 		testProgram.setStatement(s);
@@ -177,7 +177,7 @@ public class ProgramTest
 	}
 
 	@Test
-	public void getVariableNamedTest_perfectParams () throws ProgramException
+	public void getVariableNamedTest_perfectParams () throws IllegalArgumentException
 	{
 		assertEquals(new BooleanLiteral(0, 0, false), testProgram.getVariableNamed("a"));
 	}

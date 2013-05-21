@@ -8,7 +8,7 @@ import model.programs.parsing.language.expression.constant.literal.EntityLiteral
 
 public abstract class FirstOrderExpressionOfEntityToNumber extends FirstOrderExpression
 {
-	protected FirstOrderExpressionOfEntityToNumber (int line, int column, Expression argument) throws ProgramException
+	protected FirstOrderExpressionOfEntityToNumber (int line, int column, Expression argument) throws IllegalArgumentException
 	{
 		super(line, column, argument);
 	}

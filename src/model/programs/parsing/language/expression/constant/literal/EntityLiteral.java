@@ -7,19 +7,13 @@ import world.entity.Entity;
 
 public class EntityLiteral extends ConstantExpression <Entity>
 {
-	public EntityLiteral (int line, int column, Entity entity) throws ProgramException
+	public EntityLiteral (int line, int column, Entity entity) throws IllegalArgumentException
 	{
 		super(line, column, entity);
 	}
 
 	@Override
 	protected boolean canHaveAsValue (Entity value)
-	{
-		return true;
-	}
-	
-	@Override
-	public boolean isTypeSafe ()
 	{
 		return true;
 	}

@@ -6,7 +6,7 @@ import model.programs.parsing.language.expression.constant.literal.BooleanLitera
 
 public class True extends ConstantExpression <Boolean>
 {
-	public True (int line, int column) throws ProgramException
+	public True (int line, int column) throws IllegalArgumentException
 	{
 		super(line, column, true);
 	}
@@ -14,21 +14,7 @@ public class True extends ConstantExpression <Boolean>
 	@Override
 	public BooleanLiteral evaluate ()
 	{
-		BooleanLiteral bl = null;
-		try
-		{
-			bl = new BooleanLiteral(getLine(), getColumn(), true);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace(); //THSS SHOULD NEVER EVER HAPPEN.
-		}
-		return bl;
-	}
-
-	@Override
-	public boolean isTypeSafe ()
-	{
-		return true;
+		return new BooleanLiteral(getLine(), getColumn(), true);
 	}
 
 	@Override

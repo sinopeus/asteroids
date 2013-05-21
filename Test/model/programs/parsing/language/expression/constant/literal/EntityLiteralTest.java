@@ -19,7 +19,7 @@ import Utilities.Util;
 public class EntityLiteralTest
 {
 	@Before
-	public void setUpImmutableTestFixture_DoubleLiteral () throws ProgramException
+	public void setUpImmutableTestFixture_DoubleLiteral () throws IllegalArgumentException
 	{
 		testEntity = new Asteroid(new Direction(), new Position(), new Velocity(), new CircleShape(50));
 		testLiteral = new EntityLiteral(0, 0, testEntity);
@@ -29,7 +29,7 @@ public class EntityLiteralTest
 	private static Asteroid			testEntity;
 
 	@Test
-	public void constructorTest_PerfectParameters () throws ProgramException
+	public void constructorTest_PerfectParameters () throws IllegalArgumentException
 	{
 		EntityLiteral el = new EntityLiteral(1, 2, testEntity);
 		assertTrue(Util.fuzzyEquals(el.getLine(), 1));
@@ -38,13 +38,13 @@ public class EntityLiteralTest
 	}
 
 	@Test (expected = ProgramException.class)
-	public void constructorTest_IllegalLine () throws ProgramException
+	public void constructorTest_IllegalLine () throws IllegalArgumentException
 	{
 		new EntityLiteral(-1, 2, testEntity);
 	}
 
 	@Test (expected = ProgramException.class)
-	public void constructorTest_IllegalColumn () throws ProgramException
+	public void constructorTest_IllegalColumn () throws IllegalArgumentException
 	{
 		new EntityLiteral(1, -2, testEntity);
 	}

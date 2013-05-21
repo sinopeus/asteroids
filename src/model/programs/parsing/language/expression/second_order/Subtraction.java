@@ -6,7 +6,7 @@ import model.programs.parsing.language.expression.constant.literal.DoubleLiteral
 
 public class Subtraction extends SecondOrderExpressionOfNumbersToNumber
 {
-	public Subtraction (int line, int column, Expression firstArgument, Expression secondArgument) throws ProgramException
+	public Subtraction (int line, int column, Expression firstArgument, Expression secondArgument) throws IllegalArgumentException
 	{
 		super(line, column, firstArgument, secondArgument);
 	}
@@ -14,14 +14,9 @@ public class Subtraction extends SecondOrderExpressionOfNumbersToNumber
 	@Override
 	protected DoubleLiteral function (DoubleLiteral first, DoubleLiteral second)
 	{
-		try
-		{
+
 			return new DoubleLiteral(getLine(), getColumn(), (first.getValue() - second.getValue()));
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+
 	}
 
 }

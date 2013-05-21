@@ -1,11 +1,14 @@
 package model.programs.parsing.language.expression.constant;
 
+import java.net.Proxy.Type;
+
+import model.IFacade.TypeCheckOutcome;
 import model.programs.ProgramException;
 import model.programs.parsing.language.expression.Expression;
 
 public abstract class ConstantExpression <T> extends Expression
 {
-	protected ConstantExpression (int line, int column, T value) throws ProgramException
+	protected ConstantExpression (int line, int column, T value) throws IllegalArgumentException
 	{
 		super(line, column);
 		setValue(value);
@@ -23,9 +26,9 @@ public abstract class ConstantExpression <T> extends Expression
 		return (value != null);
 	}
 
-	protected void setValue (T value) throws ProgramException
+	protected void setValue (T value) throws IllegalArgumentException
 	{
-		if (!canHaveAsValue(value)) throw new ProgramException(getLine(), getColumn(), "Invalid value: " + value + " for literal.");
+		if (!canHaveAsValue(value)) throw new IllegalArgumentException("Invalid value: " + value + " for literal.");
 		this.value = value;
 	}
 
@@ -35,6 +38,12 @@ public abstract class ConstantExpression <T> extends Expression
 		return this;
 	}
 
+	@Override
+	public TypeCheckOutcome isTypeSafe ()
+	{
+		return TypeCheckOutcome.success();
+	}
+	
 	@Override
 	public String toString ()
 	{

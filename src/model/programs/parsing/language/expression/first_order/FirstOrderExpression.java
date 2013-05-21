@@ -6,7 +6,7 @@ import model.programs.parsing.language.expression.Expression;
 
 public abstract class FirstOrderExpression extends Expression
 {
-	protected FirstOrderExpression (int line, int column, Expression argument) throws ProgramException
+	protected FirstOrderExpression (int line, int column, Expression argument) throws IllegalArgumentException
 	{
 		super(line, column);
 		setArgument(argument);
@@ -31,7 +31,7 @@ public abstract class FirstOrderExpression extends Expression
 	}
 	
 	@Override
-	public void setParentProgram (Program parrentProgram) throws ProgramException
+	public void setParentProgram (Program parrentProgram) throws IllegalArgumentException
 	{
 		super.setParentProgram(parrentProgram);
 		getArgument().setParentProgram(parrentProgram);

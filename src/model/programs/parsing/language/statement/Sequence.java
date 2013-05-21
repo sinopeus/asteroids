@@ -2,13 +2,13 @@ package model.programs.parsing.language.statement;
 
 import java.util.List;
 
+import model.IFacade.TypeCheckOutcome;
 import model.programs.Program;
-import model.programs.ProgramException;
 
 public class Sequence extends Statement
 {
 
-	public Sequence (int line, int column, List <Statement> sequence) throws ProgramException
+	public Sequence (int line, int column, List <Statement> sequence) throws IllegalArgumentException
 	{
 		super(line, column);
 		setSequence(sequence);
@@ -41,7 +41,7 @@ public class Sequence extends Statement
 
 	protected boolean canHaveAsSelectedIndex (int selectedIndex)
 	{
-		if(getSequence().size()==0) return true;
+		if (getSequence().size() == 0) return true;
 		return ( (selectedIndex >= 0) && (selectedIndex < getSequence().size()));
 	}
 
@@ -65,9 +65,9 @@ public class Sequence extends Statement
 	{
 		return getSequence().get(getSelectedIndex());
 	}
-	
+
 	@Override
-	public void setParentProgram (Program parrentProgram) throws ProgramException
+	public void setParentProgram (Program parrentProgram) throws IllegalArgumentException
 	{
 		super.setParentProgram(parrentProgram);
 		for (Statement s : getSequence())
@@ -121,23 +121,24 @@ public class Sequence extends Statement
 	}
 
 	@Override
-	public boolean isTypeSafe ()
+	public TypeCheckOutcome isTypeSafe ()
 	{
 		for (Statement s : getSequence())
-			if(!s.isTypeSafe())
-				return false;
-		return true;
+		{
+			TypeCheckOutcome sIsSafe = s.isTypeSafe();
+			if (!sIsSafe.isSuccessful()) return TypeCheckOutcome.failure("The statement at " + s.getLine() + ", " + s.getColumn() + " is not type safe.");;
+		}
+		return TypeCheckOutcome.success();
 	}
-	
+
 	@Override
 	public boolean containsAction ()
 	{
 		for (Statement s : getSequence())
-			if(s.containsAction())
-				return true;
+			if (s.containsAction()) return true;
 		return false;
 	}
-	
+
 	@Override
 	public String toString ()
 	{

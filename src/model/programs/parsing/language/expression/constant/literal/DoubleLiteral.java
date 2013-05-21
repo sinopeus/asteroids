@@ -6,15 +6,9 @@ import model.programs.parsing.language.expression.constant.ConstantExpression;
 
 public class DoubleLiteral extends ConstantExpression <Double>
 {
-	public DoubleLiteral (int line, int column, Double value) throws ProgramException
+	public DoubleLiteral (int line, int column, Double value) throws IllegalArgumentException
 	{
 		super(line, column, value);
-	}
-	
-	@Override
-	public boolean isTypeSafe ()
-	{
-		return true;
 	}
 	
 	@Override

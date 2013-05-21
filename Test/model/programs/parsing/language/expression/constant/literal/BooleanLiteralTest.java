@@ -14,7 +14,7 @@ import Utilities.Util;
 public class BooleanLiteralTest
 {
 	@Before
-	public void setUp () throws ProgramException
+	public void setUp () throws IllegalArgumentException
 	{
 		testLiteral = new BooleanLiteral(0, 0, true);
 	}
@@ -22,7 +22,7 @@ public class BooleanLiteralTest
 	private static BooleanLiteral	testLiteral;
 
 	@Test
-	public void constructorTest_PerfectParameters () throws ProgramException
+	public void constructorTest_PerfectParameters () throws IllegalArgumentException
 	{
 		BooleanLiteral bl = new BooleanLiteral(1, 2, true);
 		assertTrue(Util.fuzzyEquals(bl.getLine(), 1));
@@ -31,19 +31,19 @@ public class BooleanLiteralTest
 	}
 
 	@Test (expected = ProgramException.class)
-	public void constructorTest_IllegalLine () throws ProgramException
+	public void constructorTest_IllegalLine () throws IllegalArgumentException
 	{
 		new BooleanLiteral(-1, 2, true);
 	}
 
 	@Test (expected = ProgramException.class)
-	public void constructorTest_IllegalColumn () throws ProgramException
+	public void constructorTest_IllegalColumn () throws IllegalArgumentException
 	{
 		new BooleanLiteral(1, -2, true);
 	}
 
 	@Test (expected = ProgramException.class)
-	public void constructorTest_IllegalBoolean () throws ProgramException
+	public void constructorTest_IllegalBoolean () throws IllegalArgumentException
 	{
 		new BooleanLiteral(1, 2, null);
 	}

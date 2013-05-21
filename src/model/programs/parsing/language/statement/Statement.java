@@ -5,7 +5,7 @@ import model.programs.parsing.language.ProgramPart;
 
 public abstract class Statement extends ProgramPart
 {
-	protected Statement (int line, int column) throws ProgramException
+	protected Statement (int line, int column) throws IllegalArgumentException
 	{
 		super(line,column);
 		finished = false;

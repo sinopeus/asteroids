@@ -2,15 +2,15 @@ package model.programs.parsing.language.statement;
 
 import java.util.ArrayList;
 
+import model.IFacade.TypeCheckOutcome;
 import model.programs.Program;
-import model.programs.ProgramException;
 import model.programs.parsing.ProgramFactory.ForeachType;
 import model.programs.parsing.language.Type;
 import model.programs.parsing.language.expression.constant.literal.EntityLiteral;
 
 public class ForEach extends Statement
 {
-	public ForEach (int line, int column, ForeachType type, String variableName, Statement body) throws ProgramException
+	public ForEach (int line, int column, ForeachType type, String variableName, Statement body) throws IllegalArgumentException
 	{
 		super(line, column);
 		setType(type);
@@ -139,7 +139,7 @@ public class ForEach extends Statement
 	}
 
 	@Override
-	public void setParentProgram (Program parrentProgram) throws ProgramException
+	public void setParentProgram (Program parrentProgram) throws IllegalArgumentException
 	{
 		super.setParentProgram(parrentProgram);
 		getBody().setParentProgram(parrentProgram);
@@ -188,12 +188,15 @@ public class ForEach extends Statement
 	}
 
 	@Override
-	public boolean isTypeSafe ()
+	public TypeCheckOutcome isTypeSafe ()
 	{
 		boolean variableIsEntity = getParentProgram().getVariableNamed(getVariableName()).getType() == Type.TYPE_ENTITY;
-		boolean bodyIsTypeSafe = getBody().isTypeSafe();
+		if (!variableIsEntity) return TypeCheckOutcome.failure("The foreach at " + getLine() + ", " + getColumn() + " is not type safe.");
+		TypeCheckOutcome bodyIsTypeSafe = getBody().isTypeSafe();
+		if (!bodyIsTypeSafe.isSuccessful()) return bodyIsTypeSafe;
 		boolean bodyConstainsAction = getBody().containsAction();
-		return (variableIsEntity && bodyIsTypeSafe && !bodyConstainsAction);
+		if (bodyConstainsAction) return TypeCheckOutcome.failure("The body of the foreach at " + getLine() + ", " + getColumn() + " contains (an) action(s).");
+		return TypeCheckOutcome.success();
 	}
 
 	@Override

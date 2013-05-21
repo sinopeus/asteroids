@@ -7,7 +7,7 @@ import model.programs.parsing.language.expression.constant.literal.BooleanLitera
 
 public abstract class FirstOrderExpressionOfBooleanToBoolean extends FirstOrderExpression
 {
-	protected FirstOrderExpressionOfBooleanToBoolean (int line, int column, Expression argument) throws ProgramException
+	protected FirstOrderExpressionOfBooleanToBoolean (int line, int column, Expression argument) throws IllegalArgumentException
 	{
 		super(line, column, argument);
 	}

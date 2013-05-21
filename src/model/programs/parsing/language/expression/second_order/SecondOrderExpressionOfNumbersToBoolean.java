@@ -9,7 +9,7 @@ import model.programs.parsing.language.expression.constant.literal.DoubleLiteral
 public abstract class SecondOrderExpressionOfNumbersToBoolean extends SecondOrderExpression
 {
 
-	protected SecondOrderExpressionOfNumbersToBoolean (int line, int column, Expression firstArgument, Expression secondArgument) throws ProgramException
+	protected SecondOrderExpressionOfNumbersToBoolean (int line, int column, Expression firstArgument, Expression secondArgument) throws IllegalArgumentException
 	{
 		super(line, column, firstArgument, secondArgument);
 	}

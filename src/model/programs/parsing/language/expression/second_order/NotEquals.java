@@ -8,7 +8,7 @@ import Utilities.Util;
 
 public class NotEquals extends SecondOrderExpressionOfNumbersToBoolean
 {
-	public NotEquals (int line, int column, Expression firstArgument, Expression secondArgument) throws ProgramException
+	public NotEquals (int line, int column, Expression firstArgument, Expression secondArgument) throws IllegalArgumentException
 	{
 		super(line, column, firstArgument, secondArgument);
 	}
@@ -16,14 +16,8 @@ public class NotEquals extends SecondOrderExpressionOfNumbersToBoolean
 	@Override
 	protected BooleanLiteral function (DoubleLiteral first, DoubleLiteral second)
 	{
-		try
-		{
 			return new BooleanLiteral(getLine(), getColumn(), (!Util.fuzzyEquals(first.getValue(), second.getValue())));
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+
 	}
 
 }

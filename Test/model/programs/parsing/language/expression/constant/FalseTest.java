@@ -13,7 +13,7 @@ import org.junit.Test;
 public class FalseTest
 {
 	@Before
-	public void setUp () throws ProgramException
+	public void setUp () throws IllegalArgumentException
 	{
 		testFalse = new False(1, 2);
 	}
@@ -21,7 +21,7 @@ public class FalseTest
 	private False	testFalse;
 
 	@Test
-	public void evaluateTest () throws ProgramException
+	public void evaluateTest () throws IllegalArgumentException
 	{
 		assertEquals(new BooleanLiteral(1, 2, false), testFalse.evaluate());
 	}

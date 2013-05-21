@@ -5,7 +5,7 @@ import model.programs.ProgramException;
 
 public class ThrustOff extends Action
 {
-	public ThrustOff (int line, int column) throws ProgramException
+	public ThrustOff (int line, int column) throws IllegalArgumentException
 	{
 		super(line, column);
 	}
@@ -16,12 +16,6 @@ public class ThrustOff extends Action
 		super.execute();
 		getOwnerShip().getThruster().deactivate();
 		finish();
-		return true;
-	}
-
-	@Override
-	public boolean isTypeSafe ()
-	{
 		return true;
 	}
 	
