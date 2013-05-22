@@ -30,19 +30,19 @@ public class DoubleLiteralTest
 		assertTrue(Util.fuzzyEquals(dl.getValue(), 3.0));
 	}
 
-	@Test(expected = ProgramException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void constructorTest_IllegalLine () throws IllegalArgumentException
 	{
 		new DoubleLiteral(-1, 2, 3.0);
 	}
 
-	@Test(expected = ProgramException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void constructorTest_IllegalColumn () throws IllegalArgumentException
 	{
 		new DoubleLiteral(1, -2, 3.0);
 	}
 	
-	@Test (expected = ProgramException.class)
+	@Test (expected = IllegalArgumentException.class)
 	public void constructorTest_IllegalDouble() throws IllegalArgumentException
 	{
 		new DoubleLiteral(1, 2, null);

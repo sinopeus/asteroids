@@ -5,6 +5,7 @@ import world.entity.Entity;
 import world.physics.vector.Position;
 import world.physics.vector.Vector;
 import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Model;
 import be.kuleuven.cs.som.annotate.Raw;
 
 /**
@@ -60,7 +61,8 @@ public final class EntityCollision extends Collision
 	 */
 	@Basic
 	@Raw
-	public void setEntity1 (@Raw Entity entity1) throws IllegalArgumentException
+	@Model
+	protected void setEntity1 (@Raw Entity entity1) throws IllegalArgumentException
 	{
 		if (!canHaveAsEntity(entity1)) throw new IllegalArgumentException("Illegal entity provided.");
 		this.entity[0] = entity1;
@@ -89,7 +91,8 @@ public final class EntityCollision extends Collision
 	 */
 	@Basic
 	@Raw
-	private void setEntity2 (@Raw Entity entity2) throws IllegalArgumentException
+	@Model
+	protected void setEntity2 (@Raw Entity entity2) throws IllegalArgumentException
 	{
 		if (!canHaveAsEntity(entity2)) throw new IllegalArgumentException("Illegal entity provided.");
 		this.entity[1] = entity2;

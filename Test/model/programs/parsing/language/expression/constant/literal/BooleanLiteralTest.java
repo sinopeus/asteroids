@@ -30,19 +30,19 @@ public class BooleanLiteralTest
 		assertTrue(bl.getValue());
 	}
 
-	@Test (expected = ProgramException.class)
+	@Test (expected = IllegalArgumentException.class)
 	public void constructorTest_IllegalLine () throws IllegalArgumentException
 	{
 		new BooleanLiteral(-1, 2, true);
 	}
 
-	@Test (expected = ProgramException.class)
+	@Test (expected = IllegalArgumentException.class)
 	public void constructorTest_IllegalColumn () throws IllegalArgumentException
 	{
 		new BooleanLiteral(1, -2, true);
 	}
 
-	@Test (expected = ProgramException.class)
+	@Test (expected = IllegalArgumentException.class)
 	public void constructorTest_IllegalBoolean () throws IllegalArgumentException
 	{
 		new BooleanLiteral(1, 2, null);

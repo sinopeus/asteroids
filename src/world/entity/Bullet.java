@@ -8,6 +8,7 @@ import world.physics.vector.Position;
 import world.physics.vector.Vector;
 import world.physics.vector.Velocity;
 import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Model;
 import be.kuleuven.cs.som.annotate.Raw;
 
 /**
@@ -44,7 +45,8 @@ public class Bullet extends Entity
 	 * @return	The initial position of this new bullet. (It is placed right next to the ship.)
 	 * 			|  new Position(new Vector(ship.getPosition()).getSum(ship.getDirection().getScaledBy(ship.getShape().getRadius() + bulletRadius)));
 	 */
-	private static Position getInitialPosition (Ship ship)
+	@Model
+	protected static Position getInitialPosition (Ship ship)
 	{
 		return new Position(new Vector(ship.getPosition()).getSum(ship.getDirection().getScaledBy(ship.getShape().getRadius() + bulletRadius)));
 	}
@@ -71,7 +73,8 @@ public class Bullet extends Entity
 	 */
 	@Basic
 	@Raw
-	private static boolean canHaveAsShooter (@Raw Ship shooter)
+	@Model
+	protected static boolean canHaveAsShooter (@Raw Ship shooter)
 	{
 		return (shooter != null);
 	}
@@ -89,7 +92,8 @@ public class Bullet extends Entity
 	 */
 	@Basic
 	@Raw
-	private void setShooter (@Raw Ship shooter) throws IllegalArgumentException
+	@Model
+	protected void setShooter (@Raw Ship shooter) throws IllegalArgumentException
 	{
 		if (!canHaveAsShooter(shooter)) { throw new IllegalArgumentException("You cannot provide a null ship."); }
 		this.shooter = shooter;
@@ -116,6 +120,7 @@ public class Bullet extends Entity
 	 */
 	@Basic
 	@Raw
+	@Model
 	protected boolean canHaveAsBounceCounter (@Raw byte bounceCounter)
 	{
 		return (bounceCounter >= 0);
@@ -136,7 +141,8 @@ public class Bullet extends Entity
 	 */
 	@Basic
 	@Raw
-	public void setBounceCounter (@Raw byte bounceCounter) throws IllegalArgumentException
+	@Model
+	protected void setBounceCounter (@Raw byte bounceCounter) throws IllegalArgumentException
 	{
 		if (!canHaveAsBounceCounter(bounceCounter)) { throw new IllegalArgumentException("Invalid bounce counter provided"); }
 		this.bounceCounter = bounceCounter;
@@ -157,7 +163,7 @@ public class Bullet extends Entity
 	 * 			| this.terminate()
 	 */
 	@Override
-	public void collideWith (Asteroid that)
+	protected void collideWith (Asteroid that)
 	{
 		if (that == null) return;
 		that.collideWith(this);
@@ -173,7 +179,7 @@ public class Bullet extends Entity
 	 * 			| that.terminate()
 	 */
 	@Override
-	public void collideWith (Bullet that)
+	protected void collideWith (Bullet that)
 	{
 		if (that == null) return;
 		this.terminate();
@@ -192,7 +198,7 @@ public class Bullet extends Entity
 	 * 			| that.terminate()
 	 */
 	@Override
-	public void collideWith (Ship that)
+	protected void collideWith (Ship that)
 	{
 		if (that == null) return;
 		that.collideWith(this);

@@ -2,19 +2,14 @@ package world.physics.collision;
 
 import java.util.ArrayList;
 
-import be.kuleuven.cs.som.annotate.Basic;
-import be.kuleuven.cs.som.annotate.Raw;
-
 import world.World;
 import world.entity.Entity;
 import world.physics.vector.Position;
 import world.physics.vector.Quadrant;
 import world.physics.vector.Vector;
-
-
-import world.entity.Entity;
-import world.physics.vector.Position;
-import world.physics.vector.Vector;
+import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Model;
+import be.kuleuven.cs.som.annotate.Raw;
 
 /**
  * A class of border collisions extending collisions.
@@ -177,6 +172,7 @@ public final class BorderCollision extends Collision
 	 * @return	The time it takes the collision to collide with a given border.
 	 * 			| time to collision = time for the position vector of the entity to reach a point at distance r from the border
 	 */
+	@Model
 	private double getTimeToBorderCollision (Border border)
 	{
 		Position intersectionOfCenter = null;

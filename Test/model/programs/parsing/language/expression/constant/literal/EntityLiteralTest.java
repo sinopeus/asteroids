@@ -37,13 +37,13 @@ public class EntityLiteralTest
 		assertEquals(el.getValue(), testEntity);
 	}
 
-	@Test (expected = ProgramException.class)
+	@Test (expected = IllegalArgumentException.class)
 	public void constructorTest_IllegalLine () throws IllegalArgumentException
 	{
 		new EntityLiteral(-1, 2, testEntity);
 	}
 
-	@Test (expected = ProgramException.class)
+	@Test (expected = IllegalArgumentException.class)
 	public void constructorTest_IllegalColumn () throws IllegalArgumentException
 	{
 		new EntityLiteral(1, -2, testEntity);

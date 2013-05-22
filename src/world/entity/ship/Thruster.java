@@ -4,6 +4,7 @@ import world.physics.Mechanics;
 import world.physics.vector.Acceleration;
 import world.physics.vector.Force;
 import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Model;
 import be.kuleuven.cs.som.annotate.Raw;
 
 /**
@@ -57,6 +58,7 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
+	@Model
 	protected static boolean canHaveAsMaximumThrust (double maximumThrust)
 	{
 		return (maximumThrust >= 0);
@@ -75,7 +77,8 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
-	private void setMaximumThrustPerSecond (double maximumThrust) throws IllegalArgumentException
+	@Model
+	protected void setMaximumThrustPerSecond (double maximumThrust) throws IllegalArgumentException
 	{
 		if (!canHaveAsMaximumThrust(maximumThrust)) { throw new IllegalArgumentException("Illegal maximum thrust provided."); }
 		this.maximumThrustPerSecond = maximumThrust;
@@ -161,6 +164,7 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
+	@Model
 	protected static boolean canHaveAsOwner (@Raw Ship owner)
 	{
 		return (owner != null);

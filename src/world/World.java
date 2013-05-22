@@ -10,6 +10,7 @@ import world.physics.collision.EntityCollision;
 import world.physics.vector.Position;
 import world.physics.vector.Vector;
 import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Model;
 import be.kuleuven.cs.som.annotate.Raw;
 
 /**
@@ -84,7 +85,8 @@ public class World extends ArrayList <Entity>
 	 */
 	@Basic
 	@Raw
-	private void setXSize (double xSize) throws IllegalArgumentException
+	@Model
+	protected void setXSize (double xSize) throws IllegalArgumentException
 	{
 		if (!canHaveAsSize(xSize)) { throw new IllegalArgumentException("Invalid xSize provided"); }
 		this.xSize = xSize;
@@ -114,7 +116,8 @@ public class World extends ArrayList <Entity>
 	 */
 	@Basic
 	@Raw
-	private void setYSize (double ySize) throws IllegalArgumentException
+	@Model
+	protected void setYSize (double ySize) throws IllegalArgumentException
 	{
 		if (!canHaveAsSize(ySize)) { throw new IllegalArgumentException("Invalid ySize provided"); }
 		this.ySize = ySize;
@@ -130,7 +133,8 @@ public class World extends ArrayList <Entity>
 	 */
 	@Basic
 	@Raw
-	private static boolean canHaveAsSize (double size)
+	@Model
+	protected static boolean canHaveAsSize (double size)
 	{
 		return ( (size > 0) && (size <= Double.MAX_VALUE));
 	}
@@ -145,26 +149,34 @@ public class World extends ArrayList <Entity>
 	 */
 	private double	ySize;
 
+	//TODO document
 	private double	gameTime;
 
 	//TODO document
+	@Basic
+	@Raw
 	public double getGameTime ()
 	{
 		return gameTime;
 	}
 	
 	//TODO document
+	@Basic
 	protected static boolean canHaveAsGameTime (double gameTime)
 	{
 		return (gameTime > 0);//TODO more checking?
 	}
 
+	@Basic
+	@Raw
+	@Model
 	protected void setGameTime (double gameTime)
 	{
 		if (!canHaveAsGameTime(gameTime)) throw new IllegalArgumentException("Invalid game time provided.");
 		this.gameTime = gameTime;
 	}
 
+	@Model
 	protected void advandeGameTime (double time)
 	{
 		setGameTime(getGameTime() + time);
@@ -178,6 +190,9 @@ public class World extends ArrayList <Entity>
 	 * @return	True if and only if the given entity is not null.
 	 * 			| result == entity != null
 	 */
+	@Basic
+	@Raw
+	@Model
 	private boolean canHaveAsEntity (Entity entity)
 	{
 		return ( (entity != null) && ! (this.contains(entity)));
@@ -243,6 +258,7 @@ public class World extends ArrayList <Entity>
 	 * 
 	 * @return | Collision.getNextCollision(this)
 	 */
+	@Model
 	private Collision getNextCollision ()
 	{
 		return Collision.getNextCollision(this);
@@ -255,6 +271,7 @@ public class World extends ArrayList <Entity>
 	 * 			The time over which to advance all entities.
 	 * @effect	| for (Entity e : this) e.advance(dt);
 	 */
+	@Model
 	private void advanceAll (double dt)
 	{
 		ArrayList<Entity> temp = new ArrayList<Entity>(this.numberOfEntities()*2 +1);
@@ -288,6 +305,7 @@ public class World extends ArrayList <Entity>
 	 * 			| && isInWorld(entity.getPosition().getSum(new Vector(0, entity.getShape().getRadius())));
 	 * 			| && isInWorld(entity.getPosition().getSum(new Vector(0, -entity.getShape().getRadius())));
 	 */
+	@Model
 	private boolean isInWorld (Entity entity)
 	{
 		if (entity == null) { return false; }
@@ -307,6 +325,7 @@ public class World extends ArrayList <Entity>
 	 * @return	True if and only if the given entity is null or does not overlap with any other entity.
 	 * 			| (entity == null) || for (Entity e : this) (!entity.overlapsWith(e))
 	 */
+	@Model
 	private boolean isSpaceForEntity (Entity entity) //TODO we might want to use this?
 	{
 		if (entity == null) return true;

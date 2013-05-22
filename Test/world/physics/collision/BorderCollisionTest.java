@@ -131,14 +131,14 @@ public class BorderCollisionTest
 		horizontalBorderCollision.resolve();
 		assertEquals(horizontalBorderCollision.getCollisionEntity().getVelocity(), new Velocity(-250, 0));
 	}
-
-	@Test
-	public void resolveTest_DissapearingBullet ()
-	{
-		testBullet.setBounceCounter((byte)(Bullet.maximumBorderBounces-1));
-		horizontalBorderCollision.resolve();
-		assertEquals(horizontalBorderCollision.getCollisionEntity().getVelocity(), new Velocity(-250, 0));
-	}
+//
+//	@Test
+//	public void resolveTest_DissapearingBullet ()
+//	{
+//		testBullet.setBounceCounter((byte)(Bullet.maximumBorderBounces-1));
+//		horizontalBorderCollision.resolve();
+//		assertEquals(horizontalBorderCollision.getCollisionEntity().getVelocity(), new Velocity(-250, 0));
+//	}
 
 	@Test
 	public void getCollisionPositionTest ()

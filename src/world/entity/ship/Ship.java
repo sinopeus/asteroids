@@ -14,6 +14,7 @@ import world.physics.vector.Direction;
 import world.physics.vector.Position;
 import world.physics.vector.Velocity;
 import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Model;
 import be.kuleuven.cs.som.annotate.Raw;
 
 /**
@@ -77,6 +78,7 @@ public class Ship extends Entity implements IShip
 	 */
 	@Override
 	@Raw
+	@Model
 	protected boolean canHaveAsShape (@Raw CircleShape shape)
 	{
 		return (super.canHaveAsShape(shape) && (shape.getRadius() >= Ship.getMinimumRadius()));
@@ -119,7 +121,8 @@ public class Ship extends Entity implements IShip
 	 */
 	@Basic
 	@Raw
-	private static boolean canHaveAsThruster (Thruster thruster)
+	@Model
+	protected static boolean canHaveAsThruster (Thruster thruster)
 	{
 		return (thruster != null);
 	}
@@ -135,7 +138,8 @@ public class Ship extends Entity implements IShip
 	 */
 	@Basic
 	@Raw
-	private void setThruster (Thruster thruster) throws IllegalArgumentException
+	@Model
+	protected void setThruster (Thruster thruster) throws IllegalArgumentException
 	{
 		if (!canHaveAsThruster(thruster)) { throw new IllegalArgumentException("Invalid thruster provided."); }
 		this.thruster = thruster;
@@ -162,7 +166,8 @@ public class Ship extends Entity implements IShip
 	 * @return
 	 */
 	@Basic
-	private static boolean canHaveAsBulletList (ArrayList <Bullet> bullets)
+	@Model
+	protected static boolean canHaveAsBulletList (ArrayList <Bullet> bullets)
 	{
 		return (bullets != null);
 	}
@@ -172,7 +177,8 @@ public class Ship extends Entity implements IShip
 	 */
 	@Basic
 	@Raw
-	private void setBulletList (ArrayList <Bullet> bullets)
+	@Model
+	protected void setBulletList (ArrayList <Bullet> bullets)
 	{
 		if (!canHaveAsBulletList(bullets)) throw new IllegalArgumentException("Invalid bulletlist provided.");
 		this.bulletList = bullets;
@@ -189,14 +195,16 @@ public class Ship extends Entity implements IShip
 	{
 		return program;
 	}
-	
+
 	@Basic
+	@Model
 	protected static boolean canHaveAsProgram (Program program)
 	{
 		return true; //TODO more checking?
 	}
 
-	@Basic //TODO test and document
+	@Basic
+	//TODO test and document	
 	@Raw
 	public void setProgram (Program program)
 	{
@@ -271,7 +279,7 @@ public class Ship extends Entity implements IShip
 	 * 			| this.terminate()
 	 */
 	@Override
-	public void collideWith (Asteroid that)
+	protected void collideWith (Asteroid that)
 	{
 		if (that == null) return;
 		this.terminate();
@@ -286,7 +294,7 @@ public class Ship extends Entity implements IShip
 	 * 			| if (that != null && shooter != this) that.terminate() && this.terminate()
 	 */
 	@Override
-	public void collideWith (Bullet that)
+	protected void collideWith (Bullet that)
 	{
 		if (that == null) return;
 		if (that.getShooter() == this) return;

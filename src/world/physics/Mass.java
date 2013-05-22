@@ -2,6 +2,7 @@ package world.physics;
 
 import Utilities.Util;
 import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Model;
 import be.kuleuven.cs.som.annotate.Raw;
 import be.kuleuven.cs.som.annotate.Value;
 
@@ -49,6 +50,7 @@ public class Mass
 	 */
 	@Basic
 	@Raw
+	@Model
 	protected boolean canHaveAsMass (double mass)
 	{
 		return ( (!Double.isNaN(mass)) && (mass > 0));
@@ -63,7 +65,8 @@ public class Mass
 	 */
 	@Basic
 	@Raw
-	private void set (double mass) throws IllegalArgumentException
+	@Model
+	protected void set (double mass) throws IllegalArgumentException
 	{
 		if (!canHaveAsMass(mass)) { throw new IllegalArgumentException("Illegal mass provided"); }
 		this.mass = mass;

@@ -11,6 +11,7 @@ import world.physics.vector.Position;
 import world.physics.vector.Vector;
 import world.physics.vector.Velocity;
 import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Model;
 import be.kuleuven.cs.som.annotate.Raw;
 
 /**
@@ -107,6 +108,7 @@ public abstract class Entity
 	 */
 	@Basic
 	@Raw
+	@Model
 	protected static boolean canHaveAsPosition (@Raw Position position)
 	{
 		return (position != null);
@@ -127,16 +129,12 @@ public abstract class Entity
 	 */
 	@Basic
 	@Raw
-	public void setPosition (Position position) throws IllegalArgumentException, IllegalStateException
+	@Model
+	protected void setPosition (Position position) throws IllegalArgumentException, IllegalStateException
 	{
 		if (this.isTerminated()) { throw new IllegalStateException("This entity is terminated."); }
-		if (!canHaveAsPosition(position))
-		{
-			throw new IllegalArgumentException("Invalid position provided.");
-		} else
-		{
-			this.position = position;
-		}
+		if (!canHaveAsPosition(position)) throw new IllegalArgumentException("Invalid position provided.");
+		this.position = position;
 	}
 
 	/**
@@ -165,6 +163,7 @@ public abstract class Entity
 	 */
 	@Basic
 	@Raw
+	@Model
 	protected boolean canHaveAsVelocity (@Raw Velocity velocity)
 	{
 		return ( (velocity != null) && (velocity.get() <= getSpeedLimit()));
@@ -184,7 +183,7 @@ public abstract class Entity
 	 */
 	@Basic
 	@Raw
-	public void setVelocity (@Raw Velocity velocity) throws IllegalStateException
+	protected void setVelocity (@Raw Velocity velocity) throws IllegalStateException
 	{
 		if (this.isTerminated()) { throw new IllegalStateException("This entity is terminated."); }
 		if (canHaveAsVelocity(velocity)) this.velocity = velocity;
@@ -216,6 +215,7 @@ public abstract class Entity
 	 */
 	@Basic
 	@Raw
+	@Model
 	protected static boolean canHaveAsDirection (@Raw Direction direction)
 	{
 		return (direction != null);
@@ -235,7 +235,8 @@ public abstract class Entity
 	 */
 	@Basic
 	@Raw
-	public void setDirection (@Raw Direction direction) throws IllegalStateException
+	@Model
+	protected void setDirection (@Raw Direction direction) throws IllegalStateException
 	{
 		if (this.isTerminated()) { throw new IllegalStateException("This entity is terminated."); }
 		assert (canHaveAsDirection(direction));
@@ -269,6 +270,7 @@ public abstract class Entity
 	 */
 	@Basic
 	@Raw
+	@Model
 	protected boolean canHaveAsShape (@Raw CircleShape shape)
 	{
 		return (shape != null);
@@ -300,6 +302,7 @@ public abstract class Entity
 	 */
 	@Basic
 	@Raw
+	@Model
 	protected static boolean canHaveAsSpeedLimit (double speedLimit)
 	{
 		return ( (speedLimit >= 0) && (speedLimit <= Velocity.getSpeedOfLight()));
@@ -319,7 +322,8 @@ public abstract class Entity
 	 */
 	@Basic
 	@Raw
-	public void setSpeedLimit (double speedLimit) throws IllegalStateException
+	@Model
+	protected void setSpeedLimit (double speedLimit) throws IllegalStateException
 	{
 		if (this.isTerminated()) { throw new IllegalStateException("This entity is terminated."); }
 		if (canHaveAsSpeedLimit(speedLimit)) this.speedLimit = speedLimit;
@@ -351,7 +355,8 @@ public abstract class Entity
 	 */
 	@Basic
 	@Raw
-	private static boolean canHaveAsMass (@Raw Mass mass)
+	@Model
+	protected static boolean canHaveAsMass (@Raw Mass mass)
 	{
 		return (mass != null);
 	}
@@ -368,7 +373,8 @@ public abstract class Entity
 	 */
 	@Basic
 	@Raw
-	private void setMass (@Raw Mass mass) throws IllegalArgumentException
+	@Model
+	protected void setMass (@Raw Mass mass) throws IllegalArgumentException
 	{
 		if (!canHaveAsMass(mass)) { throw new IllegalArgumentException("Invalid mass provided"); }
 		this.mass = mass;
@@ -399,6 +405,7 @@ public abstract class Entity
 	 */
 	@Basic
 	@Raw
+	@Model
 	private static boolean canHaveAsWorld (@Raw World world)
 	{
 		return (world != null);
@@ -486,7 +493,8 @@ public abstract class Entity
 	 * @throws	IllegalStateException
 	 * 			| isTerminated()	
 	 */
-	public void move (double duration) throws ArithmeticException, IllegalArgumentException, IllegalStateException
+	@Model
+	protected void move (double duration) throws ArithmeticException, IllegalArgumentException, IllegalStateException
 	{
 		if (this.isTerminated()) { throw new IllegalStateException("This entity is terminated."); }
 		if (duration < 0) duration = 0;
@@ -517,6 +525,7 @@ public abstract class Entity
 	 * @effect	Has this entity bounce with the given ship.
 	 * 			| this.bounce(that);
 	 */
+	@Model
 	protected void collideWith (Ship that)
 	{
 		if (that == null) return;
@@ -531,6 +540,7 @@ public abstract class Entity
 	 * @effect	Has this entity bounce with the given asteroid.
 	 * 			| this.bounce(that);
 	 */
+	@Model
 	protected void collideWith (Asteroid that)
 	{
 		if (that == null) return;
@@ -545,6 +555,7 @@ public abstract class Entity
 	 * @effect	Has this entity bounce with the given bullet.
 	 * 			| this.bounce(that);
 	 */
+	@Model
 	protected void collideWith (Bullet that)
 	{
 		if (that == null) return;
@@ -600,7 +611,8 @@ public abstract class Entity
 	 * @post	The velocity vectors of both entities are modified in accordance with the principles of elastic collision.
 	 * 			| //TODO
 	 */
-	public void bounce (Entity that)
+	@Model
+	protected void bounce (Entity that)
 	{
 		try
 		{
