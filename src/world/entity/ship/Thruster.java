@@ -4,6 +4,7 @@ import world.physics.Mechanics;
 import world.physics.vector.Acceleration;
 import world.physics.vector.Force;
 import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Model;
 import be.kuleuven.cs.som.annotate.Raw;
 
 /**
@@ -57,7 +58,8 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
-	protected boolean canHaveAsMaximumThrust (double maximumThrust)
+	@Model
+	protected static boolean canHaveAsMaximumThrust (double maximumThrust)
 	{
 		return (maximumThrust >= 0);
 	}
@@ -75,7 +77,8 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
-	private void setMaximumThrustPerSecond (double maximumThrust) throws IllegalArgumentException
+	@Model
+	protected void setMaximumThrustPerSecond (double maximumThrust) throws IllegalArgumentException
 	{
 		if (!canHaveAsMaximumThrust(maximumThrust)) { throw new IllegalArgumentException("Illegal maximum thrust provided."); }
 		this.maximumThrustPerSecond = maximumThrust;
@@ -161,9 +164,10 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
-	protected boolean canHaveAsOwner (Ship owner)
+	@Model
+	protected static boolean canHaveAsOwner (@Raw Ship owner)
 	{
-		return owner != null;
+		return (owner != null);
 	}
 
 	/**
@@ -179,7 +183,7 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
-	public void setOwner (Ship owner) throws IllegalArgumentException
+	public void setOwner (@Raw Ship owner) throws IllegalArgumentException
 	{
 		if (!canHaveAsOwner(owner)) { throw new IllegalArgumentException("Illegal owner ship provided."); }
 		this.ownerShip = owner;
@@ -204,6 +208,7 @@ public class Thruster
 	 * 
 	 * @return	isTerminated == true
 	 */
+	@Basic
 	public boolean isTerminated ()
 	{
 		return isTerminated;

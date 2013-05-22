@@ -1,12 +1,13 @@
 package model.programs.parsing.language.statement;
 
+import model.IFacade.TypeCheckOutcome;
 import model.programs.Program;
 import model.programs.ProgramException;
 import model.programs.parsing.language.expression.Expression;
 
 public class Print extends Statement
 {
-	public Print (int line, int column, Expression textExpression) throws ProgramException
+	public Print (int line, int column, Expression textExpression) throws IllegalArgumentException
 	{
 		super(line, column);
 		setTextExpression(textExpression);
@@ -19,9 +20,9 @@ public class Print extends Statement
 		return textExpression;
 	}
 
-	protected boolean canHaveAsTextExpression (Expression textExpression)
+	protected static boolean canHaveAsTextExpression (Expression textExpression)
 	{
-		return (textExpression != null); //TODO more checking?
+		return (textExpression != null);
 	}
 
 	protected void setTextExpression (Expression textExpression)
@@ -37,9 +38,9 @@ public class Print extends Statement
 		return text;
 	}
 
-	protected boolean canHaveAsText (String text)
+	protected static boolean canHaveAsText (String text)
 	{
-		return (text != null);//TODO more checking?
+		return (text != null);
 	}
 
 	protected void setText (String text)
@@ -49,7 +50,7 @@ public class Print extends Statement
 	}
 
 	@Override
-	public void setParentProgram (Program parrentProgram) throws ProgramException
+	public void setParentProgram (Program parrentProgram) throws IllegalArgumentException
 	{
 		super.setParentProgram(parrentProgram);
 		getTextExpression().setParentProgram(parrentProgram);
@@ -66,7 +67,7 @@ public class Print extends Statement
 	}
 	
 	@Override
-	public boolean isTypeSafe ()
+	public TypeCheckOutcome isTypeSafe ()
 	{
 		return getTextExpression().isTypeSafe();
 	}

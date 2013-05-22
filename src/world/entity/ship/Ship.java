@@ -14,6 +14,7 @@ import world.physics.vector.Direction;
 import world.physics.vector.Position;
 import world.physics.vector.Velocity;
 import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Model;
 import be.kuleuven.cs.som.annotate.Raw;
 
 /**
@@ -42,18 +43,12 @@ public class Ship extends Entity implements IShip
 	 * 			The given circle shape
 	 * @param	mass
 	 * 			The given mass
-	 * @effect	The direction of this ship is set to the given direction.
-	 * 			| setDirection(direction)
-	 * @effect	The position of this ship is set to the given position.
-	 * 			| setPosition(position)
-	 * @effect	The speed limit of this ship is set to the given speed limit.
-	 * 			| setSpeedLimit(speedLimit)
-	 * @effect	The velocity of this ship is set to the given velocity.
-	 * 			| setVelocity(velocity)
-	 * @effect	The circle shape of this ship is set to the given circle shape.
-	 * 			| this.shape = shape
-	 * @effect	The mass of this ship is set to the given mass.
-	 * 			| setMass(mass)
+	 * @effect	Initialize this Ship with the extended entity constructor
+	 * 			| super(direction, position, speedLimit, velocity, shape, mass)
+	 * @effect	Set the thruster of this ship to a new thruster with maximum thrust capacity.
+	 * 			| setThruster(new Thruster(getThrustPerSecond(), this))
+	 * @effect	Set the bullet list of this ship to a new empty list.
+	 * 			| setBulletList(new ArrayList <Bullet>(3))
 	 * @throws	IllegalArgumentException
 	 * 			| The given shape is not a legal shape.
 	 * @throws	NullPointerException
@@ -82,6 +77,8 @@ public class Ship extends Entity implements IShip
 	 * @see world.entity.Entity#canHaveAsShape(world.physics.geometry.CircleShape)
 	 */
 	@Override
+	@Raw
+	@Model
 	protected boolean canHaveAsShape (@Raw CircleShape shape)
 	{
 		return (super.canHaveAsShape(shape) && (shape.getRadius() >= Ship.getMinimumRadius()));
@@ -122,7 +119,10 @@ public class Ship extends Entity implements IShip
 	 * @return	True if and only if the given thruster is not null.
 	 * 			| result == (thruster != null)
 	 */
-	private boolean canHaveAsThruster (Thruster thruster)
+	@Basic
+	@Raw
+	@Model
+	protected static boolean canHaveAsThruster (Thruster thruster)
 	{
 		return (thruster != null);
 	}
@@ -136,7 +136,10 @@ public class Ship extends Entity implements IShip
 	 * 			The given thruster is null.
 	 * 			| thruster == null
 	 */
-	private void setThruster (Thruster thruster) throws IllegalArgumentException
+	@Basic
+	@Raw
+	@Model
+	protected void setThruster (Thruster thruster) throws IllegalArgumentException
 	{
 		if (!canHaveAsThruster(thruster)) { throw new IllegalArgumentException("Invalid thruster provided."); }
 		this.thruster = thruster;
@@ -150,6 +153,8 @@ public class Ship extends Entity implements IShip
 	/**
 	 * @return the bullets
 	 */
+	@Basic
+	@Raw
 	public ArrayList <Bullet> getBulletList ()
 	{
 		return bulletList;
@@ -160,7 +165,9 @@ public class Ship extends Entity implements IShip
 	 * @param bullets
 	 * @return
 	 */
-	private boolean canHaveAsBulletList (ArrayList <Bullet> bullets)
+	@Basic
+	@Model
+	protected static boolean canHaveAsBulletList (ArrayList <Bullet> bullets)
 	{
 		return (bullets != null);
 	}
@@ -168,7 +175,10 @@ public class Ship extends Entity implements IShip
 	/**
 	 * @param bullets the bullets to set
 	 */
-	private void setBulletList (ArrayList <Bullet> bullets)
+	@Basic
+	@Raw
+	@Model
+	protected void setBulletList (ArrayList <Bullet> bullets)
 	{
 		if (!canHaveAsBulletList(bullets)) throw new IllegalArgumentException("Invalid bulletlist provided.");
 		this.bulletList = bullets;
@@ -179,16 +189,23 @@ public class Ship extends Entity implements IShip
 	Program						program;
 
 	//TODO document
+	@Basic
+	@Raw
 	public Program getProgram ()
 	{
 		return program;
 	}
 
-	protected boolean canHaveAsProgram (Program program)
+	@Basic
+	@Model
+	protected static boolean canHaveAsProgram (Program program)
 	{
 		return true; //TODO more checking?
 	}
 
+	@Basic
+	//TODO test and document	
+	@Raw
 	public void setProgram (Program program)
 	{
 		if (!canHaveAsProgram(program)) throw new IllegalArgumentException("Invalid program provided."); //TODO is this necessary
@@ -222,16 +239,17 @@ public class Ship extends Entity implements IShip
 		int pastIterations = (int) (gameTimeStart / SPEED_OF_ACTIONS);
 		double now = gameTimeStart + dt;
 		int requiredIterations = (int) (now / SPEED_OF_ACTIONS);
-		for (int i = 0; i < requiredIterations - pastIterations; i++){
+		for (int i = 0; i < requiredIterations - pastIterations; i++)
 			getProgram().executeUntilAfterNextAction();
-		}
 	}
 
+	//TODO test and document
+	@Basic
 	public boolean canFire ()
 	{
 		return (getBulletList().size() < MAXIMUM_AMOUNT_OF_BULLETS);
 	}
-	
+
 	/**
 	 * A method for firing a bullet from this ship.
 	 * 
@@ -243,7 +261,6 @@ public class Ship extends Entity implements IShip
 		if (!canFire()) return;
 		Bullet b = new Bullet(this);
 		if (getWorld().add(b))
-		;
 		{
 			this.getBulletList().add(b);
 
@@ -262,7 +279,7 @@ public class Ship extends Entity implements IShip
 	 * 			| this.terminate()
 	 */
 	@Override
-	public void collideWith (Asteroid that)
+	protected void collideWith (Asteroid that)
 	{
 		if (that == null) return;
 		this.terminate();
@@ -277,7 +294,7 @@ public class Ship extends Entity implements IShip
 	 * 			| if (that != null && shooter != this) that.terminate() && this.terminate()
 	 */
 	@Override
-	public void collideWith (Bullet that)
+	protected void collideWith (Bullet that)
 	{
 		if (that == null) return;
 		if (that.getShooter() == this) return;
@@ -316,5 +333,5 @@ public class Ship extends Entity implements IShip
 	private static byte		MAXIMUM_AMOUNT_OF_BULLETS	= 3;
 
 	//TODO document
-	private static double	SPEED_OF_ACTIONS			= 2E-1;
+	private static double	SPEED_OF_ACTIONS			= 0.2;
 }

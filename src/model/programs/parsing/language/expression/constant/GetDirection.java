@@ -6,7 +6,7 @@ import model.programs.parsing.language.expression.constant.literal.DoubleLiteral
 
 public class GetDirection extends ConstantExpression <Double>
 {
-	public GetDirection (int line, int column) throws ProgramException
+	public GetDirection (int line, int column) throws IllegalArgumentException
 	{
 		super(line, column, 0.0);
 	}
@@ -14,21 +14,7 @@ public class GetDirection extends ConstantExpression <Double>
 	@Override
 	public ConstantExpression <Double> evaluate ()
 	{
-		DoubleLiteral dl = null;
-		try
-		{
-			dl = new DoubleLiteral(getLine(), getColumn(), getOwnerShip().getDirection().getAngle().get());
-		} catch (ProgramException e)
-		{
-			e.printStackTrace(); //THIS SHOULD NEVER EVER HAPPEN
-		}
-		return dl;
-	}
-	
-	@Override
-	public boolean isTypeSafe ()
-	{
-		return true;
+		return new DoubleLiteral(getLine(), getColumn(), getOwnerShip().getDirection().getAngle().get());
 	}
 	
 	@Override

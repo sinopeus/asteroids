@@ -4,6 +4,9 @@ import world.World;
 import world.entity.Entity;
 import world.physics.vector.Position;
 import world.physics.vector.Vector;
+import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Model;
+import be.kuleuven.cs.som.annotate.Raw;
 
 /**
  * A class of entity collisions extending collisions
@@ -17,18 +20,21 @@ import world.physics.vector.Vector;
 public final class EntityCollision extends Collision
 {
 	/**
-	 * Creates a new collision between entities.
+	 * Creates a new collision between entities. //TODO document
 	 * 
-	 * @param world		The world in which collision occurs.
-	 * @param entity1	The first entity involved in the collision.
-	 * @param entity2	The second entity involved in the collision.
+	 * @param	world	
+	 * 			The world in which collision occurs.
+	 * @param	entity1
+	 * 			The first entity involved in the collision.
+	 * @param	entity2
+	 * 			The second entity involved in the collision.
 	 */
 	public EntityCollision (World world, Entity entity1, Entity entity2)
 	{
 		super(world);
+		this.entity = new Entity[2];
 		setEntity1(entity1);
 		setEntity2(entity2);
-
 		calculateCollisionTime();
 	}
 
@@ -37,9 +43,11 @@ public final class EntityCollision extends Collision
 	 * 
 	 * @return entity1	The first entity involved in the collision. 
 	 */
+	@Basic
+	@Raw
 	public Entity getEntity1 ()
 	{
-		return entity1;
+		return entity[0];
 	}
 
 	/**
@@ -51,10 +59,13 @@ public final class EntityCollision extends Collision
 	 * 			The given entity is not a valid entity.
 	 * 			| !canHaveAsEntity(entity2)
 	 */
-	public void setEntity1 (Entity entity1) throws IllegalArgumentException
+	@Basic
+	@Raw
+	@Model
+	protected void setEntity1 (@Raw Entity entity1) throws IllegalArgumentException
 	{
 		if (!canHaveAsEntity(entity1)) throw new IllegalArgumentException("Illegal entity provided.");
-		this.entity1 = entity1;
+		this.entity[0] = entity1;
 	}
 
 	/**
@@ -62,9 +73,11 @@ public final class EntityCollision extends Collision
 	 * 
 	 * @return entity2	The second entity involved in the collision. 
 	 */
+	@Basic
+	@Raw
 	public Entity getEntity2 ()
 	{
-		return entity2;
+		return entity[1];
 	}
 
 	/**
@@ -76,10 +89,13 @@ public final class EntityCollision extends Collision
 	 * 			The given entity is not a valid entity.
 	 * 			| !canHaveAsEntity(entity2)
 	 */
-	private void setEntity2 (Entity entity2) throws IllegalArgumentException
+	@Basic
+	@Raw
+	@Model
+	protected void setEntity2 (@Raw Entity entity2) throws IllegalArgumentException
 	{
 		if (!canHaveAsEntity(entity2)) throw new IllegalArgumentException("Illegal entity provided.");
-		this.entity2 = entity2;
+		this.entity[1] = entity2;
 	}
 
 	/**
@@ -89,20 +105,16 @@ public final class EntityCollision extends Collision
 	 * 			The entity to be checked for validity.
 	 * @return	| entity != null
 	 */
-	protected boolean canHaveAsEntity (Entity entity)
+	@Basic
+	protected static boolean canHaveAsEntity (@Raw Entity entity)
 	{
 		return (entity != null);
 	}
 
 	/**
-	 * The first entity involved in the collision.
+	 * A variable referencing the array of entities involved in this collision.
 	 */
-	private Entity	entity1;
-
-	/**
-	 * The second entity involved in the collision.
-	 */
-	private Entity	entity2;
+	private final Entity[]	entity;
 
 	/**
 	 * @see world.physics.collision.Collision#resolve()
@@ -110,8 +122,8 @@ public final class EntityCollision extends Collision
 	@Override
 	public void resolve ()
 	{
-		if (entity1 == entity2) return;
-		entity1.collideWith(entity2);
+		if (entity[0] == entity[1]) return;
+		entity[0].collideWith(entity[1]);
 	}
 
 	/**
@@ -146,12 +158,12 @@ public final class EntityCollision extends Collision
 	@Override
 	protected void calculateCollisionTime () throws IllegalArgumentException
 	{
-		if ( (entity1 == null) || (entity2 == null)) { throw new IllegalArgumentException("One of the given entities is null."); }
+		if ( (entity[0] == null) || (entity[1] == null)) { throw new IllegalArgumentException("One of the given entities is null."); }
 
-		double sigma = entity1.getShape().getRadius() + entity2.getShape().getRadius(); // size difference between entitities
+		double sigma = entity[0].getShape().getRadius() + entity[1].getShape().getRadius(); // size difference between entitities
 
-		Vector deltaR = entity2.getPosition().getDifference(entity1.getPosition()); // distance between entitites
-		Vector deltaV = entity2.getVelocity().getDifference(entity1.getVelocity()); // difference of the velocities
+		Vector deltaR = entity[1].getPosition().getDifference(entity[0].getPosition()); // distance between entitites
+		Vector deltaV = entity[1].getVelocity().getDifference(entity[0].getVelocity()); // difference of the velocities
 
 		double d = (Math.pow(deltaV.dotProduct(deltaR), 2)) - ( (deltaV.dotProduct(deltaV)) * (deltaR.dotProduct(deltaR) - Math.pow(sigma, 2)));
 
@@ -173,17 +185,17 @@ public final class EntityCollision extends Collision
 	@Override
 	protected void calculateCollisionPosition ()
 	{
-		if ( (entity1 == null) || (entity2 == null)) { throw new IllegalArgumentException("One of the given entities is null."); }
+		if ( (entity[0] == null) || (entity[1] == null)) { throw new IllegalArgumentException("One of the given entities is null."); }
 
 		double deltaT = getTimeToCollision();
 
 		if (Double.isInfinite(deltaT)) { return; }
 
-		Position newPosShip1 = entity1.getPosition().getSum(entity1.getVelocity().getScaledBy(deltaT));
-		Position newPosShip2 = entity2.getPosition().getSum(entity2.getVelocity().getScaledBy(deltaT));
+		Position newPosShip1 = entity[0].getPosition().getSum(entity[0].getVelocity().getScaledBy(deltaT));
+		Position newPosShip2 = entity[1].getPosition().getSum(entity[1].getVelocity().getScaledBy(deltaT));
 
-		double sigma = entity1.getShape().getRadius() + entity2.getShape().getRadius();
-		double ship1Radius = entity1.getShape().getRadius();
+		double sigma = entity[0].getShape().getRadius() + entity[1].getShape().getRadius();
+		double ship1Radius = entity[0].getShape().getRadius();
 
 		this.collisionPosition = new Position(newPosShip1.getSum(newPosShip2.getDifference(newPosShip1).getScaledBy(ship1Radius / sigma)));
 	}
@@ -198,14 +210,14 @@ public final class EntityCollision extends Collision
 	{
 		return "Entity" + super.toString() + " of " + getEntity1() + " and " + getEntity1();
 	}
-	
+
 	@Override
 	public int hashCode ()
 	{
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + ( (entity1 == null) ? 0 : entity1.hashCode());
-		result = prime * result + ( (entity2 == null) ? 0 : entity2.hashCode());
+		result = prime * result + ( (entity[0] == null) ? 0 : entity[0].hashCode());
+		result = prime * result + ( (entity[1] == null) ? 0 : entity[1].hashCode());
 		return result;
 	}
 
@@ -216,14 +228,14 @@ public final class EntityCollision extends Collision
 		if (!super.equals(obj)) return false;
 		if (getClass() != obj.getClass()) return false;
 		EntityCollision other = (EntityCollision) obj;
-		if (entity1 == null)
+		if (entity[0] == null)
 		{
-			if (other.entity1 != null) return false;
-		} else if (!entity1.equals(other.entity1)) return false;
-		if (entity2 == null)
+			if (other.entity[0] != null) return false;
+		} else if (!entity[0].equals(other.entity[0])) return false;
+		if (entity[1] == null)
 		{
-			if (other.entity2 != null) return false;
-		} else if (!entity2.equals(other.entity2)) return false;
+			if (other.entity[1] != null) return false;
+		} else if (!entity[1].equals(other.entity[1])) return false;
 		return true;
 	}
 }

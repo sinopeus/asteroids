@@ -1,12 +1,13 @@
 package model.programs.parsing.language;
 
+import model.IFacade.TypeCheckOutcome;
 import model.programs.Program;
 import model.programs.ProgramException;
 import world.entity.ship.Ship;
 
 public abstract class ProgramPart
 {
-	protected ProgramPart (int line, int column) throws ProgramException
+	protected ProgramPart (int line, int column) throws IllegalArgumentException
 	{
 		setLine(line);
 		setColumn(column);
@@ -19,14 +20,14 @@ public abstract class ProgramPart
 		return parentProgram;
 	}
 
-	protected boolean canHaveAsParentProgram (Program program)
+	protected static boolean canHaveAsParentProgram (Program program)
 	{
 		return (program != null);
 	}
 
-	public void setParentProgram (Program parentProgram) throws ProgramException
+	public void setParentProgram (Program parentProgram) throws IllegalArgumentException
 	{
-		if (!canHaveAsParentProgram(parentProgram)) throw new ProgramException(getLine(),getColumn(),"Illegal parent program provided.");//TODO
+		if (!canHaveAsParentProgram(parentProgram)) throw new IllegalArgumentException("Illegal parent program provided.");//TODO
 		this.parentProgram = parentProgram;
 	}
 
@@ -37,14 +38,14 @@ public abstract class ProgramPart
 		return line;
 	}
 
-	protected boolean canHaveAsLine (int line)
+	protected static boolean canHaveAsLine (int line)
 	{
-		return (line >= 0); //TODO GE?
+		return (line >= 0);
 	}
 
-	protected void setLine (int line) throws ProgramException
+	protected void setLine (int line) throws IllegalArgumentException
 	{
-		if (!canHaveAsLine(line)) throw new ProgramException(getLine(),getColumn(),"Invalid line provided for expression.");
+		if (!canHaveAsLine(line)) throw new IllegalArgumentException("Invalid line provided for expression.");
 		this.line = line;
 	}
 
@@ -55,14 +56,14 @@ public abstract class ProgramPart
 		return column;
 	}
 
-	protected boolean canHaveAsColumn (int column)
+	protected static boolean canHaveAsColumn (int column)
 	{
-		return (column >= 0); //TODO GE?
+		return (column >= 0);
 	}
 
-	protected void setColumn (int column) throws ProgramException
+	protected void setColumn (int column) throws IllegalArgumentException
 	{
-		if (!canHaveAsColumn(column)) throw new ProgramException(getLine(),getColumn(),"Invalid column provided for expression.");
+		if (!canHaveAsColumn(column)) throw new IllegalArgumentException("Invalid column provided for expression.");
 		this.column = column;
 	}
 
@@ -71,5 +72,5 @@ public abstract class ProgramPart
 		return getParentProgram().getOwner();
 	}
 	
-	public abstract boolean isTypeSafe();
+	public abstract TypeCheckOutcome isTypeSafe();
 }

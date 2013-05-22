@@ -20,19 +20,19 @@ public class TypeTest
 	}
 
 	@Test
-	public void booleanDefaultValueTest () throws ProgramException
+	public void booleanDefaultValueTest () throws IllegalArgumentException
 	{
 		assertEquals(new BooleanLiteral(0, 0, false), Type.TYPE_BOOLEAN.defaultValue(0, 0));
 	}
 
 	@Test
-	public void doubleDefaultValueTest () throws ProgramException
+	public void doubleDefaultValueTest () throws IllegalArgumentException
 	{
 		assertEquals(new DoubleLiteral(0, 0, 0.0), Type.TYPE_DOUBLE.defaultValue(0, 0));
 	}
 
 	@Test
-	public void entityDefaultValueTest () throws ProgramException
+	public void entityDefaultValueTest () throws IllegalArgumentException
 	{
 		assertEquals(new EntityLiteral(0, 0, null), Type.TYPE_ENTITY.defaultValue(0, 0));
 	}

@@ -1,12 +1,13 @@
 package model.programs.parsing.language.expression.first_order;
 
+import model.IFacade.TypeCheckOutcome;
 import model.programs.Program;
 import model.programs.ProgramException;
 import model.programs.parsing.language.expression.Expression;
 
 public abstract class FirstOrderExpression extends Expression
 {
-	protected FirstOrderExpression (int line, int column, Expression argument) throws ProgramException
+	protected FirstOrderExpression (int line, int column, Expression argument) throws IllegalArgumentException
 	{
 		super(line, column);
 		setArgument(argument);
@@ -19,9 +20,9 @@ public abstract class FirstOrderExpression extends Expression
 		return argument;
 	}
 
-	protected boolean canHaveAsArgument (Expression argument)
+	protected static boolean canHaveAsArgument (Expression argument)
 	{
-		return argument != null;
+		return (argument != null);
 	}
 
 	protected void setArgument (Expression argument)
@@ -31,10 +32,18 @@ public abstract class FirstOrderExpression extends Expression
 	}
 	
 	@Override
-	public void setParentProgram (Program parrentProgram) throws ProgramException
+	public void setParentProgram (Program parrentProgram) throws IllegalArgumentException
 	{
 		super.setParentProgram(parrentProgram);
 		getArgument().setParentProgram(parrentProgram);
+	}
+	
+	@Override
+	public TypeCheckOutcome isTypeSafe ()
+	{
+		TypeCheckOutcome firstArgumentIsTypeSafe = getArgument().isTypeSafe();
+		if (!firstArgumentIsTypeSafe.isSuccessful()) return TypeCheckOutcome.failure("The first argument of the first order expression " + getLine() + ", " + getColumn() + " is not type safe.");
+		return TypeCheckOutcome.success();
 	}
 	
 	@Override

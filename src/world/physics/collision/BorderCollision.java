@@ -7,11 +7,9 @@ import world.entity.Entity;
 import world.physics.vector.Position;
 import world.physics.vector.Quadrant;
 import world.physics.vector.Vector;
-
-
-import world.entity.Entity;
-import world.physics.vector.Position;
-import world.physics.vector.Vector;
+import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Model;
+import be.kuleuven.cs.som.annotate.Raw;
 
 /**
  * A class of border collisions extending collisions.
@@ -57,6 +55,8 @@ public final class BorderCollision extends Collision
 	 * Gets the border to collide with.
 	 */
 	@SuppressWarnings ("javadoc")
+	@Basic
+	@Raw
 	public Border getCollisionBorder ()
 	{
 		return collisionBorder;
@@ -70,7 +70,8 @@ public final class BorderCollision extends Collision
 	 * @return	True if and only if the given collision border is not null.
 	 * 			| result == collisionBorder != null
 	 */
-	protected boolean canHaveAsCollisionBorder (Border collisionBorder)
+	@Basic
+	protected static boolean canHaveAsCollisionBorder (@Raw Border collisionBorder)
 	{
 		return (collisionBorder != null);
 	}
@@ -84,7 +85,9 @@ public final class BorderCollision extends Collision
 	 * 			The given collision border is not a valid collision border.
 	 * 			| !canHaveAsCollisionBorder(collisionBorder)
 	 */
-	public void setCollisionBorder (Border collisionBorder) throws IllegalArgumentException
+	@Basic
+	@Raw
+	public void setCollisionBorder (@Raw Border collisionBorder) throws IllegalArgumentException
 	{
 		if (!canHaveAsCollisionBorder(collisionBorder)) { throw new IllegalArgumentException("Illegal border provided."); }
 		this.collisionBorder = collisionBorder;
@@ -99,6 +102,8 @@ public final class BorderCollision extends Collision
 	 * Gets the collisions entity of this border collision.
 	 */
 	@SuppressWarnings ("javadoc")
+	@Basic
+	@Raw
 	public Entity getCollisionEntity ()
 	{
 		return collisionEntity;
@@ -112,7 +117,8 @@ public final class BorderCollision extends Collision
 	 * @return	True if and only if the given entity is not null.
 	 * 			| result == collisionEntity != null
 	 */
-	public boolean canHaveAsEntity (Entity collisionEntity)
+	@Basic
+	public static boolean canHaveAsEntity (@Raw Entity collisionEntity)
 	{
 		return (collisionEntity != null);
 	}
@@ -126,7 +132,9 @@ public final class BorderCollision extends Collision
 	 * 			The given entity is not a valid collision entity for this border collision.
 	 * 			| !canHaveAsEntity(collisionEntity)
 	 */
-	public void setCollisionEntity (Entity collisionEntity) throws IllegalArgumentException
+	@Basic
+	@Raw
+	public void setCollisionEntity (@Raw Entity collisionEntity) throws IllegalArgumentException
 	{
 		if (!canHaveAsEntity(collisionEntity)) { throw new IllegalArgumentException("Illegal collision entity provided."); }
 		this.collisionEntity = collisionEntity;
@@ -150,6 +158,7 @@ public final class BorderCollision extends Collision
 	 * Gets the time to collision of this border collision.
 	 */
 	@Override
+	@Raw
 	public double getTimeToCollision ()
 	{
 		return this.timeToCollision;
@@ -163,6 +172,7 @@ public final class BorderCollision extends Collision
 	 * @return	The time it takes the collision to collide with a given border.
 	 * 			| time to collision = time for the position vector of the entity to reach a point at distance r from the border
 	 */
+	@Model
 	private double getTimeToBorderCollision (Border border)
 	{
 		Position intersectionOfCenter = null;

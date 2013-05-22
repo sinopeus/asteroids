@@ -1,6 +1,6 @@
 package model.programs.parsing.language.statement.action;
 
-import model.programs.ProgramException;
+import model.IFacade.TypeCheckOutcome;
 import model.programs.parsing.language.Type;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.constant.literal.DoubleLiteral;
@@ -8,7 +8,7 @@ import world.physics.geometry.Angle;
 
 public class Turn extends Action
 {
-	public Turn (int line, int column, Expression angle) throws ProgramException
+	public Turn (int line, int column, Expression angle) throws IllegalArgumentException
 	{
 		super(line, column);
 		setAngle(angle);
@@ -21,9 +21,9 @@ public class Turn extends Action
 		return angle;
 	}
 
-	protected boolean canHaveAsAngle (Expression angle)
+	protected static boolean canHaveAsAngle (Expression angle)
 	{
-		return (angle != null);//TODO more checking?
+		return (angle != null);
 	}
 
 	protected void setAngle (Expression angle)
@@ -43,11 +43,13 @@ public class Turn extends Action
 	}
 
 	@Override
-	public boolean isTypeSafe ()
+	public TypeCheckOutcome isTypeSafe ()
 	{
-		boolean angleIsTypeSafe = getAngle().isTypeSafe();
+		TypeCheckOutcome angle = getAngle().isTypeSafe();
+		if (!angle.isSuccessful()) return angle;
 		boolean angleIsNumber = getAngle().getType() == Type.TYPE_DOUBLE;
-		return (angleIsTypeSafe && angleIsNumber);
+		if (!angleIsNumber) return TypeCheckOutcome.failure("The angle expression of turn statement at " + getLine() + ", " + getColumn() + " is not a double.");
+		return TypeCheckOutcome.success();
 	}
 
 	@Override

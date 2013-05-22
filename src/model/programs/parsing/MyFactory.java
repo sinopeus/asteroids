@@ -2,7 +2,6 @@ package model.programs.parsing;
 
 import java.util.List;
 
-import model.programs.ProgramException;
 import model.programs.parsing.language.Type;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.Variable;
@@ -50,496 +49,231 @@ public class MyFactory implements ProgramFactory <Expression, Statement, Type>
 	@Override
 	public Expression createDoubleLiteral (int line, int column, double d)
 	{
-		try
-		{
-			return new DoubleLiteral(line, column, d);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		
+		return new DoubleLiteral(line, column, d);
 	}
 
 	@Override
 	public Expression createBooleanLiteral (int line, int column, boolean b)
 	{
-		try
-		{
-			return new BooleanLiteral(line, column, b);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		return new BooleanLiteral(line, column, b);
 	}
 
 	@Override
 	public Expression createAnd (int line, int column, Expression e1, Expression e2)
 	{
-		try
-		{
-			return new And(line, column, e1, e2);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		return new And(line, column, e1, e2);
 	}
 
 	@Override
 	public Expression createOr (int line, int column, Expression e1, Expression e2)
 	{
-		try
-		{
-			return new Or(line, column, e1, e2);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		return new Or(line, column, e1, e2);
 	}
 
 	@Override
 	public Expression createNot (int line, int column, Expression e)
 	{
-		try
-		{
-			return new Not(line, column, e);
-		} catch (ProgramException e1)
-		{
-			e1.printStackTrace();
-		}
-		return null;
+		return new Not(line, column, e);
 	}
 
 	@Override
 	public Expression createNull (int line, int column)
 	{
-		try
-		{
-			return new Null(line, column);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		return new Null(line, column);
 	}
 
 	@Override
 	public Expression createSelf (int line, int column)
 	{
-		try
-		{
-			return new Self(line, column);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		return new Self(line, column);
 	}
 
 	@Override
 	public Expression createGetX (int line, int column, Expression e)
 	{
-		try
-		{
-			return new GetX(line, column, e);
-		} catch (ProgramException e1)
-		{
-			e1.printStackTrace();
-		}
-		return null;
+		return new GetX(line, column, e);
 	}
 
 	@Override
 	public Expression createGetY (int line, int column, Expression e)
 	{
-		try
-		{
-			return new GetY(line, column, e);
-		} catch (ProgramException e1)
-		{
-			e1.printStackTrace();
-		}
-		return null;
+		return new GetY(line, column, e);
 	}
 
 	@Override
 	public Expression createGetVX (int line, int column, Expression e)
 	{
-		try
-		{
-			return new GetVX(line, column, e);
-		} catch (ProgramException e1)
-		{
-			e1.printStackTrace();
-		}
-		return null;
+		return new GetVX(line, column, e);
 	}
 
 	@Override
 	public Expression createGetVY (int line, int column, Expression e)
 	{
-		try
-		{
-			return new GetVY(line, column, e);
-		} catch (ProgramException e1)
-		{
-			e1.printStackTrace();
-		}
-		return null;
+		return new GetVY(line, column, e);
 	}
 
 	@Override
 	public Expression createGetRadius (int line, int column, Expression e)
 	{
-		try
-		{
-			return new GetRadius(line, column, e);
-		} catch (ProgramException e1)
-		{
-			e1.printStackTrace();
-		}
-		return null;
+		return new GetRadius(line, column, e);
 	}
 
 	@Override
 	public Expression createVariable (int line, int column, String name)
 	{
-		try
-		{
-			return new Variable(line, column, name);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		return new Variable(line, column, name);
 	}
 
 	@Override
 	public Expression createLessThan (int line, int column, Expression e1, Expression e2)
 	{
-		try
-		{
-			return new LT(line, column, e1, e2);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		return new LT(line, column, e1, e2);
 	}
 
 	@Override
 	public Expression createGreaterThan (int line, int column, Expression e1, Expression e2)
 	{
-		try
-		{
-			return new GT(line, column, e1, e2);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		return new GT(line, column, e1, e2);
 	}
 
 	@Override
 	public Expression createLessThanOrEqualTo (int line, int column, Expression e1, Expression e2)
 	{
-		try
-		{
-			return new LE(line, column, e1, e2);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		return new LE(line, column, e1, e2);
 	}
 
 	@Override
 	public Expression createGreaterThanOrEqualTo (int line, int column, Expression e1, Expression e2)
 	{
-		try
-		{
-			return new GE(line, column, e1, e2);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		return new GE(line, column, e1, e2);
 	}
 
 	@Override
 	public Expression createEquality (int line, int column, Expression e1, Expression e2)
 	{
-		try
-		{
-			return new Equals(line, column, e1, e2);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		return new Equals(line, column, e1, e2);
 	}
 
 	@Override
 	public Expression createInequality (int line, int column, Expression e1, Expression e2)
 	{
-		try
-		{
-			return new NotEquals(line, column, e1, e2);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		return new NotEquals(line, column, e1, e2);
 	}
 
 	@Override
 	public Expression createAdd (int line, int column, Expression e1, Expression e2)
 	{
-		try
-		{
-			return new Addition(line, column, e1, e2);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		return new Addition(line, column, e1, e2);
 	}
 
 	@Override
 	public Expression createSubtraction (int line, int column, Expression e1, Expression e2)
 	{
-		try
-		{
-			return new Subtraction(line, column, e1, e2);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		return new Subtraction(line, column, e1, e2);
 	}
 
 	@Override
 	public Expression createMul (int line, int column, Expression e1, Expression e2)
 	{
-		try
-		{
-			return new Multiplication(line, column, e1, e2);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		return new Multiplication(line, column, e1, e2);
 	}
 
 	@Override
 	public Expression createDivision (int line, int column, Expression e1, Expression e2)
 	{
-		try
-		{
-			return new Division(line, column, e1, e2);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		return new Division(line, column, e1, e2);
 	}
 
 	@Override
 	public Expression createSqrt (int line, int column, Expression e)
 	{
-		try
-		{
-			return new SquareRoot(line, column, e);
-		} catch (ProgramException e1)
-		{
-			e1.printStackTrace();
-		}
-		return null;
+		return new SquareRoot(line, column, e);
 	}
 
 	@Override
 	public Expression createGetDirection (int line, int column)
 	{
-		try
-		{
-			return new GetDirection(line, column);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		return new GetDirection(line, column);
 	}
 
 	@Override
 	public Expression createSin (int line, int column, Expression e)
 	{
-		try
-		{
-			return new Sine(line, column, e);
-		} catch (ProgramException e1)
-		{
-			e1.printStackTrace();
-		}
-		return null;
+		return new Sine(line, column, e);
 	}
 
 	@Override
 	public Expression createCos (int line, int column, Expression e)
 	{
-		try
-		{
-			return new Cosine(line, column, e);
-		} catch (ProgramException e1)
-		{
-			e1.printStackTrace();
-		}
-		return null;
+		return new Cosine(line, column, e);
 	}
 
 	@Override
 	public Statement createEnableThruster (int line, int column)
 	{
-		try
-		{
-			return new ThrustOn(line, column);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		return new ThrustOn(line, column);
 	}
 
 	@Override
 	public Statement createDisableThruster (int line, int column)
 	{
-		try
-		{
-			return new ThrustOff(line, column);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		return new ThrustOff(line, column);
 	}
 
 	@Override
 	public Statement createFire (int line, int column)
 	{
-		try
-		{
-			return new Fire(line, column);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		return new Fire(line, column);
 	}
 
 	@Override
 	public Statement createTurn (int line, int column, Expression angle)
 	{
-		try
-		{
-			return new Turn(line, column, angle);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		return new Turn(line, column, angle);
 	}
 
 	@Override
 	public Statement createAssignment (int line, int column, String variable, Expression rhs)
 	{
-		try
-		{
-			Variable var = new Variable(line, column, variable);
-			return new Assignment(line, column, var, rhs);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		Variable var = new Variable(line, column, variable);
+		return new Assignment(line, column, var, rhs);
 	}
 
 	@Override
 	public Statement createIf (int line, int column, Expression condition, Statement then, Statement otherwise)
 	{
-		try
-		{
-			return new If(line, column, condition, then, otherwise);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		return new If(line, column, condition, then, otherwise);
 	}
 
 	@Override
 	public Statement createWhile (int line, int column, Expression condition, Statement body)
 	{
-		try
-		{
-			return new While(line, column, condition, body);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		return new While(line, column, condition, body);
 	}
 
 	@Override
 	public Statement createForeach (int line, int column, ProgramFactory.ForeachType type, String variableName, Statement body)
 	{
-		try
-		{
-			return new ForEach(line, column, type, variableName, body);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		return new ForEach(line, column, type, variableName, body);
 	}
 
 	@Override
 	public Statement createSkip (int line, int column)
 	{
-		try
-		{
-			return new Skip(line, column);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		return new Skip(line, column);
 	}
 
 	@Override
 	public Statement createSequence (int line, int column, List <Statement> statements)
 	{
-		try
-		{
-			return new Sequence(line, column, statements);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		return new Sequence(line, column, statements);
 	}
 
 	@Override
 	public Statement createPrint (int line, int column, Expression e)
 	{
-		try
-		{
-			return new Print(line, column, e);
-		} catch (ProgramException e1)
-		{
-			e1.printStackTrace();
-		}
-		return null;
+		return new Print(line, column, e);
 	}
 
 	@Override
@@ -559,5 +293,4 @@ public class MyFactory implements ProgramFactory <Expression, Statement, Type>
 	{
 		return Type.TYPE_ENTITY;
 	}
-
 }

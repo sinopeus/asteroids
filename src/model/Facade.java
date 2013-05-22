@@ -228,13 +228,12 @@ public class Facade implements IFacade <World, Ship, Asteroid, Bullet, Program>
 	{
 		ship.turn(new Angle(angle));
 	}
-	
+
 	@Override
 	public boolean canFire (Ship ship)
 	{
 		return ship.canFire();
 	}
-
 
 	@Override
 	public void fireBullet (Ship ship)
@@ -410,12 +409,9 @@ public class Facade implements IFacade <World, Ship, Asteroid, Bullet, Program>
 	}
 
 	@Override
-	public model.IFacade.TypeCheckOutcome typeCheckProgram (Program program)
+	public TypeCheckOutcome typeCheckProgram (Program program)
 	{
-		boolean safe = program.isTypeSafe();
-		System.out.println(safe);
-		if (safe)return TypeCheckOutcome.success();
-		else return TypeCheckOutcome.failure("failure");
+		return program.isTypeSafe();
 	}
 
 	@Override

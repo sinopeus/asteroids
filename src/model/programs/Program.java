@@ -3,6 +3,7 @@ package model.programs;
 import java.util.HashMap;
 import java.util.Map;
 
+import model.IFacade.TypeCheckOutcome;
 import model.programs.parsing.language.Type;
 import model.programs.parsing.language.expression.constant.ConstantExpression;
 import model.programs.parsing.language.statement.Statement;
@@ -33,9 +34,9 @@ public class Program
 		this.globalTypes = globalTypes;
 	}
 
-	private HashMap <String, ConstantExpression<?>>	globalValues;
+	private HashMap <String, ConstantExpression <?>>	globalValues;
 
-	public HashMap <String, ConstantExpression<?>> getGlobalValues ()
+	public HashMap <String, ConstantExpression <?>> getGlobalValues ()
 	{
 		return globalValues;
 	}
@@ -43,14 +44,14 @@ public class Program
 	protected void setGlobalValues (Map <String, Type> globalTypes) throws RecognitionException
 	{
 		if (!canHaveAsGlobals(globalTypes)) throw new RecognitionException();
-		HashMap <String, ConstantExpression<?>> globalVariables = new HashMap <String, ConstantExpression<?>>();
+		HashMap <String, ConstantExpression <?>> globalVariables = new HashMap <String, ConstantExpression <?>>();
 		int counter = 0;
 		for (String name : globalTypes.keySet())
 			globalVariables.put(name, globalTypes.get(name).defaultValue(counter++, 0));
 		this.globalValues = globalVariables;
 	}
 
-	protected boolean canHaveAsGlobals (Map <String, Type> globals)
+	protected static boolean canHaveAsGlobals (Map <String, Type> globals)
 	{
 		return (globals != null); // TODO more checking?
 	}
@@ -62,7 +63,7 @@ public class Program
 		return statement;
 	}
 
-	protected boolean canHaveAsStatement (Statement statement)
+	protected static boolean canHaveAsStatement (Statement statement)
 	{
 		return (statement != null); // TODO more checking?
 	}
@@ -70,14 +71,8 @@ public class Program
 	protected void setStatement (Statement statement) throws RecognitionException
 	{
 		if (!canHaveAsStatement(statement)) throw new RecognitionException();
+		statement.setParentProgram(this);
 		this.statement = statement;
-		try
-		{
-			statement.setParentProgram(this);
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
 	}
 
 	private Ship	owner;
@@ -87,7 +82,7 @@ public class Program
 		return owner;
 	}
 
-	protected boolean canHaveAsOwner (Ship owner)
+	protected static boolean canHaveAsOwner (Ship owner)
 	{
 		return (owner != null);//TODO more checking
 	}
@@ -110,16 +105,16 @@ public class Program
 		this.finished = true;
 	}
 
-	public ConstantExpression<?> getVariableNamed (String name) throws IllegalArgumentException
+	public ConstantExpression <?> getVariableNamed (String name) throws IllegalArgumentException
 	{
 		if (!globalValues.containsKey(name)) throw new IllegalArgumentException("invalid variable name: " + name);
 		return getGlobalValues().get(name);
 	}
 
-	public void setVariableValue (String name, ConstantExpression<?> value) throws IllegalArgumentException
+	public void setVariableValue (String name, ConstantExpression <?> value) throws IllegalArgumentException
 	{
-		if(name == null) throw new IllegalArgumentException("Illegal name.");
-		if(value == null) throw new IllegalArgumentException("Illegal value.");
+		if (name == null) throw new IllegalArgumentException("Illegal name.");
+		if (value == null) throw new IllegalArgumentException("Illegal value.");
 		if (!globalValues.containsKey(name)) throw new IllegalArgumentException("invalid variable name");
 		getGlobalValues().remove(name);
 		getGlobalValues().put(name, value);
@@ -130,8 +125,9 @@ public class Program
 		while (!getStatement().isFinished())
 			if (getStatement().execute()) break;
 	}
-	
-	public boolean isTypeSafe(){
+
+	public TypeCheckOutcome isTypeSafe ()
+	{
 		return getStatement().isTypeSafe();
 	}
 

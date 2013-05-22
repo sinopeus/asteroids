@@ -1,5 +1,6 @@
 package model.programs.parsing.language.statement;
 
+import model.IFacade.TypeCheckOutcome;
 import model.programs.Program;
 import model.programs.ProgramException;
 import model.programs.parsing.language.Type;
@@ -8,7 +9,7 @@ import model.programs.parsing.language.expression.constant.literal.BooleanLitera
 
 public class While extends Statement
 {
-	public While (int line, int column, Expression condition, Statement body) throws ProgramException
+	public While (int line, int column, Expression condition, Statement body) throws IllegalArgumentException
 	{
 		super(line, column);
 		checked = false;
@@ -23,9 +24,9 @@ public class While extends Statement
 		return condition;
 	}
 
-	protected boolean canHaveAsCondition (Expression condition)
+	protected static boolean canHaveAsCondition (Expression condition)
 	{
-		return (condition != null);//TODO more checking?
+		return (condition != null);
 	}
 
 	protected void setCondition (Expression condition)
@@ -41,9 +42,9 @@ public class While extends Statement
 		return body;
 	}
 
-	protected boolean canHaveAsBody (Statement body)
+	protected static boolean canHaveAsBody (Statement body)
 	{
-		return (body != null); //TODO more checking?
+		return (body != null);
 	}
 
 	protected void setBody (Statement body)
@@ -66,7 +67,7 @@ public class While extends Statement
 	}
 	
 	@Override
-	public void setParentProgram (Program parrentProgram) throws ProgramException
+	public void setParentProgram (Program parrentProgram) throws IllegalArgumentException
 	{
 		super.setParentProgram(parrentProgram);
 		getCondition().setParentProgram(parrentProgram);
@@ -113,12 +114,15 @@ public class While extends Statement
 	}
 	
 	@Override
-	public boolean isTypeSafe ()
+	public TypeCheckOutcome isTypeSafe ()
 	{
-		boolean conditionIsTypeSafe = getCondition().isTypeSafe();
+		TypeCheckOutcome conditionIsTypeSafe = getCondition().isTypeSafe();
+		if(!conditionIsTypeSafe.isSuccessful()) return conditionIsTypeSafe;
 		boolean conditionIsBoolean = getCondition().getType() == Type.TYPE_BOOLEAN;
-		boolean bodyIsTypeSafe = getBody().isTypeSafe();
-		return (conditionIsTypeSafe && conditionIsBoolean && bodyIsTypeSafe);
+		if(!conditionIsBoolean) return TypeCheckOutcome.failure("The condition of the while statement at " + getLine() + ", " + getColumn() + " is not a boolean.");
+		TypeCheckOutcome bodyIsTypeSafe = getBody().isTypeSafe();
+		if(!bodyIsTypeSafe.isSuccessful()) return bodyIsTypeSafe;
+		return TypeCheckOutcome.success();
 	}
 	
 	@Override

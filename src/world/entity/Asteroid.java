@@ -112,7 +112,7 @@ public class Asteroid extends Entity
 	 * 			The given asteroid to collide with.
 	 * @effect	this.bounce(that)
 	 */
-	public void collideWith (Asteroid that)
+	protected void collideWith (Asteroid that)
 	{
 		if (that == null) return;
 		this.bounce(that);
@@ -128,7 +128,7 @@ public class Asteroid extends Entity
 	 * @effect	terminates the given bullet.
 	 * 			| that.terminate()
 	 */
-	public void collideWith (Bullet that)
+	protected void collideWith (Bullet that)
 	{
 		if (that == null) return;
 
@@ -145,10 +145,9 @@ public class Asteroid extends Entity
 	 * 			| that.terminate()
 	 */
 	@Override
-	public void collideWith (Ship that)
+	protected void collideWith (Ship that)
 	{
 		if (that == null) return;
-
 		that.terminate();
 	}
 

@@ -1,6 +1,5 @@
 package world.physics.geometry;
 
-import Utilities.Util;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 
@@ -91,13 +90,8 @@ public class Angle
 	public void set (double angle)
 	{
 		assert (canHaveAsAngle(angle));
-		if (angle >= 0)
-		{
-			this.angle = angle % (2 * Math.PI);
-		} else
-		{
-			this.angle = (angle % (2 * Math.PI)) + (2 * Math.PI);
-		}
+		if (angle >= 0) this.angle = angle % (2 * Math.PI);
+		else this.angle = (angle % (2 * Math.PI)) + (2 * Math.PI);
 		assert ( (get() >= 0) && (get() <= 2 * Math.PI));
 	}
 
@@ -168,24 +162,4 @@ public class Angle
 		if (Double.doubleToLongBits(angle) != Double.doubleToLongBits(other.angle)) return false;
 		return true;
 	}
-	
-//	/**
-//	 * Checks whether the given object is an angle and it is equal to this angle.
-//	 * 
-//	 * @param	o
-//	 * 			The given object.
-//	 * @return	True if and only if the given object is an angle and it is equal to this angle.
-//	 * 			| result == ((o != null) && (Util.fuzzyEquals(((Angle) o).getAngle(),getAngle())))
-//	 */
-//	@Override
-//	@Raw
-//	public boolean equals (Object o)
-//	{
-//		if (o == null) { return false; }
-//		if (! (o instanceof Angle)) { return false; }
-//		Angle other = (Angle) o;
-//		return (Util.fuzzyEquals(other.get(), get()));
-//	}
-
-
 }

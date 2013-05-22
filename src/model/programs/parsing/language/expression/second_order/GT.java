@@ -7,7 +7,7 @@ import model.programs.parsing.language.expression.constant.literal.DoubleLiteral
 
 public class GT extends SecondOrderExpressionOfNumbersToBoolean
 {
-	public GT (int line, int column, Expression firstArgument, Expression secondArgument) throws ProgramException
+	public GT (int line, int column, Expression firstArgument, Expression secondArgument) throws IllegalArgumentException
 	{
 		super(line, column, firstArgument, secondArgument);
 	}
@@ -15,14 +15,9 @@ public class GT extends SecondOrderExpressionOfNumbersToBoolean
 	@Override
 	protected BooleanLiteral function (DoubleLiteral first, DoubleLiteral second)
 	{
-		try
-		{
+
 			return new BooleanLiteral(getLine(), getColumn(), (first.getValue() > second.getValue()));
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+
 	}
 
 }

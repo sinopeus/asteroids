@@ -68,13 +68,8 @@ public class Position extends Vector
 	@Raw
 	public void setX (double x)
 	{
-		if (!canHaveAsComponent(x))
-		{
-			throw new IllegalArgumentException("Invalid vector component provided");
-		} else
-		{
-			this.components[0] = x;
-		}
+		if (!canHaveAsComponent(x)) throw new IllegalArgumentException("Invalid vector component provided");
+		this.components[0] = x;
 	}
 
 	/**
@@ -92,13 +87,8 @@ public class Position extends Vector
 	@Raw
 	public void setY (double y)
 	{
-		if (!canHaveAsComponent(y))
-		{
-			throw new IllegalArgumentException("Invalid vector component provided");
-		} else
-		{
-			this.components[1] = y;
-		}
+		if (!canHaveAsComponent(y)) throw new IllegalArgumentException("Invalid vector component provided");
+		this.components[1] = y;
 	}
 
 	/**
@@ -145,6 +135,7 @@ public class Position extends Vector
 		setX(p._X());
 		setY(p._Y());
 	}
+
 	/**
 	 * Returns a position, equal to this position moved by the a velocity during the a duration.
 	 * 
@@ -161,7 +152,8 @@ public class Position extends Vector
 	 * 			One of the resulting components is not a valid component.
 	 * 			| ((Double.isNaN(getXComponent()) || (Double.isNaN(getYComponent()))
 	 */
-	public Position getPositionAfterMove(Velocity v, double duration) throws ArithmeticException, IllegalArgumentException{
+	public Position getPositionAfterMove (Velocity v, double duration) throws ArithmeticException, IllegalArgumentException
+	{
 		if ( (v == null) || (duration < 0)) { throw new IllegalArgumentException("Invalid parameter provided."); }
 		return getSum(v.getScaledBy(duration));
 	}
@@ -176,22 +168,4 @@ public class Position extends Vector
 	{
 		return "P_" + hashCode() + " = " + super.toString() + " m";
 	}
-
-//	/**
-//	 * Checks whether the given object is a position and its respective components are equal to this position's components
-//	 * 
-//	 * @param	o
-//	 * 			The given object.
-//	 * @return	True if and only if the given object is a Position and the respective components of the given object and this position are equal.
-//	 * 			| result == (o != null) && (getClass() != o.getClass()) && Util.fuzzyEquals(getXComponent(), ((Position) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Position) o).getYComponent()))
-//	 */
-//	@Override
-//	@Raw
-//	public boolean equals (Object o)
-//	{
-//		if (o == null) { return false; }
-//		if (getClass() != o.getClass()) { return false; }
-//		Position other = (Position) o;
-//		return (Util.fuzzyEquals(_X(), other._X()) && Util.fuzzyEquals(_Y(), other._Y()));
-//	}
 }

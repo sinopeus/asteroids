@@ -14,7 +14,7 @@ import Utilities.Util;
 public class DoubleLiteralTest
 {
 	@Before
-	public void setUp () throws ProgramException
+	public void setUp () throws IllegalArgumentException
 	{
 		testLiteral = new DoubleLiteral(0, 0, 0.0);
 	}
@@ -22,7 +22,7 @@ public class DoubleLiteralTest
 	private static DoubleLiteral	testLiteral;
 
 	@Test
-	public void constructorTest_PerfectParameters () throws ProgramException
+	public void constructorTest_PerfectParameters () throws IllegalArgumentException
 	{
 		DoubleLiteral dl = new DoubleLiteral(1, 2, 3.0);
 		assertTrue(Util.fuzzyEquals(dl.getLine(), 1));
@@ -30,30 +30,24 @@ public class DoubleLiteralTest
 		assertTrue(Util.fuzzyEquals(dl.getValue(), 3.0));
 	}
 
-	@Test(expected = ProgramException.class)
-	public void constructorTest_IllegalLine () throws ProgramException
+	@Test(expected = IllegalArgumentException.class)
+	public void constructorTest_IllegalLine () throws IllegalArgumentException
 	{
 		new DoubleLiteral(-1, 2, 3.0);
 	}
 
-	@Test(expected = ProgramException.class)
-	public void constructorTest_IllegalColumn () throws ProgramException
+	@Test(expected = IllegalArgumentException.class)
+	public void constructorTest_IllegalColumn () throws IllegalArgumentException
 	{
 		new DoubleLiteral(1, -2, 3.0);
 	}
 	
-	@Test (expected = ProgramException.class)
-	public void constructorTest_IllegalDouble() throws ProgramException
+	@Test (expected = IllegalArgumentException.class)
+	public void constructorTest_IllegalDouble() throws IllegalArgumentException
 	{
 		new DoubleLiteral(1, 2, null);
 	}
 	
-	@Test
-	public void isTypeSafeTest ()
-	{
-		assertTrue(testLiteral.isTypeSafe());
-	}
-
 	@Test
 	public void getType ()
 	{

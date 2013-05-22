@@ -5,7 +5,7 @@ import model.programs.ProgramException;
 
 public class Fire extends Action
 {
-	public Fire (int line, int column) throws ProgramException
+	public Fire (int line, int column) throws IllegalArgumentException
 	{
 		super(line, column);
 	}
@@ -16,12 +16,6 @@ public class Fire extends Action
 		super.execute();
 		getOwnerShip().fire();
 		finish();
-		return true;
-	}
-	
-	@Override
-	public boolean isTypeSafe ()
-	{
 		return true;
 	}
 

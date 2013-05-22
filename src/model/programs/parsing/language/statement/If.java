@@ -1,14 +1,14 @@
 package model.programs.parsing.language.statement;
 
+import model.IFacade.TypeCheckOutcome;
 import model.programs.Program;
-import model.programs.ProgramException;
 import model.programs.parsing.language.Type;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.constant.literal.BooleanLiteral;
 
 public class If extends Statement
 {
-	public If (int line, int column, Expression condition, Statement then, Statement otherwise) throws ProgramException
+	public If (int line, int column, Expression condition, Statement then, Statement otherwise) throws IllegalArgumentException
 	{
 		super(line, column);
 		setCondition(condition);
@@ -44,9 +44,9 @@ public class If extends Statement
 		return condition;
 	}
 
-	protected boolean canHaveAsCondition (Expression condition)
+	protected static boolean canHaveAsCondition (Expression condition)
 	{
-		return (condition != null);//TODO more checking?
+		return (condition != null);
 	}
 
 	protected void setCondition (Expression condition)
@@ -62,9 +62,9 @@ public class If extends Statement
 		return then;
 	}
 
-	protected boolean canHaveAsThenStatement (Statement then)
+	protected static boolean canHaveAsThenStatement (Statement then)
 	{
-		return (then != null); //TODO more checking?
+		return (then != null);
 	}
 
 	protected void setThenStatement (Statement then)
@@ -80,9 +80,9 @@ public class If extends Statement
 		return otherwise;
 	}
 
-	protected boolean canHaveAsOtherwiseStatement (Statement otherwise)
+	protected static boolean canHaveAsOtherwiseStatement (Statement otherwise)
 	{
-		return true; //TODO more checking?
+		return true;
 	}
 
 	protected void setOtherwiseStatement (Statement otherwise)
@@ -92,7 +92,7 @@ public class If extends Statement
 	}
 
 	@Override
-	public void setParentProgram (Program parrentProgram) throws ProgramException
+	public void setParentProgram (Program parrentProgram) throws IllegalArgumentException
 	{
 		super.setParentProgram(parrentProgram);
 		getCondition().setParentProgram(parrentProgram);
@@ -137,15 +137,22 @@ public class If extends Statement
 	}
 
 	@Override
-	public boolean isTypeSafe ()
+	public TypeCheckOutcome isTypeSafe ()
 	{
-		boolean conditionIsTypeSafe = getCondition().isTypeSafe();
+		TypeCheckOutcome conditionIsTypeSafe = getCondition().isTypeSafe();
+		if (!conditionIsTypeSafe.isSuccessful()) return conditionIsTypeSafe;
 		boolean conditionIsBoolean = getCondition().getType() == Type.TYPE_BOOLEAN;
-		boolean thenIsTypeSafe = getThenStatement().isTypeSafe();
-		boolean otherwiseIsTypeSafe = getOtherwiseStatement() == null ? true : getOtherwiseStatement().isTypeSafe();
-		return (conditionIsTypeSafe && conditionIsBoolean && thenIsTypeSafe && otherwiseIsTypeSafe);
+		if (!conditionIsBoolean) return TypeCheckOutcome.failure("The condition of the if statement at " + getLine() + ", " + getColumn() + " is not type safe.");
+		TypeCheckOutcome thenIsTypeSafe = getThenStatement().isTypeSafe();
+		if (!thenIsTypeSafe.isSuccessful()) return thenIsTypeSafe;
+		if (getOtherwiseStatement() != null)
+		{
+			TypeCheckOutcome otherwiseIsTypeSafe = getOtherwiseStatement().isTypeSafe();
+			if (!otherwiseIsTypeSafe.isSuccessful()) return otherwiseIsTypeSafe;
+		}
+		return TypeCheckOutcome.success();
 	}
-	
+
 	@Override
 	public boolean containsAction ()
 	{

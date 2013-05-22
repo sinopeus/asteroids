@@ -7,7 +7,7 @@ import model.programs.parsing.language.expression.constant.literal.EntityLiteral
 
 public class GetVX extends FirstOrderExpressionOfEntityToNumber
 {
-	public GetVX (int line, int column, Expression argument) throws ProgramException
+	public GetVX (int line, int column, Expression argument) throws IllegalArgumentException
 	{
 		super(line, column, argument);
 	}
@@ -15,13 +15,8 @@ public class GetVX extends FirstOrderExpressionOfEntityToNumber
 	@Override
 	protected DoubleLiteral function (EntityLiteral argument)
 	{
-		try
-		{
+
 			return new DoubleLiteral(getLine(), getColumn(), argument.getValue().getVelocity()._X());
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+
 	}
 }

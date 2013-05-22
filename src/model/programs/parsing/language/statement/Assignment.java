@@ -1,13 +1,13 @@
 package model.programs.parsing.language.statement;
 
+import model.IFacade.TypeCheckOutcome;
 import model.programs.Program;
-import model.programs.ProgramException;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.Variable;
 
 public class Assignment extends Statement
 {
-	public Assignment (int line, int column, Variable variable, Expression value) throws ProgramException
+	public Assignment (int line, int column, Variable variable, Expression value) throws IllegalArgumentException
 	{
 		super(line, column);
 		setVariable(variable);
@@ -21,7 +21,7 @@ public class Assignment extends Statement
 		return variable;
 	}
 
-	protected boolean canHaveAsVariable (Variable variable)
+	protected static boolean canHaveAsVariable (Variable variable)
 	{
 		return (variable != null);
 	}
@@ -39,7 +39,7 @@ public class Assignment extends Statement
 		return value;
 	}
 
-	protected boolean canHaveAsValue (Expression value)
+	protected static boolean canHaveAsValue (Expression value)
 	{
 		return (value != null);
 	}
@@ -51,7 +51,7 @@ public class Assignment extends Statement
 	}
 
 	@Override
-	public void setParentProgram (Program parentProgram) throws ProgramException
+	public void setParentProgram (Program parentProgram) throws IllegalArgumentException
 	{
 		super.setParentProgram(parentProgram);
 		getVariable().setParentProgram(parentProgram);
@@ -68,11 +68,13 @@ public class Assignment extends Statement
 	}
 	
 	@Override
-	public boolean isTypeSafe ()
+	public TypeCheckOutcome isTypeSafe ()
 	{
-		boolean expressionIsTypeSafe = getValue().isTypeSafe();
+		TypeCheckOutcome expressionIsTypeSafeOutcome = getValue().isTypeSafe();
+		if(!expressionIsTypeSafeOutcome.isSuccessful()) return expressionIsTypeSafeOutcome;
 		boolean sameTypes = getValue().getType() == getVariable().getType();
-		return (expressionIsTypeSafe && sameTypes);
+		if (!sameTypes) return TypeCheckOutcome.failure("The assignment at " + getLine() + ", " + getColumn() + " is not type safe.");
+		return TypeCheckOutcome.success();
 	}
 	
 	@Override

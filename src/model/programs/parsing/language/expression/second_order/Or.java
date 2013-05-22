@@ -6,7 +6,7 @@ import model.programs.parsing.language.expression.constant.literal.BooleanLitera
 
 public class Or extends SecondOrderExpressionOfBooleansToBoolean
 {
-	public Or (int line, int column, Expression firstArgument, Expression secondArgument) throws ProgramException
+	public Or (int line, int column, Expression firstArgument, Expression secondArgument) throws IllegalArgumentException
 	{
 		super(line, column, firstArgument, secondArgument);
 	}
@@ -14,14 +14,9 @@ public class Or extends SecondOrderExpressionOfBooleansToBoolean
 	@Override
 	protected BooleanLiteral function (BooleanLiteral first, BooleanLiteral second)
 	{
-		try
-		{
+
 			return new BooleanLiteral(getLine(), getColumn(), (first.getValue() || second.getValue()));
-		} catch (ProgramException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+
 	}
 
 }

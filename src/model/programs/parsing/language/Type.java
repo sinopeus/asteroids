@@ -1,59 +1,37 @@
 package model.programs.parsing.language;
 
-import world.entity.Entity;
-import model.programs.ProgramException;
 import model.programs.parsing.language.expression.constant.ConstantExpression;
 import model.programs.parsing.language.expression.constant.literal.BooleanLiteral;
 import model.programs.parsing.language.expression.constant.literal.DoubleLiteral;
 import model.programs.parsing.language.expression.constant.literal.EntityLiteral;
+import world.entity.Entity;
 
 public enum Type
 {
 	TYPE_BOOLEAN
 	{
 		@Override
-		public ConstantExpression<Boolean> defaultValue (int line, int column)
+		public ConstantExpression <Boolean> defaultValue (int line, int column)
 		{
-			try
-			{
-				return new BooleanLiteral(line, column, false);
-			} catch (ProgramException e)
-			{
-				e.printStackTrace();
-			}
-			return null;
+			return new BooleanLiteral(line, column, false);
 		}
 	},
 	TYPE_DOUBLE
 	{
 		@Override
-		public ConstantExpression<Double> defaultValue (int line, int column)
+		public ConstantExpression <Double> defaultValue (int line, int column)
 		{
-			try
-			{
-				return new DoubleLiteral(line, column, 0.0);
-			} catch (ProgramException e)
-			{
-				e.printStackTrace();
-			}
-			return null;
+			return new DoubleLiteral(line, column, 0.0);
 		}
 	},
 	TYPE_ENTITY
 	{
 		@Override
-		public ConstantExpression<Entity> defaultValue (int line, int column)
+		public ConstantExpression <Entity> defaultValue (int line, int column)
 		{
-			try
-			{
-				return new EntityLiteral(line, column, null);
-			} catch (ProgramException e)
-			{
-				e.printStackTrace();
-			}
-			return null;
+			return new EntityLiteral(line, column, null);
 		}
 	};
 
-	public abstract ConstantExpression<?> defaultValue (int line, int column);
+	public abstract ConstantExpression <?> defaultValue (int line, int column);
 }

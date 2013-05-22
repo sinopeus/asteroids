@@ -13,7 +13,7 @@ import org.junit.Test;
 public class TrueTest
 {
 	@Before
-	public void setUp () throws ProgramException
+	public void setUp () throws IllegalArgumentException
 	{
 		testTrue = new True(1, 2);
 	}
@@ -21,14 +21,9 @@ public class TrueTest
 	private True	testTrue;
 
 	@Test
-	public void evaluateTest () throws ProgramException
+	public void evaluateTest () throws IllegalArgumentException
 	{
 		assertEquals(new BooleanLiteral(1, 2, true), testTrue.evaluate());
-	}
-
-	public void isTypeSafeTest ()
-	{
-		assertTrue(testTrue.isTypeSafe());
 	}
 
 	public void getTypeTest ()

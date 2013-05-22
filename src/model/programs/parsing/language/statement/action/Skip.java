@@ -4,7 +4,7 @@ import model.programs.ProgramException;
 
 public class Skip extends Action
 {
-	public Skip (int line, int column) throws ProgramException
+	public Skip (int line, int column) throws IllegalArgumentException
 	{
 		super(line, column);
 	}
@@ -14,12 +14,6 @@ public class Skip extends Action
 	{
 		super.execute();
 		finish();
-		return true;
-	}
-
-	@Override
-	public boolean isTypeSafe ()
-	{
 		return true;
 	}
 	

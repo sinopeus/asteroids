@@ -1,5 +1,6 @@
 package model.programs.parsing.language.expression.first_order;
 
+import model.IFacade.TypeCheckOutcome;
 import model.programs.ProgramException;
 import model.programs.parsing.language.Type;
 import model.programs.parsing.language.expression.Expression;
@@ -7,7 +8,7 @@ import model.programs.parsing.language.expression.constant.literal.BooleanLitera
 
 public abstract class FirstOrderExpressionOfBooleanToBoolean extends FirstOrderExpression
 {
-	protected FirstOrderExpressionOfBooleanToBoolean (int line, int column, Expression argument) throws ProgramException
+	protected FirstOrderExpressionOfBooleanToBoolean (int line, int column, Expression argument) throws IllegalArgumentException
 	{
 		super(line, column, argument);
 	}
@@ -15,9 +16,13 @@ public abstract class FirstOrderExpressionOfBooleanToBoolean extends FirstOrderE
 	protected abstract BooleanLiteral function (BooleanLiteral argument);
 
 	@Override
-	public boolean isTypeSafe ()
+	public TypeCheckOutcome isTypeSafe ()
 	{
-		return (getArgument().isTypeSafe() && (getArgument().getType() == Type.TYPE_BOOLEAN));
+		TypeCheckOutcome superIsSafe = super.isTypeSafe();
+		if (!superIsSafe.isSuccessful()) return superIsSafe;
+		boolean argumentIsCorrectType = getArgument().getType() == Type.TYPE_BOOLEAN;
+		if (!argumentIsCorrectType) return TypeCheckOutcome.failure("The argument of the first order expression of a boolean to a boolean at " + getLine() + ", " + getColumn() + " is not a boolean.\n" + toString());
+		return TypeCheckOutcome.success();
 	}
 	
 	@Override

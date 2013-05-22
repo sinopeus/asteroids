@@ -6,15 +6,9 @@ import model.programs.parsing.language.expression.constant.ConstantExpression;
 
 public class BooleanLiteral extends ConstantExpression<Boolean>
 {
-	public BooleanLiteral (int line, int column, Boolean value) throws ProgramException
+	public BooleanLiteral (int line, int column, Boolean value) throws IllegalArgumentException
 	{
 		super(line, column,value);
-	}
-	
-	@Override
-	public boolean isTypeSafe ()
-	{
-		return true;
 	}
 	
 	@Override

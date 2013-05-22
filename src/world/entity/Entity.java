@@ -8,10 +8,10 @@ import world.physics.geometry.Angle;
 import world.physics.geometry.CircleShape;
 import world.physics.vector.Direction;
 import world.physics.vector.Position;
-
 import world.physics.vector.Vector;
 import world.physics.vector.Velocity;
 import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Model;
 import be.kuleuven.cs.som.annotate.Raw;
 
 /**
@@ -31,7 +31,7 @@ import be.kuleuven.cs.som.annotate.Raw;
  * @invar	The velocity of this ship is a valid velocity.
  * 			| canHaveAsVelocity(getVelocity())
  */
-public class Entity
+public abstract class Entity
 {
 	/**
 	 * Initializes this new entity with a given direction, position, shape, mass, speed limit and velocity.
@@ -65,7 +65,7 @@ public class Entity
 	 * @throws	IllegalArgumentException
 	 * 			| The provided shape is not valid.
 	 */
-	public Entity (Direction direction, Position position, double speedLimit, Velocity velocity, CircleShape shape, Mass mass) throws IllegalArgumentException
+	protected Entity (Direction direction, Position position, double speedLimit, Velocity velocity, CircleShape shape, Mass mass) throws IllegalArgumentException
 	{
 		setDirection(direction);
 		setPosition(position);
@@ -99,7 +99,7 @@ public class Entity
 	}
 
 	/**
-	 * Checks whether this entity can have the given position as its position.
+	 * Checks whether an entity can have the given position as its position.
 	 * 
 	 * @param 	position
 	 * 			The position to check.
@@ -108,7 +108,8 @@ public class Entity
 	 */
 	@Basic
 	@Raw
-	protected boolean canHaveAsPosition (Position position)
+	@Model
+	protected static boolean canHaveAsPosition (@Raw Position position)
 	{
 		return (position != null);
 	}
@@ -128,16 +129,12 @@ public class Entity
 	 */
 	@Basic
 	@Raw
-	public void setPosition (Position position) throws IllegalArgumentException, IllegalStateException
+	@Model
+	protected void setPosition (Position position) throws IllegalArgumentException, IllegalStateException
 	{
 		if (this.isTerminated()) { throw new IllegalStateException("This entity is terminated."); }
-		if (!canHaveAsPosition(position))
-		{
-			throw new IllegalArgumentException("Invalid position provided.");
-		} else
-		{
-			this.position = position;
-		}
+		if (!canHaveAsPosition(position)) throw new IllegalArgumentException("Invalid position provided.");
+		this.position = position;
 	}
 
 	/**
@@ -166,7 +163,8 @@ public class Entity
 	 */
 	@Basic
 	@Raw
-	protected boolean canHaveAsVelocity (Velocity velocity)
+	@Model
+	protected boolean canHaveAsVelocity (@Raw Velocity velocity)
 	{
 		return ( (velocity != null) && (velocity.get() <= getSpeedLimit()));
 	}
@@ -185,13 +183,10 @@ public class Entity
 	 */
 	@Basic
 	@Raw
-	public void setVelocity (Velocity velocity) throws IllegalStateException
+	protected void setVelocity (@Raw Velocity velocity) throws IllegalStateException
 	{
 		if (this.isTerminated()) { throw new IllegalStateException("This entity is terminated."); }
-		if (canHaveAsVelocity(velocity))
-		{
-			this.velocity = velocity;
-		}
+		if (canHaveAsVelocity(velocity)) this.velocity = velocity;
 	}
 
 	/**
@@ -211,7 +206,7 @@ public class Entity
 	}
 
 	/**
-	 * Checks whether this entity can have the given direction as its direction.
+	 * Checks whether an entity can have the given direction as its direction.
 	 * 
 	 * @param 	direction
 	 * 			The direction to check.
@@ -220,7 +215,8 @@ public class Entity
 	 */
 	@Basic
 	@Raw
-	protected boolean canHaveAsDirection (Direction direction)
+	@Model
+	protected static boolean canHaveAsDirection (@Raw Direction direction)
 	{
 		return (direction != null);
 	}
@@ -239,7 +235,8 @@ public class Entity
 	 */
 	@Basic
 	@Raw
-	public void setDirection (Direction direction) throws IllegalStateException
+	@Model
+	protected void setDirection (@Raw Direction direction) throws IllegalStateException
 	{
 		if (this.isTerminated()) { throw new IllegalStateException("This entity is terminated."); }
 		assert (canHaveAsDirection(direction));
@@ -273,6 +270,7 @@ public class Entity
 	 */
 	@Basic
 	@Raw
+	@Model
 	protected boolean canHaveAsShape (@Raw CircleShape shape)
 	{
 		return (shape != null);
@@ -295,7 +293,7 @@ public class Entity
 	}
 
 	/**
-	 * Checks whether this entity can have the given speed limit as its speed limit.
+	 * Checks whether an entity can have the given speed limit as its speed limit.
 	 * 
 	 * @param 	speedLimit
 	 * 			The speed limit to check.
@@ -304,7 +302,8 @@ public class Entity
 	 */
 	@Basic
 	@Raw
-	protected boolean canHaveAsSpeedLimit (double speedLimit)
+	@Model
+	protected static boolean canHaveAsSpeedLimit (double speedLimit)
 	{
 		return ( (speedLimit >= 0) && (speedLimit <= Velocity.getSpeedOfLight()));
 	}
@@ -323,16 +322,12 @@ public class Entity
 	 */
 	@Basic
 	@Raw
-	public void setSpeedLimit (double speedLimit) throws IllegalStateException
+	@Model
+	protected void setSpeedLimit (double speedLimit) throws IllegalStateException
 	{
 		if (this.isTerminated()) { throw new IllegalStateException("This entity is terminated."); }
-		if (canHaveAsSpeedLimit(speedLimit))
-		{
-			this.speedLimit = speedLimit;
-		} else
-		{
-			this.speedLimit = Velocity.getSpeedOfLight();
-		}
+		if (canHaveAsSpeedLimit(speedLimit)) this.speedLimit = speedLimit;
+		else this.speedLimit = Velocity.getSpeedOfLight();
 	}
 
 	/**
@@ -351,7 +346,7 @@ public class Entity
 	}
 
 	/**
-	 * Checks whether this entity can have the given mass as its mass.
+	 * Checks whether an entity can have the given mass as its mass.
 	 * 
 	 * @param	mass
 	 * 			The given mass
@@ -360,7 +355,8 @@ public class Entity
 	 */
 	@Basic
 	@Raw
-	private boolean canHaveAsMass (Mass mass)
+	@Model
+	protected static boolean canHaveAsMass (@Raw Mass mass)
 	{
 		return (mass != null);
 	}
@@ -377,7 +373,8 @@ public class Entity
 	 */
 	@Basic
 	@Raw
-	private void setMass (Mass mass) throws IllegalArgumentException
+	@Model
+	protected void setMass (@Raw Mass mass) throws IllegalArgumentException
 	{
 		if (!canHaveAsMass(mass)) { throw new IllegalArgumentException("Invalid mass provided"); }
 		this.mass = mass;
@@ -399,7 +396,7 @@ public class Entity
 	}
 
 	/**
-	 * Checks whether this entity can have the given world as its world.
+	 * Checks whether an entity can have the given world as its world.
 	 * 
 	 * @param 	world
 	 * 			The world to check.
@@ -408,7 +405,8 @@ public class Entity
 	 */
 	@Basic
 	@Raw
-	private boolean canHaveAsWorld (World world)
+	@Model
+	private static boolean canHaveAsWorld (@Raw World world)
 	{
 		return (world != null);
 	}
@@ -424,7 +422,7 @@ public class Entity
 	 */
 	@Basic
 	@Raw
-	public void setWorld (World world) throws IllegalArgumentException
+	public void setWorld (@Raw World world) throws IllegalArgumentException
 	{
 		if (!canHaveAsWorld(world)) { throw new IllegalArgumentException("Illegal world provided."); }
 		this.world = world;
@@ -453,6 +451,7 @@ public class Entity
 	 * @post	This entity is now terminated.
 	 * 			| isTerminated()
 	 */
+	@Raw
 	public void terminate ()
 	{
 		getWorld().remove(this);
@@ -494,7 +493,8 @@ public class Entity
 	 * @throws	IllegalStateException
 	 * 			| isTerminated()	
 	 */
-	public void move (double duration) throws ArithmeticException, IllegalArgumentException, IllegalStateException
+	@Model
+	protected void move (double duration) throws ArithmeticException, IllegalArgumentException, IllegalStateException
 	{
 		if (this.isTerminated()) { throw new IllegalStateException("This entity is terminated."); }
 		if (duration < 0) duration = 0;
@@ -507,7 +507,7 @@ public class Entity
 	 * @param	that
 	 * 			The given entity
 	 * @effect	Has this entity collide with the given entity
-	 * 			| this.collideWith((that.getClass())that) //TODO
+	 * 			| this.collideWith(that) //TODO
 	 */
 	public void collideWith (Entity that)
 	{
@@ -525,6 +525,7 @@ public class Entity
 	 * @effect	Has this entity bounce with the given ship.
 	 * 			| this.bounce(that);
 	 */
+	@Model
 	protected void collideWith (Ship that)
 	{
 		if (that == null) return;
@@ -539,6 +540,7 @@ public class Entity
 	 * @effect	Has this entity bounce with the given asteroid.
 	 * 			| this.bounce(that);
 	 */
+	@Model
 	protected void collideWith (Asteroid that)
 	{
 		if (that == null) return;
@@ -553,6 +555,7 @@ public class Entity
 	 * @effect	Has this entity bounce with the given bullet.
 	 * 			| this.bounce(that);
 	 */
+	@Model
 	protected void collideWith (Bullet that)
 	{
 		if (that == null) return;
@@ -608,7 +611,8 @@ public class Entity
 	 * @post	The velocity vectors of both entities are modified in accordance with the principles of elastic collision.
 	 * 			| //TODO
 	 */
-	public void bounce (Entity that)
+	@Model
+	protected void bounce (Entity that)
 	{
 		try
 		{
@@ -654,7 +658,7 @@ public class Entity
 			that.setVelocity(v2f);
 		} catch (ArithmeticException e)
 		{
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 
@@ -720,8 +724,6 @@ public class Entity
 	{
 		if (duration < 0.0) throw new IllegalArgumentException();
 		return this.getPosition().getPositionAfterMove(getVelocity(), duration).getDistanceTo(other.getPosition().getPositionAfterMove(other.getVelocity(), duration)) - (this.getShape().getRadius() + other.getShape().getRadius());
-		//		return this.getPositionAfterMove(duration).distanceTo(other.getPositionAfterMove(duration))
-		//				   - (this.getShape().getRadius() + other.getShape().getRadius());
 	}
 
 	/**
@@ -733,24 +735,6 @@ public class Entity
 	{
 		return " at " + getPosition() + "   with velocity " + getVelocity() + "   and shape " + getShape() + "  ";
 	}
-
-	//WE SHOULDN'T USE THIS
-	//	@Override
-	//	public int hashCode ()
-	//	{
-	//		final int prime = 31;
-	//		int result = 1;
-	//		result = prime * result + ( (direction == null) ? 0 : direction.hashCode());
-	//		result = prime * result + (isTerminated ? 1231 : 1237);
-	//		result = prime * result + ( (mass == null) ? 0 : mass.hashCode());
-	//		result = prime * result + ( (position == null) ? 0 : position.hashCode());
-	//		result = prime * result + ( (shape == null) ? 0 : shape.hashCode());
-	//		long temp;
-	//		temp = Double.doubleToLongBits(speedLimit);
-	//		result = prime * result + (int) (temp ^ (temp >>> 32));
-	//		result = prime * result + ( (velocity == null) ? 0 : velocity.hashCode());
-	//		return result;
-	//	}
 
 	@Override
 	public boolean equals (Object obj)
