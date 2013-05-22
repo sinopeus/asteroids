@@ -107,7 +107,7 @@ public abstract class Entity
 	 */
 	@Basic
 	@Raw
-	protected static boolean canHaveAsPosition (Position position)
+	protected static boolean canHaveAsPosition (@Raw Position position)
 	{
 		return (position != null);
 	}
@@ -165,7 +165,7 @@ public abstract class Entity
 	 */
 	@Basic
 	@Raw
-	protected boolean canHaveAsVelocity (Velocity velocity)
+	protected boolean canHaveAsVelocity (@Raw Velocity velocity)
 	{
 		return ( (velocity != null) && (velocity.get() <= getSpeedLimit()));
 	}
@@ -184,13 +184,10 @@ public abstract class Entity
 	 */
 	@Basic
 	@Raw
-	public void setVelocity (Velocity velocity) throws IllegalStateException
+	public void setVelocity (@Raw Velocity velocity) throws IllegalStateException
 	{
 		if (this.isTerminated()) { throw new IllegalStateException("This entity is terminated."); }
-		if (canHaveAsVelocity(velocity))
-		{
-			this.velocity = velocity;
-		}
+		if (canHaveAsVelocity(velocity)) this.velocity = velocity;
 	}
 
 	/**
@@ -219,7 +216,7 @@ public abstract class Entity
 	 */
 	@Basic
 	@Raw
-	protected static boolean canHaveAsDirection (Direction direction)
+	protected static boolean canHaveAsDirection (@Raw Direction direction)
 	{
 		return (direction != null);
 	}
@@ -238,7 +235,7 @@ public abstract class Entity
 	 */
 	@Basic
 	@Raw
-	public void setDirection (Direction direction) throws IllegalStateException
+	public void setDirection (@Raw Direction direction) throws IllegalStateException
 	{
 		if (this.isTerminated()) { throw new IllegalStateException("This entity is terminated."); }
 		assert (canHaveAsDirection(direction));
@@ -325,13 +322,8 @@ public abstract class Entity
 	public void setSpeedLimit (double speedLimit) throws IllegalStateException
 	{
 		if (this.isTerminated()) { throw new IllegalStateException("This entity is terminated."); }
-		if (canHaveAsSpeedLimit(speedLimit))
-		{
-			this.speedLimit = speedLimit;
-		} else
-		{
-			this.speedLimit = Velocity.getSpeedOfLight();
-		}
+		if (canHaveAsSpeedLimit(speedLimit)) this.speedLimit = speedLimit;
+		else this.speedLimit = Velocity.getSpeedOfLight();
 	}
 
 	/**
@@ -359,7 +351,7 @@ public abstract class Entity
 	 */
 	@Basic
 	@Raw
-	private static boolean canHaveAsMass (Mass mass)
+	private static boolean canHaveAsMass (@Raw Mass mass)
 	{
 		return (mass != null);
 	}
@@ -376,7 +368,7 @@ public abstract class Entity
 	 */
 	@Basic
 	@Raw
-	private void setMass (Mass mass) throws IllegalArgumentException
+	private void setMass (@Raw Mass mass) throws IllegalArgumentException
 	{
 		if (!canHaveAsMass(mass)) { throw new IllegalArgumentException("Invalid mass provided"); }
 		this.mass = mass;
@@ -407,7 +399,7 @@ public abstract class Entity
 	 */
 	@Basic
 	@Raw
-	private static boolean canHaveAsWorld (World world)
+	private static boolean canHaveAsWorld (@Raw World world)
 	{
 		return (world != null);
 	}
@@ -423,7 +415,7 @@ public abstract class Entity
 	 */
 	@Basic
 	@Raw
-	public void setWorld (World world) throws IllegalArgumentException
+	public void setWorld (@Raw World world) throws IllegalArgumentException
 	{
 		if (!canHaveAsWorld(world)) { throw new IllegalArgumentException("Illegal world provided."); }
 		this.world = world;
@@ -452,6 +444,7 @@ public abstract class Entity
 	 * @post	This entity is now terminated.
 	 * 			| isTerminated()
 	 */
+	@Raw
 	public void terminate ()
 	{
 		getWorld().remove(this);

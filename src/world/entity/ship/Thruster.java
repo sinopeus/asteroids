@@ -161,7 +161,7 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
-	protected static boolean canHaveAsOwner (Ship owner)
+	protected static boolean canHaveAsOwner (@Raw Ship owner)
 	{
 		return (owner != null);
 	}
@@ -179,7 +179,7 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
-	public void setOwner (Ship owner) throws IllegalArgumentException
+	public void setOwner (@Raw Ship owner) throws IllegalArgumentException
 	{
 		if (!canHaveAsOwner(owner)) { throw new IllegalArgumentException("Illegal owner ship provided."); }
 		this.ownerShip = owner;

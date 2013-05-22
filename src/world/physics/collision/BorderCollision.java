@@ -3,6 +3,7 @@ package world.physics.collision;
 import java.util.ArrayList;
 
 import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Raw;
 
 import world.World;
 import world.entity.Entity;
@@ -60,6 +61,7 @@ public final class BorderCollision extends Collision
 	 */
 	@SuppressWarnings ("javadoc")
 	@Basic
+	@Raw
 	public Border getCollisionBorder ()
 	{
 		return collisionBorder;
@@ -74,7 +76,7 @@ public final class BorderCollision extends Collision
 	 * 			| result == collisionBorder != null
 	 */
 	@Basic
-	protected boolean canHaveAsCollisionBorder (Border collisionBorder)
+	protected static boolean canHaveAsCollisionBorder (@Raw Border collisionBorder)
 	{
 		return (collisionBorder != null);
 	}
@@ -89,7 +91,8 @@ public final class BorderCollision extends Collision
 	 * 			| !canHaveAsCollisionBorder(collisionBorder)
 	 */
 	@Basic
-	public void setCollisionBorder (Border collisionBorder) throws IllegalArgumentException
+	@Raw
+	public void setCollisionBorder (@Raw Border collisionBorder) throws IllegalArgumentException
 	{
 		if (!canHaveAsCollisionBorder(collisionBorder)) { throw new IllegalArgumentException("Illegal border provided."); }
 		this.collisionBorder = collisionBorder;
@@ -105,6 +108,7 @@ public final class BorderCollision extends Collision
 	 */
 	@SuppressWarnings ("javadoc")
 	@Basic
+	@Raw
 	public Entity getCollisionEntity ()
 	{
 		return collisionEntity;
@@ -119,7 +123,7 @@ public final class BorderCollision extends Collision
 	 * 			| result == collisionEntity != null
 	 */
 	@Basic
-	public boolean canHaveAsEntity (Entity collisionEntity)
+	public static boolean canHaveAsEntity (@Raw Entity collisionEntity)
 	{
 		return (collisionEntity != null);
 	}
@@ -134,7 +138,8 @@ public final class BorderCollision extends Collision
 	 * 			| !canHaveAsEntity(collisionEntity)
 	 */
 	@Basic
-	public void setCollisionEntity (Entity collisionEntity) throws IllegalArgumentException
+	@Raw
+	public void setCollisionEntity (@Raw Entity collisionEntity) throws IllegalArgumentException
 	{
 		if (!canHaveAsEntity(collisionEntity)) { throw new IllegalArgumentException("Illegal collision entity provided."); }
 		this.collisionEntity = collisionEntity;
@@ -158,6 +163,7 @@ public final class BorderCollision extends Collision
 	 * Gets the time to collision of this border collision.
 	 */
 	@Override
+	@Raw
 	public double getTimeToCollision ()
 	{
 		return this.timeToCollision;

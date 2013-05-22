@@ -42,9 +42,7 @@ public class Bullet extends Entity
 	 * @param	ship
 	 * 			The given ship
 	 * @return	The initial position of this new bullet. (It is placed right next to the ship.)
-	 * 			|  new Position(nthat.terminate();
-
-ew Vector(ship.getPosition()).getSum(ship.getDirection().getScaledBy(ship.getShape().getRadius() + bulletRadius)));
+	 * 			|  new Position(new Vector(ship.getPosition()).getSum(ship.getDirection().getScaledBy(ship.getShape().getRadius() + bulletRadius)));
 	 */
 	private static Position getInitialPosition (Ship ship)
 	{
@@ -73,7 +71,7 @@ ew Vector(ship.getPosition()).getSum(ship.getDirection().getScaledBy(ship.getSha
 	 */
 	@Basic
 	@Raw
-	private static boolean canHaveAsShooter (Ship shooter)
+	private static boolean canHaveAsShooter (@Raw Ship shooter)
 	{
 		return (shooter != null);
 	}
@@ -89,7 +87,9 @@ ew Vector(ship.getPosition()).getSum(ship.getDirection().getScaledBy(ship.getSha
 	 * 			The given shooter is null
 	 * 			| shooter == null
 	 */
-	private void setShooter (Ship shooter) throws IllegalArgumentException
+	@Basic
+	@Raw
+	private void setShooter (@Raw Ship shooter) throws IllegalArgumentException
 	{
 		if (!canHaveAsShooter(shooter)) { throw new IllegalArgumentException("You cannot provide a null ship."); }
 		this.shooter = shooter;
@@ -116,7 +116,7 @@ ew Vector(ship.getPosition()).getSum(ship.getDirection().getScaledBy(ship.getSha
 	 */
 	@Basic
 	@Raw
-	protected boolean canHaveAsBounceCounter (byte bounceCounter)
+	protected boolean canHaveAsBounceCounter (@Raw byte bounceCounter)
 	{
 		return (bounceCounter >= 0);
 	}
@@ -136,7 +136,7 @@ ew Vector(ship.getPosition()).getSum(ship.getDirection().getScaledBy(ship.getSha
 	 */
 	@Basic
 	@Raw
-	public void setBounceCounter (byte bounceCounter) throws IllegalArgumentException
+	public void setBounceCounter (@Raw byte bounceCounter) throws IllegalArgumentException
 	{
 		if (!canHaveAsBounceCounter(bounceCounter)) { throw new IllegalArgumentException("Invalid bounce counter provided"); }
 		this.bounceCounter = bounceCounter;
@@ -226,8 +226,10 @@ ew Vector(ship.getPosition()).getSum(ship.getDirection().getScaledBy(ship.getSha
 	/**
 	 * Unlinks this bullet from the ship which shot it.
 	 * 
-	 * @effect | shooter == null;
+	 * @post	Set the reference to the shooter of this bullet to null. 
+	 * 			| shooter == null;
 	 */
+	@Raw
 	public void unlinkFromShooter ()
 	{
 		assert (this.shooter.getBulletList().contains(this));//TODO remove this
@@ -239,6 +241,7 @@ ew Vector(ship.getPosition()).getSum(ship.getDirection().getScaledBy(ship.getSha
 	 * @see #Entity.terminate()
 	 */
 	@Override
+	@Raw
 	public void terminate ()
 	{
 		this.unlinkFromShooter();

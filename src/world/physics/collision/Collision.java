@@ -22,7 +22,7 @@ import be.kuleuven.cs.som.annotate.Raw;
 public abstract class Collision
 {
 	/**
-	 * @param collisionPosition
+	 * @param collisionPosition //TODO document
 	 * @param world
 	 */
 	protected Collision (World world)
@@ -36,6 +36,7 @@ public abstract class Collision
 	 * @return The position at which two entities will collide.
 	 */
 	@Basic
+	@Raw
 	public Position getCollisionPosition ()
 	{
 		if (this.collisionPosition == null) calculateCollisionPosition();
@@ -51,11 +52,11 @@ public abstract class Collision
 	 * 			| position != null && world.isInWorld(position)
 	 */
 	@Basic
-	public boolean canHaveAsPosition (Position position)
+	@Raw
+	public boolean canHaveAsPosition (@Raw Position position)
 	{
 		return (position != null && getWorld().isInWorld(position));
 	}
-
 	
 	protected abstract void calculateCollisionPosition ();
 
@@ -70,6 +71,7 @@ public abstract class Collision
 	 * @return The world to which this position belongs.
 	 */
 	@Basic
+	@Raw
 	public World getWorld ()
 	{
 		return world;
@@ -84,8 +86,7 @@ public abstract class Collision
 	 * 			| result = (world!=null)
 	 */
 	@Basic
-	@Raw
-	public boolean canHaveAsWorld (World world)
+	public static boolean canHaveAsWorld (@Raw World world)
 	{
 		return (world != null);
 	}
@@ -100,7 +101,8 @@ public abstract class Collision
 	 * 			| !canHaveAsWorld(world)
 	 */
 	@Basic
-	public void setWorld (World world)
+	@Raw
+	public void setWorld (@Raw World world)
 	{
 		if (!canHaveAsWorld(world)) throw new IllegalArgumentException("Invalid world provided.");
 		this.world = world;
@@ -117,6 +119,7 @@ public abstract class Collision
 	 * @return The time before this collision occurs.
 	 */
 	@Basic
+	@Raw
 	public double getTimeToCollision ()
 	{
 		return timeToCollision;
