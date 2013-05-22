@@ -42,7 +42,9 @@ public class Bullet extends Entity
 	 * @param	ship
 	 * 			The given ship
 	 * @return	The initial position of this new bullet. (It is placed right next to the ship.)
-	 * 			|  new Position(new Vector(ship.getPosition()).getSum(ship.getDirection().getScaledBy(ship.getShape().getRadius() + bulletRadius)));
+	 * 			|  new Position(nthat.terminate();
+
+ew Vector(ship.getPosition()).getSum(ship.getDirection().getScaledBy(ship.getShape().getRadius() + bulletRadius)));
 	 */
 	private static Position getInitialPosition (Ship ship)
 	{
@@ -176,7 +178,6 @@ public class Bullet extends Entity
 		if (that == null) return;
 		this.terminate();
 		that.terminate();
-
 	}
 
 	/**

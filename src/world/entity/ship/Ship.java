@@ -122,6 +122,7 @@ public class Ship extends Entity implements IShip
 	 * @return	True if and only if the given thruster is not null.
 	 * 			| result == (thruster != null)
 	 */
+	@Basic
 	private static boolean canHaveAsThruster (Thruster thruster)
 	{
 		return (thruster != null);
@@ -136,6 +137,7 @@ public class Ship extends Entity implements IShip
 	 * 			The given thruster is null.
 	 * 			| thruster == null
 	 */
+	@Basic
 	private void setThruster (Thruster thruster) throws IllegalArgumentException
 	{
 		if (!canHaveAsThruster(thruster)) { throw new IllegalArgumentException("Invalid thruster provided."); }
@@ -150,6 +152,7 @@ public class Ship extends Entity implements IShip
 	/**
 	 * @return the bullets
 	 */
+	@Basic
 	public ArrayList <Bullet> getBulletList ()
 	{
 		return bulletList;
@@ -160,6 +163,7 @@ public class Ship extends Entity implements IShip
 	 * @param bullets
 	 * @return
 	 */
+	@Basic
 	private static boolean canHaveAsBulletList (ArrayList <Bullet> bullets)
 	{
 		return (bullets != null);
@@ -168,6 +172,7 @@ public class Ship extends Entity implements IShip
 	/**
 	 * @param bullets the bullets to set
 	 */
+	@Basic
 	private void setBulletList (ArrayList <Bullet> bullets)
 	{
 		if (!canHaveAsBulletList(bullets)) throw new IllegalArgumentException("Invalid bulletlist provided.");
@@ -179,16 +184,19 @@ public class Ship extends Entity implements IShip
 	Program						program;
 
 	//TODO document
+	@Basic
 	public Program getProgram ()
 	{
 		return program;
 	}
-
+	
+	@Basic
 	protected static boolean canHaveAsProgram (Program program)
 	{
 		return true; //TODO more checking?
 	}
 
+	@Basic //TODO test and document
 	public void setProgram (Program program)
 	{
 		if (!canHaveAsProgram(program)) throw new IllegalArgumentException("Invalid program provided."); //TODO is this necessary
@@ -227,6 +235,7 @@ public class Ship extends Entity implements IShip
 	}
 
 	//TODO test and document
+	@Basic
 	public boolean canFire ()
 	{
 		return (getBulletList().size() < MAXIMUM_AMOUNT_OF_BULLETS);

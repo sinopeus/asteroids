@@ -35,6 +35,7 @@ public abstract class Collision
 	 * 
 	 * @return The position at which two entities will collide.
 	 */
+	@Basic
 	public Position getCollisionPosition ()
 	{
 		if (this.collisionPosition == null) calculateCollisionPosition();
@@ -49,11 +50,13 @@ public abstract class Collision
 	 * @return	Whether this position is not null and within the world.
 	 * 			| position != null && world.isInWorld(position)
 	 */
+	@Basic
 	public boolean canHaveAsPosition (Position position)
 	{
 		return (position != null && getWorld().isInWorld(position));
 	}
 
+	
 	protected abstract void calculateCollisionPosition ();
 
 	/**
@@ -66,6 +69,7 @@ public abstract class Collision
 	 * 
 	 * @return The world to which this position belongs.
 	 */
+	@Basic
 	public World getWorld ()
 	{
 		return world;
@@ -95,6 +99,7 @@ public abstract class Collision
 	 * 			The given world is not a valid world.
 	 * 			| !canHaveAsWorld(world)
 	 */
+	@Basic
 	public void setWorld (World world)
 	{
 		if (!canHaveAsWorld(world)) throw new IllegalArgumentException("Invalid world provided.");
@@ -111,6 +116,7 @@ public abstract class Collision
 	 * 
 	 * @return The time before this collision occurs.
 	 */
+	@Basic
 	public double getTimeToCollision ()
 	{
 		return timeToCollision;

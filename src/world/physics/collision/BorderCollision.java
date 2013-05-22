@@ -2,6 +2,8 @@ package world.physics.collision;
 
 import java.util.ArrayList;
 
+import be.kuleuven.cs.som.annotate.Basic;
+
 import world.World;
 import world.entity.Entity;
 import world.physics.vector.Position;
@@ -57,6 +59,7 @@ public final class BorderCollision extends Collision
 	 * Gets the border to collide with.
 	 */
 	@SuppressWarnings ("javadoc")
+	@Basic
 	public Border getCollisionBorder ()
 	{
 		return collisionBorder;
@@ -70,6 +73,7 @@ public final class BorderCollision extends Collision
 	 * @return	True if and only if the given collision border is not null.
 	 * 			| result == collisionBorder != null
 	 */
+	@Basic
 	protected boolean canHaveAsCollisionBorder (Border collisionBorder)
 	{
 		return (collisionBorder != null);
@@ -84,6 +88,7 @@ public final class BorderCollision extends Collision
 	 * 			The given collision border is not a valid collision border.
 	 * 			| !canHaveAsCollisionBorder(collisionBorder)
 	 */
+	@Basic
 	public void setCollisionBorder (Border collisionBorder) throws IllegalArgumentException
 	{
 		if (!canHaveAsCollisionBorder(collisionBorder)) { throw new IllegalArgumentException("Illegal border provided."); }
@@ -99,6 +104,7 @@ public final class BorderCollision extends Collision
 	 * Gets the collisions entity of this border collision.
 	 */
 	@SuppressWarnings ("javadoc")
+	@Basic
 	public Entity getCollisionEntity ()
 	{
 		return collisionEntity;
@@ -112,6 +118,7 @@ public final class BorderCollision extends Collision
 	 * @return	True if and only if the given entity is not null.
 	 * 			| result == collisionEntity != null
 	 */
+	@Basic
 	public boolean canHaveAsEntity (Entity collisionEntity)
 	{
 		return (collisionEntity != null);
@@ -126,6 +133,7 @@ public final class BorderCollision extends Collision
 	 * 			The given entity is not a valid collision entity for this border collision.
 	 * 			| !canHaveAsEntity(collisionEntity)
 	 */
+	@Basic
 	public void setCollisionEntity (Entity collisionEntity) throws IllegalArgumentException
 	{
 		if (!canHaveAsEntity(collisionEntity)) { throw new IllegalArgumentException("Illegal collision entity provided."); }

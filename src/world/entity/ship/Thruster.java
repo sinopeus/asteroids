@@ -204,6 +204,7 @@ public class Thruster
 	 * 
 	 * @return	isTerminated == true
 	 */
+	@Basic
 	public boolean isTerminated ()
 	{
 		return isTerminated;

@@ -506,7 +506,7 @@ public abstract class Entity
 	 * @param	that
 	 * 			The given entity
 	 * @effect	Has this entity collide with the given entity
-	 * 			| this.collideWith((that.getClass())that) //TODO
+	 * 			| this.collideWith(that) //TODO
 	 */
 	public void collideWith (Entity that)
 	{
@@ -653,7 +653,7 @@ public abstract class Entity
 			that.setVelocity(v2f);
 		} catch (ArithmeticException e)
 		{
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 

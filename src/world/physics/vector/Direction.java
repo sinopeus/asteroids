@@ -141,23 +141,6 @@ public class Direction extends Vector
 		return getAngle().getSin();
 	}
 
-//	/**
-//	 * Checks whether the given object is a direction and it is equal to this direction.
-//	 * 
-//	 * @param	o
-//	 * 			The given object.
-//	 * @return	True if and only if the given object is a direction and it is equal to this direction.
-//	 * 			| ((result = o != null) && (o instanceof Direction) && (getAngle().equals(o))
-//	 */
-//	@Override
-//	@Raw
-//	public boolean equals (Object o)
-//	{
-//		if (o == null) { return false; }
-//		if (! (o instanceof Direction)) { return false; }
-//		return getAngle().equals( ((Direction) o).getAngle());
-//	}
-
 	/**
 	 * Rotates this direction by the given angle.
 	 * 

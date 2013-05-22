@@ -1,6 +1,5 @@
 package world.physics.geometry;
 
-import Utilities.Util;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 
@@ -28,13 +27,8 @@ public class CircleShape
 	 */
 	public CircleShape (double radius)
 	{
-		if (!canHaveAsRadius(radius))
-		{
-			throw new IllegalArgumentException("Invalid radius provided");
-		} else
-		{
-			this.radius = radius;
-		}
+		if (!canHaveAsRadius(radius)) throw new IllegalArgumentException("Invalid radius provided");
+		else this.radius = radius;
 	}
 
 	/**
@@ -111,22 +105,4 @@ public class CircleShape
 		if (Double.doubleToLongBits(radius) != Double.doubleToLongBits(other.radius)) return false;
 		return true;
 	}
-	
-//	/**
-//	 * Checks whether the given object's is a circle shape and it's radius is equal to the radius of this circle shape
-//	 * 
-//	 * @param	o
-//	 * 			The given object.
-//	 * @return	True if and only if the given object is a non null circle shape and its radius is equal to the radius of this circle shape.
-//	 * 			| result == ((o != null) && (getClass() == o.getClass()) && (Util.fuzzyEquals(getXComponent(), ((Vector) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Vector) o).getYComponent())))
-//	 */
-//	@Override
-//	@Raw
-//	public boolean equals (Object o)
-//	{
-//		if (o == null) { return false; }
-//		if (! (getClass() == o.getClass())) { return false; }
-//		CircleShape other = (CircleShape) o;
-//		return (Util.fuzzyEquals(getRadius(), other.getRadius()));
-//	}
 }

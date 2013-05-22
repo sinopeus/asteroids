@@ -85,13 +85,8 @@ public class Velocity extends Vector
 	@Override
 	public void setX (double x)
 	{
-		if (canHaveAsComponent(x))
-		{
-			this.components[0] = x;
-		} else
-		{
-			this.components[0] = 0;
-		}
+		if (canHaveAsComponent(x)) this.components[0] = x;
+		else this.components[0] = 0;
 	}
 
 	/**
@@ -110,13 +105,8 @@ public class Velocity extends Vector
 	@Override
 	public void setY (double y)
 	{
-		if (canHaveAsComponent(y))
-		{
-			this.components[1] = y;
-		} else
-		{
-			this.components[1] = 0;
-		}
+		if (canHaveAsComponent(y)) this.components[1] = y;
+		else this.components[1] = 0;
 	}
 
 	/**
@@ -166,7 +156,7 @@ public class Velocity extends Vector
 		if (duration < 0) return;
 		Vector v = new Vector(this._X(), this._Y());
 		v = v.getSum(a.getScaledBy(duration));
-		if (v.getMagnitude() >= Velocity.getSpeedOfLight())v = v.getScaledBy(Velocity.getSpeedOfLight() / v.getMagnitude());
+		if (v.getMagnitude() >= Velocity.getSpeedOfLight()) v = v.getScaledBy(Velocity.getSpeedOfLight() / v.getMagnitude());
 		setX(v._X());
 		setY(v._Y());
 	}
@@ -181,24 +171,6 @@ public class Velocity extends Vector
 	{
 		return "V_" + hashCode() + " = " + super.toString() + " m/s";
 	}
-
-//	/**
-//	 * Checks whether the given object is a velocity and its respective components are equal to this velocity's components
-//	 * 
-//	 * @param	o
-//	 * 			The given object.
-//	 * @return	True if and only if the given object is a velocity and the respective components of the given object and this velocity are equal.
-//	 * 			| result =(o != null) && (getClass() != o.getClass()) && Util.fuzzyEquals(getXComponent(), ((Velocity) o).getXComponent()) && Util.fuzzyEquals(getYComponent(), ((Velocity) o).getYComponent()))
-//	 */
-//	@Override
-//	@Raw
-//	public boolean equals (Object o)
-//	{
-//		if (o == null) { return false; }
-//		if (getClass() != o.getClass()) { return false; }
-//		Velocity other = (Velocity) o;
-//		return (Util.fuzzyEquals(this._X(), other._X()) && Util.fuzzyEquals(this._Y(), other._Y()));
-//	}
 
 	/**
 	 * Gets the speed of light in km/s.
