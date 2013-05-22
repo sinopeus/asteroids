@@ -57,7 +57,7 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
-	protected boolean canHaveAsMaximumThrust (double maximumThrust)
+	protected static boolean canHaveAsMaximumThrust (double maximumThrust)
 	{
 		return (maximumThrust >= 0);
 	}
@@ -161,9 +161,9 @@ public class Thruster
 	 */
 	@Basic
 	@Raw
-	protected boolean canHaveAsOwner (Ship owner)
+	protected static boolean canHaveAsOwner (Ship owner)
 	{
-		return owner != null;
+		return (owner != null);
 	}
 
 	/**

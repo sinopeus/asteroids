@@ -62,13 +62,8 @@ public class AsteroidsMenu <World, Ship, Asteroid, Bullet, Program> extends JPan
 		int optionHeight = g2d.getFontMetrics().getHeight();
 		for (int i = 0; i < menu_options.length; i++)
 		{
-			if (i == selectedIndex)
-			{
-				g2d.setColor(Color.RED);
-			} else
-			{
-				g2d.setColor(Color.WHITE);
-			}
+			if (i == selectedIndex) g2d.setColor(Color.RED);
+			else g2d.setColor(Color.WHITE);
 			drawCenteredString(g2d, menu_options[i], (int) (baseHeight + titleHeight + optionHeight * 1.5 * i));
 		}
 	}

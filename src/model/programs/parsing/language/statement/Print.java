@@ -20,9 +20,9 @@ public class Print extends Statement
 		return textExpression;
 	}
 
-	protected boolean canHaveAsTextExpression (Expression textExpression)
+	protected static boolean canHaveAsTextExpression (Expression textExpression)
 	{
-		return (textExpression != null); //TODO more checking?
+		return (textExpression != null);
 	}
 
 	protected void setTextExpression (Expression textExpression)
@@ -38,9 +38,9 @@ public class Print extends Statement
 		return text;
 	}
 
-	protected boolean canHaveAsText (String text)
+	protected static boolean canHaveAsText (String text)
 	{
-		return (text != null);//TODO more checking?
+		return (text != null);
 	}
 
 	protected void setText (String text)

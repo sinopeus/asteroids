@@ -1,5 +1,6 @@
 package model.programs.parsing.language.expression.first_order;
 
+import model.IFacade.TypeCheckOutcome;
 import model.programs.ProgramException;
 import model.programs.parsing.language.Type;
 import model.programs.parsing.language.expression.Expression;
@@ -15,9 +16,13 @@ public abstract class FirstOrderExpressionOfNumberToNumber extends FirstOrderExp
 	protected abstract DoubleLiteral function (DoubleLiteral argument);
 
 	@Override
-	public boolean isTypeSafe ()
+	public TypeCheckOutcome isTypeSafe ()
 	{
-		return (getArgument().isTypeSafe() && (getArgument().getType() == Type.TYPE_DOUBLE));
+		TypeCheckOutcome superIsSafe = super.isTypeSafe();
+		if (!superIsSafe.isSuccessful()) return superIsSafe;
+		boolean argumentIsCorrectType = getArgument().getType() == Type.TYPE_DOUBLE;
+		if (!argumentIsCorrectType) return TypeCheckOutcome.failure("The argument of the first order expression of a number to a number at " + getLine() + ", " + getColumn() + " is not a number.\n" + toString());
+		return TypeCheckOutcome.success();
 	}
 	
 	@Override

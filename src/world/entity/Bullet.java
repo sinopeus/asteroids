@@ -71,7 +71,7 @@ public class Bullet extends Entity
 	 */
 	@Basic
 	@Raw
-	private boolean canHaveAsShooter (Ship shooter)
+	private static boolean canHaveAsShooter (Ship shooter)
 	{
 		return (shooter != null);
 	}
@@ -157,7 +157,7 @@ public class Bullet extends Entity
 	@Override
 	public void collideWith (Asteroid that)
 	{
-		if(that == null) return;
+		if (that == null) return;
 		that.collideWith(this);
 	}
 
@@ -173,13 +173,10 @@ public class Bullet extends Entity
 	@Override
 	public void collideWith (Bullet that)
 	{
-		if(that == null) return;
-//		if (this.getShooter() == that.getShooter()) this.bounce(that);
-//		else
-//		{
-			this.terminate();
-			that.terminate();
-//		}
+		if (that == null) return;
+		this.terminate();
+		that.terminate();
+
 	}
 
 	/**
@@ -196,7 +193,7 @@ public class Bullet extends Entity
 	@Override
 	public void collideWith (Ship that)
 	{
-		if(that == null) return;
+		if (that == null) return;
 		that.collideWith(this);
 	}
 
@@ -210,7 +207,7 @@ public class Bullet extends Entity
 	@Override
 	public void collideWith (Border that)
 	{
-		if(that == null) return;
+		if (that == null) return;
 		if (getBounceCounter() >= maximumBorderBounces)
 		{
 			terminate();
@@ -232,7 +229,7 @@ public class Bullet extends Entity
 	 */
 	public void unlinkFromShooter ()
 	{
-		assert(this.shooter.getBulletList().contains(this));//TODO remove this
+		assert (this.shooter.getBulletList().contains(this));//TODO remove this
 		this.shooter.getBulletList().remove(this);
 		this.shooter = null;
 	}
@@ -257,7 +254,7 @@ public class Bullet extends Entity
 	{
 		return "Bullet_" + hashCode() + super.toString();
 	}
-	
+
 	@Override
 	public int hashCode ()
 	{
@@ -289,14 +286,14 @@ public class Bullet extends Entity
 	private static final double	bulletRadius			= 3;
 
 	/**
-	 * A variable registering the initial velocity of a bullet.System.out.println(getVelocity());
+	 * A variable registering the initial velocity of a bullet.
 	 */
 	private static final double	bulletInitialVelocity	= 250;
 
 	/**
 	 * A variable registering the density of a bullet.
 	 */
-	private static final double	density					= 7.8E10;	//heb dit 100 keer kleiner gemaakt
+	private static final double	density					= 7.8E10;	//TODO remove thisheb dit 100 keer kleiner gemaakt
 
 	/**
 	 * A variable registering the maximum amount of time a bullet can bounce off the boundaries of the world.

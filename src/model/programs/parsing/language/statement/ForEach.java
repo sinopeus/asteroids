@@ -26,9 +26,9 @@ public class ForEach extends Statement
 		return type;
 	}
 
-	protected boolean canHaveAsType (ForeachType type)
+	protected static boolean canHaveAsType (ForeachType type)
 	{
-		return true;
+		return (type != null);
 	}
 
 	protected void setType (ForeachType type)
@@ -44,9 +44,9 @@ public class ForEach extends Statement
 		return variableName;
 	}
 
-	protected boolean canHaveAsVariable (String variableName)
+	protected static boolean canHaveAsVariable (String variableName)
 	{
-		return (variableName != null); //TODO more checking.
+		return (variableName != null);
 	}
 
 	protected void setVariableName (String variableName)
@@ -62,9 +62,9 @@ public class ForEach extends Statement
 		return body;
 	}
 
-	protected boolean canHaveAsBody (Statement body)
+	protected static boolean canHaveAsBody (Statement body)
 	{
-		return (body != null);//TODO more checking?
+		return (body != null);
 	}
 
 	protected void setBody (Statement body)
@@ -80,12 +80,12 @@ public class ForEach extends Statement
 		return selection;
 	}
 
-	protected boolean canHaveAsSelection (ArrayList <EntityLiteral> selection)
+	protected static boolean canHaveAsSelection (ArrayList <EntityLiteral> selection)
 	{
-		return (selection != null);//TODO more checking?
+		return (selection != null);
 	}
 
-	protected void calculateSelection () //TODO can I change the enum in programfactory?
+	protected void calculateSelection ()
 	{
 		this.selection = getType().getSelectionFromWorld(getCurrentIndex(), getColumn(), getOwnerShip().getWorld());
 	}

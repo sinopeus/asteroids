@@ -44,9 +44,9 @@ public class If extends Statement
 		return condition;
 	}
 
-	protected boolean canHaveAsCondition (Expression condition)
+	protected static boolean canHaveAsCondition (Expression condition)
 	{
-		return (condition != null);//TODO more checking?
+		return (condition != null);
 	}
 
 	protected void setCondition (Expression condition)
@@ -62,9 +62,9 @@ public class If extends Statement
 		return then;
 	}
 
-	protected boolean canHaveAsThenStatement (Statement then)
+	protected static boolean canHaveAsThenStatement (Statement then)
 	{
-		return (then != null); //TODO more checking?
+		return (then != null);
 	}
 
 	protected void setThenStatement (Statement then)
@@ -80,9 +80,9 @@ public class If extends Statement
 		return otherwise;
 	}
 
-	protected boolean canHaveAsOtherwiseStatement (Statement otherwise)
+	protected static boolean canHaveAsOtherwiseStatement (Statement otherwise)
 	{
-		return true; //TODO more checking?
+		return true;
 	}
 
 	protected void setOtherwiseStatement (Statement otherwise)
@@ -140,7 +140,7 @@ public class If extends Statement
 	public TypeCheckOutcome isTypeSafe ()
 	{
 		TypeCheckOutcome conditionIsTypeSafe = getCondition().isTypeSafe();
-		if (!conditionIsTypeSafe.isSuccessful()) return TypeCheckOutcome.failure("The condition of the if statement at " + getLine() + ", " + getColumn() + " is not type safe.");
+		if (!conditionIsTypeSafe.isSuccessful()) return conditionIsTypeSafe;
 		boolean conditionIsBoolean = getCondition().getType() == Type.TYPE_BOOLEAN;
 		if (!conditionIsBoolean) return TypeCheckOutcome.failure("The condition of the if statement at " + getLine() + ", " + getColumn() + " is not type safe.");
 		TypeCheckOutcome thenIsTypeSafe = getThenStatement().isTypeSafe();

@@ -1,12 +1,14 @@
 package model.programs.parsing.language.expression.second_order;
 
 import model.programs.ProgramException;
+import model.programs.parsing.language.Type;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.constant.literal.BooleanLiteral;
 import model.programs.parsing.language.expression.constant.literal.DoubleLiteral;
+import model.programs.parsing.language.expression.constant.literal.EntityLiteral;
 import Utilities.Util;
 
-public class NotEquals extends SecondOrderExpressionOfNumbersToBoolean
+public class NotEquals extends SecondOrderExpressionOfEntitiesOrDoublesToBoolean
 {
 	public NotEquals (int line, int column, Expression firstArgument, Expression secondArgument) throws IllegalArgumentException
 	{
@@ -16,8 +18,18 @@ public class NotEquals extends SecondOrderExpressionOfNumbersToBoolean
 	@Override
 	protected BooleanLiteral function (DoubleLiteral first, DoubleLiteral second)
 	{
-			return new BooleanLiteral(getLine(), getColumn(), (!Util.fuzzyEquals(first.getValue(), second.getValue())));
-
+		return new BooleanLiteral(getLine(), getColumn(), !(Util.fuzzyEquals(first.getValue(), second.getValue())));
 	}
 
+	@Override
+	protected BooleanLiteral function (EntityLiteral first, EntityLiteral second)
+	{
+		return new BooleanLiteral(getLine(), getColumn(), (first.getValue() != second.getValue()));
+	}
+	
+	@Override
+	public Type getType ()
+	{
+		return Type.TYPE_BOOLEAN;
+	}
 }

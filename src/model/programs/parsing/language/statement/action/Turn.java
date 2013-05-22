@@ -21,9 +21,9 @@ public class Turn extends Action
 		return angle;
 	}
 
-	protected boolean canHaveAsAngle (Expression angle)
+	protected static boolean canHaveAsAngle (Expression angle)
 	{
-		return (angle != null);//TODO more checking?
+		return (angle != null);
 	}
 
 	protected void setAngle (Expression angle)

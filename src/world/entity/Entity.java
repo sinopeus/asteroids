@@ -30,7 +30,7 @@ import be.kuleuven.cs.som.annotate.Raw;
  * @invar	The velocity of this ship is a valid velocity.
  * 			| canHaveAsVelocity(getVelocity())
  */
-public class Entity
+public abstract class Entity
 {
 	/**
 	 * Initializes this new entity with a given direction, position, shape, mass, speed limit and velocity.
@@ -64,7 +64,7 @@ public class Entity
 	 * @throws	IllegalArgumentException
 	 * 			| The provided shape is not valid.
 	 */
-	public Entity (Direction direction, Position position, double speedLimit, Velocity velocity, CircleShape shape, Mass mass) throws IllegalArgumentException
+	protected Entity (Direction direction, Position position, double speedLimit, Velocity velocity, CircleShape shape, Mass mass) throws IllegalArgumentException
 	{
 		setDirection(direction);
 		setPosition(position);
@@ -98,7 +98,7 @@ public class Entity
 	}
 
 	/**
-	 * Checks whether this entity can have the given position as its position.
+	 * Checks whether an entity can have the given position as its position.
 	 * 
 	 * @param 	position
 	 * 			The position to check.
@@ -107,7 +107,7 @@ public class Entity
 	 */
 	@Basic
 	@Raw
-	protected boolean canHaveAsPosition (Position position)
+	protected static boolean canHaveAsPosition (Position position)
 	{
 		return (position != null);
 	}
@@ -210,7 +210,7 @@ public class Entity
 	}
 
 	/**
-	 * Checks whether this entity can have the given direction as its direction.
+	 * Checks whether an entity can have the given direction as its direction.
 	 * 
 	 * @param 	direction
 	 * 			The direction to check.
@@ -219,7 +219,7 @@ public class Entity
 	 */
 	@Basic
 	@Raw
-	protected boolean canHaveAsDirection (Direction direction)
+	protected static boolean canHaveAsDirection (Direction direction)
 	{
 		return (direction != null);
 	}
@@ -294,7 +294,7 @@ public class Entity
 	}
 
 	/**
-	 * Checks whether this entity can have the given speed limit as its speed limit.
+	 * Checks whether an entity can have the given speed limit as its speed limit.
 	 * 
 	 * @param 	speedLimit
 	 * 			The speed limit to check.
@@ -303,7 +303,7 @@ public class Entity
 	 */
 	@Basic
 	@Raw
-	protected boolean canHaveAsSpeedLimit (double speedLimit)
+	protected static boolean canHaveAsSpeedLimit (double speedLimit)
 	{
 		return ( (speedLimit >= 0) && (speedLimit <= Velocity.getSpeedOfLight()));
 	}
@@ -350,7 +350,7 @@ public class Entity
 	}
 
 	/**
-	 * Checks whether this entity can have the given mass as its mass.
+	 * Checks whether an entity can have the given mass as its mass.
 	 * 
 	 * @param	mass
 	 * 			The given mass
@@ -359,7 +359,7 @@ public class Entity
 	 */
 	@Basic
 	@Raw
-	private boolean canHaveAsMass (Mass mass)
+	private static boolean canHaveAsMass (Mass mass)
 	{
 		return (mass != null);
 	}
@@ -398,7 +398,7 @@ public class Entity
 	}
 
 	/**
-	 * Checks whether this entity can have the given world as its world.
+	 * Checks whether an entity can have the given world as its world.
 	 * 
 	 * @param 	world
 	 * 			The world to check.
@@ -407,7 +407,7 @@ public class Entity
 	 */
 	@Basic
 	@Raw
-	private boolean canHaveAsWorld (World world)
+	private static boolean canHaveAsWorld (World world)
 	{
 		return (world != null);
 	}
@@ -719,8 +719,6 @@ public class Entity
 	{
 		if (duration < 0.0) throw new IllegalArgumentException();
 		return this.getPosition().getPositionAfterMove(getVelocity(), duration).getDistanceTo(other.getPosition().getPositionAfterMove(other.getVelocity(), duration)) - (this.getShape().getRadius() + other.getShape().getRadius());
-		//		return this.getPositionAfterMove(duration).distanceTo(other.getPositionAfterMove(duration))
-		//				   - (this.getShape().getRadius() + other.getShape().getRadius());
 	}
 
 	/**
@@ -732,24 +730,6 @@ public class Entity
 	{
 		return " at " + getPosition() + "   with velocity " + getVelocity() + "   and shape " + getShape() + "  ";
 	}
-
-	//WE SHOULDN'T USE THIS
-	//	@Override
-	//	public int hashCode ()
-	//	{
-	//		final int prime = 31;
-	//		int result = 1;
-	//		result = prime * result + ( (direction == null) ? 0 : direction.hashCode());
-	//		result = prime * result + (isTerminated ? 1231 : 1237);
-	//		result = prime * result + ( (mass == null) ? 0 : mass.hashCode());
-	//		result = prime * result + ( (position == null) ? 0 : position.hashCode());
-	//		result = prime * result + ( (shape == null) ? 0 : shape.hashCode());
-	//		long temp;
-	//		temp = Double.doubleToLongBits(speedLimit);
-	//		result = prime * result + (int) (temp ^ (temp >>> 32));
-	//		result = prime * result + ( (velocity == null) ? 0 : velocity.hashCode());
-	//		return result;
-	//	}
 
 	@Override
 	public boolean equals (Object obj)

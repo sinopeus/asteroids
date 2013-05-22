@@ -20,7 +20,7 @@ public abstract class ProgramPart
 		return parentProgram;
 	}
 
-	protected boolean canHaveAsParentProgram (Program program)
+	protected static boolean canHaveAsParentProgram (Program program)
 	{
 		return (program != null);
 	}
@@ -38,9 +38,9 @@ public abstract class ProgramPart
 		return line;
 	}
 
-	protected boolean canHaveAsLine (int line)
+	protected static boolean canHaveAsLine (int line)
 	{
-		return (line >= 0); //TODO GE?
+		return (line >= 0);
 	}
 
 	protected void setLine (int line) throws IllegalArgumentException
@@ -56,9 +56,9 @@ public abstract class ProgramPart
 		return column;
 	}
 
-	protected boolean canHaveAsColumn (int column)
+	protected static boolean canHaveAsColumn (int column)
 	{
-		return (column >= 0); //TODO GE?
+		return (column >= 0);
 	}
 
 	protected void setColumn (int column) throws IllegalArgumentException

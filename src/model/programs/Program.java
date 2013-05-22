@@ -51,7 +51,7 @@ public class Program
 		this.globalValues = globalVariables;
 	}
 
-	protected boolean canHaveAsGlobals (Map <String, Type> globals)
+	protected static boolean canHaveAsGlobals (Map <String, Type> globals)
 	{
 		return (globals != null); // TODO more checking?
 	}
@@ -63,7 +63,7 @@ public class Program
 		return statement;
 	}
 
-	protected boolean canHaveAsStatement (Statement statement)
+	protected static boolean canHaveAsStatement (Statement statement)
 	{
 		return (statement != null); // TODO more checking?
 	}
@@ -82,7 +82,7 @@ public class Program
 		return owner;
 	}
 
-	protected boolean canHaveAsOwner (Ship owner)
+	protected static boolean canHaveAsOwner (Ship owner)
 	{
 		return (owner != null);//TODO more checking
 	}

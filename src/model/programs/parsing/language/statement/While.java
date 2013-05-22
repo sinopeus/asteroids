@@ -24,9 +24,9 @@ public class While extends Statement
 		return condition;
 	}
 
-	protected boolean canHaveAsCondition (Expression condition)
+	protected static boolean canHaveAsCondition (Expression condition)
 	{
-		return (condition != null);//TODO more checking?
+		return (condition != null);
 	}
 
 	protected void setCondition (Expression condition)
@@ -42,9 +42,9 @@ public class While extends Statement
 		return body;
 	}
 
-	protected boolean canHaveAsBody (Statement body)
+	protected static boolean canHaveAsBody (Statement body)
 	{
-		return (body != null); //TODO more checking?
+		return (body != null);
 	}
 
 	protected void setBody (Statement body)
@@ -117,11 +117,11 @@ public class While extends Statement
 	public TypeCheckOutcome isTypeSafe ()
 	{
 		TypeCheckOutcome conditionIsTypeSafe = getCondition().isTypeSafe();
-		if(!conditionIsTypeSafe.isSuccessful()) return TypeCheckOutcome.failure("The condition of the while statement at " + getLine() + ", " + getColumn() + " is not type safe.");
+		if(!conditionIsTypeSafe.isSuccessful()) return conditionIsTypeSafe;
 		boolean conditionIsBoolean = getCondition().getType() == Type.TYPE_BOOLEAN;
 		if(!conditionIsBoolean) return TypeCheckOutcome.failure("The condition of the while statement at " + getLine() + ", " + getColumn() + " is not a boolean.");
 		TypeCheckOutcome bodyIsTypeSafe = getBody().isTypeSafe();
-		if(!bodyIsTypeSafe.isSuccessful()) return TypeCheckOutcome.failure("The bode of the while statement at " + getLine() + ", " + getColumn() + " is not type safe.");
+		if(!bodyIsTypeSafe.isSuccessful()) return bodyIsTypeSafe;
 		return TypeCheckOutcome.success();
 	}
 	

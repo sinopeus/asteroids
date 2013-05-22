@@ -13,13 +13,6 @@ public abstract class SecondOrderExpressionOfBooleansToBoolean extends SecondOrd
 		super(line, column, firstArgument, secondArgument);
 	}
 
-	@Override
-	protected boolean canHaveAsArgument (Expression argument)
-	{
-		if (!super.canHaveAsArgument(argument)) return false;
-		return true; //TODO
-	}
-
 	protected abstract BooleanLiteral function (BooleanLiteral first, BooleanLiteral second);
 
 	@Override
@@ -28,9 +21,9 @@ public abstract class SecondOrderExpressionOfBooleansToBoolean extends SecondOrd
 		TypeCheckOutcome superIsSafe = super.isTypeSafe();
 		if (!superIsSafe.isSuccessful()) return superIsSafe;
 		boolean firstArgumentIsCorrectType = getFirstArgument().getType() == Type.TYPE_BOOLEAN;
-		if (!firstArgumentIsCorrectType) return TypeCheckOutcome.failure("The first argument of the second order expression of booleans to a boolean at " + getLine() + ", " + getColumn() + " is not a boolean.");
+		if (!firstArgumentIsCorrectType) return TypeCheckOutcome.failure("The first argument of the second order expression of booleans to a boolean at " + getLine() + ", " + getColumn() + " is not a boolean.\n" + toString());
 		boolean secondArgumentIsCorrectType = getSecondArgument().getType() == Type.TYPE_BOOLEAN;
-		if (!firstArgumentIsCorrectType) return TypeCheckOutcome.failure("The second argument of the second order expression of booleans to a boolean at " + getLine() + ", " + getColumn() + " is not a boolean.");
+		if (!secondArgumentIsCorrectType) return TypeCheckOutcome.failure("The second argument of the second order expression of booleans to a boolean at " + getLine() + ", " + getColumn() + " is not a boolean.\n" + toString());
 		return TypeCheckOutcome.success();
 	}
 

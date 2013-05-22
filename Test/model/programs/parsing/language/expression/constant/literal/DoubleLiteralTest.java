@@ -49,12 +49,6 @@ public class DoubleLiteralTest
 	}
 	
 	@Test
-	public void isTypeSafeTest ()
-	{
-		assertTrue(testLiteral.isTypeSafe());
-	}
-
-	@Test
 	public void getType ()
 	{
 		assertEquals(testLiteral.getType(), Type.TYPE_DOUBLE);

@@ -39,9 +39,9 @@ public abstract class SecondOrderExpression extends Expression
 		this.secondArgument = secondArgument;
 	}
 
-	protected boolean canHaveAsArgument (Expression argument)
+	protected static boolean canHaveAsArgument (Expression argument)
 	{
-		return argument != null;
+		return (argument != null);
 	}
 
 	@Override
@@ -56,9 +56,9 @@ public abstract class SecondOrderExpression extends Expression
 	public TypeCheckOutcome isTypeSafe ()
 	{
 		TypeCheckOutcome firstArgumentIsTypeSafe = getFirstArgument().isTypeSafe();
-		if (!firstArgumentIsTypeSafe.isSuccessful()) return TypeCheckOutcome.failure("The first argument of the second order expression of booleans to a boolean at " + getLine() + ", " + getColumn() + " is not type safe.");
+		if (!firstArgumentIsTypeSafe.isSuccessful()) return TypeCheckOutcome.failure("The first argument of the second order expression " + getLine() + ", " + getColumn() + " is not type safe.\n" + toString());
 		TypeCheckOutcome secondArgumentIsTypeSafe = getSecondArgument().isTypeSafe();
-		if (!secondArgumentIsTypeSafe.isSuccessful()) return TypeCheckOutcome.failure("The second argument of the second order expression of booleans to a boolean at " + getLine() + ", " + getColumn() + " is not type safe.");
+		if (!secondArgumentIsTypeSafe.isSuccessful()) return TypeCheckOutcome.failure("The second argument of the second order expression " + getLine() + ", " + getColumn() + " is not type safe.\n" + toString());
 		return TypeCheckOutcome.success();
 	}
 

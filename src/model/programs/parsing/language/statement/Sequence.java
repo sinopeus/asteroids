@@ -21,9 +21,9 @@ public class Sequence extends Statement
 		return sequence;
 	}
 
-	protected boolean canHaveAsSequence (List <Statement> sequence)
+	protected static boolean canHaveAsSequence (List <Statement> sequence)
 	{
-		return (sequence != null);//TODO more checking?
+		return (sequence != null);
 	}
 
 	protected void setSequence (List <Statement> sequence)
@@ -126,7 +126,7 @@ public class Sequence extends Statement
 		for (Statement s : getSequence())
 		{
 			TypeCheckOutcome sIsSafe = s.isTypeSafe();
-			if (!sIsSafe.isSuccessful()) return TypeCheckOutcome.failure("The statement at " + s.getLine() + ", " + s.getColumn() + " is not type safe.");;
+			if (!sIsSafe.isSuccessful()) return sIsSafe;
 		}
 		return TypeCheckOutcome.success();
 	}

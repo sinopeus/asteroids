@@ -26,11 +26,6 @@ public class FalseTest
 		assertEquals(new BooleanLiteral(1, 2, false), testFalse.evaluate());
 	}
 
-	public void isTypeSafeTest ()
-	{
-		assertTrue(testFalse.isTypeSafe());
-	}
-
 	public void getTypeTest ()
 	{
 		assertEquals(Type.TYPE_BOOLEAN, testFalse.getType());

@@ -1,6 +1,5 @@
 package model.programs.parsing.language.expression.second_order;
 
-import model.programs.ProgramException;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.constant.literal.BooleanLiteral;
 
@@ -14,10 +13,6 @@ public class And extends SecondOrderExpressionOfBooleansToBoolean
 	@Override
 	protected BooleanLiteral function (BooleanLiteral first, BooleanLiteral second)
 	{
-
-			return new BooleanLiteral(getLine(), getColumn(), (first.getValue() && second.getValue()));
-
+		return new BooleanLiteral(getLine(), getColumn(), (first.getValue() && second.getValue()));
 	}
-
-
 }

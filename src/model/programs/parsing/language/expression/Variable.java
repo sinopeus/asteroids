@@ -28,9 +28,9 @@ public class Variable extends Expression
 		this.name = name;
 	}
 	
-	protected boolean canHaveAsName (String name)
+	protected static boolean canHaveAsName (String name)
 	{
-		return (name != null); //TODO more checking
+		return (name != null);
 	}
 
 	@Override

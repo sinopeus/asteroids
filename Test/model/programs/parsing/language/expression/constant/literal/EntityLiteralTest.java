@@ -48,12 +48,6 @@ public class EntityLiteralTest
 	{
 		new EntityLiteral(1, -2, testEntity);
 	}
-	
-	@Test
-	public void isTypeSafeTest ()
-	{
-		assertTrue(testLiteral.isTypeSafe());
-	}
 
 	@Test
 	public void getType ()

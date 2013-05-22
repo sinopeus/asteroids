@@ -47,13 +47,7 @@ public class BooleanLiteralTest
 	{
 		new BooleanLiteral(1, 2, null);
 	}
-
-	@Test
-	public void isTypeSafeTest ()
-	{
-		assertTrue(testLiteral.isTypeSafe());
-	}
-
+	
 	@Test
 	public void getType ()
 	{

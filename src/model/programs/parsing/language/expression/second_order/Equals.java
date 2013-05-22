@@ -1,6 +1,7 @@
 package model.programs.parsing.language.expression.second_order;
 
 import model.programs.ProgramException;
+import model.programs.parsing.language.Type;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.constant.literal.BooleanLiteral;
 import model.programs.parsing.language.expression.constant.literal.DoubleLiteral;
@@ -18,12 +19,18 @@ public class Equals extends SecondOrderExpressionOfEntitiesOrDoublesToBoolean
 	@Override
 	protected BooleanLiteral function (DoubleLiteral first, DoubleLiteral second)
 	{
-		return null;
+		return new BooleanLiteral(getLine(), getColumn(), (Util.fuzzyEquals(first.getValue(), second.getValue())));
 	}
 
 	@Override
 	protected BooleanLiteral function (EntityLiteral first, EntityLiteral second)
 	{
-		return null;
+		return new BooleanLiteral(getLine(), getColumn(), (first.getValue() == second.getValue()));
+	}
+	
+	@Override
+	public Type getType ()
+	{
+		return Type.TYPE_BOOLEAN;
 	}
 }

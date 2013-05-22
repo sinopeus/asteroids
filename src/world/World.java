@@ -130,7 +130,7 @@ public class World extends ArrayList <Entity>
 	 */
 	@Basic
 	@Raw
-	private boolean canHaveAsSize (double size)
+	private static boolean canHaveAsSize (double size)
 	{
 		return ( (size > 0) && (size <= Double.MAX_VALUE));
 	}
@@ -146,13 +146,15 @@ public class World extends ArrayList <Entity>
 	private double	ySize;
 
 	private double	gameTime;
-//TODO document
+
+	//TODO document
 	public double getGameTime ()
 	{
 		return gameTime;
 	}
-
-	protected boolean canHaveAsGameTime (double gameTime)
+	
+	//TODO document
+	protected static boolean canHaveAsGameTime (double gameTime)
 	{
 		return (gameTime > 0);//TODO more checking?
 	}
@@ -305,7 +307,7 @@ public class World extends ArrayList <Entity>
 	 * @return	True if and only if the given entity is null or does not overlap with any other entity.
 	 * 			| (entity == null) || for (Entity e : this) (!entity.overlapsWith(e))
 	 */
-	private boolean isSpaceForEntity (Entity entity)
+	private boolean isSpaceForEntity (Entity entity) //TODO we might want to use this?
 	{
 		if (entity == null) return true;
 		for (Entity e : this)

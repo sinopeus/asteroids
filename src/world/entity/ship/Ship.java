@@ -122,7 +122,7 @@ public class Ship extends Entity implements IShip
 	 * @return	True if and only if the given thruster is not null.
 	 * 			| result == (thruster != null)
 	 */
-	private boolean canHaveAsThruster (Thruster thruster)
+	private static boolean canHaveAsThruster (Thruster thruster)
 	{
 		return (thruster != null);
 	}
@@ -160,7 +160,7 @@ public class Ship extends Entity implements IShip
 	 * @param bullets
 	 * @return
 	 */
-	private boolean canHaveAsBulletList (ArrayList <Bullet> bullets)
+	private static boolean canHaveAsBulletList (ArrayList <Bullet> bullets)
 	{
 		return (bullets != null);
 	}
@@ -184,7 +184,7 @@ public class Ship extends Entity implements IShip
 		return program;
 	}
 
-	protected boolean canHaveAsProgram (Program program)
+	protected static boolean canHaveAsProgram (Program program)
 	{
 		return true; //TODO more checking?
 	}
@@ -222,16 +222,16 @@ public class Ship extends Entity implements IShip
 		int pastIterations = (int) (gameTimeStart / SPEED_OF_ACTIONS);
 		double now = gameTimeStart + dt;
 		int requiredIterations = (int) (now / SPEED_OF_ACTIONS);
-		for (int i = 0; i < requiredIterations - pastIterations; i++){
+		for (int i = 0; i < requiredIterations - pastIterations; i++)
 			getProgram().executeUntilAfterNextAction();
-		}
 	}
 
+	//TODO test and document
 	public boolean canFire ()
 	{
 		return (getBulletList().size() < MAXIMUM_AMOUNT_OF_BULLETS);
 	}
-	
+
 	/**
 	 * A method for firing a bullet from this ship.
 	 * 
@@ -243,7 +243,6 @@ public class Ship extends Entity implements IShip
 		if (!canFire()) return;
 		Bullet b = new Bullet(this);
 		if (getWorld().add(b))
-		;
 		{
 			this.getBulletList().add(b);
 
@@ -316,5 +315,5 @@ public class Ship extends Entity implements IShip
 	private static byte		MAXIMUM_AMOUNT_OF_BULLETS	= 3;
 
 	//TODO document
-	private static double	SPEED_OF_ACTIONS			= 2E-1;
+	private static double	SPEED_OF_ACTIONS			= 0.2;
 }

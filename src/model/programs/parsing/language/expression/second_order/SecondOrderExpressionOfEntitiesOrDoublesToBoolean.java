@@ -1,6 +1,6 @@
 package model.programs.parsing.language.expression.second_order;
 
-import model.programs.ProgramException;
+import model.IFacade.TypeCheckOutcome;
 import model.programs.parsing.language.Type;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.constant.ConstantExpression;
@@ -20,12 +20,19 @@ public abstract class SecondOrderExpressionOfEntitiesOrDoublesToBoolean extends 
 	protected abstract BooleanLiteral function (EntityLiteral first, EntityLiteral second);
 
 	@Override
-	public boolean isTypeSafe ()
+	public TypeCheckOutcome isTypeSafe ()
 	{
-		if (!getFirstArgument().isTypeSafe()) return false;
-		if (!getSecondArgument().isTypeSafe()) return false;
-		if (getFirstArgument().getType() != getSecondArgument().getType()) return false;
-		return ( (getFirstArgument().getType() == Type.TYPE_DOUBLE) || (getFirstArgument().getType() == Type.TYPE_ENTITY));
+		TypeCheckOutcome superIsSafe = super.isTypeSafe();
+		if (!superIsSafe.isSuccessful()) return superIsSafe;
+		boolean sameType = (getFirstArgument().getType() == getSecondArgument().getType());
+		if (!sameType) return TypeCheckOutcome.failure("The arguments of the second order expression at " + getLine() + ", " + getColumn() + " are not of the same type.\n" + toString());
+		Type actualType = getFirstArgument().getType();
+		if (actualType != Type.TYPE_DOUBLE && actualType != Type.TYPE_ENTITY) return TypeCheckOutcome.failure("The arguments of the second order expression at " + getLine() + ", " + getColumn() + " are of the wrong type.\n" + toString());
+		boolean firstArgumentIsCorrectType = getFirstArgument().getType() == actualType;
+		if (!firstArgumentIsCorrectType) return TypeCheckOutcome.failure("The first argument of the second order expression of booleans to a boolean at " + getLine() + ", " + getColumn() + " is not of the correct type.\n" + toString());
+		boolean secondArgumentIsCorrectType = getSecondArgument().getType() == actualType;
+		if (!secondArgumentIsCorrectType) return TypeCheckOutcome.failure("The second argument of the second order expression of booleans to a boolean at " + getLine() + ", " + getColumn() + " is not of the correct type.\n" + toString());
+		return TypeCheckOutcome.success();
 	}
 
 	@Override

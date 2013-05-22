@@ -21,7 +21,7 @@ public class Assignment extends Statement
 		return variable;
 	}
 
-	protected boolean canHaveAsVariable (Variable variable)
+	protected static boolean canHaveAsVariable (Variable variable)
 	{
 		return (variable != null);
 	}
@@ -39,7 +39,7 @@ public class Assignment extends Statement
 		return value;
 	}
 
-	protected boolean canHaveAsValue (Expression value)
+	protected static boolean canHaveAsValue (Expression value)
 	{
 		return (value != null);
 	}
