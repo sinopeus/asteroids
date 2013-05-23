@@ -51,6 +51,7 @@ public class World extends ArrayList <Entity>
 	{
 		setXSize(xSize);
 		setYSize(ySize);
+		setGameTime(0);
 	}
 
 	/**
@@ -159,12 +160,12 @@ public class World extends ArrayList <Entity>
 	{
 		return gameTime;
 	}
-	
+
 	//TODO document
 	@Basic
 	protected static boolean canHaveAsGameTime (double gameTime)
 	{
-		return (gameTime > 0);//TODO more checking?
+		return (gameTime >= 0);
 	}
 
 	@Basic
@@ -177,9 +178,15 @@ public class World extends ArrayList <Entity>
 	}
 
 	@Model
-	protected void advandeGameTime (double time)
+	protected void advandeGameTime (double duration)
 	{
-		setGameTime(getGameTime() + time);
+		try
+		{
+			setGameTime(getGameTime() + duration);
+		} catch (IllegalArgumentException e)
+		{
+			System.err.println("The provided duration " + duration + " is negative.");
+		}
 	}
 
 	/**
@@ -193,9 +200,9 @@ public class World extends ArrayList <Entity>
 	@Basic
 	@Raw
 	@Model
-	private boolean canHaveAsEntity (Entity entity)
+	private boolean canHaveAsNewEntity (Entity entity)
 	{
-		return ( (entity != null) && ! (this.contains(entity)));
+		return ( (entity != null) && (!this.contains(entity)));
 	}
 
 	/**
@@ -207,10 +214,11 @@ public class World extends ArrayList <Entity>
 	 * 			| new.contains(e)
 	 */
 	@Override
-	public boolean add (Entity entity) //TODO DOCUMENT
+	public boolean add (Entity entity) throws IllegalArgumentException//TODO DOCUMENT
 	{
 		if (entity == null) return false;
-		if (!canHaveAsEntity(entity)) { throw new IllegalArgumentException("Invalid entity added"); }
+		//if (!isSpaceForEntity(entity)) return false; TODO remove this
+		if (!canHaveAsNewEntity(entity)) { throw new IllegalArgumentException("Invalid entity added"); }
 		if (!isInWorld(entity)) return false;
 		entity.setWorld(this);
 		super.add(entity);
@@ -274,8 +282,8 @@ public class World extends ArrayList <Entity>
 	@Model
 	private void advanceAll (double dt)
 	{
-		ArrayList<Entity> temp = new ArrayList<Entity>(this.numberOfEntities()*2 +1);
-		for(Entity e : this)
+		ArrayList <Entity> temp = new ArrayList <Entity>(this.numberOfEntities() * 2 + 1);
+		for (Entity e : this)
 			temp.add(e);
 		for (Entity e : temp)
 			e.advance(dt);
