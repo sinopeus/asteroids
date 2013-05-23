@@ -188,7 +188,10 @@ public class Ship extends Entity implements IShip
 
 	Program						program;
 
-	//TODO document
+	/**
+	 * Get the Program of this ship.
+	 */
+	@SuppressWarnings ("javadoc")
 	@Basic
 	@Raw
 	public Program getProgram ()
@@ -196,15 +199,32 @@ public class Ship extends Entity implements IShip
 		return program;
 	}
 
+	/**
+	 * Checks whether this ship can have the given program as its program.
+	 * 
+	 * @param	program
+	 * 			The given program
+	 * @return	True
+	 * 			| result == true
+	 */
 	@Basic
 	@Model
 	protected static boolean canHaveAsProgram (Program program)
 	{
-		return true; //TODO more checking?
+		return true;
 	}
 
+	/**
+	 * Sets the program of this ship to the given program.
+	 * 
+	 * @param	program
+	 * 			The given program
+	 * @post	The program of this ship is now equal to the given program.
+	 * 			| new.getProgram() == program
+	 * @effect	Sets the owner of the given program to this ship.
+	 * 			| program.setOwner(this)
+	 */
 	@Basic
-	//TODO test and document	
 	@Raw
 	public void setProgram (Program program)
 	{
@@ -232,7 +252,6 @@ public class Ship extends Entity implements IShip
 		//Add error when terminated.
 		if (getThruster().isActivated()) getThruster().thrust(dt);
 		super.advance(dt);
-		//TODO check order of execution
 
 		if (getProgram() == null) return;
 		double gameTimeStart = getWorld().getGameTime();
@@ -328,10 +347,12 @@ public class Ship extends Entity implements IShip
 	private static double	thrustPerSecond				= 1.1E21;
 
 	/**
-	 * TODO
+	 * A variable registering the maximum amount of bullets a ship can have in its world.
 	 */
 	private static byte		MAXIMUM_AMOUNT_OF_BULLETS	= 3;
 
-	//TODO document
+	/**
+	 * The cooldown time for actions of ships.
+	 */
 	private static double	SPEED_OF_ACTIONS			= 0.2;
 }

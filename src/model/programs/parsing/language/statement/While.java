@@ -31,7 +31,7 @@ public class While extends Statement
 
 	protected void setCondition (Expression condition)
 	{
-		if (!canHaveAsCondition(condition)) throw new IllegalArgumentException("Invalid condition provided for while statement."); //TODO ?
+		if (!canHaveAsCondition(condition)) throw new IllegalArgumentException("Invalid condition provided for while statement.");
 		this.condition = condition;
 	}
 
@@ -94,7 +94,7 @@ public class While extends Statement
 		super.unfinish();
 	}
 
-	public boolean execute ()//TODO check this, TEST IT
+	public boolean execute ()
 	{
 		super.execute();
 		if (!checked) checkCondition();

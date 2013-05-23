@@ -27,7 +27,7 @@ public abstract class ProgramPart
 
 	public void setParentProgram (Program parentProgram) throws IllegalArgumentException
 	{
-		if (!canHaveAsParentProgram(parentProgram)) throw new IllegalArgumentException("Illegal parent program provided.");//TODO
+		if (!canHaveAsParentProgram(parentProgram)) throw new IllegalArgumentException("Illegal parent program provided.");
 		this.parentProgram = parentProgram;
 	}
 

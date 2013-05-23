@@ -48,7 +48,7 @@ public class Asteroids <World, Ship, Asteroid, Bullet, Program> extends JFrame
 		return width;
 	}
 
-	public int getHeight ()// TODO Auto-generated method stub
+	public int getHeight ()
 	{
 		return height;
 	}
