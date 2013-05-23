@@ -58,7 +58,7 @@ public class Ship extends Entity implements IShip
 	{
 		super(direction, position, speedLimit, velocity, shape, mass);
 		setThruster(new Thruster(getThrustPerSecond(), this));
-		setBulletList(new ArrayList <Bullet>(3));
+		this.bulletList = new ArrayList <Bullet>(3);
 	}
 
 	/**
@@ -70,7 +70,7 @@ public class Ship extends Entity implements IShip
 	public Ship ()
 	{
 		this(new Direction(), new Position(), Velocity.getSpeedOfLight(), new Velocity(), new CircleShape(40), new Mass(5E15));
-		setBulletList(new ArrayList <Bullet>(3));
+		this.bulletList = new ArrayList <Bullet>(3);
 	}
 
 	/**
@@ -151,37 +151,13 @@ public class Ship extends Entity implements IShip
 	private Thruster	thruster;
 
 	/**
-	 * @return the bullets
+	 * Gets the bullet list of this ship.
 	 */
 	@Basic
 	@Raw
 	public ArrayList <Bullet> getBulletList ()
 	{
 		return bulletList;
-	}
-
-	/**
-	 * TODO document and test
-	 * @param bullets
-	 * @return
-	 */
-	@Basic
-	@Model
-	protected static boolean canHaveAsBulletList (ArrayList <Bullet> bullets)
-	{
-		return (bullets != null);
-	}
-
-	/**
-	 * @param bullets the bullets to set
-	 */
-	@Basic
-	@Raw
-	@Model
-	protected void setBulletList (ArrayList <Bullet> bullets)
-	{
-		if (!canHaveAsBulletList(bullets)) throw new IllegalArgumentException("Invalid bulletlist provided.");
-		this.bulletList = bullets;
 	}
 
 	private ArrayList <Bullet>	bulletList;
@@ -228,7 +204,7 @@ public class Ship extends Entity implements IShip
 	@Raw
 	public void setProgram (Program program)
 	{
-		if (!canHaveAsProgram(program)) throw new IllegalArgumentException("Invalid program provided."); //TODO is this necessary
+		if (!canHaveAsProgram(program)) throw new IllegalArgumentException("Invalid program provided.");
 		this.program = program;
 		program.setOwner(this);
 	}
@@ -262,7 +238,12 @@ public class Ship extends Entity implements IShip
 			getProgram().executeUntilAfterNextAction();
 	}
 
-	//TODO test and document
+	/**
+	 * Checks whether this ship can fire a bullet
+	 * 
+	 * @return	The bullet list of this ship contains less than the maximum amoutnt of bullets
+	 * 			| result == (getBulletList().size() < MAXIMUM_AMOUNT_OF_BULLETS)
+	 */
 	@Basic
 	public boolean canFire ()
 	{

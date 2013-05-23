@@ -124,7 +124,7 @@ public class If extends Statement
 		} else
 		{
 			finish();
-			return false; // TODO make this into an error?
+			return false;
 		}
 	}
 

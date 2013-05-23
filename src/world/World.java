@@ -248,7 +248,7 @@ public class World extends ArrayList <Entity>
 	 * 			| !canHaveAsNewEntity(entity)
 	 */
 	@Override
-	public boolean add (Entity entity) throws IllegalArgumentException//TODO DOCUMENT
+	public boolean add (Entity entity) throws IllegalArgumentException
 	{
 		if (entity == null) return false;
 		if (!canHaveAsNewEntity(entity)) { throw new IllegalArgumentException("Invalid entity added"); }
@@ -265,7 +265,7 @@ public class World extends ArrayList <Entity>
 	 * 			The time difference over which to evolve this world.
 	 * @param	coll
 	 * 			The required collision listener.
-	 * @note	//TODO more extensive informal doc
+	 * @effect	This world evolves the given duration.
 	 */
 	public void evolve (double dt, CollisionListener coll)
 	{
@@ -370,7 +370,7 @@ public class World extends ArrayList <Entity>
 	 * 			| (entity == null) || for (Entity e : this) (!entity.overlapsWith(e))
 	 */
 	@Model
-	private boolean isSpaceForEntity (Entity entity) //TODO we might want to use this?
+	private boolean isSpaceForEntity (Entity entity)
 	{
 		if (entity == null) return true;
 		for (Entity e : this)

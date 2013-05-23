@@ -27,7 +27,7 @@ public class Print extends Statement
 
 	protected void setTextExpression (Expression textExpression)
 	{
-		if (!canHaveAsTextExpression(textExpression)) throw new IllegalArgumentException("Invalid expression for print statement."); //TODO other message and/or exception?
+		if (!canHaveAsTextExpression(textExpression)) throw new IllegalArgumentException("Invalid expression for print statement.");
 		this.textExpression = textExpression;
 	}
 

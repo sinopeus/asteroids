@@ -28,7 +28,7 @@ public class Sequence extends Statement
 
 	protected void setSequence (List <Statement> sequence)
 	{
-		if (!canHaveAsSequence(sequence)) throw new IllegalArgumentException("Invalid sequence of statements.");//TODO other message and/or exception.
+		if (!canHaveAsSequence(sequence)) throw new IllegalArgumentException("Invalid sequence of statements.");
 		this.sequence = sequence;
 	}
 

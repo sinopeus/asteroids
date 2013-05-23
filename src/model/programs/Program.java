@@ -53,7 +53,7 @@ public class Program
 
 	protected static boolean canHaveAsGlobals (Map <String, Type> globals)
 	{
-		return (globals != null); // TODO more checking?
+		return (globals != null);
 	}
 
 	Statement	statement;
@@ -65,7 +65,7 @@ public class Program
 
 	protected static boolean canHaveAsStatement (Statement statement)
 	{
-		return (statement != null); // TODO more checking?
+		return (statement != null);
 	}
 
 	protected void setStatement (Statement statement) throws RecognitionException
@@ -84,7 +84,7 @@ public class Program
 
 	protected static boolean canHaveAsOwner (Ship owner)
 	{
-		return (owner != null);//TODO more checking
+		return (owner != null);
 	}
 
 	public void setOwner (Ship owner) throws IllegalArgumentException
