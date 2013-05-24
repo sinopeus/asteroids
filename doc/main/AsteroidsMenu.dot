@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// main.Asteroids<World, Ship, Asteroid, Bullet, Program>
-	c3674 [label=<<table title="main.Asteroids" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Asteroids.html">
+	c3673 [label=<<table title="main.Asteroids" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Asteroids.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Asteroids&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
 		</table></td></tr>
@@ -37,7 +37,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Asteroids.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// main.AsteroidsMenu<World, Ship, Asteroid, Bullet, Program>
-	c3678 [label=<<table title="main.AsteroidsMenu" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./AsteroidsMenu.html">
+	c3677 [label=<<table title="main.AsteroidsMenu" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./AsteroidsMenu.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> AsteroidsMenu&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
 		</table></td></tr>
@@ -60,17 +60,17 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./AsteroidsMenu.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//main.AsteroidsMenu<World, Ship, Asteroid, Bullet, Program> extends javax.swing.JPanel
-	c3796:p -> c3678:p [dir=back,arrowtail=empty];
+	c3796:p -> c3677:p [dir=back,arrowtail=empty];
 	//main.AsteroidsMenu<World, Ship, Asteroid, Bullet, Program> implements java.awt.event.KeyListener
-	c3797:p -> c3678:p [dir=back,arrowtail=empty,style=dashed];
+	c3797:p -> c3677:p [dir=back,arrowtail=empty,style=dashed];
 	// main.Asteroids<World, Ship, Asteroid, Bullet, Program> NAVASSOC main.AsteroidsMenu<World, Ship, Asteroid, Bullet, Program>
-	c3674:p -> c3678:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c3673:p -> c3677:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// main.AsteroidsMenu<World, Ship, Asteroid, Bullet, Program> NAVASSOC java.lang.String
-	c3678:p -> c3798:p [taillabel="", label="", headlabel="*", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c3677:p -> c3798:p [taillabel="", label="", headlabel="*", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// main.AsteroidsMenu<World, Ship, Asteroid, Bullet, Program> NAVASSOC main.Asteroids<World, Ship, Asteroid, Bullet, Program>
-	c3678:p -> c3674:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c3677:p -> c3673:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// main.AsteroidsMenu<World, Ship, Asteroid, Bullet, Program> NAVASSOC java.awt.Image
-	c3678:p -> c3799:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c3677:p -> c3799:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// javax.swing.JPanel
 	c3796 [label=<<table title="javax.swing.JPanel" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/javax/swing/JPanel.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">

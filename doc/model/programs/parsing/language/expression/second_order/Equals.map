@@ -1,6 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="./Equals.html" title="model.programs.parsing.language.expression.second_order.Equals" alt="" coords="129,225,679,314"/>
-<area shape="rect" id="node1" href="./Equals.html" title="&lt;TABLE&gt;" alt="" coords="119,219,689,319"/>
-<area shape="rect" id="node2_1" href="./SecondOrderExpressionOfNumbersToBoolean.html" title="model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToBoolean" alt="" coords="15,11,793,165"/>
-<area shape="rect" id="node2" href="./SecondOrderExpressionOfNumbersToBoolean.html" title="&lt;TABLE&gt;" alt="" coords="5,6,803,170"/>
+<area shape="rect" id="node1_0" href="./SecondOrderExpressionOfEntitiesOrDoublesToBoolean.html" title="model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfEntitiesOrDoublesToBoolean" alt="" coords="15,11,846,165"/>
+<area shape="rect" id="node1" href="./SecondOrderExpressionOfEntitiesOrDoublesToBoolean.html" title="&lt;TABLE&gt;" alt="" coords="5,6,857,170"/>
+<area shape="rect" id="node2_1" href="./Equals.html" title="model.programs.parsing.language.expression.second_order.Equals" alt="" coords="156,225,705,346"/>
+<area shape="rect" id="node2" href="./Equals.html" title="&lt;TABLE&gt;" alt="" coords="145,219,716,351"/>
 </map>

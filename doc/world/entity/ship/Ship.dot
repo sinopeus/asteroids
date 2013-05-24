@@ -10,14 +10,14 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.IShip
-	c15485 [label=<<table title="model.IShip" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../../model/IShip.html">
+	c15609 [label=<<table title="model.IShip" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../../model/IShip.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> IShip </td></tr>
 		</table></td></tr>
 		</table>>, URL="../../../model/IShip.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.Program
-	c15492 [label=<<table title="model.programs.Program" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../../model/programs/Program.html">
+	c15616 [label=<<table title="model.programs.Program" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../../model/programs/Program.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Program </td></tr>
 		</table></td></tr>
@@ -46,14 +46,14 @@ digraph G {
 <tr><td align="left" balign="left"> + getVariableNamed(name : String) : ConstantExpression&lt;?&gt; </td></tr>
 <tr><td align="left" balign="left"> + setVariableValue(name : String, value : ConstantExpression&lt;?&gt;) </td></tr>
 <tr><td align="left" balign="left"> + executeUntilAfterNextAction() </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="../../../model/programs/Program.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// world.entity.Entity
-	c15575 [label=<<table title="world.entity.Entity" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../Entity.html">
+	c15700 [label=<<table title="world.entity.Entity" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../Entity.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> Entity </td></tr>
+<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> Entity </font></td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # position : Position </td></tr>
@@ -66,39 +66,39 @@ digraph G {
 <tr><td align="left" balign="left"> # isTerminated : boolean </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + Entity(direction : Direction, position : Position, speedLimit : double, velocity : Velocity, shape : CircleShape, mass : Mass) </td></tr>
+<tr><td align="left" balign="left"> # Entity(direction : Direction, position : Position, speedLimit : double, velocity : Velocity, shape : CircleShape, mass : Mass) </td></tr>
 <tr><td align="left" balign="left"> + Entity() </td></tr>
 <tr><td align="left" balign="left"> + getPosition() : Position </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsPosition(position : Position) : boolean </td></tr>
-<tr><td align="left" balign="left"> + setPosition(position : Position) </td></tr>
+<tr><td align="left" balign="left"> # setPosition(position : Position) </td></tr>
 <tr><td align="left" balign="left"> + getVelocity() : Velocity </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsVelocity(velocity : Velocity) : boolean </td></tr>
-<tr><td align="left" balign="left"> + setVelocity(velocity : Velocity) </td></tr>
+<tr><td align="left" balign="left"> # setVelocity(velocity : Velocity) </td></tr>
 <tr><td align="left" balign="left"> + getDirection() : Direction </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsDirection(direction : Direction) : boolean </td></tr>
-<tr><td align="left" balign="left"> + setDirection(direction : Direction) </td></tr>
+<tr><td align="left" balign="left"> # setDirection(direction : Direction) </td></tr>
 <tr><td align="left" balign="left"> + getShape() : CircleShape </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsShape(shape : CircleShape) : boolean </td></tr>
 <tr><td align="left" balign="left"> + getSpeedLimit() : double </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsSpeedLimit(speedLimit : double) : boolean </td></tr>
-<tr><td align="left" balign="left"> + setSpeedLimit(speedLimit : double) </td></tr>
+<tr><td align="left" balign="left"> # setSpeedLimit(speedLimit : double) </td></tr>
 <tr><td align="left" balign="left"> + getMass() : Mass </td></tr>
-<tr><td align="left" balign="left"> - canHaveAsMass(mass : Mass) : boolean </td></tr>
-<tr><td align="left" balign="left"> - setMass(mass : Mass) </td></tr>
+<tr><td align="left" balign="left"> # canHaveAsMass(mass : Mass) : boolean </td></tr>
+<tr><td align="left" balign="left"> # setMass(mass : Mass) </td></tr>
 <tr><td align="left" balign="left"> + getWorld() : World </td></tr>
 <tr><td align="left" balign="left"> - canHaveAsWorld(world : World) : boolean </td></tr>
 <tr><td align="left" balign="left"> + setWorld(world : World) </td></tr>
 <tr><td align="left" balign="left"> + isTerminated() : boolean </td></tr>
 <tr><td align="left" balign="left"> + terminate() </td></tr>
 <tr><td align="left" balign="left"> + advance(dt : double) </td></tr>
-<tr><td align="left" balign="left"> + move(duration : double) </td></tr>
+<tr><td align="left" balign="left"> # move(duration : double) </td></tr>
 <tr><td align="left" balign="left"> + collideWith(that : Entity) </td></tr>
 <tr><td align="left" balign="left"> # collideWith(that : Ship) </td></tr>
 <tr><td align="left" balign="left"> # collideWith(that : Asteroid) </td></tr>
 <tr><td align="left" balign="left"> # collideWith(that : Bullet) </td></tr>
 <tr><td align="left" balign="left"> + collideWith(that : Border) </td></tr>
 <tr><td align="left" balign="left"> + turn(angle : Angle) </td></tr>
-<tr><td align="left" balign="left"> + bounce(that : Entity) </td></tr>
+<tr><td align="left" balign="left"> # bounce(that : Entity) </td></tr>
 <tr><td align="left" balign="left"> + overlapsWith(e : Entity) : boolean </td></tr>
 <tr><td align="left" balign="left"> + distanceTo(e : Entity) : double </td></tr>
 <tr><td align="left" balign="left"> + distanceTo(p : Position) : double </td></tr>
@@ -108,7 +108,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="../Entity.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// world.entity.Bullet
-	c15576 [label=<<table title="world.entity.Bullet" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../Bullet.html">
+	c15701 [label=<<table title="world.entity.Bullet" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../Bullet.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Bullet </td></tr>
 		</table></td></tr>
@@ -122,16 +122,16 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Bullet(ship : Ship) </td></tr>
-<tr><td align="left" balign="left"> - getInitialPosition(ship : Ship) : Position </td></tr>
+<tr><td align="left" balign="left"> # getInitialPosition(ship : Ship) : Position </td></tr>
 <tr><td align="left" balign="left"> + getShooter() : Ship </td></tr>
-<tr><td align="left" balign="left"> - canHaveAsShooter(shooter : Ship) : boolean </td></tr>
-<tr><td align="left" balign="left"> - setShooter(shooter : Ship) </td></tr>
+<tr><td align="left" balign="left"> # canHaveAsShooter(shooter : Ship) : boolean </td></tr>
+<tr><td align="left" balign="left"> # setShooter(shooter : Ship) </td></tr>
 <tr><td align="left" balign="left"> + getBounceCounter() : byte </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsBounceCounter(bounceCounter : byte) : boolean </td></tr>
-<tr><td align="left" balign="left"> + setBounceCounter(bounceCounter : byte) </td></tr>
-<tr><td align="left" balign="left"> + collideWith(that : Asteroid) </td></tr>
-<tr><td align="left" balign="left"> + collideWith(that : Bullet) </td></tr>
-<tr><td align="left" balign="left"> + collideWith(that : Ship) </td></tr>
+<tr><td align="left" balign="left"> # setBounceCounter(bounceCounter : byte) </td></tr>
+<tr><td align="left" balign="left"> # collideWith(that : Asteroid) </td></tr>
+<tr><td align="left" balign="left"> # collideWith(that : Bullet) </td></tr>
+<tr><td align="left" balign="left"> # collideWith(that : Ship) </td></tr>
 <tr><td align="left" balign="left"> + collideWith(that : Border) </td></tr>
 <tr><td align="left" balign="left"> + unlinkFromShooter() </td></tr>
 <tr><td align="left" balign="left"> + terminate() </td></tr>
@@ -141,7 +141,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="../Bullet.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// world.entity.ship.Thruster
-	c15577 [label=<<table title="world.entity.ship.Thruster" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Thruster.html">
+	c15702 [label=<<table title="world.entity.ship.Thruster" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Thruster.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Thruster </td></tr>
 		</table></td></tr>
@@ -155,7 +155,7 @@ digraph G {
 <tr><td align="left" balign="left"> + Thruster(maximumThrust : double, owner : Ship) </td></tr>
 <tr><td align="left" balign="left"> + getMaximumThrustPerSecond() : double </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsMaximumThrust(maximumThrust : double) : boolean </td></tr>
-<tr><td align="left" balign="left"> - setMaximumThrustPerSecond(maximumThrust : double) </td></tr>
+<tr><td align="left" balign="left"> # setMaximumThrustPerSecond(maximumThrust : double) </td></tr>
 <tr><td align="left" balign="left"> + isActivated() : boolean </td></tr>
 <tr><td align="left" balign="left"> + activate() </td></tr>
 <tr><td align="left" balign="left"> + deactivate() </td></tr>
@@ -173,7 +173,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Thruster.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// world.entity.ship.Ship
-	c15578 [label=<<table title="world.entity.ship.Ship" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Ship.html">
+	c15703 [label=<<table title="world.entity.ship.Ship" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Ship.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Ship </td></tr>
 		</table></td></tr>
@@ -192,11 +192,11 @@ digraph G {
 <tr><td align="left" balign="left"> # canHaveAsShape(shape : CircleShape) : boolean </td></tr>
 <tr><td align="left" balign="left"> + getMinimumRadius() : double </td></tr>
 <tr><td align="left" balign="left"> + getThruster() : Thruster </td></tr>
-<tr><td align="left" balign="left"> - canHaveAsThruster(thruster : Thruster) : boolean </td></tr>
-<tr><td align="left" balign="left"> - setThruster(thruster : Thruster) </td></tr>
+<tr><td align="left" balign="left"> # canHaveAsThruster(thruster : Thruster) : boolean </td></tr>
+<tr><td align="left" balign="left"> # setThruster(thruster : Thruster) </td></tr>
 <tr><td align="left" balign="left"> + getBulletList() : ArrayList&lt;Bullet&gt; </td></tr>
-<tr><td align="left" balign="left"> - canHaveAsBulletList(bullets : ArrayList&lt;Bullet&gt;) : boolean </td></tr>
-<tr><td align="left" balign="left"> - setBulletList(bullets : ArrayList&lt;Bullet&gt;) </td></tr>
+<tr><td align="left" balign="left"> # canHaveAsBulletList(bullets : ArrayList&lt;Bullet&gt;) : boolean </td></tr>
+<tr><td align="left" balign="left"> # setBulletList(bullets : ArrayList&lt;Bullet&gt;) </td></tr>
 <tr><td align="left" balign="left"> + getProgram() : Program </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsProgram(program : Program) : boolean </td></tr>
 <tr><td align="left" balign="left"> + setProgram(program : Program) </td></tr>
@@ -204,32 +204,32 @@ digraph G {
 <tr><td align="left" balign="left"> + advance(dt : double) </td></tr>
 <tr><td align="left" balign="left"> + canFire() : boolean </td></tr>
 <tr><td align="left" balign="left"> + fire() </td></tr>
-<tr><td align="left" balign="left"> + collideWith(that : Asteroid) </td></tr>
-<tr><td align="left" balign="left"> + collideWith(that : Bullet) </td></tr>
+<tr><td align="left" balign="left"> # collideWith(that : Asteroid) </td></tr>
+<tr><td align="left" balign="left"> # collideWith(that : Bullet) </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 <tr><td align="left" balign="left"> + getThrustPerSecond() : double </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Ship.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//world.entity.Bullet extends world.entity.Entity
-	c15575:p -> c15576:p [dir=back,arrowtail=empty];
+	c15700:p -> c15701:p [dir=back,arrowtail=empty];
 	//world.entity.ship.Ship extends world.entity.Entity
-	c15575:p -> c15578:p [dir=back,arrowtail=empty];
+	c15700:p -> c15703:p [dir=back,arrowtail=empty];
 	//world.entity.ship.Ship implements model.IShip
-	c15485:p -> c15578:p [dir=back,arrowtail=empty,style=dashed];
+	c15609:p -> c15703:p [dir=back,arrowtail=empty,style=dashed];
 	// model.programs.Program NAVASSOC world.entity.ship.Ship
-	c15492:p -> c15578:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c15616:p -> c15703:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// world.entity.Bullet NAVASSOC world.entity.ship.Ship
-	c15576:p -> c15578:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c15701:p -> c15703:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// world.entity.ship.Thruster NAVASSOC world.entity.ship.Ship
-	c15577:p -> c15578:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c15702:p -> c15703:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// world.entity.ship.Ship NAVASSOC world.entity.ship.Thruster
-	c15578:p -> c15577:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c15703:p -> c15702:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// world.entity.ship.Ship NAVASSOC java.util.ArrayList<E>
-	c15578:p -> c15594:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c15703:p -> c15719:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// world.entity.ship.Ship NAVASSOC model.programs.Program
-	c15578:p -> c15492:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c15703:p -> c15616:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// java.util.ArrayList<E>
-	c15594 [label=<<table title="java.util.ArrayList" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/ArrayList.html">
+	c15719 [label=<<table title="java.util.ArrayList" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/ArrayList.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> ArrayList&lt;E&gt; </td></tr>
 		</table></td></tr>

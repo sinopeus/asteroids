@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.IShip
-	c11726 [label=<<table title="model.IShip" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./IShip.html">
+	c11725 [label=<<table title="model.IShip" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./IShip.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> IShip </td></tr>
@@ -36,11 +36,11 @@ digraph G {
 <tr><td align="left" balign="left"> # canHaveAsShape(shape : CircleShape) : boolean </td></tr>
 <tr><td align="left" balign="left"> + getMinimumRadius() : double </td></tr>
 <tr><td align="left" balign="left"> + getThruster() : Thruster </td></tr>
-<tr><td align="left" balign="left"> - canHaveAsThruster(thruster : Thruster) : boolean </td></tr>
-<tr><td align="left" balign="left"> - setThruster(thruster : Thruster) </td></tr>
+<tr><td align="left" balign="left"> # canHaveAsThruster(thruster : Thruster) : boolean </td></tr>
+<tr><td align="left" balign="left"> # setThruster(thruster : Thruster) </td></tr>
 <tr><td align="left" balign="left"> + getBulletList() : ArrayList&lt;Bullet&gt; </td></tr>
-<tr><td align="left" balign="left"> - canHaveAsBulletList(bullets : ArrayList&lt;Bullet&gt;) : boolean </td></tr>
-<tr><td align="left" balign="left"> - setBulletList(bullets : ArrayList&lt;Bullet&gt;) </td></tr>
+<tr><td align="left" balign="left"> # canHaveAsBulletList(bullets : ArrayList&lt;Bullet&gt;) : boolean </td></tr>
+<tr><td align="left" balign="left"> # setBulletList(bullets : ArrayList&lt;Bullet&gt;) </td></tr>
 <tr><td align="left" balign="left"> + getProgram() : Program </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsProgram(program : Program) : boolean </td></tr>
 <tr><td align="left" balign="left"> + setProgram(program : Program) </td></tr>
@@ -48,13 +48,13 @@ digraph G {
 <tr><td align="left" balign="left"> + advance(dt : double) </td></tr>
 <tr><td align="left" balign="left"> + canFire() : boolean </td></tr>
 <tr><td align="left" balign="left"> + fire() </td></tr>
-<tr><td align="left" balign="left"> + collideWith(that : Asteroid) </td></tr>
-<tr><td align="left" balign="left"> + collideWith(that : Bullet) </td></tr>
+<tr><td align="left" balign="left"> # collideWith(that : Asteroid) </td></tr>
+<tr><td align="left" balign="left"> # collideWith(that : Bullet) </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 <tr><td align="left" balign="left"> + getThrustPerSecond() : double </td></tr>
 		</table></td></tr>
 		</table>>, URL="../world/entity/ship/Ship.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//world.entity.ship.Ship implements model.IShip
-	c11726:p -> c11819:p [dir=back,arrowtail=empty,style=dashed];
+	c11725:p -> c11819:p [dir=back,arrowtail=empty,style=dashed];
 }
 

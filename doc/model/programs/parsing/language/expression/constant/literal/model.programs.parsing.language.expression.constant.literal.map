@@ -1,8 +1,8 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="./EntityLiteral.html" title="model.programs.parsing.language.expression.constant.literal.EntityLiteral" alt="" coords="16,11,333,149"/>
-<area shape="rect" id="node1" href="./EntityLiteral.html" title="&lt;TABLE&gt;" alt="" coords="5,6,344,154"/>
-<area shape="rect" id="node2_1" href="./DoubleLiteral.html" title="model.programs.parsing.language.expression.constant.literal.DoubleLiteral" alt="" coords="379,19,709,141"/>
-<area shape="rect" id="node2" href="./DoubleLiteral.html" title="&lt;TABLE&gt;" alt="" coords="368,14,720,146"/>
-<area shape="rect" id="node3_2" href="./BooleanLiteral.html" title="model.programs.parsing.language.expression.constant.literal.BooleanLiteral" alt="" coords="755,19,1098,141"/>
-<area shape="rect" id="node3" href="./BooleanLiteral.html" title="&lt;TABLE&gt;" alt="" coords="745,14,1109,146"/>
+<area shape="rect" id="node1_0" href="./EntityLiteral.html" title="model.programs.parsing.language.expression.constant.literal.EntityLiteral" alt="" coords="16,11,333,133"/>
+<area shape="rect" id="node1" href="./EntityLiteral.html" title="&lt;TABLE&gt;" alt="" coords="5,6,344,138"/>
+<area shape="rect" id="node2_1" href="./DoubleLiteral.html" title="model.programs.parsing.language.expression.constant.literal.DoubleLiteral" alt="" coords="379,19,709,125"/>
+<area shape="rect" id="node2" href="./DoubleLiteral.html" title="&lt;TABLE&gt;" alt="" coords="368,14,720,130"/>
+<area shape="rect" id="node3_2" href="./BooleanLiteral.html" title="model.programs.parsing.language.expression.constant.literal.BooleanLiteral" alt="" coords="755,19,1098,125"/>
+<area shape="rect" id="node3" href="./BooleanLiteral.html" title="&lt;TABLE&gt;" alt="" coords="745,14,1109,130"/>
 </map>

@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.parsing.language.ProgramPart
-	c674 [label=<<table title="model.programs.parsing.language.ProgramPart" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ProgramPart.html">
+	c673 [label=<<table title="model.programs.parsing.language.ProgramPart" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ProgramPart.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> ProgramPart </font></td></tr>
 		</table></td></tr>
@@ -31,11 +31,11 @@ digraph G {
 <tr><td align="left" balign="left"> # canHaveAsColumn(column : int) : boolean </td></tr>
 <tr><td align="left" balign="left"> # setColumn(column : int) </td></tr>
 <tr><td align="left" balign="left"> + getOwnerShip() : Ship </td></tr>
-<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> + isTypeSafe() : boolean </font></td></tr>
+<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> + isTypeSafe() : IFacade.TypeCheckOutcome </font></td></tr>
 		</table></td></tr>
 		</table>>, URL="./ProgramPart.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.Type
-	c675 [label=<<table title="model.programs.parsing.language.Type" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Type.html">
+	c674 [label=<<table title="model.programs.parsing.language.Type" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Type.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;enumeration&#187; </td></tr>
 <tr><td align="center" balign="center"> Type </td></tr>

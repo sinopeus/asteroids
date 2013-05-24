@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.parsing.language.expression.Variable
-	c3323 [label=<<table title="model.programs.parsing.language.expression.Variable" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../expression/Variable.html">
+	c3322 [label=<<table title="model.programs.parsing.language.expression.Variable" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../expression/Variable.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Variable </td></tr>
 		</table></td></tr>
@@ -23,13 +23,13 @@ digraph G {
 <tr><td align="left" balign="left"> # setName(name : String) </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsName(name : String) : boolean </td></tr>
 <tr><td align="left" balign="left"> + evaluate() : ConstantExpression&lt;?&gt; </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="../expression/Variable.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.Expression
-	c3324 [label=<<table title="model.programs.parsing.language.expression.Expression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../expression/Expression.html">
+	c3323 [label=<<table title="model.programs.parsing.language.expression.Expression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../expression/Expression.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> Expression </font></td></tr>
 		</table></td></tr>
@@ -78,18 +78,18 @@ digraph G {
 <tr><td align="left" balign="left"> # setValue(value : Expression) </td></tr>
 <tr><td align="left" balign="left"> + setParentProgram(parentProgram : Program) </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Assignment.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.parsing.language.expression.Variable extends model.programs.parsing.language.expression.Expression
-	c3324:p -> c3323:p [dir=back,arrowtail=empty];
+	c3323:p -> c3322:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.statement.Assignment extends model.programs.parsing.language.statement.Statement
 	c3363:p -> c3365:p [dir=back,arrowtail=empty];
 	// model.programs.parsing.language.statement.Assignment NAVASSOC model.programs.parsing.language.expression.Variable
-	c3365:p -> c3323:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c3365:p -> c3322:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// model.programs.parsing.language.statement.Assignment NAVASSOC model.programs.parsing.language.expression.Expression
-	c3365:p -> c3324:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c3365:p -> c3323:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 }
 

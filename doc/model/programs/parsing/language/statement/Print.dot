@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.parsing.language.expression.Expression
-	c13638 [label=<<table title="model.programs.parsing.language.expression.Expression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../expression/Expression.html">
+	c13637 [label=<<table title="model.programs.parsing.language.expression.Expression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../expression/Expression.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> Expression </font></td></tr>
 		</table></td></tr>
@@ -59,7 +59,7 @@ digraph G {
 <tr><td align="left" balign="left"> # setText(text : String) </td></tr>
 <tr><td align="left" balign="left"> + setParentProgram(parrentProgram : Program) </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
@@ -67,7 +67,7 @@ digraph G {
 	//model.programs.parsing.language.statement.Print extends model.programs.parsing.language.statement.Statement
 	c13677:p -> c13680:p [dir=back,arrowtail=empty];
 	// model.programs.parsing.language.statement.Print NAVASSOC model.programs.parsing.language.expression.Expression
-	c13680:p -> c13638:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c13680:p -> c13637:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// model.programs.parsing.language.statement.Print NAVASSOC java.lang.String
 	c13680:p -> c13711:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// java.lang.String

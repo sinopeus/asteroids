@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.parsing.language.expression.constant.ConstantExpression<T>
-	c10636 [label=<<table title="model.programs.parsing.language.expression.constant.ConstantExpression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ConstantExpression.html">
+	c10635 [label=<<table title="model.programs.parsing.language.expression.constant.ConstantExpression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ConstantExpression.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> ConstantExpression&lt;T&gt; </font></td></tr>
 		</table></td></tr>
@@ -23,13 +23,14 @@ digraph G {
 <tr><td align="left" balign="left"> # canHaveAsValue(value : T) : boolean </td></tr>
 <tr><td align="left" balign="left"> # setValue(value : T) </td></tr>
 <tr><td align="left" balign="left"> + evaluate() : ConstantExpression&lt;T&gt; </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 <tr><td align="left" balign="left"> + hashCode() : int </td></tr>
 <tr><td align="left" balign="left"> + equals(obj : Object) : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="./ConstantExpression.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.constant.GetDirection
-	c10640 [label=<<table title="model.programs.parsing.language.expression.constant.GetDirection" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./GetDirection.html">
+	c10639 [label=<<table title="model.programs.parsing.language.expression.constant.GetDirection" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./GetDirection.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> GetDirection </td></tr>
 		</table></td></tr>
@@ -39,12 +40,11 @@ digraph G {
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + GetDirection(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"> + evaluate() : ConstantExpression&lt;Double&gt; </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./GetDirection.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.parsing.language.expression.constant.GetDirection extends model.programs.parsing.language.expression.constant.ConstantExpression<java.lang.Double>
-	c10636:p -> c10640:p [dir=back,arrowtail=empty];
+	c10635:p -> c10639:p [dir=back,arrowtail=empty];
 }
 

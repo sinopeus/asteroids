@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.parsing.ProgramFactory.ForeachType
-	c10107 [label=<<table title="model.programs.parsing.ProgramFactory.ForeachType" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../ProgramFactory.ForeachType.html">
+	c10106 [label=<<table title="model.programs.parsing.ProgramFactory.ForeachType" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../ProgramFactory.ForeachType.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;enumeration&#187; </td></tr>
 <tr><td align="center" balign="center"> ForeachType </td></tr>
@@ -79,7 +79,7 @@ digraph G {
 <tr><td align="left" balign="left"> + setParentProgram(parrentProgram : Program) </td></tr>
 <tr><td align="left" balign="left"> + unfinish() </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
@@ -87,7 +87,7 @@ digraph G {
 	//model.programs.parsing.language.statement.ForEach extends model.programs.parsing.language.statement.Statement
 	c10172:p -> c10173:p [dir=back,arrowtail=empty];
 	// model.programs.parsing.language.statement.ForEach NAVASSOC model.programs.parsing.ProgramFactory.ForeachType
-	c10173:p -> c10107:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c10173:p -> c10106:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// model.programs.parsing.language.statement.ForEach NAVASSOC java.lang.String
 	c10173:p -> c10206:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// model.programs.parsing.language.statement.ForEach NAVASSOC model.programs.parsing.language.statement.Statement

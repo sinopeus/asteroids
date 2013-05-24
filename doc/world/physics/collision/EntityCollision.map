@@ -1,8 +1,8 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="../../entity/Entity.html" title="world.entity.Entity" alt="" coords="15,710,758,1503"/>
-<area shape="rect" id="node1" href="../../entity/Entity.html" title="&lt;TABLE&gt;" alt="" coords="5,705,769,1509"/>
+<area shape="rect" id="node1_0" href="../../entity/Entity.html" title="world.entity.Entity" alt="" coords="16,694,757,1487"/>
+<area shape="rect" id="node1" href="../../entity/Entity.html" title="&lt;TABLE&gt;" alt="" coords="5,689,768,1493"/>
 <area shape="rect" id="node2_1" href="./Collision.html" title="world.physics.collision.Collision" alt="" coords="228,11,545,325"/>
 <area shape="rect" id="node2" href="./Collision.html" title="&lt;TABLE&gt;" alt="" coords="217,6,556,330"/>
-<area shape="rect" id="node3_2" href="./EntityCollision.html" title="world.physics.collision.EntityCollision" alt="" coords="193,385,581,650"/>
-<area shape="rect" id="node3" href="./EntityCollision.html" title="&lt;TABLE&gt;" alt="" coords="182,379,591,655"/>
+<area shape="rect" id="node3_2" href="./EntityCollision.html" title="world.physics.collision.EntityCollision" alt="" coords="193,385,581,634"/>
+<area shape="rect" id="node3" href="./EntityCollision.html" title="&lt;TABLE&gt;" alt="" coords="182,379,591,639"/>
 </map>

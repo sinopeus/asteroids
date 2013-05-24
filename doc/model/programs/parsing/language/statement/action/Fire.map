@@ -1,6 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="./Action.html" title="model.programs.parsing.language.statement.action.Action" alt="" coords="16,11,216,117"/>
-<area shape="rect" id="node1" href="./Action.html" title="&lt;TABLE&gt;" alt="" coords="5,6,227,122"/>
-<area shape="rect" id="node2_1" href="./Fire.html" title="model.programs.parsing.language.statement.action.Fire" alt="" coords="23,177,209,298"/>
-<area shape="rect" id="node2" href="./Fire.html" title="&lt;TABLE&gt;" alt="" coords="13,171,219,303"/>
+<area shape="rect" id="node1_0" href="./Action.html" title="model.programs.parsing.language.statement.action.Action" alt="" coords="15,11,305,133"/>
+<area shape="rect" id="node1" href="./Action.html" title="&lt;TABLE&gt;" alt="" coords="5,6,315,138"/>
+<area shape="rect" id="node2_1" href="./Fire.html" title="model.programs.parsing.language.statement.action.Fire" alt="" coords="67,193,253,298"/>
+<area shape="rect" id="node2" href="./Fire.html" title="&lt;TABLE&gt;" alt="" coords="57,187,263,303"/>
 </map>

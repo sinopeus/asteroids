@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.parsing.language.expression.Variable
-	c801 [label=<<table title="model.programs.parsing.language.expression.Variable" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Variable.html">
+	c800 [label=<<table title="model.programs.parsing.language.expression.Variable" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Variable.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Variable </td></tr>
 		</table></td></tr>
@@ -23,13 +23,13 @@ digraph G {
 <tr><td align="left" balign="left"> # setName(name : String) </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsName(name : String) : boolean </td></tr>
 <tr><td align="left" balign="left"> + evaluate() : ConstantExpression&lt;?&gt; </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Variable.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.Expression
-	c802 [label=<<table title="model.programs.parsing.language.expression.Expression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Expression.html">
+	c801 [label=<<table title="model.programs.parsing.language.expression.Expression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Expression.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> Expression </font></td></tr>
 		</table></td></tr>
@@ -43,6 +43,6 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Expression.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.parsing.language.expression.Variable extends model.programs.parsing.language.expression.Expression
-	c802:p -> c801:p [dir=back,arrowtail=empty];
+	c801:p -> c800:p [dir=back,arrowtail=empty];
 }
 

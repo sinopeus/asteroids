@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.parsing.language.expression.Expression
-	c16897 [label=<<table title="model.programs.parsing.language.expression.Expression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../expression/Expression.html">
+	c17021 [label=<<table title="model.programs.parsing.language.expression.Expression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../expression/Expression.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> Expression </font></td></tr>
 		</table></td></tr>
@@ -24,7 +24,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="../../expression/Expression.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.statement.action.Action
-	c16943 [label=<<table title="model.programs.parsing.language.statement.action.Action" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Action.html">
+	c17068 [label=<<table title="model.programs.parsing.language.statement.action.Action" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Action.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> Action </font></td></tr>
 		</table></td></tr>
@@ -35,10 +35,11 @@ digraph G {
 <tr><td align="left" balign="left"> + Action(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
 <tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Action.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.statement.action.Turn
-	c16948 [label=<<table title="model.programs.parsing.language.statement.action.Turn" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Turn.html">
+	c17073 [label=<<table title="model.programs.parsing.language.statement.action.Turn" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Turn.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Turn </td></tr>
 		</table></td></tr>
@@ -51,13 +52,13 @@ digraph G {
 <tr><td align="left" balign="left"> # canHaveAsAngle(angle : Expression) : boolean </td></tr>
 <tr><td align="left" balign="left"> # setAngle(angle : Expression) </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Turn.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.parsing.language.statement.action.Turn extends model.programs.parsing.language.statement.action.Action
-	c16943:p -> c16948:p [dir=back,arrowtail=empty];
+	c17068:p -> c17073:p [dir=back,arrowtail=empty];
 	// model.programs.parsing.language.statement.action.Turn NAVASSOC model.programs.parsing.language.expression.Expression
-	c16948:p -> c16897:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c17073:p -> c17021:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 }
 

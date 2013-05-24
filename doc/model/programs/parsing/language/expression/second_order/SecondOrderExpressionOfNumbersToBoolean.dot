@@ -9,34 +9,8 @@ digraph G {
 	node [fontname="Helvetica",fontsize=10,shape=plaintext];
 	nodesep=0.25;
 	ranksep=0.5;
-	// model.programs.parsing.language.expression.second_order.NotEquals
-	c15046 [label=<<table title="model.programs.parsing.language.expression.second_order.NotEquals" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./NotEquals.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> NotEquals </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + NotEquals(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./NotEquals.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-	// model.programs.parsing.language.expression.second_order.Equals
-	c15047 [label=<<table title="model.programs.parsing.language.expression.second_order.Equals" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Equals.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> Equals </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + Equals(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./Equals.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.second_order.SecondOrderExpression
-	c15048 [label=<<table title="model.programs.parsing.language.expression.second_order.SecondOrderExpression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./SecondOrderExpression.html">
+	c15173 [label=<<table title="model.programs.parsing.language.expression.second_order.SecondOrderExpression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./SecondOrderExpression.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> SecondOrderExpression </font></td></tr>
 		</table></td></tr>
@@ -52,11 +26,12 @@ digraph G {
 <tr><td align="left" balign="left"> # setSecondArgument(secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsArgument(argument : Expression) : boolean </td></tr>
 <tr><td align="left" balign="left"> + setParentProgram(parentProgram : Program) </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./SecondOrderExpression.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.second_order.GT
-	c15049 [label=<<table title="model.programs.parsing.language.expression.second_order.GT" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GT.html">
+	c15174 [label=<<table title="model.programs.parsing.language.expression.second_order.GT" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GT.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> GT </td></tr>
 		</table></td></tr>
@@ -69,7 +44,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./GT.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToBoolean
-	c15050 [label=<<table title="model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToBoolean" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./SecondOrderExpressionOfNumbersToBoolean.html">
+	c15175 [label=<<table title="model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToBoolean" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./SecondOrderExpressionOfNumbersToBoolean.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> SecondOrderExpressionOfNumbersToBoolean </font></td></tr>
 		</table></td></tr>
@@ -78,15 +53,14 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # SecondOrderExpressionOfNumbersToBoolean(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsArgument(argument : Expression) : boolean </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </font></td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
 <tr><td align="left" balign="left"> + evaluate() : BooleanLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./SecondOrderExpressionOfNumbersToBoolean.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.second_order.LT
-	c15051 [label=<<table title="model.programs.parsing.language.expression.second_order.LT" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./LT.html">
+	c15176 [label=<<table title="model.programs.parsing.language.expression.second_order.LT" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./LT.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> LT </td></tr>
 		</table></td></tr>
@@ -99,7 +73,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./LT.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.second_order.LE
-	c15052 [label=<<table title="model.programs.parsing.language.expression.second_order.LE" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./LE.html">
+	c15177 [label=<<table title="model.programs.parsing.language.expression.second_order.LE" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./LE.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> LE </td></tr>
 		</table></td></tr>
@@ -112,7 +86,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./LE.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.second_order.GE
-	c15057 [label=<<table title="model.programs.parsing.language.expression.second_order.GE" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GE.html">
+	c15182 [label=<<table title="model.programs.parsing.language.expression.second_order.GE" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GE.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> GE </td></tr>
 		</table></td></tr>
@@ -124,19 +98,15 @@ digraph G {
 <tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./GE.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-	//model.programs.parsing.language.expression.second_order.NotEquals extends model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToBoolean
-	c15050:p -> c15046:p [dir=back,arrowtail=empty];
-	//model.programs.parsing.language.expression.second_order.Equals extends model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToBoolean
-	c15050:p -> c15047:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.expression.second_order.GT extends model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToBoolean
-	c15050:p -> c15049:p [dir=back,arrowtail=empty];
+	c15175:p -> c15174:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToBoolean extends model.programs.parsing.language.expression.second_order.SecondOrderExpression
-	c15048:p -> c15050:p [dir=back,arrowtail=empty];
+	c15173:p -> c15175:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.expression.second_order.LT extends model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToBoolean
-	c15050:p -> c15051:p [dir=back,arrowtail=empty];
+	c15175:p -> c15176:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.expression.second_order.LE extends model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToBoolean
-	c15050:p -> c15052:p [dir=back,arrowtail=empty];
+	c15175:p -> c15177:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.expression.second_order.GE extends model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToBoolean
-	c15050:p -> c15057:p [dir=back,arrowtail=empty];
+	c15175:p -> c15182:p [dir=back,arrowtail=empty];
 }
 

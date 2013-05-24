@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.parsing.language.expression.first_order.GetX
-	c11145 [label=<<table title="model.programs.parsing.language.expression.first_order.GetX" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./GetX.html">
+	c11144 [label=<<table title="model.programs.parsing.language.expression.first_order.GetX" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./GetX.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> GetX </td></tr>
 		</table></td></tr>
@@ -23,7 +23,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./GetX.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfEntityToNumber
-	c11155 [label=<<table title="model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfEntityToNumber" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FirstOrderExpressionOfEntityToNumber.html">
+	c11154 [label=<<table title="model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfEntityToNumber" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FirstOrderExpressionOfEntityToNumber.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> FirstOrderExpressionOfEntityToNumber </font></td></tr>
 		</table></td></tr>
@@ -33,12 +33,12 @@ digraph G {
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # FirstOrderExpressionOfEntityToNumber(line : int, column : int, argument : Expression) </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(argument : EntityLiteral) : DoubleLiteral </font></td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
 <tr><td align="left" balign="left"> + evaluate() : DoubleLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./FirstOrderExpressionOfEntityToNumber.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.parsing.language.expression.first_order.GetX extends model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfEntityToNumber
-	c11155:p -> c11145:p [dir=back,arrowtail=empty];
+	c11154:p -> c11144:p [dir=back,arrowtail=empty];
 }
 

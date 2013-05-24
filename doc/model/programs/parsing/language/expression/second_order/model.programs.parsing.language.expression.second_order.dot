@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.parsing.language.expression.second_order.And
-	c1325 [label=<<table title="model.programs.parsing.language.expression.second_order.And" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./And.html">
+	c1324 [label=<<table title="model.programs.parsing.language.expression.second_order.And" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./And.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> And </td></tr>
 		</table></td></tr>
@@ -22,6 +22,23 @@ digraph G {
 <tr><td align="left" balign="left"> # function(first : BooleanLiteral, second : BooleanLiteral) : BooleanLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./And.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	// model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfEntitiesOrDoublesToBoolean
+	c1325 [label=<<table title="model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfEntitiesOrDoublesToBoolean" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./SecondOrderExpressionOfEntitiesOrDoublesToBoolean.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> SecondOrderExpressionOfEntitiesOrDoublesToBoolean </font></td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # SecondOrderExpressionOfEntitiesOrDoublesToBoolean(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
+<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </font></td></tr>
+<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(first : EntityLiteral, second : EntityLiteral) : BooleanLiteral </font></td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
+<tr><td align="left" balign="left"> + getType() : Type </td></tr>
+<tr><td align="left" balign="left"> + evaluate() : ConstantExpression&lt;?&gt; </td></tr>
+		</table></td></tr>
+		</table>>, URL="./SecondOrderExpressionOfEntitiesOrDoublesToBoolean.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.second_order.Or
 	c1326 [label=<<table title="model.programs.parsing.language.expression.second_order.Or" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Or.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
@@ -59,6 +76,8 @@ digraph G {
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + NotEquals(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
+<tr><td align="left" balign="left"> # function(first : EntityLiteral, second : EntityLiteral) : BooleanLiteral </td></tr>
+<tr><td align="left" balign="left"> + getType() : Type </td></tr>
 		</table></td></tr>
 		</table>>, URL="./NotEquals.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.second_order.Equals
@@ -72,6 +91,8 @@ digraph G {
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Equals(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
+<tr><td align="left" balign="left"> # function(first : EntityLiteral, second : EntityLiteral) : BooleanLiteral </td></tr>
+<tr><td align="left" balign="left"> + getType() : Type </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Equals.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.second_order.SecondOrderExpression
@@ -91,6 +112,7 @@ digraph G {
 <tr><td align="left" balign="left"> # setSecondArgument(secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsArgument(argument : Expression) : boolean </td></tr>
 <tr><td align="left" balign="left"> + setParentProgram(parentProgram : Program) </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./SecondOrderExpression.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
@@ -117,9 +139,8 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # SecondOrderExpressionOfNumbersToBoolean(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsArgument(argument : Expression) : boolean </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </font></td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
 <tr><td align="left" balign="left"> + evaluate() : BooleanLiteral </td></tr>
 		</table></td></tr>
@@ -173,9 +194,8 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # SecondOrderExpressionOfBooleansToBoolean(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsArgument(argument : Expression) : boolean </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(first : BooleanLiteral, second : BooleanLiteral) : BooleanLiteral </font></td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
 <tr><td align="left" balign="left"> + evaluate() : BooleanLiteral </td></tr>
 		</table></td></tr>
@@ -229,23 +249,24 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # SecondOrderExpressionOfNumbersToNumber(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsArgument(argument : Expression) : boolean </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(first : DoubleLiteral, second : DoubleLiteral) : DoubleLiteral </font></td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
 <tr><td align="left" balign="left"> + evaluate() : DoubleLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./SecondOrderExpressionOfNumbersToNumber.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.parsing.language.expression.second_order.And extends model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfBooleansToBoolean
-	c1336:p -> c1325:p [dir=back,arrowtail=empty];
+	c1336:p -> c1324:p [dir=back,arrowtail=empty];
+	//model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfEntitiesOrDoublesToBoolean extends model.programs.parsing.language.expression.second_order.SecondOrderExpression
+	c1330:p -> c1325:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.expression.second_order.Or extends model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfBooleansToBoolean
 	c1336:p -> c1326:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.expression.second_order.Addition extends model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToNumber
 	c1340:p -> c1327:p [dir=back,arrowtail=empty];
-	//model.programs.parsing.language.expression.second_order.NotEquals extends model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToBoolean
-	c1332:p -> c1328:p [dir=back,arrowtail=empty];
-	//model.programs.parsing.language.expression.second_order.Equals extends model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToBoolean
-	c1332:p -> c1329:p [dir=back,arrowtail=empty];
+	//model.programs.parsing.language.expression.second_order.NotEquals extends model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfEntitiesOrDoublesToBoolean
+	c1325:p -> c1328:p [dir=back,arrowtail=empty];
+	//model.programs.parsing.language.expression.second_order.Equals extends model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfEntitiesOrDoublesToBoolean
+	c1325:p -> c1329:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.expression.second_order.GT extends model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToBoolean
 	c1332:p -> c1331:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToBoolean extends model.programs.parsing.language.expression.second_order.SecondOrderExpression

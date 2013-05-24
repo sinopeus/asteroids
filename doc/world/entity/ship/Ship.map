@@ -5,8 +5,8 @@
 <area shape="rect" id="node6" href="./Ship.html" title="&lt;TABLE&gt;" alt="" coords="294,1329,1050,1829"/>
 <area shape="rect" id="node2_2" href="../../../model/programs/Program.html" title="model.programs.Program" alt="" coords="15,2051,425,2477"/>
 <area shape="rect" id="node2" href="../../../model/programs/Program.html" title="&lt;TABLE&gt;" alt="" coords="5,2046,435,2482"/>
-<area shape="rect" id="node3_3" href="../Entity.html" title="world.entity.Entity" alt="" coords="419,11,1162,805"/>
-<area shape="rect" id="node3" href="../Entity.html" title="&lt;TABLE&gt;" alt="" coords="409,6,1173,810"/>
+<area shape="rect" id="node3_3" href="../Entity.html" title="world.entity.Entity" alt="" coords="420,11,1161,805"/>
+<area shape="rect" id="node3" href="../Entity.html" title="&lt;TABLE&gt;" alt="" coords="409,6,1172,810"/>
 <area shape="rect" id="node4_4" href="../Bullet.html" title="world.entity.Bullet" alt="" coords="482,865,862,1274"/>
 <area shape="rect" id="node4" href="../Bullet.html" title="&lt;TABLE&gt;" alt="" coords="471,859,873,1279"/>
 <area shape="rect" id="node5_5" href="./Thruster.html" title="world.entity.ship.Thruster" alt="" coords="471,2067,873,2461"/>

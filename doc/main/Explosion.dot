@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// main.Explosion
-	c8331 [label=<<table title="main.Explosion" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Explosion.html">
+	c8330 [label=<<table title="main.Explosion" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Explosion.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Explosion </td></tr>
 		</table></td></tr>
@@ -28,7 +28,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Explosion.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// main.Drawable
-	c8333 [label=<<table title="main.Drawable" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Drawable.html">
+	c8332 [label=<<table title="main.Drawable" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Drawable.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> Drawable </td></tr>
@@ -41,6 +41,6 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Drawable.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//main.Explosion implements main.Drawable
-	c8333:p -> c8331:p [dir=back,arrowtail=empty,style=dashed];
+	c8332:p -> c8330:p [dir=back,arrowtail=empty,style=dashed];
 }
 

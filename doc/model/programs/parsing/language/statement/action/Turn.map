@@ -1,8 +1,8 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="../../expression/Expression.html" title="model.programs.parsing.language.expression.Expression" alt="" coords="47,406,289,511"/>
-<area shape="rect" id="node1" href="../../expression/Expression.html" title="&lt;TABLE&gt;" alt="" coords="36,401,300,517"/>
-<area shape="rect" id="node2_1" href="./Action.html" title="model.programs.parsing.language.statement.action.Action" alt="" coords="68,11,268,117"/>
-<area shape="rect" id="node2" href="./Action.html" title="&lt;TABLE&gt;" alt="" coords="57,6,279,122"/>
-<area shape="rect" id="node3_2" href="./Turn.html" title="model.programs.parsing.language.statement.action.Turn" alt="" coords="15,177,321,346"/>
-<area shape="rect" id="node3" href="./Turn.html" title="&lt;TABLE&gt;" alt="" coords="5,171,331,351"/>
+<area shape="rect" id="node1_0" href="../../expression/Expression.html" title="model.programs.parsing.language.expression.Expression" alt="" coords="47,422,289,527"/>
+<area shape="rect" id="node1" href="../../expression/Expression.html" title="&lt;TABLE&gt;" alt="" coords="36,417,300,533"/>
+<area shape="rect" id="node2_1" href="./Action.html" title="model.programs.parsing.language.statement.action.Action" alt="" coords="23,11,313,133"/>
+<area shape="rect" id="node2" href="./Action.html" title="&lt;TABLE&gt;" alt="" coords="13,6,323,138"/>
+<area shape="rect" id="node3_2" href="./Turn.html" title="model.programs.parsing.language.statement.action.Turn" alt="" coords="15,193,321,362"/>
+<area shape="rect" id="node3" href="./Turn.html" title="&lt;TABLE&gt;" alt="" coords="5,187,331,367"/>
 </map>

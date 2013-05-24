@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// main.Sound
-	c13213 [label=<<table title="main.Sound" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Sound.html">
+	c13212 [label=<<table title="main.Sound" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Sound.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> Sound </td></tr>
@@ -26,7 +26,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Sound.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// main.NullSound
-	c13220 [label=<<table title="main.NullSound" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./NullSound.html">
+	c13219 [label=<<table title="main.NullSound" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./NullSound.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> NullSound </td></tr>
 		</table></td></tr>
@@ -42,6 +42,6 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./NullSound.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//main.NullSound implements main.Sound
-	c13213:p -> c13220:p [dir=back,arrowtail=empty,style=dashed];
+	c13212:p -> c13219:p [dir=back,arrowtail=empty,style=dashed];
 }
 

@@ -24,10 +24,10 @@ digraph G {
 <tr><td align="left" balign="left"> + World(xSize : double, ySize : double) </td></tr>
 <tr><td align="left" balign="left"> + World() </td></tr>
 <tr><td align="left" balign="left"> + getxSize() : double </td></tr>
-<tr><td align="left" balign="left"> - setXSize(xSize : double) </td></tr>
+<tr><td align="left" balign="left"> # setXSize(xSize : double) </td></tr>
 <tr><td align="left" balign="left"> + getySize() : double </td></tr>
-<tr><td align="left" balign="left"> - setYSize(ySize : double) </td></tr>
-<tr><td align="left" balign="left"> - canHaveAsSize(size : double) : boolean </td></tr>
+<tr><td align="left" balign="left"> # setYSize(ySize : double) </td></tr>
+<tr><td align="left" balign="left"> # canHaveAsSize(size : double) : boolean </td></tr>
 <tr><td align="left" balign="left"> + getGameTime() : double </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsGameTime(gameTime : double) : boolean </td></tr>
 <tr><td align="left" balign="left"> # setGameTime(gameTime : double) </td></tr>

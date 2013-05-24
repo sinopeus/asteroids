@@ -3,8 +3,8 @@
 <area shape="rect" id="node1" href="../World.html" title="&lt;TABLE&gt;" alt="" coords="2857,1233,3218,1685"/>
 <area shape="rect" id="node2_1" href="./Asteroid.html" title="world.entity.Asteroid" alt="" coords="16,1358,568,1559"/>
 <area shape="rect" id="node2" href="./Asteroid.html" title="&lt;TABLE&gt;" alt="" coords="5,1353,579,1565"/>
-<area shape="rect" id="node3_2" href="./Entity.html" title="world.entity.Entity" alt="" coords="1315,385,2058,1178"/>
-<area shape="rect" id="node3" href="./Entity.html" title="&lt;TABLE&gt;" alt="" coords="1305,379,2069,1183"/>
+<area shape="rect" id="node3_2" href="./Entity.html" title="world.entity.Entity" alt="" coords="1316,385,2057,1178"/>
+<area shape="rect" id="node3" href="./Entity.html" title="&lt;TABLE&gt;" alt="" coords="1305,379,2068,1183"/>
 <area shape="rect" id="node4_3" href="./Bullet.html" title="world.entity.Bullet" alt="" coords="614,1254,994,1663"/>
 <area shape="rect" id="node4" href="./Bullet.html" title="&lt;TABLE&gt;" alt="" coords="603,1249,1005,1669"/>
 <area shape="rect" id="node5_4" href="./ship/Ship.html" title="world.entity.ship.Ship" alt="" coords="555,1739,1290,2229"/>
@@ -19,8 +19,8 @@
 <area shape="rect" id="node9" href="../physics/geometry/CircleShape.html" title="&lt;TABLE&gt;" alt="" coords="2196,1369,2508,1549"/>
 <area shape="rect" id="node6_9" href="../physics/Mass.html" title="world.physics.Mass" alt="" coords="2543,1374,2822,1543"/>
 <area shape="rect" id="node6" href="../physics/Mass.html" title="&lt;TABLE&gt;" alt="" coords="2533,1369,2833,1549"/>
-<area shape="rect" id="node7_10" href="../physics/collision/BorderCollision.html" title="world.physics.collision.BorderCollision" alt="" coords="1059,11,1447,325"/>
-<area shape="rect" id="node7" href="../physics/collision/BorderCollision.html" title="&lt;TABLE&gt;" alt="" coords="1049,6,1458,330"/>
-<area shape="rect" id="node8_11" href="../physics/collision/EntityCollision.html" title="world.physics.collision.EntityCollision" alt="" coords="1493,35,1881,301"/>
-<area shape="rect" id="node8" href="../physics/collision/EntityCollision.html" title="&lt;TABLE&gt;" alt="" coords="1482,30,1891,306"/>
+<area shape="rect" id="node7_10" href="../physics/collision/BorderCollision.html" title="world.physics.collision.BorderCollision" alt="" coords="1277,11,1665,325"/>
+<area shape="rect" id="node7" href="../physics/collision/BorderCollision.html" title="&lt;TABLE&gt;" alt="" coords="1266,6,1675,330"/>
+<area shape="rect" id="node8_11" href="../physics/collision/EntityCollision.html" title="world.physics.collision.EntityCollision" alt="" coords="1710,43,2098,293"/>
+<area shape="rect" id="node8" href="../physics/collision/EntityCollision.html" title="&lt;TABLE&gt;" alt="" coords="1699,38,2109,298"/>
 </map>

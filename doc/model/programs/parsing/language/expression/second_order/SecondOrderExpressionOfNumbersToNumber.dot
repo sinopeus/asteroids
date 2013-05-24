@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.parsing.language.expression.second_order.Addition
-	c15170 [label=<<table title="model.programs.parsing.language.expression.second_order.Addition" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Addition.html">
+	c15295 [label=<<table title="model.programs.parsing.language.expression.second_order.Addition" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Addition.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Addition </td></tr>
 		</table></td></tr>
@@ -23,7 +23,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Addition.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.second_order.SecondOrderExpression
-	c15173 [label=<<table title="model.programs.parsing.language.expression.second_order.SecondOrderExpression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./SecondOrderExpression.html">
+	c15298 [label=<<table title="model.programs.parsing.language.expression.second_order.SecondOrderExpression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./SecondOrderExpression.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> SecondOrderExpression </font></td></tr>
 		</table></td></tr>
@@ -39,11 +39,12 @@ digraph G {
 <tr><td align="left" balign="left"> # setSecondArgument(secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsArgument(argument : Expression) : boolean </td></tr>
 <tr><td align="left" balign="left"> + setParentProgram(parentProgram : Program) </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./SecondOrderExpression.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.second_order.Multiplication
-	c15178 [label=<<table title="model.programs.parsing.language.expression.second_order.Multiplication" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Multiplication.html">
+	c15303 [label=<<table title="model.programs.parsing.language.expression.second_order.Multiplication" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Multiplication.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Multiplication </td></tr>
 		</table></td></tr>
@@ -56,7 +57,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Multiplication.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.second_order.Subtraction
-	c15180 [label=<<table title="model.programs.parsing.language.expression.second_order.Subtraction" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Subtraction.html">
+	c15305 [label=<<table title="model.programs.parsing.language.expression.second_order.Subtraction" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Subtraction.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Subtraction </td></tr>
 		</table></td></tr>
@@ -69,7 +70,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Subtraction.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.second_order.Division
-	c15181 [label=<<table title="model.programs.parsing.language.expression.second_order.Division" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Division.html">
+	c15306 [label=<<table title="model.programs.parsing.language.expression.second_order.Division" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Division.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Division </td></tr>
 		</table></td></tr>
@@ -82,7 +83,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Division.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToNumber
-	c15183 [label=<<table title="model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToNumber" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./SecondOrderExpressionOfNumbersToNumber.html">
+	c15308 [label=<<table title="model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToNumber" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./SecondOrderExpressionOfNumbersToNumber.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> SecondOrderExpressionOfNumbersToNumber </font></td></tr>
 		</table></td></tr>
@@ -91,22 +92,21 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # SecondOrderExpressionOfNumbersToNumber(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsArgument(argument : Expression) : boolean </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(first : DoubleLiteral, second : DoubleLiteral) : DoubleLiteral </font></td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
 <tr><td align="left" balign="left"> + evaluate() : DoubleLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./SecondOrderExpressionOfNumbersToNumber.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.parsing.language.expression.second_order.Addition extends model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToNumber
-	c15183:p -> c15170:p [dir=back,arrowtail=empty];
+	c15308:p -> c15295:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.expression.second_order.Multiplication extends model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToNumber
-	c15183:p -> c15178:p [dir=back,arrowtail=empty];
+	c15308:p -> c15303:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.expression.second_order.Subtraction extends model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToNumber
-	c15183:p -> c15180:p [dir=back,arrowtail=empty];
+	c15308:p -> c15305:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.expression.second_order.Division extends model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToNumber
-	c15183:p -> c15181:p [dir=back,arrowtail=empty];
+	c15308:p -> c15306:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToNumber extends model.programs.parsing.language.expression.second_order.SecondOrderExpression
-	c15173:p -> c15183:p [dir=back,arrowtail=empty];
+	c15298:p -> c15308:p [dir=back,arrowtail=empty];
 }
 

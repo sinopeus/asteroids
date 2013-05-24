@@ -85,15 +85,14 @@ digraph G {
 <tr><td align="center" balign="center"> EntityCollision </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> - entity1 : Entity </td></tr>
-<tr><td align="left" balign="left"> - entity2 : Entity </td></tr>
+<tr><td align="left" balign="left"> - entity : Entity[] </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + EntityCollision(world : World, entity1 : Entity, entity2 : Entity) </td></tr>
 <tr><td align="left" balign="left"> + getEntity1() : Entity </td></tr>
-<tr><td align="left" balign="left"> + setEntity1(entity1 : Entity) </td></tr>
+<tr><td align="left" balign="left"> # setEntity1(entity1 : Entity) </td></tr>
 <tr><td align="left" balign="left"> + getEntity2() : Entity </td></tr>
-<tr><td align="left" balign="left"> - setEntity2(entity2 : Entity) </td></tr>
+<tr><td align="left" balign="left"> # setEntity2(entity2 : Entity) </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsEntity(entity : Entity) : boolean </td></tr>
 <tr><td align="left" balign="left"> + resolve() </td></tr>
 <tr><td align="left" balign="left"> # calculateCollisionTime() </td></tr>

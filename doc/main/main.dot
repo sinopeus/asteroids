@@ -9,24 +9,8 @@ digraph G {
 	node [fontname="Helvetica",fontsize=10,shape=plaintext];
 	nodesep=0.25;
 	ranksep=0.5;
-	// main.Util
-	c126 [label=<<table title="main.Util" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Util.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> Util </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + EPSILON : double </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + Util() </td></tr>
-<tr><td align="left" balign="left"> + fuzzyEquals(x : double, y : double) : boolean </td></tr>
-<tr><td align="left" balign="left"> + fuzzyLessThanOrEqualTo(x : double, y : double) : boolean </td></tr>
-<tr><td align="left" balign="left"> + absoluteError(expected : double, actual : double) : double </td></tr>
-<tr><td align="left" balign="left"> + relativeError(expected : double, actual : double) : double </td></tr>
-		</table></td></tr>
-		</table>>, URL="./Util.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// main.Sound
-	c127 [label=<<table title="main.Sound" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Sound.html">
+	c126 [label=<<table title="main.Sound" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Sound.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> Sound </td></tr>
@@ -42,7 +26,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Sound.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// main.Asteroids<World, Ship, Asteroid, Bullet, Program>
-	c128 [label=<<table title="main.Asteroids" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Asteroids.html">
+	c127 [label=<<table title="main.Asteroids" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Asteroids.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Asteroids&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
 		</table></td></tr>
@@ -69,7 +53,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Asteroids.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// main.CollisionListener
-	c129 [label=<<table title="main.CollisionListener" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./CollisionListener.html">
+	c128 [label=<<table title="main.CollisionListener" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./CollisionListener.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> CollisionListener </td></tr>
@@ -83,7 +67,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./CollisionListener.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// main.WorldView<World, Ship, Asteroid, Bullet, Program>
-	c130 [label=<<table title="main.WorldView" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./WorldView.html">
+	c129 [label=<<table title="main.WorldView" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./WorldView.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> WorldView&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
 		</table></td></tr>
@@ -132,7 +116,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./WorldView.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// main.Explosion
-	c131 [label=<<table title="main.Explosion" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Explosion.html">
+	c130 [label=<<table title="main.Explosion" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Explosion.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Explosion </td></tr>
 		</table></td></tr>
@@ -150,7 +134,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Explosion.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// main.AsteroidsMenu<World, Ship, Asteroid, Bullet, Program>
-	c132 [label=<<table title="main.AsteroidsMenu" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./AsteroidsMenu.html">
+	c131 [label=<<table title="main.AsteroidsMenu" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./AsteroidsMenu.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> AsteroidsMenu&lt;World, Ship, Asteroid, Bullet, Program&gt; </td></tr>
 		</table></td></tr>
@@ -173,7 +157,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./AsteroidsMenu.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// main.Drawable
-	c133 [label=<<table title="main.Drawable" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Drawable.html">
+	c132 [label=<<table title="main.Drawable" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Drawable.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> Drawable </td></tr>
@@ -186,7 +170,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Drawable.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// main.NullSound
-	c134 [label=<<table title="main.NullSound" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./NullSound.html">
+	c133 [label=<<table title="main.NullSound" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./NullSound.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> NullSound </td></tr>
 		</table></td></tr>
@@ -202,7 +186,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./NullSound.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// main.ModelException
-	c135 [label=<<table title="main.ModelException" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ModelException.html">
+	c134 [label=<<table title="main.ModelException" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ModelException.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> ModelException </td></tr>
 		</table></td></tr>
@@ -215,7 +199,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./ModelException.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// main.FileSoundManager
-	c136 [label=<<table title="main.FileSoundManager" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FileSoundManager.html">
+	c135 [label=<<table title="main.FileSoundManager" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FileSoundManager.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> FileSoundManager </td></tr>
 		</table></td></tr>
@@ -235,7 +219,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./FileSoundManager.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// main.FileSoundManager.Request
-	c137 [label=<<table title="main.FileSoundManager.Request" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FileSoundManager.Request.html">
+	c136 [label=<<table title="main.FileSoundManager.Request" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FileSoundManager.Request.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> Request </font></td></tr>
 		</table></td></tr>
@@ -249,7 +233,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./FileSoundManager.Request.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// main.FileSoundManager.Play
-	c138 [label=<<table title="main.FileSoundManager.Play" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FileSoundManager.Play.html">
+	c137 [label=<<table title="main.FileSoundManager.Play" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FileSoundManager.Play.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Play </td></tr>
 		</table></td></tr>
@@ -262,7 +246,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./FileSoundManager.Play.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// main.FileSoundManager.Stop
-	c139 [label=<<table title="main.FileSoundManager.Stop" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FileSoundManager.Stop.html">
+	c138 [label=<<table title="main.FileSoundManager.Stop" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FileSoundManager.Stop.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Stop </td></tr>
 		</table></td></tr>
@@ -275,7 +259,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./FileSoundManager.Stop.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// main.FileSoundManager.Loop
-	c140 [label=<<table title="main.FileSoundManager.Loop" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FileSoundManager.Loop.html">
+	c139 [label=<<table title="main.FileSoundManager.Loop" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FileSoundManager.Loop.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Loop </td></tr>
 		</table></td></tr>
@@ -288,36 +272,36 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./FileSoundManager.Loop.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//main.WorldView<World, Ship, Asteroid, Bullet, Program> implements main.CollisionListener
-	c129:p -> c130:p [dir=back,arrowtail=empty,style=dashed];
+	c128:p -> c129:p [dir=back,arrowtail=empty,style=dashed];
 	//main.WorldView<World, Ship, Asteroid, Bullet, Program>.Visualization<T> implements main.Drawable
-	c133:p -> c130:p [dir=back,arrowtail=empty,style=dashed];
+	c132:p -> c129:p [dir=back,arrowtail=empty,style=dashed];
 	//main.WorldView<World, Ship, Asteroid, Bullet, Program>.ShipVisualization extends main.WorldView<World, Ship, Asteroid, Bullet, Program>.Visualization<Ship>
-	c130:p -> c130:p [dir=back,arrowtail=empty];
+	c129:p -> c129:p [dir=back,arrowtail=empty];
 	//main.WorldView<World, Ship, Asteroid, Bullet, Program>.AsteroidVisualization extends main.WorldView<World, Ship, Asteroid, Bullet, Program>.Visualization<Asteroid>
-	c130:p -> c130:p [dir=back,arrowtail=empty];
+	c129:p -> c129:p [dir=back,arrowtail=empty];
 	//main.WorldView<World, Ship, Asteroid, Bullet, Program>.BulletVisualization extends main.WorldView<World, Ship, Asteroid, Bullet, Program>.Visualization<Bullet>
-	c130:p -> c130:p [dir=back,arrowtail=empty];
+	c129:p -> c129:p [dir=back,arrowtail=empty];
 	//main.Explosion implements main.Drawable
-	c133:p -> c131:p [dir=back,arrowtail=empty,style=dashed];
+	c132:p -> c130:p [dir=back,arrowtail=empty,style=dashed];
 	//main.NullSound implements main.Sound
-	c127:p -> c134:p [dir=back,arrowtail=empty,style=dashed];
+	c126:p -> c133:p [dir=back,arrowtail=empty,style=dashed];
 	//main.FileSoundManager implements main.Sound
-	c127:p -> c136:p [dir=back,arrowtail=empty,style=dashed];
+	c126:p -> c135:p [dir=back,arrowtail=empty,style=dashed];
 	//main.FileSoundManager.Play extends main.FileSoundManager.Request
-	c137:p -> c138:p [dir=back,arrowtail=empty];
+	c136:p -> c137:p [dir=back,arrowtail=empty];
 	//main.FileSoundManager.Stop extends main.FileSoundManager.Request
-	c137:p -> c139:p [dir=back,arrowtail=empty];
+	c136:p -> c138:p [dir=back,arrowtail=empty];
 	//main.FileSoundManager.Loop extends main.FileSoundManager.Request
-	c137:p -> c140:p [dir=back,arrowtail=empty];
+	c136:p -> c139:p [dir=back,arrowtail=empty];
 	// main.Asteroids<World, Ship, Asteroid, Bullet, Program> NAVASSOC main.AsteroidsMenu<World, Ship, Asteroid, Bullet, Program>
-	c128:p -> c132:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c127:p -> c131:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// main.Asteroids<World, Ship, Asteroid, Bullet, Program> NAVASSOC main.WorldView<World, Ship, Asteroid, Bullet, Program>
-	c128:p -> c130:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c127:p -> c129:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// main.Asteroids<World, Ship, Asteroid, Bullet, Program> NAVASSOC main.Sound
-	c128:p -> c127:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c127:p -> c126:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// main.WorldView<World, Ship, Asteroid, Bullet, Program> NAVASSOC main.Asteroids<World, Ship, Asteroid, Bullet, Program>
-	c130:p -> c128:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c129:p -> c127:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// main.AsteroidsMenu<World, Ship, Asteroid, Bullet, Program> NAVASSOC main.Asteroids<World, Ship, Asteroid, Bullet, Program>
-	c132:p -> c128:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c131:p -> c127:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 }
 

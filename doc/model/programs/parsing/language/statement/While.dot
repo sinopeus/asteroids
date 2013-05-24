@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.parsing.language.expression.Expression
-	c17773 [label=<<table title="model.programs.parsing.language.expression.Expression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../expression/Expression.html">
+	c17897 [label=<<table title="model.programs.parsing.language.expression.Expression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../expression/Expression.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> Expression </font></td></tr>
 		</table></td></tr>
@@ -24,7 +24,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="../expression/Expression.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.statement.Statement
-	c17812 [label=<<table title="model.programs.parsing.language.statement.Statement" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Statement.html">
+	c17937 [label=<<table title="model.programs.parsing.language.statement.Statement" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Statement.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> Statement </font></td></tr>
 		</table></td></tr>
@@ -41,7 +41,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Statement.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.statement.While
-	c17816 [label=<<table title="model.programs.parsing.language.statement.While" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./While.html">
+	c17941 [label=<<table title="model.programs.parsing.language.statement.While" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./While.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> While </td></tr>
 		</table></td></tr>
@@ -66,16 +66,16 @@ digraph G {
 <tr><td align="left" balign="left"> # finishIteration() </td></tr>
 <tr><td align="left" balign="left"> + unfinish() </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./While.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.parsing.language.statement.While extends model.programs.parsing.language.statement.Statement
-	c17812:p -> c17816:p [dir=back,arrowtail=empty];
+	c17937:p -> c17941:p [dir=back,arrowtail=empty];
 	// model.programs.parsing.language.statement.While NAVASSOC model.programs.parsing.language.expression.Expression
-	c17816:p -> c17773:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c17941:p -> c17897:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// model.programs.parsing.language.statement.While NAVASSOC model.programs.parsing.language.statement.Statement
-	c17816:p -> c17812:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c17941:p -> c17937:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 }
 

@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.TypeException
-	c397 [label=<<table title="model.programs.TypeException" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./TypeException.html">
+	c396 [label=<<table title="model.programs.TypeException" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./TypeException.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> TypeException </td></tr>
 		</table></td></tr>
@@ -23,7 +23,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./TypeException.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.Program
-	c398 [label=<<table title="model.programs.Program" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Program.html">
+	c397 [label=<<table title="model.programs.Program" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Program.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Program </td></tr>
 		</table></td></tr>
@@ -52,12 +52,12 @@ digraph G {
 <tr><td align="left" balign="left"> + getVariableNamed(name : String) : ConstantExpression&lt;?&gt; </td></tr>
 <tr><td align="left" balign="left"> + setVariableValue(name : String, value : ConstantExpression&lt;?&gt;) </td></tr>
 <tr><td align="left" balign="left"> + executeUntilAfterNextAction() </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Program.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.ProgramException
-	c399 [label=<<table title="model.programs.ProgramException" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ProgramException.html">
+	c398 [label=<<table title="model.programs.ProgramException" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ProgramException.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> ProgramException </td></tr>
 		</table></td></tr>
@@ -70,6 +70,6 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./ProgramException.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.TypeException extends model.programs.ProgramException
-	c399:p -> c397:p [dir=back,arrowtail=empty];
+	c398:p -> c396:p [dir=back,arrowtail=empty];
 }
 

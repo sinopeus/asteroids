@@ -37,7 +37,7 @@ digraph G {
 <tr><td align="left" balign="left"> + Mass(mass : double) </td></tr>
 <tr><td align="left" balign="left"> + get() : double </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsMass(mass : double) : boolean </td></tr>
-<tr><td align="left" balign="left"> - set(mass : double) </td></tr>
+<tr><td align="left" balign="left"> # set(mass : double) </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 <tr><td align="left" balign="left"> + hashCode() : int </td></tr>
 <tr><td align="left" balign="left"> + equals(obj : Object) : boolean </td></tr>

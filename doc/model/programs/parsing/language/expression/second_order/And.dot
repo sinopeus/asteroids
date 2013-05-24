@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.parsing.language.expression.second_order.And
-	c3097 [label=<<table title="model.programs.parsing.language.expression.second_order.And" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./And.html">
+	c3096 [label=<<table title="model.programs.parsing.language.expression.second_order.And" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./And.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> And </td></tr>
 		</table></td></tr>
@@ -32,14 +32,13 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # SecondOrderExpressionOfBooleansToBoolean(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsArgument(argument : Expression) : boolean </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(first : BooleanLiteral, second : BooleanLiteral) : BooleanLiteral </font></td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
 <tr><td align="left" balign="left"> + evaluate() : BooleanLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./SecondOrderExpressionOfBooleansToBoolean.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.parsing.language.expression.second_order.And extends model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfBooleansToBoolean
-	c3108:p -> c3097:p [dir=back,arrowtail=empty];
+	c3108:p -> c3096:p [dir=back,arrowtail=empty];
 }
 

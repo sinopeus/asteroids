@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.parsing.AsteroidsParserParser.NamedconstContext
-	c5734 [label=<<table title="model.programs.parsing.AsteroidsParserParser.NamedconstContext" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./AsteroidsParserParser.NamedconstContext.html">
+	c5733 [label=<<table title="model.programs.parsing.AsteroidsParserParser.NamedconstContext" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./AsteroidsParserParser.NamedconstContext.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> NamedconstContext </td></tr>
 		</table></td></tr>
@@ -29,7 +29,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./AsteroidsParserParser.NamedconstContext.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.parsing.AsteroidsParserParser.NamedconstContext extends ParserRuleContext
-	c5815:p -> c5734:p [dir=back,arrowtail=empty];
+	c5815:p -> c5733:p [dir=back,arrowtail=empty];
 	// ParserRuleContext
 	c5815[label=<<table title="ParserRuleContext" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api//ParserRuleContext.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">

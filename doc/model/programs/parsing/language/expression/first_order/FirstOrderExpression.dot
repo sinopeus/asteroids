@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.parsing.language.expression.Expression
-	c9633 [label=<<table title="model.programs.parsing.language.expression.Expression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../Expression.html">
+	c9632 [label=<<table title="model.programs.parsing.language.expression.Expression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../Expression.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> Expression </font></td></tr>
 		</table></td></tr>
@@ -24,7 +24,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="../Expression.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfBooleanToBoolean
-	c9645 [label=<<table title="model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfBooleanToBoolean" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FirstOrderExpressionOfBooleanToBoolean.html">
+	c9644 [label=<<table title="model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfBooleanToBoolean" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FirstOrderExpressionOfBooleanToBoolean.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> FirstOrderExpressionOfBooleanToBoolean </font></td></tr>
 		</table></td></tr>
@@ -34,13 +34,13 @@ digraph G {
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # FirstOrderExpressionOfBooleanToBoolean(line : int, column : int, argument : Expression) </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(argument : BooleanLiteral) : BooleanLiteral </font></td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
 <tr><td align="left" balign="left"> + evaluate() : BooleanLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./FirstOrderExpressionOfBooleanToBoolean.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.first_order.FirstOrderExpression
-	c9650 [label=<<table title="model.programs.parsing.language.expression.first_order.FirstOrderExpression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./FirstOrderExpression.html">
+	c9649 [label=<<table title="model.programs.parsing.language.expression.first_order.FirstOrderExpression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./FirstOrderExpression.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> FirstOrderExpression </font></td></tr>
 		</table></td></tr>
@@ -53,11 +53,12 @@ digraph G {
 <tr><td align="left" balign="left"> # canHaveAsArgument(argument : Expression) : boolean </td></tr>
 <tr><td align="left" balign="left"> # setArgument(argument : Expression) </td></tr>
 <tr><td align="left" balign="left"> + setParentProgram(parrentProgram : Program) </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./FirstOrderExpression.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfNumberToNumber
-	c9651 [label=<<table title="model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfNumberToNumber" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FirstOrderExpressionOfNumberToNumber.html">
+	c9650 [label=<<table title="model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfNumberToNumber" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FirstOrderExpressionOfNumberToNumber.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> FirstOrderExpressionOfNumberToNumber </font></td></tr>
 		</table></td></tr>
@@ -67,13 +68,13 @@ digraph G {
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # FirstOrderExpressionOfNumberToNumber(line : int, column : int, argument : Expression) </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(argument : DoubleLiteral) : DoubleLiteral </font></td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
 <tr><td align="left" balign="left"> + evaluate() : DoubleLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./FirstOrderExpressionOfNumberToNumber.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfEntityToNumber
-	c9653 [label=<<table title="model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfEntityToNumber" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FirstOrderExpressionOfEntityToNumber.html">
+	c9652 [label=<<table title="model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfEntityToNumber" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FirstOrderExpressionOfEntityToNumber.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> FirstOrderExpressionOfEntityToNumber </font></td></tr>
 		</table></td></tr>
@@ -83,20 +84,20 @@ digraph G {
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # FirstOrderExpressionOfEntityToNumber(line : int, column : int, argument : Expression) </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(argument : EntityLiteral) : DoubleLiteral </font></td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
 <tr><td align="left" balign="left"> + evaluate() : DoubleLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./FirstOrderExpressionOfEntityToNumber.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfBooleanToBoolean extends model.programs.parsing.language.expression.first_order.FirstOrderExpression
-	c9650:p -> c9645:p [dir=back,arrowtail=empty];
+	c9649:p -> c9644:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.expression.first_order.FirstOrderExpression extends model.programs.parsing.language.expression.Expression
-	c9633:p -> c9650:p [dir=back,arrowtail=empty];
+	c9632:p -> c9649:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfNumberToNumber extends model.programs.parsing.language.expression.first_order.FirstOrderExpression
-	c9650:p -> c9651:p [dir=back,arrowtail=empty];
+	c9649:p -> c9650:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfEntityToNumber extends model.programs.parsing.language.expression.first_order.FirstOrderExpression
-	c9650:p -> c9653:p [dir=back,arrowtail=empty];
+	c9649:p -> c9652:p [dir=back,arrowtail=empty];
 	// model.programs.parsing.language.expression.first_order.FirstOrderExpression NAVASSOC model.programs.parsing.language.expression.Expression
-	c9650:p -> c9633:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c9649:p -> c9632:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 }
 

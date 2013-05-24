@@ -24,7 +24,7 @@ digraph G {
 <tr><td align="left" balign="left"> + Thruster(maximumThrust : double, owner : Ship) </td></tr>
 <tr><td align="left" balign="left"> + getMaximumThrustPerSecond() : double </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsMaximumThrust(maximumThrust : double) : boolean </td></tr>
-<tr><td align="left" balign="left"> - setMaximumThrustPerSecond(maximumThrust : double) </td></tr>
+<tr><td align="left" balign="left"> # setMaximumThrustPerSecond(maximumThrust : double) </td></tr>
 <tr><td align="left" balign="left"> + isActivated() : boolean </td></tr>
 <tr><td align="left" balign="left"> + activate() </td></tr>
 <tr><td align="left" balign="left"> + deactivate() </td></tr>
@@ -61,11 +61,11 @@ digraph G {
 <tr><td align="left" balign="left"> # canHaveAsShape(shape : CircleShape) : boolean </td></tr>
 <tr><td align="left" balign="left"> + getMinimumRadius() : double </td></tr>
 <tr><td align="left" balign="left"> + getThruster() : Thruster </td></tr>
-<tr><td align="left" balign="left"> - canHaveAsThruster(thruster : Thruster) : boolean </td></tr>
-<tr><td align="left" balign="left"> - setThruster(thruster : Thruster) </td></tr>
+<tr><td align="left" balign="left"> # canHaveAsThruster(thruster : Thruster) : boolean </td></tr>
+<tr><td align="left" balign="left"> # setThruster(thruster : Thruster) </td></tr>
 <tr><td align="left" balign="left"> + getBulletList() : ArrayList&lt;Bullet&gt; </td></tr>
-<tr><td align="left" balign="left"> - canHaveAsBulletList(bullets : ArrayList&lt;Bullet&gt;) : boolean </td></tr>
-<tr><td align="left" balign="left"> - setBulletList(bullets : ArrayList&lt;Bullet&gt;) </td></tr>
+<tr><td align="left" balign="left"> # canHaveAsBulletList(bullets : ArrayList&lt;Bullet&gt;) : boolean </td></tr>
+<tr><td align="left" balign="left"> # setBulletList(bullets : ArrayList&lt;Bullet&gt;) </td></tr>
 <tr><td align="left" balign="left"> + getProgram() : Program </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsProgram(program : Program) : boolean </td></tr>
 <tr><td align="left" balign="left"> + setProgram(program : Program) </td></tr>
@@ -73,8 +73,8 @@ digraph G {
 <tr><td align="left" balign="left"> + advance(dt : double) </td></tr>
 <tr><td align="left" balign="left"> + canFire() : boolean </td></tr>
 <tr><td align="left" balign="left"> + fire() </td></tr>
-<tr><td align="left" balign="left"> + collideWith(that : Asteroid) </td></tr>
-<tr><td align="left" balign="left"> + collideWith(that : Bullet) </td></tr>
+<tr><td align="left" balign="left"> # collideWith(that : Asteroid) </td></tr>
+<tr><td align="left" balign="left"> # collideWith(that : Bullet) </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 <tr><td align="left" balign="left"> + getThrustPerSecond() : double </td></tr>
 		</table></td></tr>

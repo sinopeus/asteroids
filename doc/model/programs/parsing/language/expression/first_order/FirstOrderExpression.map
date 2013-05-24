@@ -1,12 +1,12 @@
 <map id="G" name="G">
 <area shape="rect" id="node1_0" href="../Expression.html" title="model.programs.parsing.language.expression.Expression" alt="" coords="760,11,1003,117"/>
 <area shape="rect" id="node1" href="../Expression.html" title="&lt;TABLE&gt;" alt="" coords="749,6,1013,122"/>
-<area shape="rect" id="node3_1" href="./FirstOrderExpression.html" title="model.programs.parsing.language.expression.first_order.FirstOrderExpression" alt="" coords="669,177,1093,330"/>
-<area shape="rect" id="node3" href="./FirstOrderExpression.html" title="&lt;TABLE&gt;" alt="" coords="659,171,1104,335"/>
-<area shape="rect" id="node2_2" href="./FirstOrderExpressionOfBooleanToBoolean.html" title="model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfBooleanToBoolean" alt="" coords="16,390,563,527"/>
-<area shape="rect" id="node2" href="./FirstOrderExpressionOfBooleanToBoolean.html" title="&lt;TABLE&gt;" alt="" coords="5,385,573,533"/>
-<area shape="rect" id="node4_3" href="./FirstOrderExpressionOfNumberToNumber.html" title="model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfNumberToNumber" alt="" coords="609,390,1154,527"/>
-<area shape="rect" id="node4" href="./FirstOrderExpressionOfNumberToNumber.html" title="&lt;TABLE&gt;" alt="" coords="598,385,1165,533"/>
-<area shape="rect" id="node5_4" href="./FirstOrderExpressionOfEntityToNumber.html" title="model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfEntityToNumber" alt="" coords="1200,390,1733,527"/>
-<area shape="rect" id="node5" href="./FirstOrderExpressionOfEntityToNumber.html" title="&lt;TABLE&gt;" alt="" coords="1189,385,1744,533"/>
+<area shape="rect" id="node3_1" href="./FirstOrderExpression.html" title="model.programs.parsing.language.expression.first_order.FirstOrderExpression" alt="" coords="669,177,1093,346"/>
+<area shape="rect" id="node3" href="./FirstOrderExpression.html" title="&lt;TABLE&gt;" alt="" coords="659,171,1104,351"/>
+<area shape="rect" id="node2_2" href="./FirstOrderExpressionOfBooleanToBoolean.html" title="model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfBooleanToBoolean" alt="" coords="16,406,563,543"/>
+<area shape="rect" id="node2" href="./FirstOrderExpressionOfBooleanToBoolean.html" title="&lt;TABLE&gt;" alt="" coords="5,401,573,549"/>
+<area shape="rect" id="node4_3" href="./FirstOrderExpressionOfNumberToNumber.html" title="model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfNumberToNumber" alt="" coords="609,406,1154,543"/>
+<area shape="rect" id="node4" href="./FirstOrderExpressionOfNumberToNumber.html" title="&lt;TABLE&gt;" alt="" coords="598,401,1165,549"/>
+<area shape="rect" id="node5_4" href="./FirstOrderExpressionOfEntityToNumber.html" title="model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfEntityToNumber" alt="" coords="1200,406,1733,543"/>
+<area shape="rect" id="node5" href="./FirstOrderExpressionOfEntityToNumber.html" title="&lt;TABLE&gt;" alt="" coords="1189,401,1744,549"/>
 </map>

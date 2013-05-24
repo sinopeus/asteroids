@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.Program
-	c14491 [label=<<table title="model.programs.Program" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../Program.html">
+	c14490 [label=<<table title="model.programs.Program" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../Program.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Program </td></tr>
 		</table></td></tr>
@@ -39,12 +39,12 @@ digraph G {
 <tr><td align="left" balign="left"> + getVariableNamed(name : String) : ConstantExpression&lt;?&gt; </td></tr>
 <tr><td align="left" balign="left"> + setVariableValue(name : String, value : ConstantExpression&lt;?&gt;) </td></tr>
 <tr><td align="left" balign="left"> + executeUntilAfterNextAction() </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="../../Program.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.ProgramPart
-	c14517 [label=<<table title="model.programs.parsing.language.ProgramPart" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./ProgramPart.html">
+	c14516 [label=<<table title="model.programs.parsing.language.ProgramPart" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./ProgramPart.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> ProgramPart </font></td></tr>
 		</table></td></tr>
@@ -65,11 +65,11 @@ digraph G {
 <tr><td align="left" balign="left"> # canHaveAsColumn(column : int) : boolean </td></tr>
 <tr><td align="left" balign="left"> # setColumn(column : int) </td></tr>
 <tr><td align="left" balign="left"> + getOwnerShip() : Ship </td></tr>
-<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> + isTypeSafe() : boolean </font></td></tr>
+<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> + isTypeSafe() : IFacade.TypeCheckOutcome </font></td></tr>
 		</table></td></tr>
 		</table>>, URL="./ProgramPart.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.Expression
-	c14520 [label=<<table title="model.programs.parsing.language.expression.Expression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./expression/Expression.html">
+	c14519 [label=<<table title="model.programs.parsing.language.expression.Expression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./expression/Expression.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> Expression </font></td></tr>
 		</table></td></tr>
@@ -100,12 +100,12 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./statement/Statement.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.parsing.language.expression.Expression extends model.programs.parsing.language.ProgramPart
-	c14517:p -> c14520:p [dir=back,arrowtail=empty];
+	c14516:p -> c14519:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.statement.Statement extends model.programs.parsing.language.ProgramPart
-	c14517:p -> c14559:p [dir=back,arrowtail=empty];
+	c14516:p -> c14559:p [dir=back,arrowtail=empty];
 	// model.programs.Program NAVASSOC model.programs.parsing.language.statement.Statement
-	c14491:p -> c14559:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c14490:p -> c14559:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// model.programs.parsing.language.ProgramPart NAVASSOC model.programs.Program
-	c14517:p -> c14491:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c14516:p -> c14490:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 }
 

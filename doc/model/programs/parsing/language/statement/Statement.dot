@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.Program
-	c16118 [label=<<table title="model.programs.Program" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../../Program.html">
+	c16242 [label=<<table title="model.programs.Program" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../../Program.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Program </td></tr>
 		</table></td></tr>
@@ -39,12 +39,12 @@ digraph G {
 <tr><td align="left" balign="left"> + getVariableNamed(name : String) : ConstantExpression&lt;?&gt; </td></tr>
 <tr><td align="left" balign="left"> + setVariableValue(name : String, value : ConstantExpression&lt;?&gt;) </td></tr>
 <tr><td align="left" balign="left"> + executeUntilAfterNextAction() </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="../../../Program.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.ProgramPart
-	c16144 [label=<<table title="model.programs.parsing.language.ProgramPart" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../ProgramPart.html">
+	c16268 [label=<<table title="model.programs.parsing.language.ProgramPart" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../ProgramPart.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> ProgramPart </font></td></tr>
 		</table></td></tr>
@@ -65,11 +65,11 @@ digraph G {
 <tr><td align="left" balign="left"> # canHaveAsColumn(column : int) : boolean </td></tr>
 <tr><td align="left" balign="left"> # setColumn(column : int) </td></tr>
 <tr><td align="left" balign="left"> + getOwnerShip() : Ship </td></tr>
-<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> + isTypeSafe() : boolean </font></td></tr>
+<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> + isTypeSafe() : IFacade.TypeCheckOutcome </font></td></tr>
 		</table></td></tr>
 		</table>>, URL="../ProgramPart.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.statement.Statement
-	c16186 [label=<<table title="model.programs.parsing.language.statement.Statement" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Statement.html">
+	c16311 [label=<<table title="model.programs.parsing.language.statement.Statement" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Statement.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> Statement </font></td></tr>
 		</table></td></tr>
@@ -86,7 +86,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Statement.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.statement.ForEach
-	c16187 [label=<<table title="model.programs.parsing.language.statement.ForEach" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ForEach.html">
+	c16312 [label=<<table title="model.programs.parsing.language.statement.ForEach" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ForEach.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> ForEach </td></tr>
 		</table></td></tr>
@@ -122,13 +122,13 @@ digraph G {
 <tr><td align="left" balign="left"> + setParentProgram(parrentProgram : Program) </td></tr>
 <tr><td align="left" balign="left"> + unfinish() </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./ForEach.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.statement.Assignment
-	c16188 [label=<<table title="model.programs.parsing.language.statement.Assignment" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Assignment.html">
+	c16313 [label=<<table title="model.programs.parsing.language.statement.Assignment" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Assignment.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Assignment </td></tr>
 		</table></td></tr>
@@ -146,13 +146,13 @@ digraph G {
 <tr><td align="left" balign="left"> # setValue(value : Expression) </td></tr>
 <tr><td align="left" balign="left"> + setParentProgram(parentProgram : Program) </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Assignment.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.statement.Print
-	c16189 [label=<<table title="model.programs.parsing.language.statement.Print" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Print.html">
+	c16314 [label=<<table title="model.programs.parsing.language.statement.Print" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Print.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Print </td></tr>
 		</table></td></tr>
@@ -170,13 +170,13 @@ digraph G {
 <tr><td align="left" balign="left"> # setText(text : String) </td></tr>
 <tr><td align="left" balign="left"> + setParentProgram(parrentProgram : Program) </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Print.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.statement.While
-	c16190 [label=<<table title="model.programs.parsing.language.statement.While" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./While.html">
+	c16315 [label=<<table title="model.programs.parsing.language.statement.While" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./While.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> While </td></tr>
 		</table></td></tr>
@@ -201,13 +201,13 @@ digraph G {
 <tr><td align="left" balign="left"> # finishIteration() </td></tr>
 <tr><td align="left" balign="left"> + unfinish() </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./While.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.statement.If
-	c16191 [label=<<table title="model.programs.parsing.language.statement.If" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./If.html">
+	c16316 [label=<<table title="model.programs.parsing.language.statement.If" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./If.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> If </td></tr>
 		</table></td></tr>
@@ -236,13 +236,13 @@ digraph G {
 <tr><td align="left" balign="left"> + unfinish() </td></tr>
 <tr><td align="left" balign="left"> - execute(statement : Statement) : boolean </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./If.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.statement.Sequence
-	c16192 [label=<<table title="model.programs.parsing.language.statement.Sequence" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Sequence.html">
+	c16317 [label=<<table title="model.programs.parsing.language.statement.Sequence" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Sequence.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Sequence </td></tr>
 		</table></td></tr>
@@ -264,13 +264,13 @@ digraph G {
 <tr><td align="left" balign="left"> # finish() </td></tr>
 <tr><td align="left" balign="left"> + unfinish() </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 <tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Sequence.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.statement.action.Action
-	c16193 [label=<<table title="model.programs.parsing.language.statement.action.Action" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./action/Action.html">
+	c16318 [label=<<table title="model.programs.parsing.language.statement.action.Action" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./action/Action.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> Action </font></td></tr>
 		</table></td></tr>
@@ -281,35 +281,36 @@ digraph G {
 <tr><td align="left" balign="left"> + Action(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
 <tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 		</table></td></tr>
 		</table>>, URL="./action/Action.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.parsing.language.statement.Statement extends model.programs.parsing.language.ProgramPart
-	c16144:p -> c16186:p [dir=back,arrowtail=empty];
+	c16268:p -> c16311:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.statement.ForEach extends model.programs.parsing.language.statement.Statement
-	c16186:p -> c16187:p [dir=back,arrowtail=empty];
+	c16311:p -> c16312:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.statement.Assignment extends model.programs.parsing.language.statement.Statement
-	c16186:p -> c16188:p [dir=back,arrowtail=empty];
+	c16311:p -> c16313:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.statement.Print extends model.programs.parsing.language.statement.Statement
-	c16186:p -> c16189:p [dir=back,arrowtail=empty];
+	c16311:p -> c16314:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.statement.While extends model.programs.parsing.language.statement.Statement
-	c16186:p -> c16190:p [dir=back,arrowtail=empty];
+	c16311:p -> c16315:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.statement.If extends model.programs.parsing.language.statement.Statement
-	c16186:p -> c16191:p [dir=back,arrowtail=empty];
+	c16311:p -> c16316:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.statement.Sequence extends model.programs.parsing.language.statement.Statement
-	c16186:p -> c16192:p [dir=back,arrowtail=empty];
+	c16311:p -> c16317:p [dir=back,arrowtail=empty];
 	//model.programs.parsing.language.statement.action.Action extends model.programs.parsing.language.statement.Statement
-	c16186:p -> c16193:p [dir=back,arrowtail=empty];
+	c16311:p -> c16318:p [dir=back,arrowtail=empty];
 	// model.programs.Program NAVASSOC model.programs.parsing.language.statement.Statement
-	c16118:p -> c16186:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c16242:p -> c16311:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// model.programs.parsing.language.ProgramPart NAVASSOC model.programs.Program
-	c16144:p -> c16118:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c16268:p -> c16242:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// model.programs.parsing.language.statement.ForEach NAVASSOC model.programs.parsing.language.statement.Statement
-	c16187:p -> c16186:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c16312:p -> c16311:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// model.programs.parsing.language.statement.While NAVASSOC model.programs.parsing.language.statement.Statement
-	c16190:p -> c16186:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c16315:p -> c16311:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// model.programs.parsing.language.statement.If NAVASSOC model.programs.parsing.language.statement.Statement
-	c16191:p -> c16186:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c16316:p -> c16311:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// model.programs.parsing.language.statement.If NAVASSOC model.programs.parsing.language.statement.Statement
-	c16191:p -> c16186:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c16316:p -> c16311:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 }
 

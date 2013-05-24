@@ -1,6 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="./Entity.html" title="world.entity.Entity" alt="" coords="15,11,758,805"/>
-<area shape="rect" id="node1" href="./Entity.html" title="&lt;TABLE&gt;" alt="" coords="5,6,769,810"/>
+<area shape="rect" id="node1_0" href="./Entity.html" title="world.entity.Entity" alt="" coords="16,11,757,805"/>
+<area shape="rect" id="node1" href="./Entity.html" title="&lt;TABLE&gt;" alt="" coords="5,6,768,810"/>
 <area shape="rect" id="node2_1" href="./Bullet.html" title="world.entity.Bullet" alt="" coords="78,865,458,1274"/>
 <area shape="rect" id="node2" href="./Bullet.html" title="&lt;TABLE&gt;" alt="" coords="67,859,469,1279"/>
 <area shape="rect" id="node3_2" href="./ship/Ship.html" title="world.entity.ship.Ship" alt="" coords="19,1334,754,1823"/>

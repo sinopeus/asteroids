@@ -1,6 +1,5 @@
 package model.programs.parsing.language.expression.second_order;
 
-import model.programs.ProgramException;
 import model.programs.parsing.language.Type;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.constant.literal.BooleanLiteral;

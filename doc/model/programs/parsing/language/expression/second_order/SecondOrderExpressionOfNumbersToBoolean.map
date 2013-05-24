@@ -1,18 +1,14 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="./NotEquals.html" title="model.programs.parsing.language.expression.second_order.NotEquals" alt="" coords="15,486,585,575"/>
-<area shape="rect" id="node1" href="./NotEquals.html" title="&lt;TABLE&gt;" alt="" coords="5,481,595,581"/>
-<area shape="rect" id="node2_1" href="./Equals.html" title="model.programs.parsing.language.expression.second_order.Equals" alt="" coords="631,486,1180,575"/>
-<area shape="rect" id="node2" href="./Equals.html" title="&lt;TABLE&gt;" alt="" coords="620,481,1191,581"/>
-<area shape="rect" id="node3_2" href="./SecondOrderExpression.html" title="model.programs.parsing.language.expression.second_order.SecondOrderExpression" alt="" coords="1450,11,2099,213"/>
-<area shape="rect" id="node3" href="./SecondOrderExpression.html" title="&lt;TABLE&gt;" alt="" coords="1439,6,2110,218"/>
-<area shape="rect" id="node5_3" href="./SecondOrderExpressionOfNumbersToBoolean.html" title="model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToBoolean" alt="" coords="1386,273,2163,426"/>
-<area shape="rect" id="node5" href="./SecondOrderExpressionOfNumbersToBoolean.html" title="&lt;TABLE&gt;" alt="" coords="1375,267,2174,431"/>
-<area shape="rect" id="node4_4" href="./GT.html" title="model.programs.parsing.language.expression.second_order.GT" alt="" coords="1226,486,1753,575"/>
-<area shape="rect" id="node4" href="./GT.html" title="&lt;TABLE&gt;" alt="" coords="1215,481,1763,581"/>
-<area shape="rect" id="node6_5" href="./LT.html" title="model.programs.parsing.language.expression.second_order.LT" alt="" coords="1798,486,2322,575"/>
-<area shape="rect" id="node6" href="./LT.html" title="&lt;TABLE&gt;" alt="" coords="1787,481,2333,581"/>
-<area shape="rect" id="node7_6" href="./LE.html" title="model.programs.parsing.language.expression.second_order.LE" alt="" coords="2368,486,2893,575"/>
-<area shape="rect" id="node7" href="./LE.html" title="&lt;TABLE&gt;" alt="" coords="2357,481,2904,581"/>
-<area shape="rect" id="node8_7" href="./GE.html" title="model.programs.parsing.language.expression.second_order.GE" alt="" coords="2939,486,3467,575"/>
-<area shape="rect" id="node8" href="./GE.html" title="&lt;TABLE&gt;" alt="" coords="2928,481,3477,581"/>
+<area shape="rect" id="node1_0" href="./SecondOrderExpression.html" title="model.programs.parsing.language.expression.second_order.SecondOrderExpression" alt="" coords="810,11,1459,229"/>
+<area shape="rect" id="node1" href="./SecondOrderExpression.html" title="&lt;TABLE&gt;" alt="" coords="799,6,1470,234"/>
+<area shape="rect" id="node3_1" href="./SecondOrderExpressionOfNumbersToBoolean.html" title="model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToBoolean" alt="" coords="746,289,1523,426"/>
+<area shape="rect" id="node3" href="./SecondOrderExpressionOfNumbersToBoolean.html" title="&lt;TABLE&gt;" alt="" coords="735,283,1534,431"/>
+<area shape="rect" id="node2_2" href="./GT.html" title="model.programs.parsing.language.expression.second_order.GT" alt="" coords="15,486,542,575"/>
+<area shape="rect" id="node2" href="./GT.html" title="&lt;TABLE&gt;" alt="" coords="5,481,553,581"/>
+<area shape="rect" id="node4_3" href="./LT.html" title="model.programs.parsing.language.expression.second_order.LT" alt="" coords="587,486,1111,575"/>
+<area shape="rect" id="node4" href="./LT.html" title="&lt;TABLE&gt;" alt="" coords="577,481,1122,581"/>
+<area shape="rect" id="node5_4" href="./LE.html" title="model.programs.parsing.language.expression.second_order.LE" alt="" coords="1157,486,1683,575"/>
+<area shape="rect" id="node5" href="./LE.html" title="&lt;TABLE&gt;" alt="" coords="1147,481,1693,581"/>
+<area shape="rect" id="node6_5" href="./GE.html" title="model.programs.parsing.language.expression.second_order.GE" alt="" coords="1728,486,2256,575"/>
+<area shape="rect" id="node6" href="./GE.html" title="&lt;TABLE&gt;" alt="" coords="1717,481,2267,581"/>
 </map>

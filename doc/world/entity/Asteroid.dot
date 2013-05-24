@@ -23,16 +23,16 @@ digraph G {
 <tr><td align="left" balign="left"> + Asteroid(direction : Direction, position : Position, velocity : Velocity, shape : CircleShape) </td></tr>
 <tr><td align="left" balign="left"> + terminate() </td></tr>
 <tr><td align="left" balign="left"> + advance(dt : double) </td></tr>
-<tr><td align="left" balign="left"> + collideWith(that : Asteroid) </td></tr>
-<tr><td align="left" balign="left"> + collideWith(that : Bullet) </td></tr>
-<tr><td align="left" balign="left"> + collideWith(that : Ship) </td></tr>
+<tr><td align="left" balign="left"> # collideWith(that : Asteroid) </td></tr>
+<tr><td align="left" balign="left"> # collideWith(that : Bullet) </td></tr>
+<tr><td align="left" balign="left"> # collideWith(that : Ship) </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Asteroid.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// world.entity.Entity
 	c3506 [label=<<table title="world.entity.Entity" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Entity.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> Entity </td></tr>
+<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> Entity </font></td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # position : Position </td></tr>
@@ -45,39 +45,39 @@ digraph G {
 <tr><td align="left" balign="left"> # isTerminated : boolean </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + Entity(direction : Direction, position : Position, speedLimit : double, velocity : Velocity, shape : CircleShape, mass : Mass) </td></tr>
+<tr><td align="left" balign="left"> # Entity(direction : Direction, position : Position, speedLimit : double, velocity : Velocity, shape : CircleShape, mass : Mass) </td></tr>
 <tr><td align="left" balign="left"> + Entity() </td></tr>
 <tr><td align="left" balign="left"> + getPosition() : Position </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsPosition(position : Position) : boolean </td></tr>
-<tr><td align="left" balign="left"> + setPosition(position : Position) </td></tr>
+<tr><td align="left" balign="left"> # setPosition(position : Position) </td></tr>
 <tr><td align="left" balign="left"> + getVelocity() : Velocity </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsVelocity(velocity : Velocity) : boolean </td></tr>
-<tr><td align="left" balign="left"> + setVelocity(velocity : Velocity) </td></tr>
+<tr><td align="left" balign="left"> # setVelocity(velocity : Velocity) </td></tr>
 <tr><td align="left" balign="left"> + getDirection() : Direction </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsDirection(direction : Direction) : boolean </td></tr>
-<tr><td align="left" balign="left"> + setDirection(direction : Direction) </td></tr>
+<tr><td align="left" balign="left"> # setDirection(direction : Direction) </td></tr>
 <tr><td align="left" balign="left"> + getShape() : CircleShape </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsShape(shape : CircleShape) : boolean </td></tr>
 <tr><td align="left" balign="left"> + getSpeedLimit() : double </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsSpeedLimit(speedLimit : double) : boolean </td></tr>
-<tr><td align="left" balign="left"> + setSpeedLimit(speedLimit : double) </td></tr>
+<tr><td align="left" balign="left"> # setSpeedLimit(speedLimit : double) </td></tr>
 <tr><td align="left" balign="left"> + getMass() : Mass </td></tr>
-<tr><td align="left" balign="left"> - canHaveAsMass(mass : Mass) : boolean </td></tr>
-<tr><td align="left" balign="left"> - setMass(mass : Mass) </td></tr>
+<tr><td align="left" balign="left"> # canHaveAsMass(mass : Mass) : boolean </td></tr>
+<tr><td align="left" balign="left"> # setMass(mass : Mass) </td></tr>
 <tr><td align="left" balign="left"> + getWorld() : World </td></tr>
 <tr><td align="left" balign="left"> - canHaveAsWorld(world : World) : boolean </td></tr>
 <tr><td align="left" balign="left"> + setWorld(world : World) </td></tr>
 <tr><td align="left" balign="left"> + isTerminated() : boolean </td></tr>
 <tr><td align="left" balign="left"> + terminate() </td></tr>
 <tr><td align="left" balign="left"> + advance(dt : double) </td></tr>
-<tr><td align="left" balign="left"> + move(duration : double) </td></tr>
+<tr><td align="left" balign="left"> # move(duration : double) </td></tr>
 <tr><td align="left" balign="left"> + collideWith(that : Entity) </td></tr>
 <tr><td align="left" balign="left"> # collideWith(that : Ship) </td></tr>
 <tr><td align="left" balign="left"> # collideWith(that : Asteroid) </td></tr>
 <tr><td align="left" balign="left"> # collideWith(that : Bullet) </td></tr>
 <tr><td align="left" balign="left"> + collideWith(that : Border) </td></tr>
 <tr><td align="left" balign="left"> + turn(angle : Angle) </td></tr>
-<tr><td align="left" balign="left"> + bounce(that : Entity) </td></tr>
+<tr><td align="left" balign="left"> # bounce(that : Entity) </td></tr>
 <tr><td align="left" balign="left"> + overlapsWith(e : Entity) : boolean </td></tr>
 <tr><td align="left" balign="left"> + distanceTo(e : Entity) : double </td></tr>
 <tr><td align="left" balign="left"> + distanceTo(p : Position) : double </td></tr>

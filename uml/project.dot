@@ -7,9 +7,10 @@
 digraph G {
 	edge [weight=1.2, fontname="Helvetica",fontsize=10,labelfontname="Helvetica",labelfontsize=10];
 	node [fontname="Helvetica",fontsize=10,shape=plaintext];
-	//graph [size="16.0, 22.5"];
-	nodesep=0.25;
-	ranksep=0.5;
+	splines = true;
+	//size="16.0, 22.5";
+	nodesep=1;
+	ranksep=0.3;
 
 	// EXAMPLES
 	// //world.entity.Bullet extends world.entity.Entity
@@ -22,6 +23,8 @@ digraph G {
 	// c15492:p -> c15578:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 
 	// NODES
+ subgraph world {
+                label = "world"
 
 	// world.World
 	world [label=<<table title="world.World" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./World.html">
@@ -49,6 +52,9 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./World.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
+	subgraph entity {
+                label = "world.entity"
+
 	// world.entity.Entity
 	entity [label=<<table title="world.entity.Entity" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../Entity.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
@@ -67,26 +73,6 @@ digraph G {
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Entity(direction : Direction, position : Position, speedLimit : double, velocity : Velocity, shape : CircleShape, mass : Mass) </td></tr>
 <tr><td align="left" balign="left"> + Entity() </td></tr>
-<tr><td align="left" balign="left"> + getPosition() : Position </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsPosition(position : Position) : boolean </td></tr>
-<tr><td align="left" balign="left"> + setPosition(position : Position) </td></tr>
-<tr><td align="left" balign="left"> + getVelocity() : Velocity </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsVelocity(velocity : Velocity) : boolean </td></tr>
-<tr><td align="left" balign="left"> + setVelocity(velocity : Velocity) </td></tr>
-<tr><td align="left" balign="left"> + getDirection() : Direction </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsDirection(direction : Direction) : boolean </td></tr>
-<tr><td align="left" balign="left"> + setDirection(direction : Direction) </td></tr>
-<tr><td align="left" balign="left"> + getShape() : CircleShape </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsShape(shape : CircleShape) : boolean </td></tr>
-<tr><td align="left" balign="left"> + getSpeedLimit() : double </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsSpeedLimit(speedLimit : double) : boolean </td></tr>
-<tr><td align="left" balign="left"> + setSpeedLimit(speedLimit : double) </td></tr>
-<tr><td align="left" balign="left"> + getMass() : Mass </td></tr>
-<tr><td align="left" balign="left"> - canHaveAsMass(mass : Mass) : boolean </td></tr>
-<tr><td align="left" balign="left"> - setMass(mass : Mass) </td></tr>
-<tr><td align="left" balign="left"> + getWorld() : World </td></tr>
-<tr><td align="left" balign="left"> - canHaveAsWorld(world : World) : boolean </td></tr>
-<tr><td align="left" balign="left"> + setWorld(world : World) </td></tr>
 <tr><td align="left" balign="left"> + isTerminated() : boolean </td></tr>
 <tr><td align="left" balign="left"> + terminate() </td></tr>
 <tr><td align="left" balign="left"> + advance(dt : double) </td></tr>
@@ -102,8 +88,6 @@ digraph G {
 <tr><td align="left" balign="left"> + distanceTo(e : Entity) : double </td></tr>
 <tr><td align="left" balign="left"> + distanceTo(p : Position) : double </td></tr>
 <tr><td align="left" balign="left"> + distanceBetween(other : Entity, duration : double) : double </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
-<tr><td align="left" balign="left"> + equals(obj : Object) : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="../Entity.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -124,7 +108,6 @@ digraph G {
 <tr><td align="left" balign="left"> + collideWith(that : Asteroid) </td></tr>
 <tr><td align="left" balign="left"> + collideWith(that : Bullet) </td></tr>
 <tr><td align="left" balign="left"> + collideWith(that : Ship) </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Asteroid.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -145,24 +128,18 @@ digraph G {
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Bullet(ship : Ship) </td></tr>
 <tr><td align="left" balign="left"> - getInitialPosition(ship : Ship) : Position </td></tr>
-<tr><td align="left" balign="left"> + getShooter() : Ship </td></tr>
-<tr><td align="left" balign="left"> - canHaveAsShooter(shooter : Ship) : boolean </td></tr>
-<tr><td align="left" balign="left"> - setShooter(shooter : Ship) </td></tr>
-<tr><td align="left" balign="left"> + getBounceCounter() : byte </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsBounceCounter(bounceCounter : byte) : boolean </td></tr>
-<tr><td align="left" balign="left"> + setBounceCounter(bounceCounter : byte) </td></tr>
 <tr><td align="left" balign="left"> + collideWith(that : Asteroid) </td></tr>
 <tr><td align="left" balign="left"> + collideWith(that : Bullet) </td></tr>
 <tr><td align="left" balign="left"> + collideWith(that : Ship) </td></tr>
 <tr><td align="left" balign="left"> + collideWith(that : Border) </td></tr>
 <tr><td align="left" balign="left"> + unlinkFromShooter() </td></tr>
 <tr><td align="left" balign="left"> + terminate() </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
-<tr><td align="left" balign="left"> + hashCode() : int </td></tr>
-<tr><td align="left" balign="left"> + equals(obj : Object) : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="../Bullet.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-	// world.entity.ship.Thruster
+ subgraph ship {
+                label = "world.entity.ship"
+
+		// world.entity.ship.Thruster
 	thruster [label=<<table title="world.entity.ship.Thruster" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Thruster.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Thruster </td></tr>
@@ -175,25 +152,18 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Thruster(maximumThrust : double, owner : Ship) </td></tr>
-<tr><td align="left" balign="left"> + getMaximumThrustPerSecond() : double </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsMaximumThrust(maximumThrust : double) : boolean </td></tr>
-<tr><td align="left" balign="left"> - setMaximumThrustPerSecond(maximumThrust : double) </td></tr>
 <tr><td align="left" balign="left"> + isActivated() : boolean </td></tr>
 <tr><td align="left" balign="left"> + activate() </td></tr>
 <tr><td align="left" balign="left"> + deactivate() </td></tr>
 <tr><td align="left" balign="left"> + toggleActivation() </td></tr>
 <tr><td align="left" balign="left"> + getOwner() : Ship </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsOwner(owner : Ship) : boolean </td></tr>
-<tr><td align="left" balign="left"> + setOwner(owner : Ship) </td></tr>
 <tr><td align="left" balign="left"> + terminate() </td></tr>
 <tr><td align="left" balign="left"> + isTerminated() : boolean </td></tr>
 <tr><td align="left" balign="left"> + thrust(duration : double) </td></tr>
 <tr><td align="left" balign="left"> + thrust(thrustPerSecond : double, duration : double) </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
-<tr><td align="left" balign="left"> + hashCode() : int </td></tr>
-<tr><td align="left" balign="left"> + equals(obj : Object) : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Thruster.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+		
 	// world.entity.ship.Ship
 	ship [label=<<table title="world.entity.ship.Ship" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Ship.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
@@ -211,28 +181,18 @@ digraph G {
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Ship(direction : Direction, position : Position, speedLimit : double, velocity : Velocity, shape : CircleShape, mass : Mass) </td></tr>
 <tr><td align="left" balign="left"> + Ship() </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsShape(shape : CircleShape) : boolean </td></tr>
-<tr><td align="left" balign="left"> + getMinimumRadius() : double </td></tr>
-<tr><td align="left" balign="left"> + getThruster() : Thruster </td></tr>
-<tr><td align="left" balign="left"> - canHaveAsThruster(thruster : Thruster) : boolean </td></tr>
-<tr><td align="left" balign="left"> - setThruster(thruster : Thruster) </td></tr>
-<tr><td align="left" balign="left"> + getBulletList() : ArrayList&lt;Bullet&gt; </td></tr>
-<tr><td align="left" balign="left"> - canHaveAsBulletList(bullets : ArrayList&lt;Bullet&gt;) : boolean </td></tr>
-<tr><td align="left" balign="left"> - setBulletList(bullets : ArrayList&lt;Bullet&gt;) </td></tr>
-<tr><td align="left" balign="left"> + getProgram() : Program </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsProgram(program : Program) : boolean </td></tr>
-<tr><td align="left" balign="left"> + setProgram(program : Program) </td></tr>
 <tr><td align="left" balign="left"> + terminate() </td></tr>
 <tr><td align="left" balign="left"> + advance(dt : double) </td></tr>
 <tr><td align="left" balign="left"> + canFire() : boolean </td></tr>
 <tr><td align="left" balign="left"> + fire() </td></tr>
 <tr><td align="left" balign="left"> + collideWith(that : Asteroid) </td></tr>
 <tr><td align="left" balign="left"> + collideWith(that : Bullet) </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 <tr><td align="left" balign="left"> + getThrustPerSecond() : double </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Ship.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-	
+}
+}
+}
 	// world.physics.vector.Force
 	force [label=<<table title="world.physics.vector.Force" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Force.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
@@ -245,7 +205,6 @@ digraph G {
 <tr><td align="left" balign="left"> + Force(x : double, y : double) </td></tr>
 <tr><td align="left" balign="left"> + Force(v : Vector) </td></tr>
 <tr><td align="left" balign="left"> + Force() </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Force.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 		
@@ -261,7 +220,6 @@ digraph G {
 <tr><td align="left" balign="left"> + Acceleration(x : double, y : double) </td></tr>
 <tr><td align="left" balign="left"> + Acceleration(v : Vector) </td></tr>
 <tr><td align="left" balign="left"> + Acceleration() </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Acceleration.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// world.physics.vector.Direction
@@ -282,9 +240,6 @@ digraph G {
 <tr><td align="left" balign="left"> + _X() : double </td></tr>
 <tr><td align="left" balign="left"> + _Y() : double </td></tr>
 <tr><td align="left" balign="left"> + rotate(angle : Angle) </td></tr>
-<tr><td align="left" balign="left"> + hashCode() : int </td></tr>
-<tr><td align="left" balign="left"> + equals(obj : Object) : boolean </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Direction.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// world.physics.vector.Velocity
@@ -304,7 +259,6 @@ digraph G {
 <tr><td align="left" balign="left"> + get() : double </td></tr>
 <tr><td align="left" balign="left"> + getSum(v : Vector) : Velocity </td></tr>
 <tr><td align="left" balign="left"> + accelerateBy(a : Acceleration, duration : double) </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 <tr><td align="left" balign="left"> + getSpeedOfLight() : double </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Velocity.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
@@ -320,12 +274,9 @@ digraph G {
 <tr><td align="left" balign="left"> + Position(x : double, y : double) </td></tr>
 <tr><td align="left" balign="left"> + Position(v : Vector) </td></tr>
 <tr><td align="left" balign="left"> + Position() </td></tr>
-<tr><td align="left" balign="left"> + setX(x : double) </td></tr>
-<tr><td align="left" balign="left"> + setY(y : double) </td></tr>
 <tr><td align="left" balign="left"> + getSum(v : Vector) : Position </td></tr>
 <tr><td align="left" balign="left"> + moveBy(v : Velocity, duration : double) </td></tr>
 <tr><td align="left" balign="left"> + getPositionAfterMove(v : Velocity, duration : double) : Position </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Position.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// world.physics.vector.Vector
@@ -340,11 +291,6 @@ digraph G {
 <tr><td align="left" balign="left"> + Vector(x : double, y : double) </td></tr>
 <tr><td align="left" balign="left"> + Vector(v : Vector) </td></tr>
 <tr><td align="left" balign="left"> + Vector() </td></tr>
-<tr><td align="left" balign="left"> + _X() : double </td></tr>
-<tr><td align="left" balign="left"> + setX(x : double) </td></tr>
-<tr><td align="left" balign="left"> + _Y() : double </td></tr>
-<tr><td align="left" balign="left"> + setY(y : double) </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsComponent(x : double) : boolean </td></tr>
 <tr><td align="left" balign="left"> + getSum(v : Vector) : Vector </td></tr>
 <tr><td align="left" balign="left"> + getDifference(v : Vector) : Vector </td></tr>
 <tr><td align="left" balign="left"> + getScaledBy(factor : double) : Vector </td></tr>
@@ -353,9 +299,6 @@ digraph G {
 <tr><td align="left" balign="left"> + getUnitVectorInDirection() : Vector </td></tr>
 <tr><td align="left" balign="left"> + getDistanceTo(v : Vector) : double </td></tr>
 <tr><td align="left" balign="left"> + getQuadrant() : Quadrant </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
-<tr><td align="left" balign="left"> + equals(o : Object) : boolean </td></tr>
-<tr><td align="left" balign="left"> + hashCode() : int </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Vector.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -370,15 +313,9 @@ digraph G {
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Angle(angle : double) </td></tr>
 <tr><td align="left" balign="left"> + Angle() </td></tr>
-<tr><td align="left" balign="left"> + get() : double </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsAngle(angle : double) : boolean </td></tr>
-<tr><td align="left" balign="left"> + set(angle : double) </td></tr>
 <tr><td align="left" balign="left"> + getSin() : double </td></tr>
 <tr><td align="left" balign="left"> + getCos() : double </td></tr>
 <tr><td align="left" balign="left"> + add(a : Angle) </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
-<tr><td align="left" balign="left"> + hashCode() : int </td></tr>
-<tr><td align="left" balign="left"> + equals(obj : Object) : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Angle.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// world.physics.geometry.CircleShape
@@ -392,11 +329,6 @@ digraph G {
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + CircleShape(radius : double) </td></tr>
 <tr><td align="left" balign="left"> + CircleShape() </td></tr>
-<tr><td align="left" balign="left"> + getRadius() : double </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsRadius(radius : double) : boolean </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
-<tr><td align="left" balign="left"> + hashCode() : int </td></tr>
-<tr><td align="left" balign="left"> + equals(obj : Object) : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="./CircleShape.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	
@@ -413,9 +345,6 @@ digraph G {
 <tr><td align="left" balign="left"> + get() : double </td></tr>
 <tr><td align="left" balign="left"> # canHaveAsMass(mass : double) : boolean </td></tr>
 <tr><td align="left" balign="left"> - set(mass : double) </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
-<tr><td align="left" balign="left"> + hashCode() : int </td></tr>
-<tr><td align="left" balign="left"> + equals(obj : Object) : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Mass.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -432,19 +361,11 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # Collision(world : World) </td></tr>
-<tr><td align="left" balign="left"> + getCollisionPosition() : Position </td></tr>
-<tr><td align="left" balign="left"> + canHaveAsPosition(position : Position) : boolean </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # calculateCollisionPosition() </font></td></tr>
-<tr><td align="left" balign="left"> + getWorld() : World </td></tr>
-<tr><td align="left" balign="left"> + canHaveAsWorld(world : World) : boolean </td></tr>
-<tr><td align="left" balign="left"> + setWorld(world : World) </td></tr>
 <tr><td align="left" balign="left"> + getTimeToCollision() : double </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # calculateCollisionTime() </font></td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> + resolve() </font></td></tr>
 <tr><td align="left" balign="left"> + getNextCollision(world : World) : Collision </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
-<tr><td align="left" balign="left"> + hashCode() : int </td></tr>
-<tr><td align="left" balign="left"> + equals(obj : Object) : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Collision.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// world.physics.collision.BorderCollision
@@ -458,20 +379,11 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + BorderCollision(world : World, entity : Entity) </td></tr>
-<tr><td align="left" balign="left"> + getCollisionBorder() : Border </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsCollisionBorder(collisionBorder : Border) : boolean </td></tr>
-<tr><td align="left" balign="left"> + setCollisionBorder(collisionBorder : Border) </td></tr>
-<tr><td align="left" balign="left"> + getCollisionEntity() : Entity </td></tr>
-<tr><td align="left" balign="left"> + canHaveAsEntity(collisionEntity : Entity) : boolean </td></tr>
-<tr><td align="left" balign="left"> + setCollisionEntity(collisionEntity : Entity) </td></tr>
 <tr><td align="left" balign="left"> + resolve() </td></tr>
 <tr><td align="left" balign="left"> + getTimeToCollision() : double </td></tr>
 <tr><td align="left" balign="left"> - getTimeToBorderCollision(border : Border) : double </td></tr>
 <tr><td align="left" balign="left"> # calculateCollisionTime() </td></tr>
 <tr><td align="left" balign="left"> # calculateCollisionPosition() </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
-<tr><td align="left" balign="left"> + hashCode() : int </td></tr>
-<tr><td align="left" balign="left"> + equals(obj : Object) : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="./BorderCollision.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -486,17 +398,9 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + EntityCollision(world : World, entity1 : Entity, entity2 : Entity) </td></tr>
-<tr><td align="left" balign="left"> + getEntity1() : Entity </td></tr>
-<tr><td align="left" balign="left"> + setEntity1(entity1 : Entity) </td></tr>
-<tr><td align="left" balign="left"> + getEntity2() : Entity </td></tr>
-<tr><td align="left" balign="left"> - setEntity2(entity2 : Entity) </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsEntity(entity : Entity) : boolean </td></tr>
 <tr><td align="left" balign="left"> + resolve() </td></tr>
 <tr><td align="left" balign="left"> # calculateCollisionTime() </td></tr>
 <tr><td align="left" balign="left"> # calculateCollisionPosition() </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
-<tr><td align="left" balign="left"> + hashCode() : int </td></tr>
-<tr><td align="left" balign="left"> + equals(obj : Object) : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="./EntityCollision.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 		
@@ -548,24 +452,10 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Program(globals : Map&lt;String, Type&gt;, statement : Statement) </td></tr>
-<tr><td align="left" balign="left"> + getGlobalTypes() : Map&lt;String, Type&gt; </td></tr>
-<tr><td align="left" balign="left"> # setGlobalTypes(globalTypes : Map&lt;String, Type&gt;) </td></tr>
-<tr><td align="left" balign="left"> + getGlobalValues() : HashMap&lt;String, ConstantExpression&lt;?&gt;&gt; </td></tr>
-<tr><td align="left" balign="left"> # setGlobalValues(globalTypes : Map&lt;String, Type&gt;) </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsGlobals(globals : Map&lt;String, Type&gt;) : boolean </td></tr>
-<tr><td align="left" balign="left"> # getStatement() : Statement </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsStatement(statement : Statement) : boolean </td></tr>
-<tr><td align="left" balign="left"> # setStatement(statement : Statement) </td></tr>
-<tr><td align="left" balign="left"> + getOwner() : Ship </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsOwner(owner : Ship) : boolean </td></tr>
-<tr><td align="left" balign="left"> + setOwner(owner : Ship) </td></tr>
 <tr><td align="left" balign="left"> + isFinished() : boolean </td></tr>
 <tr><td align="left" balign="left"> # finish() </td></tr>
-<tr><td align="left" balign="left"> + getVariableNamed(name : String) : ConstantExpression&lt;?&gt; </td></tr>
-<tr><td align="left" balign="left"> + setVariableValue(name : String, value : ConstantExpression&lt;?&gt;) </td></tr>
 <tr><td align="left" balign="left"> + executeUntilAfterNextAction() </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="../../../model/programs/Program.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -580,16 +470,6 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # ProgramPart(line : int, column : int) </td></tr>
-<tr><td align="left" balign="left"> + getParentProgram() : Program </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsParentProgram(program : Program) : boolean </td></tr>
-<tr><td align="left" balign="left"> + setParentProgram(parentProgram : Program) </td></tr>
-<tr><td align="left" balign="left"> + getLine() : int </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsLine(line : int) : boolean </td></tr>
-<tr><td align="left" balign="left"> # setLine(line : int) </td></tr>
-<tr><td align="left" balign="left"> + getColumn() : int </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsColumn(column : int) : boolean </td></tr>
-<tr><td align="left" balign="left"> # setColumn(column : int) </td></tr>
-<tr><td align="left" balign="left"> + getOwnerShip() : Ship </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> + isTypeSafe() : boolean </font></td></tr>
 		</table></td></tr>
 		</table>>, URL="../ProgramPart.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
@@ -604,13 +484,9 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Variable(line : int, column : int, name : String) </td></tr>
-<tr><td align="left" balign="left"> + getName() : String </td></tr>
-<tr><td align="left" balign="left"> # setName(name : String) </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsName(name : String) : boolean </td></tr>
 <tr><td align="left" balign="left"> + evaluate() : ConstantExpression&lt;?&gt; </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Variable.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -639,13 +515,7 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # ConstantExpression(line : int, column : int, value : T) </td></tr>
-<tr><td align="left" balign="left"> + getValue() : T </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsValue(value : T) : boolean </td></tr>
-<tr><td align="left" balign="left"> # setValue(value : T) </td></tr>
 <tr><td align="left" balign="left"> + evaluate() : ConstantExpression&lt;T&gt; </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
-<tr><td align="left" balign="left"> + hashCode() : int </td></tr>
-<tr><td align="left" balign="left"> + equals(obj : Object) : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="./constant/ConstantExpression.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -659,11 +529,6 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # FirstOrderExpression(line : int, column : int, argument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # getArgument() : Expression </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsArgument(argument : Expression) : boolean </td></tr>
-<tr><td align="left" balign="left"> # setArgument(argument : Expression) </td></tr>
-<tr><td align="left" balign="left"> + setParentProgram(parrentProgram : Program) </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./first_order/FirstOrderExpression.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -678,13 +543,6 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # SecondOrderExpression(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # getFirstArgument() : Expression </td></tr>
-<tr><td align="left" balign="left"> # setFirstArgument(firstArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # getSecondArgument() : Expression </td></tr>
-<tr><td align="left" balign="left"> # setSecondArgument(secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsArgument(argument : Expression) : boolean </td></tr>
-<tr><td align="left" balign="left"> + setParentProgram(parentProgram : Program) </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./second_order/SecondOrderExpression.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -699,17 +557,9 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Assignment(line : int, column : int, variable : Variable, value : Expression) </td></tr>
-<tr><td align="left" balign="left"> # getVariable() : Variable </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsVariable(variable : Variable) : boolean </td></tr>
-<tr><td align="left" balign="left"> # setVariable(variable : Variable) </td></tr>
-<tr><td align="left" balign="left"> # getValue() : Expression </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsValue(value : Expression) : boolean </td></tr>
-<tr><td align="left" balign="left"> # setValue(value : Expression) </td></tr>
-<tr><td align="left" balign="left"> + setParentProgram(parentProgram : Program) </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="../statement/Assignment.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -724,17 +574,9 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Print(line : int, column : int, textExpression : Expression) </td></tr>
-<tr><td align="left" balign="left"> # getTextExpression() : Expression </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsTextExpression(textExpression : Expression) : boolean </td></tr>
-<tr><td align="left" balign="left"> # setTextExpression(textExpression : Expression) </td></tr>
-<tr><td align="left" balign="left"> # getText() : String </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsText(text : String) : boolean </td></tr>
-<tr><td align="left" balign="left"> # setText(text : String) </td></tr>
-<tr><td align="left" balign="left"> + setParentProgram(parrentProgram : Program) </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="../statement/Print.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -751,22 +593,12 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + While(line : int, column : int, condition : Expression, body : Statement) </td></tr>
-<tr><td align="left" balign="left"> + getCondition() : Expression </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsCondition(condition : Expression) : boolean </td></tr>
-<tr><td align="left" balign="left"> # setCondition(condition : Expression) </td></tr>
-<tr><td align="left" balign="left"> + getBody() : Statement </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsBody(body : Statement) : boolean </td></tr>
-<tr><td align="left" balign="left"> # setBody(body : Statement) </td></tr>
-<tr><td align="left" balign="left"> # getResultOfCondition() : boolean </td></tr>
-<tr><td align="left" balign="left"> # isChecked() : boolean </td></tr>
-<tr><td align="left" balign="left"> + setParentProgram(parrentProgram : Program) </td></tr>
 <tr><td align="left" balign="left"> # checkCondition() </td></tr>
 <tr><td align="left" balign="left"> # finishIteration() </td></tr>
 <tr><td align="left" balign="left"> + unfinish() </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="../statement/While.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -784,25 +616,13 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + If(line : int, column : int, condition : Expression, then : Statement, otherwise : Statement) </td></tr>
-<tr><td align="left" balign="left"> # getResultOfCondition() : boolean </td></tr>
 <tr><td align="left" balign="left"> # isChecked() : boolean </td></tr>
 <tr><td align="left" balign="left"> # checkCondition() </td></tr>
-<tr><td align="left" balign="left"> # getCondition() : Expression </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsCondition(condition : Expression) : boolean </td></tr>
-<tr><td align="left" balign="left"> # setCondition(condition : Expression) </td></tr>
-<tr><td align="left" balign="left"> # getThenStatement() : Statement </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsThenStatement(then : Statement) : boolean </td></tr>
-<tr><td align="left" balign="left"> # setThenStatement(then : Statement) </td></tr>
-<tr><td align="left" balign="left"> # getOtherwiseStatement() : Statement </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsOtherwiseStatement(otherwise : Statement) : boolean </td></tr>
-<tr><td align="left" balign="left"> # setOtherwiseStatement(otherwise : Statement) </td></tr>
-<tr><td align="left" balign="left"> + setParentProgram(parrentProgram : Program) </td></tr>
 <tr><td align="left" balign="left"> + unfinish() </td></tr>
 <tr><td align="left" balign="left"> - execute(statement : Statement) : boolean </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="../statement/If.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -821,7 +641,6 @@ digraph G {
 <tr><td align="left" balign="left"> # setAngle(angle : Expression) </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="../statement/action/Turn.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	
@@ -870,7 +689,6 @@ digraph G {
 <tr><td align="left" balign="left"> + Fire(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Fire.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -886,7 +704,6 @@ digraph G {
 <tr><td align="left" balign="left"> + ThrustOn(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./ThrustOn.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -902,7 +719,6 @@ digraph G {
 <tr><td align="left" balign="left"> + Skip(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Skip.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -918,7 +734,6 @@ digraph G {
 <tr><td align="left" balign="left"> + ThrustOff(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./ThrustOff.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -932,12 +747,8 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Turn(line : int, column : int, angle : Expression) </td></tr>
-<tr><td align="left" balign="left"> # getAngle() : Expression </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsAngle(angle : Expression) : boolean </td></tr>
-<tr><td align="left" balign="left"> # setAngle(angle : Expression) </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Turn.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -952,21 +763,13 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Sequence(line : int, column : int, sequence : List&lt;Statement&gt;) </td></tr>
-<tr><td align="left" balign="left"> # getSequence() : List&lt;Statement&gt; </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsSequence(sequence : List&lt;Statement&gt;) : boolean </td></tr>
-<tr><td align="left" balign="left"> # setSequence(sequence : List&lt;Statement&gt;) </td></tr>
-<tr><td align="left" balign="left"> # getSelectedIndex() : int </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsSelectedIndex(selectedIndex : int) : boolean </td></tr>
-<tr><td align="left" balign="left"> # setSelectedIndex(selectedIndex : int) </td></tr>
 <tr><td align="left" balign="left"> # incrementIndex() </td></tr>
 <tr><td align="left" balign="left"> # getCurrentStatement() : Statement </td></tr>
-<tr><td align="left" balign="left"> + setParentProgram(parrentProgram : Program) </td></tr>
 <tr><td align="left" balign="left"> # finish() </td></tr>
 <tr><td align="left" balign="left"> + unfinish() </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Sequence.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 		
@@ -985,31 +788,15 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + ForEach(line : int, column : int, type : ProgramFactory.ForeachType, variableName : String, body : Statement) </td></tr>
-<tr><td align="left" balign="left"> # getType() : ProgramFactory.ForeachType </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsType(type : ProgramFactory.ForeachType) : boolean </td></tr>
-<tr><td align="left" balign="left"> # setType(type : ProgramFactory.ForeachType) </td></tr>
-<tr><td align="left" balign="left"> # getVariableName() : String </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsVariable(variableName : String) : boolean </td></tr>
-<tr><td align="left" balign="left"> # setVariableName(variableName : String) </td></tr>
-<tr><td align="left" balign="left"> # getBody() : Statement </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsBody(body : Statement) : boolean </td></tr>
-<tr><td align="left" balign="left"> # setBody(body : Statement) </td></tr>
-<tr><td align="left" balign="left"> # getSelection() : ArrayList&lt;EntityLiteral&gt; </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsSelection(selection : ArrayList&lt;EntityLiteral&gt;) : boolean </td></tr>
 <tr><td align="left" balign="left"> # calculateSelection() </td></tr>
-<tr><td align="left" balign="left"> # getCurrentIndex() : int </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsCurrentIndex(selectedIndex : int) : boolean </td></tr>
-<tr><td align="left" balign="left"> # setSelectedIndex(selectedIndex : int) </td></tr>
 <tr><td align="left" balign="left"> # incrementIndex() </td></tr>
 <tr><td align="left" balign="left"> # isAtStartOfIteration() : boolean </td></tr>
 <tr><td align="left" balign="left"> # startIteration() </td></tr>
 <tr><td align="left" balign="left"> # finishIteration() </td></tr>
-<tr><td align="left" balign="left"> + setParentProgram(parrentProgram : Program) </td></tr>
 <tr><td align="left" balign="left"> + unfinish() </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./ForEach.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -1026,7 +813,6 @@ digraph G {
 <tr><td align="left" balign="left"> + evaluate() : BooleanLiteral </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./False.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.constant.Self
@@ -1039,11 +825,9 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Self(line : int, column : int) </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsValue(value : Entity) : boolean </td></tr>
 <tr><td align="left" balign="left"> + evaluate() : ConstantExpression&lt;Entity&gt; </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Self.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -1057,10 +841,8 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Null(line : int, column : int) </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsValue(value : Entity) : boolean </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Null.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -1077,7 +859,6 @@ digraph G {
 <tr><td align="left" balign="left"> + evaluate() : ConstantExpression&lt;Double&gt; </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./GetDirection.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -1094,7 +875,6 @@ digraph G {
 <tr><td align="left" balign="left"> + evaluate() : BooleanLiteral </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./True.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -1108,10 +888,8 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + EntityLiteral(line : int, column : int, entity : Entity) </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsValue(value : Entity) : boolean </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./literal/EntityLiteral.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -1127,7 +905,6 @@ digraph G {
 <tr><td align="left" balign="left"> + DoubleLiteral(line : int, column : int, value : Double) </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./literal/DoubleLiteral.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -1143,7 +920,6 @@ digraph G {
 <tr><td align="left" balign="left"> + BooleanLiteral(line : int, column : int, value : Boolean) </td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./literal/BooleanLiteral.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	
@@ -1292,11 +1068,6 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # FirstOrderExpression(line : int, column : int, argument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # getArgument() : Expression </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsArgument(argument : Expression) : boolean </td></tr>
-<tr><td align="left" balign="left"> # setArgument(argument : Expression) </td></tr>
-<tr><td align="left" balign="left"> + setParentProgram(parrentProgram : Program) </td></tr>
-<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./FirstOrderExpression.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -1393,7 +1164,6 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + NotEquals(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./NotEquals.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
@@ -1407,7 +1177,6 @@ digraph G {
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + Equals(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Equals.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
@@ -1552,7 +1321,6 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # SecondOrderExpressionOfNumbersToNumber(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsArgument(argument : Expression) : boolean </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(first : DoubleLiteral, second : DoubleLiteral) : DoubleLiteral </font></td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
@@ -1570,7 +1338,6 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # SecondOrderExpressionOfBooleansToBoolean(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsArgument(argument : Expression) : boolean </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(first : BooleanLiteral, second : BooleanLiteral) : BooleanLiteral </font></td></tr>
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + getType() : Type </td></tr>
@@ -1582,21 +1349,21 @@ digraph G {
 	// EDGES
 	
 	//Entity
-	entity:p -> world:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	entity:p -> world:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,dir ="both"];
 	entity:p -> entitycollision:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	entity:p -> bordercollision:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 
 	//Ship
-	ship:p -> entity:p [dir=back,arrowtail=empty];
-	ship:p -> thruster:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
-	ship:p -> program:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	ship:p -> entity:p [arrowtail=empty];
+	ship:p -> thruster:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, dir="both"];
+	ship:p -> program:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, dir="both"];
 	//Thruster
-	thruster:p -> ship:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 
 	//Asteroid
-	asteroid:p -> entity:p [dir=back,arrowtail=empty];
+	asteroid:p -> entity:p [arrowtail=empty];
 
 	//Bullet
-	bullet:p -> entity:p [dir=back,arrowtail=empty];
+	bullet:p -> entity:p [arrowtail=empty];
 	bullet:p -> ship:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 
 	//Mass
@@ -1608,189 +1375,187 @@ digraph G {
 	//Vector
 
 	//Position
-	position:p -> vector:p [dir=back,arrowtail=empty];
+	position:p -> vector:p [arrowtail=empty];
 	position:p -> collision:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	position:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 
 	//Direction
-	direction:p -> vector:p [dir=back,arrowtail=empty];
+	direction:p -> vector:p [arrowtail=empty];
 	direction:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	//Angle
 	angle:p -> direction:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 
 
 	//Velocity
-	velocity:p -> vector:p [dir=back,arrowtail=empty];
+	velocity:p -> vector:p [arrowtail=empty];
 	velocity:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 
 
 	//Acceleration
-	acceleration:p -> vector:p [dir=back,arrowtail=empty];
+	acceleration:p -> vector:p [arrowtail=empty];
 	acceleration:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 
 	//Force
-	force:p -> vector:p [dir=back,arrowtail=empty];
+	force:p -> vector:p [arrowtail=empty];
 
 	//World
-	world:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	world:p -> collision:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 
 
 	//Collision
 	//BorderCollision
-	bordercollision:p -> collision:p [dir=back,arrowtail=empty];
+	bordercollision:p -> collision:p [arrowtail=empty];
 	//EntityCollision
-	entitycollision:p -> collision:p [dir=back,arrowtail=empty];
+	entitycollision:p -> collision:p [arrowtail=empty];
 	//Border
 	border:p -> bordercollision:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	//Quadrant
 	quadrant:p -> vector:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 
 	//Program
-	program:p -> ship:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
-	program:p -> programpart:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	program:p -> programpart:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, dir="both"];
 
 	//ProgramPart
 
 	//Statement
-	statement:p -> programpart:p [dir=back,arrowtail=empty];
+	statement:p -> programpart:p [arrowtail=empty];
 	statement:p -> program:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 
 	//Action
-	action:p -> statement:p [dir=back,arrowtail=empty];
+	action:p -> statement:p [arrowtail=empty];
 	//Fire
-	fire:p -> action:p [dir=back,arrowtail=empty];
+	fire:p -> action:p [arrowtail=empty];
 	//Skip
-	skip:p -> action:p [dir=back,arrowtail=empty];
+	skip:p -> action:p [arrowtail=empty];
 	//ThrustOn
-	thruston:p -> action:p [dir=back,arrowtail=empty];
+	thruston:p -> action:p [arrowtail=empty];
 	//ThrustOff
-	thrustoff:p -> action:p [dir=back,arrowtail=empty];
+	thrustoff:p -> action:p [arrowtail=empty];
 	//Turn
-	turn:p -> action:p [dir=back,arrowtail=empty];
+	turn:p -> action:p [arrowtail=empty];
 
 	//If
-	if:p -> statement:p [dir=back,arrowtail=empty];
+	if:p -> statement:p [arrowtail=empty];
 
 	//ForEach
-	foreach:p -> statement:p [dir=back,arrowtail=empty];
+	foreach:p -> statement:p [arrowtail=empty];
 
 	//Sequence
-	sequence:p -> statement:p [dir=back,arrowtail=empty];
+	sequence:p -> statement:p [arrowtail=empty];
 
 	//Assignment
-	assignment:p -> statement:p [dir=back,arrowtail=empty];
+	assignment:p -> statement:p [arrowtail=empty];
 
 	//Assignment
-	while:p -> statement:p [dir=back,arrowtail=empty];
+	while:p -> statement:p [arrowtail=empty];
 
 	//Assignment
-	print:p -> statement:p [dir=back,arrowtail=empty];
+	print:p -> statement:p [arrowtail=empty];
 
 	//Expression
-	expression:p -> programpart:p [dir=back,arrowtail=empty];
+	expression:p -> programpart:p [arrowtail=empty];
 
 	//Variable
-	variable:p -> expression:p [dir=back,arrowtail=empty];
+	variable:p -> expression:p [arrowtail=empty];
 
 	
 	//ConstantExpression
-	constantexpression:p -> expression:p [dir=back,arrowtail=empty];
+	constantexpression:p -> expression:p [arrowtail=empty];
 
 	//BooleanLiteral
-	booleanliteral:p -> constantexpression:p [dir=back,arrowtail=empty];
+	booleanliteral:p -> constantexpression:p [arrowtail=empty];
 	//True
-	true:p -> booleanliteral:p [dir=back,arrowtail=empty];
+	true:p -> booleanliteral:p [arrowtail=empty];
 	//False
-	false:p -> booleanliteral:p [dir=back,arrowtail=empty];
+	false:p -> booleanliteral:p [arrowtail=empty];
 
 	//DoubleLiteral
-	doubleliteral:p -> constantexpression:p [dir=back,arrowtail=empty];
+	doubleliteral:p -> constantexpression:p [arrowtail=empty];
 	//GetDir
-	getdir:p -> doubleliteral:p [dir=back,arrowtail=empty];
+	getdir:p -> doubleliteral:p [arrowtail=empty];
 
 	//EntityLiteral
-	entityliteral:p -> constantexpression:p [dir=back,arrowtail=empty];
+	entityliteral:p -> constantexpression:p [arrowtail=empty];
 	//Self
-	self:p -> entityliteral:p [dir=back,arrowtail=empty];
+	self:p -> entityliteral:p [arrowhead=empty];
 	//Null
-	null:p -> entityliteral:p [dir=back,arrowtail=empty];
+	null:p -> entityliteral:p [arrowhead=empty];
 
 	
 	//FirstOrderExpression
-	firstorderexpression:p -> expression:p [dir=back,arrowtail=empty];
+	firstorderexpression:p -> expression:p [arrowhead=empty];
 	
 	//BooleanToBoolean
-	booleantoboolean:p -> firstorderexpression:p [dir=back,arrowtail=empty];
+	booleantoboolean:p -> firstorderexpression:p [arrowhead=empty];
 	//Not
-	not:p -> booleantoboolean:p [dir=back,arrowtail=empty];
+	not:p -> booleantoboolean:p [arrowhead=empty];
 	
 	////EntityToEntity
-	//entitytoentity:p -> firstorderexpression:p [dir=back,arrowtail=empty];
+	//entitytoentity:p -> firstorderexpression:p [arrowhead=empty];
 	////Self
-	//self:p -> entitytoentity:p [dir=back,arrowtail=empty];
+	//self:p -> entitytoentity:p [arrowhead=empty];
 	////Null
-	//null:p -> entitytoentity:p [dir=back,arrowtail=empty];
+	//null:p -> entitytoentity:p [arrowhead=empty];
 
 	//EntityToDouble
-	entitytodouble:p -> firstorderexpression:p [dir=back,arrowtail=empty];
+	entitytodouble:p -> firstorderexpression:p [arrowhead=empty];
 	//GetX
-	getx:p -> entitytodouble:p [dir=back,arrowtail=empty];
+	getx:p -> entitytodouble:p [arrowhead=empty];
 	//GetY
-	gety:p -> entitytodouble:p [dir=back,arrowtail=empty];
+	gety:p -> entitytodouble:p [arrowhead=empty];
 	//GetVX
-	getvx:p -> entitytodouble:p [dir=back,arrowtail=empty];
+	getvx:p -> entitytodouble:p [arrowhead=empty];
 	//GetVY
-	getvy:p -> entitytodouble:p [dir=back,arrowtail=empty];
+	getvy:p -> entitytodouble:p [arrowhead=empty];
 	//GetR
-	getr:p -> entitytodouble:p [dir=back,arrowtail=empty];
+	getr:p -> entitytodouble:p [arrowhead=empty];
 	
 	//DoubleToDouble
-	doubletodouble:p -> firstorderexpression:p [dir=back,arrowtail=empty];
+	doubletodouble:p -> firstorderexpression:p [arrowhead=empty];
 	//Sin
-	sin:p -> doubletodouble:p [dir=back,arrowtail=empty];
+	sin:p -> doubletodouble:p [arrowhead=empty];
 	//Cos
-	cos:p -> doubletodouble:p [dir=back,arrowtail=empty];
+	cos:p -> doubletodouble:p [arrowhead=empty];
 	//Sqrt
-	sqrt:p -> doubletodouble:p [dir=back,arrowtail=empty];
+	sqrt:p -> doubletodouble:p [arrowhead=empty];
 
 	
 	//SecondOrderExpression
-	secondorderexpression:p -> expression:p [dir=back,arrowtail=empty];
+	secondorderexpression:p -> expression:p [arrowhead=empty];
 	
 	//BooleansToBoolean
- 	booleanstoboolean:p -> secondorderexpression:p [dir=back,arrowtail=empty];
-	//And
- 	and:p -> booleanstoboolean:p [dir=back,arrowtail=empty];
+ 	booleanstoboolean:p -> secondorderexpression:p [arrowhead=empty];
 	//Or
- 	or:p -> booleanstoboolean:p [dir=back,arrowtail=empty];
+ 	or:p -> booleanstoboolean:p [arrowhead=empty];
+ 	and:p -> booleanstoboolean:p [arrowhead=empty];
 	
 	// //EntitiesToBoolean
- 	// entitiestoboolean:p -> secondorderexpression:p [dir=back,arrowtail=empty];
+ 	// entitiestoboolean:p -> secondorderexpression:p [arrowhead=empty];
 	
 	//DoublesToBoolean
- 	doublestoboolean:p -> secondorderexpression:p [dir=back,arrowtail=empty];
+ 	doublestoboolean:p -> secondorderexpression:p [arrowhead=empty];
 	//GE
- 	ge:p -> doublestoboolean:p [dir=back,arrowtail=empty];
+ 	ge:p -> doublestoboolean:p [arrowhead=empty];
 	//GT
- 	gt:p -> doublestoboolean:p [dir=back,arrowtail=empty];
-	//LE
- 	le:p -> doublestoboolean:p [dir=back,arrowtail=empty];
+ 	gt:p -> doublestoboolean:p [arrowhead=empty];
+	//L
+	E
+ 	le:p -> doublestoboolean:p [arrowhead=empty];
 	//LT
- 	lt:p -> doublestoboolean:p [dir=back,arrowtail=empty];
+ 	lt:p -> doublestoboolean:p [arrowhead=empty];
 	//Equals
- 	equals:p -> doublestoboolean:p [dir=back,arrowtail=empty];
+ 	equals:p -> doublestoboolean:p [arrowhead=empty];
 	//NotEquals
- 	notequals:p -> doublestoboolean:p [dir=back,arrowtail=empty];
+ 	notequals:p -> doublestoboolean:p [arrowhead=empty];
 	
 	//DoublesToDouble
- 	doublestodouble:p -> secondorderexpression:p [dir=back,arrowtail=empty];
+ 	doublestodouble:p -> secondorderexpression:p [arrowhead=empty];
 	//Addition
- 	addition:p -> doublestodouble:p [dir=back,arrowtail=empty];
+ 	addition:p -> doublestodouble:p [arrowhead=empty];
 	//Subtraction
- 	subtraction:p -> doublestodouble:p [dir=back,arrowtail=empty];
+ 	subtraction:p -> doublestodouble:p [arrowhead=empty];
 	//Multiplication
- 	multiplication:p -> doublestodouble:p [dir=back,arrowtail=empty];
+ 	multiplication:p -> doublestodouble:p [arrowhead=empty];
 	//Division
- 	division:p -> doublestodouble:p [dir=back,arrowtail=empty];
+ 	division:p -> doublestodouble:p [arrowhead=empty];
 }

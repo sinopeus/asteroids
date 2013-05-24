@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.IFacade.TypeCheckOutcome
-	c11604 [label=<<table title="model.IFacade.TypeCheckOutcome" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./IFacade.TypeCheckOutcome.html">
+	c11603 [label=<<table title="model.IFacade.TypeCheckOutcome" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./IFacade.TypeCheckOutcome.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> TypeCheckOutcome </td></tr>
 		</table></td></tr>
@@ -27,7 +27,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./IFacade.TypeCheckOutcome.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.IFacade.TypeCheckOutcome NAVASSOC java.lang.String
-	c11604:p -> c11709:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c11603:p -> c11709:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// java.lang.String
 	c11709 [label=<<table title="java.lang.String" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/String.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">

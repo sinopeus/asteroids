@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// model.programs.parsing.language.statement.action.Action
-	c16443 [label=<<table title="model.programs.parsing.language.statement.action.Action" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Action.html">
+	c16568 [label=<<table title="model.programs.parsing.language.statement.action.Action" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Action.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> Action </font></td></tr>
 		</table></td></tr>
@@ -21,10 +21,11 @@ digraph G {
 <tr><td align="left" balign="left"> + Action(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
 <tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : IFacade.TypeCheckOutcome </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Action.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.statement.action.ThrustOff
-	c16447 [label=<<table title="model.programs.parsing.language.statement.action.ThrustOff" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./ThrustOff.html">
+	c16572 [label=<<table title="model.programs.parsing.language.statement.action.ThrustOff" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./ThrustOff.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> ThrustOff </td></tr>
 		</table></td></tr>
@@ -34,11 +35,10 @@ digraph G {
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + ThrustOff(line : int, column : int) </td></tr>
 <tr><td align="left" balign="left"> + execute() : boolean </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 <tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./ThrustOff.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//model.programs.parsing.language.statement.action.ThrustOff extends model.programs.parsing.language.statement.action.Action
-	c16443:p -> c16447:p [dir=back,arrowtail=empty];
+	c16568:p -> c16572:p [dir=back,arrowtail=empty];
 }
 
