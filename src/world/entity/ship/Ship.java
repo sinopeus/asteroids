@@ -58,7 +58,7 @@ public class Ship extends Entity implements IShip
 	{
 		super(direction, position, speedLimit, velocity, shape, mass);
 		setThruster(new Thruster(getThrustPerSecond(), this));
-		setBulletList(new ArrayList <Bullet>(3));
+		this.bulletList = new ArrayList <Bullet>(3);
 	}
 
 	/**
@@ -70,7 +70,7 @@ public class Ship extends Entity implements IShip
 	public Ship ()
 	{
 		this(new Direction(), new Position(), Velocity.getSpeedOfLight(), new Velocity(), new CircleShape(40), new Mass(5E15));
-		setBulletList(new ArrayList <Bullet>(3));
+		this.bulletList = new ArrayList <Bullet>(3);
 	}
 
 	/**
@@ -151,7 +151,7 @@ public class Ship extends Entity implements IShip
 	private Thruster	thruster;
 
 	/**
-	 * @return the bullets
+	 * Gets the bullet list of this ship.
 	 */
 	@Basic
 	@Raw
@@ -160,35 +160,14 @@ public class Ship extends Entity implements IShip
 		return bulletList;
 	}
 
-	/**
-	 * TODO document and test
-	 * @param bullets
-	 * @return
-	 */
-	@Basic
-	@Model
-	protected static boolean canHaveAsBulletList (ArrayList <Bullet> bullets)
-	{
-		return (bullets != null);
-	}
-
-	/**
-	 * @param bullets the bullets to set
-	 */
-	@Basic
-	@Raw
-	@Model
-	protected void setBulletList (ArrayList <Bullet> bullets)
-	{
-		if (!canHaveAsBulletList(bullets)) throw new IllegalArgumentException("Invalid bulletlist provided.");
-		this.bulletList = bullets;
-	}
-
 	private ArrayList <Bullet>	bulletList;
 
 	Program						program;
 
-	//TODO document
+	/**
+	 * Get the Program of this ship.
+	 */
+	@SuppressWarnings ("javadoc")
 	@Basic
 	@Raw
 	public Program getProgram ()
@@ -196,19 +175,36 @@ public class Ship extends Entity implements IShip
 		return program;
 	}
 
+	/**
+	 * Checks whether this ship can have the given program as its program.
+	 * 
+	 * @param	program
+	 * 			The given program
+	 * @return	True
+	 * 			| result == true
+	 */
 	@Basic
 	@Model
 	protected static boolean canHaveAsProgram (Program program)
 	{
-		return true; //TODO more checking?
+		return true;
 	}
 
+	/**
+	 * Sets the program of this ship to the given program.
+	 * 
+	 * @param	program
+	 * 			The given program
+	 * @post	The program of this ship is now equal to the given program.
+	 * 			| new.getProgram() == program
+	 * @effect	Sets the owner of the given program to this ship.
+	 * 			| program.setOwner(this)
+	 */
 	@Basic
-	//TODO test and document	
 	@Raw
 	public void setProgram (Program program)
 	{
-		if (!canHaveAsProgram(program)) throw new IllegalArgumentException("Invalid program provided."); //TODO is this necessary
+		if (!canHaveAsProgram(program)) throw new IllegalArgumentException("Invalid program provided.");
 		this.program = program;
 		program.setOwner(this);
 	}
@@ -232,7 +228,6 @@ public class Ship extends Entity implements IShip
 		//Add error when terminated.
 		if (getThruster().isActivated()) getThruster().thrust(dt);
 		super.advance(dt);
-		//TODO check order of execution
 
 		if (getProgram() == null) return;
 		double gameTimeStart = getWorld().getGameTime();
@@ -243,7 +238,12 @@ public class Ship extends Entity implements IShip
 			getProgram().executeUntilAfterNextAction();
 	}
 
-	//TODO test and document
+	/**
+	 * Checks whether this ship can fire a bullet
+	 * 
+	 * @return	The bullet list of this ship contains less than the maximum amoutnt of bullets
+	 * 			| result == (getBulletList().size() < MAXIMUM_AMOUNT_OF_BULLETS)
+	 */
 	@Basic
 	public boolean canFire ()
 	{
@@ -328,10 +328,12 @@ public class Ship extends Entity implements IShip
 	private static double	thrustPerSecond				= 1.1E21;
 
 	/**
-	 * TODO
+	 * A variable registering the maximum amount of bullets a ship can have in its world.
 	 */
 	private static byte		MAXIMUM_AMOUNT_OF_BULLETS	= 3;
 
-	//TODO document
+	/**
+	 * The cooldown time for actions of ships.
+	 */
 	private static double	SPEED_OF_ACTIONS			= 0.2;
 }

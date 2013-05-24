@@ -232,14 +232,15 @@ public class Bullet extends Entity
 	/**
 	 * Unlinks this bullet from the ship which shot it.
 	 * 
+	 * @post	The bullet list of this bullet's shooter doesn't contain this bullet any more.
+	 * 			| this.shooter.getBulletList().remove(this)
 	 * @post	Set the reference to the shooter of this bullet to null. 
 	 * 			| shooter == null;
 	 */
 	@Raw
 	public void unlinkFromShooter ()
 	{
-		assert (this.shooter.getBulletList().contains(this));//TODO remove this
-		this.shooter.getBulletList().remove(this);
+		getShooter().getBulletList().remove(this);
 		this.shooter = null;
 	}
 
@@ -303,7 +304,7 @@ public class Bullet extends Entity
 	/**
 	 * A variable registering the density of a bullet.
 	 */
-	private static final double	density					= 7.8E10;	//TODO remove thisheb dit 100 keer kleiner gemaakt
+	private static final double	density					= 7.8E10;	//note: I made this 100 time smaller
 
 	/**
 	 * A variable registering the maximum amount of time a bullet can bounce off the boundaries of the world.

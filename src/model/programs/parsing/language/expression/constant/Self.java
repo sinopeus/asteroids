@@ -6,7 +6,7 @@ import world.entity.Entity;
 
 public class Self extends ConstantExpression <Entity>
 {
-	public Self (int line, int column) throws IllegalArgumentException //TODO not sure about how to do this.
+	public Self (int line, int column) throws IllegalArgumentException
 	{
 		super(line, column, null);
 	}

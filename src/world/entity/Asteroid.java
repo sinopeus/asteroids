@@ -62,7 +62,7 @@ public class Asteroid extends Entity
 	 * 			| new.getWorld().getNumberOfEntities()  = this.getWorld().getNumberOfEntities() + 1
 	 * @effect 	adds two asteroids to the world whose sizes are half of the size of this asteroid.
 	 * 			| world.add(new Asteroid(...))
-	 * 			| world.add(new Asteroid(...)) //TODO
+	 * 			| world.add(new Asteroid(...))
 	 * @effect 	Removes this asteroid from the world.
 	 * 			| this.getWorld().remove
 	 */

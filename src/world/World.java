@@ -150,10 +150,14 @@ public class World extends ArrayList <Entity>
 	 */
 	private double	ySize;
 
-	//TODO document
+	/**
+	 * A variable registering the game time of this world.
+	 */
 	private double	gameTime;
 
-	//TODO document
+	/**
+	 * Gets the game time of this world.
+	 */
 	@Basic
 	@Raw
 	public double getGameTime ()
@@ -161,24 +165,50 @@ public class World extends ArrayList <Entity>
 		return gameTime;
 	}
 
-	//TODO document
+	/**
+	 * Checks whether a world can have the given game time as its game time.
+	 * 
+	 * @param 	gameTime
+	 * 			The given game time.
+	 * @return	True if and only if the given game time is positive.
+	 * 			| result == (gameTime >= 0
+	 */
 	@Basic
 	protected static boolean canHaveAsGameTime (double gameTime)
 	{
 		return (gameTime >= 0);
 	}
 
+	/**
+	 * Set the game time of this world to the given game time.
+	 * 
+	 * @param	gameTime
+	 * 			The given game time.
+	 * @post	The game time of this world is now equal to the given game time.
+	 * 			| new.getGameTime() == gameTime
+	 * @throws	IllegalArgumentException
+	 * 			The given game time is not a valid game time for this world.
+	 * 			| !canHaveAsGameTime(gameTime)
+	 */
 	@Basic
 	@Raw
 	@Model
-	protected void setGameTime (double gameTime)
+	protected void setGameTime (double gameTime) throws IllegalArgumentException
 	{
 		if (!canHaveAsGameTime(gameTime)) throw new IllegalArgumentException("Invalid game time provided.");
 		this.gameTime = gameTime;
 	}
 
+	/**
+	 * Advances the game time of this world by the given duration.
+	 * 
+	 * @param	duration
+	 * 			The given duration.
+	 * @effect	Sets the game time of this world to the given game time plus the duration
+	 *			| setGameTime(getGameTime() + duraction)
+	 */
 	@Model
-	protected void advandeGameTime (double duration)
+	protected void advanceGameTime (double duration)
 	{
 		try
 		{
@@ -210,14 +240,17 @@ public class World extends ArrayList <Entity>
 	 * 
 	 * @param 	entity
 	 * 			The given entity
-	 * @post	This world now contains the given entity.
-	 * 			| new.contains(e)
+	 * @post	If the given entity is not null and is not already in this world, this world now contains the given entity.
+	 * 			| if (entity != null && !isInWorld(entity))
+	 * 			| 	new.contains(e)
+	 * @throws	IllegalArgumentException
+	 * 			The given entity is not a valid entity to add.
+	 * 			| !canHaveAsNewEntity(entity)
 	 */
 	@Override
-	public boolean add (Entity entity) throws IllegalArgumentException//TODO DOCUMENT
+	public boolean add (Entity entity) throws IllegalArgumentException
 	{
 		if (entity == null) return false;
-		//if (!isSpaceForEntity(entity)) return false; TODO remove this
 		if (!canHaveAsNewEntity(entity)) { throw new IllegalArgumentException("Invalid entity added"); }
 		if (!isInWorld(entity)) return false;
 		entity.setWorld(this);
@@ -232,7 +265,7 @@ public class World extends ArrayList <Entity>
 	 * 			The time difference over which to evolve this world.
 	 * @param	coll
 	 * 			The required collision listener.
-	 * @note	//TODO more extensive informal doc
+	 * @effect	This world evolves the given duration.
 	 */
 	public void evolve (double dt, CollisionListener coll)
 	{
@@ -277,7 +310,10 @@ public class World extends ArrayList <Entity>
 	 * 
 	 * @param	dt
 	 * 			The time over which to advance all entities.
-	 * @effect	| for (Entity e : this) e.advance(dt);
+	 * @effect	Advance every entity in this world dt seconds.
+	 * 			| for (Entity e : this) e.advance(dt);
+	 * @effect	Advance the game time dt seconds.
+	 * 			| advanceGameTime(dt)
 	 */
 	@Model
 	private void advanceAll (double dt)
@@ -287,7 +323,7 @@ public class World extends ArrayList <Entity>
 			temp.add(e);
 		for (Entity e : temp)
 			e.advance(dt);
-		advandeGameTime(dt);//TODO change doc
+		advanceGameTime(dt);
 	}
 
 	/**
@@ -306,7 +342,7 @@ public class World extends ArrayList <Entity>
 	 * Checks whether the given entity is within the world.
 	 * @param 	entity
 	 * 			The given entity
-	 * @return	True if and only if the entity is not null and every edge of the shape is in the world. //TODO
+	 * @return	True if and only if the entity is not null and every edge of the shape is in the world.
 	 * 			| result == (entity != null)
 	 * 			| && isInWorld(entity.getPosition().getSum(new Vector(entity.getShape().getRadius(), 0)))
 	 * 			| && isInWorld(entity.getPosition().getSum(new Vector(-entity.getShape().getRadius(), 0)))
@@ -334,7 +370,7 @@ public class World extends ArrayList <Entity>
 	 * 			| (entity == null) || for (Entity e : this) (!entity.overlapsWith(e))
 	 */
 	@Model
-	private boolean isSpaceForEntity (Entity entity) //TODO we might want to use this?
+	private boolean isSpaceForEntity (Entity entity)
 	{
 		if (entity == null) return true;
 		for (Entity e : this)

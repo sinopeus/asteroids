@@ -51,7 +51,7 @@ public class If extends Statement
 
 	protected void setCondition (Expression condition)
 	{
-		if (!canHaveAsCondition(condition)) throw new IllegalArgumentException("Invalid condition for if statement."); //TODO change the kind of exception?
+		if (!canHaveAsCondition(condition)) throw new IllegalArgumentException("Invalid condition for if statement.");
 		this.condition = condition;
 	}
 
@@ -124,7 +124,7 @@ public class If extends Statement
 		} else
 		{
 			finish();
-			return false; // TODO make this into an error?
+			return false;
 		}
 	}
 

@@ -67,6 +67,7 @@ public abstract class Entity
 	 */
 	protected Entity (Direction direction, Position position, double speedLimit, Velocity velocity, CircleShape shape, Mass mass) throws IllegalArgumentException
 	{
+		isTerminated = false;
 		setDirection(direction);
 		setPosition(position);
 		setSpeedLimit(speedLimit);
@@ -74,7 +75,6 @@ public abstract class Entity
 		if (!canHaveAsShape(shape)) throw new IllegalArgumentException("Invalid circle shape provided");
 		else this.shape = shape;
 		setMass(mass);
-		isTerminated = false;
 	}
 
 	/**
@@ -474,7 +474,19 @@ public abstract class Entity
 	 */
 	public void advance (double dt)
 	{
-		move(dt);
+		try
+		{
+			move(dt);
+		} catch (ArithmeticException e1)
+		{
+			System.err.println("You are not obeying the Asteroids' laws of physics, young padawan.");
+		} catch (IllegalStateException e2)
+		{
+			e2.printStackTrace();
+		} catch (IllegalArgumentException e3)
+		{
+			System.err.println("Something went wrong, we don't know what or why.");
+		}
 	}
 
 	/**
@@ -497,7 +509,7 @@ public abstract class Entity
 	protected void move (double duration) throws ArithmeticException, IllegalArgumentException, IllegalStateException
 	{
 		if (this.isTerminated()) { throw new IllegalStateException("This entity is terminated."); }
-		if (duration < 0) duration = 0;
+		if(duration <= 0) return;
 		this.position.moveBy(getVelocity(), duration);
 	}
 
@@ -507,7 +519,7 @@ public abstract class Entity
 	 * @param	that
 	 * 			The given entity
 	 * @effect	Has this entity collide with the given entity
-	 * 			| this.collideWith(that) //TODO
+	 * 			| this.collideWith(that)
 	 */
 	public void collideWith (Entity that)
 	{
@@ -609,7 +621,6 @@ public abstract class Entity
 	 * @param	that 
 	 * 			The entity off which this entity bounces.
 	 * @post	The velocity vectors of both entities are modified in accordance with the principles of elastic collision.
-	 * 			| //TODO
 	 */
 	@Model
 	protected void bounce (Entity that)
@@ -734,41 +745,5 @@ public abstract class Entity
 	public String toString ()
 	{
 		return " at " + getPosition() + "   with velocity " + getVelocity() + "   and shape " + getShape() + "  ";
-	}
-
-	@Override
-	public boolean equals (Object obj)
-	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (getClass() != obj.getClass()) return false;
-		Entity other = (Entity) obj;
-		if (direction == null)
-		{
-			if (other.direction != null) return false;
-		} else if (!direction.equals(other.direction)) return false;
-		if (isTerminated != other.isTerminated) return false;
-		if (mass == null)
-		{
-			if (other.mass != null) return false;
-		} else if (!mass.equals(other.mass)) return false;
-		if (position == null)
-		{
-			if (other.position != null) return false;
-		} else if (!position.equals(other.position)) return false;
-		if (shape == null)
-		{
-			if (other.shape != null) return false;
-		} else if (!shape.equals(other.shape)) return false;
-		if (Double.doubleToLongBits(speedLimit) != Double.doubleToLongBits(other.speedLimit)) return false;
-		if (velocity == null)
-		{
-			if (other.velocity != null) return false;
-		} else if (!velocity.equals(other.velocity)) return false;
-		if (world == null)
-		{
-			if (other.world != null) return false;
-		} else if (!world.equals(other.world)) return false;
-		return true;
 	}
 }

@@ -20,7 +20,7 @@ import be.kuleuven.cs.som.annotate.Raw;
 public final class EntityCollision extends Collision
 {
 	/**
-	 * Creates a new collision between entities. //TODO document
+	 * Creates a new collision between entities.
 	 * 
 	 * @param	world	
 	 * 			The world in which collision occurs.
@@ -28,8 +28,20 @@ public final class EntityCollision extends Collision
 	 * 			The first entity involved in the collision.
 	 * @param	entity2
 	 * 			The second entity involved in the collision.
+	 * @effect	Initialize this collision with the given world
+	 * 			| super(world)
+	 * @effect	Set the first entity of this entity collision to the first entity.
+	 * 			| setEntity1(entity1)
+	 * @effect	Set the second entity of this entity collision to the second entity.
+	 * 			| setEntity2(entity2)
+	 * @throws	IllegalArgumentException
+	 * 			The given world is not a valid world for this collision
+	 * 			| ! canHaveAsWorld(world)
+	 * @throws	IllegalArgumentException
+	 * 			Any of the given entities is not a valid entity for this entity collision
+	 * 			| !canHaveAsEntity(entity1) || !canHaveAsEntity(entity2) 
 	 */
-	public EntityCollision (World world, Entity entity1, Entity entity2)
+	public EntityCollision (World world, Entity entity1, Entity entity2) throws IllegalArgumentException
 	{
 		super(world);
 		this.entity = new Entity[2];

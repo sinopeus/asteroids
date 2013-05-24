@@ -22,10 +22,12 @@ import be.kuleuven.cs.som.annotate.Raw;
 public abstract class Collision
 {
 	/**
-	 * @param collisionPosition //TODO document
-	 * @param world
+	 * @param	world
+	 * 			The world in which this collision might take place.
+	 * @effect	sets the world of this collision to the given world.
+	 * 			| setWorld(world)
 	 */
-	protected Collision (World world)
+	protected Collision (World world) throws IllegalArgumentException
 	{
 		setWorld(world);
 	}
@@ -102,7 +104,7 @@ public abstract class Collision
 	 */
 	@Basic
 	@Raw
-	public void setWorld (@Raw World world)
+	public void setWorld (@Raw World world) throws IllegalArgumentException
 	{
 		if (!canHaveAsWorld(world)) throw new IllegalArgumentException("Invalid world provided.");
 		this.world = world;
