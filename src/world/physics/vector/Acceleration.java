@@ -1,6 +1,5 @@
 package world.physics.vector;
 
-import Utilities.Util;
 
 /**
  * A class of acceleration vectors.

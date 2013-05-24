@@ -1,6 +1,5 @@
 package world.physics;
 
-import Utilities.Util;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Model;
 import be.kuleuven.cs.som.annotate.Raw;

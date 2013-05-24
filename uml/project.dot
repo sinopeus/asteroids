@@ -1347,7 +1347,7 @@ digraph G {
 
 	//Bullet
 	bullet:p -> entity:p [arrowhead=empty];
-	bullet:p -> ship:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
+	bullet:p -> ship:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open, dir="both"];
 
 	//Mass
 	mass:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
