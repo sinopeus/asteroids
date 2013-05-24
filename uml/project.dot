@@ -23,8 +23,9 @@ digraph G {
 	// c15492:p -> c15578:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 
 	// NODES
- subgraph world {
-                label = "world"
+ subgraph cluster_world {
+                label = "world";
+		color = "blue";
 
 	// world.World
 	world [label=<<table title="world.World" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./World.html">
@@ -51,9 +52,9 @@ digraph G {
 <tr><td align="left" balign="left"> + numberOfEntities() : int </td></tr>
 		</table></td></tr>
 		</table>>, URL="./World.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	subgraph entity {
-                label = "world.entity"
+ subgraph cluster_entity {
+                label = "entity";
+		color = "blue";
 
 	// world.entity.Entity
 	entity [label=<<table title="world.entity.Entity" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../Entity.html">
@@ -136,8 +137,10 @@ digraph G {
 <tr><td align="left" balign="left"> + terminate() </td></tr>
 		</table></td></tr>
 		</table>>, URL="../Bullet.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
- subgraph ship {
-                label = "world.entity.ship"
+
+ subgraph cluster_ship {
+                label = "ship";
+		color = "blue";
 
 		// world.entity.ship.Thruster
 	thruster [label=<<table title="world.entity.ship.Thruster" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Thruster.html">
@@ -192,8 +195,16 @@ digraph G {
 		</table>>, URL="./Ship.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 }
 }
-}
-	// world.physics.vector.Force
+
+subgraph cluster_physics {
+                label = "physics";
+		color = "blue";
+		
+subgraph cluster_vector {
+                label = "vector";
+		color = "blue";
+
+		// world.physics.vector.Force
 	force [label=<<table title="world.physics.vector.Force" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Force.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Force </td></tr>
@@ -301,7 +312,10 @@ digraph G {
 <tr><td align="left" balign="left"> + getQuadrant() : Quadrant </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Vector.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+}
 
+subgraph cluster_geometry {
+	 label = "geometry";
 		// world.physics.geometry.Angle
 	angle [label=<<table title="world.physics.geometry.Angle" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Angle.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
@@ -331,7 +345,7 @@ digraph G {
 <tr><td align="left" balign="left"> + CircleShape() </td></tr>
 		</table></td></tr>
 		</table>>, URL="./CircleShape.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-	
+}	
 	// world.physics.Mass
 	mass [label=<<table title="world.physics.Mass" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Mass.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
@@ -348,7 +362,9 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Mass.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
+subgraph cluster_collision {
 
+	 label = "collision";
 	// world.physics.collision.Collision
 	collision [label=<<table title="world.physics.collision.Collision" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Collision.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
@@ -420,6 +436,72 @@ digraph G {
 <tr><td align="left" balign="left"> BORDER_LEFT </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Border.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+}
+}
+
+	//Entity
+	entity:p -> world:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open,dir ="both"];
+	entity:p -> entitycollision:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
+	entity:p -> bordercollision:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
+
+	//Ship
+	ship:p -> entity:p [arrowhead=empty];
+	ship:p -> thruster:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, arrowtail=open, dir="both"];
+	//Thruster
+
+	//Asteroid
+	asteroid:p -> entity:p [arrowhead=empty];
+
+	//Bullet
+	bullet:p -> entity:p [arrowhead=empty];
+	bullet:p -> ship:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open, dir="both"];
+
+	//Mass
+	mass:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
+	
+	//Shape
+	shape:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
+	
+	//Vector
+
+	//Position
+	position:p -> vector:p [arrowhead=empty];
+	position:p -> collision:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	position:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
+
+	//Direction
+	direction:p -> vector:p [arrowhead=empty];
+	direction:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
+	//Angle
+	angle:p -> direction:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
+
+
+	//Velocity
+	velocity:p -> vector:p [arrowhead=empty];
+	velocity:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
+
+
+	//Acceleration
+	acceleration:p -> vector:p [arrowhead=empty];
+	acceleration:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
+
+	//Force
+	force:p -> vector:p [arrowhead=empty];
+
+	//World
+	world:p -> collision:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
+
+
+	//Collision
+	//BorderCollision
+	bordercollision:p -> collision:p [arrowhead=empty];
+	//EntityCollision
+	entitycollision:p -> collision:p [arrowhead=empty];
+	//Border
+	border:p -> bordercollision:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+
+	}
+		
 
 	// model.programs.Program
 	program [label=<<table title="model.programs.Program" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../../model/programs/Program.html">
@@ -1330,70 +1412,10 @@ digraph G {
 
 		
 	// EDGES
-	
-	//Entity
-	entity:p -> world:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open,dir ="both"];
-	entity:p -> entitycollision:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
-	entity:p -> bordercollision:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
 
-	//Ship
-	ship:p -> entity:p [arrowhead=empty];
-	ship:p -> thruster:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, arrowtail=open, dir="both"];
 	ship:p -> program:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open,  dir="both"];
-	//Thruster
-
-	//Asteroid
-	asteroid:p -> entity:p [arrowhead=empty];
-
-	//Bullet
-	bullet:p -> entity:p [arrowhead=empty];
-	bullet:p -> ship:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open, dir="both"];
-
-	//Mass
-	mass:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
-	
-	//Shape
-	shape:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
-	
-	//Vector
-
-	//Position
-	position:p -> vector:p [arrowhead=empty];
-	position:p -> collision:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
-	position:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
-
-	//Direction
-	direction:p -> vector:p [arrowhead=empty];
-	direction:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
-	//Angle
-	angle:p -> direction:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
-
-
-	//Velocity
-	velocity:p -> vector:p [arrowhead=empty];
-	velocity:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
-
-
-	//Acceleration
-	acceleration:p -> vector:p [arrowhead=empty];
-	acceleration:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
-
-	//Force
-	force:p -> vector:p [arrowhead=empty];
-
-	//World
-	world:p -> collision:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
-
-
-	//Collision
-	//BorderCollision
-	bordercollision:p -> collision:p [arrowhead=empty];
-	//EntityCollision
-	entitycollision:p -> collision:p [arrowhead=empty];
-	//Border
-	border:p -> bordercollision:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
-
 	//Program
+
 	program:p -> programpart:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, arrowtail=open, dir="both"];
 
 	//ProgramPart
