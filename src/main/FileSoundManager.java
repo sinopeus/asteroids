@@ -128,7 +128,7 @@ public class FileSoundManager implements Runnable, Sound
 		for (String line = reader.readLine(); line != null; line = reader.readLine())
 		{
 			Clip clip = AudioSystem.getClip();
-			URL url = loader.getResource("resources/" + line);
+			URL url = loader.getResource("z" + line);
 			if (url == null)
 			{
 				System.err.println("sound " + line + " not found");
