@@ -14,10 +14,10 @@ digraph G {
 
 	// EXAMPLES
 	// //world.entity.Bullet extends world.entity.Entity
-	// c15575:p -> c15576:p [dir=back,arrowtail=empty];
+	// c15575:p -> c15576:p [dir=back,arrowhead=empty];
 
 	// //world.entity.ship.Ship implements model.IShip
-	// c15485:p -> c15578:p [dir=back,arrowtail=empty,style=dashed];
+	// c15485:p -> c15578:p [dir=back,arrowhead=empty,style=dashed];
 
 	// // model.programs.Program NAVASSOC world.entity.ship.Ship
 	// c15492:p -> c15578:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
@@ -420,23 +420,6 @@ digraph G {
 <tr><td align="left" balign="left"> BORDER_LEFT </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Border.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// world.physics.vector.Quadrant
-	quadrant [label=<<table title="world.physics.vector.Quadrant" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Quadrant.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> &#171;enumeration&#187; </td></tr>
-<tr><td align="center" balign="center"> Quadrant </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> QUADRANT_I </td></tr>
-<tr><td align="left" balign="left"> QUADRANT_II </td></tr>
-<tr><td align="left" balign="left"> QUADRANT_III </td></tr>
-<tr><td align="left" balign="left"> QUADRANT_IV </td></tr>
-		</table></td></tr>
-		</table>>, URL="./Quadrant.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
 	// model.programs.Program
 	program [label=<<table title="model.programs.Program" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../../model/programs/Program.html">
@@ -1349,133 +1332,131 @@ digraph G {
 	// EDGES
 	
 	//Entity
-	entity:p -> world:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,dir ="both"];
-	entity:p -> entitycollision:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
-	entity:p -> bordercollision:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	entity:p -> world:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open,dir ="both"];
+	entity:p -> entitycollision:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
+	entity:p -> bordercollision:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
 
 	//Ship
-	ship:p -> entity:p [arrowtail=empty];
-	ship:p -> thruster:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, dir="both"];
-	ship:p -> program:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, dir="both"];
+	ship:p -> entity:p [arrowhead=empty];
+	ship:p -> thruster:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, arrowtail=open, dir="both"];
+	ship:p -> program:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open,  dir="both"];
 	//Thruster
 
 	//Asteroid
-	asteroid:p -> entity:p [arrowtail=empty];
+	asteroid:p -> entity:p [arrowhead=empty];
 
 	//Bullet
-	bullet:p -> entity:p [arrowtail=empty];
-	bullet:p -> ship:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	bullet:p -> entity:p [arrowhead=empty];
+	bullet:p -> ship:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
 
 	//Mass
-	mass:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	mass:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
 	
 	//Shape
-	shape:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	shape:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
 	
 	//Vector
 
 	//Position
-	position:p -> vector:p [arrowtail=empty];
+	position:p -> vector:p [arrowhead=empty];
 	position:p -> collision:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
-	position:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	position:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
 
 	//Direction
-	direction:p -> vector:p [arrowtail=empty];
-	direction:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	direction:p -> vector:p [arrowhead=empty];
+	direction:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
 	//Angle
-	angle:p -> direction:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	angle:p -> direction:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
 
 
 	//Velocity
-	velocity:p -> vector:p [arrowtail=empty];
-	velocity:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	velocity:p -> vector:p [arrowhead=empty];
+	velocity:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
 
 
 	//Acceleration
-	acceleration:p -> vector:p [arrowtail=empty];
-	acceleration:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	acceleration:p -> vector:p [arrowhead=empty];
+	acceleration:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
 
 	//Force
-	force:p -> vector:p [arrowtail=empty];
+	force:p -> vector:p [arrowhead=empty];
 
 	//World
-	world:p -> collision:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	world:p -> collision:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
 
 
 	//Collision
 	//BorderCollision
-	bordercollision:p -> collision:p [arrowtail=empty];
+	bordercollision:p -> collision:p [arrowhead=empty];
 	//EntityCollision
-	entitycollision:p -> collision:p [arrowtail=empty];
+	entitycollision:p -> collision:p [arrowhead=empty];
 	//Border
 	border:p -> bordercollision:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
-	//Quadrant
-	quadrant:p -> vector:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 
 	//Program
-	program:p -> programpart:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, dir="both"];
+	program:p -> programpart:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, arrowtail=open, dir="both"];
 
 	//ProgramPart
 
 	//Statement
-	statement:p -> programpart:p [arrowtail=empty];
-	statement:p -> program:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	statement:p -> programpart:p [arrowhead=empty];
+	statement:p -> program:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, arrowtail=open];
 
 	//Action
-	action:p -> statement:p [arrowtail=empty];
+	action:p -> statement:p [arrowhead=empty];
 	//Fire
-	fire:p -> action:p [arrowtail=empty];
+	fire:p -> action:p [arrowhead=empty];
 	//Skip
-	skip:p -> action:p [arrowtail=empty];
+	skip:p -> action:p [arrowhead=empty];
 	//ThrustOn
-	thruston:p -> action:p [arrowtail=empty];
+	thruston:p -> action:p [arrowhead=empty];
 	//ThrustOff
-	thrustoff:p -> action:p [arrowtail=empty];
+	thrustoff:p -> action:p [arrowhead=empty];
 	//Turn
-	turn:p -> action:p [arrowtail=empty];
+	turn:p -> action:p [arrowhead=empty];
 
 	//If
-	if:p -> statement:p [arrowtail=empty];
+	if:p -> statement:p [arrowhead=empty];
 
 	//ForEach
-	foreach:p -> statement:p [arrowtail=empty];
+	foreach:p -> statement:p [arrowhead=empty];
 
 	//Sequence
-	sequence:p -> statement:p [arrowtail=empty];
+	sequence:p -> statement:p [arrowhead=empty];
 
 	//Assignment
-	assignment:p -> statement:p [arrowtail=empty];
+	assignment:p -> statement:p [arrowhead=empty];
 
-	//Assignment
-	while:p -> statement:p [arrowtail=empty];
+	//While
+	while:p -> statement:p [arrowhead=empty];
 
-	//Assignment
-	print:p -> statement:p [arrowtail=empty];
+	//Print
+	print:p -> statement:p [arrowhead=empty];
 
 	//Expression
-	expression:p -> programpart:p [arrowtail=empty];
+	expression:p -> programpart:p [arrowhead=empty];
 
 	//Variable
-	variable:p -> expression:p [arrowtail=empty];
+	variable:p -> expression:p [arrowhead=empty];
 
 	
 	//ConstantExpression
-	constantexpression:p -> expression:p [arrowtail=empty];
+	constantexpression:p -> expression:p [arrowhead=empty];
 
 	//BooleanLiteral
-	booleanliteral:p -> constantexpression:p [arrowtail=empty];
+	booleanliteral:p -> constantexpression:p [arrowhead=empty];
 	//True
-	true:p -> booleanliteral:p [arrowtail=empty];
+	true:p -> booleanliteral:p [arrowhead=empty];
 	//False
-	false:p -> booleanliteral:p [arrowtail=empty];
+	false:p -> booleanliteral:p [arrowhead=empty];
 
 	//DoubleLiteral
-	doubleliteral:p -> constantexpression:p [arrowtail=empty];
+	doubleliteral:p -> constantexpression:p [arrowhead=empty];
 	//GetDir
-	getdir:p -> doubleliteral:p [arrowtail=empty];
+	getdir:p -> doubleliteral:p [arrowhead=empty];
 
 	//EntityLiteral
-	entityliteral:p -> constantexpression:p [arrowtail=empty];
+	entityliteral:p -> constantexpression:p [arrowhead=empty];
 	//Self
 	self:p -> entityliteral:p [arrowhead=empty];
 	//Null
