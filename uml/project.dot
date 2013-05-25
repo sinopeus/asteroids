@@ -7,7 +7,7 @@
 digraph G {
 	edge [weight=1.2, fontname="Helvetica",fontsize=10,labelfontname="Helvetica",labelfontsize=10];
 	node [fontname="Helvetica",fontsize=10,shape=plaintext];
-	splines = true;
+	splines = ortho;
 	//size="16.0, 22.5";
 	nodesep=1;
 	ranksep=0.3;
@@ -54,7 +54,7 @@ digraph G {
 		</table>>, URL="./World.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
  subgraph cluster_entity {
                 label = "entity";
-		color = "blue";
+		color = blue;
 
 	// world.entity.Entity
 	entity [label=<<table title="world.entity.Entity" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../Entity.html">
@@ -140,7 +140,7 @@ digraph G {
 
  subgraph cluster_ship {
                 label = "ship";
-		color = "blue";
+		color = blue;
 
 		// world.entity.ship.Thruster
 	thruster [label=<<table title="world.entity.ship.Thruster" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Thruster.html">
@@ -198,11 +198,11 @@ digraph G {
 
 subgraph cluster_physics {
                 label = "physics";
-		color = "blue";
+		color = blue;
 		
 subgraph cluster_vector {
                 label = "vector";
-		color = "blue";
+		color = blue;
 
 		// world.physics.vector.Force
 	force [label=<<table title="world.physics.vector.Force" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Force.html">
@@ -469,6 +469,7 @@ subgraph cluster_collision {
 	position:p -> collision:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	position:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
 
+
 	//Direction
 	direction:p -> vector:p [arrowhead=empty];
 	direction:p -> entity:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open];
@@ -501,7 +502,9 @@ subgraph cluster_collision {
 	border:p -> bordercollision:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 
 	}
-		
+subgraph cluster_programs {
+color = blue;
+label ="programs"
 
 	// model.programs.Program
 	program [label=<<table title="model.programs.Program" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../../model/programs/Program.html">
@@ -524,6 +527,12 @@ subgraph cluster_collision {
 		</table></td></tr>
 		</table>>, URL="../../../model/programs/Program.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
+		program:p -> programpart:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, arrowtail=open, dir="both"];
+	statement:p -> program:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, arrowtail=open];
+
+subgraph cluster_language {
+color = blue;
+label ="language"
 	programpart [label=<<table title="model.programs.parsing.language.ProgramPart" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../ProgramPart.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> ProgramPart </font></td></tr>
@@ -539,6 +548,9 @@ subgraph cluster_collision {
 		</table></td></tr>
 		</table>>, URL="../ProgramPart.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
+subgraph cluster_expression {
+color = blue;
+label ="expression"
 	// model.programs.parsing.language.expression.Variable
 	variable [label=<<table title="model.programs.parsing.language.expression.Variable" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Variable.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
@@ -570,6 +582,9 @@ subgraph cluster_collision {
 		</table></td></tr>
 		</table>>, URL="./Expression.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
+		subgraph cluster_constexp {
+		label = "constant";
+		color = blue;
 	// model.programs.parsing.language.expression.constant.ConstantExpression<T>
 	constantexpression [label=<<table title="model.programs.parsing.language.expression.constant.ConstantExpression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./constant/ConstantExpression.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
@@ -584,6 +599,148 @@ subgraph cluster_collision {
 		</table></td></tr>
 		</table>>, URL="./constant/ConstantExpression.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
+		subgraph cluster_boolean {
+		label = "boolean";
+		color = blue;
+	// model.programs.parsing.language.expression.constant.literal.BooleanLiteral
+	booleanliteral [label=<<table title="model.programs.parsing.language.expression.constant.literal.BooleanLiteral" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./literal/BooleanLiteral.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> BooleanLiteral </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + BooleanLiteral(line : int, column : int, value : Boolean) </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + getType() : Type </td></tr>
+		</table></td></tr>
+		</table>>, URL="./literal/BooleanLiteral.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+		// model.programs.parsing.language.expression.constant.True
+	true [label=<<table title="model.programs.parsing.language.expression.constant.True" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./True.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> True </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + True(line : int, column : int) </td></tr>
+<tr><td align="left" balign="left"> + evaluate() : BooleanLiteral </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + getType() : Type </td></tr>
+		</table></td></tr>
+		</table>>, URL="./True.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+
+		// model.programs.parsing.language.expression.constant.False
+	false [label=<<table title="model.programs.parsing.language.expression.constant.False" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./False.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> False </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + False(line : int, column : int) </td></tr>
+<tr><td align="left" balign="left"> + evaluate() : BooleanLiteral </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + getType() : Type </td></tr>
+		</table></td></tr>
+		</table>>, URL="./False.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+
+}
+
+subgraph cluster_entity {
+label = "entityliteral";
+color = blue;
+// model.programs.parsing.language.expression.constant.literal.EntityLiteral
+	entityliteral [label=<<table title="model.programs.parsing.language.expression.constant.literal.EntityLiteral" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./literal/EntityLiteral.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> EntityLiteral </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + EntityLiteral(line : int, column : int, entity : Entity) </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + getType() : Type </td></tr>
+		</table></td></tr>
+		</table>>, URL="./literal/EntityLiteral.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	// model.programs.parsing.language.expression.constant.Self
+	self [label=<<table title="model.programs.parsing.language.expression.constant.Self" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Self.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> Self </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Self(line : int, column : int) </td></tr>
+<tr><td align="left" balign="left"> + evaluate() : ConstantExpression&lt;Entity&gt; </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + getType() : Type </td></tr>
+		</table></td></tr>
+		</table>>, URL="./Self.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+
+	// model.programs.parsing.language.expression.constant.Null
+	null [label=<<table title="model.programs.parsing.language.expression.constant.Null" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Null.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> Null </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Null(line : int, column : int) </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + getType() : Type </td></tr>
+		</table></td></tr>
+		</table>>, URL="./Null.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+}
+
+subgraph cluster_doubleliteral {
+label = "doubleliteral";
+color = blue;
+	// model.programs.parsing.language.expression.constant.literal.DoubleLiteral
+	doubleliteral [label=<<table title="model.programs.parsing.language.expression.constant.literal.DoubleLiteral" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./literal/DoubleLiteral.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> DoubleLiteral </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + DoubleLiteral(line : int, column : int, value : Double) </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + getType() : Type </td></tr>
+		</table></td></tr>
+		</table>>, URL="./literal/DoubleLiteral.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+
+		// model.programs.parsing.language.expression.constant.GetDirection
+	getdir [label=<<table title="model.programs.parsing.language.expression.constant.GetDirection" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GetDirection.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> GetDirection </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + GetDirection(line : int, column : int) </td></tr>
+<tr><td align="left" balign="left"> + evaluate() : ConstantExpression&lt;Double&gt; </td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + getType() : Type </td></tr>
+		</table></td></tr>
+		</table>>, URL="./GetDirection.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+}
+
+
+		}
+
+		subgraph cluster_firstorder {
+
+		label = "first_order";
+		color = blue;
 	// model.programs.parsing.language.expression.first_order.FirstOrderExpression
 	firstorderexpression [label=<<table title="model.programs.parsing.language.expression.first_order.FirstOrderExpression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./first_order/FirstOrderExpression.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
@@ -597,6 +754,219 @@ subgraph cluster_collision {
 		</table></td></tr>
 		</table>>, URL="./first_order/FirstOrderExpression.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
+		subgraph cluster_btob {
+		label = "boolean to boolean";
+		color = blue;
+		// model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfBooleanToBoolean
+	booleantoboolean [label=<<table title="model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfBooleanToBoolean" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FirstOrderExpressionOfBooleanToBoolean.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> FirstOrderExpressionOfBooleanToBoolean </font></td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # FirstOrderExpressionOfBooleanToBoolean(line : int, column : int, argument : Expression) </td></tr>
+<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(argument : BooleanLiteral) : BooleanLiteral </font></td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + getType() : Type </td></tr>
+<tr><td align="left" balign="left"> + evaluate() : BooleanLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./FirstOrderExpressionOfBooleanToBoolean.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+
+	// model.programs.parsing.language.expression.first_order.Not
+	not [label=<<table title="model.programs.parsing.language.expression.first_order.Not" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Not.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> Not </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Not(line : int, column : int, argument : Expression) </td></tr>
+<tr><td align="left" balign="left"> # function(argument : BooleanLiteral) : BooleanLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./Not.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+
+		}
+
+		subgraph cluster_numbertonumber {
+		label = "number to number";
+		color = blue;
+	// model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfNumberToNumber
+	doubletodouble [label=<<table title="model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfNumberToNumber" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FirstOrderExpressionOfNumberToNumber.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> FirstOrderExpressionOfNumberToNumber </font></td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # FirstOrderExpressionOfNumberToNumber(line : int, column : int, argument : Expression) </td></tr>
+<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(argument : DoubleLiteral) : DoubleLiteral </font></td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + getType() : Type </td></tr>
+<tr><td align="left" balign="left"> + evaluate() : DoubleLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./FirstOrderExpressionOfNumberToNumber.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+
+	// model.programs.parsing.language.expression.first_order.Sine
+	sin [label=<<table title="model.programs.parsing.language.expression.first_order.Sine" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Sine.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> Sine </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Sine(line : int, column : int, argument : Expression) </td></tr>
+<tr><td align="left" balign="left"> # function(argument : DoubleLiteral) : DoubleLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./Sine.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+
+	// model.programs.parsing.language.expression.first_order.Cosine
+	cos [label=<<table title="model.programs.parsing.language.expression.first_order.Cosine" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Cosine.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> Cosine </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Cosine(line : int, column : int, argument : Expression) </td></tr>
+<tr><td align="left" balign="left"> # function(argument : DoubleLiteral) : DoubleLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./Cosine.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+
+	// model.programs.parsing.language.expression.first_order.SquareRoot
+	sqrt [label=<<table title="model.programs.parsing.language.expression.first_order.SquareRoot" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./SquareRoot.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> SquareRoot </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + SquareRoot(line : int, column : int, argument : Expression) </td></tr>
+<tr><td align="left" balign="left"> # function(argument : DoubleLiteral) : DoubleLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./SquareRoot.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+		}
+
+subgraph cluster_entitytonumber {
+label = "entity to number";
+color = blue;
+	// model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfEntityToNumber
+	entitytodouble [label=<<table title="model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfEntityToNumber" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FirstOrderExpressionOfEntityToNumber.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> FirstOrderExpressionOfEntityToNumber </font></td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # FirstOrderExpressionOfEntityToNumber(line : int, column : int, argument : Expression) </td></tr>
+<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(argument : EntityLiteral) : DoubleLiteral </font></td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + getType() : Type </td></tr>
+<tr><td align="left" balign="left"> + evaluate() : DoubleLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./FirstOrderExpressionOfEntityToNumber.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+
+		
+//	// model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfEntityToEntity
+//	entitytoentity [label=<<table title="model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfEntityToEntity" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FirstOrderExpressionOfEntityToEntity.html">
+//		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+//<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> FirstOrderExpressionOfEntityToEntity </font></td></tr>
+//		</table></td></tr>
+//		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+//<tr><td align="left" balign="left">  </td></tr>
+//		</table></td></tr>
+//		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+//<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(argument : EntityLiteral) : EntityLiteral </font></td></tr>
+//<tr><td align="left" balign="left"> + evaluate() : EntityLiteral </td></tr>
+//		</table></td></tr>
+//		</table>>, URL="./FirstOrderExpressionOfEntityToEntity.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+		
+	// model.programs.parsing.language.expression.first_order.GetX
+	getx [label=<<table title="model.programs.parsing.language.expression.first_order.GetX" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GetX.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> GetX </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + GetX(line : int, column : int, argument : Expression) </td></tr>
+<tr><td align="left" balign="left"> # function(argument : EntityLiteral) : DoubleLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./GetX.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+
+	// model.programs.parsing.language.expression.first_order.GetRadius
+	getr [label=<<table title="model.programs.parsing.language.expression.first_order.GetRadius" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GetRadius.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> GetRadius </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + GetRadius(line : int, column : int, argument : Expression) </td></tr>
+<tr><td align="left" balign="left"> # function(argument : EntityLiteral) : DoubleLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./GetRadius.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+
+	// model.programs.parsing.language.expression.first_order.GetVY
+	getvy [label=<<table title="model.programs.parsing.language.expression.first_order.GetVY" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GetVY.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> GetVY </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + GetVY(line : int, column : int, argument : Expression) </td></tr>
+<tr><td align="left" balign="left"> # function(argument : EntityLiteral) : DoubleLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./GetVY.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+
+	// model.programs.parsing.language.expression.first_order.GetY
+	gety [label=<<table title="model.programs.parsing.language.expression.first_order.GetY" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GetY.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> GetY </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + GetY(line : int, column : int, argument : Expression) </td></tr>
+<tr><td align="left" balign="left"> # function(argument : EntityLiteral) : DoubleLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./GetY.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+
+
+	// model.programs.parsing.language.expression.first_order.GetVX
+	getvx [label=<<table title="model.programs.parsing.language.expression.first_order.GetVX" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GetVX.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> GetVX </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + GetVX(line : int, column : int, argument : Expression) </td></tr>
+<tr><td align="left" balign="left"> # function(argument : EntityLiteral) : DoubleLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./GetVX.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+		}
+}
+
+
+
+		subgraph cluster_secondorder {
+
+		label = "second_order";
+		color = blue;
 	// model.programs.parsing.language.expression.second_order.SecondOrderExpression
 	secondorderexpression [label=<<table title="model.programs.parsing.language.expression.second_order.SecondOrderExpression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./second_order/SecondOrderExpression.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
@@ -611,6 +981,244 @@ subgraph cluster_collision {
 		</table></td></tr>
 		</table>>, URL="./second_order/SecondOrderExpression.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
+		subgraph cluster_booleanstoboolean {
+		label = "booleans to boolean";
+		color = blue;
+	// model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfBooleansToBoolean
+	booleanstoboolean [label=<<table title="model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfBooleansToBoolean" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./SecondOrderExpressionOfBooleansToBoolean.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> SecondOrderExpressionOfBooleansToBoolean </font></td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # SecondOrderExpressionOfBooleansToBoolean(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
+<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(first : BooleanLiteral, second : BooleanLiteral) : BooleanLiteral </font></td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + getType() : Type </td></tr>
+<tr><td align="left" balign="left"> + evaluate() : BooleanLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./SecondOrderExpressionOfBooleansToBoolean.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+
+		// model.programs.parsing.language.expression.second_order.And
+	and [label=<<table title="model.programs.parsing.language.expression.second_order.And" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./And.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> And </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + And(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
+<tr><td align="left" balign="left"> # function(first : BooleanLiteral, second : BooleanLiteral) : BooleanLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./And.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+
+	// model.programs.parsing.language.expression.second_order.Or
+	or [label=<<table title="model.programs.parsing.language.expression.second_order.Or" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Or.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> Or </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Or(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
+<tr><td align="left" balign="left"> # function(first : BooleanLiteral, second : BooleanLiteral) : BooleanLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./Or.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+		}
+
+		subgraph cluster_numberstoboolean {
+		label = "numbers to boolean";
+		color = blue;
+
+		// model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfEntitiesOrDoublesToBoolean
+	doublestoboolean [label=<<table title="model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToBoolean" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./SecondOrderExpressionOfNumbersToBoolean.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> SecondOrderExpressionOfNumbersToBoolean </font></td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # SecondOrderExpressionOfNumbersToBoolean(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
+<tr><td align="left" balign="left"> # canHaveAsArgument(argument : Expression) : boolean </td></tr>
+<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </font></td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + getType() : Type </td></tr>
+<tr><td align="left" balign="left"> + evaluate() : BooleanLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./SecondOrderExpressionOfNumbersToBoolean.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+
+		// model.programs.parsing.language.expression.second_order.NotEquals
+	notequals [label=<<table title="model.programs.parsing.language.expression.second_order.NotEquals" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./NotEquals.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> NotEquals </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./NotEquals.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+
+	// model.programs.parsing.language.expression.second_order.Equals
+	equals [label=<<table title="model.programs.parsing.language.expression.second_order.Equals" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Equals.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> Equals </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./Equals.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	
+
+	// model.programs.parsing.language.expression.second_order.GT
+	gt [label=<<table title="model.programs.parsing.language.expression.second_order.GT" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GT.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> GT </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + GT(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
+<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./GT.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+
+	// model.programs.parsing.language.expression.second_order.LT
+	lt [label=<<table title="model.programs.parsing.language.expression.second_order.LT" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./LT.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> LT </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + LT(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
+<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./LT.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+
+	// model.programs.parsing.language.expression.second_order.LE
+	le [label=<<table title="model.programs.parsing.language.expression.second_order.LE" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./LE.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> LE </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + LE(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
+<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./LE.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+
+	// model.programs.parsing.language.expression.second_order.GE
+	ge [label=<<table title="model.programs.parsing.language.expression.second_order.GE" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GE.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> GE </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + GE(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
+<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./GE.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+}
+		subgraph cluster_numberstonumber {
+		label = "numbers to number";
+		color = blue;
+
+	// model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToNumber
+	doublestodouble [label=<<table title="model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToNumber" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./SecondOrderExpressionOfNumbersToNumber.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> SecondOrderExpressionOfNumbersToNumber </font></td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # SecondOrderExpressionOfNumbersToNumber(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
+<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(first : DoubleLiteral, second : DoubleLiteral) : DoubleLiteral </font></td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
+<tr><td align="left" balign="left"> + getType() : Type </td></tr>
+<tr><td align="left" balign="left"> + evaluate() : DoubleLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./SecondOrderExpressionOfNumbersToNumber.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+
+	// model.programs.parsing.language.expression.second_order.Addition
+	addition [label=<<table title="model.programs.parsing.language.expression.second_order.Addition" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Addition.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> Addition </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Addition(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
+<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : DoubleLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./Addition.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+
+	// model.programs.parsing.language.expression.second_order.Multiplication
+	multiplication [label=<<table title="model.programs.parsing.language.expression.second_order.Multiplication" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Multiplication.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> Multiplication </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Multiplication(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
+<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : DoubleLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./Multiplication.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+
+	// model.programs.parsing.language.expression.second_order.Subtraction
+	subtraction [label=<<table title="model.programs.parsing.language.expression.second_order.Subtraction" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Subtraction.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> Subtraction </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Subtraction(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
+<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : DoubleLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./Subtraction.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+
+	// model.programs.parsing.language.expression.second_order.Division
+	division [label=<<table title="model.programs.parsing.language.expression.second_order.Division" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Division.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> Division </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Division(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
+<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : DoubleLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./Division.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+		}
+		
+}
+}
+
+subgraph cluster_assignment {
+label = "statement";
+color = blue;
 	// model.programs.parsing.language.statement.Assignment
 	assignment [label=<<table title="model.programs.parsing.language.statement.Assignment" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../statement/Assignment.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
@@ -630,7 +1238,8 @@ subgraph cluster_collision {
 
 	// model.programs.parsing.language.statement.Print
 	print [label=<<table title="model.programs.parsing.language.statement.Print" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../statement/Print.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+
+	<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Print </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
@@ -727,6 +1336,9 @@ subgraph cluster_collision {
 		</table></td></tr>
 		</table>>, URL="../Statement.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
+		subgraph cluster_action {
+		label = "action";
+		color = blue;
 	// model.programs.parsing.language.statement.action.Action
 	action [label=<<table title="model.programs.parsing.language.statement.action.Action" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Action.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
@@ -802,7 +1414,7 @@ subgraph cluster_collision {
 		</table></td></tr>
 		</table>>, URL="./ThrustOff.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
-	// model.programs.parsing.language.statement.action.Turn
+		// model.programs.parsing.language.statement.action.Turn
 	turn [label=<<table title="model.programs.parsing.language.statement.action.Turn" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Turn.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Turn </td></tr>
@@ -816,6 +1428,7 @@ subgraph cluster_collision {
 <tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Turn.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+}
 
 	// model.programs.parsing.language.statement.Sequence
 	sequence [label=<<table title="model.programs.parsing.language.statement.Sequence" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Sequence.html">
@@ -864,565 +1477,15 @@ subgraph cluster_collision {
 <tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="./ForEach.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+		}
 
-	// model.programs.parsing.language.expression.constant.False
-	false [label=<<table title="model.programs.parsing.language.expression.constant.False" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./False.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> False </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + False(line : int, column : int) </td></tr>
-<tr><td align="left" balign="left"> + evaluate() : BooleanLiteral </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
-		</table></td></tr>
-		</table>>, URL="./False.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-	// model.programs.parsing.language.expression.constant.Self
-	self [label=<<table title="model.programs.parsing.language.expression.constant.Self" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Self.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> Self </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + Self(line : int, column : int) </td></tr>
-<tr><td align="left" balign="left"> + evaluate() : ConstantExpression&lt;Entity&gt; </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
-		</table></td></tr>
-		</table>>, URL="./Self.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.constant.Null
-	null [label=<<table title="model.programs.parsing.language.expression.constant.Null" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Null.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> Null </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + Null(line : int, column : int) </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
-		</table></td></tr>
-		</table>>, URL="./Null.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.constant.GetDirection
-	getdir [label=<<table title="model.programs.parsing.language.expression.constant.GetDirection" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GetDirection.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> GetDirection </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + GetDirection(line : int, column : int) </td></tr>
-<tr><td align="left" balign="left"> + evaluate() : ConstantExpression&lt;Double&gt; </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
-		</table></td></tr>
-		</table>>, URL="./GetDirection.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.constant.True
-	true [label=<<table title="model.programs.parsing.language.expression.constant.True" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./True.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> True </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + True(line : int, column : int) </td></tr>
-<tr><td align="left" balign="left"> + evaluate() : BooleanLiteral </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
-		</table></td></tr>
-		</table>>, URL="./True.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.constant.literal.EntityLiteral
-	entityliteral [label=<<table title="model.programs.parsing.language.expression.constant.literal.EntityLiteral" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./literal/EntityLiteral.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> EntityLiteral </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + EntityLiteral(line : int, column : int, entity : Entity) </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
-		</table></td></tr>
-		</table>>, URL="./literal/EntityLiteral.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.constant.literal.DoubleLiteral
-	doubleliteral [label=<<table title="model.programs.parsing.language.expression.constant.literal.DoubleLiteral" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./literal/DoubleLiteral.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> DoubleLiteral </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + DoubleLiteral(line : int, column : int, value : Double) </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
-		</table></td></tr>
-		</table>>, URL="./literal/DoubleLiteral.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.constant.literal.BooleanLiteral
-	booleanliteral [label=<<table title="model.programs.parsing.language.expression.constant.literal.BooleanLiteral" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./literal/BooleanLiteral.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> BooleanLiteral </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + BooleanLiteral(line : int, column : int, value : Boolean) </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
-		</table></td></tr>
-		</table>>, URL="./literal/BooleanLiteral.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-	
-	// model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfBooleanToBoolean
-	booleantoboolean [label=<<table title="model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfBooleanToBoolean" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FirstOrderExpressionOfBooleanToBoolean.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> FirstOrderExpressionOfBooleanToBoolean </font></td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> # FirstOrderExpressionOfBooleanToBoolean(line : int, column : int, argument : Expression) </td></tr>
-<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(argument : BooleanLiteral) : BooleanLiteral </font></td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
-<tr><td align="left" balign="left"> + evaluate() : BooleanLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./FirstOrderExpressionOfBooleanToBoolean.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfNumberToNumber
-	doubletodouble [label=<<table title="model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfNumberToNumber" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FirstOrderExpressionOfNumberToNumber.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> FirstOrderExpressionOfNumberToNumber </font></td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> # FirstOrderExpressionOfNumberToNumber(line : int, column : int, argument : Expression) </td></tr>
-<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(argument : DoubleLiteral) : DoubleLiteral </font></td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
-<tr><td align="left" balign="left"> + evaluate() : DoubleLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./FirstOrderExpressionOfNumberToNumber.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfEntityToNumber
-	entitytodouble [label=<<table title="model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfEntityToNumber" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FirstOrderExpressionOfEntityToNumber.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> FirstOrderExpressionOfEntityToNumber </font></td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> # FirstOrderExpressionOfEntityToNumber(line : int, column : int, argument : Expression) </td></tr>
-<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(argument : EntityLiteral) : DoubleLiteral </font></td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
-<tr><td align="left" balign="left"> + evaluate() : DoubleLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./FirstOrderExpressionOfEntityToNumber.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.first_order.Not
-	not [label=<<table title="model.programs.parsing.language.expression.first_order.Not" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Not.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> Not </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + Not(line : int, column : int, argument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(argument : BooleanLiteral) : BooleanLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./Not.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-		
-//	// model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfEntityToEntity
-//	entitytoentity [label=<<table title="model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfEntityToEntity" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FirstOrderExpressionOfEntityToEntity.html">
-//		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-//<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> FirstOrderExpressionOfEntityToEntity </font></td></tr>
-//		</table></td></tr>
-//		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-//<tr><td align="left" balign="left">  </td></tr>
-//		</table></td></tr>
-//		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-//<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(argument : EntityLiteral) : EntityLiteral </font></td></tr>
-//<tr><td align="left" balign="left"> + evaluate() : EntityLiteral </td></tr>
-//		</table></td></tr>
-//		</table>>, URL="./FirstOrderExpressionOfEntityToEntity.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-		
-	// model.programs.parsing.language.expression.first_order.GetX
-	getx [label=<<table title="model.programs.parsing.language.expression.first_order.GetX" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GetX.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> GetX </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + GetX(line : int, column : int, argument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(argument : EntityLiteral) : DoubleLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./GetX.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.first_order.GetRadius
-	getr [label=<<table title="model.programs.parsing.language.expression.first_order.GetRadius" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GetRadius.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> GetRadius </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + GetRadius(line : int, column : int, argument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(argument : EntityLiteral) : DoubleLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./GetRadius.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.first_order.GetVY
-	getvy [label=<<table title="model.programs.parsing.language.expression.first_order.GetVY" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GetVY.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> GetVY </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + GetVY(line : int, column : int, argument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(argument : EntityLiteral) : DoubleLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./GetVY.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.first_order.GetY
-	gety [label=<<table title="model.programs.parsing.language.expression.first_order.GetY" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GetY.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> GetY </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + GetY(line : int, column : int, argument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(argument : EntityLiteral) : DoubleLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./GetY.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.first_order.FirstOrderExpression
-	firstorderexpression [label=<<table title="model.programs.parsing.language.expression.first_order.FirstOrderExpression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FirstOrderExpression.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> FirstOrderExpression </font></td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> ~ argument : Expression </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> # FirstOrderExpression(line : int, column : int, argument : Expression) </td></tr>
-		</table></td></tr>
-		</table>>, URL="./FirstOrderExpression.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.first_order.GetVX
-	getvx [label=<<table title="model.programs.parsing.language.expression.first_order.GetVX" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GetVX.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> GetVX </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + GetVX(line : int, column : int, argument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(argument : EntityLiteral) : DoubleLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./GetVX.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.first_order.Sine
-	sin [label=<<table title="model.programs.parsing.language.expression.first_order.Sine" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Sine.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> Sine </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + Sine(line : int, column : int, argument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(argument : DoubleLiteral) : DoubleLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./Sine.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.first_order.Cosine
-	cos [label=<<table title="model.programs.parsing.language.expression.first_order.Cosine" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Cosine.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> Cosine </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + Cosine(line : int, column : int, argument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(argument : DoubleLiteral) : DoubleLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./Cosine.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.first_order.SquareRoot
-	sqrt [label=<<table title="model.programs.parsing.language.expression.first_order.SquareRoot" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./SquareRoot.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> SquareRoot </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + SquareRoot(line : int, column : int, argument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(argument : DoubleLiteral) : DoubleLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./SquareRoot.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.second_order.And
-	and [label=<<table title="model.programs.parsing.language.expression.second_order.And" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./And.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> And </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + And(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(first : BooleanLiteral, second : BooleanLiteral) : BooleanLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./And.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.second_order.Or
-	or [label=<<table title="model.programs.parsing.language.expression.second_order.Or" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Or.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> Or </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + Or(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(first : BooleanLiteral, second : BooleanLiteral) : BooleanLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./Or.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.second_order.NotEquals
-	notequals [label=<<table title="model.programs.parsing.language.expression.second_order.NotEquals" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./NotEquals.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> NotEquals </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./NotEquals.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.second_order.Equals
-	equals [label=<<table title="model.programs.parsing.language.expression.second_order.Equals" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Equals.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> Equals </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./Equals.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-	
-	// model.programs.parsing.language.expression.second_order.GT
-	gt [label=<<table title="model.programs.parsing.language.expression.second_order.GT" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GT.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> GT </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + GT(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./GT.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToBoolean
-	doublestoboolean [label=<<table title="model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToBoolean" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./SecondOrderExpressionOfNumbersToBoolean.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> SecondOrderExpressionOfNumbersToBoolean </font></td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> # SecondOrderExpressionOfNumbersToBoolean(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsArgument(argument : Expression) : boolean </td></tr>
-<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </font></td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
-<tr><td align="left" balign="left"> + evaluate() : BooleanLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./SecondOrderExpressionOfNumbersToBoolean.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.second_order.LT
-	lt [label=<<table title="model.programs.parsing.language.expression.second_order.LT" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./LT.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> LT </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + LT(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./LT.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.second_order.LE
-	le [label=<<table title="model.programs.parsing.language.expression.second_order.LE" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./LE.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> LE </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + LE(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./LE.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.second_order.GE
-	ge [label=<<table title="model.programs.parsing.language.expression.second_order.GE" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GE.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> GE </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + GE(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./GE.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.second_order.Addition
-	addition [label=<<table title="model.programs.parsing.language.expression.second_order.Addition" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Addition.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> Addition </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + Addition(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : DoubleLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./Addition.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.second_order.Multiplication
-	multiplication [label=<<table title="model.programs.parsing.language.expression.second_order.Multiplication" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Multiplication.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> Multiplication </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + Multiplication(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : DoubleLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./Multiplication.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.second_order.Subtraction
-	subtraction [label=<<table title="model.programs.parsing.language.expression.second_order.Subtraction" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Subtraction.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> Subtraction </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + Subtraction(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : DoubleLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./Subtraction.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.second_order.Division
-	division [label=<<table title="model.programs.parsing.language.expression.second_order.Division" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Division.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> Division </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + Division(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : DoubleLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./Division.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToNumber
-	doublestodouble [label=<<table title="model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToNumber" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./SecondOrderExpressionOfNumbersToNumber.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> SecondOrderExpressionOfNumbersToNumber </font></td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> # SecondOrderExpressionOfNumbersToNumber(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(first : DoubleLiteral, second : DoubleLiteral) : DoubleLiteral </font></td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
-<tr><td align="left" balign="left"> + evaluate() : DoubleLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./SecondOrderExpressionOfNumbersToNumber.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-	// model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfBooleansToBoolean
-	booleanstoboolean [label=<<table title="model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfBooleansToBoolean" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./SecondOrderExpressionOfBooleansToBoolean.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> SecondOrderExpressionOfBooleansToBoolean </font></td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> # SecondOrderExpressionOfBooleansToBoolean(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(first : BooleanLiteral, second : BooleanLiteral) : BooleanLiteral </font></td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
-<tr><td align="left" balign="left"> + evaluate() : BooleanLiteral </td></tr>
-		</table></td></tr>
-		</table>>, URL="./SecondOrderExpressionOfBooleansToBoolean.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-
-		
-	// EDGES
-
-	ship:p -> program:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open,  dir="both"];
 	//Program
 
-	program:p -> programpart:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, arrowtail=open, dir="both"];
 
 	//ProgramPart
 
 	//Statement
 	statement:p -> programpart:p [arrowhead=empty];
-	statement:p -> program:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, arrowtail=open];
 
 	//Action
 	action:p -> statement:p [arrowhead=empty];
@@ -1561,4 +1624,8 @@ subgraph cluster_collision {
  	multiplication:p -> doublestodouble:p [arrowhead=empty];
 	//Division
  	division:p -> doublestodouble:p [arrowhead=empty];
+}
+	}
+
+	ship:p -> program:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open,  dir="both"];
 }
