@@ -65,7 +65,7 @@ label ="language"
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # ProgramPart(line : int, column : int) </td></tr>
-<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> + isTypeSafe() : boolean </font></td></tr>
+<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="../ProgramPart.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -82,9 +82,6 @@ label ="expression"
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Variable(line : int, column : int, name : String) </td></tr>
-<tr><td align="left" balign="left"> + evaluate() : ConstantExpression&lt;?&gt; </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Variable.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -98,8 +95,8 @@ label ="expression"
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # Expression(line : int, column : int) </td></tr>
-<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> + evaluate() : ConstantExpression&lt;?&gt; </font></td></tr>
-<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> + getType() : Type </font></td></tr>
+<tr><td align="left" balign="left"> + getType() : Type </td></tr>
+<tr><td align="left" balign="left"> + evaluate() : DoubleLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Expression.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -116,7 +113,6 @@ label ="expression"
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # ConstantExpression(line : int, column : int, value : T) </td></tr>
-<tr><td align="left" balign="left"> + evaluate() : ConstantExpression&lt;T&gt; </td></tr>
 		</table></td></tr>
 		</table>>, URL="./constant/ConstantExpression.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -133,8 +129,6 @@ label ="expression"
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + BooleanLiteral(line : int, column : int, value : Boolean) </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
 		</table></td></tr>
 		</table>>, URL="./literal/BooleanLiteral.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 		// model.programs.parsing.language.expression.constant.True
@@ -147,9 +141,6 @@ label ="expression"
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + True(line : int, column : int) </td></tr>
-<tr><td align="left" balign="left"> + evaluate() : BooleanLiteral </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
 		</table></td></tr>
 		</table>>, URL="./True.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -163,9 +154,6 @@ label ="expression"
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + False(line : int, column : int) </td></tr>
-<tr><td align="left" balign="left"> + evaluate() : BooleanLiteral </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
 		</table></td></tr>
 		</table>>, URL="./False.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -184,8 +172,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + EntityLiteral(line : int, column : int, entity : Entity) </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
 		</table></td></tr>
 		</table>>, URL="./literal/EntityLiteral.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// model.programs.parsing.language.expression.constant.Self
@@ -198,9 +184,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Self(line : int, column : int) </td></tr>
-<tr><td align="left" balign="left"> + evaluate() : ConstantExpression&lt;Entity&gt; </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Self.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -214,8 +197,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Null(line : int, column : int) </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Null.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 }
@@ -233,8 +214,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + DoubleLiteral(line : int, column : int, value : Double) </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
 		</table></td></tr>
 		</table>>, URL="./literal/DoubleLiteral.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -248,9 +227,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + GetDirection(line : int, column : int) </td></tr>
-<tr><td align="left" balign="left"> + evaluate() : ConstantExpression&lt;Double&gt; </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
 		</table></td></tr>
 		</table>>, URL="./GetDirection.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 }
@@ -289,9 +265,6 @@ color = blue;
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # FirstOrderExpressionOfBooleanToBoolean(line : int, column : int, argument : Expression) </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(argument : BooleanLiteral) : BooleanLiteral </font></td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
-<tr><td align="left" balign="left"> + evaluate() : BooleanLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./FirstOrderExpressionOfBooleanToBoolean.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -305,7 +278,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Not(line : int, column : int, argument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(argument : BooleanLiteral) : BooleanLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Not.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -325,9 +297,6 @@ color = blue;
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # FirstOrderExpressionOfNumberToNumber(line : int, column : int, argument : Expression) </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(argument : DoubleLiteral) : DoubleLiteral </font></td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
-<tr><td align="left" balign="left"> + evaluate() : DoubleLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./FirstOrderExpressionOfNumberToNumber.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -341,7 +310,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Sine(line : int, column : int, argument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(argument : DoubleLiteral) : DoubleLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Sine.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -355,7 +323,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Cosine(line : int, column : int, argument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(argument : DoubleLiteral) : DoubleLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Cosine.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -369,7 +336,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + SquareRoot(line : int, column : int, argument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(argument : DoubleLiteral) : DoubleLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./SquareRoot.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 		}
@@ -387,28 +353,9 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # FirstOrderExpressionOfEntityToNumber(line : int, column : int, argument : Expression) </td></tr>
-<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(argument : EntityLiteral) : DoubleLiteral </font></td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
-<tr><td align="left" balign="left"> + evaluate() : DoubleLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./FirstOrderExpressionOfEntityToNumber.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
-		
-//	// model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfEntityToEntity
-//	entitytoentity [label=<<table title="model.programs.parsing.language.expression.first_order.FirstOrderExpressionOfEntityToEntity" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./FirstOrderExpressionOfEntityToEntity.html">
-//		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-//<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> FirstOrderExpressionOfEntityToEntity </font></td></tr>
-//		</table></td></tr>
-//		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-//<tr><td align="left" balign="left">  </td></tr>
-//		</table></td></tr>
-//		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-//<tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(argument : EntityLiteral) : EntityLiteral </font></td></tr>
-//<tr><td align="left" balign="left"> + evaluate() : EntityLiteral </td></tr>
-//		</table></td></tr>
-//		</table>>, URL="./FirstOrderExpressionOfEntityToEntity.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-		
 	// model.programs.parsing.language.expression.first_order.GetX
 	getx [label=<<table title="model.programs.parsing.language.expression.first_order.GetX" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GetX.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
@@ -419,7 +366,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + GetX(line : int, column : int, argument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(argument : EntityLiteral) : DoubleLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./GetX.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -433,7 +379,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + GetRadius(line : int, column : int, argument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(argument : EntityLiteral) : DoubleLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./GetRadius.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -447,7 +392,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + GetVY(line : int, column : int, argument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(argument : EntityLiteral) : DoubleLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./GetVY.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -461,7 +405,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + GetY(line : int, column : int, argument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(argument : EntityLiteral) : DoubleLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./GetY.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -476,13 +419,10 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + GetVX(line : int, column : int, argument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(argument : EntityLiteral) : DoubleLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./GetVX.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 		}
 }
-
-
 
 		subgraph cluster_secondorder {
 
@@ -516,9 +456,6 @@ color = blue;
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # SecondOrderExpressionOfBooleansToBoolean(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(first : BooleanLiteral, second : BooleanLiteral) : BooleanLiteral </font></td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
-<tr><td align="left" balign="left"> + evaluate() : BooleanLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./SecondOrderExpressionOfBooleansToBoolean.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -532,7 +469,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + And(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(first : BooleanLiteral, second : BooleanLiteral) : BooleanLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./And.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -546,7 +482,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Or(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(first : BooleanLiteral, second : BooleanLiteral) : BooleanLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Or.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 		}
@@ -558,22 +493,29 @@ color = blue;
 		// model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfEntitiesOrDoublesToBoolean
 	doublestoboolean [label=<<table title="model.programs.parsing.language.expression.second_order.SecondOrderExpressionOfNumbersToBoolean" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./SecondOrderExpressionOfNumbersToBoolean.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> SecondOrderExpressionOfNumbersToBoolean </font></td></tr>
+<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> SecondOrderExpressionOfEntitiesOrDoublesToBoolean </font></td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # SecondOrderExpressionOfNumbersToBoolean(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsArgument(argument : Expression) : boolean </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </font></td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
-<tr><td align="left" balign="left"> + evaluate() : BooleanLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./SecondOrderExpressionOfNumbersToBoolean.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
-		// model.programs.parsing.language.expression.second_order.NotEquals
+// 		// model.programs.parsing.language.expression.second_order.NotEquals
+// 	notequals [label=<<table title="model.programs.parsing.language.expression.second_order.NotEquals" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./NotEquals.html">
+// 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+// <tr><td align="center" balign="center"> NotEquals </td></tr>
+// 		</table></td></tr>
+// 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+// <tr><td align="left" balign="left">  </td></tr>
+// 		</table></td></tr>
+// 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+// 		</table></td></tr>
+// 		</table>>, URL="./NotEquals.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	// model.programs.parsing.language.expression.second_order.Equals
 	notequals [label=<<table title="model.programs.parsing.language.expression.second_order.NotEquals" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./NotEquals.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> NotEquals </td></tr>
@@ -582,7 +524,7 @@ color = blue;
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
+<tr><td align="left" balign="left"> + NotEquals (line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 		</table></td></tr>
 		</table>>, URL="./NotEquals.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -595,7 +537,7 @@ color = blue;
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
+<tr><td align="left" balign="left"> + Equals(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Equals.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	
@@ -610,7 +552,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + GT(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./GT.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -624,7 +565,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + LT(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./LT.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -638,7 +578,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + LE(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./LE.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -652,7 +591,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + GE(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : BooleanLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./GE.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 }
@@ -671,9 +609,6 @@ color = blue;
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> # SecondOrderExpressionOfNumbersToNumber(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
 <tr><td align="left" balign="left"><font face="Helvetica-Oblique" point-size="10.0"> # function(first : DoubleLiteral, second : DoubleLiteral) : DoubleLiteral </font></td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + getType() : Type </td></tr>
-<tr><td align="left" balign="left"> + evaluate() : DoubleLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./SecondOrderExpressionOfNumbersToNumber.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -687,7 +622,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Addition(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : DoubleLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Addition.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -701,7 +635,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Multiplication(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : DoubleLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Multiplication.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -715,7 +648,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Subtraction(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : DoubleLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Subtraction.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -729,11 +661,9 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Division(line : int, column : int, firstArgument : Expression, secondArgument : Expression) </td></tr>
-<tr><td align="left" balign="left"> # function(first : DoubleLiteral, second : DoubleLiteral) : DoubleLiteral </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Division.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 		}
-		
 }
 }
 

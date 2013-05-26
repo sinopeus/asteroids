@@ -69,8 +69,22 @@ label ="language"
 		</table></td></tr>
 		</table>>, URL="../ProgramPart.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
+	// model.programs.parsing.language.expression.Expression
+	expression [label=<<table title="model.programs.parsing.language.expression.Expression" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Expression.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"><font face="Helvetica-Oblique"> Expression </font></td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> # Expression(line : int, column : int) </td></tr>
+<tr><td align="left" balign="left"> + getType() : Type </td></tr>
+<tr><td align="left" balign="left"> + evaluate() : DoubleLiteral </td></tr>
+		</table></td></tr>
+		</table>>, URL="./Expression.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
-subgraph cluster_assignment {
+subgraph cluster_statement {
 label = "statement";
 color = blue;
 	// model.programs.parsing.language.statement.Assignment
@@ -84,9 +98,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Assignment(line : int, column : int, variable : Variable, value : Expression) </td></tr>
-<tr><td align="left" balign="left"> + execute() : boolean </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="../statement/Assignment.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -102,9 +113,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Print(line : int, column : int, textExpression : Expression) </td></tr>
-<tr><td align="left" balign="left"> + execute() : boolean </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="../statement/Print.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -123,10 +131,6 @@ color = blue;
 <tr><td align="left" balign="left"> + While(line : int, column : int, condition : Expression, body : Statement) </td></tr>
 <tr><td align="left" balign="left"> # checkCondition() </td></tr>
 <tr><td align="left" balign="left"> # finishIteration() </td></tr>
-<tr><td align="left" balign="left"> + unfinish() </td></tr>
-<tr><td align="left" balign="left"> + execute() : boolean </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="../statement/While.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -144,13 +148,8 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + If(line : int, column : int, condition : Expression, then : Statement, otherwise : Statement) </td></tr>
-<tr><td align="left" balign="left"> # isChecked() : boolean </td></tr>
 <tr><td align="left" balign="left"> # checkCondition() </td></tr>
-<tr><td align="left" balign="left"> + unfinish() </td></tr>
 <tr><td align="left" balign="left"> - execute(statement : Statement) : boolean </td></tr>
-<tr><td align="left" balign="left"> + execute() : boolean </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="../statement/If.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -164,11 +163,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Turn(line : int, column : int, angle : Expression) </td></tr>
-<tr><td align="left" balign="left"> # getAngle() : Expression </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsAngle(angle : Expression) : boolean </td></tr>
-<tr><td align="left" balign="left"> # setAngle(angle : Expression) </td></tr>
-<tr><td align="left" balign="left"> + execute() : boolean </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="../statement/action/Turn.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	
@@ -203,8 +197,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Action(line : int, column : int) </td></tr>
-<tr><td align="left" balign="left"> + execute() : boolean </td></tr>
-<tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Action.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -218,8 +210,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Fire(line : int, column : int) </td></tr>
-<tr><td align="left" balign="left"> + execute() : boolean </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Fire.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -233,8 +223,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + ThrustOn(line : int, column : int) </td></tr>
-<tr><td align="left" balign="left"> + execute() : boolean </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="./ThrustOn.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -248,8 +236,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Skip(line : int, column : int) </td></tr>
-<tr><td align="left" balign="left"> + execute() : boolean </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Skip.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -263,8 +249,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + ThrustOff(line : int, column : int) </td></tr>
-<tr><td align="left" balign="left"> + execute() : boolean </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="./ThrustOff.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -278,8 +262,6 @@ color = blue;
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Turn(line : int, column : int, angle : Expression) </td></tr>
-<tr><td align="left" balign="left"> + execute() : boolean </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Turn.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 }
@@ -298,10 +280,6 @@ color = blue;
 <tr><td align="left" balign="left"> # incrementIndex() </td></tr>
 <tr><td align="left" balign="left"> # getCurrentStatement() : Statement </td></tr>
 <tr><td align="left" balign="left"> # finish() </td></tr>
-<tr><td align="left" balign="left"> + unfinish() </td></tr>
-<tr><td align="left" balign="left"> + execute() : boolean </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Sequence.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 		
@@ -325,10 +303,6 @@ color = blue;
 <tr><td align="left" balign="left"> # isAtStartOfIteration() : boolean </td></tr>
 <tr><td align="left" balign="left"> # startIteration() </td></tr>
 <tr><td align="left" balign="left"> # finishIteration() </td></tr>
-<tr><td align="left" balign="left"> + unfinish() </td></tr>
-<tr><td align="left" balign="left"> + execute() : boolean </td></tr>
-<tr><td align="left" balign="left"> + isTypeSafe() : boolean </td></tr>
-<tr><td align="left" balign="left"> + containsAction() : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="./ForEach.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 		}
@@ -378,5 +352,5 @@ color = blue;
 }
 	}
 
-	ship:p -> program:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open,  dir="both"];
+	// ship:p -> program:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open,arrowtail=open,  dir="both"];
 }
