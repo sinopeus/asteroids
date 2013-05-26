@@ -104,11 +104,6 @@ digraph G {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Asteroid(direction : Direction, position : Position, velocity : Velocity, shape : CircleShape) </td></tr>
-<tr><td align="left" balign="left"> + terminate() </td></tr>
-<tr><td align="left" balign="left"> + advance(dt : double) </td></tr>
-<tr><td align="left" balign="left"> + collideWith(that : Asteroid) </td></tr>
-<tr><td align="left" balign="left"> + collideWith(that : Bullet) </td></tr>
-<tr><td align="left" balign="left"> + collideWith(that : Ship) </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Asteroid.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -129,12 +124,7 @@ digraph G {
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Bullet(ship : Ship) </td></tr>
 <tr><td align="left" balign="left"> - getInitialPosition(ship : Ship) : Position </td></tr>
-<tr><td align="left" balign="left"> + collideWith(that : Asteroid) </td></tr>
-<tr><td align="left" balign="left"> + collideWith(that : Bullet) </td></tr>
-<tr><td align="left" balign="left"> + collideWith(that : Ship) </td></tr>
-<tr><td align="left" balign="left"> + collideWith(that : Border) </td></tr>
 <tr><td align="left" balign="left"> + unlinkFromShooter() </td></tr>
-<tr><td align="left" balign="left"> + terminate() </td></tr>
 		</table></td></tr>
 		</table>>, URL="../Bullet.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -160,8 +150,6 @@ digraph G {
 <tr><td align="left" balign="left"> + deactivate() </td></tr>
 <tr><td align="left" balign="left"> + toggleActivation() </td></tr>
 <tr><td align="left" balign="left"> + getOwner() : Ship </td></tr>
-<tr><td align="left" balign="left"> + terminate() </td></tr>
-<tr><td align="left" balign="left"> + isTerminated() : boolean </td></tr>
 <tr><td align="left" balign="left"> + thrust(duration : double) </td></tr>
 <tr><td align="left" balign="left"> + thrust(thrustPerSecond : double, duration : double) </td></tr>
 		</table></td></tr>
@@ -184,12 +172,8 @@ digraph G {
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Ship(direction : Direction, position : Position, speedLimit : double, velocity : Velocity, shape : CircleShape, mass : Mass) </td></tr>
 <tr><td align="left" balign="left"> + Ship() </td></tr>
-<tr><td align="left" balign="left"> + terminate() </td></tr>
-<tr><td align="left" balign="left"> + advance(dt : double) </td></tr>
 <tr><td align="left" balign="left"> + canFire() : boolean </td></tr>
 <tr><td align="left" balign="left"> + fire() </td></tr>
-<tr><td align="left" balign="left"> + collideWith(that : Asteroid) </td></tr>
-<tr><td align="left" balign="left"> + collideWith(that : Bullet) </td></tr>
 <tr><td align="left" balign="left"> + getThrustPerSecond() : double </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Ship.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
@@ -245,11 +229,6 @@ subgraph cluster_vector {
 <tr><td align="left" balign="left"> + Direction(angle : Angle) </td></tr>
 <tr><td align="left" balign="left"> + Direction(angle : double) </td></tr>
 <tr><td align="left" balign="left"> + Direction() </td></tr>
-<tr><td align="left" balign="left"> + getAngle() : Angle </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsAngle(angle : Angle) : boolean </td></tr>
-<tr><td align="left" balign="left"> + setAngle(angle : Angle) </td></tr>
-<tr><td align="left" balign="left"> + _X() : double </td></tr>
-<tr><td align="left" balign="left"> + _Y() : double </td></tr>
 <tr><td align="left" balign="left"> + rotate(angle : Angle) </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Direction.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
@@ -265,10 +244,6 @@ subgraph cluster_vector {
 <tr><td align="left" balign="left"> + Velocity(x : double, y : double) </td></tr>
 <tr><td align="left" balign="left"> + Velocity(v : Vector) </td></tr>
 <tr><td align="left" balign="left"> + Velocity() </td></tr>
-<tr><td align="left" balign="left"> + setX(x : double) </td></tr>
-<tr><td align="left" balign="left"> + setY(y : double) </td></tr>
-<tr><td align="left" balign="left"> + get() : double </td></tr>
-<tr><td align="left" balign="left"> + getSum(v : Vector) : Velocity </td></tr>
 <tr><td align="left" balign="left"> + accelerateBy(a : Acceleration, duration : double) </td></tr>
 <tr><td align="left" balign="left"> + getSpeedOfLight() : double </td></tr>
 		</table></td></tr>
@@ -285,7 +260,6 @@ subgraph cluster_vector {
 <tr><td align="left" balign="left"> + Position(x : double, y : double) </td></tr>
 <tr><td align="left" balign="left"> + Position(v : Vector) </td></tr>
 <tr><td align="left" balign="left"> + Position() </td></tr>
-<tr><td align="left" balign="left"> + getSum(v : Vector) : Position </td></tr>
 <tr><td align="left" balign="left"> + moveBy(v : Velocity, duration : double) </td></tr>
 <tr><td align="left" balign="left"> + getPositionAfterMove(v : Velocity, duration : double) : Position </td></tr>
 		</table></td></tr>
@@ -356,9 +330,6 @@ subgraph cluster_geometry {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + Mass(mass : double) </td></tr>
-<tr><td align="left" balign="left"> + get() : double </td></tr>
-<tr><td align="left" balign="left"> # canHaveAsMass(mass : double) : boolean </td></tr>
-<tr><td align="left" balign="left"> - set(mass : double) </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Mass.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -395,11 +366,7 @@ subgraph cluster_collision {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + BorderCollision(world : World, entity : Entity) </td></tr>
-<tr><td align="left" balign="left"> + resolve() </td></tr>
-<tr><td align="left" balign="left"> + getTimeToCollision() : double </td></tr>
 <tr><td align="left" balign="left"> - getTimeToBorderCollision(border : Border) : double </td></tr>
-<tr><td align="left" balign="left"> # calculateCollisionTime() </td></tr>
-<tr><td align="left" balign="left"> # calculateCollisionPosition() </td></tr>
 		</table></td></tr>
 		</table>>, URL="./BorderCollision.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 
@@ -414,9 +381,6 @@ subgraph cluster_collision {
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + EntityCollision(world : World, entity1 : Entity, entity2 : Entity) </td></tr>
-<tr><td align="left" balign="left"> + resolve() </td></tr>
-<tr><td align="left" balign="left"> # calculateCollisionTime() </td></tr>
-<tr><td align="left" balign="left"> # calculateCollisionPosition() </td></tr>
 		</table></td></tr>
 		</table>>, URL="./EntityCollision.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 		
