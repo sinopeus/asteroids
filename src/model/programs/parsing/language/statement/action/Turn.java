@@ -1,6 +1,7 @@
 package model.programs.parsing.language.statement.action;
 
 import model.IFacade.TypeCheckOutcome;
+import model.programs.Program;
 import model.programs.parsing.language.Type;
 import model.programs.parsing.language.expression.Expression;
 import model.programs.parsing.language.expression.constant.literal.DoubleLiteral;
@@ -30,6 +31,13 @@ public class Turn extends Action
 	{
 		if (!canHaveAsAngle(angle)) throw new IllegalArgumentException("Invalid angle provided for turn statement.");
 		this.angle = angle;
+	}
+	
+	@Override
+	public void setParentProgram (Program parentProgram) throws IllegalArgumentException
+	{
+		getAngle().setParentProgram(parentProgram);
+		super.setParentProgram(parentProgram);
 	}
 
 	@Override

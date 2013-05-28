@@ -1,0 +1,153 @@
+double PI := 3.14159265359;
+double safetyBubble := 210;
+double bulletDangerZone := 250;
+double precisieMarge := 0.5;
+double veelTeGrootGetal := 1000000000000000000000000000000000000000000000000000000000000000000000;
+
+double attackCounter := 0;
+double thrustCounter := 0;
+bool shipToAttack;
+bool selfDefense;
+
+entity nearestEntity;
+double distanceToNearestEntity;
+double angle;
+double marge;
+
+double x;
+double y;
+double r;
+
+entity a;
+double ex;
+double ey;
+double vx;
+double vy;
+double er;
+double dy;
+double dx;
+double distance;
+
+double whileCounter;
+double angleMax;
+double angleMin;
+
+while(true) do {
+	attackCounter := attackCounter + 1;
+	thrustCounter := thrustCounter + 1;
+	
+	if (thrustCounter == 1) then {
+		thrust;
+		thrust_off;
+	}
+	if (thrustCounter == 17) then {
+		thrustCounter := 0;
+	}
+	
+	x := getx self;
+	y := gety self;
+	r := getradius self;
+	nearestEntity := null;
+	selfDefense := false;
+	shipToAttack := false;
+	distanceToNearestEntity := veelTeGrootGetal;
+  
+	foreach(asteroid, a) do {
+		ex := getx a;
+		ey := gety a;
+		er := getradius a;
+		distance := sqrt((((x - ex) * (x - ex)) + ((y - ey) * (y - ey)))) - r - er;
+		if((distance < distanceToNearestEntity) && (distance < safetyBubble)) then {
+			nearestEntity := a;
+			distanceToNearestEntity := distance;
+			marge := precisieMarge * (distanceToNearestEntity / safetyBubble);
+		}
+	}
+	
+	foreach (bullet, a) do {
+		ex := getx a;
+		ey := gety a;
+		vx := getvx a;
+		vy := getvy a;
+		er := getradius a;
+		distance := sqrt((((x - ex) * (x - ex)) + ((y - ey) * (y - ey)))) - r - er;
+		if (distance < bulletDangerZone) then {
+			if ( (ex > (x + r)) && (vx <= 0) ) then {
+				if ( (ey < (y - r)) && (vy >= 0) ) then {
+					nearestEntity := a;
+					distanceToNearestEntity := distance;
+					marge := precisieMarge * (distanceToNearestEntity / bulletDangerZone);
+				}
+				if ( (ey > (y - r)) && (vy <= 0) ) then {
+					nearestEntity := a;
+					distanceToNearestEntity := distance;
+					marge := precisieMarge * (distanceToNearestEntity / bulletDangerZone);
+				}
+			}
+			if ( (ex < (x - r)) && (vx >= 0) ) then {
+				if ( (ey < (y - r)) && (vy >= 0) ) then {
+					nearestEntity := a;
+					distanceToNearestEntity := distance;
+					marge := precisieMarge * (distanceToNearestEntity / bulletDangerZone);
+				}
+				if ( (ey > (y - r)) && (vy <= 0) ) then {
+					nearestEntity := a;
+					distanceToNearestEntity := distance;
+					marge := precisieMarge * (distanceToNearestEntity / bulletDangerZone);
+				}
+			}
+		}
+	}
+		
+	if ((nearestEntity == null) && (attackCounter > 8)) then {
+		attackCounter := 0;
+		foreach(ship, a) {
+			if (a != self) then {
+				shipToAttack := true;
+				ex := getx a;
+				ey := gety a;
+				er := getradius a;
+				distance := sqrt((((x - ex) * (x - ex)) + ((y - ey) * (y - ey)))) - r - er;
+				nearestEntity := a;
+				distanceToNearestEntity := distance;
+				marge := precisieMarge;
+			}
+		}
+	}
+	
+	selfDefense := (nearestEntity != null);
+	
+  	if (selfDefense || shipToAttack) then {
+  		vx := getvx nearestEntity;
+  		vy := getvy nearestEntity;
+		ex := getx nearestEntity;
+		ey := gety nearestEntity;
+		ex := ex + marge * vx;
+		ey := ey + marge * vy;
+		dx := ex - x;
+		angleMin := 0;
+		angleMax := PI;
+		angle := 0;
+
+		whileCounter := 0;
+		while (whileCounter < 10) do {
+			angle := (angleMax + angleMin)/2;
+			if ( cos(angle) <= (dx/distanceToNearestEntity) ) then {
+				angleMax := angle;
+			} else {
+				angleMin := angle;
+			}
+			whileCounter := whileCounter + 1;
+		}
+
+		if (ey < y) then { angle := (-1 * angle); }
+		angle := angle - getdir;
+
+		turn angle;
+
+		fire;
+		}
+	else {
+		skip;
+	}
+}

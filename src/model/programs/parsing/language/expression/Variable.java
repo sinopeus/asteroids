@@ -42,7 +42,8 @@ public class Variable extends Expression
 	@Override
 	public TypeCheckOutcome isTypeSafe ()
 	{
-		if(!getParentProgram().getGlobalValues().keySet().contains(getName()))return TypeCheckOutcome.failure("The variable at " + getLine() + ", " + getColumn() + " is not declared.");
+		if(!getParentProgram().getGlobalValues().keySet().contains(getName()))
+			return TypeCheckOutcome.failure("The variable at " + getLine() + ", " + getColumn() + " is not declared.");
 		return TypeCheckOutcome.success();
 	}
 	
